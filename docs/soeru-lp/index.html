@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOERU（仮）｜BALENCER — 中小企業のためのAI顧問サービス</title>
+<meta name="description" content="毎月、使えるものが届く、中小企業のためのAI顧問サービス。AIへの頼み方・作業の自動化・専用ツールを御社に合わせて毎月お届け。株式会社バレンサーが全国対応で提供。">
+<meta property="og:title" content="SOERU（仮）｜BALENCER — 中小企業のためのAI顧問">
+<meta property="og:description" content="毎月、使えるものが届く、中小企業のためのAI顧問サービス。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* クリーン×デジタル（白 × ブルー）。後でBALENCER色に差し替え可 */
+  --bg:#FFFFFF; --bg-2:#F7F9FC; --surface:#FFFFFF;
+  --ink:#111726; --text:#3C475C; --muted:#7A879C; --line:#E7EBF1; --line-2:#D6DCE6;
+  --accent:#2563EB; --accent-2:#22B8E6; --accent-soft:#EEF3FF; --accent-deep:#1D4ED8;
+  --grad:linear-gradient(100deg,#22B8E6,#2563EB);
+  --brand-yellow:#E6FF2F;
+  --f-en:'Poppins',system-ui,sans-serif; --f-ja:'Noto Sans JP','Hiragino Sans',sans-serif;
+  --f-mono:'JetBrains Mono',monospace; --f-script:'Caveat',cursive;
+  --r-md:12px; --r-lg:18px; --r-xl:24px; --r-pill:999px;
+  --sh-sm:0 1px 3px rgba(17,23,38,.05); --sh-md:0 12px 34px rgba(17,23,38,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-ja);background:var(--bg);color:var(--text);font-size:16px;line-height:1.9;-webkit-font-smoothing:antialiased;letter-spacing:.012em;font-feature-settings:"palt"}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.kicker{font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.gtext{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+a{color:inherit;text-decoration:none}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand .blogo{display:flex;align-items:center;gap:7px;color:var(--ink)}
+.brand .blogo b{font-family:var(--f-en);font-weight:700;font-size:18px;letter-spacing:.04em}
+.brand .home{font-size:10px;color:var(--muted)}
+.brand .sep{width:1px;height:22px;background:var(--line-2)}
+.brand .svc{font-family:var(--f-en);font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.04em}
+.brand .svc small{font-family:var(--f-ja);font-size:9px;color:var(--muted);margin-left:5px;font-weight:600}
+.nav{display:flex;align-items:center;gap:24px}
+.nav a{font-size:13px;font-weight:600;color:var(--text)}
+.nav a:hover{color:var(--ink)}
+.nav .cta{background:var(--ink);color:#fff;font-weight:700;padding:10px 20px;border-radius:var(--r-pill)}
+
+/* Hero（シンプル：中央の大見出し＋下に"毎月届くもの"の横帯） */
+.hero{position:relative;text-align:center;padding:96px 0 84px;border-bottom:1px solid var(--line);overflow:hidden;background:var(--bg-2)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(680px 320px at 50% -10%,rgba(37,99,235,.10),transparent 65%)}
+.hero .wrap{position:relative;z-index:2}
+.hero .tagchip{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-pill);padding:12px 26px;font-size:clamp(15px,1.7vw,18px);font-weight:800;color:var(--ink);box-shadow:var(--sh-md)}
+.hero .tagchip .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.hero h1{font-size:clamp(34px,5.4vw,60px);font-weight:900;line-height:1.3;letter-spacing:-.01em;color:var(--ink);margin:22px 0 0}
+.hero p.lead{font-size:clamp(15px,1.7vw,18px);color:var(--text);max-width:620px;margin:22px auto 0;line-height:2}
+.hero .btns{display:flex;gap:13px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+.btn-primary{background:var(--grad);color:#fff;font-weight:800;font-size:15px;padding:15px 32px;border-radius:var(--r-pill);transition:.2s;box-shadow:0 12px 28px rgba(37,99,235,.26)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-line{border:1.5px solid var(--line-2);color:var(--ink);font-weight:700;font-size:15px;padding:15px 30px;border-radius:var(--r-pill);background:#fff;transition:.2s}
+.btn-line:hover{border-color:var(--accent);color:var(--accent)}
+/* 毎月届くもの 横帯（ヒーロー差別化・画像不要・シンプル） */
+.deliverbar{margin-top:44px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.deliverbar .dl{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:9px 16px;font-size:12.5px;font-weight:700;color:var(--ink);box-shadow:var(--sh-sm)}
+.deliverbar .dl b{color:var(--accent);font-family:var(--f-mono);font-size:11px}
+.hero .note{margin-top:22px;font-size:12.5px;color:var(--muted);font-weight:600}
+.hero .note b{color:var(--text)}
+
+/* Section base */
+section.s{padding:84px 0;border-top:1px solid var(--line)}
+.s.alt{background:var(--bg-2)}
+.s-head{text-align:center;max-width:680px;margin:0 auto 48px}
+.s-head .kicker{display:inline-block;margin-bottom:14px}
+.s-head h2{font-size:clamp(24px,3.2vw,34px);font-weight:900;line-height:1.45;letter-spacing:-.01em;color:var(--ink)}
+.s-head h2::after{content:"";display:block;width:44px;height:3px;background:var(--grad);border-radius:2px;margin:18px auto 0}
+.s-head p{color:var(--text);font-size:15px;margin-top:18px}
+
+/* 課題 6（Axel準拠） */
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.prob{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:34px 30px;box-shadow:var(--sh-sm);aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:center}
+.prob .q{font-family:var(--f-mono);font-size:15px;font-weight:700;color:var(--accent)}
+.prob h3{font-size:22px;font-weight:800;color:var(--ink);margin:15px 0 12px;line-height:1.5}
+.prob p{font-size:16px;color:var(--muted);line-height:1.85}
+
+/* 3つの特徴 */
+.feat3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.f3{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:28px 28px 30px;position:relative;overflow:hidden;box-shadow:var(--sh-sm)}
+.f3::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.f3 .illu{height:128px;border-radius:14px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.f3 .illu svg{width:46px;height:46px;stroke:var(--accent);stroke-width:1.7;fill:none}
+.f3 .n{font-family:var(--f-mono);font-size:13px;font-weight:700;color:var(--muted)}
+.f3 h3{font-size:20px;font-weight:900;color:var(--ink);margin:10px 0 10px;line-height:1.5}
+.f3 p{font-size:15px;color:var(--text);line-height:1.95}
+
+/* 料金（Axel準拠・3カード） */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:30px 26px;display:flex;flex-direction:column;box-shadow:var(--sh-sm)}
+.pcard.feat-plan{border:2px solid var(--accent);position:relative;box-shadow:var(--sh-md)}
+.pcard.feat-plan .ribbon{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:11px;font-weight:900;padding:5px 15px;border-radius:var(--r-pill);white-space:nowrap}
+.pcard .pname{font-family:var(--f-mono);font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.pcard .pprice{font-size:34px;font-weight:800;font-family:var(--f-en);margin:10px 0 2px;color:var(--ink)}
+.pcard .pprice small{font-size:14px;color:var(--muted);font-weight:700;font-family:var(--f-ja)}
+.pcard .psub{font-size:12.5px;color:var(--muted);min-height:36px}
+.pcard ul{list-style:none;margin:16px 0;display:flex;flex-direction:column;gap:11px;flex:1}
+.pcard li{font-size:13px;display:flex;gap:9px;align-items:flex-start;color:var(--text)}
+.pcard li::before{content:"✓";color:var(--accent);font-weight:900;flex:none}
+.pcard .pbtn{text-align:center;font-weight:800;font-size:14px;padding:13px;border-radius:var(--r-pill);margin-top:6px}
+.pcard .pbtn.solid{background:var(--grad);color:#fff}
+.pcard .pbtn.line{border:1.5px solid var(--line-2);color:var(--ink)}
+.price-note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:24px;line-height:1.85;max-width:760px;margin-left:auto;margin-right:auto}
+
+/* 納品物の例（6） */
+.deliv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.dcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:34px 30px;box-shadow:var(--sh-sm);aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:center}
+.dcard .ic{width:54px;height:54px;border-radius:14px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.dcard .ic svg{width:26px;height:26px;stroke:var(--accent);stroke-width:2;fill:none}
+.dcard h3{font-size:21px;font-weight:800;color:var(--ink);line-height:1.5}
+.dcard p{font-size:16px;color:var(--muted);margin-top:11px;line-height:1.85}
+
+/* バレンサーとは */
+.about-co{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+.about-co .txt h2{font-size:clamp(23px,2.8vw,32px);font-weight:900;color:var(--ink);line-height:1.5;margin:14px 0 16px}
+.about-co .txt p{font-size:14.5px;color:var(--text);line-height:2}
+.about-co .pts{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.about-co .pts div{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;color:var(--ink)}
+.about-co .pts div::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--grad);flex:none;margin-top:8px}
+.co-stats{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-xl);padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.s.alt .co-stats{background:#fff}
+.co-stats .st .v{font-family:var(--f-en);font-size:28px;font-weight:800;color:var(--ink);line-height:1}
+.co-stats .st .l{font-size:12px;color:var(--muted);margin-top:7px;font-weight:600}
+.co-stats .full{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;font-size:13px;color:var(--text);line-height:1.85}
+
+/* CTA */
+.cta-sec{text-align:center;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.cta-sec::before{content:"";position:absolute;inset:0;background:radial-gradient(620px 320px at 50% 130%,rgba(37,99,235,.4),transparent 60%)}
+.cta-sec .wrap{position:relative;z-index:2}
+.cta-sec .kicker{color:var(--accent-2)}
+.cta-sec h2{font-size:clamp(25px,3.4vw,38px);font-weight:900;color:#fff;line-height:1.45;margin-top:14px}
+.cta-sec p{color:rgba(255,255,255,.82);margin:16px auto 30px;max-width:540px;font-size:15px}
+
+/* Footer（明るめ） */
+.foot{background:var(--bg-2);color:var(--muted);padding:50px 0 34px;font-size:13px;border-top:1px solid var(--line)}
+.foot .grid{display:grid;grid-template-columns:1.5fr 1fr;gap:30px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.foot h4{color:var(--ink);font-weight:800;font-size:14px;margin-bottom:12px}
+.foot p{color:var(--text);line-height:1.85}
+.foot .flogo{height:22px;width:auto;display:block;margin-bottom:14px}
+.foot .tag-line{font-family:var(--f-script);color:var(--accent);font-size:22px;margin-top:12px}
+.foot .co dl{display:grid;grid-template-columns:84px 1fr;gap:5px 12px;font-size:12.5px}
+.foot .co dt{color:var(--muted)} .foot .co dd{color:var(--text)}
+.foot .co a{color:var(--accent)}
+.foot .copy{padding-top:18px;font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.foot .related{padding:24px 0;border-bottom:1px solid var(--line)}
+.foot .related h4{margin-bottom:14px}
+.foot .rel-list{display:flex;flex-wrap:wrap;gap:12px}
+.foot .rel-list a{display:flex;flex-direction:column;gap:3px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 17px;min-width:190px;transition:.2s;box-shadow:var(--sh-sm)}
+.foot .rel-list a:hover{border-color:var(--accent);transform:translateY(-1px)}
+.foot .rel-list .rt{color:var(--ink);font-weight:800;font-size:13px;display:flex;align-items:center;gap:6px}
+.foot .rel-list .rt .ar{color:var(--accent);font-size:11px}
+.foot .rel-list .rs{color:var(--muted);font-size:11px}
+
+/* スマホ追従CTA */
+.mobile-cta{display:none}
+.mobile-cta a{flex:1;text-align:center;font-weight:800;font-size:15px;padding:14px;border-radius:var(--r-pill)}
+.mobile-cta .m-line{border:1.5px solid var(--line-2);color:var(--ink);background:#fff}
+.mobile-cta .m-primary{background:var(--grad);color:#fff}
+
+/* レビュー番号オーバーレイ（本番domainでは無効） */
+.rev-badge{display:none}
+body.review-on .rev-badge{display:inline-flex;position:absolute;top:6px;left:6px;z-index:80;min-width:22px;height:22px;padding:0 6px;align-items:center;justify-content:center;background:#FF2D55;color:#fff;font-family:var(--f-mono);font-weight:700;font-size:11px;line-height:1;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.35);pointer-events:none}
+body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offset:2px}
+#rev-toggle{position:fixed;left:14px;bottom:92px;z-index:95;background:#FF2D55;color:#fff;border:none;font-family:var(--f-mono);font-weight:700;font-size:12px;padding:11px 15px;border-radius:999px;box-shadow:0 8px 20px rgba(255,45,85,.4);cursor:pointer}
+#rev-toggle:hover{filter:brightness(1.05)}
+
+@media(max-width:840px){
+  .pc-br{display:none}
+  .nav a:not(.cta){display:none}
+  .hero{padding:62px 0 56px}
+  .prob-grid{grid-template-columns:1fr}
+  .prob,.dcard{aspect-ratio:auto}
+  .feat3{grid-template-columns:1fr;gap:14px}
+  .price-grid{grid-template-columns:1fr}
+  .deliv-grid{grid-template-columns:1fr}
+  .about-co{grid-template-columns:1fr;gap:28px}
+  .foot .grid{grid-template-columns:1fr}
+  .foot .rel-list a{flex:1;min-width:140px}
+  body{padding-bottom:78px}
+  .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 16px;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(17,23,38,.08)}
+}
+
+/* 公式ロゴ（ヘッダー） */
+.blogo-img{height:22px;width:auto;display:block}
+
+/* お問い合わせフォーム */
+.contact-sec{background:var(--bg-2)}
+.lead-form{max-width:720px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:32px;box-shadow:var(--sh-md)}
+.src-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent-deep);border:1px solid #cfe0ff;border-radius:var(--r-pill);padding:8px 16px;font-size:13px;font-weight:700;margin-bottom:20px}
+.src-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lf-field{display:flex;flex-direction:column;gap:7px}
+.lf-field.lf-full{grid-column:1/-1}
+.lf-field>span{font-size:13px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+.lf-field>span i{font-style:normal;font-size:10px;font-weight:800;color:#fff;background:var(--accent);border-radius:4px;padding:1px 6px}
+.lf-field input,.lf-field select,.lf-field textarea{font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1.5px solid var(--line-2);border-radius:10px;padding:12px 14px;transition:.15s;width:100%}
+.lf-field input:focus,.lf-field select:focus,.lf-field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.lf-field textarea{resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.lf-submit{display:block;width:100%;margin-top:22px;border:none;cursor:pointer}
+.lf-note{font-size:12px;color:var(--muted);text-align:center;margin-top:14px}
+.lf-done{text-align:center;padding:20px 0}
+.lf-done .ic{width:56px;height:56px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px}
+.lf-done h3{font-size:20px;font-weight:900;color:var(--ink);margin-bottom:8px}
+.lf-done p{font-size:14px;color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="hdr">
+  <div class="wrap">
+    <div class="brand">
+      <a class="blogo" href="https://balencer.jp/" target="_blank" rel="noopener"><img src="balencer-logo.png" alt="BALENCER" class="blogo-img"><span class="home">◂ 公式サイト</span></a>
+      <span class="sep"></span>
+      <span class="svc">SOERU<small>サービス名 仮</small></span>
+    </div>
+    <nav class="nav">
+      <a href="#features">特長</a>
+      <a href="#pricing">料金</a>
+      <a href="#company">会社概要</a>
+      <a class="cta" href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero（シンプル・別パターン） -->
+<section class="hero">
+  <div class="wrap">
+    <span class="tagchip"><span class="dot"></span>中小企業のための AI顧問サービス</span>
+    <h1>AI顧問　<span class="gtext">SOERU</span></h1>
+    <p class="lead">「何から始めればいいか」でAI導入が進まない企業のために、毎月実践できるAI活用の相談にお応えする伴走型のAI顧問サービスです。</p>
+    <div class="deliverbar">
+      <span class="dl"><b>01</b>プロンプト集</span>
+      <span class="dl"><b>02</b>専用AIアシスタント</span>
+      <span class="dl"><b>03</b>作業の自動化</span>
+      <span class="dl"><b>04</b>御社だけの業務ツール</span>
+      <span class="dl"><b>05</b>効果レポート</span>
+    </div>
+    <div class="note">最低<b>3ヶ月</b>から ／ <b>今日から</b>始められます</div>
+  </div>
+</section>
+
+<!-- 課題 6（Axel準拠） -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">issues</span>
+      <h2>企業でAIが浸透しない理由</h2>
+    </div>
+    <div class="prob-grid">
+      <div class="prob"><div class="q">01</div><h3>何から始めれば良いか分からない</h3><p>情報は多いのに、自社の業務にどう使えばいいかが分からない。</p></div>
+      <div class="prob"><div class="q">02</div><h3>個人利用で止まり、組織に広がらない</h3><p>一部の人だけが使い、会社全体のノウハウにならない。</p></div>
+      <div class="prob"><div class="q">03</div><h3>業務のどこにAIを当てるべきか不明</h3><p>効果が出る業務の選び方が分からず、手探りで止まる。</p></div>
+      <div class="prob"><div class="q">04</div><h3>提案の妥当性・費用対効果が判断できない</h3><p>いくらかけて、どれだけ戻るのかが見えず踏み出せない。</p></div>
+      <div class="prob"><div class="q">05</div><h3>セキュリティ／情報漏洩リスクへの不安</h3><p>ルールが無く、会社として使わせるのが怖い。</p></div>
+      <div class="prob"><div class="q">06</div><h3>成果（KPI）が可視化できず定着しない</h3><p>使ってはいるが、何が良くなったのか分からない。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOERUとは + 3つの特徴 -->
+<section class="s alt" id="features">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">about soeru</span>
+      <h2>入れて終わりにしない<br class="pc-br">伴走型のAI顧問</h2>
+      <p>毎月、御社の業務に合わせて使えるものをつくって届けます。SOERUがお約束する3つのこと。</p>
+    </div>
+    <div class="feat3">
+      <div class="f3">
+        <div class="illu"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg></div>
+        <div class="n">01</div>
+        <h3>毎月、使えるものを納品</h3>
+        <p>頼み方集・自動化・専用ツールなど、その月にいちばん効くものをかたちにしてお届け。手元に成果が積み上がります。</p>
+      </div>
+      <div class="f3">
+        <div class="illu"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <div class="n">02</div>
+        <h3>小さく早く実装する</h3>
+        <p>大きな投資もシステム入れ替えも不要。今お使いのツールに足すかたちで、今月から1つずつ。設定は私たちが行います。</p>
+      </div>
+      <div class="f3">
+        <div class="illu"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 2 5-6"/><circle cx="18" cy="7" r="1.4"/></svg></div>
+        <div class="n">03</div>
+        <h3>効果をKPIで可視化する</h3>
+        <p>削減できた時間・使われ具合を数字でご報告。なんとなくではなく、成果が見える状態にします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金（Axel準拠・数字表記） -->
+<section class="s" id="pricing">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">pricing</span>
+      <h2>3つのプランから、最適な支援を</h2>
+      <p>最低3ヶ月から。補助金を待たずに、今日から始められます。表示はすべて税抜・月額です。</p>
+    </div>
+    <div class="price-grid">
+      <div class="pcard">
+        <div class="pname">スターター</div>
+        <div class="pprice">¥100,000<small> / 月</small></div>
+        <div class="psub">AI活用をスタートしたい企業向け</div>
+        <ul>
+          <li>月1回 オンラインMTG（60分）</li>
+          <li>チャット／メール（月10件）</li>
+          <li>プロンプト 3〜5本</li>
+          <li>AI活用Tips ミニレポート</li>
+          <li>初回AI活用診断</li>
+        </ul>
+        <a class="pbtn line" href="#contact">お問い合わせ</a>
+      </div>
+
+      <div class="pcard feat-plan">
+        <span class="ribbon">人気プラン</span>
+        <div class="pname">スタンダード</div>
+        <div class="pprice">¥200,000<small> / 月</small></div>
+        <div class="psub">AI活用を本格化したい企業向け</div>
+        <ul>
+          <li>月2回 MTG</li>
+          <li>チャット／メール（月20件）</li>
+          <li>プロンプト 3〜5本</li>
+          <li>業務別シナリオ設計</li>
+          <li>ノーコード自動化支援</li>
+          <li>AI利用ガイドライン策定</li>
+          <li>初回AI活用診断</li>
+        </ul>
+        <a class="pbtn solid" href="#contact">お問い合わせ</a>
+      </div>
+
+      <div class="pcard">
+        <div class="pname">ストラテジック</div>
+        <div class="pprice">¥500,000<small> / 月</small></div>
+        <div class="psub">AI活用で組織変革を目指す企業向け</div>
+        <ul>
+          <li>月3回 MTG ＋ 月1回 訪問</li>
+          <li>当日返信・相談無制限</li>
+          <li>軽量プロジェクト伴走</li>
+          <li>経営向けレポート</li>
+          <li>全社AIロードマップ</li>
+          <li>生成AI研修 年2回</li>
+        </ul>
+        <a class="pbtn line" href="#contact">お問い合わせ</a>
+      </div>
+    </div>
+    <p class="price-note">表示価格はすべて税抜・月額です。最低契約期間は3ヶ月。まず3ヶ月、価値を見てから続けるか判断いただけます。外部サービス（Notion・Make・Google Workspace 等）の利用料、Claude API の実費はお客様のご負担となります。</p>
+  </div>
+</section>
+
+<!-- 納品物の例（Axel準拠の6） -->
+<section class="s alt">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">deliverables</span>
+      <h2>納品事例</h2>
+      <p>専門知識はいりません。その月にいちばん役立つものを、私たちが選んでお届けします。</p>
+    </div>
+    <div class="deliv-grid">
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg></div><h3>プロンプトテンプレート集</h3><p>そのまま使える「AIへの頼み方」を、仕事別に毎月お渡しします。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/></svg></div><h3>カスタムGPTs</h3><p>御社の業務に合わせて調整した、専用のAIアシスタントを用意します。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg></div><h3>自動化フロー</h3><p>転記やコピペなどの手作業を自動に。やらなくていい仕事を増やします。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>運用ガイドライン</h3><p>情報の扱いやルールを整え、安心して全社に広げられる土台を作ります。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 2 5-6"/></svg></div><h3>分析資料</h3><p>売上や業務のデータをAIが分析し、毎月の判断材料になる資料にまとめてお届けします。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 14l5-4 4 3 3-2 6 5"/><circle cx="8.5" cy="9" r="1.4"/></svg></div><h3>バナーテンプレ</h3><p>広告やSNS用のバナーをAIで量産できるテンプレートをご用意。デザイン担当がいなくても作れます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- バレンサーとは（全国・AX強み・幅広い相談） -->
+<section class="s" id="company">
+  <div class="wrap">
+    <div class="about-co">
+      <div class="txt">
+        <span class="kicker">about balencer</span>
+        <h2>AX（AI変革）が得意な、<br class="pc-br">伴走パートナー。</h2>
+        <p>株式会社バレンサーは、<b style="color:var(--ink)">AX（AIによる業務・組織の変革）を得意とし、全国の中小企業に伴走</b>する会社です（設立2019年）。AIだけでなく、ブランディングや組織づくりまで一気通貫で手がけているので、<b style="color:var(--ink)">経営の幅広いお悩みをまとめて相談</b>いただけます。</p>
+        <p style="margin-top:14px;font-size:13.5px;color:var(--muted)">本サービス「SOERU」は、その中でも<b style="color:var(--text)">AIに特化したAI顧問</b>。ブランド・組織・経営など、より広いご相談は、別途コンサルティングとしてご一緒できます。</p>
+        <div class="pts">
+          <div>AX（AI変革）に強い ── 実際に動く仕組みまで作れる技術力</div>
+          <div>ブランディング・組織開発まで一気通貫で伴走</div>
+          <div>「対話もできて、コードも書ける」幅広い相談先</div>
+        </div>
+      </div>
+      <div class="co-stats">
+        <div class="st"><div class="v gtext">2019</div><div class="l">設立年</div></div>
+        <div class="st"><div class="v gtext">全国</div><div class="l">対応エリア</div></div>
+        <div class="st"><div class="v"><span class="gtext">AX</span>特化</div><div class="l">AI変革が得意領域</div></div>
+        <div class="st"><div class="v"><span class="gtext">一気</span>通貫</div><div class="l">戦略から実装・運用まで</div></div>
+        <div class="full">「AIを導入できます」だけでは、もう差になりません。組織に入り込む力と、AIを実際に動かす技術力の掛け算が、バレンサーの価値です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- お問い合わせフォーム -->
+<section class="s contact-sec" id="contact">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">contact</span>
+      <h2>お問い合わせ</h2>
+      <p>御社に合わせた最初のお届けものと、はじめ方をご案内します。1〜2営業日でご返信します。</p>
+    </div>
+
+    <form class="lead-form" id="leadForm" autocomplete="on">
+      <div class="src-badge" id="srcBadge" hidden></div>
+      <div class="lf-grid">
+        <label class="lf-field"><span>お名前<i>必須</i></span><input type="text" name="お名前" required></label>
+        <label class="lf-field"><span>会社名</span><input type="text" name="会社名"></label>
+        <label class="lf-field"><span>メールアドレス<i>必須</i></span><input type="email" name="メール" required placeholder="info@your-company.co.jp"></label>
+        <label class="lf-field"><span>電話番号</span><input type="tel" name="電話番号"></label>
+        <label class="lf-field"><span>気になるサービス</span>
+          <select name="気になるサービス">
+            <option>AI顧問（SOERU）</option>
+            <option>Notion業務基盤（ヒトツ）</option>
+            <option>AI経営分析（ミタテ）</option>
+            <option>補助金の活用</option>
+            <option>ブランド・組織・経営の相談</option>
+            <option>まだ決まっていない</option>
+          </select>
+        </label>
+        <label class="lf-field"><span>想定予算</span>
+          <select name="想定予算">
+            <option value="">選択してください</option>
+            <option>月10万円前後</option>
+            <option>月20万円前後</option>
+            <option>月50万円前後</option>
+            <option>未定・相談したい</option>
+          </select>
+        </label>
+        <label class="lf-field lf-full"><span>現在の課題</span><textarea name="現在の課題" rows="3" placeholder="例：AIを使いたいが何から始めればいいか分からない"></textarea></label>
+        <label class="lf-field lf-full"><span>その他ご要望</span><textarea name="その他ご要望" rows="2"></textarea></label>
+      </div>
+      <input type="text" name="_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="source" id="srcField" value="AI顧問SOERU（直接）">
+      <button type="submit" class="btn-primary lf-submit">送信する</button>
+      <p class="lf-note" id="lfNote">いただいた内容はバレンサーで確認し、1〜2営業日でご返信します。</p>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <img src="balencer-logo.png" alt="BALENCER" class="flogo">
+        <h4>SOERU（仮）by BALENCER</h4>
+        <p style="max-width:480px">毎月使えるものが届く、中小企業のためのAI顧問サービス。AIで入って、経営まで一気通貫で伴走します。</p>
+        <p class="tag-line">for loved ones.</p>
+      </div>
+      <div class="co">
+        <h4>提供元</h4>
+        <dl>
+          <dt>会社名</dt><dd>株式会社バレンサー</dd>
+          <dt>サービス</dt><dd>SOERU（仮称）</dd>
+          <dt>対応</dt><dd>全国</dd>
+          <dt>お問合せ</dt><dd><a href="mailto:info@balencer.jp">info@balencer.jp</a></dd>
+          <dt>公式サイト</dt><dd><a href="https://balencer.jp/" target="_blank" rel="noopener">balencer.jp ↗</a></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="related">
+      <h4>バレンサーの他のサービス</h4>
+      <div class="rel-list">
+        <a href="https://balencer.jp/notion/" target="_blank" rel="noopener">
+          <span class="rt">ヒトツ<span class="ar">↗</span></span><span class="rs">Notionで会社の業務基盤をつくる</span>
+        </a>
+        <a href="https://balencer.jp/keiei/" target="_blank" rel="noopener">
+          <span class="rt">ミタテ<span class="ar">↗</span></span><span class="rs">AIで数字が見える経営分析システム</span>
+        </a>
+      </div>
+      <h4 style="margin-top:22px">お役立ち</h4>
+      <div class="rel-list">
+        <a href="https://balencer.jp/hojokin/" target="_blank" rel="noopener">
+          <span class="rt">補助金ハブ<span class="ar">↗</span></span><span class="rs">AI導入補助金の活用をチェック・相談</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="copy">
+      <span>© 2026 BALENCER Inc. All rights reserved.</span>
+      <span>※サービス名「SOERU」は仮称です</span>
+    </div>
+  </div>
+</footer>
+
+<!-- スマホ追従CTA -->
+<div class="mobile-cta">
+  <a class="m-line" href="#pricing">料金を見る</a>
+  <a class="m-primary" href="#contact">お問い合わせ</a>
+</div>
+
+<!-- 流入元バッジ ＆ お問い合わせフォーム送信 -->
+<script>
+(function(){
+  // 流入元（?src= / ?from=）でバッジと記録を切り替え
+  var SRC={
+    hojokin:{badge:'補助金ハブからお越しいただき、ありがとうございます',val:'補助金 → AI顧問'},
+    mitate :{badge:'ミタテをご覧の方へ',val:'ミタテ → AI顧問'},
+    hitotsu:{badge:'ヒトツをご覧の方へ',val:'ヒトツ → AI顧問'},
+    notion :{badge:'ヒトツをご覧の方へ',val:'ヒトツ → AI顧問'},
+    balencer:{badge:'BALENCER公式からお越しの方へ',val:'公式サイト → AI顧問'}
+  };
+  var sp=new URLSearchParams(location.search);
+  var key=(sp.get('src')||sp.get('from')||'').toLowerCase();
+  var s=SRC[key];
+  var srcField=document.getElementById('srcField');
+  if(s){
+    if(srcField) srcField.value=s.val;
+    var b=document.getElementById('srcBadge');
+    if(b){ b.textContent=s.badge; b.hidden=false; }
+  }
+  // 送信
+  var form=document.getElementById('leadForm');
+  if(!form) return;
+  var note=document.getElementById('lfNote');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.querySelector('[name="_hp"]').value){ return; } // bot
+    var fd=new FormData(form), payload={};
+    fd.forEach(function(v,k){ if(k!=='_hp') payload[k]=v; });
+    var btn=form.querySelector('.lf-submit');
+    btn.disabled=true; btn.textContent='送信中…';
+    fetch('/soeru-lead.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
+      .then(function(res){
+        if(res.ok && res.j.ok){
+          form.innerHTML='<div class="lf-done"><div class="ic">✓</div><h3>送信しました</h3><p>ありがとうございます。1〜2営業日でご返信します。</p></div>';
+        }else{
+          btn.disabled=false; btn.textContent='送信する';
+          note.style.color='#C0392B';
+          note.textContent=(res.j&&res.j.error)?res.j.error:'送信に失敗しました。お手数ですが info@balencer.jp までご連絡ください。';
+        }
+      })
+      .catch(function(){
+        btn.disabled=false; btn.textContent='送信する';
+        note.style.color='#C0392B';
+        note.innerHTML='送信できませんでした。<a href="mailto:info@balencer.jp" style="color:var(--accent)">info@balencer.jp</a> までご連絡ください。';
+      });
+  });
+})();
+</script>
+
+<!-- レビュー番号オーバーレイ（balencer.jp 本番では非表示） -->
+<script>
+(function(){
+  var host=location.hostname;
+  if(host==='balencer.jp'||host==='www.balencer.jp') return; // 本番は無効
+  var SEL=['.hero .tagchip','.hero h1','.hero p.lead','.hero .btns a','.deliverbar .dl','.hero .note',
+    '.s-head','.prob','.f3','.pcard','.dcard','.oneline','.about-co .txt','.co-stats',
+    '.cta-sec h2','.cta-sec .btn-primary','.foot .rel-list a','.foot .co'];
+  var btn=document.createElement('button');
+  btn.id='rev-toggle'; btn.type='button'; btn.textContent='① レビュー番号: OFF';
+  document.body.appendChild(btn);
+  var injected=false, on=false;
+  function inject(){
+    if(injected) return; injected=true;
+    var nodes=document.querySelectorAll(SEL.join(','));
+    nodes.forEach(function(e,i){
+      if(getComputedStyle(e).position==='static') e.style.position='relative';
+      e.classList.add('rev-target');
+      var b=document.createElement('span'); b.className='rev-badge'; b.textContent=(i+1); e.appendChild(b);
+    });
+  }
+  btn.addEventListener('click',function(){
+    on=!on; if(on) inject();
+    document.body.classList.toggle('review-on',on);
+    btn.textContent=on?'① レビュー番号: ON':'① レビュー番号: OFF';
+  });
+})();
+</script>
+
+</body>
+</html>

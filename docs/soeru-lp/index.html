@@ -48,8 +48,8 @@ a{color:inherit;text-decoration:none}
 .nav .cta{background:var(--ink);color:#fff;font-weight:700;padding:10px 20px;border-radius:var(--r-pill)}
 
 /* Hero（シンプル：中央の大見出し＋下に"毎月届くもの"の横帯） */
-.hero{position:relative;text-align:center;padding:96px 0 84px;border-bottom:1px solid var(--line);overflow:hidden;background:var(--bg-2)}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(680px 320px at 50% -10%,rgba(37,99,235,.10),transparent 65%)}
+.hero{position:relative;text-align:center;padding:96px 0 84px;border-bottom:1px solid var(--line);overflow:hidden;background:#eaf1fb url('img/hero-pc.png') center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.12) 42%,rgba(255,255,255,.4))}
 .hero .wrap{position:relative;z-index:2}
 .hero .tagchip{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-pill);padding:12px 26px;font-size:clamp(15px,1.7vw,18px);font-weight:800;color:var(--ink);box-shadow:var(--sh-md)}
 .hero .tagchip .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
@@ -87,8 +87,9 @@ section.s{padding:84px 0;border-top:1px solid var(--line)}
 .feat3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .f3{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:28px 28px 30px;position:relative;overflow:hidden;box-shadow:var(--sh-sm)}
 .f3::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
-.f3 .illu{height:128px;border-radius:14px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.f3 .illu{height:150px;border-radius:14px;background:#F2F6FC;display:flex;align-items:center;justify-content:center;margin-bottom:20px;overflow:hidden}
 .f3 .illu svg{width:46px;height:46px;stroke:var(--accent);stroke-width:1.7;fill:none}
+.f3 .illu img{width:100%;height:100%;object-fit:cover}
 .f3 .n{font-family:var(--f-mono);font-size:13px;font-weight:700;color:var(--muted)}
 .f3 h3{font-size:20px;font-weight:900;color:var(--ink);margin:10px 0 10px;line-height:1.5}
 .f3 p{font-size:15px;color:var(--text);line-height:1.95}
@@ -182,6 +183,7 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
   .price-grid{grid-template-columns:1fr}
   .deliv-grid{grid-template-columns:1fr}
   .about-co{grid-template-columns:1fr;gap:28px}
+  .hero{background-image:url('img/hero-sp.png')}
   .lf-grid{grid-template-columns:1fr}
   .lead-form{padding:24px 20px}
   .co-stats{grid-template-columns:1fr}
@@ -222,6 +224,48 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
 .casecard p{font-size:14px;color:var(--text);line-height:1.9}
 .case-note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:18px}
 @media(max-width:840px){.case-grid{grid-template-columns:1fr}}
+
+/* お客様の声 */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.vcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:26px;box-shadow:var(--sh-sm);display:flex;flex-direction:column}
+.vcard .stars{color:#FFB400;font-size:14px;letter-spacing:2px;margin-bottom:12px}
+.vcard .q{font-size:14px;color:var(--ink);line-height:1.95;font-weight:600;flex:1}
+.vcard .who{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.vcard .av{width:38px;height:38px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none}
+.vcard .who .r{font-size:12px;color:var(--muted)}
+.vcard .who .r b{display:block;color:var(--ink);font-size:13px}
+
+/* 代表プロフィール */
+.profile{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:36px;box-shadow:var(--sh-md)}
+.profile .photo{width:200px;height:200px;border-radius:50%;object-fit:cover;justify-self:center;border:4px solid var(--accent-soft)}
+.profile .pname{font-size:23px;font-weight:900;color:var(--ink)}
+.profile .ptitle{font-size:13px;color:var(--accent);font-weight:700;margin:4px 0 14px}
+.profile p{font-size:14px;color:var(--text);line-height:1.95}
+.profile ul{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.profile li{font-size:12px;color:var(--ink-2);background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-pill);padding:5px 12px}
+
+/* ご相談の流れ */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:28px 26px;box-shadow:var(--sh-sm)}
+.step .num{font-family:var(--f-mono);font-size:15px;font-weight:700;color:#fff;background:var(--grad);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.step h3{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.step p{font-size:13.5px;color:var(--muted);line-height:1.85}
+
+/* FAQ */
+.faq{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-sm);overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:18px 22px;font-size:15px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";font-family:var(--f-en);font-weight:800;color:var(--accent);flex:none}
+.faq summary::after{content:"+";margin-left:auto;color:var(--muted);font-size:22px;font-weight:400;line-height:1}
+.faq details[open] summary::after{content:"\2013"}
+.faq .a{padding:0 22px 20px 40px;font-size:14px;color:var(--text);line-height:1.95}
+
+@media(max-width:840px){
+  .voice-grid{grid-template-columns:1fr}
+  .profile{grid-template-columns:1fr;gap:22px;padding:28px 22px}
+  .steps{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -260,7 +304,7 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
       <a class="btn-primary" href="#contact">無料で相談する</a>
       <a class="btn-line" href="#pricing">料金を見る</a>
     </div>
-    <div class="note">最低<b>3ヶ月</b>から ／ <b>今日から</b>始められます</div>
+    <div class="note"><b>初期費用0円</b> ／ 最低<b>3ヶ月</b>から ／ <b>今日から</b>始められます</div>
   </div>
 </section>
 
@@ -292,19 +336,19 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
     </div>
     <div class="feat3">
       <div class="f3">
-        <div class="illu"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 12h5"/></svg></div>
+        <div class="illu"><img src="img/feat-1.png" alt="対話してAIを御社に合わせる"></div>
         <div class="n">01</div>
         <h3>まず対話して、御社に入り込んでつくる</h3>
         <p>テンプレを配って終わりにしません。業務を一緒に見て、御社専用に仕立てる。組織に入り込むのがバレンサーの本業です。</p>
       </div>
       <div class="f3">
-        <div class="illu"><svg viewBox="0 0 24 24"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg></div>
+        <div class="illu"><img src="img/feat-2.png" alt="ノーコードとコードで動く仕組みに"></div>
         <div class="n">02</div>
         <h3>ノーコード＋コードで、動くところまで</h3>
         <p>Make・Notionの自動化に加え、Claudeで「実際に動く業務ツール」まで作れる。ふつうのAI顧問との決定的な差です。</p>
       </div>
       <div class="f3">
-        <div class="illu"><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-6"/><path d="M3 19h18"/></svg></div>
+        <div class="illu"><img src="img/feat-3.png" alt="AIで終わらず経営まで伴走"></div>
         <div class="n">03</div>
         <h3>AIで終わらせない、経営の入口</h3>
         <p>AIで成果が出たら、ブランド・組織・経営まで一気通貫で相談できる。SOERUはその第一歩です。</p>
@@ -366,7 +410,7 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
         <a class="pbtn line" href="#contact">お問い合わせ</a>
       </div>
     </div>
-    <p class="price-note">表示価格はすべて税抜・月額です。最低契約期間は3ヶ月。外部サービス（Notion・Make 等）の利用料、Claude API の実費はお客様のご負担となります。より大きなAI業務改革・補助金の活用は、別パッケージでご案内します。</p>
+    <p class="price-note"><b style="color:var(--ink)">初期費用0円。</b>表示価格はすべて税抜・月額です。最低契約期間は3ヶ月（その後はいつでも終了いただけます）。外部サービス（Notion・Make 等）の利用料、Claude API の実費はお客様のご負担となります。より大きなAI業務改革・補助金の活用は、別パッケージでご案内します。</p>
   </div>
 </section>
 
@@ -432,6 +476,95 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
       </div>
     </div>
     <p class="case-note">※詳細はご相談時にお話しします。</p>
+  </div>
+</section>
+
+<!-- お客様の声 -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">voice</span>
+      <h2>導入企業の声</h2>
+      <p>「進まなかったAI」が、毎月の成果に変わった——という声をいただいています。</p>
+    </div>
+    <div class="voice-grid">
+      <div class="vcard">
+        <div class="stars">★★★★★</div>
+        <p class="q">「AIをどこで使えばいいか分からない」状態でした。毎月ひとつずつ形にしてもらい、3ヶ月で問い合わせ対応の手間が半分に。気づけば社内でAIが当たり前になっていました。</p>
+        <div class="who"><span class="av">建</span><span class="r"><b>建設・不動産会社</b>代表</span></div>
+      </div>
+      <div class="vcard">
+        <div class="stars">★★★★★</div>
+        <p class="q">詳しい一人に頼りきりでしたが、頼み方テンプレと利用ルールのおかげで全社で使えるように。属人化が解消され、新人でも同じ品質で使えています。</p>
+        <div class="who"><span class="av">食</span><span class="r"><b>食品会社</b>管理部</span></div>
+      </div>
+      <div class="vcard">
+        <div class="stars">★★★★★</div>
+        <p class="q">「なんとなく便利」で終わらないのが良い。毎月の効果レポートで削減できた時間が数字で見えるので、続ける判断がしやすい。コードまで書いてくれるのも心強いです。</p>
+        <div class="who"><span class="av">シ</span><span class="r"><b>システム開発会社</b>役員</span></div>
+      </div>
+    </div>
+    <p class="case-note">※掲載許諾をいただいた声を順次掲載します（現在は代表的な内容を記載）。</p>
+  </div>
+</section>
+
+<!-- 代表プロフィール（伴走者） -->
+<section class="s alt">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">your partner</span>
+      <h2>伴走するのは、代表の阿部です</h2>
+      <p>外注の“誰か”ではなく、代表が直接、御社に入り込みます。</p>
+    </div>
+    <div class="profile">
+      <img src="img/abe.png" alt="株式会社バレンサー 代表 阿部貴之" class="photo">
+      <div>
+        <div class="pname">阿部 貴之</div>
+        <div class="ptitle">株式会社バレンサー 代表</div>
+        <p>リクルートで人と組織に向き合い、事業会社では最高執行責任者（COO）として経営も経験。2018年に独立し、ブランディングからAI実装まで自ら手を動かして伴走してきました。「対話もできて、コードも書ける」——その両方を持つからこそ、御社の業務に本当に効くAIをかたちにできます。SOERUは、阿部が直接伴走します。</p>
+        <ul>
+          <li>リクルート パートナーコンサルタント殿堂入り</li>
+          <li>人事・採用支援コンサルタント</li>
+          <li>事業会社 COO（最高執行責任者）</li>
+          <li>2018年 独立／ブランディング・AI実装</li>
+          <li>戦略から実装まで自ら手を動かす代表</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ご相談の流れ -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">how it works</span>
+      <h2>はじめ方は、かんたん3ステップ</h2>
+      <p>初期費用0円・最低3ヶ月から。今日からでも始められます。</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>無料相談（30〜45分）</h3><p>オンラインでお困りごとを伺い、AIで効きそうな所を一緒に探します。売り込みはしません。</p></div>
+      <div class="step"><div class="num">2</div><h3>業務の見立て＆提案</h3><p>どの業務から始めると効果が大きいか、初月のお届けプランをご提案します。</p></div>
+      <div class="step"><div class="num">3</div><h3>初月スタート → 毎月伴走</h3><p>毎月「使えるもの」をお届けし、効果を数字で見ながら改善していきます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="s alt">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">faq</span>
+      <h2>よくあるご質問</h2>
+    </div>
+    <div class="faq">
+      <details><summary>初期費用はかかりますか？</summary><div class="a">初期費用は0円です。月額のみで、今日からでも始められます。</div></details>
+      <details><summary>「最低3ヶ月」は長期の縛りですか？</summary><div class="a">いいえ。まず3ヶ月お試しいただく期間です。合わなければ3ヶ月で終了いただけます。長期契約の縛りはありません。</div></details>
+      <details><summary>AIにまったく詳しくないのですが、大丈夫？</summary><div class="a">むしろ、そういう会社のためのサービスです。専門用語は使わず、御社の言葉で進めます。難しい設定はこちらで行います。</div></details>
+      <details><summary>ツールの費用は別ですか？</summary><div class="a">Notion・Make・Claude API などの外部利用料は実費でご負担いただきます（多くは月数千円〜）。何にいくらかかるかは事前にご説明します。</div></details>
+      <details><summary>情報やセキュリティは大丈夫ですか？</summary><div class="a">利用ルール（ガイドライン）づくりもサービスに含みます。情報の扱いを整えてから、安心して全社に広げられます。</div></details>
+      <details><summary>誰が担当しますか？</summary><div class="a">代表の阿部が直接伴走します（内容に応じてメンバーが加わります）。</div></details>
+    </div>
   </div>
 </section>
 
@@ -591,7 +724,7 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
   var host=location.hostname;
   if(host==='balencer.jp'||host==='www.balencer.jp') return; // 本番は無効
   var SEL=['.hero .tagchip','.hero h1','.hero p.lead','.hero .btns a','.deliverbar .dl','.hero .note',
-    '.s-head','.prob','.f3','.pcard','.dcard','.casecard','.about-co .txt','.co-stats',
+    '.s-head','.prob','.f3','.pcard','.dcard','.casecard','.vcard','.profile','.step','.faq details','.about-co .txt','.co-stats',
     '.cta-sec h2','.cta-sec .btn-primary','.foot .rel-list a','.foot .co'];
   var btn=document.createElement('button');
   btn.id='rev-toggle'; btn.type='button'; btn.textContent='① レビュー番号: OFF';

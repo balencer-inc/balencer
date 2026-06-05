@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111726;--ink2:#3C475C;--muted:#7A879C;--line:#E7EBF1;--line2:#D6DCE6;--blue:#2563EB;--cyan:#22B8E6;--soft:#EEF3FF;--grad:linear-gradient(100deg,#22B8E6,#2563EB)}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A4;margin:0}
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;min-height:297mm;padding:22mm 20mm;position:relative;overflow:hidden;page-break-after:always;background:#fff}
+.page:last-child{page-break-after:auto}
+.kick{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+h1,h2,h3{color:var(--ink);line-height:1.4}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-h{font-size:23px;font-weight:900;margin:0 0 6px}
+.sec-h::after{content:"";display:block;width:44px;height:3px;background:var(--grad);border-radius:2px;margin-top:12px}
+.lead{font-size:13.5px;color:var(--ink2);line-height:1.9}
+.pgfoot{position:absolute;left:20mm;right:20mm;bottom:12mm;display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+.pgfoot img{height:16px;opacity:.8}
+
+/* 表紙 */
+.cover{background:radial-gradient(520px 360px at 86% 10%,rgba(37,99,235,.14),transparent 62%),linear-gradient(160deg,#FBFDFF,#EAF1FB);display:flex;flex-direction:column;justify-content:center}
+.cover .bar{position:absolute;right:0;top:0;bottom:0;width:12px;background:var(--grad)}
+.cover .logo{height:30px;margin-bottom:60px}
+.cover .badge{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #cfe0ff;border-radius:999px;padding:9px 20px;font-size:13px;font-weight:800;color:var(--ink);width:max-content;box-shadow:0 10px 26px rgba(37,99,235,.10)}
+.cover .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.cover h1{font-size:44px;font-weight:900;line-height:1.3;margin:26px 0 14px}
+.cover .sub{font-size:16px;color:var(--ink2);line-height:1.8;max-width:150mm}
+.cover .svc{display:flex;align-items:flex-end;gap:14px;margin:40px 0 0}
+.cover .svc .en{font-family:'Poppins';font-weight:800;font-size:64px;line-height:.9;letter-spacing:.01em}
+.cover .svc .ja{font-size:16px;color:var(--muted);padding-bottom:10px}
+.cover .meta{position:absolute;left:20mm;bottom:20mm;font-size:12px;color:var(--muted);line-height:1.8}
+
+/* parts */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:0 1px 3px rgba(17,23,38,.04)}
+.card h3{font-size:15px;font-weight:800;margin-bottom:6px}
+.card p{font-size:12.5px;color:var(--ink2);line-height:1.8}
+.card .ic{width:38px;height:38px;border-radius:10px;background:var(--soft);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:12px}
+.tint{background:var(--soft);border:1px solid #DCE6F7;border-radius:14px;padding:20px 24px;margin-top:18px}
+.tint b{color:var(--ink)}
+ul.ck{list-style:none;margin-top:10px}
+ul.ck li{font-size:13px;color:var(--ink2);line-height:1.7;padding-left:26px;position:relative;margin-bottom:8px}
+ul.ck li::before{content:"✓";position:absolute;left:0;color:#fff;background:var(--blue);width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;top:2px}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13px}
+th,td{border:1px solid var(--line);padding:12px 14px;text-align:left}
+th{background:var(--ink);color:#fff;font-weight:700;font-size:12.5px}
+td .big{font-weight:900;color:var(--blue);font-family:'Poppins'}
+.note{font-size:11px;color:var(--muted);margin-top:10px;line-height:1.7}
+.flow{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.step{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.step .n{width:30px;height:30px;border-radius:50%;background:var(--grad);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;flex:none;font-family:'Poppins';font-size:14px}
+.step h3{font-size:14px;font-weight:800}
+.step p{font-size:12.5px;color:var(--muted);margin-top:2px}
+.cta-box{margin-top:22px;background:var(--ink);color:#fff;border-radius:16px;padding:26px 30px}
+.cta-box h3{color:#fff;font-size:18px;font-weight:900;margin-bottom:8px}
+.cta-box p{font-size:13px;color:#cdd6e6;line-height:1.8}
+.cta-box .row{display:flex;gap:26px;margin-top:14px;flex-wrap:wrap;font-size:13.5px}
+.cta-box .row b{color:#fff}
+.cta-box a{color:#9ec3ff}
+</style></head>
+<body>
+
+<!-- 表紙 -->
+<section class="page cover">
+  <div class="bar"></div>
+  <img class="logo" src="../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <span class="badge"><span class="dot"></span>パートナー募集のご案内</span>
+  <h1>AI顧問サービス「SOERU」を、<br>一緒に届ける<span class="gt">代理店パートナー</span>募集</h1>
+  <p class="sub">中小企業のAI活用を、毎月の伴走で支えるサブスクサービス。<br>「売る」ところだけお任せください。契約・実装・サポートはバレンサーが担います。</p>
+  <div class="svc"><span class="en gt">SOERU</span><span class="ja">ソエル｜AI顧問サービス</span></div>
+  <div class="meta">株式会社バレンサー（BALENCER Inc.）<br>info@balencer.jp ／ https://balencer.jp/soeru/</div>
+</section>
+
+<!-- P2 SOERUとは -->
+<section class="page">
+  <span class="kick">about soeru</span>
+  <h2 class="sec-h">SOERUとは ／ なぜ売りやすいか</h2>
+  <p class="lead">SOERU（ソエル）は、中小企業向けの<b>AI顧問サブスク</b>。毎月「使えるもの」（AIの頼み方・作業の自動化・専用ツール）を、御社の業務に合わせてお届けします。料金は<b>月10万／20万／50万</b>の3プラン、初期費用0円・最低3ヶ月。</p>
+  <div class="grid2">
+    <div class="card"><div class="ic">¥</div><h3>補助金が要らない価格帯</h3><p>月10万円〜。補助金の審査待ちが不要で、商談から契約までが速い。</p></div>
+    <div class="card"><div class="ic">◎</div><h3>成果が一言で言える</h3><p>「毎月、使えるものが届く」。説明がシンプルで、現場にも刺さる。</p></div>
+    <div class="card"><div class="ic">⚙</div><h3>実装は全部バレンサー</h3><p>契約後の構築・伴走・サポートはこちら。代理店は"売る"に専念できる。</p></div>
+    <div class="card"><div class="ic">↗</div><h3>続くから報酬も続く</h3><p>月額サブスク＝継続課金。紹介1件が継続的な手数料収入になる。</p></div>
+  </div>
+  <div class="tint">
+    <b>ふつうのAIコンサルとの違い：</b>「対話もできて、コードも書ける」ブランディングカンパニーが提供。ツールを渡して終わりにせず、御社に入り込んで“動くもの”まで作る——だから解約されにくく、代理店の継続収入も安定します。
+  </div>
+  <div class="pgfoot"><span>SOERU 代理店パートナー募集</span><img src="../../soeru-lp/balencer-logo.png"></div>
+</section>
+
+<!-- P3 役割と報酬 -->
+<section class="page">
+  <span class="kick">your role &amp; reward</span>
+  <h2 class="sec-h">パートナーの役割と、報酬</h2>
+  <p class="lead">契約形態は<b>紹介（取次）型</b>。代理店は見込み客のご紹介に専念いただき、商談・契約・実装・サポートはバレンサーが行います（バレンサー名義）。</p>
+  <ul class="ck">
+    <li>代理店の役割：<b>見込み客のご紹介</b>（必要に応じて初回同席）</li>
+    <li>バレンサーの役割：商談・契約・構築・伴走・請求・サポートの一切</li>
+    <li>提供する営業支援：LP・OGP・トークスクリプト・説明資料・共催ウェビナー・実装丸投げ</li>
+  </ul>
+
+  <h3 style="font-size:15px;margin-top:22px">手数料体系（継続レベニューシェア・期間上限つき）</h3>
+  <p class="lead" style="margin-top:6px">成約した月額の<b>15%</b>を、契約開始から<b>最大24ヶ月</b>お支払いします（最低3ヶ月分は保証／<b>永続ではありません</b>）。「売る動機」と「続けてもらう動機」を両立しつつ、事業者の負担も読める設計です。</p>
+  <table>
+    <tr><th>プラン</th><th>顧客の月額</th><th>代理店の手数料（月・最大24ヶ月）</th><th>24ヶ月累計</th></tr>
+    <tr><td>スターター</td><td>¥100,000</td><td><span class="big">¥15,000</span> / 月</td><td>¥360,000</td></tr>
+    <tr><td>スタンダード（人気）</td><td>¥200,000</td><td><span class="big">¥30,000</span> / 月</td><td>¥720,000</td></tr>
+    <tr><td>ストラテジック</td><td>¥500,000</td><td><span class="big">¥75,000</span> / 月</td><td>¥1,800,000</td></tr>
+  </table>
+  <div class="tint" style="margin-top:16px"><b>収入イメージ：</b>平均月20万のお客様を10社ご紹介し継続した場合 → <b>月30,000円 × 10社 ＝ 月30万円</b>の継続手数料が、最大24ヶ月積み上がります（1社あたり累計 約72万円）。</div>
+  <p class="note">※ 手数料率（15%）・期間上限（24ヶ月）・最低保証（3ヶ月）・支払サイトは本案（たたき台）です。最終条件は個別協議で確定します。初期費用0円の商品のため初回ボーナスは設けず、継続シェアに寄せています。再販（リセラー）型をご希望の場合は別途ご相談ください。</p>
+  <div class="pgfoot"><span>SOERU 代理店パートナー募集</span><img src="../../soeru-lp/balencer-logo.png"></div>
+</section>
+
+<!-- P4 進め方・申込 -->
+<section class="page">
+  <span class="kick">how it works</span>
+  <h2 class="sec-h">進め方と、お申し込み</h2>
+  <div class="flow">
+    <div class="step"><span class="n">1</span><div><h3>パートナー登録</h3><p>簡単な代理店契約（紹介手数料の取り決め）を締結。営業ツール一式をお渡しします。</p></div></div>
+    <div class="step"><span class="n">2</span><div><h3>見込み客のご紹介</h3><p>「AIを使いたいが進まない」中小企業をご紹介。専用URL（?src付き）で経路も記録。</p></div></div>
+    <div class="step"><span class="n">3</span><div><h3>バレンサーが商談〜契約〜実装</h3><p>ヒアリング・提案・契約・構築・毎月の伴走まで、すべてこちらで対応します。</p></div></div>
+    <div class="step"><span class="n">4</span><div><h3>継続手数料のお支払い</h3><p>契約開始から最大24ヶ月、月額の15%を毎月お支払い。紹介が積み上がるほど収入も積み上がります。</p></div></div>
+  </div>
+
+  <div class="cta-box">
+    <h3>まずは、お気軽にご相談ください。</h3>
+    <p>「どんな会社が紹介先になるか」「自社の商材と組み合わせられるか」など、5〜10分の相談から。条件はご一緒に設計します。</p>
+    <div class="row">
+      <span>お問い合わせ：<b>info@balencer.jp</b></span>
+      <span>サービス：<a>https://balencer.jp/soeru/</a></span>
+    </div>
+  </div>
+  <p class="note" style="margin-top:18px">株式会社バレンサー（BALENCER Inc.）／ AI顧問サービス SOERU ／ 本資料の二次配布は要相談。</p>
+  <div class="pgfoot"><span>SOERU 代理店パートナー募集</span><img src="../../soeru-lp/balencer-logo.png"></div>
+</section>
+
+</body></html>

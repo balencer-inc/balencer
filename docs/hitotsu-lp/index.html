@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notion導入・構築支援「ヒトツ」｜業務効率化・データベース構築を一気通貫｜株式会社バレンサー</title>
+<meta name="description" content="Notionの導入支援・構築代行から業務効率化・現場定着までを一気通貫で。散らばった情報を一本化し、KPIが見える営業・業務基盤をつくります。Notionデータベース構築・自動化・社内システム化のご相談はバレンサーへ。お試し／スタンダード／経営戦略の3プラン。">
+<meta name="keywords" content="Notion 導入支援,Notion 構築 代行,Notion 業務効率化,Notion データベース 構築,Notion コンサル,Notion 業務改善,Notion 営業管理,Notion 自動化,Notion 法人 導入,業務基盤 構築,DX 中小企業">
+<meta name="author" content="株式会社バレンサー">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://balencer.jp/notion/">
+<!-- OGP / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Notion導入・構築支援「ヒトツ」｜業務効率化を一気通貫｜バレンサー">
+<meta property="og:description" content="Notionの導入支援・構築代行から業務効率化・現場定着まで一気通貫。散らばった情報を一本化し、KPIが見える業務基盤をつくります。">
+<meta property="og:image" content="https://balencer.jp/notion/hero-pc.webp">
+<meta property="og:site_name" content="株式会社バレンサー">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Notion導入・構築支援「ヒトツ」｜バレンサー">
+<meta name="twitter:description" content="Notionの導入支援・構築代行から業務効率化・定着まで一気通貫。">
+<meta name="twitter:image" content="https://balencer.jp/notion/hero-pc.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Notion業務基盤パッケージ「ヒトツ」",
+  "serviceType": "Notion導入・構築支援／業務効率化・DX支援",
+  "description": "Notionの導入支援・構築代行から業務効率化・現場定着までを一気通貫で提供。散らばった情報を一本化し、KPIが見える営業・業務基盤を構築します。",
+  "provider": {
+    "@type": "Organization",
+    "name": "株式会社バレンサー",
+    "url": "https://balencer.jp",
+    "email": "info@balencer.jp",
+    "address": { "@type": "PostalAddress", "postalCode": "530-0001", "addressRegion": "大阪府", "addressLocality": "大阪市北区", "streetAddress": "梅田1-11-4 大阪駅前第4ビル9階" }
+  },
+  "areaServed": "JP",
+  "keywords": "Notion 導入支援, Notion 構築 代行, Notion 業務効率化, Notion データベース 構築, Notion コンサル, Notion 自動化",
+  "offers": [
+    { "@type": "Offer", "name": "お試しプラン（Starter）", "price": "3500000", "priceCurrency": "JPY", "description": "Notion業務基盤を小さく構築。業務フロー設計・コアDB・基本自動化・定着研修。" },
+    { "@type": "Offer", "name": "スタンダードプラン（Standard）", "price": "5000000", "priceCurrency": "JPY", "description": "複数DB・フル自動化・全社定着・Google Workspace／Slack導入支援を含む業務基盤フルパック。" },
+    { "@type": "Offer", "name": "経営戦略プラン（Strategic）", "price": "7000000", "priceCurrency": "JPY", "description": "スタンダードに加え、経営分析・高度ダッシュボード・AI（AIシャイン）本格導入。" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "料金以外に、かかる費用はありますか？", "acceptedAnswer": { "@type": "Answer", "text": "構築費・月額のほかに、Notion・Google Workspace・Slack・Make などのツール利用料がかかります。お客様が各サービスと直接契約・負担いただく実費で、選定・申し込みはバレンサーがサポートします。" } },
+    { "@type": "Question", "name": "導入までどのくらいかかりますか？", "acceptedAnswer": { "@type": "Answer", "text": "現状を棚卸しする設計から入ります。目安はお試しプランで約1〜2ヶ月、スタンダードで約3〜4ヶ月。設計→構築→先行導入→全社展開と段階的に進めます。" } },
+    { "@type": "Question", "name": "ITに詳しくない現場でも使えますか？", "acceptedAnswer": { "@type": "Answer", "text": "現場の入力はスマホで30秒で完結するよう設計し、操作マニュアル・研修・定着フォローまでセットで伴走します。使い続けられる状態をつくることを重視しています。" } },
+    { "@type": "Question", "name": "いまのデータ（スプレッドシートなど）は移せますか？", "acceptedAnswer": { "@type": "Answer", "text": "移行できます。データの量や状態により作業範囲が変わるため、設計時に中身を確認のうえオプションとして別途お見積もりします。" } },
+    { "@type": "Question", "name": "月額の伴走サポートは必須ですか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、最低6ヶ月をお願いしています。データが溜まるほど改善精度が上がるため、月次レビューと改善実装をセットにしています。" } },
+    { "@type": "Question", "name": "うちの業種でも対応できますか？", "acceptedAnswer": { "@type": "Answer", "text": "対応できます。共通の土台はどの業種でも使え、業種固有の管理が必要な場合は業種特化のデータベースをオプションで追加します。" } },
+    { "@type": "Question", "name": "補助金は使えますか？", "acceptedAnswer": { "@type": "Answer", "text": "AIを本格導入する経営戦略プラン等では、AI導入補助金2026などの活用余地があります。対象確認から申請書類の準備までオプションでサポートします。" } },
+    { "@type": "Question", "name": "あとからプランを変えられますか？", "acceptedAnswer": { "@type": "Answer", "text": "できます。お試しプランで小さく始めてスタンダードへ拡張する進め方も多いです。最初のヒアリングで御社に合うプランを一緒に決めます。" } }
+  ]
+}
+</script>
+<style>
+  :root {
+    /* Rose Gold v2.0 tokens */
+    --c-accent:#C5956B; --c-accent-light:#D4AA82; --c-accent-dark:#A87C58;
+    --c-accent-tint:rgba(197,149,107,.12); --c-accent-glow:rgba(197,149,107,.25);
+    --c-ink:#1C1C1C; --c-ink-2:#3A3838; --c-ink-3:#595959; --c-muted:#8C8985;
+    --c-white:#FFFFFF; --c-warm:#F5F3F0; --c-cream:#EDE9E3; --c-gray50:#E8E5E0; --c-gray100:#D0CECE;
+    --c-border:#E2E0DA; --c-border-soft:#ECEAE5;
+    --f-en:'Inter',system-ui,sans-serif; --f-ja:'Noto Sans JP','Hiragino Sans',sans-serif;
+    --f-script:'Caveat',cursive; --f-mono:'JetBrains Mono',monospace;
+    --r-md:12px; --r-lg:16px; --r-xl:24px; --r-pill:999px;
+    --sh-sm:0 2px 8px rgba(28,28,28,.03); --sh-md:0 8px 24px rgba(28,28,28,.05); --sh-lg:0 16px 40px rgba(28,28,28,.07);
+    --ease:cubic-bezier(.25,.1,.25,1);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:var(--f-ja); background:var(--c-warm); color:var(--c-ink-2);
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+    letter-spacing:.01em;
+  }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 28px; }
+  .en { font-family:var(--f-en); }
+  .script { font-family:var(--f-script); color:var(--c-accent-dark); }
+
+  /* section label */
+  .eyebrow { font-family:var(--f-script); font-size:26px; color:var(--c-accent-dark); line-height:1; margin-bottom:6px; }
+  .sec-head { margin-bottom:48px; }
+  .sec-head h2 { font-family:var(--f-ja); font-weight:700; font-size:clamp(26px,3.4vw,40px); color:var(--c-ink); line-height:1.3; letter-spacing:.01em; }
+  .sec-head p { color:var(--c-ink-3); font-size:15px; margin-top:14px; max-width:640px; }
+  /* section head with illustration */
+  .sec-intro { display:grid; grid-template-columns:1.45fr 1fr; gap:clamp(28px,5vw,72px); align-items:center; margin-bottom:56px; }
+  .sec-intro .sec-head { margin-bottom:0; }
+  .sec-intro .sec-head p { max-width:none; }
+  .sec-illu { width:100%; max-width:400px; height:auto; justify-self:center; }
+  .sec-intro.flip .sec-head { order:2; }
+  .sec-intro.flip .sec-illu { order:1; }
+  @media(max-width:760px){
+    .sec-intro { grid-template-columns:1fr; gap:24px; margin-bottom:40px; }
+    .sec-intro.flip .sec-head { order:1; }
+    .sec-intro.flip .sec-illu { order:2; }
+    .sec-illu { max-width:280px; }
+  }
+
+  section { padding:clamp(72px,10vw,128px) 0; }
+  .alt { background:var(--c-cream); }
+
+  /* ───────── NAV ───────── */
+  .nav { position:sticky; top:0; z-index:50; background:rgba(245,243,240,.82); backdrop-filter:saturate(160%) blur(14px); border-bottom:1px solid var(--c-border-soft); }
+  .nav-in { display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .logo { display:inline-flex; align-items:center; }
+  .logo img { height:23px; width:auto; display:block; }
+  .nav-links { display:flex; gap:30px; align-items:center; }
+  .nav-links a { font-size:13px; color:var(--c-ink-3); text-decoration:none; transition:color .2s var(--ease); }
+  .nav-links a:hover { color:var(--c-accent-dark); }
+  .nav-cta { font-family:var(--f-en); font-size:13px; font-weight:500; padding:9px 20px; border:1px solid var(--c-ink); border-radius:var(--r-pill); color:var(--c-ink); text-decoration:none; transition:all .25s var(--ease); }
+  .nav-cta:hover { background:var(--c-ink); color:var(--c-warm); }
+  @media(max-width:720px){ .nav-links a:not(.nav-cta){ display:none; } }
+
+  /* ───────── HERO ───────── */
+  .hero { position:relative; min-height:92vh; display:flex; align-items:center; padding:clamp(80px,10vw,120px) 0; overflow:hidden; }
+  .hero-bg { position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(circle, var(--c-accent-glow) 1px, transparent 1px) 0 0/30px 30px,
+      linear-gradient(120deg, #FBEFE2 0%, #F5F3F0 45%, #EDE9E3 100%); }
+  .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center right; }
+  .hero > .wrap { width:100%; }
+  .hero-bg::after { content:''; position:absolute; inset:0;
+    background:linear-gradient(100deg, rgba(245,243,240,.94) 0%, rgba(245,243,240,.82) 30%, rgba(245,243,240,.35) 55%, rgba(245,243,240,0) 78%); }
+  .hero-in { position:relative; z-index:1; max-width:660px; }
+  .hero h1 .nowrap { white-space:nowrap; }
+  /* service logo */
+  .svc-logo { display:block; width:min(330px,72%); height:auto; margin-bottom:22px; }
+  /* service name lockup (legacy/fallback) */
+  .svc-name { display:flex; align-items:baseline; gap:14px; margin-bottom:26px; }
+  .svc-name .jp { font-family:var(--f-ja); font-weight:700; font-size:clamp(40px,6vw,72px); line-height:1; letter-spacing:.04em; color:var(--c-ink); }
+  .svc-name .en { font-family:var(--f-en); font-weight:300; font-size:clamp(15px,2vw,22px); letter-spacing:.32em; color:var(--c-accent-dark); text-transform:uppercase; }
+  .svc-name::before { content:''; align-self:center; width:34px; height:2px; background:var(--c-accent); }
+  .hero .kicker { display:inline-flex; align-items:center; gap:9px; font-family:var(--f-en); font-size:12px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--c-accent-dark); padding:7px 16px; border:1px solid var(--c-accent); border-radius:var(--r-pill); margin-bottom:24px; background:rgba(255,255,255,.4); }
+  .hero .kicker::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--c-accent); }
+  .hero h1 { font-family:var(--f-ja); font-weight:700; font-size:clamp(25px,4.4vw,56px); line-height:1.28; letter-spacing:.005em; color:var(--c-ink); }
+  .hero h1 .mark { position:relative; white-space:nowrap; }
+  .hero h1 .mark::after { content:''; position:absolute; left:-2px; right:-2px; bottom:.1em; height:.32em; background:var(--c-accent-tint); z-index:-1; border-radius:2px; }
+  .hero .lead { font-size:clamp(15px,1.8vw,19px); color:var(--c-ink-3); margin-top:28px; max-width:660px; line-height:1.9; }
+  .hero-actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:40px; }
+  .btn { font-family:var(--f-en); font-size:14px; font-weight:500; padding:15px 30px; border-radius:var(--r-pill); text-decoration:none; transition:all .28s var(--ease); display:inline-flex; align-items:center; gap:8px; letter-spacing:.02em; }
+  .btn-primary { background:var(--c-ink); color:var(--c-warm); }
+  .btn-primary:hover { background:var(--c-accent-dark); transform:translateY(-2px); box-shadow:var(--sh-md); }
+  .btn-ghost { border:1px solid var(--c-gray100); color:var(--c-ink); }
+  .btn-ghost:hover { border-color:var(--c-ink); }
+
+  /* hero metric strip */
+  .hero-metrics { display:flex; flex-wrap:wrap; gap:48px; margin-top:64px; position:relative; z-index:1; padding-top:36px; border-top:1px solid var(--c-border); }
+  .metric .num { font-family:var(--f-en); font-weight:700; font-size:34px; color:var(--c-ink); letter-spacing:-.01em; }
+  .metric .num span { color:var(--c-accent-dark); }
+  .metric .lbl { font-size:12.5px; color:var(--c-ink-3); margin-top:2px; }
+  /* hero — mobile (portrait image, text top) */
+  @media(max-width:760px){
+    .hero { min-height:0; padding:90px 0 56px; align-items:flex-start; }
+    .hero-bg img { object-position:center bottom; }
+    .hero-bg::after { background:linear-gradient(180deg, rgba(245,243,240,.96) 0%, rgba(245,243,240,.85) 38%, rgba(245,243,240,.4) 62%, rgba(245,243,240,0) 88%); }
+    .hero-metrics { gap:24px 32px; margin-top:40px; }
+  }
+
+  /* ───────── PROBLEM ───────── */
+  .prob-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  .prob { background:var(--c-white); border:1px solid var(--c-border); border-radius:var(--r-lg); padding:26px 28px; display:flex; gap:16px; align-items:flex-start; transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
+  .prob:hover { transform:translateY(-3px); box-shadow:var(--sh-md); }
+  .prob .ic { font-size:22px; line-height:1; flex-shrink:0; filter:grayscale(.1); }
+  .prob h4 { font-size:15px; font-weight:700; color:var(--c-ink); margin-bottom:5px; }
+  .prob p { font-size:13px; color:var(--c-ink-3); line-height:1.75; }
+  @media(max-width:720px){ .prob-grid{ grid-template-columns:1fr; } }
+
+  /* ───────── APPROACH ───────── */
+  .approach { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .ap { position:relative; padding:34px 28px 30px; border-radius:var(--r-lg); background:var(--c-white); border:1px solid var(--c-border); }
+  .ap .step { font-family:var(--f-en); font-size:12px; font-weight:600; letter-spacing:.16em; color:var(--c-accent-dark); }
+  .ap .ttl { font-size:19px; font-weight:700; color:var(--c-ink); margin:12px 0 10px; }
+  .ap p { font-size:13.5px; color:var(--c-ink-3); line-height:1.8; }
+  .ap .bignum { position:absolute; top:22px; right:26px; font-family:var(--f-en); font-weight:800; font-size:46px; color:var(--c-gray50); line-height:1; z-index:0; }
+  @media(max-width:840px){ .approach{ grid-template-columns:1fr; } }
+
+  /* ───────── FLOW (AS-IS / TO-BE) ───────── */
+  .flow-wrap { display:grid; grid-template-columns:1fr auto 1fr; gap:28px; align-items:stretch; }
+  .flow-col { background:var(--c-white); border:1px solid var(--c-border); border-radius:var(--r-xl); padding:28px 26px; }
+  .flow-col.tobe { border-color:var(--c-accent); box-shadow:0 0 0 4px var(--c-accent-tint); }
+  .flow-tag { display:inline-block; font-family:var(--f-en); font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:5px 12px; border-radius:var(--r-pill); margin-bottom:20px; }
+  .flow-tag.as { background:var(--c-gray50); color:var(--c-ink-3); }
+  .flow-tag.tb { background:var(--c-accent); color:#fff; }
+  .flow-step { display:flex; align-items:center; gap:13px; padding:12px 0; border-bottom:1px dashed var(--c-border); }
+  .flow-step:last-child { border-bottom:none; }
+  .flow-step .dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+  .as .dot { background:var(--c-gray100); }
+  .tobe .dot { background:var(--c-accent); }
+  .flow-step .t { font-size:13.5px; color:var(--c-ink-2); }
+  .flow-step .t b { color:var(--c-ink); font-weight:700; }
+  .flow-step .pain { font-size:11px; color:#B0654A; }
+  .flow-mid { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; }
+  .flow-mid .arrow { font-family:var(--f-en); font-size:30px; color:var(--c-accent); font-weight:300; }
+  .flow-mid .mid-lbl { writing-mode:vertical-rl; font-family:var(--f-script); font-size:22px; color:var(--c-accent-dark); }
+  @media(max-width:840px){ .flow-wrap{ grid-template-columns:1fr; } .flow-mid .arrow{ transform:rotate(90deg); } .flow-mid .mid-lbl{ writing-mode:horizontal-tb; } }
+
+  /* ───────── COMMON CORE BAND ───────── */
+  .core-band { background:var(--c-ink); color:var(--c-warm); border-radius:var(--r-xl); padding:40px clamp(28px,5vw,52px); position:relative; overflow:hidden; }
+  .core-band::after { content:''; position:absolute; right:-40px; top:-40px; width:240px; height:240px; border-radius:50%; background:radial-gradient(circle, var(--c-accent-glow) 1px, transparent 1px); background-size:20px 20px; opacity:.5; }
+  .core-band .ttl { position:relative; z-index:1; font-size:14px; font-weight:700; color:var(--c-accent-light); margin-bottom:6px; }
+  .core-band .sub { position:relative; z-index:1; font-size:13px; color:rgba(245,243,240,.6); margin-bottom:24px; }
+  .core-items { position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:12px; }
+  .core-chip { background:rgba(245,243,240,.08); border:1px solid rgba(245,243,240,.16); border-radius:var(--r-pill); padding:10px 20px; font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:9px; }
+  .core-chip::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--c-accent); }
+
+  /* ───────── PLAN CARDS ───────── */
+  .plans { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; margin-top:40px; }
+  .plan { position:relative; background:var(--c-white); border:1px solid var(--c-border); border-radius:var(--r-xl); padding:34px 30px 32px; display:flex; flex-direction:column; transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
+  .plan:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
+  .plan.feature { border:1.5px solid var(--c-accent); box-shadow:0 0 0 5px var(--c-accent-tint); }
+  .plan .ribbon { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--c-accent); color:#fff; font-family:var(--f-ja); font-size:12px; font-weight:700; letter-spacing:.04em; padding:6px 18px; border-radius:var(--r-pill); white-space:nowrap; box-shadow:var(--sh-sm); }
+  .plan .grade { font-family:var(--f-script); font-size:30px; color:var(--c-accent-dark); line-height:1; }
+  .plan .pname { font-size:21px; font-weight:700; color:var(--c-ink); margin:4px 0 4px; letter-spacing:.02em; }
+  .plan.feature .pname { color:var(--c-accent-dark); }
+  .plan .ptag { font-size:13px; color:var(--c-ink-3); min-height:38px; }
+  .plan .price { font-family:var(--f-en); font-weight:800; font-size:40px; color:var(--c-ink); letter-spacing:-.02em; margin-top:18px; line-height:1; }
+  .plan .price .yen { font-size:20px; font-weight:600; vertical-align:6px; margin-right:2px; }
+  .plan .price .man { font-size:16px; font-weight:500; color:var(--c-ink-3); }
+  .plan .tax { font-size:11px; color:var(--c-muted); margin-top:6px; }
+  .plan ul { list-style:none; margin:24px 0 0; padding-top:22px; border-top:1px solid var(--c-border-soft); flex:1; }
+  .plan ul li { font-size:13px; color:var(--c-ink-2); padding:7px 0 7px 24px; position:relative; line-height:1.6; }
+  .plan ul li::before { content:'✓'; position:absolute; left:0; color:var(--c-accent-dark); font-weight:700; }
+  .plan ul li b { font-weight:700; color:var(--c-ink); }
+  .plan ul li.tri { color:var(--c-ink-3); }
+  .plan ul li.tri::before { content:'▲'; font-size:10px; color:var(--c-accent-light); top:2px; }
+  .plan ul li.off { color:var(--c-muted); }
+  .plan ul li.off::before { content:'–'; color:var(--c-gray100); }
+  .plan .pbtn { margin-top:26px; text-align:center; font-family:var(--f-en); font-size:13.5px; font-weight:500; padding:13px; border-radius:var(--r-pill); text-decoration:none; transition:all .25s var(--ease); }
+  .plan .pbtn.solid { background:var(--c-ink); color:var(--c-warm); }
+  .plan.feature .pbtn.solid { background:var(--c-accent-dark); }
+  .plan .pbtn.solid:hover { transform:translateY(-2px); box-shadow:var(--sh-md); }
+  .plan .pbtn.line { border:1px solid var(--c-gray100); color:var(--c-ink); }
+  .plan .pbtn.line:hover { border-color:var(--c-ink); }
+  @media(max-width:900px){ .plans{ grid-template-columns:1fr; } }
+
+  .monthly-note { margin-top:26px; background:var(--c-white); border:1px dashed var(--c-accent); border-radius:var(--r-lg); padding:20px 26px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; }
+  .monthly-note .mn-l b { color:var(--c-ink); }
+  .monthly-note .mn-l { font-size:13.5px; color:var(--c-ink-3); }
+  .monthly-note .mn-r { font-family:var(--f-en); font-size:13px; color:var(--c-ink-2); }
+  .monthly-note .mn-r .yr { color:var(--c-accent-dark); font-weight:700; }
+
+  /* ───────── MATRIX TABLE ───────── */
+  .matrix-scroll { overflow-x:auto; border-radius:var(--r-lg); border:1px solid var(--c-border); }
+  table.matrix { width:100%; border-collapse:collapse; font-size:13px; background:var(--c-white); min-width:680px; }
+  table.matrix th, table.matrix td { padding:14px 16px; text-align:center; border-bottom:1px solid var(--c-border-soft); }
+  table.matrix thead th { background:var(--c-ink); color:var(--c-warm); font-weight:600; font-size:13px; position:sticky; top:0; }
+  table.matrix thead th.feat { background:var(--c-accent-dark); }
+  table.matrix thead th .g { font-family:var(--f-script); font-size:20px; display:block; line-height:1.1; color:var(--c-accent-light); }
+  table.matrix thead th.feat .g { color:#fff; }
+  table.matrix td.row-h { text-align:left; font-weight:600; color:var(--c-ink); background:var(--c-cream); white-space:nowrap; }
+  table.matrix td.feat-col { background:var(--c-accent-tint); }
+  table.matrix .yes { color:var(--c-accent-dark); font-weight:700; }
+  table.matrix .lite { color:var(--c-ink-3); font-size:12px; }
+  table.matrix .no { color:var(--c-gray100); }
+  table.matrix tr.price-row td { font-family:var(--f-en); font-weight:800; font-size:18px; color:var(--c-ink); padding:18px 16px; border-top:2px solid var(--c-ink); }
+  table.matrix tr.section td { background:var(--c-gray50); font-family:var(--f-en); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--c-ink-3); text-align:left; padding:9px 16px; }
+
+  /* ───────── OPTIONS ───────── */
+  .opt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .opt { background:var(--c-white); border:1px solid var(--c-border); border-radius:var(--r-md); padding:22px 24px; transition:border-color .25s var(--ease); }
+  .opt:hover { border-color:var(--c-accent); }
+  .opt .oh { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px; }
+  .opt .on { font-size:14px; font-weight:700; color:var(--c-ink); }
+  .opt .op { font-family:var(--f-en); font-size:13px; font-weight:600; color:var(--c-accent-dark); white-space:nowrap; }
+  .opt .od { font-size:12px; color:var(--c-ink-3); line-height:1.7; }
+  @media(max-width:840px){ .opt-grid{ grid-template-columns:1fr; } }
+
+  /* ───────── FAQ ───────── */
+  .faq-list { max-width:800px; margin:0 auto; }
+  .faq { background:var(--c-white); border:1px solid var(--c-border); border-radius:var(--r-md); margin-bottom:12px; overflow:hidden; transition:border-color .25s var(--ease), box-shadow .25s var(--ease); }
+  .faq[open] { border-color:var(--c-accent); box-shadow:var(--sh-sm); }
+  .faq summary { list-style:none; cursor:pointer; padding:20px 56px 20px 24px; position:relative; font-size:15px; font-weight:700; color:var(--c-ink); line-height:1.6; }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary::before { content:'Q'; font-family:var(--f-en); font-weight:700; color:var(--c-accent-dark); margin-right:12px; }
+  .faq summary::after { content:'+'; position:absolute; right:24px; top:50%; transform:translateY(-50%); font-family:var(--f-en); font-size:24px; font-weight:300; color:var(--c-accent-dark); transition:transform .25s var(--ease); }
+  .faq[open] summary::after { content:'−'; }
+  .faq .ans { padding:0 24px 22px 48px; font-size:14px; color:var(--c-ink-3); line-height:1.85; }
+  .faq .ans b { color:var(--c-ink-2); font-weight:700; }
+  @media(max-width:640px){ .faq summary{ font-size:14px; padding:18px 48px 18px 20px; } .faq .ans{ padding:0 20px 20px 20px; } }
+
+  /* ───────── VOICES (testimonials slider) ───────── */
+  .voices { background:linear-gradient(180deg, #EAE3D8 0%, #E5DDD0 100%); }
+  .voices .eyebrow { color:var(--c-accent-dark); }
+  .voice-slider { display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; max-width:880px; margin:0 auto; padding:4px 2px 20px; }
+  .voice-slider::-webkit-scrollbar { height:6px; }
+  .voice-slider::-webkit-scrollbar-thumb { background:var(--c-gray-200); border-radius:999px; }
+  .voice-slider::-webkit-scrollbar-track { background:rgba(0,0,0,.04); border-radius:999px; }
+  .voice { flex:0 0 clamp(268px,80%,332px); scroll-snap-align:start; background:var(--c-white); border:1px solid var(--c-border); border-radius:var(--r-lg); padding:26px 28px 22px; display:flex; flex-direction:column; box-shadow:var(--sh-sm); }
+  .voice .qmark { font-family:var(--f-en); font-size:46px; font-weight:800; color:var(--c-accent); line-height:.5; opacity:.6; height:22px; }
+  .voice p { font-size:14px; line-height:1.92; color:var(--c-ink-2); margin:8px 0 18px; flex:1; }
+  .voice .vmeta { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:15px; border-top:1px solid var(--c-border-soft); }
+  .voice .vrole { font-size:12px; color:var(--c-ink-3); }
+  .voice .vchip { font-size:10.5px; font-weight:700; color:#fff; background:var(--c-accent-dark); border-radius:var(--r-pill); padding:5px 11px; white-space:nowrap; }
+  .voice.more { align-items:center; justify-content:center; text-align:center; background:transparent; border-style:dashed; border-color:var(--c-accent); box-shadow:none; }
+  .voice.more .am { font-family:var(--f-script); font-size:38px; color:var(--c-accent-dark); line-height:1.15; }
+  .voice.more p { color:var(--c-ink-3); margin:8px 0 0; font-size:12.5px; flex:none; }
+  .voice-hint { max-width:880px; margin:2px auto 0; font-size:12px; color:var(--c-muted); text-align:right; }
+
+  /* ───────── CTA ───────── */
+  .cta { text-align:center; padding-top:clamp(40px,5vw,64px); }
+  #faq { padding-bottom:clamp(48px,6vw,80px); }
+  .cta h2 { font-size:clamp(28px,4vw,46px); font-weight:700; color:var(--c-ink); line-height:1.3; }
+  .cta p { color:var(--c-ink-3); margin:18px auto 36px; max-width:560px; font-size:15px; }
+
+  /* ───────── FOOTER ───────── */
+  footer { background:var(--c-ink); color:rgba(245,243,240,.7); padding:60px 0 40px; }
+  .foot-in { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; }
+  .foot-brand .fn { font-family:var(--f-en); font-weight:400; letter-spacing:.2em; font-size:20px; color:var(--c-warm); }
+  .foot-brand .ft { font-family:var(--f-script); font-size:19px; color:var(--c-accent-light); margin-top:4px; }
+  .foot-legal { font-size:11px; line-height:1.9; text-align:right; color:rgba(245,243,240,.5); }
+  .foot-legal a { color:var(--c-accent-light); text-decoration:none; }
+
+  /* reveal */
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in { opacity:1; transform:none; }
+
+  /* 埋め込みフォーム */
+  .lead-form{max-width:660px;margin:30px auto 0;background:#fff;border:1px solid var(--c-border);border-radius:18px;padding:30px;box-shadow:0 18px 50px rgba(28,28,28,.08);text-align:left}
+  .lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .lf-field{display:flex;flex-direction:column;gap:6px}
+  .lf-field.lf-full{grid-column:1/-1}
+  .lf-field>span{font-size:13px;font-weight:700;color:var(--c-ink)}
+  .lf-field>span i{font-style:normal;font-size:10px;font-weight:700;color:#fff;background:var(--c-accent);border-radius:4px;padding:1px 6px;margin-left:6px}
+  .lf-field input,.lf-field select,.lf-field textarea{font:inherit;font-size:14px;color:var(--c-ink);background:#fff;border:1px solid var(--c-border);border-radius:10px;padding:11px 13px;width:100%}
+  .lf-field input:focus,.lf-field select:focus,.lf-field textarea:focus{outline:none;border-color:var(--c-accent);box-shadow:0 0 0 3px var(--c-accent-tint)}
+  .lf-field textarea{resize:vertical}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .lf-submit{width:100%;margin-top:18px;cursor:pointer;border:none}
+  .lf-note{font-size:12px;color:var(--c-muted);text-align:center;margin-top:12px}
+  .lf-done{text-align:center;padding:14px 0}
+  .lf-done .ic{width:52px;height:52px;border-radius:50%;background:var(--c-accent-tint);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px;color:var(--c-accent-dark)}
+  .lf-done h3{font-size:19px;font-weight:700;color:var(--c-ink);margin-bottom:6px}
+  .lf-done p{font-size:14px;color:var(--c-ink-3)}
+  @media(max-width:760px){.lf-grid{grid-template-columns:1fr}}
+  /* 関連サービス */
+  .s-related{padding:54px 0;background:var(--c-warm);border-top:1px solid var(--c-border-soft)}
+  .s-related .frh{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--c-ink-3);text-transform:uppercase;margin-bottom:16px;text-align:center}
+  .foot-rel-list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .foot-rel-list a{background:#fff;border:1px solid var(--c-border);border-radius:14px;padding:13px 18px;min-width:200px;text-decoration:none;transition:.2s;display:flex;flex-direction:column;gap:3px}
+  .foot-rel-list a:hover{border-color:var(--c-accent);transform:translateY(-1px)}
+  .foot-rel-list .rt{font-weight:700;font-size:13px;color:var(--c-ink)}
+  .foot-rel-list .rt .ar{color:var(--c-accent-dark);margin-left:5px;font-size:11px}
+  .foot-rel-list .rs{font-size:11px;color:var(--c-muted)}
+</style>
+</head>
+<body>
+
+<!-- ───────── NAV ───────── -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="https://balencer.jp" aria-label="株式会社バレンサー"><img src="balencer-logo.png" alt="BALENCER"></a>
+    <div class="nav-links">
+      <a href="#problem">課題</a>
+      <a href="#approach">私たちのやり方</a>
+      <a href="#voices">お客様の声</a>
+      <a href="#plans">プラン</a>
+      <a href="#options">オプション</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#contact" class="nav-cta">相談する</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ───────── HERO ───────── -->
+<header class="hero">
+  <picture class="hero-bg">
+    <source media="(max-width:760px)" srcset="hero-sp.webp">
+    <img src="hero-pc.webp" alt="散らばった情報がNotionを核に一本化されていくイメージ" fetchpriority="high" onerror="this.style.display='none'">
+  </picture>
+  <div class="wrap">
+    <div class="hero-in">
+      <img class="svc-logo" src="logo.png" alt="ヒトツ Hitotsu" width="850" height="430">
+      <span class="kicker">Powered by Notion</span>
+      <h1><span class="nowrap">散らばった情報を<span class="mark">一本化</span>。</span><br>AIで設計から現場定着。</h1>
+      <p class="lead">ツールを入れて終わり、にはしません。業務フローを再設計し、現場がスマホで使い続け、数字が自動で集まる状態をつくる——Notionを核にした業務基盤構築パッケージです。</p>
+      <div class="hero-actions">
+        <a href="#plans" class="btn btn-primary">3つのプランを見る →</a>
+        <a href="#approach" class="btn btn-ghost">私たちのやり方</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric"><div class="num">3<span>つ</span></div><div class="lbl">目的で選べる構築プラン</div></div>
+        <div class="metric"><div class="num">30<span>秒</span></div><div class="lbl">現場の入力はスマホで完結</div></div>
+        <div class="metric"><div class="num">定着<span>まで</span></div><div class="lbl">全プラン共通で伴走</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ───────── PROBLEM ───────── -->
+<section id="problem">
+  <div class="wrap">
+    <div class="sec-intro">
+      <div class="sec-head reveal">
+        <div class="eyebrow">The Real Problem</div>
+        <h2>「ダッシュボードがない」は、症状にすぎない。</h2>
+        <p>多くの現場で本当に詰まっているのは、ツールの不在ではなく、その手前にある4つの構造です。ここを解かないまま高機能ツールを乗せても、入力が止まり、データが歪み、運用が破綻します。</p>
+      </div>
+      <img class="sec-illu reveal" src="illu-1.webp" alt="散らばった情報が一つに集まるイメージ" loading="lazy">
+    </div>
+    <div class="prob-grid">
+      <div class="prob reveal"><div class="ic">✍️</div><div><h4>入力・転記の二重作業</h4><p>手書き → 写真 → 転記。同じ情報を何度も打ち直し、そのたびにミスと遅れが生まれる。</p></div></div>
+      <div class="prob reveal"><div class="ic">💬</div><div><h4>コミュニケーションの埋没</h4><p>単一チャンネルに情報が流れ続け、大事な連絡も決定事項も後から探せない。</p></div></div>
+      <div class="prob reveal"><div class="ic">🗂️</div><div><h4>ファイル管理の個人依存</h4><p>個人ドライブに資料が散在。担当者がいなくなると、何がどこにあるか分からなくなる。</p></div></div>
+      <div class="prob reveal"><div class="ic">📉</div><div><h4>数字が見えるのは月末だけ</h4><p>誰かが集計しないとKPIが分からない。異変に気づくのは、いつも手遅れになってから。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── APPROACH ───────── -->
+<section id="approach" class="alt">
+  <div class="wrap">
+    <div class="sec-intro flip">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Our Approach</div>
+        <h2>設計し、つくり、定着するまで。<br>その全部を、ひとつのチームで。</h2>
+        <p>「作る」だけなら誰でもできます。バレンサーは、現場が3ヶ月後も使い続けている状態を成果と定義します。</p>
+      </div>
+      <img class="sec-illu reveal" src="illu-2.webp" alt="現場の人がツールを使いこなすイメージ" loading="lazy">
+    </div>
+    <div class="approach">
+      <div class="ap reveal"><div class="bignum">01</div><div class="step">STEP 01 ｜ 設計</div><div class="ttl">業務フローから設計する</div><p>いまの業務を一つずつ棚卸しして見える化し、解消の順番を決めてから、目指す業務の形を設計。「作ってから直す」をなくします。</p></div>
+      <div class="ap reveal"><div class="bignum">02</div><div class="step">STEP 02 ｜ 構築</div><div class="ttl">データが勝手に集まる</div><p>スマホ30秒で完結する現場フォームと、入力 → 自動集計 → 通知までの仕組みを構築。集計担当はもう要りません。</p></div>
+      <div class="ap reveal"><div class="bignum">03</div><div class="step">STEP 03 ｜ 定着</div><div class="ttl">定着まで責任を持つ</div><p>マニュアル・研修・先行導入・改善のくり返し。バレンサーがいなくても自走できる状態まで伴走します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FLOW ───────── -->
+<section id="flow">
+  <div class="wrap">
+    <div class="sec-intro">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Before → After</div>
+        <h2>同じ業務が、こう変わります。</h2>
+        <p>左が、よくある現状。右が、基盤構築後の姿。真ん中の作り込みの深さで、プランが分かれます。</p>
+      </div>
+      <img class="sec-illu reveal" src="illu-3.webp" alt="スマホで現場入力が完結するイメージ" loading="lazy">
+    </div>
+    <div class="flow-wrap reveal">
+      <div class="flow-col as">
+        <span class="flow-tag as">いまの業務（現状）</span>
+        <div class="flow-step"><span class="dot"></span><div><div class="t">現場が<b>手書き・写真</b>でメモ</div><div class="pain">→ 後で誰かが転記</div></div></div>
+        <div class="flow-step"><span class="dot"></span><div><div class="t"><b>スプレッドシート</b>に手集計</div><div class="pain">→ 二重入力・更新漏れ</div></div></div>
+        <div class="flow-step"><span class="dot"></span><div><div class="t">チャットで<b>口頭共有</b></div><div class="pain">→ 情報が埋没する</div></div></div>
+        <div class="flow-step"><span class="dot"></span><div><div class="t">月末にやっと<b>数字が出る</b></div><div class="pain">→ 異変に気づけない</div></div></div>
+      </div>
+      <div class="flow-mid"><div class="mid-lbl">再設計</div><div class="arrow">→</div></div>
+      <div class="flow-col tobe">
+        <span class="flow-tag tb">これからの業務（構築後）</span>
+        <div class="flow-step"><span class="dot"></span><div class="t"><b>スマホ30秒</b>で現場入力が完結</div></div>
+        <div class="flow-step"><span class="dot"></span><div class="t">入力が<b>自動でDBに集約</b>・転記ゼロ</div></div>
+        <div class="flow-step"><span class="dot"></span><div class="t">KPI・転換率が<b>リアルタイム可視化</b></div></div>
+        <div class="flow-step"><span class="dot"></span><div class="t">異変は<b>自動でアラート通知</b></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── VOICES ───────── -->
+<section id="voices" class="voices">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;">
+      <div class="eyebrow">Voices</div>
+      <h2>お客様の声</h2>
+      <p style="margin-left:auto;margin-right:auto;">業種も規模もさまざまな会社と、業務基盤づくりをご一緒してきました。</p>
+    </div>
+    <div class="voice-slider">
+      <div class="voice reveal">
+        <div class="qmark">「</div>
+        <p>受発注も在庫も案件の進捗も、あちこちのスプレッドシートに散らばっていました。Notionに一本化してからは「どこを見れば分かるか」で迷う時間がほぼゼロに。探し物のストレスが消えました。</p>
+        <div class="vmeta"><span class="vrole">食品メーカー（製造・卸）</span><span class="vchip">情報を探す時間が激減</span></div>
+      </div>
+      <div class="voice reveal">
+        <div class="qmark">「</div>
+        <p>正直、うちみたいなアナログな現場で使いこなせるか不安でした。でも一つひとつ丁寧に教えてもらえて、気づけば全員がスマホで入力できるように。移行がここまでスムーズだとは思いませんでした。</p>
+        <div class="vmeta"><span class="vrole">ものづくりブランド（工房・小売）</span><span class="vchip">全員がスマホで定着</span></div>
+      </div>
+      <div class="voice reveal">
+        <div class="qmark">「</div>
+        <p>現場・案件・書類が人に紐づいていて、担当が抜けると分からなくなるのが悩みでした。今は会社の情報として一元管理でき、月次の数字も自動で見えます。判断のスピードが上がりました。</p>
+        <div class="vmeta"><span class="vrole">建設会社</span><span class="vchip">案件・書類を会社で一元化</span></div>
+      </div>
+      <div class="voice reveal">
+        <div class="qmark">「</div>
+        <p>受注・在庫・問い合わせ対応が増えるほど手作業がパンクしていました。自動化のおかげで対応スピードが上がり、ミスも減少。本来やりたい制作や企画に時間を戻せました。</p>
+        <div class="vmeta"><span class="vrole">EC・クリエイターグッズ販売</span><span class="vchip">対応スピード向上・ミス減</span></div>
+      </div>
+      <div class="voice more reveal">
+        <div class="am">…and more</div>
+        <p>業種を問わず、中小企業の<br>業務基盤づくりをご一緒しています。</p>
+      </div>
+    </div>
+    <div class="voice-hint">→ スワイプで他の声も見られます</div>
+  </div>
+</section>
+
+<!-- ───────── PLANS ───────── -->
+<section id="plans" class="alt">
+  <div class="wrap">
+    <div class="sec-intro flip">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Plans</div>
+        <h2>目的で選べる、3つのプラン。</h2>
+        <p>「まず試す」のか、「全社で回す」のか、「経営をAIで動かす」のか。ゴールに合わせて選べます。</p>
+      </div>
+      <img class="sec-illu reveal" src="illu-4.webp" alt="PCとスマホでデータが可視化されるダッシュボードのイメージ" loading="lazy">
+    </div>
+
+    <!-- common core -->
+    <div class="core-band reveal">
+      <div class="ttl">全プラン共通の土台</div>
+      <div class="sub">この4つは、お試しプランでも必ず含まれます。プランで変わるのは「どこまで作り込むか」です。</div>
+      <div class="core-items">
+        <span class="core-chip">業務フローの棚卸し・再設計</span>
+        <span class="core-chip">Notion（業務DB）の構築</span>
+        <span class="core-chip">入力・通知の自動化（Make）</span>
+        <span class="core-chip">現場への定着サポート</span>
+      </div>
+    </div>
+
+    <!-- plan cards -->
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="grade">Starter</div>
+        <div class="pname">お試しプラン</div>
+        <div class="ptag">まず小さく作って試す、構築特化。</div>
+        <div class="price"><span class="yen">¥</span>350<span class="man">万〜</span></div>
+        <div class="tax">税抜（消費税別）</div>
+        <ul>
+          <li>業務フローの棚卸し・再設計（要点）</li>
+          <li>コアDB1つ（業務の見える化・現場フォーム）</li>
+          <li>基本の自動通知（日次サマリー）</li>
+          <li>定着：操作マニュアル＋研修1回</li>
+          <li class="tri">プロジェクト統括（簡易・構築に特化）</li>
+          <li class="off">Google Workspace・Slack 導入（オプション）</li>
+          <li class="off">複数DB・役職別の画面</li>
+          <li class="off">経営分析・AI活用</li>
+        </ul>
+        <a href="#contact" class="pbtn line">このプランで相談</a>
+      </div>
+
+      <div class="plan feature reveal">
+        <div class="ribbon">★ 一番人気・おすすめ</div>
+        <div class="grade">Standard</div>
+        <div class="pname">スタンダードプラン</div>
+        <div class="ptag">全社で回り続ける、定着まで込みの本命。</div>
+        <div class="price"><span class="yen">¥</span>500<span class="man">万〜</span></div>
+        <div class="tax">税抜（消費税別）</div>
+        <ul>
+          <li>業務フローの棚卸し・再設計（フル）</li>
+          <li><b>複数DB・連携・役職別の画面</b></li>
+          <li><b>フル自動通知</b>（KPI・期限・クレーム・週次ランキング）</li>
+          <li><b>定着：先行導入 → 全社展開</b></li>
+          <li><b>プロジェクト統括・品質保証（フル）</b></li>
+          <li><b>Google Workspace・Slack 導入支援（込み）</b></li>
+          <li class="off">経営分析・AI活用</li>
+        </ul>
+        <a href="#contact" class="pbtn solid">このプランで相談</a>
+      </div>
+
+      <div class="plan reveal">
+        <div class="grade">Strategic</div>
+        <div class="pname">経営戦略プラン</div>
+        <div class="ptag">AIも本格導入し、データを経営戦略に変える。</div>
+        <div class="price"><span class="yen">¥</span>700<span class="man">万〜</span></div>
+        <div class="tax">税抜（消費税別）</div>
+        <ul>
+          <li>スタンダードの全機能（GWS・Slack込み）</li>
+          <li>個人分析・成長率・伸び盛り層の抽出</li>
+          <li>高度ダッシュボード（役員／現場別）</li>
+          <li>売上・粗利・歩合の管理を初期設計</li>
+          <li><b>AIシャイン本格導入</b>（AI秘書・経営分析AI）</li>
+        </ul>
+        <a href="#contact" class="pbtn line">このプランで相談</a>
+      </div>
+    </div>
+
+    <!-- monthly note -->
+    <div class="monthly-note reveal">
+      <div class="mn-l"><b>＋ 月額の伴走サポート（必須・最低6ヶ月）</b>　お試し ¥35万 / スタンダード ¥50万 / 経営戦略 ¥75万（税抜・月）。構築費とは別建てです。</div>
+      <div class="mn-r">スタンダード初年度の目安：構築 ¥500万 ＋ 月額 ¥50万×6＝<span class="yr">¥800万</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── MATRIX ───────── -->
+<section id="matrix">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Comparison</div>
+      <h2>プラン比較表</h2>
+      <p>「✓ = 標準で含む／薄字 = 簡易版／– = 含まない」。迷ったら、真ん中のスタンダードです。</p>
+    </div>
+    <div class="matrix-scroll reveal">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th style="text-align:left;background:var(--c-cream);color:var(--c-ink);">内容</th>
+            <th><span class="g">Starter</span>お試し</th>
+            <th class="feat"><span class="g">Standard</span>スタンダード</th>
+            <th><span class="g">Strategic</span>経営戦略</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section"><td colspan="4">共通の土台</td></tr>
+          <tr><td class="row-h">業務フローの棚卸し・再設計</td><td class="lite">簡易</td><td class="feat-col yes">✓ フル</td><td class="yes">✓ フル</td></tr>
+          <tr><td class="row-h">Notion（業務DB）の構築</td><td class="lite">コアDB1つ</td><td class="feat-col yes">✓ 複数DB・役職別</td><td class="yes">✓ ＋高度分析</td></tr>
+          <tr><td class="row-h">入力・通知の自動化</td><td class="lite">日次サマリー</td><td class="feat-col yes">✓ フル通知</td><td class="yes">✓ ＋AI連携</td></tr>
+          <tr><td class="row-h">現場への定着サポート</td><td class="lite">研修1回</td><td class="feat-col yes">✓ 先行→全社</td><td class="yes">✓ 全社＋継続</td></tr>
+          <tr><td class="row-h">プロジェクト統括・品質保証</td><td class="lite">▲ 簡易</td><td class="feat-col yes">✓ フル</td><td class="yes">✓ フル</td></tr>
+          <tr class="section"><td colspan="4">ツール導入支援</td></tr>
+          <tr><td class="row-h">Google Workspace 導入・移行</td><td class="lite">オプション</td><td class="feat-col yes">✓ 込み</td><td class="yes">✓ 込み</td></tr>
+          <tr><td class="row-h">Slack 導入・チャット移行</td><td class="lite">オプション</td><td class="feat-col yes">✓ 込み</td><td class="yes">✓ 込み</td></tr>
+          <tr class="section"><td colspan="4">経営戦略（Strategicのみ）</td></tr>
+          <tr><td class="row-h">個人分析・成長率・伸び盛り層の抽出</td><td class="no">–</td><td class="feat-col no">–</td><td class="yes">✓</td></tr>
+          <tr><td class="row-h">高度ダッシュボード（役員／現場別）</td><td class="no">–</td><td class="feat-col no">–</td><td class="yes">✓</td></tr>
+          <tr><td class="row-h">売上・粗利・歩合の管理（初期設計）</td><td class="no">–</td><td class="feat-col no">–</td><td class="yes">✓</td></tr>
+          <tr><td class="row-h">AIシャイン本格導入（AI秘書・経営分析AI）</td><td class="no">–</td><td class="feat-col no">–</td><td class="yes">✓</td></tr>
+          <tr class="price-row"><td class="row-h" style="background:var(--c-cream);">構築費（税抜）</td><td>¥350万〜</td><td class="feat-col">¥500万〜</td><td>¥700万〜</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── OPTIONS ───────── -->
+<section id="options" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Options</div>
+      <h2>オプション</h2>
+    </div>
+    <div class="opt-grid">
+      <div class="opt reveal"><div class="oh"><span class="on">Google Workspace 導入・移行</span><span class="op">¥50万〜</span></div><div class="od">共有ドライブ設計・権限・既存データ移行まで。<b>スタンダード以上は標準で含みます</b>（お試しプランのオプション）。</div></div>
+      <div class="opt reveal"><div class="oh"><span class="on">Slack 導入・チャット移行</span><span class="op">¥15万〜</span></div><div class="od">Chatwork等からの移行。チャンネル設計・権限・社員レクチャー込み。<b>スタンダード以上は標準で含みます</b>。</div></div>
+      <div class="opt reveal"><div class="oh"><span class="on">契約書・書類管理設計</span><span class="op">¥15万〜</span></div><div class="od">Drive × Notion 連携で「あの書類どこ」をなくす。</div></div>
+      <div class="opt reveal"><div class="oh"><span class="on">業種特化DB</span><span class="op">要見積</span></div><div class="od">催事・店舗・現場など、業種固有の管理DB（例：ブース/クレーム管理）。</div></div>
+      <div class="opt reveal"><div class="oh"><span class="on">既存データ移行・クレンジング</span><span class="op">要見積</span></div><div class="od">データの量・状態を確認のうえ、整理・移行を実施。</div></div>
+      <div class="opt reveal"><div class="oh"><span class="on">拠点・代理店への展開</span><span class="op">要見積</span></div><div class="od">展開先の数・規模に応じてオンボーディングを追加。</div></div>
+      <div class="opt reveal"><div class="oh"><span class="on">AIシャイン 本格導入</span><span class="op">要見積</span></div><div class="od">AI秘書・経営分析AI・社内ナレッジAI。AI導入補助金2026の活用余地あり。</div></div>
+      <div class="opt reveal"><div class="oh"><span class="on">補助金 申請サポート</span><span class="op">要見積</span></div><div class="od">対象制度の確認から申請書類の準備まで伴走。</div></div>
+      <div class="opt reveal"><div class="oh"><span class="on">操作説明動画の追加制作</span><span class="op">要見積</span></div><div class="od">役割別の操作動画を追加。新人オンボーディングを高速化。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FAQ ───────── -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;">
+      <div class="eyebrow">FAQ</div>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq reveal">
+        <summary>料金以外に、かかる費用はありますか？</summary>
+        <div class="ans">構築費・月額のほかに、<b>Notion・Google Workspace・Slack・Make などのツール利用料</b>がかかります。これらはお客様が各サービスと直接ご契約・ご負担いただく実費で、人数やプランによって変わります（選定・申し込みはこちらでサポートします）。</div>
+      </details>
+      <details class="faq reveal">
+        <summary>導入までどのくらいかかりますか？</summary>
+        <div class="ans">まず現状を棚卸しする設計から入ります。目安は、<b>お試しプランで約1〜2ヶ月、スタンダードで約3〜4ヶ月</b>。いきなり全部作るのではなく、設計 → 構築 → 先行導入 → 全社展開と、段階的に進めます。</div>
+      </details>
+      <details class="faq reveal">
+        <summary>ITに詳しくない現場でも、本当に使えますか？</summary>
+        <div class="ans">そこを一番大事にしています。現場の入力は<b>スマホで30秒で完結</b>するように設計し、操作マニュアル・研修・定着フォローまでセットで伴走します。「使えるかどうか」ではなく「使い続けられる状態」をつくるのが私たちの役割です。</div>
+      </details>
+      <details class="faq reveal">
+        <summary>いまのデータ（スプレッドシートなど）は移せますか？</summary>
+        <div class="ans">移行できます。ただしデータの量や状態によって作業範囲が変わるため、設計時に中身を確認したうえで<b>オプションとして別途お見積もり</b>します。「とりあえず全部きれいに移す」ではなく、本当に使うデータを整理してから移します。</div>
+      </details>
+      <details class="faq reveal">
+        <summary>月額の伴走サポートは必須ですか？</summary>
+        <div class="ans">はい、<b>最低6ヶ月</b>をお願いしています。基盤は「作って終わり」では定着しません。データが溜まるほど改善の精度が上がるので、月次のレビューと改善実装をセットにしています。</div>
+      </details>
+      <details class="faq reveal">
+        <summary>うちの業種でも対応できますか？</summary>
+        <div class="ans">対応できます。共通の土台（業務DB・自動化・定着）はどの業種でも使え、業種ならではの管理が必要な場合は<b>業種特化のデータベースをオプション</b>で追加します（例：催事・店舗・現場管理など）。</div>
+      </details>
+      <details class="faq reveal">
+        <summary>補助金は使えますか？</summary>
+        <div class="ans">AIを本格導入する経営戦略プラン等では、<b>AI導入補助金2026</b>などの活用余地があります。対象になりそうかの確認から申請書類の準備まで、オプションでサポートします。</div>
+      </details>
+      <details class="faq reveal">
+        <summary>あとからプランを変えられますか？</summary>
+        <div class="ans">できます。まず<b>お試しプランで小さく始めて、スタンダードへ拡張</b>する進め方も多いです。最初のヒアリングで「御社にはどれが合うか」を一緒に決めるので、迷っていても大丈夫です。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CTA ───────── -->
+<section id="contact" class="cta">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow" style="text-align:center;">Let's start</div>
+      <h2>まずは、現状を一緒に棚卸しするところから。</h2>
+      <p>「うちの場合、どのプランが合うのか」。そこから一緒に考えます。ヒアリングのうえ、確定のお見積もりをお出しします。</p>
+      <form class="lead-form" id="leadForm" autocomplete="on">
+        <div class="lf-grid">
+          <label class="lf-field"><span>お名前<i>必須</i></span><input type="text" name="お名前" required></label>
+          <label class="lf-field"><span>会社名</span><input type="text" name="会社名"></label>
+          <label class="lf-field"><span>メールアドレス<i>必須</i></span><input type="email" name="メール" required placeholder="info@your-company.co.jp"></label>
+          <label class="lf-field"><span>電話番号</span><input type="tel" name="電話番号"></label>
+          <label class="lf-field"><span>気になるサービス</span>
+            <select name="気になるサービス">
+              <option>Notion業務基盤（ヒトツ）</option>
+              <option>AI顧問（SOERU）</option>
+              <option>AI経営分析（ミタテ）</option>
+              <option>補助金の活用</option>
+              <option>ブランド・組織・経営の相談</option>
+              <option>まだ決まっていない</option>
+            </select>
+          </label>
+          <label class="lf-field"><span>想定予算</span>
+            <select name="想定予算">
+              <option value="">選択してください</option>
+              <option>構築 350万円前後</option>
+              <option>構築 500万円前後</option>
+              <option>構築 700万円前後</option>
+              <option>未定・相談したい</option>
+            </select>
+          </label>
+          <label class="lf-field lf-full"><span>現在の課題</span><textarea name="現在の課題" rows="3" placeholder="例：情報が散らばっていて、会社の業務をひとつにまとめたい"></textarea></label>
+          <label class="lf-field lf-full"><span>その他ご要望</span><textarea name="その他ご要望" rows="2"></textarea></label>
+        </div>
+        <input type="text" name="_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="source" id="srcField" value="ヒトツ（Notion業務基盤）">
+        <button type="submit" class="btn btn-primary lf-submit">お問い合わせ</button>
+        <p class="lf-note" id="lfNote">いただいた内容はバレンサーで確認し、1〜2営業日でご返信します。</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 関連サービス ───────── -->
+<section class="s-related">
+  <div class="wrap">
+    <div class="frh">バレンサーの他のサービス</div>
+    <div class="foot-rel-list">
+      <a href="https://balencer.jp/soeru/" target="_blank" rel="noopener"><span class="rt">SOERU<span class="ar">↗</span></span><span class="rs">毎月伴走するAI顧問サービス</span></a>
+      <a href="https://balencer.jp/keiei/" target="_blank" rel="noopener"><span class="rt">ミタテ<span class="ar">↗</span></span><span class="rs">AIで数字が見える経営分析</span></a>
+      <a href="https://balencer.jp/hojokin/" target="_blank" rel="noopener"><span class="rt">補助金でAI導入<span class="ar">↗</span></span><span class="rs">AI導入補助金の活用をチェック・相談</span></a>
+      <a href="https://balencer.jp/" target="_blank" rel="noopener"><span class="rt">BALENCER 公式<span class="ar">↗</span></span><span class="rs">経営・ブランド・組織の一気通貫伴走</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <div class="fn">BALENCER</div>
+      <div class="ft">for loved ones.</div>
+    </div>
+    <div class="foot-legal">
+      株式会社バレンサー　〒530-0001 大阪府大阪市北区梅田1-11-4 大阪駅前第4ビル9階<br>
+      <a href="mailto:info@balencer.jp">info@balencer.jp</a>　／　<a href="https://balencer.jp">balencer.jp</a><br>
+      © 2026 BALENCER Inc. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, { threshold:.12, rootMargin:'0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+</script>
+<script>
+(function(){
+  var sp=new URLSearchParams(location.search);
+  var SRC={hojokin:'補助金 → ヒトツ',soeru:'SOERU → ヒトツ',mitate:'ミタテ → ヒトツ',keiei:'ミタテ → ヒトツ',balencer:'公式 → ヒトツ'};
+  var key=(sp.get('src')||sp.get('from')||'').toLowerCase();
+  var sf=document.getElementById('srcField'); if(sf&&SRC[key]) sf.value=SRC[key];
+  var form=document.getElementById('leadForm'); if(!form) return;
+  var note=document.getElementById('lfNote');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.querySelector('[name="_hp"]').value) return;
+    var fd=new FormData(form),p={}; fd.forEach(function(v,k){if(k!=='_hp')p[k]=v;});
+    var btn=form.querySelector('.lf-submit'); btn.disabled=true; btn.textContent='送信中…';
+    fetch('/hitotsu-lead.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)})
+      .then(function(r){return r.json().catch(function(){return{};}).then(function(j){return{ok:r.ok,j:j};});})
+      .then(function(res){
+        if(res.ok&&res.j.ok){form.innerHTML='<div class="lf-done"><div class="ic">✓</div><h3>送信しました</h3><p>ありがとうございます。1〜2営業日でご返信します。</p></div>';}
+        else{btn.disabled=false;btn.textContent='お問い合わせ';note.style.color='#C0392B';note.textContent=(res.j&&res.j.error)?res.j.error:'送信に失敗しました。info@balencer.jp までご連絡ください。';}
+      })
+      .catch(function(){btn.disabled=false;btn.textContent='お問い合わせ';note.style.color='#C0392B';note.innerHTML='送信できませんでした。<a href="mailto:info@balencer.jp">info@balencer.jp</a> までご連絡ください。';});
+  });
+})();
+</script>
+
+</body>
+</html>

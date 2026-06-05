@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOERU（仮）｜BALENCER — 中小企業のためのAI顧問サービス</title>
-<meta name="description" content="毎月、使えるものが届く、中小企業のためのAI顧問サービス。AIへの頼み方・作業の自動化・専用ツールを御社に合わせて毎月お届け。株式会社バレンサーが全国対応で提供。">
-<meta property="og:title" content="SOERU（仮）｜BALENCER — 中小企業のためのAI顧問">
-<meta property="og:description" content="毎月、使えるものが届く、中小企業のためのAI顧問サービス。">
+<title>SOERU（ソエル）｜バレンサーAI顧問サービス</title>
+<meta name="description" content="SOERU（ソエル）は、企業に寄り添いAIを「添える」ことから名づけた、中小企業のためのAI顧問サービス。毎月、使えるもの（AIの頼み方・作業の自動化・専用ツール）を御社に合わせてお届け。株式会社バレンサーが全国対応で提供｜バレンサーAI顧問サービス">
+<meta property="og:title" content="SOERU（ソエル）｜バレンサーAI顧問サービス">
+<meta property="og:description" content="企業に寄り添い、AIを「添える」。毎月、使えるものが届く中小企業のためのAI顧問サービス。">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,8 +40,8 @@ a{color:inherit;text-decoration:none}
 .brand .blogo b{font-family:var(--f-en);font-weight:700;font-size:18px;letter-spacing:.04em}
 .brand .home{font-size:10px;color:var(--muted)}
 .brand .sep{width:1px;height:22px;background:var(--line-2)}
-.brand .svc{font-family:var(--f-en);font-weight:700;font-size:15px;color:var(--accent);letter-spacing:.04em}
-.brand .svc small{font-family:var(--f-ja);font-size:9px;color:var(--muted);margin-left:5px;font-weight:600}
+.brand .svc{font-family:var(--f-en);font-weight:800;font-size:26px;color:var(--accent);letter-spacing:.02em;line-height:1}
+.brand .svc small{font-family:var(--f-ja);font-size:10px;color:var(--muted);margin-left:6px;font-weight:600}
 .nav{display:flex;align-items:center;gap:24px}
 .nav a{font-size:13px;font-weight:600;color:var(--text)}
 .nav a:hover{color:var(--ink)}
@@ -188,8 +188,8 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
   .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 16px;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(17,23,38,.08)}
 }
 
-/* 公式ロゴ（ヘッダー） */
-.blogo-img{height:22px;width:auto;display:block}
+/* 公式ロゴ（ヘッダー）＝親ブランドなので控えめ */
+.blogo-img{height:19px;width:auto;display:block}
 
 /* お問い合わせフォーム */
 .contact-sec{background:var(--bg-2)}
@@ -211,6 +211,14 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
 .lf-done .ic{width:56px;height:56px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px}
 .lf-done h3{font-size:20px;font-weight:900;color:var(--ink);margin-bottom:8px}
 .lf-done p{font-size:14px;color:var(--text)}
+
+/* 伴走事例 */
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.casecard{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:28px 26px;box-shadow:var(--sh-sm)}
+.casecard .ctag{display:inline-block;font-size:12px;font-weight:800;color:var(--accent);background:var(--accent-soft);border-radius:var(--r-pill);padding:5px 13px;margin-bottom:14px}
+.casecard p{font-size:14px;color:var(--text);line-height:1.9}
+.case-note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:18px}
+@media(max-width:840px){.case-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -221,7 +229,7 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
     <div class="brand">
       <a class="blogo" href="https://balencer.jp/" target="_blank" rel="noopener"><img src="balencer-logo.png" alt="BALENCER" class="blogo-img"><span class="home">◂ 公式サイト</span></a>
       <span class="sep"></span>
-      <span class="svc">SOERU<small>サービス名 仮</small></span>
+      <span class="svc">SOERU<small>ソエル｜AI顧問</small></span>
     </div>
     <nav class="nav">
       <a href="#features">特長</a>
@@ -237,13 +245,13 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
   <div class="wrap">
     <span class="tagchip"><span class="dot"></span>中小企業のための AI顧問サービス</span>
     <h1>AI顧問　<span class="gtext">SOERU</span></h1>
-    <p class="lead">「何から始めればいいか」でAI導入が進まない企業のために、毎月実践できるAI活用の相談にお応えする伴走型のAI顧問サービスです。</p>
+    <p class="lead">AIツールを配って終わりにしません。御社の業務に入り込み、毎月「使えるもの」を一緒につくる。伴走型ブランディングカンパニーの、AI顧問サービスです。<br class="pc-br">（SOERU＝企業に寄り添い、AIを添えるから）</p>
     <div class="deliverbar">
-      <span class="dl"><b>01</b>プロンプト集</span>
-      <span class="dl"><b>02</b>専用AIアシスタント</span>
+      <span class="dl"><b>01</b>AIプロンプト集</span>
+      <span class="dl"><b>02</b>専用AI</span>
       <span class="dl"><b>03</b>作業の自動化</span>
-      <span class="dl"><b>04</b>御社だけの業務ツール</span>
-      <span class="dl"><b>05</b>効果レポート</span>
+      <span class="dl"><b>04</b>使える業務ツール</span>
+      <span class="dl"><b>05</b>数字でわかる効果レポート</span>
     </div>
     <div class="note">最低<b>3ヶ月</b>から ／ <b>今日から</b>始められます</div>
   </div>
@@ -257,12 +265,12 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
       <h2>企業でAIが浸透しない理由</h2>
     </div>
     <div class="prob-grid">
-      <div class="prob"><div class="q">01</div><h3>何から始めれば良いか分からない</h3><p>情報は多いのに、自社の業務にどう使えばいいかが分からない。</p></div>
-      <div class="prob"><div class="q">02</div><h3>個人利用で止まり、組織に広がらない</h3><p>一部の人だけが使い、会社全体のノウハウにならない。</p></div>
-      <div class="prob"><div class="q">03</div><h3>業務のどこにAIを当てるべきか不明</h3><p>効果が出る業務の選び方が分からず、手探りで止まる。</p></div>
-      <div class="prob"><div class="q">04</div><h3>提案の妥当性・費用対効果が判断できない</h3><p>いくらかけて、どれだけ戻るのかが見えず踏み出せない。</p></div>
-      <div class="prob"><div class="q">05</div><h3>セキュリティ／情報漏洩リスクへの不安</h3><p>ルールが無く、会社として使わせるのが怖い。</p></div>
-      <div class="prob"><div class="q">06</div><h3>成果（KPI）が可視化できず定着しない</h3><p>使ってはいるが、何が良くなったのか分からない。</p></div>
+      <div class="prob"><div class="q">01</div><h3>どこで使えるか分からない</h3><p>AIは気になる。でも、うちの仕事のどこで使えるのかが分からない。</p></div>
+      <div class="prob"><div class="q">02</div><h3>「詳しい一人」頼みになっている</h3><p>その人が抜けたら、止まる。会社の力にならない。</p></div>
+      <div class="prob"><div class="q">03</div><h3>入れたのに、使われない</h3><p>ツールは入れた。けど現場が使わず、結局もとのやり方に戻った。</p></div>
+      <div class="prob"><div class="q">04</div><h3>費用対効果が読めない</h3><p>いくらかけて、どれだけ戻るのか。読めず、踏み出せない。</p></div>
+      <div class="prob"><div class="q">05</div><h3>情報の扱いが不安</h3><p>ルールが無く、会社として使わせるのが怖い。</p></div>
+      <div class="prob"><div class="q">06</div><h3>効果が数字で見えない</h3><p>使ってはいるが、何がどれだけ良くなったのか分からない。</p></div>
     </div>
   </div>
 </section>
@@ -272,27 +280,27 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
   <div class="wrap">
     <div class="s-head">
       <span class="kicker">about soeru</span>
-      <h2>入れて終わりにしない<br class="pc-br">伴走型のAI顧問</h2>
+      <h2>入れて終わりにしない。<br class="pc-br">御社に入り込む、AI顧問。</h2>
       <p>毎月、御社の業務に合わせて使えるものをつくって届けます。SOERUがお約束する3つのこと。</p>
     </div>
     <div class="feat3">
       <div class="f3">
-        <div class="illu"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg></div>
+        <div class="illu"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 12h5"/></svg></div>
         <div class="n">01</div>
-        <h3>毎月、使えるものを納品</h3>
-        <p>頼み方集・自動化・専用ツールなど、その月にいちばん効くものをかたちにしてお届け。手元に成果が積み上がります。</p>
+        <h3>まず対話して、御社に入り込んでつくる</h3>
+        <p>テンプレを配って終わりにしません。業務を一緒に見て、御社専用に仕立てる。組織に入り込むのがバレンサーの本業です。</p>
       </div>
       <div class="f3">
-        <div class="illu"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <div class="illu"><svg viewBox="0 0 24 24"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg></div>
         <div class="n">02</div>
-        <h3>小さく早く実装する</h3>
-        <p>大きな投資もシステム入れ替えも不要。今お使いのツールに足すかたちで、今月から1つずつ。設定は私たちが行います。</p>
+        <h3>ノーコード＋コードで、動くところまで</h3>
+        <p>Make・Notionの自動化に加え、Claudeで「実際に動く業務ツール」まで作れる。ふつうのAI顧問との決定的な差です。</p>
       </div>
       <div class="f3">
-        <div class="illu"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 2 5-6"/><circle cx="18" cy="7" r="1.4"/></svg></div>
+        <div class="illu"><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-6"/><path d="M3 19h18"/></svg></div>
         <div class="n">03</div>
-        <h3>効果をKPIで可視化する</h3>
-        <p>削減できた時間・使われ具合を数字でご報告。なんとなくではなく、成果が見える状態にします。</p>
+        <h3>AIで終わらせない、経営の入口</h3>
+        <p>AIで成果が出たら、ブランド・組織・経営まで一気通貫で相談できる。SOERUはその第一歩です。</p>
       </div>
     </div>
   </div>
@@ -310,30 +318,28 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
       <div class="pcard">
         <div class="pname">スターター</div>
         <div class="pprice">¥100,000<small> / 月</small></div>
-        <div class="psub">AI活用をスタートしたい企業向け</div>
+        <div class="psub">まずAIを自社で使えるように</div>
         <ul>
-          <li>月1回 オンラインMTG（60分）</li>
-          <li>チャット／メール（月10件）</li>
-          <li>プロンプト 3〜5本</li>
-          <li>AI活用Tips ミニレポート</li>
-          <li>初回AI活用診断</li>
+          <li>月1回 オンライン相談（60分）</li>
+          <li>御社専用のAI（頼み方・GPT）を毎月用意</li>
+          <li>初回の業務見立て（どこにAIが効くか）</li>
+          <li>チャット相談（月10件まで）</li>
         </ul>
         <a class="pbtn line" href="#contact">お問い合わせ</a>
       </div>
 
       <div class="pcard feat-plan">
-        <span class="ribbon">人気プラン</span>
+        <span class="ribbon">いちばん人気</span>
         <div class="pname">スタンダード</div>
         <div class="pprice">¥200,000<small> / 月</small></div>
-        <div class="psub">AI活用を本格化したい企業向け</div>
+        <div class="psub">本格的に業務を変える</div>
         <ul>
-          <li>月2回 MTG</li>
-          <li>チャット／メール（月20件）</li>
-          <li>プロンプト 3〜5本</li>
-          <li>業務別シナリオ設計</li>
-          <li>ノーコード自動化支援</li>
-          <li>AI利用ガイドライン策定</li>
-          <li>初回AI活用診断</li>
+          <li>月2回 オンライン相談（60分）</li>
+          <li>スターターの内容ぜんぶ</li>
+          <li>面倒な作業の自動化を毎月ひとつ</li>
+          <li>安心して使うためのルールづくり</li>
+          <li>効果レポート（数字で可視化）</li>
+          <li>チャット相談（無制限）</li>
         </ul>
         <a class="pbtn solid" href="#contact">お問い合わせ</a>
       </div>
@@ -341,19 +347,19 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
       <div class="pcard">
         <div class="pname">ストラテジック</div>
         <div class="pprice">¥500,000<small> / 月</small></div>
-        <div class="psub">AI活用で組織変革を目指す企業向け</div>
+        <div class="psub">全社でAIを仕組みに</div>
         <ul>
-          <li>月3回 MTG ＋ 月1回 訪問</li>
-          <li>当日返信・相談無制限</li>
-          <li>軽量プロジェクト伴走</li>
-          <li>経営向けレポート</li>
-          <li>全社AIロードマップ</li>
-          <li>生成AI研修 年2回</li>
+          <li>月3〜4回 相談（60分／うち1回訪問も可）</li>
+          <li>スタンダードの内容ぜんぶ</li>
+          <li>Claude実装の「御社専用 業務ツール」開発</li>
+          <li>全社AI活用ロードマップ</li>
+          <li>社員向けAI研修（年2回）</li>
+          <li>経営・ブランドの相談枠つき</li>
         </ul>
         <a class="pbtn line" href="#contact">お問い合わせ</a>
       </div>
     </div>
-    <p class="price-note">表示価格はすべて税抜・月額です。最低契約期間は3ヶ月。まず3ヶ月、価値を見てから続けるか判断いただけます。外部サービス（Notion・Make・Google Workspace 等）の利用料、Claude API の実費はお客様のご負担となります。</p>
+    <p class="price-note">表示価格はすべて税抜・月額です。最低契約期間は3ヶ月。外部サービス（Notion・Make 等）の利用料、Claude API の実費はお客様のご負担となります。より大きなAI業務改革・補助金の活用は、別パッケージでご案内します。</p>
   </div>
 </section>
 
@@ -363,15 +369,15 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
     <div class="s-head">
       <span class="kicker">deliverables</span>
       <h2>納品事例</h2>
-      <p>専門知識はいりません。その月にいちばん役立つものを、私たちが選んでお届けします。</p>
+      <p>毎月、その時いちばん効くものをかたちにしてお届けします。たとえば——</p>
     </div>
     <div class="deliv-grid">
-      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg></div><h3>プロンプトテンプレート集</h3><p>そのまま使える「AIへの頼み方」を、仕事別に毎月お渡しします。</p></div>
-      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/></svg></div><h3>カスタムGPTs</h3><p>御社の業務に合わせて調整した、専用のAIアシスタントを用意します。</p></div>
-      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg></div><h3>自動化フロー</h3><p>転記やコピペなどの手作業を自動に。やらなくていい仕事を増やします。</p></div>
-      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>運用ガイドライン</h3><p>情報の扱いやルールを整え、安心して全社に広げられる土台を作ります。</p></div>
-      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 2 5-6"/></svg></div><h3>分析資料</h3><p>売上や業務のデータをAIが分析し、毎月の判断材料になる資料にまとめてお届けします。</p></div>
-      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 14l5-4 4 3 3-2 6 5"/><circle cx="8.5" cy="9" r="1.4"/></svg></div><h3>バナーテンプレ</h3><p>広告やSNS用のバナーをAIで量産できるテンプレートをご用意。デザイン担当がいなくても作れます。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/></svg></div><h3>御社専用のAIアシスタント</h3><p>御社の業務に合わせて調整した、専用のAIを用意します。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg></div><h3>AIプロンプト集</h3><p>そのまま使えるAIへの頼み方を、仕事別に毎月お渡しします。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg></div><h3>面倒な作業の自動化</h3><p>転記・コピペ・定例作業をゼロに。やらなくていい仕事を増やします。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg></div><h3>Claude実装の業務ツール</h3><p>例：問い合わせを毎朝AIが要約してSlackへ／議事録→ToDo自動化。<b style="color:var(--accent)">コードが書けるバレンサーの強み</b>。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 2 5-6"/></svg></div><h3>経営数字の月次サマリー</h3><p>売上や業務のデータをAIが分析し、数字を言葉で解説してお届けします。</p></div>
+      <div class="dcard"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 14l5-4 4 3 3-2 6 5"/><circle cx="8.5" cy="9" r="1.4"/></svg></div><h3>広告・SNSバナーの量産テンプレ</h3><p>バナーをAIで量産できるテンプレ。デザイン担当がいなくても作れます。</p></div>
     </div>
   </div>
 </section>
@@ -382,23 +388,43 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
     <div class="about-co">
       <div class="txt">
         <span class="kicker">about balencer</span>
-        <h2>AX（AI変革）が得意な、<br class="pc-br">伴走パートナー。</h2>
-        <p>株式会社バレンサーは、<b style="color:var(--ink)">AX（AIによる業務・組織の変革）を得意とし、全国の中小企業に伴走</b>する会社です（設立2019年）。AIだけでなく、ブランディングや組織づくりまで一気通貫で手がけているので、<b style="color:var(--ink)">経営の幅広いお悩みをまとめて相談</b>いただけます。</p>
-        <p style="margin-top:14px;font-size:13.5px;color:var(--muted)">本サービス「SOERU」は、その中でも<b style="color:var(--text)">AIに特化したAI顧問</b>。ブランド・組織・経営など、より広いご相談は、別途コンサルティングとしてご一緒できます。</p>
-        <div class="pts">
-          <div>AX（AI変革）に強い ── 実際に動く仕組みまで作れる技術力</div>
-          <div>ブランディング・組織開発まで一気通貫で伴走</div>
-          <div>「対話もできて、コードも書ける」幅広い相談先</div>
-        </div>
+        <h2>AX（AI変革）が得意な、<br class="pc-br">ブランディングカンパニー。</h2>
+        <p>株式会社バレンサーは、<b style="color:var(--ink)">ブランディングを軸に、AX（AIによる業務・組織の変革）まで一気通貫で全国の企業に伴走</b>する会社です（設立2019年）。ブランド・組織開発・システム開発・AI実装まで、自社とパートナー網で完結します。</p>
+        <p style="margin-top:14px">「AIを導入できます」だけでは、もう差になりません。バレンサーの価値は、組織に入り込む<b style="color:var(--ink)">対話力</b>と、AIを実際に動かす<b style="color:var(--ink)">技術力</b>の掛け算。だから——<b style="color:var(--ink)">システム開発会社からも「組織づくり」を任される</b>ほどです。</p>
+        <p style="margin-top:14px;font-size:13.5px;color:var(--muted)">本サービス「SOERU」は、その中でも<b style="color:var(--text)">AIに特化したAI顧問</b>。ブランド・組織・経営の相談へ、いつでも広げられます。</p>
       </div>
       <div class="co-stats">
-        <div class="st"><div class="v gtext">2019</div><div class="l">設立年</div></div>
         <div class="st"><div class="v gtext">全国</div><div class="l">対応エリア</div></div>
-        <div class="st"><div class="v"><span class="gtext">AX</span>特化</div><div class="l">AI変革が得意領域</div></div>
         <div class="st"><div class="v"><span class="gtext">一気</span>通貫</div><div class="l">戦略から実装・運用まで</div></div>
-        <div class="full">「AIを導入できます」だけでは、もう差になりません。組織に入り込む力と、AIを実際に動かす技術力の掛け算が、バレンサーの価値です。</div>
+        <div class="full"><b style="color:var(--ink)">対話もできて、コードも書ける。</b><br>組織に入り込む力 × AIを実際に動かす技術力の掛け算が、バレンサーの価値です。</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 伴走事例（匿名） -->
+<section class="s alt">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">case studies</span>
+      <h2>伴走事例</h2>
+      <p>実際にやった仕事の一例です（守秘のため業種で表記しています）。</p>
+    </div>
+    <div class="case-grid">
+      <div class="casecard">
+        <span class="ctag">建設・不動産会社</span>
+        <p>数十棟を管理する会社で、問い合わせ対応AI・AIリフォーム見積もり・社内マニュアルAI・申請業務の自動化までを伴走で実装。紙とExcel中心の業務を「動く仕組み」へ。</p>
+      </div>
+      <div class="casecard">
+        <span class="ctag">食品会社</span>
+        <p>ブランド設計から、AIを使ったマニュアルづくり・SNS運用の効率化まで。AIを“入口”に、ブランドと業務の両方を整えました。</p>
+      </div>
+      <div class="casecard">
+        <span class="ctag">システム開発会社</span>
+        <p>高い技術を持つ会社が、自社では手が回らない「組織づくり・ブランディング」をバレンサーに依頼。対話で組織に入り込む力が評価されています。</p>
+      </div>
+    </div>
+    <p class="case-note">※詳細はご相談時にお話しします。</p>
   </div>
 </section>
 
@@ -454,15 +480,15 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
     <div class="grid">
       <div>
         <img src="balencer-logo.png" alt="BALENCER" class="flogo">
-        <h4>SOERU（仮）by BALENCER</h4>
-        <p style="max-width:480px">毎月使えるものが届く、中小企業のためのAI顧問サービス。AIで入って、経営まで一気通貫で伴走します。</p>
+        <h4>SOERU（ソエル）by BALENCER</h4>
+        <p style="max-width:480px">SOERU（ソエル）は「企業に寄り添い、AIを<b style="color:var(--ink)">添える</b>」から名づけたAI顧問サービス。毎月使えるものが届き、AIで入って経営まで一気通貫で伴走します。</p>
         <p class="tag-line">for loved ones.</p>
       </div>
       <div class="co">
         <h4>提供元</h4>
         <dl>
           <dt>会社名</dt><dd>株式会社バレンサー</dd>
-          <dt>サービス</dt><dd>SOERU（仮称）</dd>
+          <dt>サービス</dt><dd>SOERU（ソエル）AI顧問サービス</dd>
           <dt>対応</dt><dd>全国</dd>
           <dt>お問合せ</dt><dd><a href="mailto:info@balencer.jp">info@balencer.jp</a></dd>
           <dt>公式サイト</dt><dd><a href="https://balencer.jp/" target="_blank" rel="noopener">balencer.jp ↗</a></dd>
@@ -490,7 +516,7 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
 
     <div class="copy">
       <span>© 2026 BALENCER Inc. All rights reserved.</span>
-      <span>※サービス名「SOERU」は仮称です</span>
+      <span>SOERU（ソエル）｜バレンサーAI顧問サービス</span>
     </div>
   </div>
 </footer>
@@ -558,7 +584,7 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
   var host=location.hostname;
   if(host==='balencer.jp'||host==='www.balencer.jp') return; // 本番は無効
   var SEL=['.hero .tagchip','.hero h1','.hero p.lead','.hero .btns a','.deliverbar .dl','.hero .note',
-    '.s-head','.prob','.f3','.pcard','.dcard','.oneline','.about-co .txt','.co-stats',
+    '.s-head','.prob','.f3','.pcard','.dcard','.casecard','.about-co .txt','.co-stats',
     '.cta-sec h2','.cta-sec .btn-primary','.foot .rel-list a','.foot .co'];
   var btn=document.createElement('button');
   btn.id='rev-toggle'; btn.type='button'; btn.textContent='① レビュー番号: OFF';

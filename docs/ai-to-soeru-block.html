@@ -1,0 +1,38 @@
+<!-- ============================================================
+  /ai/ ページ用｜SOERU誘導ブロック（Elementorの「HTML」ウィジェットに丸ごと貼り付け）
+  ・記事の上部や末尾に置く想定
+  ・リンクは ?src=ai 付き＝Notionリードに「ai記事 → SOERU」で記録されます
+  ・クラス名を soeru-cta- で固定＝Elementorのテーマと干渉しません
+============================================================ -->
+<div class="soeru-cta-wrap">
+  <style>
+    .soeru-cta-wrap{--sc-ink:#111726;--sc-text:#3C475C;--sc-blue:#2563EB;--sc-cyan:#22B8E6;
+      font-family:'Noto Sans JP','Hiragino Sans',sans-serif;max-width:760px;margin:28px auto;box-sizing:border-box}
+    .soeru-cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#FBFDFF,#EAF1FB);
+      border:1px solid #DCE6F7;border-radius:18px;padding:30px 32px;box-shadow:0 14px 40px rgba(37,99,235,.10)}
+    .soeru-cta *{box-sizing:border-box}
+    .soeru-cta .bar{position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,var(--sc-cyan),var(--sc-blue))}
+    .soeru-cta .ey{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--sc-blue);
+      background:#fff;border:1px solid #cfe0ff;border-radius:999px;padding:5px 13px;margin-bottom:12px}
+    .soeru-cta h3{font-size:22px;font-weight:900;color:var(--sc-ink);line-height:1.5;margin:0 0 8px}
+    .soeru-cta h3 b{background:linear-gradient(100deg,var(--sc-cyan),var(--sc-blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .soeru-cta p{font-size:14px;color:var(--sc-text);line-height:1.85;margin:0 0 18px}
+    .soeru-cta .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .soeru-cta a.btn{display:inline-block;background:linear-gradient(100deg,var(--sc-cyan),var(--sc-blue));
+      color:#fff !important;font-weight:800;font-size:15px;text-decoration:none;padding:14px 28px;border-radius:999px;
+      box-shadow:0 12px 26px rgba(37,99,235,.28);transition:transform .2s}
+    .soeru-cta a.btn:hover{transform:translateY(-2px)}
+    .soeru-cta .meta{font-size:12.5px;color:#7A879C;font-weight:600}
+    @media(max-width:560px){.soeru-cta{padding:24px 22px}.soeru-cta h3{font-size:19px}}
+  </style>
+  <div class="soeru-cta">
+    <div class="bar"></div>
+    <span class="ey">BALENCER公式サービス</span>
+    <h3>その「AI活用」、<b>伴走する顧問</b>がいます。</h3>
+    <p>記事で学んだ次の一歩へ。御社の業務に入り込み、毎月「使えるもの」（AIの頼み方・自動化・専用ツール）を届けるAI顧問サービス「SOERU（ソエル）」。AIに詳しくなくても大丈夫です。</p>
+    <div class="row">
+      <a class="btn" href="https://balencer.jp/soeru/?src=ai" target="_blank" rel="noopener">AI顧問サービス SOERU を見る →</a>
+      <span class="meta">初期費用0円 ／ 最低3ヶ月から</span>
+    </div>
+  </div>
+</div>

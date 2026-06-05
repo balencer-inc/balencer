@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ミタテ｜BALENCER — AI経営分析システムで、見える経営へ</title>
+<meta name="description" content="会計・売上データをアップロードするだけで、AIが財務分析・経営レポート・将来予測まで自動生成。中小企業の経営判断を加速するAI経営分析システム「ミタテ」（by BALENCER）。デジタル化・AI導入補助金2026 の活用をご相談いただけます。">
+<meta name="keywords" content="AI経営分析,経営ダッシュボード,財務分析AI,KPI可視化,経営レポート自動生成,中小企業DX,AI導入補助金">
+<meta property="og:title" content="ミタテ｜BALENCER — AI経営分析システム">
+<meta property="og:description" content="数字をAIで。会計・売上データをAIが自動分析し、中小企業の経営判断を加速するAI経営分析システム「ミタテ」。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://balencer.jp/keiei/">
+<link rel="canonical" href="https://balencer.jp/keiei/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Emerald × White × 蛍光イエロー */
+  --emerald:#0E7A5F; --emerald-deep:#0A5C47; --emerald-dark:#063A2D;
+  --emerald-light:#13A37E; --emerald-tint:#E6F4EF; --emerald-tint2:#F2F9F6;
+  --emerald-glow:rgba(14,122,95,.22);
+  --accent:#E6FF2F; /* 蛍光イエロー(差し色・1-2箇所) */
+  --ink:#14211B; --ink-2:#2C3A33; --muted:#6B7B73; --soft:#9DA8A1;
+  --white:#FFFFFF; --cream:#F6FAF8; --line:#E1EBE6; --line-soft:#EDF3F0;
+  --f-en:'Inter',system-ui,sans-serif; --f-ja:'Noto Sans JP','Hiragino Sans',sans-serif; --f-script:'Caveat',cursive;
+  --r-md:12px; --r-lg:18px; --r-xl:26px; --r-pill:999px;
+  --sh-sm:0 2px 8px rgba(14,33,27,.04); --sh-md:0 10px 28px rgba(14,33,27,.07); --sh-lg:0 20px 48px rgba(14,33,27,.10);
+  --ease:cubic-bezier(.25,.1,.25,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-ja);background:var(--white);color:var(--ink-2);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased;letter-spacing:.01em;font-feature-settings:"palt"}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.en{font-family:var(--f-en)}
+.script{font-family:var(--f-script);color:var(--emerald)}
+.eyebrow{font-family:var(--f-script);font-size:27px;color:var(--emerald);line-height:1;margin-bottom:8px;display:inline-block}
+a{color:inherit;text-decoration:none}
+
+/* ===== Header ===== */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-img{height:30px;width:auto;display:block}
+.logo-sub{font-size:10px;line-height:1.35;color:var(--muted);font-weight:600;letter-spacing:.02em}
+.hdr .cta{background:var(--emerald);color:#fff;font-size:13px;font-weight:700;padding:10px 20px;border-radius:var(--r-pill);transition:.2s}
+.hdr .cta:hover{background:var(--emerald-deep)}
+
+/* ===== Hero (背景イラスト・コピーは左上で人物回避) ===== */
+.hero{position:relative;overflow:hidden;background:var(--emerald-deep)}
+.hero .bg{position:absolute;inset:0;z-index:0;background-image:url('img/hero-pc.jpg');background-size:cover;background-position:center right}
+/* 左から右へ抜ける緑グラデで左側のコピーの可読性を確保（人物は右側なので守られる） */
+.hero .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(95deg,rgba(6,58,45,.92) 0%,rgba(10,92,71,.78) 30%,rgba(10,92,71,.18) 56%,rgba(10,92,71,0) 72%)}
+.hero .wrap{position:relative;z-index:2;padding:96px 28px 104px}
+.hero .inner{max-width:560px}
+.hero .eyebrow{color:var(--accent)}
+.hero h1{font-size:clamp(36px,5.6vw,62px);font-weight:900;line-height:1.16;letter-spacing:-.01em;margin:6px 0 22px;color:#fff}
+.hero p.lead{font-size:clamp(15px,1.7vw,19px);color:rgba(255,255,255,.92);max-width:520px;line-height:1.9}
+.hero .btns{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:var(--emerald-dark);font-weight:800;font-size:15px;padding:15px 30px;border-radius:var(--r-pill);transition:.2s;box-shadow:0 8px 24px rgba(230,255,47,.25)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.4);color:#fff;font-weight:700;font-size:15px;padding:15px 28px;border-radius:var(--r-pill);transition:.2s}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+/* badges: 他LPの横pill並びを避け、縦スタック＋左縦ライン＋蛍光ドットの差別化レイアウト */
+.hero .badges{margin-top:36px;display:flex;flex-direction:column;gap:0;border-left:2px solid rgba(230,255,47,.55);padding-left:18px;max-width:380px}
+.hero .badges span{display:flex;align-items:center;gap:11px;font-size:13px;font-weight:600;color:rgba(255,255,255,.92);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero .badges span:last-child{border-bottom:none}
+.hero .badges span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 0 4px rgba(230,255,47,.16)}
+.hero .badges b{color:#fff;font-weight:800}
+
+/* mock window in hero */
+.hero-mock{margin-top:54px;background:#fff;border-radius:var(--r-xl);box-shadow:var(--sh-lg);overflow:hidden;border:1px solid rgba(255,255,255,.3)}
+.hero-mock .bar{height:38px;background:var(--cream);display:flex;align-items:center;gap:7px;padding:0 16px;border-bottom:1px solid var(--line)}
+.hero-mock .bar i{width:11px;height:11px;border-radius:50%;background:var(--line);display:block}
+.hero-mock .bar .ttl{margin-left:10px;font-size:11px;color:var(--muted);font-weight:600}
+.hero-mock .body{padding:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mk-kpi{background:var(--emerald-tint2);border:1px solid var(--line);border-radius:12px;padding:13px}
+.mk-kpi .l{font-size:10px;color:var(--muted);font-weight:600}
+.mk-kpi .v{font-size:21px;font-weight:900;color:var(--ink);font-family:var(--f-en);margin-top:5px}
+.mk-kpi .d{font-size:10px;font-weight:700;color:var(--emerald);margin-top:3px}
+.mk-kpi.alt .d{color:#C0563E}
+
+/* ===== Section base ===== */
+section.s{padding:84px 0}
+.s-head{text-align:center;max-width:680px;margin:0 auto 52px}
+.s-head h2{font-size:clamp(25px,3.4vw,36px);font-weight:900;line-height:1.35;letter-spacing:-.01em}
+.s-head p{color:var(--muted);font-size:15px;margin-top:14px}
+.s.tint{background:var(--cream)}
+
+/* problems */
+.prob-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prob{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 20px;box-shadow:var(--sh-sm)}
+.prob .ic{width:44px;height:44px;border-radius:12px;background:var(--emerald-tint);color:var(--emerald);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.prob .ic svg{width:22px;height:22px;stroke-width:2}
+.prob h3{font-size:15px;font-weight:800;line-height:1.5}
+.prob p{font-size:13px;color:var(--muted);margin-top:7px}
+
+/* features */
+.feat{display:flex;flex-direction:column;gap:24px}
+.feat-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.feat-row:nth-child(even){direction:rtl}
+.feat-row:nth-child(even)>*{direction:ltr}
+.feat-txt .tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:var(--emerald);background:var(--emerald-tint);padding:6px 13px;border-radius:var(--r-pill);margin-bottom:14px}
+.feat-txt .tag.ai{background:var(--ink);color:var(--accent)}
+.feat-txt h3{font-size:23px;font-weight:900;line-height:1.4;margin-bottom:12px}
+.feat-txt p{font-size:14.5px;color:var(--ink-2);line-height:1.9}
+.feat-txt ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.feat-txt li{font-size:13.5px;display:flex;gap:9px;align-items:flex-start;color:var(--ink-2)}
+.feat-txt li::before{content:"✓";color:var(--emerald);font-weight:900;flex:none}
+.feat-vis{background:linear-gradient(150deg,var(--emerald-tint2),var(--emerald-tint));border:1px solid var(--line);border-radius:var(--r-xl);padding:26px;min-height:248px;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-sm)}
+.feat-vis svg{width:100%;height:auto;max-height:220px}
+
+/* flow before/after */
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center}
+.ba-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;box-shadow:var(--sh-sm)}
+.ba-card.before{opacity:.92}
+.ba-card.after{border:2px solid var(--emerald);box-shadow:var(--sh-md)}
+.ba-card .lbl{font-size:12px;font-weight:800;padding:5px 13px;border-radius:var(--r-pill);display:inline-block;margin-bottom:16px}
+.ba-card.before .lbl{background:var(--line);color:var(--muted)}
+.ba-card.after .lbl{background:var(--emerald);color:#fff}
+.ba-card ol{list-style:none;display:flex;flex-direction:column;gap:11px;counter-reset:s}
+.ba-card li{font-size:13.5px;display:flex;gap:11px;align-items:flex-start}
+.ba-card li::before{counter-increment:s;content:counter(s);width:22px;height:22px;border-radius:50%;background:var(--emerald-tint);color:var(--emerald);font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none;font-family:var(--f-en)}
+.ba-card.before li::before{background:var(--line-soft);color:var(--soft)}
+.ba-arrow{font-size:30px;color:var(--emerald)}
+.ba-note{font-size:12px;color:var(--muted);margin-top:16px;padding-top:13px;border-top:1px dashed var(--line)}
+.ba-card.after .ba-note{color:var(--emerald-deep);font-weight:700}
+
+/* pricing */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:30px 26px;display:flex;flex-direction:column;box-shadow:var(--sh-sm)}
+.pcard.feat-plan{border:2px solid var(--emerald);box-shadow:var(--sh-lg);position:relative}
+.pcard.feat-plan .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--emerald-dark);font-size:11px;font-weight:900;padding:5px 16px;border-radius:var(--r-pill);white-space:nowrap}
+.pcard .pname{font-size:15px;font-weight:800;color:var(--emerald)}
+.pcard .pprice{font-size:34px;font-weight:900;font-family:var(--f-en);margin:10px 0 2px;color:var(--ink)}
+.pcard .pprice small{font-size:14px;color:var(--muted);font-weight:700}
+.pcard .psub{font-size:12px;color:var(--muted);min-height:34px}
+.pcard ul{list-style:none;margin:18px 0;display:flex;flex-direction:column;gap:10px;flex:1}
+.pcard li{font-size:13px;display:flex;gap:9px;align-items:flex-start}
+.pcard li::before{content:"✓";color:var(--emerald);font-weight:900;flex:none}
+.pcard li.off{color:var(--soft)}
+.pcard li.off::before{content:"–";color:var(--soft)}
+.pcard .pbtn{text-align:center;font-weight:800;font-size:14px;padding:13px;border-radius:var(--r-pill);transition:.2s}
+.pcard .pbtn.solid{background:var(--emerald);color:#fff}
+.pcard .pbtn.solid:hover{background:var(--emerald-deep)}
+.pcard .pbtn.line{border:1.5px solid var(--line);color:var(--ink-2)}
+.subsidy{margin-top:26px;background:var(--ink);color:#fff;border-radius:var(--r-xl);padding:26px 30px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.subsidy .big{font-size:13px;color:#cdd6d1;flex:1;min-width:260px}
+.subsidy .big b{color:var(--accent);font-size:15px}
+.subsidy .amt{font-family:var(--f-en);font-weight:900;font-size:26px}
+.price-note{font-size:11.5px;color:var(--soft);text-align:center;margin-top:18px;line-height:1.8}
+
+/* CTA */
+.cta-sec{background:linear-gradient(150deg,var(--emerald-deep),var(--emerald));color:#fff;text-align:center}
+.cta-sec .wrap{padding:78px 28px}
+.cta-sec h2{font-size:clamp(26px,3.6vw,38px);font-weight:900;line-height:1.4}
+.cta-sec p{color:rgba(255,255,255,.9);margin:16px auto 32px;max-width:520px;font-size:15px}
+
+/* footer / company info (申請の販売実態証拠) */
+.foot{background:var(--ink);color:#cdd6d1;padding:50px 0 36px;font-size:13px}
+.foot .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot h4{color:#fff;font-weight:800;font-size:14px;margin-bottom:12px}
+.foot .co dl{display:grid;grid-template-columns:90px 1fr;gap:5px 12px;font-size:12.5px}
+.foot .co dt{color:var(--soft)}
+.foot .copy{padding-top:20px;font-size:11.5px;color:var(--soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media(max-width:860px){
+  .pc-br{display:none}
+  .hero .bg{background-image:url('img/hero-sp.jpg');background-position:center top}
+  /* SPは人物が全体に散るので、上→下の濃い緑ベールでコピー(上部)の可読性を確保 */
+  .hero .veil{background:linear-gradient(180deg,rgba(6,58,45,.9) 0%,rgba(10,92,71,.6) 38%,rgba(10,92,71,.12) 68%,rgba(10,92,71,0) 100%)}
+  .hero .wrap{padding:64px 28px 80px}
+  .hero .inner{max-width:none}
+  .hero-mock{margin-top:40px}
+  .hero-mock .body{grid-template-columns:repeat(2,1fr)}
+  .prob-grid{grid-template-columns:1fr 1fr}
+  .feat-row,.feat-row:nth-child(even){direction:ltr;grid-template-columns:1fr}
+  .ba{grid-template-columns:1fr}.ba-arrow{transform:rotate(90deg);margin:0 auto}
+  .price-grid{grid-template-columns:1fr}
+  .foot .grid{grid-template-columns:1fr}
+  .lf-grid{grid-template-columns:1fr}
+}
+
+/* 埋め込みフォーム */
+.lead-form{max-width:680px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:30px;box-shadow:var(--sh-lg);text-align:left}
+.lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.lf-field{display:flex;flex-direction:column;gap:6px}
+.lf-field.lf-full{grid-column:1/-1}
+.lf-field>span{font-size:13px;font-weight:700;color:var(--ink)}
+.lf-field>span i{font-style:normal;font-size:10px;font-weight:800;color:#fff;background:var(--emerald);border-radius:4px;padding:1px 6px;margin-left:6px}
+.lf-field input,.lf-field select,.lf-field textarea{font:inherit;font-size:14px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;width:100%}
+.lf-field input:focus,.lf-field select:focus,.lf-field textarea:focus{outline:none;border-color:var(--emerald);box-shadow:0 0 0 3px var(--emerald-tint)}
+.lf-field textarea{resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.lf-submit{display:block;width:100%;margin-top:18px;border:none;cursor:pointer}
+.lf-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+.lf-done{text-align:center;padding:14px 0}
+.lf-done .ic{width:52px;height:52px;border-radius:50%;background:var(--emerald-tint);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;color:var(--emerald)}
+.lf-done h3{font-size:19px;font-weight:900;color:var(--ink);margin-bottom:6px}
+.lf-done p{font-size:14px;color:var(--ink-2)}
+
+/* 関連サービス（フッター・相互リンク） */
+.foot .related{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot .related h4{margin-bottom:12px}
+.foot .rel-list{display:flex;flex-wrap:wrap;gap:10px}
+.foot .rel-list a{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:11px 15px;min-width:185px;color:#fff;transition:.2s;display:flex;flex-direction:column;gap:2px}
+.foot .rel-list a:hover{border-color:var(--accent);background:rgba(255,255,255,.1)}
+.foot .rel-list .rt{font-weight:800;font-size:13px}
+.foot .rel-list .rt .ar{color:var(--accent);margin-left:5px;font-size:11px}
+.foot .rel-list .rs{color:var(--soft);font-size:11px}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="https://balencer.jp/" target="_blank" rel="noopener" title="BALENCER公式サイト">
+      <img src="img/mitate-logo-green.png" alt="ミタテ by BALENCER" class="logo-img">
+      <small class="logo-sub">AI経営分析システム<br>by BALENCER</small>
+    </a>
+    <a class="cta" href="#contact">無料で相談する</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="bg"></div>
+  <div class="veil"></div>
+  <div class="wrap">
+    <div class="inner">
+      <span class="eyebrow">for data-driven management</span>
+      <h1>数字をAIで。</h1>
+      <p class="lead">会計・売上データをアップロードするだけ。AIが財務分析・月次レポート・将来予測まで自動で仕上げ、社長の経営判断を加速します。「数字が見えるのは月末だけ」を、今日で終わりにする。</p>
+      <div class="btns">
+        <a class="btn-primary" href="#pricing">料金を見る</a>
+        <a class="btn-ghost" href="#features">機能を見る</a>
+      </div>
+      <div class="badges">
+        <span><b>生成AI搭載</b>（Claude）で、数字を言葉に</span>
+        <span>会計データを<b>アップするだけ</b>で自動分析</span>
+        <span><b>AI導入補助金2026</b> の活用をご相談</span>
+      </div>
+    </div>
+
+    <div class="hero-mock">
+      <div class="bar"><i></i><i></i><i></i><span class="ttl">ミタテ — 経営分析</span></div>
+      <div class="body">
+        <div class="mk-kpi"><div class="l">月次売上</div><div class="v">¥48.2M</div><div class="d">▲ 12.4% 前年比</div></div>
+        <div class="mk-kpi"><div class="l">営業利益</div><div class="v">¥7.9M</div><div class="d">▲ 8.1% 前年比</div></div>
+        <div class="mk-kpi"><div class="l">粗利率</div><div class="v">34.6%</div><div class="d">▲ 1.2pt 前月比</div></div>
+        <div class="mk-kpi alt"><div class="l">資金残高</div><div class="v">¥31.5M</div><div class="d">▼ 3.0% 前月比</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problems -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow">issues</span>
+      <h2>こんな「経営の見えなさ」、ありませんか？</h2>
+      <p>多くの中小企業で、経営数字は「月末に、手作業で、担当者しか分からない」状態のまま止まっています。</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>数字が見えるのは月末だけ</h3>
+        <p>試算表が出るのが翌月。打ち手が常に後手に回る。</p>
+      </div>
+      <div class="prob">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 17H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-4"/><path d="M9 13l3 3 3-3"/></svg></div>
+        <h3>レポート作成に丸1日</h3>
+        <p>Excel転記とグラフ作成に追われ、肝心の分析に時間が割けない。</p>
+      </div>
+      <div class="prob">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <h3>分析が担当者に依存</h3>
+        <p>その人が辞めたら経営分析が止まる。属人化のリスク。</p>
+      </div>
+      <div class="prob">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+        <h3>部門別・将来が読めない</h3>
+        <p>どの事業が稼ぎ頭か、資金は3ヶ月後どうなるかが見えない。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="s tint" id="features">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow">features</span>
+      <h2>アップロードするだけ。<br class="pc-br">あとはAIが、経営を読み解く。</h2>
+      <p>会計・売上データを入れるだけで、分析・レポート・予測まで自動。<br class="pc-br">社長は「結果を見て、決める」に集中できます。</p>
+    </div>
+    <div class="feat">
+
+      <div class="feat-row">
+        <div class="feat-txt">
+          <span class="tag ai">🤖 生成AI</span>
+          <h3>財務データAI分析</h3>
+          <p>試算表・PL・BSを取り込むと、AIが収益性・安全性・成長性・効率性の4軸で自動評価。専門用語ではなく「どこが良くて、どこが危ないか」を言葉で説明します。</p>
+          <ul><li>CSV / Excel / PDF を一括取込</li><li>4軸スコア＋AIコメントを自動生成</li><li>勘定科目の自動マッピング</li></ul>
+        </div>
+        <div class="feat-vis">
+          <svg viewBox="0 0 320 200" fill="none">
+            <rect x="20" y="20" width="280" height="160" rx="12" fill="#fff" stroke="#E1EBE6"/>
+            <circle cx="90" cy="100" r="50" fill="none" stroke="#E6F4EF" stroke-width="16"/>
+            <circle cx="90" cy="100" r="50" fill="none" stroke="#0E7A5F" stroke-width="16" stroke-dasharray="235 314" stroke-linecap="round" transform="rotate(-90 90 100)"/>
+            <text x="90" y="106" text-anchor="middle" font-size="22" font-weight="800" fill="#14211B" font-family="Inter">74</text>
+            <rect x="165" y="60" width="115" height="13" rx="6" fill="#E6F4EF"/><rect x="165" y="60" width="92" height="13" rx="6" fill="#0E7A5F"/>
+            <rect x="165" y="90" width="115" height="13" rx="6" fill="#E6F4EF"/><rect x="165" y="90" width="70" height="13" rx="6" fill="#13A37E"/>
+            <rect x="165" y="120" width="115" height="13" rx="6" fill="#E6F4EF"/><rect x="165" y="120" width="103" height="13" rx="6" fill="#0E7A5F"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="feat-row">
+        <div class="feat-txt">
+          <span class="tag">📊 リアルタイム</span>
+          <h3>経営KPIダッシュボード</h3>
+          <p>売上・営業利益・粗利率・キャッシュフロー・自己資本比率などの主要指標を、前年比・前月比つきでリアルタイム可視化。経営会議の資料は、もう作る必要がありません。</p>
+          <ul><li>主要KPIを1画面に集約</li><li>前年比・前月比をリアルタイム更新</li><li>そのまま経営会議に提出可能</li></ul>
+        </div>
+        <div class="feat-vis">
+          <svg viewBox="0 0 320 200" fill="none">
+            <rect x="20" y="20" width="280" height="160" rx="12" fill="#fff" stroke="#E1EBE6"/>
+            <line x1="40" y1="150" x2="280" y2="150" stroke="#E1EBE6"/>
+            <rect x="55" y="110" width="26" height="40" rx="4" fill="#13A37E"/>
+            <rect x="100" y="92" width="26" height="58" rx="4" fill="#0E7A5F"/>
+            <rect x="145" y="100" width="26" height="50" rx="4" fill="#13A37E"/>
+            <rect x="190" y="74" width="26" height="76" rx="4" fill="#0E7A5F"/>
+            <rect x="235" y="56" width="26" height="94" rx="4" fill="#0E7A5F"/>
+            <polyline points="68,118 113,100 158,106 203,82 248,64" fill="none" stroke="#E6FF2F" stroke-width="3"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="feat-row">
+        <div class="feat-txt">
+          <span class="tag ai">🤖 生成AI</span>
+          <h3>月次経営レポート自動生成</h3>
+          <p>毎月の財務データから、AIが「良い点・懸念点・改善提案」を構造化したレポートを自動作成。PDFやNotionにそのまま出力できます。</p>
+          <ul><li>課題抽出と改善提案まで自動</li><li>PDF / Notion エクスポート対応</li><li>作成時間を最大95%削減</li></ul>
+        </div>
+        <div class="feat-vis">
+          <svg viewBox="0 0 320 200" fill="none">
+            <rect x="60" y="18" width="200" height="164" rx="10" fill="#fff" stroke="#E1EBE6"/>
+            <rect x="80" y="40" width="90" height="12" rx="6" fill="#0E7A5F"/>
+            <rect x="80" y="64" width="160" height="8" rx="4" fill="#E6F4EF"/>
+            <rect x="80" y="80" width="150" height="8" rx="4" fill="#E6F4EF"/>
+            <rect x="80" y="104" width="60" height="10" rx="5" fill="#13A37E"/>
+            <rect x="80" y="124" width="160" height="8" rx="4" fill="#E6F4EF"/>
+            <rect x="80" y="140" width="135" height="8" rx="4" fill="#E6F4EF"/>
+            <circle cx="232" cy="44" r="14" fill="#E6FF2F"/><text x="232" y="49" text-anchor="middle" font-size="14" font-weight="800" fill="#063A2D">AI</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="feat-row">
+        <div class="feat-txt">
+          <span class="tag ai">🤖 生成AI</span>
+          <h3>予実管理・将来予測 ／ 部門別セグメント分析</h3>
+          <p>予算と実績の乖離をAIが分析。さらに事業部ごとの収益分解（セグメント分析）と、3ヶ月先のキャッシュフロー予測まで。資金ショートを先回りで察知します。</p>
+          <ul><li>予実乖離をグラフ＋テキストで分析</li><li>部門別の売上・粗利・予算進捗を分解</li><li>3ヶ月先の資金繰りをAI予測</li></ul>
+        </div>
+        <div class="feat-vis">
+          <svg viewBox="0 0 320 200" fill="none">
+            <rect x="20" y="20" width="280" height="160" rx="12" fill="#fff" stroke="#E1EBE6"/>
+            <line x1="40" y1="110" x2="280" y2="110" stroke="#EDF3F0"/>
+            <polyline points="45,120 100,108 155,124 210,112" fill="none" stroke="#0E7A5F" stroke-width="3"/>
+            <polyline points="210,112 250,98 290,128" fill="none" stroke="#13A37E" stroke-width="3" stroke-dasharray="6 5"/>
+            <circle cx="45" cy="120" r="4" fill="#0E7A5F"/><circle cx="100" cy="108" r="4" fill="#0E7A5F"/><circle cx="155" cy="124" r="4" fill="#0E7A5F"/><circle cx="210" cy="112" r="4" fill="#0E7A5F"/>
+            <circle cx="250" cy="98" r="4" fill="#13A37E"/><circle cx="290" cy="128" r="4" fill="#13A37E"/>
+            <text x="250" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#6B7B73" font-family="Inter">AI予測</text>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Before / After -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow">before / after</span>
+      <h2>月次レポート、丸1日 → 約30分へ</h2>
+    </div>
+    <div class="ba">
+      <div class="ba-card before">
+        <span class="lbl">導入前</span>
+        <ol>
+          <li>会計ソフトからデータ出力</li>
+          <li>Excelに手動転記</li>
+          <li>グラフ・表を手作業で作成</li>
+          <li>経営指標を目視で分析</li>
+          <li>レポートを手作業で作成</li>
+        </ol>
+        <div class="ba-note">転記ミス・属人化・丸1日以上・部門別の深掘り不可</div>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-card after">
+        <span class="lbl">導入後</span>
+        <ol>
+          <li>会計・売上データを連携</li>
+          <li>ミタテに自動取込</li>
+          <li>AIが財務分析＋部門別分析</li>
+          <li>KPIをリアルタイム表示</li>
+          <li>レポート＋CF予測をAI生成</li>
+        </ol>
+        <div class="ba-note">転記不要・品質均一・作成時間95%削減・資金ショートの事前察知</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="s tint" id="pricing">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow">pricing</span>
+      <h2>料金プラン</h2>
+      <p>ミタテ本体は買取（売り切り）。導入支援・保守の厚みで、梅・竹・松の3プランからお選びいただけます。表示はすべて税抜です。</p>
+    </div>
+    <div class="price-grid">
+      <div class="pcard">
+        <div class="pname">梅 ｜ ミタテ単体</div>
+        <div class="pprice">¥150<small>万円（税抜・買取）</small></div>
+        <div class="psub">まず自社で使いこなしたい方へ</div>
+        <ul>
+          <li>ミタテ本体一式（買取・売り切り）</li>
+          <li>生成AI財務分析・経営KPI</li>
+          <li>月次経営レポート自動生成</li>
+          <li>部門別セグメント分析・CF予測</li>
+          <li>30ユーザーまで</li>
+          <li class="off">導入設定・データ移行の伴走</li>
+          <li class="off">月次保守・問合せ窓口</li>
+        </ul>
+        <a class="pbtn line" href="#contact">相談する</a>
+      </div>
+
+      <div class="pcard feat-plan">
+        <span class="ribbon">おすすめ</span>
+        <div class="pname">竹 ｜ 導入サポート付き</div>
+        <div class="pprice">¥150<small>万円＋導入支援</small></div>
+        <div class="psub">確実に立ち上げたい方へ（目安 〜約220万円）</div>
+        <ul>
+          <li>梅の全内容（ミタテ本体・買取）</li>
+          <li><b>導入設定・データ移行</b>を伴走</li>
+          <li><b>AI初期学習・プロンプト設定</b></li>
+          <li>操作研修・マニュアル作成</li>
+          <li>導入支援は内容に応じて 0〜95万円</li>
+        </ul>
+        <a class="pbtn solid" href="#contact">このプランを相談する</a>
+      </div>
+
+      <div class="pcard">
+        <div class="pname">松 ｜ フル伴走</div>
+        <div class="pprice">¥150<small>万円＋支援＋保守</small></div>
+        <div class="psub">運用まで任せたい方へ（目安 〜約295万円）</div>
+        <ul>
+          <li>竹の全内容</li>
+          <li><b>月次保守・問合せ窓口</b>（〜50万円）</li>
+          <li>動作チェック・APIバージョン対応</li>
+          <li>軽微なカスタマイズ対応</li>
+          <li>導入支援＋保守をフルで</li>
+        </ul>
+        <a class="pbtn line" href="#contact">構成を相談する</a>
+      </div>
+    </div>
+
+    <div class="subsidy">
+      <div class="big"><b>デジタル化・AI導入補助金2026 の活用をご相談いただけます。</b><br>ミタテ＋導入支援を組み合わせた場合、補助率1/2で最大 約147.5万円が補助対象となり得ます。実質負担を大きく抑えられます（ITツール登録・交付の採択は審査によります）。</div>
+      <div class="amt">最大 −147.5<span style="font-size:14px">万円</span></div>
+    </div>
+    <p class="price-note">表示価格はすべて税抜です。ミタテ本体は買取（売り切り・1回のお支払い／30ユーザーまで）150万円で、月額・年額の継続課金はありません。導入支援（カテゴリー6）・保守（カテゴリー7）は内容に応じて0〜上限額の範囲でお見積りします。<br>外部サービス（Notion・Google Workspace 等）の利用料、Claude API の実費はお客様のご契約・ご負担となります。</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--accent)">contact</span>
+    <h2>「見える経営」を、はじめましょう。</h2>
+    <p>無料ヒアリングで、御社の会計データに合わせた最適な構成と、補助金の活用可否をご案内します。1〜2営業日でご返信します。</p>
+
+    <form class="lead-form" id="leadForm" autocomplete="on">
+      <div class="lf-grid">
+        <label class="lf-field"><span>お名前<i>必須</i></span><input type="text" name="お名前" required></label>
+        <label class="lf-field"><span>会社名</span><input type="text" name="会社名"></label>
+        <label class="lf-field"><span>メールアドレス<i>必須</i></span><input type="email" name="メール" required placeholder="info@your-company.co.jp"></label>
+        <label class="lf-field"><span>電話番号</span><input type="tel" name="電話番号"></label>
+        <label class="lf-field"><span>気になるサービス</span>
+          <select name="気になるサービス">
+            <option>AI経営分析（ミタテ）</option>
+            <option>AI顧問（SOERU）</option>
+            <option>Notion業務基盤（ヒトツ）</option>
+            <option>補助金の活用</option>
+            <option>ブランド・組織・経営の相談</option>
+            <option>まだ決まっていない</option>
+          </select>
+        </label>
+        <label class="lf-field"><span>想定予算</span>
+          <select name="想定予算">
+            <option value="">選択してください</option>
+            <option>導入支援込みで〜220万円</option>
+            <option>フル伴走で〜295万円</option>
+            <option>補助金を使いたい</option>
+            <option>未定・相談したい</option>
+          </select>
+        </label>
+        <label class="lf-field lf-full"><span>現在の課題</span><textarea name="現在の課題" rows="3" placeholder="例：月次の数字が見えるのが遅く、打ち手が後手に回る"></textarea></label>
+        <label class="lf-field lf-full"><span>その他ご要望</span><textarea name="その他ご要望" rows="2"></textarea></label>
+      </div>
+      <input type="text" name="_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="source" id="srcField" value="ミタテ（AI経営分析）">
+      <button type="submit" class="btn-primary lf-submit">お問い合わせ</button>
+      <p class="lf-note" id="lfNote">いただいた内容はバレンサーで確認し、1〜2営業日でご返信します。</p>
+    </form>
+  </div>
+</section>
+
+<!-- Footer (company info = 販売実態の証拠) -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h4>ミタテ by BALENCER</h4>
+        <p style="max-width:440px">会計・売上データをAIが自動分析し、中小企業の経営判断を加速するAI経営分析システム。デジタル化・AI導入補助金2026 の活用をご相談いただけます。</p>
+      </div>
+      <div class="co">
+        <h4>提供元</h4>
+        <dl>
+          <dt>会社名</dt><dd>株式会社バレンサー</dd>
+          <dt>製品名</dt><dd>ミタテ（AI経営分析システム）</dd>
+          <dt>お問合せ</dt><dd>info@balencer.jp</dd>
+          <dt>サイト</dt><dd>balencer.jp</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="related">
+      <h4>バレンサーの他のサービス</h4>
+      <div class="rel-list">
+        <a href="https://balencer.jp/soeru/" target="_blank" rel="noopener"><span class="rt">SOERU<span class="ar">↗</span></span><span class="rs">毎月伴走するAI顧問サービス</span></a>
+        <a href="https://balencer.jp/notion/" target="_blank" rel="noopener"><span class="rt">ヒトツ<span class="ar">↗</span></span><span class="rs">Notionで会社の業務基盤をつくる</span></a>
+        <a href="https://balencer.jp/hojokin/" target="_blank" rel="noopener"><span class="rt">補助金でAI導入<span class="ar">↗</span></span><span class="rs">AI導入補助金の活用をチェック・相談</span></a>
+        <a href="https://balencer.jp/" target="_blank" rel="noopener"><span class="rt">BALENCER 公式<span class="ar">↗</span></span><span class="rs">経営・ブランド・組織の一気通貫伴走</span></a>
+      </div>
+    </div>
+
+    <div class="copy">
+      <span>© 2026 BALENCER Inc. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var sp=new URLSearchParams(location.search);
+  var SRC={hojokin:'補助金 → ミタテ',soeru:'SOERU → ミタテ',hitotsu:'ヒトツ → ミタテ',notion:'ヒトツ → ミタテ',balencer:'公式 → ミタテ'};
+  var key=(sp.get('src')||sp.get('from')||'').toLowerCase();
+  var sf=document.getElementById('srcField'); if(sf&&SRC[key]) sf.value=SRC[key];
+  var form=document.getElementById('leadForm'); if(!form) return;
+  var note=document.getElementById('lfNote');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.querySelector('[name="_hp"]').value) return;
+    var fd=new FormData(form),p={}; fd.forEach(function(v,k){if(k!=='_hp')p[k]=v;});
+    var btn=form.querySelector('.lf-submit'); btn.disabled=true; btn.textContent='送信中…';
+    fetch('/keiei-lead.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)})
+      .then(function(r){return r.json().catch(function(){return{};}).then(function(j){return{ok:r.ok,j:j};});})
+      .then(function(res){
+        if(res.ok&&res.j.ok){form.innerHTML='<div class="lf-done"><div class="ic">✓</div><h3>送信しました</h3><p>ありがとうございます。1〜2営業日でご返信します。</p></div>';}
+        else{btn.disabled=false;btn.textContent='お問い合わせ';note.style.color='#C0392B';note.textContent=(res.j&&res.j.error)?res.j.error:'送信に失敗しました。info@balencer.jp までご連絡ください。';}
+      })
+      .catch(function(){btn.disabled=false;btn.textContent='お問い合わせ';note.style.color='#C0392B';note.innerHTML='送信できませんでした。<a href="mailto:info@balencer.jp" style="color:var(--accent)">info@balencer.jp</a> までご連絡ください。';});
+  });
+})();
+</script>
+
+</body>
+</html>

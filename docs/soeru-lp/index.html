@@ -530,6 +530,95 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
   </div>
 </section>
 
+<!-- 天井を見せる：AI組織OS構築（SOERUの引き上げ） -->
+<section class="s aios" id="ai-os">
+  <style>
+    .aios{--ao-ink:#0E1422;--ao-blue:#2563EB;--ao-cyan:#22B8E6;--ao-line:rgba(255,255,255,.14);
+      background:var(--ao-ink);color:rgba(255,255,255,.86);position:relative;overflow:hidden;border-top:1px solid var(--ao-line)}
+    .aios::before{content:"";position:absolute;inset:0;
+      background:radial-gradient(680px 360px at 82% -10%,rgba(37,99,235,.34),transparent 60%),
+                 radial-gradient(520px 320px at 6% 120%,rgba(34,184,230,.18),transparent 60%)}
+    .aios>.wrap{position:relative;z-index:2}
+    .aios .s-head{max-width:760px}
+    .aios .s-head .kicker{color:var(--ao-cyan)}
+    .aios .s-head h2{color:#fff;font-size:clamp(26px,3.6vw,40px);line-height:1.4}
+    .aios .s-head h2 .gy{background:linear-gradient(100deg,var(--ao-cyan),#8fd4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .aios .s-head h2::after{display:none}
+    .aios .lead{color:rgba(255,255,255,.8);font-size:clamp(15px,1.7vw,17px);line-height:2;max-width:720px;margin:0 auto 8px;text-align:center}
+    .aios .diff{display:block;text-align:center;font-size:13.5px;color:var(--ao-cyan);font-weight:700;margin:14px auto 44px}
+    .ao-stair{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 auto 40px;max-width:900px}
+    .ao-step{background:rgba(255,255,255,.04);border:1px solid var(--ao-line);border-radius:18px;padding:24px 22px;position:relative}
+    .ao-step:last-child{background:linear-gradient(135deg,rgba(37,99,235,.22),rgba(34,184,230,.10));border-color:rgba(120,180,255,.4)}
+    .ao-step .n{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--ao-cyan);letter-spacing:.08em}
+    .ao-step h3{font-size:17px;font-weight:800;color:#fff;margin:10px 0 7px;line-height:1.5}
+    .ao-step p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.8}
+    .ao-arrow{text-align:center;color:rgba(255,255,255,.4);font-size:13px;margin:-30px 0 6px}
+    .ao-vals{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:980px;margin:0 auto 40px}
+    .ao-val{background:rgba(255,255,255,.03);border:1px solid var(--ao-line);border-radius:18px;padding:26px 24px}
+    .ao-val .vt{font-size:16px;font-weight:900;color:#fff;line-height:1.55;margin-bottom:9px}
+    .ao-val .vd{font-size:13px;color:rgba(255,255,255,.66);line-height:1.85}
+    .ao-val .vt em{font-style:normal;color:var(--ao-cyan)}
+    .ao-cta{text-align:center}
+    .ao-cta .price-note{color:rgba(255,255,255,.55);font-size:12.5px;margin:0 auto 20px;max-width:640px;line-height:1.85}
+    .ao-cta a.btn{display:inline-block;background:linear-gradient(100deg,var(--ao-cyan),var(--ao-blue));color:#fff;
+      font-weight:800;font-size:15px;text-decoration:none;padding:15px 34px;border-radius:999px;
+      box-shadow:0 14px 30px rgba(37,99,235,.36);transition:transform .2s}
+    .ao-cta a.btn:hover{transform:translateY(-2px)}
+    .ao-cta .meta{display:block;margin-top:13px;font-size:12px;color:rgba(255,255,255,.5);font-weight:600}
+    @media(max-width:840px){
+      .ao-stair{grid-template-columns:1fr}
+      .ao-arrow{margin:2px 0;transform:rotate(90deg)}
+      .ao-vals{grid-template-columns:1fr}
+    }
+  </style>
+  <div class="wrap">
+    <div class="s-head">
+      <span class="kicker">the next layer</span>
+      <h2>人を増やさない。<br class="pc-br"><span class="gy">AI社員</span>を増やす。</h2>
+    </div>
+    <p class="lead">SOERUで「AIが当たり前」になった会社の、その先の景色です。<br class="pc-br">
+      社長ひとり、担当ひとりが<b style="color:#fff">100人分の働き</b>を持てる——御社専用の<b style="color:#fff">AI組織OS</b>を構築します。</p>
+    <span class="diff">見せかけのAI組織ではなく、実際に動くものを。コードまで書いて構築できるのがバレンサーです。</span>
+    <div class="ao-stair">
+      <div class="ao-step">
+        <div class="n">STEP 01</div>
+        <h3>月額で、AI社員を1人雇う</h3>
+        <p>まずはSOERUで、御社の業務に合わせた専用AIをひとり。ここが入口です。</p>
+      </div>
+      <div class="ao-step">
+        <div class="n">STEP 02</div>
+        <h3>部門ごとに、AI社員を増やす</h3>
+        <p>営業・事務・分析・制作——業務ごとに専用AIを配置していきます。</p>
+      </div>
+      <div class="ao-step">
+        <div class="n">STEP 03</div>
+        <h3>会社が回る、ひとつのAI組織OSへ</h3>
+        <p>各AIが連動し、問い合わせから次の打ち手まで、社内が一気通貫で動く。</p>
+      </div>
+    </div>
+    <div class="ao-arrow">▾</div>
+    <div class="ao-vals">
+      <div class="ao-val">
+        <div class="vt">部門ごとに、<em>専用AI</em>を配置</div>
+        <div class="vd">見積・メール・議事録・レポート・制作まで、担当業務をAIが受け持ちます。</div>
+      </div>
+      <div class="ao-val">
+        <div class="vt">人がやるのは、<em>判断だけ</em>。</div>
+        <div class="vd">作業はAIへ。経営陣・担当者は、決めることに専念できます。</div>
+      </div>
+      <div class="ao-val">
+        <div class="vt">案件が増えても、<em>人もコストも増えない</em></div>
+        <div class="vd">増やすのは社員ではなく、資産とAI。少人数のまま事業を伸ばせます。</div>
+      </div>
+    </div>
+    <div class="ao-cta">
+      <p class="price-note">規模・業務量・連携範囲によって設計が変わるため、金額は御社に合わせて個別にお見積もりします。<br>「まず何ができるか」だけでも、構想段階からご相談ください。</p>
+      <a class="btn" href="#contact" data-aios="1">AI組織OS構築を相談する（無料）</a>
+      <span class="meta">SOERUご利用中・これからの方、どちらも歓迎です</span>
+    </div>
+  </div>
+</section>
+
 <!-- 代表プロフィール（伴走者） -->
 <section class="s alt">
   <div class="wrap">
@@ -609,6 +698,7 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
         <label class="lf-field"><span>気になるサービス</span>
           <select name="気になるサービス">
             <option>AI顧問（SOERU）</option>
+            <option>AI組織OS構築</option>
             <option>Notion業務基盤（ヒトツ）</option>
             <option>AI経営分析（ミタテ）</option>
             <option>補助金の活用</option>
@@ -736,6 +826,24 @@ body.review-on .rev-target{outline:1.5px dashed rgba(255,45,85,.4);outline-offse
         note.style.color='#C0392B';
         note.innerHTML='送信できませんでした。<a href="mailto:info@balencer.jp" style="color:var(--accent)">info@balencer.jp</a> までご連絡ください。';
       });
+  });
+})();
+</script>
+
+<!-- AI組織OS CTA → 問い合わせの「気になるサービス」を自動選択＆流入元を記録 -->
+<script>
+(function(){
+  var cta=document.querySelector('.aios a.btn[data-aios]');
+  if(!cta) return;
+  cta.addEventListener('click',function(){
+    var sel=document.querySelector('#leadForm select[name="気になるサービス"]');
+    if(sel){
+      for(var i=0;i<sel.options.length;i++){
+        if(sel.options[i].text==='AI組織OS構築'){ sel.selectedIndex=i; break; }
+      }
+    }
+    var src=document.getElementById('srcField');
+    if(src) src.value='SOERU内 → AI組織OS';
   });
 })();
 </script>

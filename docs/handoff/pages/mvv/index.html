@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MVV策定・浸透プログラム｜株式会社バレンサー</title>
+<meta name="description" content="貼り出した理念は、まだ文化ではない。MVVの言語化からデザイン、制度、日々の行動まで。文化として生きている状態をゴールにする、バレンサーの組織開発プログラムです。">
+<link rel="canonical" href="https://balencer.jp/mvv/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MVV策定・浸透プログラム｜株式会社バレンサー">
+<meta property="og:description" content="貼り出した理念は、まだ文化ではない。言語化から浸透まで、文化として生きている状態をゴールにする組織開発プログラム。">
+<meta property="og:url" content="https://balencer.jp/mvv/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"MVV策定・浸透プログラム","serviceType":"組織開発・インナーブランディング","url":"https://balencer.jp/mvv/","provider":{"@type":"Organization","name":"株式会社バレンサー","url":"https://balencer.jp/"},"areaServed":"JP","description":"MVVの言語化からCI/VIデザイン、評価制度への接続、対面での浸透まで一気通貫で行う組織開発プログラム。"}
+</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#FAFAF8; --surface:#FFFFFF; --ink:#141414; --sub:#5c5c58; --line:#E8E6E0; --line-d:#D6D4CC;
+    --accent:#E6FF2F;
+    --ease:cubic-bezier(.4,.4,0,1); --dur-1:.3s; --dur-2:.45s; --dur-3:.7s;
+    --serif:'Playfair Display','Noto Sans JP',serif;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans JP',sans-serif;font-weight:400;background:var(--bg);color:var(--ink);line-height:2.05;font-size:15px}
+  .en{font-family:'Inter',sans-serif}
+  .serif{font-family:var(--serif)}
+  .caveat{font-family:'Caveat',cursive}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 30px}
+  ::selection{background:var(--accent);color:var(--ink)}
+
+  /* ===== header ===== */
+  header{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 88%,transparent);
+         backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1100px}
+  .logo{display:flex;align-items:center;text-decoration:none}
+  .logo img{height:20px;width:auto;display:block}
+  .gnav{display:flex;gap:26px;align-items:center}
+  .gnav a{font-size:12.5px;letter-spacing:.08em;color:var(--sub);text-decoration:none;transition:color var(--dur-1) var(--ease)}
+  .gnav a:hover{color:var(--ink)}
+  .gnav a.cta{border:1px solid var(--ink);color:var(--ink);padding:9px 22px;border-radius:999px;
+              transition:all var(--dur-1) var(--ease)}
+  .gnav a.cta:hover{background:var(--ink);color:var(--bg)}
+  .burger{display:none;width:40px;height:40px;border:1px solid var(--line-d);border-radius:50%;background:var(--surface);
+          cursor:pointer;position:relative}
+  .burger span{position:absolute;left:12px;right:12px;height:1.5px;background:var(--ink);transition:all var(--dur-1) var(--ease)}
+  .burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:19.5px}.burger span:nth-child(3){top:24px}
+  body.menu-open .burger span:nth-child(1){top:19.5px;transform:rotate(45deg)}
+  body.menu-open .burger span:nth-child(2){opacity:0}
+  body.menu-open .burger span:nth-child(3){top:19.5px;transform:rotate(-45deg)}
+  .mnav{display:none}
+  @media(max-width:720px){
+    .gnav a:not(.cta){display:none}
+    .burger{display:block}
+    .mnav{display:block;position:fixed;top:64px;left:0;right:0;z-index:55;background:var(--bg);
+          border-bottom:1px solid var(--line);padding:10px 30px 26px;
+          opacity:0;transform:translateY(-8px);pointer-events:none;
+          transition:opacity var(--dur-1) var(--ease),transform var(--dur-1) var(--ease)}
+    body.menu-open .mnav{opacity:1;transform:none;pointer-events:auto}
+    .mnav a{display:block;padding:13px 0;border-bottom:1px dashed var(--line);color:var(--ink);
+            text-decoration:none;font-size:14px;letter-spacing:.04em}
+    .mnav a small{color:var(--sub);font-size:11px;margin-left:10px}
+  }
+
+  /* ===== hero ===== */
+  .hero{padding:128px 0 96px;position:relative;overflow:hidden}
+  .hero .kicker{display:flex;align-items:center;gap:12px;font-family:'Inter';font-size:11px;letter-spacing:.32em;
+                color:var(--sub);text-transform:uppercase}
+  .hero .kicker::before{content:"";width:36px;height:1px;background:var(--ink)}
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,5.8vw,62px);line-height:1.62;
+           letter-spacing:.01em;margin:36px 0 0}
+  .hero h1 .thin{display:block;font-size:.42em;font-family:'Noto Sans JP';font-weight:300;letter-spacing:.18em;
+                 color:var(--sub);margin-top:26px}
+  .hero .lead{max-width:580px;margin-top:34px;color:var(--sub);font-size:15px}
+  .hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:38px}
+  .hero .meta span{font-size:12px;letter-spacing:.06em;border:1px solid var(--line);background:var(--surface);
+                   padding:8px 18px;border-radius:999px;color:var(--sub)}
+  .hero .meta span b{color:var(--ink);font-weight:500}
+  /* 紙肌: ごく薄い斜行ライン */
+  .hero::after{content:"";position:absolute;right:-6%;top:10%;width:46%;height:120%;z-index:-1;opacity:.5;
+    background:repeating-linear-gradient(115deg, transparent 0 26px, var(--line) 26px 27px)}
+
+  /* ===== sections ===== */
+  section{padding:104px 0;border-top:1px solid var(--line)}
+  .kick{font-family:'Inter';font-size:10.5px;letter-spacing:.34em;color:var(--sub);text-transform:uppercase;
+        display:flex;align-items:center;gap:10px;margin-bottom:22px}
+  .kick i{width:6px;height:6px;border-radius:50%;background:var(--accent);outline:1px solid var(--line-d)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(25px,3.4vw,38px);line-height:1.65;margin-bottom:22px}
+  .sec-lead{max-width:640px;color:var(--sub);margin-bottom:48px}
+
+  /* ===== 死に方3つ ===== */
+  .deaths{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:var(--surface)}
+  .death{padding:42px 34px;position:relative}
+  .death + .death{border-left:1px solid var(--line)}
+  .death .dno{font-family:var(--serif);font-style:italic;font-size:42px;color:var(--line-d);line-height:1}
+  .death h3{font-size:17.5px;font-weight:700;margin:18px 0 10px}
+  .death p{font-size:13.5px;color:var(--sub)}
+  .death::after{content:"";position:absolute;left:34px;bottom:0;width:0;height:2px;background:var(--ink);
+                transition:width var(--dur-3) var(--ease)}
+  .death:hover::after{width:48px}
+  @media(max-width:820px){.deaths{grid-template-columns:1fr}.death + .death{border-left:none;border-top:1px solid var(--line)}}
+
+  /* ===== 順番(3連) ===== */
+  .order{display:flex;flex-direction:column;gap:2px;margin:8px 0 40px}
+  .order .row{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4.2vw,46px);line-height:1.7;
+              display:flex;align-items:baseline;gap:20px;opacity:0;transform:translateY(20px);
+              transition:opacity var(--dur-3) var(--ease),transform var(--dur-3) var(--ease)}
+  .order.vis .row{opacity:1;transform:none}
+  .order.vis .row:nth-child(2){transition-delay:.14s}.order.vis .row:nth-child(3){transition-delay:.28s}
+  .order .no{font-family:'Inter';font-size:11.5px;letter-spacing:.22em;color:var(--sub)}
+  .order .row em{font-style:normal;background:linear-gradient(transparent 64%, var(--accent) 64% 88%, transparent 88%)}
+  .alive{border:1px solid var(--line);background:var(--surface);padding:36px 38px;max-width:760px}
+  .alive .albl{font-family:'Inter';font-size:10.5px;letter-spacing:.3em;color:var(--sub);margin-bottom:16px}
+  .alive ul{list-style:none}
+  .alive li{padding:10px 0 10px 24px;position:relative;font-size:14.5px;border-bottom:1px dashed var(--line)}
+  .alive li:last-child{border-bottom:none}
+  .alive li::before{content:"";position:absolute;left:2px;top:21px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+  /* ===== 全体像 動く図 ===== */
+  .flow{background:var(--surface);border:1px solid var(--line);padding:52px 40px 30px}
+  .flow svg{width:100%;height:auto;display:block}
+  .flow .fline{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:2000;stroke-dashoffset:2000;
+               transition:stroke-dashoffset 2.4s var(--ease) .2s}
+  .flow.vis .fline{stroke-dashoffset:0}
+  .flow .fbox{fill:var(--bg);stroke:var(--ink);stroke-width:1.3;opacity:0;transform:translateY(8px);
+              transition:opacity var(--dur-2) var(--ease),transform var(--dur-2) var(--ease)}
+  .flow.vis .fbox{opacity:1;transform:none}
+  .flow.vis .fb1{transition-delay:.3s}.flow.vis .fb2{transition-delay:.8s}
+  .flow.vis .fb3a{transition-delay:1.3s}.flow.vis .fb3b{transition-delay:1.45s}
+  .flow.vis .fb4{transition-delay:1.9s}
+  .flow .fdot{fill:var(--accent);stroke:var(--ink);stroke-width:1;opacity:0;transition:opacity .4s var(--ease) 2.2s}
+  .flow.vis .fdot{opacity:1}
+  .flow text{font-family:'Noto Sans JP',sans-serif;font-size:13.5px;fill:var(--ink);font-weight:500}
+  .flow text.sm{font-size:10px;fill:var(--sub);font-family:'Inter';letter-spacing:.12em;font-weight:400}
+  .flow text.dur{font-size:10.5px;fill:var(--sub);font-weight:300}
+  .flow-cap{margin-top:16px;font-size:12.5px;color:var(--sub)}
+
+  /* ===== モジュール詳細 ===== */
+  .mods{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);background:var(--surface)}
+  .mod{border-bottom:1px solid var(--line)}
+  .mod:last-child{border-bottom:none}
+  .mod-head{display:flex;align-items:baseline;gap:22px;padding:30px 36px;cursor:pointer;user-select:none;
+            transition:background var(--dur-1) var(--ease)}
+  .mod-head:hover{background:var(--bg)}
+  .mod-head .mno{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--sub);min-width:42px}
+  .mod-head h3{font-size:19px;font-weight:700;flex:1}
+  .mod-head .mdur{font-size:12px;color:var(--sub);letter-spacing:.05em}
+  .mod-head .tgl{font-family:'Inter';font-size:18px;color:var(--sub);transition:transform var(--dur-2) var(--ease)}
+  .mod.open .tgl{transform:rotate(45deg)}
+  .mod-body{max-height:0;overflow:hidden;transition:max-height var(--dur-3) var(--ease)}
+  .mod.open .mod-body{max-height:2400px}
+  .mod-inner{padding:6px 36px 40px 100px}
+  @media(max-width:720px){.mod-inner{padding:6px 24px 34px 24px}}
+  .stepline{list-style:none;border-left:1px solid var(--line-d);margin:8px 0 24px}
+  .stepline li{padding:10px 0 10px 26px;position:relative;font-size:14px}
+  .stepline li::before{content:"";position:absolute;left:-4.5px;top:21px;width:8px;height:8px;border-radius:50%;
+                       background:var(--surface);border:1.5px solid var(--ink)}
+  .stepline li b{font-weight:700}
+  .stepline li span{color:var(--sub);font-size:13px;display:block;line-height:1.8}
+  .deliv{font-size:13px;color:var(--sub);border-top:1px dashed var(--line);padding-top:16px}
+  .deliv b{color:var(--ink);font-weight:500}
+
+  /* 定着タブ */
+  .tabs{display:flex;gap:0;margin-bottom:0;border:1px solid var(--line-d);width:fit-content;border-radius:999px;overflow:hidden}
+  .tab{font-size:13px;padding:9px 26px;cursor:pointer;background:transparent;border:none;color:var(--sub);
+       font-family:'Noto Sans JP';transition:all var(--dur-1) var(--ease)}
+  .tab.on{background:var(--ink);color:var(--bg)}
+  .tabpane{display:none;padding-top:22px}
+  .tabpane.on{display:block}
+
+  /* ===== AIの居場所 ===== */
+  .ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  @media(max-width:820px){.ai-grid{grid-template-columns:1fr}}
+  .ai-pts{list-style:none}
+  .ai-pts li{padding:16px 0 16px 30px;border-bottom:1px dashed var(--line);position:relative;font-size:14.5px}
+  .ai-pts li:last-child{border-bottom:none}
+  .ai-pts li::before{content:"";position:absolute;left:4px;top:27px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  .ai-pts li b{font-weight:700}
+  .ai-pts li span{display:block;color:var(--sub);font-size:13px;line-height:1.8}
+  /* 価値観マップ・ミニデモ */
+  .vmap{position:relative;height:340px;border:1px solid var(--line);background:var(--surface);overflow:hidden}
+  .vmap .w{position:absolute;font-size:12.5px;padding:5px 13px;border:1px solid var(--line-d);border-radius:999px;
+           background:var(--bg);white-space:nowrap;transition:left 1.4s var(--ease),top 1.4s var(--ease),
+           border-color 1.4s var(--ease)}
+  .vmap.org .w{border-color:var(--ink)}
+  .vmap .glabel{position:absolute;font-family:'Inter';font-size:10px;letter-spacing:.22em;color:var(--sub);
+                opacity:0;transition:opacity .8s var(--ease) 1s}
+  .vmap.org .glabel{opacity:1}
+  .vmap .replay{position:absolute;right:14px;bottom:12px;font-size:11px;letter-spacing:.08em;border:1px solid var(--line-d);
+                background:var(--surface);padding:6px 14px;border-radius:999px;cursor:pointer;color:var(--sub)}
+  .vmap-cap{font-size:12.5px;color:var(--sub);margin-top:12px}
+
+  /* ===== 実例 ===== */
+  .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:820px){.cases{grid-template-columns:1fr}}
+  .case{background:var(--surface);border:1px solid var(--line);padding:0 0 30px;display:flex;flex-direction:column;
+        transition:transform var(--dur-2) var(--ease)}
+  .case:hover{transform:translateY(-5px)}
+  .imgslot{aspect-ratio:16/10;border-bottom:1px solid var(--line);background:
+           repeating-linear-gradient(45deg, var(--bg) 0 14px, #F3F2EE 14px 28px);
+           display:flex;align-items:center;justify-content:center}
+  .imgslot span{font-family:'Inter';font-size:9.5px;letter-spacing:.24em;color:var(--sub);border:1px dashed var(--line-d);
+                padding:6px 14px}
+  .case .cbody{padding:26px 28px 0}
+  .case .ind{font-family:'Inter';font-size:10.5px;letter-spacing:.24em;color:var(--sub);text-transform:uppercase}
+  .case h3{font-size:16.5px;font-weight:700;margin:12px 0 10px;line-height:1.8}
+  .case p{font-size:13px;color:var(--sub)}
+  .case .fact{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--sub)}
+  .case .fact b{font-family:'Inter';color:var(--ink);font-size:15px;font-weight:600}
+  .case-note{margin-top:30px;font-size:13.5px;color:var(--sub);max-width:640px}
+  .case-note b{color:var(--ink);font-weight:700}
+
+  /* ===== 体制 ===== */
+  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:820px){.team{grid-template-columns:repeat(2,1fr)}}
+  .tcard{border:1px solid var(--line);background:var(--surface);padding:28px 24px;text-align:left}
+  .tcard .ic{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-d);display:flex;align-items:center;
+             justify-content:center;margin-bottom:16px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--sub)}
+  .tcard b{display:block;font-size:14.5px;margin-bottom:6px}
+  .tcard span{font-size:12px;color:var(--sub);line-height:1.8;display:block}
+  .team-note{margin-top:26px;font-size:13.5px;color:var(--sub)}
+
+  /* ===== 料金 ===== */
+  .num{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:.02em}
+  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:var(--surface)}
+  .pr{padding:38px 32px}
+  .pr + .pr{border-left:1px solid var(--line)}
+  .pr .plbl{font-family:'Inter';font-size:10.5px;letter-spacing:.28em;color:var(--sub);text-transform:uppercase}
+  .pr h3{font-size:16.5px;font-weight:700;margin:14px 0 8px}
+  .pr p{font-size:13px;color:var(--sub)}
+  .pr .entry{font-family:var(--serif);font-style:italic;font-size:30px;margin:6px 0 2px}
+  .pr .entry small{font-family:'Noto Sans JP';font-style:normal;font-size:12px;color:var(--sub);margin-left:6px}
+  .price-phil{margin-top:26px;font-size:13.5px;color:var(--sub);max-width:680px}
+  @media(max-width:820px){.prices{grid-template-columns:1fr}.pr + .pr{border-left:none;border-top:1px solid var(--line)}}
+
+  /* ===== この先 ===== */
+  .next{display:flex;gap:0;border:1px solid var(--line);background:var(--surface);flex-wrap:wrap}
+  .nx{flex:1;min-width:220px;padding:32px 30px}
+  .nx + .nx{border-left:1px solid var(--line)}
+  .nx .nlbl{font-family:'Inter';font-size:10px;letter-spacing:.28em;color:var(--sub)}
+  .nx b{display:block;font-size:16px;margin:10px 0 6px}
+  .nx span{font-size:12.5px;color:var(--sub);line-height:1.8;display:block}
+  @media(max-width:760px){.nx + .nx{border-left:none;border-top:1px solid var(--line)}}
+
+  /* ===== CTA ===== */
+  .cta{padding:120px 0;text-align:center;border-top:1px solid var(--line)}
+  .cta h2{font-size:clamp(28px,4vw,44px)}
+  .cta p{color:var(--sub);max-width:520px;margin:18px auto 40px}
+  .btn{display:inline-block;font-size:14px;letter-spacing:.1em;border:1px solid var(--ink);color:var(--ink);
+       text-decoration:none;padding:16px 52px;border-radius:999px;transition:all var(--dur-1) var(--ease);position:relative}
+  .btn:hover{background:var(--ink);color:var(--bg)}
+  .cta .caveat{display:block;font-size:26px;margin-top:48px;color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);padding:64px 0 56px;color:var(--sub);font-size:13px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
+  .fcol img{height:18px;width:auto;display:block;margin-bottom:16px}
+  .fcol .fdesc{font-size:12.5px;line-height:2;max-width:300px}
+  .fcol .ftag{font-family:'Caveat',cursive;font-size:20px;color:var(--ink);margin-top:14px;display:block}
+  .fcol h4{font-family:'Inter';font-size:10px;letter-spacing:.28em;color:var(--sub);font-weight:500;
+           text-transform:uppercase;margin-bottom:14px}
+  .fcol ul{list-style:none}
+  .fcol li{padding:5px 0}
+  .fcol a{color:var(--sub);text-decoration:none;font-size:13px;transition:color var(--dur-1) var(--ease)}
+  .fcol a:hover{color:var(--ink)}
+  .fbtm{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;
+        flex-wrap:wrap;gap:8px;font-size:11.5px}
+  @media(max-width:760px){.fgrid{grid-template-columns:1fr;gap:30px}}
+
+  /* ===== mobile tuning ===== */
+  @media(max-width:720px){
+    section{padding:60px 0}
+    .hero{padding:84px 0 60px}
+    .hero .meta{margin-top:28px}
+    .death{padding:26px 24px}
+    .flow{padding:24px 16px 20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .flow svg{min-width:740px}
+    .pr{padding:26px 24px}
+    .tcard{padding:22px 18px}
+    .cta{padding:76px 0}
+    .sec-lead{margin-bottom:32px}
+    .mod-head{padding:22px 20px;gap:14px}
+  }
+
+  .rv{opacity:0;transform:translateY(24px);transition:opacity var(--dur-3) var(--ease),transform var(--dur-3) var(--ease)}
+  .rv.vis{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="https://balencer.jp/"><img src="balencer-logo.png" alt="BALENCER"></a>
+    <nav class="gnav">
+      <a href="#flow">進め方</a>
+      <a href="#cases">実例</a>
+      <a href="#pricing">料金</a>
+      <a class="cta" href="https://balencer.jp/contact/">相談する</a>
+      <button class="burger" id="burger" type="button" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="モバイルメニュー">
+  <a href="#flow">進め方</a>
+  <a href="#cases">実例</a>
+  <a href="#pricing">料金</a>
+  <a href="https://balencer.jp/">公式サイト<small>balencer.jp</small></a>
+  <a href="https://balencer.jp/soeru/">SOERU<small>月額右腕プラン</small></a>
+  <a href="https://balencer.jp/contact/">相談する</a>
+</nav>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker en">Flag 01 — Organization &amp; MVV</div>
+    <h1>貼り出した理念は、<br>まだ文化ではない。
+      <span class="thin">MVV策定・浸透プログラム</span>
+    </h1>
+    <p class="lead">ミッション・ビジョン・バリューを言葉にし、デザインにし、制度に組み込み、日々の行動が変わるところまで。私たちは「作ること」ではなく、文化として生きている状態をゴールにしています。</p>
+    <div class="meta">
+      <span>期間 <b><span class="num">3〜18</span>ヶ月</b></span>
+      <span>体制 <b><span class="num">3</span>人＋AIのチーム</b></span>
+      <span>始め方 <b>策定だけでも可</b></span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="kick rv"><i></i>Problem</div>
+    <h2 class="rv">MVVが死ぬ瞬間を、<br>何度も見てきました。</h2>
+    <div class="deaths rv">
+      <div class="death">
+        <div class="dno">1</div>
+        <h3>作って、終わった</h3>
+        <p>発表会の熱はひと月で冷め、翌期には誰も口にしない。額装された言葉は、読まれない社内文書と同じです。</p>
+      </div>
+      <div class="death">
+        <div class="dno">2</div>
+        <h3>言葉が借り物</h3>
+        <p>どの会社にも貼れる立派な言葉は、誰の行動も変えません。御社の歴史と現場から出た言葉だけが効きます。</p>
+      </div>
+      <div class="death">
+        <div class="dno">3</div>
+        <h3>制度と無関係</h3>
+        <p>理念と評価が別の言葉で動いている会社では、社員は評価の言葉に従います。接続しなければ浸透しません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick rv"><i></i>Principle</div>
+    <h2 class="rv">順番が、すべて。</h2>
+    <div class="order">
+      <div class="row"><span class="no en">01</span><em>組織</em>を変える。</div>
+      <div class="row"><span class="no en">02</span>魅せ方を変える。</div>
+      <div class="row"><span class="no en">03</span>戦い方を変える。</div>
+    </div>
+    <p class="sec-lead rv">インナーが変わって、はじめてアウターが変わる。創業から変わらないバレンサーの原則です。代表は人材業界で12年、採用と組織風土改革に携わったのち、ブランディングへ領域を広げました。組織の内側から始める理由は、その経験にあります。</p>
+    <div class="alive rv">
+      <div class="albl en">DEFINITION — 文化として生きている状態</div>
+      <ul>
+        <li>社員が、自分の言葉でMVVを語れる</li>
+        <li>迷ったとき、判断の基準として実際に使われている</li>
+        <li>評価・採用・会議体が、その言葉で動いている</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <div class="kick rv"><i></i>Program</div>
+    <h2 class="rv">プログラムの全体像</h2>
+    <p class="sec-lead rv">3つのモジュールを、御社の状態に合わせて組みます。策定だけで始めることも、浸透や制度から入ることもできます。</p>
+    <div class="flow" id="flowfig">
+      <svg viewBox="0 0 920 330" xmlns="http://www.w3.org/2000/svg" aria-label="プログラム全体像の図">
+        <!-- 幹線 -->
+        <path class="fline" d="M60 165 H250 M250 165 H440 M440 165 L530 95 M440 165 L530 235 M530 95 H650 M530 235 H650 M650 95 L740 165 M650 235 L740 165 H880"/>
+        <!-- Module 1 -->
+        <g class="fbox fb1"><rect x="60" y="125" width="190" height="80" rx="2"/></g>
+        <text x="84" y="158">01 策定</text>
+        <text class="dur" x="84" y="182">言語化と確定｜3〜4ヶ月</text>
+        <!-- Module 2 -->
+        <g class="fbox fb2"><rect x="250" y="125" width="190" height="80" rx="2"/></g>
+        <text x="274" y="158">02 落とし込み</text>
+        <text class="dur" x="274" y="182">CI/VI・名刺・サイト｜任意</text>
+        <!-- 3a -->
+        <g class="fbox fb3a"><rect x="530" y="55" width="120" height="80" rx="2"/></g>
+        <text x="548" y="88">03a 浸透</text>
+        <text class="dur" x="548" y="112">文化施策型</text>
+        <!-- 3b -->
+        <g class="fbox fb3b"><rect x="530" y="195" width="120" height="80" rx="2"/></g>
+        <text x="548" y="228">03b 制度</text>
+        <text class="dur" x="548" y="252">OKR・評価接続</text>
+        <!-- 月額伴走 -->
+        <g class="fbox fb4"><rect x="740" y="125" width="140" height="80" rx="2"/></g>
+        <text x="760" y="158">月額伴走へ</text>
+        <text class="dur" x="760" y="182">文化を運用する</text>
+        <circle class="fdot" cx="880" cy="165" r="6"/>
+        <text class="sm" x="60" y="300">MODULE 01 → 02 → 03(A/B) → RETAINER｜単体は01から。組み合わせは自由</text>
+      </svg>
+      <p class="flow-cap">枝分かれは御社の状態で決めます。浸透が先か、制度が先か。両方やる会社もあります。</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;border-top:none">
+  <div class="wrap">
+    <div class="mods rv" id="mods">
+      <div class="mod open">
+        <div class="mod-head">
+          <span class="mno serif">01</span>
+          <h3>策定 — 御社の言葉を掘り出す</h3>
+          <span class="mdur">3〜4ヶ月</span>
+          <span class="tgl en">+</span>
+        </div>
+        <div class="mod-body"><div class="mod-inner">
+          <ul class="stepline">
+            <li><b>経営層ヒアリング</b><span>創業の経緯、原体験、譲れないもの。経営者おひとりずつ、それから合同で。</span></li>
+            <li><b>プロジェクトメンバー選定</b><span>社員の中から、浸透の核になる人を一緒に選びます。この選定が成否を分けます。</span></li>
+            <li><b>社員1on1・アンケート</b><span>現場の言葉を集めます。発言録はAIが価値観マップに整理します。</span></li>
+            <li><b>言語化セッション</b><span>経営層セッションと全体ワークショップを重ね、言葉を磨きます。</span></li>
+            <li><b>検証・確定</b><span>現場の言葉で語れるか、判断に使えるかを検証してから確定します。</span></li>
+          </ul>
+          <p class="deliv">納品物 — <b>MVV確定文書／策定プロセスブック（なぜこの言葉になったかの記録）／発表用スライド</b></p>
+        </div></div>
+      </div>
+      <div class="mod">
+        <div class="mod-head">
+          <span class="mno serif">02</span>
+          <h3>落とし込み — 言葉をかたちにする</h3>
+          <span class="mdur">3〜4ヶ月・任意</span>
+          <span class="tgl en">+</span>
+        </div>
+        <div class="mod-body"><div class="mod-inner">
+          <ul class="stepline">
+            <li><b>CI/VIデザイン</b><span>ロゴ、カラー、トーン。歴史の棚卸しから始め、案を2〜3に絞って決めます。</span></li>
+            <li><b>ツール展開</b><span>名刺、会社案内、クレドカード、Webサイトへの反映まで。</span></li>
+            <li><b>方針発表の設計</b><span>周年や期初など、社内に披露する場づくりまで設計します。</span></li>
+          </ul>
+          <p class="deliv">納品物 — <b>ブランドガイドライン一式／各種ツール</b>。既存CIを活かす場合は軽量版で対応します</p>
+        </div></div>
+      </div>
+      <div class="mod">
+        <div class="mod-head">
+          <span class="mno serif">03</span>
+          <h3>定着 — 文化と制度にする</h3>
+          <span class="mdur">3〜6ヶ月〜</span>
+          <span class="tgl en">+</span>
+        </div>
+        <div class="mod-body"><div class="mod-inner">
+          <div class="tabs" role="tablist">
+            <button class="tab on" data-p="pa" type="button" role="tab" aria-selected="true">A 浸透（文化施策型）</button>
+            <button class="tab" data-p="pb" type="button" role="tab" aria-selected="false">B 制度（仕組み型）</button>
+          </div>
+          <div class="tabpane on" id="pa">
+            <ul class="stepline">
+              <li><b>個人インタビュー → グループセッション → 全体共有</b><span>自己開示から始め、個人の視点を組織の視点へ引き上げる6ヶ月の設計。</span></li>
+              <li><b>継続施策</b><span>社内報、月刊記事、読書会、社員インタビュー、社内イベント。文化は反復でできます。</span></li>
+            </ul>
+          </div>
+          <div class="tabpane" id="pb">
+            <ul class="stepline">
+              <li><b>OKR・目標設定への組み込み</b><span>目標設定プロセスにMVVを接続し、評価制度にバリュー評価軸を追加します。</span></li>
+              <li><b>運用の仕組み化</b><span>月次・四半期共有会の企画と運営支援。理念と評価を同じ言葉で動かします。</span></li>
+            </ul>
+          </div>
+          <p class="deliv">どちらから入るかは会社の状態次第です。<b>ここが月額伴走への接続点</b>になります</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick rv"><i></i>AI in the Room</div>
+    <h2 class="rv">対面が主役。AIは裏方。</h2>
+    <div class="ai-grid">
+      <div>
+        <ul class="ai-pts rv">
+          <li><b>発言録の価値観マップ化</b><span>1on1とセッションの全発言をAIが解析し、組織に流れる価値観を可視化します。</span></li>
+          <li><b>言葉の候補を広く出す</b><span>言語化の素材はAIが網羅的に生成します。選ぶのは、人です。</span></li>
+          <li><b>浸透度の定点測定</b><span>アンケートと発言ログを定点で分析し、浸透の進み方を経営レポートにします。</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="vmap" id="vmap">
+          <button class="replay en" id="replay" type="button" aria-label="アニメーションを再生する">REPLAY</button>
+        </div>
+        <p class="vmap-cap">イメージ — 散らばった現場の言葉が、AIの解析で価値観の群れに整理されていく。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="kick rv"><i></i>Cases</div>
+    <h2 class="rv">実例</h2>
+    <div class="cases rv">
+      <div class="case">
+        <div class="imgslot"><span>IMAGE SLOT 16:10</span></div>
+        <div class="cbody">
+          <span class="ind en">System Development</span>
+          <h3>システム開発会社<br>ミッション浸透から、文化づくりの年間運用へ</h3>
+          <p>浸透セッションから始まり、読書会、社内報、社員インタビューへ。文化づくりの支援は3年目に入りました。</p>
+          <div class="fact"><b>3年目</b>　継続中の年間インナーブランディング</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="imgslot"><span>IMAGE SLOT 16:10</span></div>
+        <div class="cbody">
+          <span class="ind en">Design Group</span>
+          <h3>デザイン会社グループ<br>MVV再構築と評価制度への接続を7ヶ月で</h3>
+          <p>経営層ヒアリングから言語化、OKRと評価制度への組み込みまで。理念と評価を同じ言葉でつなぎました。</p>
+          <div class="fact"><b>7ヶ月</b>　策定から制度接続まで一気通貫</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="imgslot"><span>IMAGE SLOT 16:10</span></div>
+        <div class="cbody">
+          <span class="ind en">Printing — 60th</span>
+          <h3>印刷会社<br>創業60年の節目にCI/VIを再定義</h3>
+          <p>60年の歴史の棚卸しから、ロゴ・VI・方針発表まで4ヶ月。周年を文化づくりの起点に変えました。</p>
+          <div class="fact"><b>4ヶ月</b>　CI/VI刷新と60周年方針発表</div>
+        </div>
+      </div>
+    </div>
+    <p class="case-note rv"><b>同業のプロからの発注</b>が、この領域の品質の証明だと考えています。システム開発会社もデザイン会社も、自社でつくれるものは外注しません。それでも組織開発はバレンサーに任せる——その事実が、私たちの看板です。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick rv"><i></i>Team</div>
+    <h2 class="rv"><span class="num">3</span>人＋AIのチームが入ります</h2>
+    <div class="team rv">
+      <div class="tcard"><div class="ic serif">F</div><b>ファシリテーター × 2</b><span>経営対話とセッション進行。2名体制なので並行開催やグループ分けに対応できます。</span></div>
+      <div class="tcard"><div class="ic serif">S</div><b>運営サポート</b><span>セッション設計の補助、記録、撮影、制作まわりを支えます。</span></div>
+      <div class="tcard"><div class="ic serif">D</div><b>クリエイティブ</b><span>コピーライティングとCI/VIデザイン。考える人と手を動かす人が同じです。</span></div>
+      <div class="tcard"><div class="ic serif">AI</div><b>社内AI組織</b><span>発言録解析、言葉の候補出し、浸透度測定。実働の多くを担う裏方です。</span></div>
+    </div>
+    <p class="team-note rv">私たち自身が、実働の多くをAIに任せる働き方を実践しています。その運用ノウハウごと、御社のプログラムに持ち込みます。</p>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="kick rv"><i></i>Pricing</div>
+    <h2 class="rv">料金の考え方</h2>
+    <div class="prices rv">
+      <div class="pr">
+        <span class="plbl">Entry</span>
+        <div class="entry">300<small>万円（税別）〜</small></div>
+        <h3>策定単体から始められます</h3>
+        <p>3〜4ヶ月のプロジェクトです。落とし込みや定着まで進む場合の全体費用は、御社の状態を伺ってからお見積もりします。</p>
+      </div>
+      <div class="pr">
+        <span class="plbl">Policy</span>
+        <h3>値引きではなく、設計で調整</h3>
+        <p>規模に合わせて対象人数とセッション回数を組み替えます。中身を薄めた安売りはしません。</p>
+      </div>
+      <div class="pr">
+        <span class="plbl">Payment</span>
+        <h3>フェーズごとの分割払い</h3>
+        <p>お支払いは各フェーズの開始時と完了時の2回。一括の先払いは求めません。</p>
+      </div>
+    </div>
+    <p class="price-phil rv">この投資が回収できる構造かどうかも含めて、最初の相談でお話しします。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick rv"><i></i>What's Next</div>
+    <h2 class="rv">プログラムの先にあるもの</h2>
+    <div class="next rv">
+      <div class="nx"><span class="nlbl en">RETAINER</span><b>月額伴走</b><span>つくった文化を運用する。経営の隣に立つ月額の右腕です。</span></div>
+      <div class="nx"><span class="nlbl en">RECRUITING</span><b>採用ブランディング接続</b><span>文化を言語化した会社だけが、採用で語れる言葉を持ちます。プログラム修了企業限定。</span></div>
+      <div class="nx"><span class="nlbl en">AI&nbsp;OPERATION</span><b>AI実装へ</b><span>組織が固まったら、業務とAIへ。もう一枚の看板に続きます。</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2 class="serif">御社のMVVは、いま生きていますか。</h2>
+    <p>この問いから始めます。現在地を伺って、どの入り口が合うかをご提案します。売り込みはしません。</p>
+    <a class="btn" href="https://balencer.jp/contact/">相談してみる</a>
+    <span class="caveat">for loved ones.</span>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol">
+        <img src="balencer-logo.png" alt="BALENCER">
+        <p class="fdesc">株式会社バレンサー。ブランディングを軸に、AX（AIで会社の戦い方を変えること）まで一気通貫で全国の企業に伴走しています。</p>
+        <span class="ftag">for loved ones.</span>
+      </div>
+      <div class="fcol">
+        <h4>This Page</h4>
+        <ul>
+          <li><a href="#flow">プログラムの進め方</a></li>
+          <li><a href="#cases">実例</a></li>
+          <li><a href="#pricing">料金の考え方</a></li>
+          <li><a href="https://balencer.jp/contact/">相談する</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Balencer</h4>
+        <ul>
+          <li><a href="https://balencer.jp/">公式サイト</a></li>
+          <li><a href="https://balencer.jp/soeru/">SOERU｜月額右腕プラン</a></li>
+          <li><a href="https://balencer.jp/notion/">ヒトツ｜Notion業務基盤</a></li>
+          <li><a href="https://balencer.jp/keiei/">ミタテ｜AI経営分析</a></li>
+          <li><a href="https://balencer.jp/hojokin/">補助金でAI導入</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbtm">
+      <span>© BALENCER Inc.</span>
+      <span>大阪・東京・京都・福岡</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  const burger=document.getElementById('burger');
+  if(burger){burger.addEventListener('click',()=>{
+    const open=document.body.classList.toggle('menu-open');
+    burger.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+  });}
+  document.querySelectorAll('.mnav a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu-open')));
+
+  // reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.16});
+  document.querySelectorAll('.rv,.order,.flow').forEach(el=>io.observe(el));
+
+  // modules accordion
+  document.querySelectorAll('.mod-head').forEach(h=>h.addEventListener('click',()=>{
+    h.parentElement.classList.toggle('open');
+  }));
+
+  // tabs
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-selected','false')});
+    document.querySelectorAll('.tabpane').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');t.setAttribute('aria-selected','true');
+    document.getElementById(t.dataset.p)?.classList.add('on');
+  }));
+
+  // 価値観マップ・ミニデモ
+  const vmap=document.getElementById('vmap');
+  const words=['誠実','挑戦','対話','品質','スピード','感謝','現場','学び','信頼','遊び心','数字','地域'];
+  const groups=[
+    {label:'VALUE A',x:18,y:24,members:[0,3,8,10]},
+    {label:'VALUE B',x:58,y:20,members:[1,4,7,9]},
+    {label:'VALUE C',x:38,y:66,members:[2,5,6,11]}
+  ];
+  const els=[];
+  words.forEach((w,i)=>{
+    const s=document.createElement('span');s.className='w';s.textContent=w;
+    s.dataset.rx=(8+Math.abs(Math.sin(i*7.13))*72);
+    s.dataset.ry=(10+Math.abs(Math.cos(i*3.71))*70);
+    vmap.appendChild(s);els.push(s);
+  });
+  groups.forEach(g=>{
+    const l=document.createElement('span');l.className='glabel en';l.textContent=g.label;
+    l.style.left=g.x+8+'%';l.style.top=(g.y-9)+'%';vmap.appendChild(l);
+  });
+  function scatter(){
+    vmap.classList.remove('org');
+    els.forEach(s=>{s.style.left=s.dataset.rx+'%';s.style.top=s.dataset.ry+'%'});
+  }
+  function organize(){
+    vmap.classList.add('org');
+    groups.forEach(g=>g.members.forEach((m,j)=>{
+      els[m].style.left=(g.x+(j%2)*13)+'%';
+      els[m].style.top=(g.y+Math.floor(j/2)*13)+'%';
+    }));
+  }
+  scatter();
+  const vio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){setTimeout(organize,700);vio.unobserve(e.target)}}),{threshold:.4});
+  vio.observe(vmap);
+  let replayTimer=null;
+  document.getElementById('replay').addEventListener('click',e=>{
+    e.stopPropagation();clearTimeout(replayTimer);scatter();replayTimer=setTimeout(organize,900);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BALENCER リブランド ハンドオフ｜デザイナー共有</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#FAFAF8;--surface:#FFFFFF;--ink:#141414;--sub:#5c5c58;--line:#E8E6E0;--line-d:#D6D4CC;
+    --accent:#E6FF2F;--dark:#161614;--dsub:#8E8E86;
+    --ease:cubic-bezier(.4,.4,0,1);--serif:'Playfair Display','Noto Sans JP',serif;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);line-height:2.0;font-size:15px}
+  .en{font-family:'Inter',sans-serif}.caveat{font-family:'Caveat',cursive}
+  .num{font-family:var(--serif);font-style:italic}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 32px}
+  ::selection{background:var(--accent)}
+  a{color:inherit}
+
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;
+         background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo img{height:19px;display:block}
+  header .tag{font-family:'Inter';font-size:11px;letter-spacing:.18em;color:var(--sub)}
+
+  .hero{padding:96px 0 70px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-4%;top:0;width:42%;height:130%;z-index:0;opacity:.5;
+    background:repeating-linear-gradient(118deg,transparent 0 26px,var(--line) 26px 27px)}
+  .hero .wrap{position:relative;z-index:1}
+  .hkick{font-family:'Inter';font-size:11px;letter-spacing:.32em;color:var(--sub);text-transform:uppercase;
+         display:flex;align-items:center;gap:12px}
+  .hkick::before{content:"";width:34px;height:1px;background:var(--ink)}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,52px);line-height:1.5;margin:28px 0 0}
+  .hero p{max-width:620px;margin-top:26px;color:var(--sub)}
+  .meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+  .meta-row span{font-size:12px;border:1px solid var(--line);background:var(--surface);padding:7px 16px;border-radius:999px;color:var(--sub)}
+  .meta-row b{color:var(--ink);font-weight:500}
+
+  section{padding:80px 0;border-bottom:1px solid var(--line)}
+  .kick{font-family:'Inter';font-size:10.5px;letter-spacing:.32em;color:var(--sub);text-transform:uppercase;
+        display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .kick i{width:6px;height:6px;border-radius:50%;background:var(--accent);outline:1px solid var(--line-d)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3.2vw,34px);margin-bottom:14px}
+  .lead{color:var(--sub);max-width:660px;margin-bottom:40px}
+
+  /* cards */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.cards{grid-template-columns:1fr}}
+  .card{display:block;text-decoration:none;border:1px solid var(--line);background:var(--surface);padding:30px 30px;
+        transition:transform .4s var(--ease),border-color .4s var(--ease)}
+  .card:hover{transform:translateY(-5px);border-color:var(--line-d)}
+  .card .cno{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--line-d)}
+  .card h3{font-size:18px;font-weight:700;margin:8px 0 8px;display:flex;align-items:center;gap:10px}
+  .card h3 .ar{font-family:'Inter';color:var(--sub);font-size:16px;transition:transform .3s var(--ease)}
+  .card:hover h3 .ar{transform:translateX(6px)}
+  .card p{font-size:13px;color:var(--sub)}
+  .card .badge{display:inline-block;font-size:10.5px;letter-spacing:.06em;border-radius:999px;padding:3px 11px;margin-top:14px}
+  .badge.ref{background:var(--accent);color:var(--ink)}
+  .badge.wip{border:1px solid var(--line-d);color:var(--sub)}
+  .card .url{font-family:'Inter';font-size:11px;color:var(--sub);margin-top:10px;letter-spacing:.02em}
+
+  .full{grid-column:1/-1}
+  .card.dark{background:var(--dark);border-color:var(--dark)}
+  .card.dark .cno{color:var(--dsub)}.card.dark h3{color:#F5F5F0}.card.dark h3 .ar{color:var(--dsub)}
+  .card.dark p{color:var(--dsub)}
+
+  .note{border:1px solid var(--line);background:var(--surface);padding:26px 30px;margin-top:36px;font-size:13.5px;color:var(--sub)}
+  .note b{color:var(--ink)}
+  .note ul{list-style:none;margin-top:10px}
+  .note li{padding:7px 0 7px 22px;position:relative}
+  .note li::before{content:"";position:absolute;left:2px;top:18px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+  footer{padding:54px 0 80px;color:var(--sub);font-size:13px}
+  .ftag{font-family:'Caveat',cursive;font-size:22px;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><img src="pages/top/balencer-logo.png" alt="BALENCER"></a>
+    <span class="tag en">HANDOFF / FOR DESIGNER</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hkick">Rebrand Handoff — 2026.06</div>
+    <h1>バレンサー リブランド、<br>引き継ぎ一式。</h1>
+    <p>事業の再定義から、コンセプト、CI/VIの方向性、そして試作したページまで。順番に辿れば「なぜこうなったか」がわかるようにまとめました。ここはデザイナーさんのための案内所です。</p>
+    <div class="meta-row">
+      <span>試作ページ <b><span class="num">5</span>枚</b></span>
+      <span>背景資料 <b><span class="num">2</span>本</b></span>
+      <span>正式指示書 <b>Notion</b></span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>Start Here — まず読む</div>
+    <h2>背景：なぜ、こうなったか。</h2>
+    <p class="lead">ページの見た目だけ見ても意図は伝わりません。先にこの2本を読むと、全部の判断の理由がわかります。</p>
+    <div class="cards">
+      <a class="card" href="background/why-redefinition.html">
+        <div class="cno">01</div>
+        <h3>コンセプト再定義の物語 <span class="ar en">→</span></h3>
+        <p>会社の「言い方」が7つに揺れていた。それを1本に収束させるまでの経緯と、決めたこと全部。看板2枚・右腕×AX・SOERU統合の理由。</p>
+        <span class="badge ref">最初に読む</span>
+      </a>
+      <a class="card" href="background/why-ci.html">
+        <div class="cno">02</div>
+        <h3>CI/VIの考え方 <span class="ar en">→</span></h3>
+        <p>色が4系統並んでいた理由と、B案「墨」に決めた経緯。参考にしたPLAID ALPHA・datagrid。確定したトークンと、商品色との関係。</p>
+        <span class="badge ref">最初に読む</span>
+      </a>
+    </div>
+    <a class="card full" href="instructions.html" style="margin-top:18px">
+      <div class="cno">03</div>
+      <h3>作業指示書 <span class="ar en">→</span></h3>
+      <p>サイトマップ・移行手順（3段階）・デザイントークン・共通の約束事・お願いしたいことの一覧。実作業はここを見てください。</p>
+      <span class="badge ref">実作業のまとめ</span>
+    </a>
+    <div class="note">
+      <b>正式な作業指示書はNotionが正本です。</b>上の指示書は同じ内容をオフラインで読める版（このバンドル内で完結します）。<br>
+      → Notion「🛠 balencer.jp 刷新 指示書（デザイナー向け／2026-06）」
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>Pages — 試作した5枚</div>
+    <h2>ページ試作（HTMLそのまま）</h2>
+    <p class="lead">全ページ単一HTML＋ロゴ画像で動きます。デザインの完成度はページごとに差があります。正直、MVVが一番まとまっていて、他は「設計と文章の見せ方」のたたき台です。ここを土台に、デザインを引き上げてもらえると助かります。画像枠（IMAGE SLOT・点線）は後から差し込みます。</p>
+    <div class="cards">
+      <a class="card full" href="pages/top/index.html">
+        <div class="cno">TOP</div>
+        <h3>トップページ <span class="ar en">→</span></h3>
+        <p>看板2枚＋関わりの階段。タイポの立ち上がり、流れる3連スローガン、スクロール連動の階段レール。会社の入口。</p>
+        <div class="url en">→ balencer.jp/</div>
+      </a>
+      <a class="card" href="pages/mvv/index.html">
+        <div class="cno">01</div>
+        <h3>組織開発・MVV <span class="ar en">→</span></h3>
+        <p>看板①。MVVが「死ぬ瞬間」から入り、策定→落とし込み→定着の3モジュール。価値観マップの動くデモ。</p>
+        <span class="badge ref">完成度の基準</span>
+        <div class="url en">→ balencer.jp/mvv/</div>
+      </a>
+      <a class="card" href="pages/ai/index.html">
+        <div class="cno">02</div>
+        <h3>AI実装 <span class="ar en">→</span></h3>
+        <p>看板②。AIが実際に動くコンソール演出、回るAI組織図、階段カード、墨色のAI組織OS帯。</p>
+        <span class="badge wip">たたき台</span>
+        <div class="url en">→ balencer.jp/ai/</div>
+      </a>
+      <a class="card" href="pages/migiude/index.html">
+        <div class="cno">03</div>
+        <h3>月額伴走（右腕・参謀） <span class="ar en">→</span></h3>
+        <p>本体。スクロールで下に進むほど背景が墨に沈む「深度」演出。コンサル3.0、サンドイッチ構造。</p>
+        <span class="badge wip">たたき台</span>
+        <div class="url en">→ balencer.jp/migiude/</div>
+      </a>
+      <a class="card" href="pages/soeru/index.html">
+        <div class="cno">入口</div>
+        <h3>SOERU（改修版） <span class="ar en">→</span></h3>
+        <p>入口商品。旧「AI顧問」の表記を「月額右腕プラン」に改修済み。2ティア化、Mainへの階段案内、AI組織OSブロック。</p>
+        <span class="badge wip">既存LPの改修</span>
+        <div class="url en">→ balencer.jp/soeru/</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>Appendix — 探索の記録</div>
+    <h2>参考：途中の検討物</h2>
+    <p class="lead">決定に至る前の探索です。最終ではありませんが、なぜ今の形になったかの参考に。</p>
+    <div class="cards">
+      <a class="card" href="background/concept-summary.html">
+        <div class="cno">A</div>
+        <h3>コンセプト要約（社内周知版） <span class="ar en">→</span></h3>
+        <p>メンバー・パートナーに配る用の1枚要約。会社の定義・看板2枚・階段を簡潔に。</p>
+      </a>
+      <a class="card" href="background/ci-explore-b-refined.html">
+        <div class="cno">B</div>
+        <h3>CI探索：B案「墨」精緻化 <span class="ar en">→</span></h3>
+        <p>採用方向。差し色トグル（蛍光イエロー／大人イエロー／バイオレット）で見比べられます。</p>
+      </a>
+      <a class="card full" href="background/ci-explore-abc.html">
+        <div class="cno">C</div>
+        <h3>CI探索：3方向 比較（A シグナル／B 墨／C 電荷） <span class="ar en">→</span></h3>
+        <p>最初の方向出し。同じ言葉のまま、色・フォント・動きだけを切り替えて比較したもの。右上のボタンで切替。B方向が選ばれました。</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftag">for loved ones.</div>
+    <p style="margin-top:10px">株式会社バレンサー｜リブランド・ハンドオフ｜2026年6月<br>
+    ご不明点は阿部まで。このページは共有用（noindex）です。</p>
+  </div>
+</footer>
+
+</body>
+</html>

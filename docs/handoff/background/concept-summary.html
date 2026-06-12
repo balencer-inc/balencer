@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>バレンサー 2026 再定義｜共有ドキュメント</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#C5956B; --accent-dark:#A87C58;
+    --bg:#F5F3F0; --cream:#EDE9E3; --white:#FFFFFF;
+    --text:#1C1C1C; --text-mid:#3A3838; --text-cap:#595959;
+    --border:#E2E0DA;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);line-height:1.9;font-weight:400}
+  .en{font-family:'Inter',sans-serif}
+  .hand{font-family:'Caveat',cursive;color:var(--accent)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 28px}
+  header{padding:72px 0 56px;border-bottom:1px solid var(--border)}
+  .logo{font-family:'Inter',sans-serif;font-weight:300;letter-spacing:.2em;font-size:20px}
+  .tagline{font-family:'Caveat',cursive;color:var(--accent);font-size:22px;margin-top:6px}
+  h1{font-size:34px;font-weight:700;line-height:1.5;margin-top:36px;letter-spacing:.02em}
+  .meta{color:var(--text-cap);font-size:13px;margin-top:14px}
+  section{padding:56px 0;border-bottom:1px solid var(--border)}
+  .label{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.25em;color:var(--accent-dark);font-weight:500;margin-bottom:18px}
+  h2{font-size:24px;font-weight:700;margin-bottom:22px;line-height:1.6}
+  p{margin-bottom:16px;color:var(--text-mid)}
+  .define{background:var(--white);border:1px solid var(--border);padding:36px;margin:26px 0}
+  .define .big{font-size:21px;font-weight:700;color:var(--text);line-height:1.8}
+  .kakezan{font-size:18px;font-weight:700;text-align:center;padding:22px;background:var(--cream);margin:22px 0;letter-spacing:.04em}
+  .steps{display:flex;gap:0;margin:26px 0;flex-wrap:wrap}
+  .step{flex:1;min-width:180px;background:var(--white);border:1px solid var(--border);padding:22px 20px;position:relative}
+  .step + .step{border-left:none}
+  .step .no{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.2em;color:var(--text-cap)}
+  .step b{display:block;font-size:16px;margin:6px 0 8px}
+  .step span{font-size:13px;color:var(--text-cap);line-height:1.7;display:block}
+  table{width:100%;border-collapse:collapse;background:var(--white);margin:22px 0;font-size:14px}
+  th,td{border:1px solid var(--border);padding:14px 16px;text-align:left;vertical-align:top;line-height:1.8}
+  th{background:var(--cream);font-weight:700;white-space:nowrap}
+  .ladder{background:var(--white);border:1px solid var(--border);padding:30px 34px;margin:24px 0}
+  .ladder .row{display:flex;gap:16px;padding:16px 0;border-bottom:1px dashed var(--border);align-items:baseline}
+  .ladder .row:last-child{border-bottom:none}
+  .ladder .stage{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--accent-dark);min-width:96px;font-weight:500}
+  .ladder .body b{font-size:15px}
+  .ladder .body span{display:block;font-size:13px;color:var(--text-cap);line-height:1.7}
+  ul{list-style:none}
+  ul.rules li{padding:14px 0 14px 26px;border-bottom:1px dashed var(--border);position:relative;color:var(--text-mid);font-size:15px}
+  ul.rules li:last-child{border-bottom:none}
+  ul.rules li::before{content:"";position:absolute;left:4px;top:26px;width:8px;height:8px;background:var(--accent);border-radius:50%}
+  .note{font-size:13px;color:var(--text-cap);margin-top:10px}
+  footer{padding:48px 0 80px;color:var(--text-cap);font-size:13px}
+  footer .logo{font-size:15px;color:var(--text)}
+  @media(max-width:640px){h1{font-size:26px}.steps{flex-direction:column}.step + .step{border-left:1px solid var(--border);border-top:none}}
+  @media print{body{background:#fff}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo en">BALENCER</div>
+    <div class="tagline">for loved ones.</div>
+    <h1>バレンサー 2026 再定義<br>——私たちは、何の会社か。</h1>
+    <div class="meta">共有ドキュメント（メンバー・パートナー向け）｜2026年6月制定</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="label en">DEFINITION</div>
+    <h2>バレンサーは何の会社か</h2>
+    <div class="define">
+      <div class="big">株式会社バレンサーは、<br>経営者の右腕がつとまる、ブランディングAXカンパニーです。</div>
+    </div>
+    <p><b>AXとは、AIを使って会社の戦い方そのものを変えること。</b><br>
+    DXが「仕事のやり方」をデジタルにすることなら、AXは「会社の戦い方」をつくり直すことです。</p>
+    <p><b>ブランディングAXの構造</b>——組織を変える（インナー）→ 魅せ方を変える（アウター）→ 戦い方を変える（事業）。この順番で会社を変え、そのすべてにAIを通します。創業時から掲げてきたこの3つの順番は、変わりません。</p>
+    <p>私たちは、デザイン会社でも、DX会社でも、コンサル会社でも、AI会社でもありません。デザインもDXもAIも手段。本丸は、経営者の隣に立ち、組織の中から会社を変えること。対話で組織の内側に入り、実装まで自分たちの手でやり切ります。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label en">TWO FLAGS</div>
+    <h2>看板は、2枚だけ</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="no en">FLAG 01</div>
+        <b>組織開発・MVV</b>
+        <span>MVV策定 〜 CI/VI 〜 制度接続 〜 浸透まで一気通貫の「MVV策定・浸透プログラム」。対面の対話はAIに代替されない。システム開発会社やデザイン会社のプロまでもが、バレンサーに発注している領域。</span>
+      </div>
+      <div class="step">
+        <div class="no en">FLAG 02</div>
+        <b>AI実装</b>
+        <span>業務の仕組み化からAI組織OS構築まで、Claudeでコードを書いて実際に動かす。自社が実証第一号——外注の7割をAIに任せて回している会社が、その作り方ごと提供する。</span>
+      </div>
+    </div>
+    <p>この2枚の掛け算がブランディングAXです。<b>会社の自己紹介は、この2枚でします。</b></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label en">SERVICE LADDER</div>
+    <h2>サービスの階段（一本化）</h2>
+    <div class="ladder">
+      <div class="row"><div class="stage en">ENTRANCE</div><div class="body"><b>SOERU（月10万 / 20万）</b><span>経営壁打ち＋裏側でAI分析＋毎月「使えるもの」を1つ納品。ミタテ／ヒトツ／補助金／TSUGI診断も出会いの入口。</span></div></div>
+      <div class="row"><div class="stage en">CORE</div><div class="body"><b>Main 右腕（月30〜50万）→ Premium 経営参謀（月60〜100万）</b><span>思想は著書『社長のためのコンサル3.0』のとおり。町医者型、レポートで終わらない。</span></div></div>
+      <div class="row"><div class="stage en">PROJECT</div><div class="body"><b>MVV策定・浸透プログラム ／ AI実装 ／ CI・VI ／ Web・制作</b><span>制作は必ず伴走に挟んで提供する（制作単体では受けない）。</span></div></div>
+      <div class="row"><div class="stage en">SUMMIT</div><div class="body"><b>AI組織OS構築 ／ 採用ブランディング接続 ／ 事業承継準備（TSUGI連携）</b><span>深く入った先にだけ提供する出口。</span></div></div>
+    </div>
+    <p class="note">※旧「Entryプラン（月20万）」はSOERUに統合されました。既存のお客様は何も変わりません。<br>※補助金は出会いの経路・費用を軽くする手段として活用します（会社の看板ではありません）。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label en">RULES</div>
+    <h2>単体ではやらないこと（置き場ルール）</h2>
+    <ul class="rules">
+      <li><b>採用支援の単体受注はしない。</b>MVV・組織開発を経たクライアントへの「採用ブランディング接続」としてのみ提供する。文化を言語化した会社だけが、採用で語れる言葉を持つ。</li>
+      <li><b>Web制作・LP・広告運用の単体受注はしない。</b>戦略・伴走とセットでのみ。実績は「戦略がどう形になったか」の事例として語る。</li>
+      <li><b>数字の正は1つ。</b>実績の数字は、会社が定めた正（クライアント実績台帳ベース）のみを使う。出どころの曖昧な数字は使わない。</li>
+      <li><b>旧表現は使わない。</b>「デザインコンサルティングカンパニー」「1000社支援」「Entryプラン」等は今後の資料に登場させない。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label en">FOR WHOM</div>
+    <h2>誰のための会社か</h2>
+    <table>
+      <tr><th>主軍</th><td>売上1〜30億円・創業10年以上の地域密着型オーナー企業。承継した2代目・3代目を含む。「課題はあるが、何から手をつけるか整理できていない」社長。</td></tr>
+      <tr><th>第2セグメント</th><td>システム開発会社・制作会社などの同業プロフェッショナル。組織開発・ブランディングの外部委託先として。</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label en">TEAM</div>
+    <h2>体制——少数精鋭 × AI組織</h2>
+    <p>ファシリテーション・経営対話は代表とディレクターが担い、セッション運営・制作はプロジェクトメンバーとパートナーが支えます。そして、分析・制作・運用の実働の多くを社内のAI組織が担っています。</p>
+    <p><b>「人を増やさない。AI社員を増やす。」</b>——この働き方自体が、クライアントに提供するAI組織OSの実証です。</p>
+  </div>
+</section>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <div class="label en">HOW TO USE</div>
+    <h2>このドキュメントの使い方</h2>
+    <ul class="rules">
+      <li>バレンサーの紹介文・提案書・LPを作るときは、この定義から引用する（勝手に言い換えない）。</li>
+      <li>迷ったら正本（リポジトリ docs/company/identity.md）を確認するか、阿部さんに聞く。</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo en">BALENCER</div>
+    <div class="hand" style="font-size:18px">for loved ones.</div>
+    <div style="margin-top:10px">株式会社バレンサー｜2026年6月 再定義ドキュメント v1</div>
+  </div>
+</footer>
+
+</body>
+</html>

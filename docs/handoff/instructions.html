@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>balencer.jp 刷新 指示書（デザイナー向け）｜BALENCER ハンドオフ</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#FAFAF8;--surface:#FFFFFF;--ink:#141414;--sub:#5c5c58;--line:#E8E6E0;--line-d:#D6D4CC;
+    --accent:#E6FF2F;--dark:#161614;--dsub:#8E8E86;--mid:#F1EFE9;
+    --ease:cubic-bezier(.4,.4,0,1);--serif:'Playfair Display','Noto Sans JP',serif;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);line-height:2.05;font-size:15px}
+  .en{font-family:'Inter',sans-serif}.caveat{font-family:'Caveat',cursive}.mono{font-family:Menlo,Consolas,monospace}
+  .num{font-family:var(--serif);font-style:italic}
+  .wrap{max-width:900px;margin:0 auto;padding:0 32px}
+  ::selection{background:var(--accent)}
+  a{color:var(--ink)}
+
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;
+         background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px)}
+  header .wrap{max-width:1000px;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .back{font-size:12.5px;color:var(--sub);text-decoration:none}.back:hover{color:var(--ink)}
+  header .pg{font-family:'Inter';font-size:11px;letter-spacing:.16em;color:var(--sub)}
+
+  .hero{padding:84px 0 54px;border-bottom:1px solid var(--line)}
+  .hkick{font-family:'Inter';font-size:11px;letter-spacing:.32em;color:var(--sub);text-transform:uppercase;display:flex;align-items:center;gap:12px}
+  .hkick::before{content:"";width:34px;height:1px;background:var(--ink)}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4.2vw,42px);line-height:1.5;margin:24px 0 0}
+  .hero p{max-width:620px;margin-top:22px;color:var(--sub)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  .kick{font-family:'Inter';font-size:10.5px;letter-spacing:.32em;color:var(--sub);text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .kick i{width:6px;height:6px;border-radius:50%;background:var(--accent);outline:1px solid var(--line-d)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.6;margin-bottom:18px}
+  p.body{color:#3a3a36;margin-bottom:16px}
+  p.body b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;background:var(--surface);font-size:13.5px;margin-top:6px}
+  th,td{border:1px solid var(--line);padding:12px 16px;text-align:left;vertical-align:top;line-height:1.85}
+  th{background:var(--mid);font-weight:500;font-size:12.5px;white-space:nowrap}
+  td .mono,th .mono{font-size:12px}
+  .tag{display:inline-block;font-size:11px;border-radius:999px;padding:2px 10px;white-space:nowrap}
+  .tag.done{background:var(--accent);color:var(--ink)}
+  .tag.keep{border:1px solid var(--line-d);color:var(--sub)}
+  .tag.kill{background:var(--dark);color:#F5F5F0}
+
+  .swrow{display:flex;gap:0;border:1px solid var(--line);margin-top:8px;flex-wrap:wrap}
+  .sw{flex:1;min-width:120px;padding:0}
+  .sw .c{height:48px}
+  .sw .l{padding:10px 12px;font-size:11px;color:var(--sub);border-top:1px solid var(--line)}
+  .sw .l b{display:block;color:var(--ink);font-size:12px}
+  .sw + .sw{border-left:1px solid var(--line)}
+
+  ul.clean{list-style:none}
+  ul.clean li{padding:9px 0 9px 24px;position:relative;font-size:14px;border-bottom:1px dashed var(--line)}
+  ul.clean li:last-child{border-bottom:none}
+  ul.clean li::before{content:"";position:absolute;left:3px;top:20px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  ul.clean li b{font-weight:700}
+
+  ol.steps{list-style:none;counter-reset:st}
+  ol.steps li{padding:16px 0 16px 44px;position:relative;border-bottom:1px solid var(--line);font-size:14px}
+  ol.steps li:last-child{border-bottom:none}
+  ol.steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:14px;
+    font-family:var(--serif);font-style:italic;font-size:20px;color:var(--line-d)}
+  ol.steps li b{font-weight:700}
+
+  .callout{border:1px solid var(--line);background:var(--surface);padding:22px 26px;margin-top:20px;font-size:13.5px;color:var(--sub)}
+  .callout.dark{background:var(--dark);color:var(--dsub);border-color:var(--dark)}
+  .callout.dark b{color:#F5F5F0}
+  .callout b{color:var(--ink)}
+
+  footer{padding:50px 0 80px;color:var(--sub);font-size:13px}
+  .ftag{font-family:'Caveat',cursive;font-size:20px;color:var(--ink)}
+  .nav-foot{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+  .nav-foot a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line-d);padding:11px 22px;border-radius:999px;transition:all .3s var(--ease)}
+  .nav-foot a:hover{background:var(--ink);color:var(--bg)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="back" href="index.html">← ハンドオフ目次</a>
+    <span class="pg en">INSTRUCTIONS / FOR DESIGNER</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hkick">Work Brief — 2026.06</div>
+    <h1>balencer.jp 刷新 指示書</h1>
+    <p>事業再定義に伴うサイト刷新の作業指示です。背景は目次の「コンセプト再定義の物語」「CI/VIの考え方」を先に読んでください。このページは、その上での実作業のまとめです。</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>01 — Premise</div>
+    <h2>前提（一言で）</h2>
+    <p class="body">バレンサーは「<b>経営者の右腕がつとまる、ブランディングAXカンパニー</b>」として事業を再定義しました。看板は2枚（①組織開発・MVV ②AI実装）。サイトはこの2枚と「関わりの階段」を、軽量・高品質に見せる構造に変わります。</p>
+    <ul class="clean">
+      <li>タグライン（不変）— <b>for loved ones.</b></li>
+      <li>構造コピー（継続）— 組織を変える。魅せ方を変える。戦い方を変える。（この順番の思想がAXの定義文）</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>02 — Sitemap</div>
+    <h2>新サイトマップ</h2>
+    <table>
+      <tr><th>URL</th><th>内容</th><th>状態</th></tr>
+      <tr><td class="mono">/</td><td>トップ（看板2枚＋階段）</td><td><span class="tag done">試作済</span></td></tr>
+      <tr><td class="mono">/mvv/</td><td>看板① 組織開発・MVV</td><td><span class="tag done">試作済</span></td></tr>
+      <tr><td class="mono">/ai/</td><td>看板② AI実装（旧・生成AI導入支援を置換）</td><td><span class="tag done">試作済</span></td></tr>
+      <tr><td class="mono">/migiude/</td><td>月額伴走（右腕・参謀）※新設URL</td><td><span class="tag done">試作済</span></td></tr>
+      <tr><td class="mono">/soeru/</td><td>入口商品 SOERU（月額右腕プラン）</td><td><span class="tag done">改修済</span></td></tr>
+      <tr><td class="mono">/notion/ /keiei/ /hojokin/</td><td>入口商品（ヒトツ／ミタテ／補助金）</td><td><span class="tag keep">現状維持</span></td></tr>
+      <tr><td class="mono">/about/ /project/ /knowledge/ /blog/ /join/ /contact/</td><td>WordPressのまま維持</td><td><span class="tag keep">ナビのみ差替</span></td></tr>
+      <tr><td class="mono">/branding-consulting/ /shopify/ /tiktok/ /nft/ /omo/</td><td>ナビ・フッターから退役（URLは当面残置、将来301）</td><td><span class="tag kill">退役</span></td></tr>
+    </table>
+    <p class="body" style="margin-top:18px">新グローバルナビ: <b>ABOUT ／ SERVICE（MVV・AI実装・月額伴走・入口商品3つ）／ PROJECT ／ KNOWLEDGE ／ CONTACT</b>。NFT・TikTok・Shopifyの単体メニューは消す（実績はPROJECT内の事例として語る）。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>03 — Migration</div>
+    <h2>移行手順（3段階・アクセス減を最小化）</h2>
+    <ol class="steps">
+      <li><b>第1段階（今）— 静的差し替え。</b>トップ＋看板3枚を静的HTMLで実フォルダFTP公開。WordPressは裏で稼働継続。トップはルートに index.html を置くとWPより優先表示（消せば即ロールバック）。<b>URLは一切変えない</b>のでSEO影響は最小。WP側ナビ・フッターのリンクはElementorで差し替え。</li>
+      <li><b>第2段階（1〜2ヶ月後）— 記事基盤。</b>knowledge/blog のみ microCMS 化を検討（静的書き出し→FTP、記事URLは完全維持）。コーポレートの顔は静的HTMLのまま。焦らず、運用ストレスが問題化してから。</li>
+      <li><b>第3段階（任意）— WP退役。</b>about/project/contact も静的化 or CMS化し、退役URLの301整理（branding-consulting→mvv 等）。</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>04 — Design Tokens</div>
+    <h2>デザイントークン（CI v3・B案「墨」）</h2>
+    <div class="swrow">
+      <div class="sw"><div class="c" style="background:#FAFAF8"></div><div class="l"><b>BG</b>#FAFAF8 生成り白</div></div>
+      <div class="sw"><div class="c" style="background:#FFFFFF"></div><div class="l"><b>SURFACE</b>#FFFFFF</div></div>
+      <div class="sw"><div class="c" style="background:#141414"></div><div class="l"><b>INK</b>#141414 墨</div></div>
+      <div class="sw"><div class="c" style="background:#5c5c58"></div><div class="l"><b>SUB</b>#5c5c58</div></div>
+      <div class="sw"><div class="c" style="background:#E8E6E0"></div><div class="l"><b>LINE</b>#E8E6E0</div></div>
+      <div class="sw"><div class="c" style="background:#E6FF2F"></div><div class="l"><b>ACCENT</b>#E6FF2F 点のみ</div></div>
+      <div class="sw"><div class="c" style="background:#161614"></div><div class="l"><b>DARK</b>#161614 AI系のみ</div></div>
+    </div>
+    <ul class="clean" style="margin-top:20px">
+      <li>見出し <b>Playfair Display（セリフ）× Noto Sans JP</b>。数字はセリフのイタリックで差別化</li>
+      <li>本文 Noto Sans JP（line-height 2.0前後）／英字ラベル Inter ／装飾 Caveat（for loved ones. 用）</li>
+      <li>蛍光イエローは<b>面で塗らず「点」でのみ</b>。動き=<span class="mono">cubic-bezier(.4,.4,0,1)</span>・0.3/0.5/0.8s</li>
+      <li><b>図はアニメーションさせる</b>（技術力をモーションで証明、をCIの原則に）</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>05 — Conventions</div>
+    <h2>全ページ共通の約束事</h2>
+    <ul class="clean">
+      <li><b>価格は入口のみ</b>（例: 300万円〜・月10万円〜）。詳細な価格表は載せない。期待感→問い合わせの設計</li>
+      <li>ヘッダー=公式ロゴ＋アンカーナビ＋相談CTA／モバイルはハンバーガー。フッター=3カラム（ロゴ＋会社一行＋for loved ones.／ページ内／他サービス相互リンク）</li>
+      <li>モバイル=画面崩れ・無駄なスクロール増を避ける／横長SVG図は横スクロール化</li>
+      <li>コピー規則 — 全角ダブルクォート禁止／「〜に、〜を。」型の読点コピー多用禁止／「まずは軽く話しましょう」型の締め常套句禁止／見出しの数字はセリフで差別化</li>
+      <li>ページごとに構成・見せ方を変える（同じテンプレの複製はしない。共通はトーンと上記規約のみ）</li>
+      <li>各ページに <b>IMAGE SLOT</b>（点線枠）あり。写真・イラストは差し込み箇所</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>06 — Page Notes</div>
+    <h2>各ページの見どころ（実装済み演出）</h2>
+    <table>
+      <tr><th>ページ</th><th>仕掛け</th></tr>
+      <tr><td><b>トップ</b></td><td>タイポの立ち上がりヒーロー／3連スローガンのマーキー／看板2枚の反転パネル／スクロール連動の階段レール</td></tr>
+      <tr><td><b>/mvv/</b></td><td>価値観マップの動くデモ／プログラム全体像の描画アニメ図。<span class="tag done">完成度の基準</span></td></tr>
+      <tr><td><b>/ai/</b></td><td>AIの稼働ログが打ち出るコンソール／回るAI組織オービット図／階段カード／墨のAI組織OS帯</td></tr>
+      <tr><td><b>/migiude/</b></td><td>スクロールで下に進むほど背景が墨に沈む「深度」演出／サンドイッチ構造図</td></tr>
+      <tr><td><b>/soeru/</b></td><td>既存LPの改修（「AI顧問」→「月額右腕プラン」、2ティア化、Mainへの階段案内）</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>07 — To Do</div>
+    <h2>お願いしたいこと</h2>
+    <ul class="clean">
+      <li><b>実機（iPhone/Android）での表示・操作確認</b>と修正提案</li>
+      <li><b>写真・イラストの差し込み</b>（IMAGE SLOT）。トーンは上記トークンに合わせる</li>
+      <li>WP側（about/project 等）のナビ・フッターリンク差し替え（Elementor）</li>
+      <li>退役ページ（NFT/TikTok/Shopify 等）のメニュー除去</li>
+      <li>デザインの引き上げ — 試作はMVVが基準。他は「設計と文章の見せ方」のたたき台です</li>
+    </ul>
+    <div class="callout dark">
+      <b>MVVページは、画像が入れば公開できるレベルです。</b>実例セクションの IMAGE SLOT 3枚（16:10）を差し替えれば、そのまま /mvv/ として公開できます。まずここから着手いただけると早く形になります。
+    </div>
+    <div class="callout">
+      <b>正本の場所。</b>コンセプト=docs/company/identity.md／CI=docs/design-system/。ご不明点は阿部まで。文章・コピーは確定稿なので、改変が必要なら阿部に確認してください。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftag">for loved ones.</div>
+    <p style="margin-top:8px">株式会社バレンサー｜balencer.jp 刷新 指示書｜2026年6月</p>
+    <div class="nav-foot">
+      <a href="index.html">← 目次へ戻る</a>
+      <a href="background/why-redefinition.html">コンセプトの背景 →</a>
+      <a href="background/why-ci.html">CIの背景 →</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

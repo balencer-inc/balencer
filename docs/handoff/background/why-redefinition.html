@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>コンセプト再定義の物語｜BALENCER ハンドオフ</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#FAFAF8;--surface:#FFFFFF;--ink:#141414;--sub:#5c5c58;--line:#E8E6E0;--line-d:#D6D4CC;
+    --accent:#E6FF2F;--dark:#161614;--dsub:#8E8E86;--mid:#F1EFE9;
+    --ease:cubic-bezier(.4,.4,0,1);--serif:'Playfair Display','Noto Sans JP',serif;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);line-height:2.1;font-size:15px}
+  .en{font-family:'Inter',sans-serif}.caveat{font-family:'Caveat',cursive}
+  .num{font-family:var(--serif);font-style:italic}
+  .wrap{max-width:880px;margin:0 auto;padding:0 32px}
+  ::selection{background:var(--accent)}
+  a{color:var(--ink)}
+
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;
+         background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px)}
+  header .wrap{max-width:1000px;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .back{font-size:12.5px;color:var(--sub);text-decoration:none;display:flex;align-items:center;gap:8px}
+  .back:hover{color:var(--ink)}
+  header .pg{font-family:'Inter';font-size:11px;letter-spacing:.16em;color:var(--sub)}
+
+  .hero{padding:90px 0 60px;border-bottom:1px solid var(--line)}
+  .hkick{font-family:'Inter';font-size:11px;letter-spacing:.32em;color:var(--sub);text-transform:uppercase;
+         display:flex;align-items:center;gap:12px}
+  .hkick::before{content:"";width:34px;height:1px;background:var(--ink)}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.6vw,46px);line-height:1.5;margin:26px 0 0}
+  .hero p{max-width:640px;margin-top:24px;color:var(--sub)}
+
+  section{padding:72px 0;border-bottom:1px solid var(--line)}
+  .kick{font-family:'Inter';font-size:10.5px;letter-spacing:.32em;color:var(--sub);text-transform:uppercase;
+        display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .kick i{width:6px;height:6px;border-radius:50%;background:var(--accent);outline:1px solid var(--line-d)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(23px,3vw,32px);line-height:1.6;margin-bottom:20px}
+  p.body{color:#3a3a36;margin-bottom:18px}
+  p.body b{font-weight:700}
+  .lead{color:var(--sub);max-width:660px;margin-bottom:36px}
+
+  /* timeline of wavering */
+  .tl{border-left:1px solid var(--line-d);margin:6px 0 8px}
+  .tl .ti{position:relative;padding:18px 0 18px 28px}
+  .tl .ti::before{content:"";position:absolute;left:-4.5px;top:28px;width:8px;height:8px;border-radius:50%;
+                  background:var(--surface);border:1.5px solid var(--line-d)}
+  .tl .ti.last::before{background:var(--accent);border-color:var(--ink)}
+  .tl .yr{font-family:'Inter';font-size:11px;letter-spacing:.14em;color:var(--sub)}
+  .tl .def{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(17px,2.2vw,21px);margin-top:4px;line-height:1.5}
+  .tl .src{font-size:12px;color:var(--sub);margin-top:2px}
+  .seven{display:inline-block;background:var(--accent);font-weight:700;padding:1px 8px;font-style:normal;font-family:'Noto Sans JP'}
+
+  /* pull quote */
+  .pull{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3vw,30px);line-height:1.7;
+        border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:30px 0;margin:10px 0 6px}
+  .pull em{font-style:italic}
+
+  /* decision cards */
+  .decs{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);background:var(--surface)}
+  .dec{padding:30px 32px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:150px 1fr;gap:30px;align-items:start}
+  .dec:last-child{border-bottom:none}
+  @media(max-width:680px){.dec{grid-template-columns:1fr;gap:8px}}
+  .dec .dh{font-weight:700;font-size:15px;line-height:1.7}
+  .dec .dh .en{display:block;font-size:10px;letter-spacing:.2em;color:var(--sub);margin-top:4px}
+  .dec p{font-size:13.5px;color:var(--sub)}
+  .dec p b{color:var(--ink);font-weight:500}
+  .dec .pin{display:inline-block;background:var(--mid);border:1px solid var(--line);font-size:11.5px;
+            padding:2px 10px;border-radius:999px;color:var(--ink);margin-top:8px}
+
+  /* env stats */
+  .env{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:var(--surface)}
+  @media(max-width:680px){.env{grid-template-columns:1fr}}
+  .ev{padding:30px 26px}.ev+.ev{border-left:1px solid var(--line)}
+  @media(max-width:680px){.ev+.ev{border-left:none;border-top:1px solid var(--line)}}
+  .ev .pct{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(34px,4.4vw,46px);line-height:1.2}
+  .ev .pct small{font-size:.42em;font-style:normal;color:var(--sub)}
+  .ev b{display:block;font-size:14px;margin:10px 0 6px}
+  .ev span{font-size:12.5px;color:var(--sub);line-height:1.85;display:block}
+  .env-note{font-size:12.5px;color:var(--sub);margin-top:16px}
+
+  .todo{border:1px solid var(--line);background:var(--surface);padding:26px 30px}
+  .todo ul{list-style:none}
+  .todo li{padding:9px 0 9px 24px;position:relative;font-size:14px;border-bottom:1px dashed var(--line)}
+  .todo li:last-child{border-bottom:none}
+  .todo li::before{content:"";position:absolute;left:3px;top:20px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .todo li b{font-weight:700}
+
+  footer{padding:54px 0 80px;color:var(--sub);font-size:13px}
+  .ftag{font-family:'Caveat',cursive;font-size:20px;color:var(--ink)}
+  .nav-foot{display:flex;justify-content:space-between;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .nav-foot a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line-d);padding:11px 22px;border-radius:999px;transition:all .3s var(--ease)}
+  .nav-foot a:hover{background:var(--ink);color:var(--bg)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="back" href="../index.html">← ハンドオフ目次</a>
+    <span class="pg en">BACKGROUND 01 / CONCEPT</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hkick">Why We Redefined</div>
+    <h1>会社の「言い方」が、<br>7つに割れていた。</h1>
+    <p>バレンサーは何の会社か。その答えが、媒体ごと・時期ごとに違っていました。これは迷走ではなく、収束の途中だった——という話と、最終的に決めたことを記録します。</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>The Problem</div>
+    <h2>同じ会社に、<span class="seven">7つ</span>の自己紹介。</h2>
+    <p class="lead">調査で集めると、自己定義が時系列で一本の線になっていました。少しずつ「デザインを売る会社」から「阿部の関与（時間と判断）を売る会社」へ移っている。問題は方向ではなく、決め切っていないことと、公開面（HP）が一番古いまま止まっていたことでした。</p>
+    <div class="tl">
+      <div class="ti"><div class="yr en">2020</div><div class="def">デザイン経営を浸透させるコンサル会社／ブランディング専門会社</div><div class="src">ONLY STORY・CAMPFIRE・Wantedly</div></div>
+      <div class="ti"><div class="yr en">2022</div><div class="def">制作実績（Works）で語る、4名のブランディング会社</div><div class="src">会社案内2022</div></div>
+      <div class="ti"><div class="yr en">2024.12</div><div class="def">町医者型コンサル（著書『社長のためのコンサル3.0』）</div><div class="src">Amazon経営戦略1位・PRTIMES</div></div>
+      <div class="ti"><div class="yr en">2025</div><div class="def">一気通貫ワンストップ（テーマ横並びの時代）</div><div class="src">企業概要・分析ページ</div></div>
+      <div class="ti"><div class="yr en">2026.03</div><div class="def">経営者の右腕を、外注する。</div><div class="src">提案書群・関与度別3層へ転換</div></div>
+      <div class="ti last"><div class="yr en">2026.05–06</div><div class="def">経営者の右腕がつとまる、ブランディングAXカンパニー</div><div class="src">哲学v2 → 今回の再定義で確定</div></div>
+    </div>
+    <p class="body" style="margin-top:24px">最新でも3つの言い方が並走していました。哲学v2は「ブランディングAXカンパニー」、同じ週の商談メモは「デザイン思考のコンサルティングファーム」、SOERU LPは「AXが得意なブランディングカンパニー」。<b>1日違いの文書で、別の会社を紹介していた。</b></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>The Insight</div>
+    <div class="pull">揺れは、迷走ではなかった。<br><em>収束の、途中だった。</em></div>
+    <p class="body" style="margin-top:26px">「デザインを売る会社」から「関わりの深さを売る会社」へ。2026年3月の社内仕様書には、すでに核心が書かれていました——<b>「テーマで分けると、バレンサーの強みである課題の再定義力が殺される」</b>。テーマ別（ブランディング／DX／AI…）をやめ、関与度別（壁打ち→右腕→参謀）に切り替える、という決別の宣言です。あとは、それを公開面まで通し切るだけでした。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>The Decisions</div>
+    <h2>決めたこと。</h2>
+    <p class="lead">壁打ちを重ねて確定した骨格です。すべて docs/company/identity.md が正本です。</p>
+    <div class="decs">
+      <div class="dec">
+        <div class="dh">一言定義<span class="en">DEFINITION</span></div>
+        <div><p>「<b>経営者の右腕がつとまる、ブランディングAXカンパニー</b>」。AX＝AIで会社の戦い方そのものを変えること。DXが仕事のやり方のデジタル化なら、AXは会社のつくり直し。</p></div>
+      </div>
+      <div class="dec">
+        <div class="dh">旧スローガン<span class="en">LEGACY COPY</span></div>
+        <div><p>「組織を変える。魅せ方を変える。戦い方を変える。」は退役させず、<b>AXの定義文に昇格</b>。組織（インナー）→魅せ方（アウター）→事業の順番こそ、創業からの思想。リクルート時代の組織風土改革が原点。</p></div>
+      </div>
+      <div class="dec">
+        <div class="dh">看板は2枚<span class="en">TWO FLAGS</span></div>
+        <div><p><b>①組織開発・MVV</b>（対面・AI不可代替・同業のプロも発注）×<b>②AI実装</b>（自社が実証第一号）。この掛け算がブランディングAX。会社の自己紹介はこの2枚だけでする。</p></div>
+      </div>
+      <div class="dec">
+        <div class="dh">関与度＝本体<span class="en">STRUCTURE</span></div>
+        <div><p>背骨は関与度別リテイナー（右腕の深さ）。商品（SOERU/ヒトツ/ミタテ/補助金）は<b>入口</b>。テーマ別6サービス表記は廃止。看板2枚以外を自己紹介に出さない。</p></div>
+      </div>
+      <div class="dec">
+        <div class="dh">SOERUを統合<span class="en">ENTRY</span></div>
+        <div><p>Entry壁打ちとSOERUは中身が同じだった。Entryの名は退役し、<b>SOERUが入口の愛称</b>に。「AI顧問」のカテゴリ語は捨てる（月5万相場の土俵を避ける）。サブコピーは「AIに強いブランディング会社の月額右腕プラン」。<span class="pin">階段：SOERU→右腕→参謀→AI組織OS</span></p></div>
+      </div>
+      <div class="dec">
+        <div class="dh">採用・制作の置き場<span class="en">PLACEMENT</span></div>
+        <div><p>採用も制作も<b>単体で売らない</b>。捨てるのではなく、看板の出口・証拠として体系に置き直す。制作は「戦略がどう形になったか」の事例として語る。</p></div>
+      </div>
+      <div class="dec">
+        <div class="dh">組織の語り<span class="en">TEAM</span></div>
+        <div><p><b>少数精鋭×AI組織を前面に</b>。「外注の7割をAIに。一番大事な3割は人間が手放さない」。自社がAI組織OSの実証第一号——それ自体が商品の証拠になる。</p></div>
+      </div>
+      <div class="dec">
+        <div class="dh">MVVへの本音<span class="en">MVV</span></div>
+        <div><p>現ミッション「寄り添う／笑顔」は、どの会社でも掲げられる<b>常套句になっていた</b>。本物はすでに社内にある——<b>for loved ones.</b> と哲学v2の5バリュー。ミッションは新語を探さず「for loved ones. の散文化」へ（ビジョンは後回し）。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>The Backing</div>
+    <h2>環境が、この方向を裏づける。</h2>
+    <p class="lead">「方向転換」ではなく「刈り込みと一致」が正しい、と環境データが示しています。市場の障壁の中身が、そのまま伴走支援の仕事になっている。</p>
+    <div class="env">
+      <div class="ev"><div class="pct">20.4<small>%</small></div><b>AI導入率</b><span>中小企業の8割が未着手。需要はこれから顕在化する。</span></div>
+      <div class="ev"><div class="pct">35.6<small>%</small></div><b>「活用場面が不明」</b><span>導入障壁の第1位。ツール販売では解けず、伴走が埋める課題。</span></div>
+      <div class="ev"><div class="pct">50.1<small>%</small></div><b>後継者不在率</b><span>承継した新社長は番頭がいない。外部の右腕を最も必要とする層。</span></div>
+    </div>
+    <p class="env-note">出典: 中小機構・商工中金（2026）／帝国データバンク（2025）。あわせて、AI顧問は月5万円〜の価格競争、LP制作は単価デフレが進行。「分析を見せる」「物を作る」はコモディティ化し、<b style="color:var(--ink)">「組織に入って動かす」だけが守られる</b>——掛け算がこの環境に合致している。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>Still Open</div>
+    <h2>まだ決めていないこと。</h2>
+    <div class="todo">
+      <ul>
+        <li><b>事業コピーの最終確定</b> — 候補「経営者の隣で、考えて、つくる。」「組織から変える。AIまで実装する。」が有力。両用も検討中</li>
+        <li><b>ミッション・ビジョンの文言</b> — 方向は「for loved ones. の散文化」。着手は後回し</li>
+        <li><b>CI・色の確定</b> — 別資料「CI/VIの考え方」を参照。方向はB案「墨」で固まりつつある</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftag">for loved ones.</div>
+    <p style="margin-top:8px">正本: docs/company/identity.md ／ redefinition-discussion.md ／ strategy-environment.md</p>
+    <div class="nav-foot">
+      <a href="../index.html">← 目次へ戻る</a>
+      <a href="why-ci.html">CI/VIの考え方 →</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CI/VIの考え方｜BALENCER ハンドオフ</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#FAFAF8;--surface:#FFFFFF;--ink:#141414;--sub:#5c5c58;--line:#E8E6E0;--line-d:#D6D4CC;
+    --accent:#E6FF2F;--dark:#161614;--dsub:#8E8E86;--mid:#F1EFE9;
+    --ease:cubic-bezier(.4,.4,0,1);--serif:'Playfair Display','Noto Sans JP',serif;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);line-height:2.1;font-size:15px}
+  .en{font-family:'Inter',sans-serif}.caveat{font-family:'Caveat',cursive}
+  .mono{font-family:Menlo,Consolas,monospace}
+  .wrap{max-width:880px;margin:0 auto;padding:0 32px}
+  ::selection{background:var(--accent)}
+  a{color:var(--ink)}
+
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;
+         background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px)}
+  header .wrap{max-width:1000px;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .back{font-size:12.5px;color:var(--sub);text-decoration:none}
+  .back:hover{color:var(--ink)}
+  header .pg{font-family:'Inter';font-size:11px;letter-spacing:.16em;color:var(--sub)}
+
+  .hero{padding:90px 0 60px;border-bottom:1px solid var(--line)}
+  .hkick{font-family:'Inter';font-size:11px;letter-spacing:.32em;color:var(--sub);text-transform:uppercase;display:flex;align-items:center;gap:12px}
+  .hkick::before{content:"";width:34px;height:1px;background:var(--ink)}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.6vw,46px);line-height:1.5;margin:26px 0 0}
+  .hero p{max-width:640px;margin-top:24px;color:var(--sub)}
+
+  section{padding:72px 0;border-bottom:1px solid var(--line)}
+  .kick{font-family:'Inter';font-size:10.5px;letter-spacing:.32em;color:var(--sub);text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .kick i{width:6px;height:6px;border-radius:50%;background:var(--accent);outline:1px solid var(--line-d)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(23px,3vw,32px);line-height:1.6;margin-bottom:20px}
+  p.body{color:#3a3a36;margin-bottom:18px}
+  p.body b{font-weight:700}
+  .lead{color:var(--sub);max-width:660px;margin-bottom:36px}
+
+  /* 4 systems mess */
+  .mess{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:680px){.mess{grid-template-columns:1fr 1fr}}
+  .ms{border:1px solid var(--line);background:var(--surface);overflow:hidden}
+  .ms .sw{height:64px;display:flex}
+  .ms .sw i{flex:1}
+  .ms .lb{padding:14px 14px 18px}
+  .ms .lb b{font-size:12.5px;display:block;margin-bottom:4px}
+  .ms .lb span{font-size:11px;color:var(--sub);line-height:1.7;display:block}
+  .ms.cross{position:relative}
+  .ms.cross::after{content:"廃";position:absolute;top:8px;right:10px;font-size:11px;color:var(--sub);
+                   border:1px solid var(--line-d);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center}
+
+  .pull{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3vw,30px);line-height:1.7;
+        border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:30px 0;margin:6px 0}
+  .pull em{font-style:italic}
+
+  /* architecture diagram */
+  .arch{border:1px solid var(--line);background:var(--surface);padding:40px 36px;text-align:center}
+  .arch .frame{display:inline-block;border:1px solid var(--ink);padding:30px 36px;position:relative}
+  .arch .frame .flab{position:absolute;top:-10px;left:18px;background:var(--surface);padding:0 8px;font-size:11px;letter-spacing:.1em;color:var(--sub)}
+  .arch .prods{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .arch .pc{display:flex;align-items:center;gap:8px;font-size:13px;border:1px solid var(--line);padding:8px 16px;border-radius:999px;background:var(--bg)}
+  .arch .pc i{width:12px;height:12px;border-radius:50%}
+  .arch .acap{font-size:13px;color:var(--sub);margin-top:24px;max-width:560px;margin-left:auto;margin-right:auto}
+
+  /* references */
+  .refs{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.refs{grid-template-columns:1fr}}
+  .ref{border:1px solid var(--line);background:var(--surface);padding:28px 28px}
+  .ref .rname{font-family:'Inter';font-weight:600;font-size:15px;letter-spacing:.02em}
+  .ref .rurl{font-family:Menlo,monospace;font-size:11px;color:var(--sub);margin:4px 0 14px}
+  .ref ul{list-style:none}
+  .ref li{padding:7px 0 7px 20px;position:relative;font-size:13px;color:var(--sub)}
+  .ref li::before{content:"";position:absolute;left:2px;top:17px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .ref li b{color:var(--ink);font-weight:500}
+
+  /* ABC decision */
+  .abc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:680px){.abc{grid-template-columns:1fr}}
+  .ab{border:1px solid var(--line);background:var(--surface);padding:24px 24px}
+  .ab.win{border-color:var(--ink);border-width:1.5px;position:relative}
+  .ab.win::before{content:"採用";position:absolute;top:-11px;left:20px;background:var(--accent);font-size:11px;padding:2px 12px;font-weight:700}
+  .ab .an{font-family:var(--serif);font-style:italic;font-size:20px}
+  .ab b{display:block;font-size:14px;margin:8px 0 6px}
+  .ab span{font-size:12.5px;color:var(--sub);line-height:1.85;display:block}
+
+  /* tokens */
+  .tok{border:1px solid var(--line);background:var(--surface)}
+  .tok .trow{display:grid;grid-template-columns:120px 1fr;gap:0;border-bottom:1px solid var(--line)}
+  .tok .trow:last-child{border-bottom:none}
+  .tok .tsw{height:auto;min-height:56px;border-right:1px solid var(--line)}
+  .tok .tinfo{padding:16px 22px}
+  .tok .tinfo b{font-size:13.5px}
+  .tok .tinfo .hex{font-family:Menlo,monospace;font-size:12px;color:var(--sub);margin-left:8px}
+  .tok .tinfo span{font-size:12px;color:var(--sub);display:block}
+  .typ{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+  .typ .ty{border:1px solid var(--line);background:var(--surface);padding:20px 24px}
+  .typ .ty .tl2{font-family:'Inter';font-size:10px;letter-spacing:.24em;color:var(--sub);margin-bottom:8px}
+  .typ .ty.serif .sm{font-family:var(--serif);font-weight:500;font-size:26px}
+  .typ .ty.sans .sm{font-weight:500;font-size:21px}
+  .typ .ty .meta{font-size:12px;color:var(--sub);margin-top:6px}
+  .rule-note{border-left:2px solid var(--accent);padding:6px 0 6px 18px;margin:24px 0;font-size:14px;color:#3a3a36}
+  .rule-note b{font-weight:700}
+
+  footer{padding:54px 0 80px;color:var(--sub);font-size:13px}
+  .ftag{font-family:'Caveat',cursive;font-size:20px;color:var(--ink)}
+  .nav-foot{display:flex;justify-content:space-between;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .nav-foot a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line-d);padding:11px 22px;border-radius:999px;transition:all .3s var(--ease)}
+  .nav-foot a:hover{background:var(--ink);color:var(--bg)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="back" href="../index.html">← ハンドオフ目次</a>
+    <span class="pg en">BACKGROUND 02 / CI &amp; VI</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hkick">How We Decided the Look</div>
+    <h1>色が、4系統に<br>並んでいた。</h1>
+    <p>コーポレートサイト、スライド、LP——制作のたびに別の色で作ってきました。どれも「その時の決定」で、腹落ちした正本ではなかった。だから色単体ではなく、親ブランドと商品色の関係から設計し直しています。</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>The Mess</div>
+    <h2>4つの色体系が並走していた。</h2>
+    <p class="lead">それぞれ正しい理由で生まれましたが、統一の核がありませんでした。商品ごとの色も加わって、サイト全体では「バラバラ」に見えていた。</p>
+    <div class="mess">
+      <div class="ms cross">
+        <div class="sw"><i style="background:#F7F5F0"></i><i style="background:#06101E"></i><i style="background:#4338CA"></i></div>
+        <div class="lb"><b>現行サイト</b><span>cream × navy × indigo<br>WP実装の暫定色</span></div>
+      </div>
+      <div class="ms cross">
+        <div class="sw"><i style="background:#FFFFFF"></i><i style="background:#000000"></i><i style="background:#E6FF2F"></i></div>
+        <div class="lb"><b>v1.0</b><span>白/グレー × 蛍光イエロー<br>スライド用</span></div>
+      </div>
+      <div class="ms cross">
+        <div class="sw"><i style="background:#F5F3F0"></i><i style="background:#1C1C1C"></i><i style="background:#C5956B"></i></div>
+        <div class="lb"><b>v2.0</b><span>ウォームホワイト × ローズゴールド<br>ヒトツLP等</span></div>
+      </div>
+      <div class="ms cross">
+        <div class="sw"><i style="background:#1C1C1C"></i><i style="background:#A6453E"></i><i style="background:#F5F3F0"></i></div>
+        <div class="lb"><b>提案書</b><span>墨 × 赤銅<br>2026-03資料</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>The Principle</div>
+    <div class="pull">親は、額縁。<br><em>商品が、絵。</em></div>
+    <p class="body" style="margin-top:26px">解決の鍵は、色を1つに統一することではありませんでした。<b>親ブランド（バレンサー本体）は無彩色寄りの控えめな核を持ち、商品ごとに色を持たせる</b>。これで「LPごとに色が違う」現状が、バラバラではなく<b>設計</b>になります。色の使い分けが、むしろ戦略になる。</p>
+    <div class="arch" style="margin-top:30px">
+      <div class="frame">
+        <span class="flab en">BALENCER — 無彩色の核（額縁）</span>
+        <div class="prods">
+          <div class="pc"><i style="background:#2563EB"></i>SOERU 青</div>
+          <div class="pc"><i style="background:#0E7A5F"></i>ミタテ 緑</div>
+          <div class="pc"><i style="background:#C5956B"></i>ヒトツ ローズゴールド</div>
+        </div>
+      </div>
+      <p class="acap">親は墨×生成り×蛍光イエローの点。商品色は、その額縁の中で生きる。コーポレートのページ（トップ・看板2枚）は親の色、各商品LPは商品色——役割で塗り分ける。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>References</div>
+    <h2>基準にした、2つのサイト。</h2>
+    <p class="lead">阿部さんが「色味・動き・トーンが好き」と挙げた2サイトを実測で分解し、技法を言語化しました。</p>
+    <div class="refs">
+      <div class="ref">
+        <div class="rname">PLAID ALPHA</div>
+        <div class="rurl">alpha.plaid.co.jp</div>
+        <ul>
+          <li><b>オフホワイト基調</b>（#F7F7F7）。純白を避け、光が柔らかく落ちる</li>
+          <li><b>可変CSSグラデーション</b>。角度と色ストップをtransitionで滑らかに遷移（「色味が好き」の核心）</li>
+          <li>イージング <span class="mono">cubic-bezier(.4,.4,0,1)</span> で統一</li>
+          <li>セリフ×サンセリフ×和文の三段重ね、ジャンプ率の高さ</li>
+        </ul>
+      </div>
+      <div class="ref">
+        <div class="rname">DATAGRID</div>
+        <div class="rurl">datagrid.co.jp</div>
+        <ul>
+          <li><b>白 × 墨</b>（#282828）。AI企業だがダークに逃げず白で勝負</li>
+          <li><b>図が動いて技術力を証明する</b>。線が描かれ、ノードが動く（最大の刺さりポイント）</li>
+          <li>expo-out系イージング <span class="mono">cubic-bezier(.16,1,.3,1)</span>。キビキビして上質</li>
+          <li>差し色は彩度高めを「点」でだけ。Inter一本</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>The Exploration</div>
+    <h2>3方向から、B案「墨」へ。</h2>
+    <p class="lead">同じ言葉のまま、色・フォント・動きだけを変えた3案を見比べました（探索HTMLは目次のAppendixにあります）。</p>
+    <div class="abc">
+      <div class="ab">
+        <div class="an">A</div>
+        <b>シグナル</b>
+        <span>蛍光イエローの正統進化。公式CIに連続するが、第一想起が旧軸に戻る懸念。</span>
+      </div>
+      <div class="ab win">
+        <div class="an">B</div>
+        <b>墨</b>
+        <span>ニュートラル×セリフ×余白。MOLTS/KAAAN路線。「タイポもトーンも好み」と選定。</span>
+      </div>
+      <div class="ab">
+        <div class="an">C</div>
+        <b>電荷</b>
+        <span>ダーク×蛍光グラデのAX先進路線。「AI企業っぽさ」に寄りすぎるリスク。</span>
+      </div>
+    </div>
+    <div class="rule-note" style="margin-top:30px">
+      <b>ローズゴールドの面塗りは避ける。</b>あの「品」は好評だが、Claudeで作るLPの定番トーンになっており、AI生成サイトと被る。同じ上品さを、無彩色×セリフ×余白の側で再現する——これが「大人っぽく、かつAIっぽくない」への答え。
+    </div>
+    <div class="rule-note">
+      <b>セリフ見出しは残す。</b>datagridはサンセリフ一本なので、セリフ×墨がバレンサー側の差別化になる（細セリフのロゴとも繋がる）。蛍光イエローは「点」で接触回数だけ増やす。
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kick"><i></i>Tokens</div>
+    <h2>確定したトークン。</h2>
+    <p class="lead">試作した全ページがこの値で統一されています。これが現時点のデザイントークンです。</p>
+    <div class="tok">
+      <div class="trow"><div class="tsw" style="background:#FAFAF8"></div><div class="tinfo"><b>BG <span class="hex">#FAFAF8</span></b><span>背景。生成り白。純白を避ける</span></div></div>
+      <div class="trow"><div class="tsw" style="background:#FFFFFF"></div><div class="tinfo"><b>SURFACE <span class="hex">#FFFFFF</span></b><span>カード・面</span></div></div>
+      <div class="trow"><div class="tsw" style="background:#141414"></div><div class="tinfo"><b>INK <span class="hex">#141414</span></b><span>墨。真っ黒を避けコントラストを緩める</span></div></div>
+      <div class="trow"><div class="tsw" style="background:#5c5c58"></div><div class="tinfo"><b>SUB <span class="hex">#5c5c58</span></b><span>サブテキスト</span></div></div>
+      <div class="trow"><div class="tsw" style="background:#E8E6E0"></div><div class="tinfo"><b>LINE <span class="hex">#E8E6E0</span></b><span>罫線・境界</span></div></div>
+      <div class="trow"><div class="tsw" style="background:#E6FF2F"></div><div class="tinfo"><b>ACCENT <span class="hex">#E6FF2F</span></b><span>蛍光イエロー。<b style="color:#141414">点でのみ</b>使う。面で塗らない</span></div></div>
+      <div class="trow"><div class="tsw" style="background:#161614"></div><div class="tinfo"><b>DARK <span class="hex">#161614</span></b><span>ダーク面。AI系セクションのみ</span></div></div>
+    </div>
+    <div class="typ">
+      <div class="ty serif">
+        <div class="tl2">DISPLAY — 見出し</div>
+        <div class="sm">数字の向こうの、人を見る。</div>
+        <div class="meta">Playfair Display（セリフ）× Noto Sans JP。数字はセリフのイタリックで差別化。</div>
+      </div>
+      <div class="ty sans">
+        <div class="tl2">BODY — 本文 / LABEL — 英字ラベル</div>
+        <div class="sm">対話で組織の内側に入り、実装までやり切る。</div>
+        <div class="meta">本文 Noto Sans JP（line-height 2.0前後）。英字ラベルは Inter。装飾は Caveat（for loved ones. 用）。</div>
+      </div>
+    </div>
+    <div class="rule-note" style="margin-top:26px">
+      <b>動きの言語。</b>イージング <span class="mono">cubic-bezier(.4,.4,0,1)</span>、デュレーション 0.3 / 0.5 / 0.8s。<b>図はアニメーションさせる</b>（技術力はモーションで証明する、をCIの原則に昇格）。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftag">for loved ones.</div>
+    <p style="margin-top:8px">正本: docs/design-system/（DESIGN.md／references/plaid-alpha.md・datagrid.md）。トークンv3とDESIGN-v3はB案確定後に正式化予定。</p>
+    <div class="nav-foot">
+      <a href="why-redefinition.html">← コンセプト再定義の物語</a>
+      <a href="../index.html">目次へ戻る →</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

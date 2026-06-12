@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Caveat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --c-accent: #E6FF2F;
+  --c-accent-soft: #E5FF2C;
+  --c-accent-tint: rgba(230, 255, 47, 0.18);
+
+  --c-ink: #0f1115;
+  --c-ink-2: #3A3838;
+  --c-ink-3: #595959;
+  --c-muted: #757070;
+
+  --c-white: #ffffff;
+  --c-off-white: #F5F3F3;
+  --c-gray-50: #F2F2F2;
+  --c-gray-100: #E6E7EA;
+  --c-gray-200: #D0CECE;
+  --c-gray-300: #B2B2B2;
+
+  --c-border: #E6E7EA;
+  --c-border-soft: #E2E0DA;
+
+  --c-sidebar-bg: #0A0F18;
+  --c-sidebar-text: #94A3B8;
+  --c-sidebar-active: rgba(230, 255, 47, 0.12);
+
+  --c-bg: #F7F7F5;
+  --c-card: #FFFFFF;
+
+  --f-en: 'Poppins', system-ui, sans-serif;
+  --f-ja: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+  --f-script: 'Caveat', cursive;
+  --f-mono: 'JetBrains Mono', monospace;
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-card: var(--c-card);
+  --color-ink: var(--c-ink);
+  --color-ink-2: var(--c-ink-2);
+  --color-muted: var(--c-muted);
+  --color-border: var(--c-border);
+  --color-accent: var(--c-accent);
+  --color-sidebar-bg: var(--c-sidebar-bg);
+  --color-sidebar-text: var(--c-sidebar-text);
+  --color-sidebar-active: var(--c-sidebar-active);
+  --font-en: var(--f-en);
+  --font-ja: var(--f-ja);
+  --font-script: var(--f-script);
+  --font-mono: var(--f-mono);
+}
+
+html, body {
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--f-ja), var(--f-en);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+.balencer-mark {
+  background: linear-gradient(transparent 60%, var(--c-accent) 60%);
+  padding: 0 .15em;
+}
+
+.balencer-script {
+  font-family: var(--f-script);
+  font-weight: 600;
+}

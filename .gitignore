@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# サーバー実値config(APIトークン等)はコミットしない。sampleのみ管理
+server-scripts/*-config.php
+!server-scripts/*-config.sample.php

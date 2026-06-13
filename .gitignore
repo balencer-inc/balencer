@@ -43,3 +43,6 @@ next-env.d.ts
 # サーバー実値config(APIトークン等)はコミットしない。sampleのみ管理
 server-scripts/*-config.php
 !server-scripts/*-config.sample.php
+
+# FTP配布用ステージング。中身は docs/*-lp/ と server-scripts/ の複製(古い版含む)なので手元のみ
+docs/balencer公開アップロード/

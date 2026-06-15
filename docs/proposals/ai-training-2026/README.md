@@ -12,6 +12,11 @@
 | `index.html` | HTML提案デッキ（12枚・1280×720）。来週クライアント提示用。soeru-client-deck型を流用 |
 | `samples/curriculum.html` | カリキュラム表 見本（A4縦）。計画届に添付。OFF-JT 15hが一目で分かる |
 | `samples/estimate.html` | 見積書 見本（A4縦）。研修本体（助成対象）と研修後の展開（受託開発/SOERU・対象外）を2層で分離 |
+| `case-study.html` | NAILITの業務自動化を匿名化した事例デッキ（4枚）。商談で②として共有。社名/金額/固有名を伏せ、最後に印税分配へ橋渡し |
+
+## 商談共有パック（村山様オンライン）
+① 本提案デッキ `index.html`（リスキリング研修）＋ ② 匿名事例 `case-study.html`（業務自動化の型）の2点を共有。
+②は「Notion中心の例。御社はClaude中心で、裏のDBは適材適所」と位置づけを添える（Notion導入の話と誤解させない）。NAILIT実名資料（`docs/estimates/nailit-2026/`）は社外提示しない。
 
 ## 確定方針
 

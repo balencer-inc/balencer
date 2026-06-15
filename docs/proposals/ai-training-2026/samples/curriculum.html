@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>研修カリキュラム概要書（見本）｜AI実装研修｜株式会社バレンサー</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --neon:#E6FF2F;--neon-tint:rgba(230,255,47,.18);
+    --ink:#000;--ink-2:#3A3838;--ink-3:#595959;--ink-4:#757070;
+    --bg:#FFF;--bg-2:#F5F3F3;--bg-3:#F2F2F2;--border:#D0CECE;--border-soft:#E2E0DA;--good:#0E7A5F;
+    --font-en:'Poppins',system-ui,sans-serif;--font-ja:'Noto Sans JP','Hiragino Sans',sans-serif;--font-script:'Caveat',cursive;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink-2);font-family:var(--font-ja);font-size:13px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .page{max-width:880px;margin:0 auto;padding:56px 56px 80px}
+  .doc-header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--ink);padding-bottom:26px;margin-bottom:32px}
+  .brand-block .label{font-family:var(--font-script);font-size:22px;color:var(--ink-3);line-height:1}
+  .brand-block .title{font-family:var(--font-en);font-weight:800;font-size:30px;letter-spacing:-.01em;color:var(--ink);line-height:1.1;margin-top:4px}
+  .brand-block .ja{font-size:13px;color:var(--ink-3);margin-top:10px;letter-spacing:.05em}
+  .meta{text-align:right;font-size:12px;color:var(--ink-3);line-height:1.9}
+  .meta strong{color:var(--ink);font-weight:700}
+  .sample-flag{display:inline-block;font-family:var(--font-en);font-size:9px;font-weight:700;letter-spacing:.2em;background:var(--neon);color:var(--ink);padding:3px 8px;margin-bottom:8px}
+  .overview{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;border:1px solid var(--border);margin-bottom:32px}
+  .ov{display:flex;border-bottom:1px solid var(--border-soft);padding:0}
+  .ov:nth-last-child(-n+2){border-bottom:none}
+  .ov .k{width:130px;background:var(--bg-2);padding:12px 16px;font-weight:700;color:var(--ink);font-size:12px;flex:none}
+  .ov .v{padding:12px 16px;font-size:13px;color:var(--ink-2)}
+  section{margin-bottom:36px;page-break-inside:avoid}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--ink)}
+  .section-head .en{font-family:var(--font-script);font-size:24px;color:var(--ink-3);line-height:1}
+  .section-head .ja{font-family:var(--font-ja);font-weight:700;font-size:18px;color:var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  thead th{background:var(--ink);color:#fff;font-family:var(--font-ja);font-weight:500;text-align:left;padding:10px 12px;font-size:11.5px;letter-spacing:.05em}
+  thead th.c{text-align:center;width:90px}
+  thead th.r{text-align:right;width:70px}
+  tbody td{padding:12px;border-bottom:1px solid var(--border-soft);vertical-align:top;color:var(--ink-2)}
+  tbody td.day{width:96px;font-family:var(--font-en);font-weight:600;color:var(--ink-3)}
+  tbody td.theme{font-weight:700;color:var(--ink)}
+  tbody td.time{text-align:center;font-family:var(--font-en);color:var(--ink-3)}
+  tbody td.hr{text-align:right;font-family:var(--font-en);font-weight:700;color:var(--ink)}
+  tfoot td{padding:12px;font-size:13px;border-top:2px solid var(--ink);background:var(--bg-3);font-weight:700;color:var(--ink)}
+  tfoot td.hr{text-align:right;font-family:var(--font-en)}
+  tfoot td.hr .mark{background:var(--neon);padding:2px 10px}
+  .confirm{display:flex;align-items:center;gap:12px;background:#E6F4EF;border:1px solid #BBDFD2;border-radius:8px;padding:14px 20px;margin-top:18px;font-size:13px;color:var(--good);font-weight:700}
+  .confirm .b{font-family:var(--font-en);font-size:20px}
+  .notes{background:var(--bg-2);padding:22px 26px;font-size:12px;line-height:1.85}
+  .notes ol{padding-left:20px}
+  .notes li{margin-bottom:7px;color:var(--ink-2)}
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-end}
+  .footer-brand .name{font-family:var(--font-en);font-weight:700;font-size:14px;color:var(--ink)}
+  .footer-brand .tagline{font-family:var(--font-script);font-size:16px;color:var(--ink-4)}
+  .footer-legal{font-size:10px;color:var(--ink-4);text-align:right;line-height:1.8}
+  @media print{.page{padding:32px 40px}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc-header">
+    <div class="brand-block">
+      <div class="sample-flag">SAMPLE / 見本</div>
+      <div class="label">Curriculum</div>
+      <div class="title">研修カリキュラム概要書</div>
+      <div class="ja">人材開発支援助成金（事業展開等リスキリング支援コース）計画届 添付用</div>
+    </div>
+    <div class="meta">
+      <div>発行日　<strong>2026年〇月〇日</strong></div>
+      <div>提出先　<strong>［御社名］様</strong></div>
+      <div>文書番号　<strong>CUR-2026-〇〇</strong></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="overview">
+      <div class="ov"><div class="k">コース名</div><div class="v">AI実装研修</div></div>
+      <div class="ov"><div class="k">対象者</div><div class="v">実務チーム　〇名（雇用保険被保険者）</div></div>
+      <div class="ov"><div class="k">実施期間</div><div class="v">2026年〇月〇日 〜 〇月〇日</div></div>
+      <div class="ov"><div class="k">実施形態</div><div class="v">ハイブリッド（対面＋オンライン）・全5回</div></div>
+      <div class="ov"><div class="k">講師</div><div class="v">株式会社バレンサー　〇〇〇〇（部外講師）</div></div>
+      <div class="ov"><div class="k">教材</div><div class="v">テキスト・ワークシート・録画</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="en">Schedule</span>
+      <span class="ja">日程表・OFF-JT 時間割</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:96px;">実施日</th>
+          <th class="c">時間帯</th>
+          <th>訓練内容（OFF-JT）</th>
+          <th class="r">時間</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="day">第1回<br>〇/〇</td><td class="time">09:00-12:00</td><td><b class="theme">AIの全体像とClaude基本操作</b><br>生成AIの動向／安全な使い方・社内ルール／Claudeの基本操作（座学＋ハンズオン）</td><td class="hr">3.0h</td></tr>
+        <tr><td class="day">第2回<br>〇/〇</td><td class="time">09:00-12:00</td><td><b class="theme">プロンプト設計と自社業務への適用</b><br>頼み方の型／自部署の業務への落とし込み演習（グループワーク）</td><td class="hr">3.0h</td></tr>
+        <tr><td class="day">第3回<br>〇/〇</td><td class="time">09:00-12:00</td><td><b class="theme">業務自動化の基礎</b><br>Claude／Claude Codeと外部ツール連携で手作業を減らす（デモ＋演習）</td><td class="hr">3.0h</td></tr>
+        <tr><td class="day">第4回<br>〇/〇</td><td class="time">09:00-12:00</td><td><b class="theme">パイロット業務の設計演習</b><br>自動化する業務を一つ選定し、進め方を設計（グループワーク）</td><td class="hr">3.0h</td></tr>
+        <tr><td class="day">第5回<br>〇/〇</td><td class="time">09:00-12:00</td><td><b class="theme">効果測定と全社展開計画</b><br>削減効果の測り方／社内展開の計画づくり（演習＋発表）</td><td class="hr">3.0h</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="3">OFF-JT 実訓練時間 合計</td><td class="hr"><span class="mark">15.0h</span></td></tr>
+      </tfoot>
+    </table>
+    <div class="confirm"><span class="b">✓</span>OFF-JT 実訓練時間が 10時間以上 であることを確認できます（移動・休憩・対象外時間は含みません）。</div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="en">Notes</span>
+      <span class="ja">備考</span>
+    </div>
+    <div class="notes">
+      <ol>
+        <li>本書は人材開発支援助成金（事業展開等リスキリング支援コース）の計画届に添付する目的で、研修提供者が作成する見本です。〇印は御社の実施内容に合わせて確定します。</li>
+        <li>OFF-JT 実訓練時間は10時間以上が要件です。本コースは15時間で要件を満たします。</li>
+        <li>講師要件確認書（厚労省様式）は別途お渡しします。様式番号・最新の要件は管轄労働局でご確認ください。</li>
+        <li>助成金の申請手続き（計画届・支給申請の作成・提出）は社会保険労務士へご相談ください。本書は研修内容を示す書類であり、申請代行を行うものではありません。</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="name">BALENCER Inc.</div>
+      <div class="tagline">for loved ones.</div>
+    </div>
+    <div class="footer-legal">
+      © 2026 株式会社バレンサー　All rights reserved.<br>
+      info@balencer.jp　／　https://balencer.jp
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

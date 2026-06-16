@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>事業価値 簡易査定 ご報告｜TSUGI & PARTNERS</title>
+<style>
+  :root{
+    --navy:#1b2a4a;--navy-2:#2c4068;--ink:#1f2733;--sub:#5b6675;
+    --line:#d7dce3;--line-strong:#b9c1cc;--fill:#f4f6f9;--gold:#b08a4f;--warn:#9a3b2f;
+  }
+  *{box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,sans-serif;
+    color:var(--ink);font-size:10px;line-height:1.6;background:#fff;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .page{width:210mm;height:297mm;overflow:hidden;margin:0 auto;padding:13mm 14mm 11mm;position:relative;}
+
+  .brand{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:7px;}
+  .brand .logo{font-size:14px;font-weight:700;letter-spacing:.16em;color:var(--navy);}
+  .brand .logo small{display:block;font-size:7px;letter-spacing:.2em;color:var(--sub);font-weight:400;margin-top:2px;}
+  .brand .tag{font-size:7.5px;color:var(--sub);text-align:right;letter-spacing:.03em;}
+
+  .title{display:flex;justify-content:space-between;align-items:flex-end;margin:11px 0 9px;}
+  .title h1{font-size:18px;color:var(--navy);margin:0;letter-spacing:.04em;font-weight:700;}
+  .title h1 .en{display:block;font-size:7.5px;color:var(--sub);letter-spacing:.18em;margin-top:3px;font-weight:400;}
+  .title .meta{text-align:right;font-size:8px;color:var(--sub);line-height:1.7;}
+  .title .meta .to{font-size:11px;color:var(--ink);font-weight:600;}
+  .title .conf{display:inline-block;border:1px solid var(--line-strong);border-radius:3px;padding:1px 6px;letter-spacing:.12em;margin-top:3px;}
+
+  .sec{margin-top:11px;}
+  .sec-h{display:flex;align-items:center;gap:7px;margin-bottom:6px;}
+  .sec-h .n{background:var(--navy);color:#fff;font-size:9px;font-weight:700;width:18px;height:18px;border-radius:3px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .sec-h .t{font-size:12px;font-weight:700;color:var(--navy);letter-spacing:.02em;}
+
+  p{margin:0 0 6px;}
+  .pre{display:flex;flex-wrap:wrap;gap:6px;}
+  .chip{border:1px solid var(--line);border-radius:5px;background:var(--fill);padding:4px 9px;font-size:8.5px;}
+  .chip b{color:var(--navy);}
+
+  .verdict{background:var(--navy);color:#fff;border-radius:8px;padding:11px 14px;margin-bottom:8px;}
+  .verdict .big{font-size:14px;font-weight:700;letter-spacing:.02em;}
+  .verdict .sm{font-size:8.5px;color:#c8cfdb;margin-top:3px;}
+
+  .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .rc{border:1px solid var(--line);border-radius:7px;padding:9px 10px;}
+  .rc .rn{font-size:7.5px;letter-spacing:.1em;color:var(--gold);font-weight:700;}
+  .rc h4{margin:3px 0 4px;font-size:10.5px;color:var(--navy);}
+  .rc p{margin:0;font-size:8px;color:var(--sub);line-height:1.55;}
+  .rc .fig{font-size:13px;font-weight:700;color:var(--warn);}
+
+  .mini{width:100%;border-collapse:collapse;margin-top:5px;}
+  .mini td{border:1px solid var(--line);padding:3px 8px;font-size:8.5px;}
+  .mini td:first-child{background:var(--fill);color:var(--navy);width:42%;}
+  .mini td:last-child{text-align:right;font-variant-numeric:tabular-nums;}
+
+  .note{border:1px solid var(--line-strong);border-radius:6px;padding:8px 11px;background:var(--fill);font-size:8.5px;line-height:1.65;}
+  .note b{color:var(--navy);}
+
+  .opt{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .ob{border:1px solid var(--line);border-radius:8px;padding:10px 12px;}
+  .ob.reco{border:2px solid var(--navy);background:var(--fill);}
+  .ob .k{display:inline-block;font-size:7.5px;border-radius:3px;padding:1px 7px;letter-spacing:.06em;font-weight:700;margin-bottom:5px;}
+  .ob .k.a{background:#fff;border:1px solid var(--line-strong);color:var(--sub);}
+  .ob .k.b{background:var(--navy);color:#fff;}
+  .ob h4{margin:0 0 4px;font-size:11px;color:var(--navy);}
+  .ob p{margin:0;font-size:8.5px;color:var(--ink);line-height:1.6;}
+  .ob .small{color:var(--sub);font-size:8px;margin-top:4px;}
+
+  .help{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;}
+  .help .h{border:1px solid var(--line);border-radius:11px;padding:3px 10px;font-size:8.5px;color:var(--ink);}
+
+  .foot{position:absolute;bottom:9mm;left:14mm;right:14mm;border-top:1px solid var(--line);padding-top:6px;font-size:7px;color:var(--sub);line-height:1.6;}
+  .foot .row{display:flex;justify-content:space-between;}
+</style>
+</head>
+<body>
+<section class="page">
+
+  <div class="brand">
+    <div class="logo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="tag">経営と承継の、伴走者であるために<br>tsugiandpartners.jp</div>
+  </div>
+
+  <div class="title">
+    <h1>事業価値 簡易査定 ご報告<span class="en">SIMPLE&nbsp;VALUATION&nbsp;REPORT</span></h1>
+    <div class="meta">
+      <div class="to">松下 様</div>
+      合同会社Blueprint<br>2026年6月16日<br>
+      <span class="conf">CONFIDENTIAL</span>
+    </div>
+  </div>
+
+  <p style="font-size:9px;">この度はご相談をいただきありがとうございます。お預かりした決算書などをもとに、Blueprintの<b>簡易的な査定</b>を行いました。結論と、これからの選択肢を率直にご報告します。</p>
+
+  <!-- 1 前提 -->
+  <div class="sec">
+    <div class="sec-h"><div class="n">1</div><div class="t">査定の前提（いただいた情報）</div></div>
+    <div class="pre">
+      <div class="chip"><b>決算</b> 第1期（11ヶ月・2025/4〜2026/3）</div>
+      <div class="chip"><b>会員</b> 約130名</div>
+      <div class="chip"><b>ご希望額</b> 1,800万円（税別）</div>
+      <div class="chip"><b>ご売却理由</b> 多忙・競技の追い風</div>
+      <div class="chip"><b>時期</b> 条件が合い次第</div>
+    </div>
+  </div>
+
+  <!-- 2 結果 -->
+  <div class="sec">
+    <div class="sec-h"><div class="n">2</div><div class="t">査定結果</div></div>
+    <div class="verdict">
+      <div class="big">現状の数字では、ご希望額（1,800万円）での売却は難しい状況です。</div>
+      <div class="sm">設立1期目で、まだ「利益で価値を示す」段階に入っていないことが主な理由です。</div>
+    </div>
+    <div class="reasons">
+      <div class="rc">
+        <div class="rn">理由 01</div>
+        <h4>利益がまだ出ていない</h4>
+        <div class="fig">営業赤字</div>
+        <p>第1期は営業損失▲104万円・債務超過の状態。会社の売買価格は「純資産＋利益の数年分」で見ますが、現状は両方がマイナスです。</p>
+      </div>
+      <div class="rc">
+        <div class="rn">理由 02</div>
+        <h4>家賃の比率が高い</h4>
+        <div class="fig">売上の約83%</div>
+        <p>地代家賃が売上の8割超を占め、利益が残りにくい構造です。ここを見直すと収益は大きく変わります。</p>
+      </div>
+      <div class="rc">
+        <div class="rn">理由 03</div>
+        <h4>設備の扱いの整理</h4>
+        <div class="fig">要・確認</div>
+        <p>コート設備が会社の決算書に資産計上されていません。会社ごとの譲渡では設備が引き継がれない可能性があり、所有・契約の整理が必要です。</p>
+      </div>
+    </div>
+    <table class="mini">
+      <tr><td>売上高（第1期・11ヶ月）</td><td>7,748,406 円</td></tr>
+      <tr><td>営業利益</td><td>▲1,035,331 円</td></tr>
+      <tr><td>うち 地代家賃</td><td>6,441,000 円（売上比 約83%）</td></tr>
+      <tr><td>純資産</td><td>▲999,361 円（債務超過）</td></tr>
+    </table>
+  </div>
+
+  <!-- 3 仲介の現実 -->
+  <div class="sec">
+    <div class="sec-h"><div class="n">3</div><div class="t">仲介会社に依頼して売る場合</div></div>
+    <div class="note">
+      M&Aの仲介・アドバイザー会社は、成約時に<b>最低報酬（一般に数百万円〜・当社も最低500万円）</b>が発生します。1,800万円という規模に対しては手数料の比重が大きく、<b>通常の仲介スキームでは成立しにくい</b>のが実情です。
+    </div>
+  </div>
+
+  <!-- 4 選択肢 -->
+  <div class="sec">
+    <div class="sec-h"><div class="n">4</div><div class="t">これからの選択肢</div></div>
+    <div class="opt">
+      <div class="ob">
+        <span class="k a">A　今すぐ手放したい場合</span>
+        <h4>無料の事業承継サイトで募集</h4>
+        <p>バトンズ等のマッチングサイトなら、売り手は<b>ほぼ費用0</b>で募集できます（手数料は主に買い手側）。</p>
+        <p class="small">※ ただし現状の数字では、ご希望額での成約は期待しにくく、まずは「いくらなら買い手がつくか」を見る場になります。サイトのご案内は可能です。</p>
+      </div>
+      <div class="ob reco">
+        <span class="k b">B　TSUGIのおすすめ</span>
+        <h4>保有して、価値を作ってから</h4>
+        <p>会員を増やし、運営をデジタル化・自動化して収益を改善。そのうえで<b>一番利益が出るタイミングで売り抜く</b>、または<b>安定した収入が入る仕組み</b>にして「持っていても、売ってもいい状態」まで引き上げます。</p>
+        <p class="small">競技の追い風がある今、土台を整える価値は十分にあります。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 お手伝い -->
+  <div class="sec">
+    <div class="sec-h"><div class="n">5</div><div class="t">TSUGIでお手伝いできること</div></div>
+    <p style="font-size:8.5px;margin-bottom:0;">Bの方向で進める場合、私たちは次のようなご相談をお受けできます。</p>
+    <div class="help">
+      <div class="h">会員を増やす施策</div>
+      <div class="h">運営のデジタル化・自動化</div>
+      <div class="h">収益構造（家賃など）の見直し</div>
+      <div class="h">数年後の売却（Exit）設計</div>
+      <div class="h">コンサル／DXのご相談</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="row"><div><b>株式会社TSUGI &amp; PARTNERS</b>　経営と承継の、伴走者であるために　／　tsugiandpartners.jp</div><div>簡易査定ご報告</div></div>
+    <div style="margin-top:3px;">※ 本書は、お預かりした資料に基づく簡易的な査定であり、確定的な企業価値評価ではありません。実際の譲渡価格は、相手先・条件・時期により変動します。記載の数字は第1期決算によります。</div>
+  </div>
+
+</section>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ご売却についてのご提案｜TSUGI & PARTNERS</title>
+<style>
+  :root{
+    --navy:#1b2a4a;
+    --navy-2:#2c4068;
+    --ink:#1f2733;
+    --sub:#5b6675;
+    --line:#d7dce3;
+    --line-strong:#b9c1cc;
+    --fill:#f4f6f9;
+    --gold:#b08a4f;
+    --accent:#1b2a4a;
+  }
+  *{box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,sans-serif;
+    color:var(--ink);
+    font-size:11px;
+    line-height:1.7;
+    background:#fff;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .page{
+    width:210mm;
+    height:297mm;
+    overflow:hidden;
+    margin:0 auto;
+    padding:16mm 16mm 14mm;
+    background:#fff;
+    page-break-after:always;
+    break-after:page;
+    position:relative;
+  }
+  .page:last-child{page-break-after:auto;break-after:auto;}
+
+  .brand{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:2px solid var(--navy);
+    padding-bottom:10px;margin-bottom:16px;
+  }
+  .brand .logo{font-size:16px;font-weight:700;letter-spacing:.18em;color:var(--navy);}
+  .brand .logo small{display:block;font-size:8px;letter-spacing:.22em;color:var(--sub);font-weight:400;margin-top:3px;}
+  .brand .tag{font-size:8.5px;color:var(--sub);text-align:right;letter-spacing:.04em;}
+
+  .foot{
+    position:absolute;bottom:11mm;left:16mm;right:16mm;
+    display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid var(--line);padding-top:7px;font-size:8px;color:var(--sub);letter-spacing:.04em;
+  }
+  .foot .r{text-align:right;}
+
+  .sec-head{display:flex;align-items:center;gap:9px;margin:0 0 12px;}
+  .sec-num{
+    background:var(--navy);color:#fff;font-size:11px;font-weight:700;
+    width:24px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  .sec-title{font-size:15px;font-weight:700;color:var(--navy);letter-spacing:.03em;}
+  .sec-en{font-size:8px;color:var(--sub);letter-spacing:.18em;margin-left:auto;}
+
+  p{margin:0 0 9px;}
+  .lead{
+    background:var(--fill);border-left:3px solid var(--navy);
+    padding:11px 14px;margin:0 0 16px;font-size:11px;line-height:1.85;
+  }
+  .lead b{color:var(--navy);}
+  .muted{color:var(--sub);font-size:9px;line-height:1.7;}
+
+  .cover{
+    height:297mm;padding:0;position:relative;overflow:hidden;
+    background:linear-gradient(160deg,#1b2a4a 0%,#2c4068 55%,#1b2a4a 100%);
+    color:#fff;
+  }
+  .cover .inner{position:absolute;inset:0;padding:30mm 22mm;display:flex;flex-direction:column;}
+  .cover .clogo{font-size:21px;font-weight:700;letter-spacing:.2em;}
+  .cover .clogo small{display:block;font-size:9px;letter-spacing:.24em;color:#c3ccda;font-weight:400;margin-top:5px;}
+  .cover .ctag{margin-top:9px;font-size:11px;color:#c3ccda;letter-spacing:.06em;}
+  .cover .rule{width:54px;height:2px;background:var(--gold);margin:auto 0 22px;}
+  .cover h1{font-size:33px;font-weight:700;letter-spacing:.04em;line-height:1.4;margin:0 0 8px;}
+  .cover .sub{font-size:13px;color:#d6dde8;letter-spacing:.04em;margin-bottom:30px;}
+  .cover .to{font-size:13px;letter-spacing:.04em;border-top:1px solid rgba(255,255,255,.22);padding-top:16px;}
+  .cover .to b{font-size:16px;font-weight:600;}
+  .cover .meta{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;font-size:9px;color:#aab4c4;letter-spacing:.08em;}
+  .cover .conf{border:1px solid rgba(255,255,255,.3);border-radius:3px;padding:3px 9px;letter-spacing:.16em;}
+
+  .quote{
+    text-align:center;margin:6px 0 18px;padding:18px;
+    background:var(--navy);color:#fff;border-radius:10px;
+  }
+  .quote .big{font-size:22px;font-weight:700;letter-spacing:.04em;}
+  .quote .small{font-size:10px;color:#c3ccda;margin-top:8px;letter-spacing:.04em;}
+
+  .vrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:4px 0 16px;}
+  .vc{border:1px solid var(--line);border-radius:10px;padding:15px 14px;background:#fff;}
+  .vc .vn{font-size:8px;letter-spacing:.16em;color:var(--gold);font-weight:700;margin-bottom:6px;}
+  .vc h3{font-size:12.5px;color:var(--navy);margin:0 0 6px;font-weight:700;}
+  .vc p{font-size:9.5px;color:var(--sub);line-height:1.7;margin:0;}
+
+  .ladder{display:flex;flex-direction:column;gap:10px;margin:4px 0 14px;}
+  .lstep{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  .lstep .ln{
+    flex:0 0 60px;background:var(--fill);display:flex;flex-direction:column;align-items:center;justify-content:center;
+    border-right:1px solid var(--line);
+  }
+  .lstep .ln .s{font-size:8px;letter-spacing:.12em;color:var(--sub);}
+  .lstep .ln .n{font-size:21px;font-weight:700;color:var(--navy);line-height:1;}
+  .lstep .lb{flex:1;padding:10px 14px;}
+  .lstep .lb h3{margin:0 0 3px;font-size:12.5px;color:var(--navy);}
+  .lstep .lb p{margin:0;font-size:9.5px;color:var(--sub);line-height:1.6;}
+  .lstep .lp{flex:0 0 122px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding:10px 14px;border-left:1px dashed var(--line);text-align:right;}
+  .lstep .lp .price{font-size:14px;font-weight:700;color:var(--navy);}
+  .lstep .lp .unit{font-size:8px;color:var(--sub);letter-spacing:.04em;margin-top:2px;}
+  .lstep.feat{border:2px solid var(--navy);}
+
+  table{width:100%;border-collapse:collapse;}
+  .rate th,.rate td{border:1px solid var(--line);padding:7px 10px;font-size:10.5px;text-align:center;}
+  .rate th{background:var(--navy);color:#fff;font-weight:600;letter-spacing:.03em;}
+  .rate td:first-child{text-align:left;background:var(--fill);color:var(--navy);font-weight:600;white-space:nowrap;}
+  .rate .min td{background:#fff;color:var(--navy);font-weight:700;}
+  .rate .min td:first-child{background:var(--fill);}
+
+  .badge-row{display:flex;gap:10px;margin:14px 0;}
+  .badge{flex:1;border:1px solid var(--line);border-radius:8px;padding:11px 13px;text-align:center;}
+  .badge .bt{font-size:8px;letter-spacing:.12em;color:var(--sub);}
+  .badge .bv{font-size:16px;font-weight:700;color:var(--navy);margin-top:3px;}
+
+  .note{
+    border:1px solid var(--line-strong);border-radius:6px;padding:11px 14px;background:var(--fill);
+    font-size:9.5px;line-height:1.8;
+  }
+  .note b{color:var(--navy);}
+
+  .pblock{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:13px;}
+  .pblock h3{margin:0 0 7px;font-size:13px;color:var(--navy);display:flex;align-items:center;gap:8px;}
+  .pblock h3 .k{font-size:8px;background:var(--navy);color:#fff;border-radius:3px;padding:2px 7px;letter-spacing:.08em;font-weight:600;}
+  .pblock p{font-size:10px;color:var(--ink);line-height:1.8;margin:0;}
+  .pblock.accent{background:var(--fill);border-color:var(--navy);}
+
+  .flow{display:flex;gap:8px;margin:4px 0 14px;}
+  .fitem{flex:1;border:1px solid var(--line);border-radius:9px;padding:12px 11px;position:relative;}
+  .fitem .fs{font-size:8px;letter-spacing:.1em;color:var(--gold);font-weight:700;}
+  .fitem h4{margin:4px 0 4px;font-size:11px;color:var(--navy);}
+  .fitem p{margin:0;font-size:8.5px;color:var(--sub);line-height:1.6;}
+  .fitem:not(:last-child)::after{content:"›";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--line-strong);font-size:16px;z-index:2;}
+
+  .cta{
+    margin-top:14px;background:var(--navy);color:#fff;border-radius:10px;padding:18px 20px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .cta .ct h3{margin:0 0 5px;font-size:15px;}
+  .cta .ct p{margin:0;font-size:9.5px;color:#c3ccda;}
+  .cta .cc{text-align:right;font-size:10px;line-height:1.8;}
+  .cta .cc b{font-size:12px;}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 : COVER ============ -->
+<section class="page cover">
+  <div class="inner">
+    <div class="clogo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="ctag">経営と承継の、伴走者であるために</div>
+
+    <div class="rule"></div>
+    <h1>ご売却についての<br>ご提案</h1>
+    <div class="sub">Blueprint を、いい形で次へ渡すために</div>
+
+    <div class="to">
+      <b>松下 様</b>（合同会社Blueprint）<br>
+      <span style="font-size:10px;color:#c3ccda;">— ご売却、および関連事業のご相談に寄せて —</span>
+    </div>
+
+    <div class="meta">
+      <div>2026年6月16日</div>
+      <div class="conf">CONFIDENTIAL</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 : アンサー（安心） ============ -->
+<section class="page">
+  <div class="brand">
+    <div class="logo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="tag">経営と承継の、伴走者であるために<br>tsugiandpartners.jp</div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-num">1</div><div class="sec-title">まずは、結論から</div>
+    <div class="sec-en">OUR&nbsp;ANSWER</div>
+  </div>
+
+  <div class="quote">
+    <div class="big">ご売却のお手伝いも、買い手探しも、できます。</div>
+    <div class="small">どうか、ご安心ください。</div>
+  </div>
+
+  <p>Blueprintは設備も新しく、会員さんもついた、いま動いている事業です。<b>次の方へ渡せる土台は、しっかりあります</b>。私たちはただ売り先を探すだけでなく、<b>より良い形で渡せるよう、一緒に整えてから世に出します</b>。「とにかく早く手放す」ではなく、「納得できる相手と条件で引き継ぐ」を一緒に目指します。</p>
+
+  <div class="vrow">
+    <div class="vc">
+      <div class="vn">01　探せます</div>
+      <h3>買い手を見つける</h3>
+      <p>関心を持つお相手を、提携先のネットワークも使って探します。スカッシュは競技の広がりという追い風もあります。</p>
+    </div>
+    <div class="vc">
+      <div class="vn">02　整えます</div>
+      <h3>売る前に、一緒に</h3>
+      <p>会社の強みを見える化し、買い手に伝わる形に整えます。ここを丁寧にやるほど、良い条件につながります。</p>
+    </div>
+    <div class="vc">
+      <div class="vn">03　支えます</div>
+      <h3>渡したあとまで</h3>
+      <p>引き継ぎは契約して終わりではありません。新しい体制が回り始めるところまでお手伝いします。</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>まずは、いまの状況を聞かせてください。</b>　売上（SBペイメントのご入金など）や会員さんの様子を一緒に見せていただけると、Blueprintの強みを買い手にしっかり伝える材料になります。ここから、いい形を一緒に組み立てていきましょう。
+  </div>
+
+  <div class="foot">
+    <div>株式会社TSUGI &amp; PARTNERS｜ご売却についてのご提案</div>
+    <div class="r">CONFIDENTIAL　/　2 — 6</div>
+  </div>
+</section>
+
+<!-- ============ PAGE 3 : 手数料（正直に＋前向き） ============ -->
+<section class="page">
+  <div class="brand">
+    <div class="logo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="tag">経営と承継の、伴走者であるために<br>tsugiandpartners.jp</div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-num">2</div><div class="sec-title">手数料について、先に正直に</div>
+    <div class="sec-en">FEE</div>
+  </div>
+
+  <div class="lead">
+    この資料は、松下様お一人のためにご用意しました。手数料も、正直にお伝えします。私たちは通常、売却・承継が成立したときの成功報酬として<b>最低500万円</b>を基本にいただいています。ただ、<b>今回の松下様の件については、この最低保証の金額を、イレギュラー（特例）の形で進めさせていただきます</b>。Blueprintの規模に見合った、無理のない受け方を、提携先（M&Aの実務パートナー）も含めて一緒に組み立てます。
+  </div>
+
+  <p class="muted" style="margin-bottom:8px;">下記は通常の標準的な体系です（株価レーマン方式・税別。譲渡される金額に応じて段階的に料率が下がります）。<b>今回は、この体系をそのまま当てはめることはしません。</b></p>
+
+  <table class="rate">
+    <tr><th>報酬基準額</th><th>譲渡側（売り手）</th><th>譲受側（買い手）</th></tr>
+    <tr><td>5,000万円以下の部分</td><td>6%</td><td>7%</td></tr>
+    <tr><td>5,000万円超〜1億円の部分</td><td>4%</td><td>5%</td></tr>
+    <tr><td>1億円超〜5億円の部分</td><td>3%</td><td>4%</td></tr>
+    <tr><td>5億円超〜10億円の部分</td><td>2%</td><td>3%</td></tr>
+    <tr><td>10億円超の部分</td><td>1%</td><td>2%</td></tr>
+    <tr class="min"><td>最低手数料</td><td colspan="2">500万円</td></tr>
+  </table>
+
+  <div class="badge-row">
+    <div class="badge"><div class="bt">着手金</div><div class="bv">0円</div></div>
+    <div class="badge"><div class="bt">中間金</div><div class="bv">0円</div></div>
+    <div class="badge"><div class="bt">費用が出るのは</div><div class="bv">成立時のみ</div></div>
+  </div>
+
+  <div class="note">
+    <b>今回の松下様の件は、特例として進めます。</b>　最低保証の金額にとらわれず、Blueprintのご事情に合った無理のない形を、提携先も交えて一緒に設計します。ご負担が大きくなりすぎないように進めますので、安心してご相談ください。
+  </div>
+
+  <div class="foot">
+    <div>株式会社TSUGI &amp; PARTNERS｜ご売却についてのご提案</div>
+    <div class="r">CONFIDENTIAL　/　3 — 6</div>
+  </div>
+</section>
+
+<!-- ============ PAGE 4 : 資本提携で広がる ============ -->
+<section class="page">
+  <div class="brand">
+    <div class="logo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="tag">経営と承継の、伴走者であるために<br>tsugiandpartners.jp</div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-num">3</div><div class="sec-title">もう一つの選択肢 — 資本提携</div>
+    <div class="sec-en">CAPITAL&nbsp;ALLIANCE</div>
+  </div>
+
+  <div class="lead">
+    つきみち・幹細胞の事業について、<b>すべてを手放すのではなく、資金や運営のパートナーを迎えたい</b>とお考えと伺いました。これは「資本提携」という形で実現できます。Blueprintのご売却と合わせて考えると、<b>ご提案できる幅がぐっと広がります</b>。
+  </div>
+
+  <div class="pblock accent">
+    <h3><span class="k">広がり</span>「全部売る」だけが答えではありません</h3>
+    <p>完全な売却のほかに、一部の株式・出資をパートナーに持ってもらい、資金や運営の力を取り込む形があります。事業を続けながら、足りないところを補う。松下様が手元に残したいものと、任せたいものを分けて設計できます。</p>
+  </div>
+
+  <div class="pblock">
+    <h3><span class="k">まとめると</span>選択肢が増え、進め方もシンプルに</h3>
+    <p>複数の事業を別々に動かすより、ひとつの流れとして整理するほうが、松下様の手間が減り、取れる選択肢も増えます。「これは売る、これは提携、これは磨いて続ける」を、ご希望に合わせて一緒に組み立てます。</p>
+  </div>
+
+  <div class="note">
+    資本提携は、進め方も価値の考え方も完全売却とは変わります。ご希望（何を残したいか、何を得たいか）を伺いながら、Blueprintと並行して最適な形を一緒に設計します。
+  </div>
+
+  <div class="foot">
+    <div>株式会社TSUGI &amp; PARTNERS｜ご売却についてのご提案</div>
+    <div class="r">CONFIDENTIAL　/　4 — 6</div>
+  </div>
+</section>
+
+<!-- ============ PAGE 5 : TSUGIはこういう会社（考え方＋階段） ============ -->
+<section class="page">
+  <div class="brand">
+    <div class="logo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="tag">経営と承継の、伴走者であるために<br>tsugiandpartners.jp</div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-num">4</div><div class="sec-title">TSUGIは、こういう会社です</div>
+    <div class="sec-en">ABOUT&nbsp;US</div>
+  </div>
+
+  <div class="quote">
+    <div class="big">売らない。売れる状態を、つくる。</div>
+    <div class="small">会社を右から左に流すのではなく、価値を上げてから次へ渡す。</div>
+  </div>
+
+  <p>売却の仲介だけでなく、<b>その前後まで一緒にやる</b>のが私たちの特徴です。必要なところからお選びいただけます。</p>
+
+  <div class="ladder">
+    <div class="lstep">
+      <div class="ln"><div class="s">STEP</div><div class="n">1</div></div>
+      <div class="lb"><h3>企業ドック診断</h3><p>会社の人間ドック。強み・弱みを数字にして、どこから手をつけるかを一緒に決めます。</p></div>
+      <div class="lp"><div class="price">50万円〜</div><div class="unit">税別 / スポット</div></div>
+    </div>
+    <div class="lstep">
+      <div class="ln"><div class="s">STEP</div><div class="n">2</div></div>
+      <div class="lb"><h3>磨き上げ設計（Exit Ready）</h3><p>売上の見える化や仕組みづくりで、より良い条件で渡せる状態に近づけます。</p></div>
+      <div class="lp"><div class="price">月30万円〜</div><div class="unit">税別 / 6〜12ヶ月</div></div>
+    </div>
+    <div class="lstep feat">
+      <div class="ln"><div class="s">STEP</div><div class="n">3</div></div>
+      <div class="lb"><h3>M&A・事業承継支援</h3><p>整えた会社を、合う相手へ。売却も資本提携も、ご希望に合わせて実行します。</p></div>
+      <div class="lp"><div class="price">成功報酬</div><div class="unit">着手金0円</div></div>
+    </div>
+    <div class="lstep">
+      <div class="ln"><div class="s">STEP</div><div class="n">4</div></div>
+      <div class="lb"><h3>PMI・承継後支援</h3><p>渡したあと、新しい体制が回り始めるところまで伴走します。</p></div>
+      <div class="lp"><div class="price">月30万円〜</div><div class="unit">税別 / 6〜12ヶ月</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>株式会社TSUGI &amp; PARTNERS｜ご売却についてのご提案</div>
+    <div class="r">CONFIDENTIAL　/　5 — 6</div>
+  </div>
+</section>
+
+<!-- ============ PAGE 6 : 次の一歩 ============ -->
+<section class="page">
+  <div class="brand">
+    <div class="logo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="tag">経営と承継の、伴走者であるために<br>tsugiandpartners.jp</div>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-num">5</div><div class="sec-title">まずは、一度お話を</div>
+    <div class="sec-en">NEXT&nbsp;STEP</div>
+  </div>
+
+  <p>むずかしく考える必要はありません。<b>まずは状況を聞かせていただくところから</b>。Blueprintと関連事業を、どう進めるのがいちばん良いか、ご一緒に道筋を描きましょう。</p>
+
+  <div class="flow">
+    <div class="fitem"><div class="fs">STEP 1</div><h4>状況を聞く</h4><p>いまのお気持ちと事業の様子を伺います。簡易の診断から始められます。</p></div>
+    <div class="fitem"><div class="fs">STEP 2</div><h4>整える・まとめる</h4><p>強みを見える化し、買い手に出せる形に整えます。</p></div>
+    <div class="fitem"><div class="fs">STEP 3</div><h4>実行する</h4><p>合うお相手を探し、売却・資本提携を進めます。</p></div>
+    <div class="fitem"><div class="fs">STEP 4</div><h4>その後を支える</h4><p>引き継ぎが回り始めるところまで伴走します。</p></div>
+  </div>
+
+  <div class="note" style="margin-bottom:13px;">
+    <b>ここまでの、状況の整理と進め方のご提案には、費用はいただきません。</b>　まずは無料の簡易診断、または30分ほどのご相談から。いただいた情報は、秘密として厳重にお預かりします。
+  </div>
+
+  <div class="cta">
+    <div class="ct">
+      <h3>まずは、お気軽にご相談ください</h3>
+      <p>「売れるのか」「いくらになるのか」も、一緒に確かめていきましょう。</p>
+    </div>
+    <div class="cc">
+      <b>株式会社TSUGI &amp; PARTNERS</b><br>
+      経営と承継の、伴走者であるために<br>
+      tsugiandpartners.jp
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>株式会社TSUGI &amp; PARTNERS｜ご売却についてのご提案</div>
+    <div class="r">CONFIDENTIAL　/　6 — 6</div>
+  </div>
+</section>
+
+</body>
+</html>

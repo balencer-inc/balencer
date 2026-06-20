@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ご相談テーマの整理と、叶え方の選択肢｜1st PLACE 村山様</title>
+<title>バックオフィスDX化・AI研修｜進め方のご提案｜1st PLACE 村山様</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -14,21 +14,20 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);bac
 .wrap{max-width:920px;margin:0 auto;padding:0 24px 100px}
 .topbar{height:8px;background:linear-gradient(90deg,var(--cyan),var(--blue))}
 
-header{background:#fff;border-radius:0 0 22px 22px;padding:46px 50px 42px;box-shadow:0 2px 10px rgba(17,23,38,.04)}
-.hrow{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px}
+header{background:#fff;border-radius:0 0 22px 22px;padding:42px 50px 38px;box-shadow:0 2px 10px rgba(17,23,38,.04)}
+.hrow{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
 .kick{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
 header .logo{height:22px;opacity:.9}
-header h1{font-size:31px;font-weight:900;color:var(--ink);line-height:1.45;letter-spacing:.01em}
+header h1{font-size:32px;font-weight:900;color:var(--ink);line-height:1.4;letter-spacing:.01em}
 header h1 .bl{color:var(--blue)}
-.lead{font-size:16px;color:var(--ink2);margin-top:18px;max-width:760px}
-.meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
 .meta b{color:var(--ink);font-weight:700}
 
-section{background:#fff;border-radius:18px;padding:40px 50px;margin-top:22px;box-shadow:0 2px 8px rgba(17,23,38,.04)}
+section{background:#fff;border-radius:18px;padding:38px 50px;margin-top:22px;box-shadow:0 2px 8px rgba(17,23,38,.04)}
 .sec-no{font-family:'Poppins';font-size:14px;font-weight:800;color:var(--blue)}
 h2{font-size:24px;font-weight:900;color:var(--ink);line-height:1.45;margin:6px 0 0}
 h2 .bl{color:var(--blue)}
-.note-lead{font-size:15.5px;color:var(--ink2);margin-top:14px;max-width:770px}
+.note-lead{font-size:15.5px;color:var(--ink2);margin-top:14px;max-width:780px}
 .note-lead b{color:var(--ink)}
 h3{font-size:17px;font-weight:900;color:var(--ink);margin:26px 0 10px}
 p{font-size:15px;color:var(--ink2)}p+p{margin-top:12px}
@@ -42,11 +41,16 @@ strong{color:var(--ink);font-weight:700}
 .grp .gt{font-size:16px;font-weight:900;color:var(--ink)}
 .grp .gs{font-size:12.5px;color:var(--muted);margin:3px 0 14px}
 .grp ul{list-style:none}
-.grp li{font-size:14.5px;color:var(--ink2);line-height:1.5;margin-bottom:11px;padding-left:22px;position:relative}
+.grp li{font-size:14.5px;color:var(--ink2);line-height:1.5;margin-bottom:13px;padding-left:22px;position:relative}
 .grp li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--blue)}
 .grp li b{color:var(--ink);font-weight:700}
 .grp li small{display:block;color:var(--muted);font-size:12px;margin-top:1px}
-.excl{margin-top:18px;font-size:13px;color:var(--muted);background:var(--bg);border:1px dashed var(--line2);border-radius:10px;padding:12px 18px}
+.ex{display:inline-block;margin-top:5px;font-size:11.5px;font-weight:700;color:var(--blue);background:var(--soft);border-radius:6px;padding:3px 9px;text-decoration:none}
+.ask{margin-top:14px;background:#fff;border:1px dashed var(--line2);border-radius:10px;padding:12px 16px}
+.ask .at{font-size:12px;font-weight:800;color:var(--ink);margin-bottom:6px}
+.ask li{font-size:12.5px;padding-left:18px}
+.ask li::before{content:"?";background:none;color:var(--blue);font-weight:800;top:0;width:auto;height:auto}
+.excl{margin-top:16px;font-size:13px;color:var(--muted);background:var(--bg);border:1px dashed var(--line2);border-radius:10px;padding:12px 18px}
 
 /* option cards */
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
@@ -77,9 +81,21 @@ tr.dim td{color:var(--muted)}
 .pstep p{font-size:12.5px;color:var(--ink2);line-height:1.55}
 .parrow{display:flex;align-items:center;color:var(--line2);font-weight:900;padding:0 6px;font-size:18px}
 @media(max-width:680px){.parrow{display:none}.pstep{min-width:100%;margin-bottom:10px}}
-.case{margin-top:22px;background:var(--soft);border-radius:14px;padding:20px 24px;border-left:4px solid var(--blue)}
-.case .t{font-size:13px;font-weight:800;color:var(--blue);letter-spacing:.04em}
-.case p{font-size:14.5px;color:var(--ink2);margin-top:7px}
+
+/* mock shots */
+.shot{margin-top:22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg)}
+.shot .sh{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;border-bottom:1px solid var(--line);background:#fff}
+.shot .sh .sl{font-size:13px;font-weight:900;color:var(--ink)}
+.shot .sh .st{font-size:11px;font-weight:700;color:var(--warn);background:var(--warnbg);border-radius:6px;padding:3px 9px}
+.shot img{display:block;width:100%;height:auto}
+.shot .cap{font-size:12px;color:var(--muted);padding:11px 18px;background:#fff;border-top:1px solid var(--line)}
+.shot .cap a{color:var(--blue);font-weight:700;text-decoration:none}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+@media(max-width:680px){.gal{grid-template-columns:1fr}}
+.gal .shot{margin-top:0}
+.refs{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.refs a{font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:8px 14px;text-decoration:none}
+.refs a b{color:var(--good)}
 
 /* callouts */
 .callout{border-radius:12px;padding:16px 20px;margin-top:20px;font-size:14px;color:var(--ink2);border-left:4px solid var(--blue);background:var(--soft)}
@@ -87,7 +103,7 @@ tr.dim td{color:var(--muted)}
 .callout.good{background:var(--goodbg);border-left-color:var(--good)}.callout.good b{color:var(--good)}
 .callout.amber{background:var(--amberbg);border-left-color:var(--amber)}.callout.amber b{color:var(--amber)}
 
-/* light option blocks */
+/* light training facts */
 .lite{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;margin-top:22px;align-items:start}
 @media(max-width:680px){.lite{grid-template-columns:1fr}}
 .lite .facts{border:1px solid var(--line);border-radius:14px;padding:6px 22px}
@@ -119,8 +135,7 @@ footer .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:15px
     <span class="kick">For 1st PLACE</span>
     <img class="logo" src="../../soeru-lp/balencer-logo.png" alt="BALENCER">
   </div>
-  <h1>いただいたテーマを整理して、<br><span class="bl">叶え方をご一緒に選びます</span>。</h1>
-  <p class="lead">お久しぶりです。メールでいただいたご相談を、一度こちらで構造に整理しました。それぞれを「どう叶えるか」には複数の道があります。今日は、どれから動かすかをご一緒に決められればと思います。結論を押しつける場ではなく、選ぶための材料です。</p>
+  <h1>バックオフィスの<span class="bl">DX化</span>と、<span class="bl">AI研修</span>。<br>進め方のご提案。</h1>
   <div class="meta">
     <span>宛先　<b>1st PLACE株式会社　村山久美子 様</b></span>
     <span>作成　<b>株式会社バレンサー</b></span>
@@ -128,28 +143,36 @@ footer .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:15px
   </div>
 </header>
 
-<!-- 1 テーマの整理 -->
+<!-- 1 要件整理 -->
 <section id="themes">
   <span class="sec-no">01</span>
-  <h2>まず、いただいたテーマを<span class="bl">性質で整理</span>しました。</h2>
-  <p class="note-lead">5つのご相談は、性質で見ると3つのかたまりに分かれます。叶え方が変わるので、ここを揃えるところから始めさせてください。認識のズレがあれば直します。</p>
+  <h2>いただいたご相談を、<span class="bl">性質で整理</span>しました。</h2>
+  <p class="note-lead">5つのご相談を3つのかたまりに分け、「こう作れます」という似た例も添えました。叶え方が変わるので、ここを揃えるところから始めさせてください。認識のズレがあれば直します。</p>
   <div class="groups">
     <div class="grp main">
       <div class="gt">A. 仕組みにして自動で回したい</div>
       <div class="gs">人手でやっている処理を、ルールで動く形に</div>
       <ul>
-        <li><b>印税分配の仕組み化</b><small>複数社・複数フォームの明細を共通化し、料率・按分で自動計算（本命）</small></li>
-        <li><b>各業務のワークフロー仕組み化・マニュアル化</b><small>属人化した作業を、誰でも回せる形に</small></li>
-        <li><b>問い合わせメール対応</b><small>仕分けから返信下書きまで</small></li>
+        <li><b>印税分配の仕組み化</b>（本命）<small>複数社・複数フォームの明細を共通化し、料率・按分で自動計算</small><a class="ex" href="mock-royalty.html">似た例：印税分配エンジンのサンプル画面 →</a></li>
+        <li><b>各業務のワークフロー仕組み化・マニュアル化</b><small>属人化した作業を、誰でも回せる形に</small><a class="ex" href="mock-workflow.html">似た例：Claudeスキル×Notion →</a></li>
+        <li><b>問い合わせメール対応</b><small>仕分けから返信下書きまで</small><a class="ex" href="mock-email.html">似た例：問い合わせ自動対応のサンプル →</a></li>
       </ul>
     </div>
     <div class="grp">
       <div class="gt">B. 引っ越し・整理</div>
-      <div class="gs">道具の移行とデータの整理（AIが主役ではない）</div>
+      <div class="gs">まず現状の用途を確認し、代替できるかを見極める</div>
       <ul>
-        <li><b>サイボウズ移管</b><small>移行と整理が中心</small></li>
-        <li><b>Eight（名刺管理）移管</b><small>Eight側のエクスポート制限の確認が先</small></li>
+        <li><b>サイボウズ移管</b><small>何の製品を、どこまで使っているか</small></li>
+        <li><b>Eight（名刺管理）移管</b><small>用途を確認のうえ代替を検討。Eightはエクスポート制限の確認が先</small></li>
       </ul>
+      <div class="ask">
+        <div class="at">当日うかがいたいこと</div>
+        <ul>
+          <li>どの製品を、何に、何人で使っているか</li>
+          <li>困りごとは何か（費用・重さ・一部機能だけ 等）</li>
+          <li>移管したいのか、整理だけでよいか</li>
+        </ul>
+      </div>
       <div class="excl">C. 対象外 ―― 法務はすでに別のAIで運用中とうかがったため、今回は触りません。</div>
     </div>
   </div>
@@ -159,7 +182,7 @@ footer .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:15px
 <section id="options">
   <span class="sec-no">02</span>
   <h2>叶え方には、<span class="bl">いくつかの道</span>があります。</h2>
-  <p class="note-lead">テーマを「どの手段で実現するか」は、ひとつではありません。4つの道を並べました。御社のテーマに、これらをどう当てるかは次の03でご提案します。</p>
+  <p class="note-lead">テーマを「どの手段で実現するか」は、ひとつではありません。4つの道を並べました。御社のテーマにどう当てるかは、次の03でご提案します。</p>
   <div class="opts">
     <div class="opt reco">
       <span class="rb">本命に最適</span>
@@ -171,13 +194,13 @@ footer .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:15px
     <div class="opt">
       <div class="on">道 ②</div>
       <h4>研修で御社が自走</h4>
-      <p>チームがClaudeで自分の業務を仕組み化できるようになります。厚労省のリスキリング助成金が使え、費用負担を下げられます。ご希望なら、次回に具体的な研修プランをお持ちします。</p>
+      <p>チームがClaudeで自分の業務を仕組み化できるようになります。厚労省のリスキリング助成金が使え、費用負担を下げられます。ご希望なら、研修プランは別冊でご用意します。</p>
       <div class="fit">向いている：<span>ワークフロー仕組み化・メール対応</span></div>
     </div>
     <div class="opt">
       <div class="on">道 ③</div>
       <h4>ミタテを拡張して、補助金で</h4>
-      <p>当社の経営分析システム「ミタテ」はAI導入補助金の対象として採択済みです。経営の数字を見える化したいニーズがあれば、御社用に機能を拡張し、補助金を使って導入できます。</p>
+      <p>当社の経営分析システム「ミタテ」はAI導入補助金の対象として採択済みです。<strong>経営の数字を見える化したいニーズがある場合のみ</strong>、御社用に拡張し補助金を使って導入できます。要件に合わないものを無理に当てはめることはしません。</p>
       <div class="fit">向いている：<span>経営の数字の見える化（ご要望があれば）</span></div>
     </div>
     <div class="opt">
@@ -197,21 +220,21 @@ footer .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:15px
   <table>
     <thead><tr><th>テーマ</th><th style="width:140px">おすすめの道</th><th>ひとこと</th></tr></thead>
     <tbody>
-      <tr><td><b>印税分配の仕組み化</b></td><td><span class="way">① 受託</span></td><td>正確さが命。作ってお渡しが確実。まずサンプルを拝見するところから（詳細は04）</td></tr>
-      <tr><td><b>ワークフロー仕組み化・マニュアル化</b></td><td><span class="way g">② 研修</span></td><td>御社が自分たちで回せるように。助成金が使える。ご希望なら次回に詳細プラン（05）</td></tr>
+      <tr><td><b>印税分配の仕組み化</b></td><td><span class="way">① 受託</span></td><td>正確さが命。作ってお渡しが確実。まず現状を確認するところから（詳細は04）</td></tr>
+      <tr><td><b>ワークフロー仕組み化・マニュアル化</b></td><td><span class="way g">② 研修</span></td><td>御社が自分たちで回せるように。助成金が使える。研修プランは別冊（05）</td></tr>
       <tr><td><b>問い合わせメール対応</b></td><td><span class="way g">② 研修</span> → 重ければ①</td><td>まず自走を体験。負荷が大きければ受託で巻き取り</td></tr>
-      <tr><td><b>経営の数字の見える化</b><br><span style="color:var(--muted);font-size:12px">※ご要望があれば</span></td><td><span class="way a">③ ミタテ</span></td><td>補助金対象の既存ツールを御社用に拡張して導入（06）</td></tr>
-      <tr><td><b>サイボウズ／Eight移管</b></td><td><span class="way m">④ 引っ越し</span></td><td>急ぎでなければ本命のあとで。Eightは実現性の確認が先</td></tr>
+      <tr><td><b>経営の数字の見える化</b><br><span style="color:var(--muted);font-size:12px">※ご要望があれば</span></td><td><span class="way a">③ ミタテ</span></td><td>そのニーズがある場合のみ。補助金対象の既存ツールを拡張（06）</td></tr>
+      <tr><td><b>サイボウズ／Eight移管</b></td><td><span class="way m">④ 引っ越し</span></td><td>まず用途を確認。急ぎでなければ本命のあとで</td></tr>
       <tr class="dim"><td>法務</td><td>—</td><td>別のAIで運用中のため対象外</td></tr>
     </tbody>
   </table>
 </section>
 
-<!-- 4 本命 印税分配 -->
+<!-- 4 まず何をするか -->
 <section id="royalty">
   <span class="sec-no">04</span>
-  <h2>いちばん効くのは、<span class="bl">印税分配から</span>。</h2>
-  <p class="note-lead">最終的にやりたい本命がここだと受け止めています。いまは各社のステートメントを人が読んで割り当てているかと思います。これを次の流れで仕組みにします。</p>
+  <h2>まず何をするか　—　<span class="bl">印税分配の現状確認から</span>。</h2>
+  <p class="note-lead">本命の印税分配から、現状を確認させていただきたいです。いまは各社のステートメントを人が読んで割り当てているかと思います。これを次の流れで仕組みにします。実際にどう動くかは、下のサンプル画面でご覧ください。</p>
   <div class="pipe">
     <div class="pstep"><div class="pn">01</div><h4>明細を読み取る</h4><p>各社・各フォーマットのステートメント（PDF・Excel）を取り込む</p></div>
     <div class="parrow">›</div>
@@ -221,18 +244,37 @@ footer .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:15px
     <div class="parrow">›</div>
     <div class="pstep"><div class="pn">04</div><h4>根拠つきで出す</h4><p>計算の根拠を追えるかたちで支払通知書を発行する</p></div>
   </div>
-  <div class="case">
-    <div class="t">同じ型の実績があります</div>
-    <p>催事の精算で、複数フォームの明細を共通化し、条件にもとづいて自動で割り当てる仕組みを作った事例があります。御社の印税分配は、これと同じ型です。詳しくは匿名の事例資料でご覧いただけます（社名・金額は伏せています）。</p>
+  <div class="shot">
+    <div class="sh"><span class="sl">印税分配エンジン｜サンプル画面</span><span class="st">架空データ・モック</span></div>
+    <img src="img/mock-royalty.png" alt="印税分配エンジンのサンプル画面">
+    <div class="cap">取込→正規化→自動分配→支払通知書まで。要確認の名寄せも可視化します。 <a href="mock-royalty.html">▸ 実際の画面を開く</a></div>
   </div>
-  <div class="callout"><b>最短で確度を出すために。</b>実際のステートメントを2〜3種お見せいただければ、どこまで自動化できて、どこが難しいかをすぐに判定できます。金額は範囲が定まってからのお見積もりにしたいので、まずはサンプルからご一緒できればと思います。</div>
+  <div class="callout"><b>最短で確度を出すために。</b>実際のステートメントを2〜3種お見せいただければ、どこまで自動化できて、どこが難しいかをすぐに判定できます。金額は範囲が定まってからのお見積もりにしたいので、まずは現状の確認からご一緒できればと思います。</div>
+
+  <h3>ほかのテーマも、こう作れます</h3>
+  <div class="gal">
+    <div class="shot">
+      <div class="sh"><span class="sl">問い合わせ自動対応</span><span class="st">サンプル</span></div>
+      <img src="img/mock-email.png" alt="問い合わせ自動対応のサンプル画面">
+      <div class="cap">自動で仕分け→担当へ→返信下書き。送信前は人が確認。 <a href="mock-email.html">▸ 開く</a></div>
+    </div>
+    <div class="shot">
+      <div class="sh"><span class="sl">業務を仕組み化</span><span class="st">イメージ図</span></div>
+      <img src="img/mock-workflow.png" alt="業務を仕組み化のイメージ図">
+      <div class="cap">Claudeスキル＋Notionで、誰でも回せる形に。 <a href="mock-workflow.html">▸ 開く</a></div>
+    </div>
+  </div>
+  <div class="refs">
+    <a href="../../proposals/ai-training-2026/case-study.html"><b>実績</b>　NAILIT 業務自動化の事例（匿名）</a>
+    <a href="https://balencer.jp/keiei-demo/" target="_blank"><b>実績</b>　ミタテ 経営分析デモ</a>
+  </div>
 </section>
 
-<!-- 5 研修という選択肢 -->
+<!-- 5 研修 -->
 <section id="training">
   <span class="sec-no">05</span>
-  <h2>研修は、<span class="bl">ご希望があれば</span>の選択肢です。</h2>
-  <p class="note-lead">ワークフローやメール対応を御社が自分たちで回したい場合の道です。やるかどうかは村山さんのご判断で。<b>求められたら、次回に具体的な研修プラン（カリキュラム・見積・助成金の段取り）をまとめてお持ちします。</b>ここでは要点だけ。</p>
+  <h2>研修は、<span class="bl">ご希望があれば</span>設計可能です。</h2>
+  <p class="note-lead">ワークフローやメール対応を御社が自分たちで回したい場合の道です。やるかどうかは村山さんのご判断で。<b>具体的な研修プラン（カリキュラム・見積・助成金の段取り）は別冊でご用意しています。</b>ここでは要点だけ。</p>
   <div class="lite">
     <div>
       <p>ポイントは制度の選び方です。研修への補助は<strong>AI導入補助金（経産省）ではなく、リスキリング助成金（厚労省）</strong>が正しい受け皿になります。ここを間違えると支給されないので、使うなら最初に整理します。</p>
@@ -246,7 +288,7 @@ footer .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:15px
       <div class="row"><b>使える期限</b><span>2026年度まで</span></div>
     </div>
   </div>
-  <div class="callout good"><b>ご希望のときだけ、次の一歩。</b>研修を進めたいとなれば、御社の人数・業務に合わせた詳細プランと見積、助成金の段取りを次回お持ちします。今日は「やる/やらない/保留」を決めていただくだけで結構です。</div>
+  <div class="callout good"><b>ご希望のときだけ、次の一歩。</b>研修を進めたいとなれば、別冊の研修プランに沿って、御社の人数・業務に合わせて詳細を詰めます。今日は「やる/やらない/保留」を決めていただくだけで結構です。</div>
 </section>
 
 <!-- 6 ミタテ -->
@@ -265,16 +307,16 @@ footer .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:15px
   <p class="note-lead">大きく契約する必要はありません。やりたいことを実現するために、今日この3点の方向だけご一緒に決められれば十分です。</p>
   <div class="nsteps">
     <div class="nstep"><div class="nn">DECIDE 1</div><h4>印税分配を動かすか</h4><p>進めるなら、ステートメントを2〜3種お預かり（社名は伏せて結構です）→ 要件定義 → お見積もり</p></div>
-    <div class="nstep"><div class="nn">DECIDE 2</div><h4>研修は要るか</h4><p>御社で自走したい業務があるか。求められれば次回に詳細プランをお持ちします</p></div>
+    <div class="nstep"><div class="nn">DECIDE 2</div><h4>研修は要るか</h4><p>御社で自走したい業務があるか。要るなら別冊の研修プランで詳細を詰めます</p></div>
     <div class="nstep"><div class="nn">DECIDE 3</div><h4>経営の数字は見たいか</h4><p>見える化のニーズがあれば、ミタテ＋補助金を検討。なければ見送り</p></div>
   </div>
-  <div class="cta">今日のゴールは、契約ではなく<b>方向を決めること</b>。<br>そのうえで、まず動かすなら印税分配のステートメントをお預かりするところから、ご一緒できればと思います。</div>
+  <div class="cta">今日のゴールは、契約ではなく<b>方向を決めること</b>。<br>そのうえで、まず動かすなら印税分配の現状確認から、ご一緒できればと思います。</div>
 </section>
 
 <footer>
   <div class="bn">BALENCER</div>
   <p>株式会社バレンサー　│　info@balencer.jp　│　balencer.jp</p>
-  <p class="disc">本資料の数値は2026年6月時点の調査・公開情報にもとづく参考値です。助成金・補助金の最終的な要件や支給・採択の可否は、管轄の労働局および各事務局の判断によります。申請手続きは社会保険労務士など各専門家にご相談ください。</p>
+  <p class="disc">本資料の数値は2026年6月時点の調査・公開情報にもとづく参考値です。助成金・補助金の最終的な要件や支給・採択の可否は、管轄の労働局および各事務局の判断によります。申請手続きは社会保険労務士など各専門家にご相談ください。サンプル画面の数値・社名・人物はすべて架空です。</p>
 </footer>
 
 </div>

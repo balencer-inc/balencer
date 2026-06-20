@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>見せれるもの 一覧＋サイボウズ/Eight 洗い出し｜1st PLACE 村山様</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F1626;--ink2:#3C475C;--muted:#7A879C;--line:#E7EBF1;--line2:#D6DCE6;--blue:#2563EB;--cyan:#22B8E6;--soft:#EEF3FF;--bg:#F4F7FB;--neon:#E6FF2F;--good:#0E7A5F;--goodbg:#E6F4EF;--warn:#B5460F;--warnbg:#FBEEE6;--panel:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.7}
+.wrap{max-width:1000px;margin:0 auto;padding:26px 22px 70px}
+h1{font-size:24px;font-weight:900;color:var(--ink);line-height:1.4}
+.sub{font-size:14px;color:var(--ink2);margin-top:8px}
+.kick{font-family:'JetBrains Mono';font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--blue)}
+h2{font-size:17px;font-weight:900;color:var(--ink);margin:34px 0 4px}
+.h2s{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+/* cards */
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media(max-width:820px){.cards{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column}
+.card.mock{border-top:3px solid var(--blue)}
+.card.real{border-top:3px solid var(--good)}
+.card.pend{border-top:3px solid var(--line2);opacity:.92}
+.tagk{font-family:'JetBrains Mono';font-size:10px;font-weight:700;border-radius:5px;padding:2px 8px;align-self:flex-start;margin-bottom:9px}
+.tagk.m{background:var(--soft);color:var(--blue)}.tagk.r{background:var(--goodbg);color:var(--good)}.tagk.p{background:var(--bg);color:var(--muted)}
+.card h3{font-size:15.5px;font-weight:900;color:var(--ink);margin-bottom:6px}
+.card p{font-size:12.5px;color:var(--ink2);line-height:1.6;flex:1}
+.card .for{font-size:11.5px;color:var(--muted);margin-top:9px}
+.card .for b{color:var(--ink2)}
+.card a{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:800;color:var(--blue);text-decoration:none;border:1px solid #cfe0ff;border-radius:9px;padding:8px 13px;text-align:center}
+.card .na{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--warn);background:var(--warnbg);border-radius:9px;padding:8px 13px;text-align:center}
+/* inventory */
+.inv{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+@media(max-width:820px){.inv{grid-template-columns:1fr}}
+.invc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.invc .it{font-size:16px;font-weight:900;color:var(--ink);display:flex;align-items:center;gap:9px;margin-bottom:4px}
+.invc .ib{font-size:11.5px;color:var(--muted);margin-bottom:13px}
+.invc ul{list-style:none}
+.invc li{font-size:13px;color:var(--ink2);line-height:1.5;margin-bottom:10px;padding-left:20px;position:relative}
+.invc li::before{content:"?";position:absolute;left:0;top:0;font-family:'Poppins';font-weight:800;color:var(--blue);font-size:13px}
+.invc li b{color:var(--ink)}
+.note{background:var(--warnbg);border-left:4px solid var(--warn);border-radius:10px;padding:13px 18px;font-size:12.5px;color:var(--ink2);margin-top:14px}
+.note b{color:var(--warn)}
+.foot{margin-top:30px;text-align:center;font-size:11px;color:var(--muted)}
+.foot .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:13px}
+</style></head>
+<body>
+<div class="wrap">
+  <span class="kick">For 1st PLACE ・ 6/22 持ち物</span>
+  <h1>「こういうことができる」を、見せられるもの一覧。</h1>
+  <p class="sub">完成品ではなく“イメージできるもの”を揃えました。商談で具体に落とすための材料です。加藤さんがここから広げます。</p>
+
+  <h2>① サンプルmock（今回つくった画面イメージ）</h2>
+  <div class="h2s">架空データ。「御社のこれは、こう作れます」を見せるためのデモ。</div>
+  <div class="cards">
+    <div class="card mock"><span class="tagk m">MOCK</span><h3>印税分配エンジン</h3><p>各社のPDF/Excel/CSVを取込→共通明細に正規化→料率・按分で自動分配→根拠つき支払通知書。要確認の名寄せも可視化。</p><div class="for">テーマ：<b>印税分配の仕組み化（本命）</b></div><a href="mock-royalty.html">画面を開く →</a></div>
+    <div class="card mock"><span class="tagk m">MOCK</span><h3>問い合わせ自動対応</h3><p>info@への受信を見積/採用/取材/請求などに自動仕分け→担当へ振り分け→返信の下書きまで。送信前は人が確認。</p><div class="for">テーマ：<b>メール問い合わせ対応</b></div><a href="mock-email.html">画面を開く →</a></div>
+    <div class="card mock"><span class="tagk m">MOCK</span><h3>業務を仕組み化</h3><p>属人業務を「Claudeスキル（再利用できる指示書）＋Notion（マニュアル＋データ）」に分けて仕組み化する考え方。</p><div class="for">テーマ：<b>ワークフロー仕組み化・マニュアル化</b></div><a href="mock-workflow.html">画面を開く →</a></div>
+  </div>
+
+  <h2>② 実在する成果物・サービス（実績として見せられる）</h2>
+  <div class="h2s">バレンサーが実際に作った/運用しているもの。</div>
+  <div class="cards">
+    <div class="card real"><span class="tagk r">実在</span><h3>NAILIT 業務自動化 事例</h3><p>催事精算で複数フォームの明細を共通化し自動で割り当てた事例（匿名）。印税分配と同じ型。</p><div class="for">類似：<b>印税分配</b></div><a href="../../proposals/ai-training-2026/case-study.html">事例を開く →</a></div>
+    <div class="card real"><span class="tagk r">実在</span><h3>outreach（営業メール自動化）</h3><p>キャンペーン管理・AI下書き生成・送信ログ・パイプラインを備えた自社運用アプリ。メール処理の実装例。</p><div class="for">類似：<b>メール対応・自動化</b></div><a href="#" onclick="return false" style="border-color:var(--line2);color:var(--muted)">起動が必要（apps/outreach）</a></div>
+    <div class="card real"><span class="tagk r">実在</span><h3>ミタテ（経営分析・公開デモ）</h3><p>会計データから財務分析・KPI・将来予測を自動生成。AI導入補助金 採択済み。</p><div class="for">類似：<b>経営の数字の見える化</b></div><a href="https://balencer.jp/keiei-demo/" target="_blank">デモを開く →</a></div>
+  </div>
+
+  <h2>③ 加藤さんに足してほしい（リポジトリに無い＝要・場所共有）</h2>
+  <div class="h2s">村山さん向けに名前が挙がったが、ローカルに見当たらないもの。URL/スクショがあれば一覧に組み込む。</div>
+  <div class="cards">
+    <div class="card pend"><span class="tagk p">要共有</span><h3>睦備建設の業務アプリ</h3><p>プロジェクトで作った業務アプリ。Drive/外部にある可能性。場所をもらえれば見せ物に追加。</p><div class="for">類似：<b>ワークフロー仕組み化</b></div><span class="na">場所が未確認</span></div>
+    <div class="card pend"><span class="tagk p">要共有</span><h3>名刺管理アプリ（睦備メンバー作）</h3><p>Eight移管の代替として強い見せ物。場所をもらえれば追加。</p><div class="for">類似：<b>Eight移管／名刺管理</b></div><span class="na">場所が未確認</span></div>
+    <div class="card pend"><span class="tagk p">アイデア</span><h3>その他のネタ</h3><p>demoアプリ・ヒトツ(Notion)・SOERUなど。商談の流れで出てきたら随時追加。</p><div class="for">—</div><span class="na" style="background:var(--soft);color:var(--blue)">広げる余地あり</span></div>
+  </div>
+
+  <h2>④ サイボウズ／Eight 用途の洗い出し（会話の起点）</h2>
+  <div class="h2s">「何を・どこまで使っているか」を先に押さえると、代替できるか・移管が要るかを即判断できる。</div>
+  <div class="inv">
+    <div class="invc">
+      <div class="it">🟦 サイボウズ</div>
+      <div class="ib">製品・用途・規模を聞き出す</div>
+      <ul>
+        <li><b>どの製品か</b>（Office／kintone／Garoon）</li>
+        <li><b>何に使っているか</b>（スケジュール／掲示板／申請ワークフロー／カスタムアプリ／ファイル共有）</li>
+        <li><b>誰が・何人</b>使っているか</li>
+        <li><b>困りごと</b>（重い／費用／使いこなせない／一部機能だけ）</li>
+        <li><b>移管したいのか、整理だけか</b>（Notion／Google／現状維持）</li>
+      </ul>
+    </div>
+    <div class="invc">
+      <div class="it">🟩 Eight（名刺管理）</div>
+      <div class="ib">目的が「保管」か「営業活用」かで道が変わる</div>
+      <ul>
+        <li><b>何に使っているか</b>（保管／共有／検索／商談履歴）</li>
+        <li><b>何人・何枚</b>規模か</li>
+        <li><b>エクスポートの可否</b>を確認したか（Eightは制限あり）</li>
+        <li><b>移管先の希望</b>（Notion DB／専用アプリ／スプレッドシート）</li>
+        <li><b>名刺×案件をつなげたいか</b>（誰がいつ会い、今どの案件か）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note"><b>方針：</b>この2つはAIが主役ではない＝本命（印税分配）が動き出してから。今日は用途を聞いて「代替できる/移管が要る」の当たりだけ付ければ十分。Eightの代替は、上の「名刺管理アプリ」が見せられると一気に話が早い。</div>
+
+  <div class="foot"><div class="bn">BALENCER</div><p>1st PLACE 村山様 6/22 商談 ／ 見せれるもの一覧（社内用）</p></div>
+</div>
+</body></html>

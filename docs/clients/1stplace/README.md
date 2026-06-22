@@ -24,6 +24,12 @@
 - 実在の他社例：NAILIT事例(`docs/proposals/ai-training-2026/case-study.html`)／outreachアプリ(`apps/outreach`・起動要)／ミタテデモ(balencer.jp/keiei-demo/)。
 - **要・場所共有**：睦備建設の業務アプリ／睦備メンバーの名刺管理アプリはリポジトリに無い→URL/スクショがあれば索引に追加（Eight移管の見せ物として有効）。
 
+## 見積（印税以外の仕組み化）
+- 整理ネタ帳：`見積ネタ整理_仕組み化.md`（市場相場メモ・単発/プロジェクトの考え方・確定すべき点）
+- 社内議論用テキスト：`見積ドラフト_テキスト.md`（単発A〜D＋プロジェクトP1/P2、各保守つき・税抜ドラフト・単価1.3万/h想定）
+- **赤入れ用Notion（見積書形式）**：https://app.notion.com/p/38753269fc5e817190dfe8d9fab02c1a （1stPLACE顧客ページ配下）。本文を直接編集して赤入れ→確定後に客先見積HTML/PDFへ。
+- 価格方針：A(Notion)は工数ベース(Lite70/Standard100/Full150万)。ヒトツ定価500はP2(フルDX)に温存。印税分配は対象外。
+
 ## 公開URL（Vercel・加藤/クライアント共有用）
 - **本番: https://1stplace-murayama.vercel.app** （= 提案_村山様_進め方.html）
 - 同ドメイン配下: `/mock-royalty.html` `/mock-email.html` `/mock-workflow.html` `/case-study.html` `/training.html`(別冊)

@@ -24,6 +24,23 @@
 - 実在の他社例：NAILIT事例(`docs/proposals/ai-training-2026/case-study.html`)／outreachアプリ(`apps/outreach`・起動要)／ミタテデモ(balencer.jp/keiei-demo/)。
 - **要・場所共有**：睦備建設の業務アプリ／睦備メンバーの名刺管理アプリはリポジトリに無い→URL/スクショがあれば索引に追加（Eight移管の見せ物として有効）。
 
+## 公開URL（Vercel・加藤/クライアント共有用）
+- **本番: https://1stplace-murayama.vercel.app** （= 提案_村山様_進め方.html）
+- 同ドメイン配下: `/mock-royalty.html` `/mock-email.html` `/mock-workflow.html` `/case-study.html` `/training.html`(別冊)
+- Vercelプロジェクト名 `1stplace-murayama`（チーム tabe-balencerjps-projects）。**本番balencer(Next.js)とは別プロジェクト**。
+- 再デプロイ手順（自己完結フォルダを組んでCLIデプロイ。`../../`参照をローカルに書換えるのが肝）:
+  ```bash
+  cd docs/clients/1stplace
+  D=/tmp/1stplace-murayama; rm -rf "$D"; mkdir -p "$D/img"
+  sed -e 's#\.\./\.\./soeru-lp/balencer-logo\.png#balencer-logo.png#g' -e 's#\.\./\.\./proposals/ai-training-2026/case-study\.html#case-study.html#g' 提案_村山様_進め方.html > "$D/index.html"
+  sed 's#\.\./\.\./soeru-lp/balencer-logo\.png#balencer-logo.png#g' 別冊_研修プラン_村山様.html > "$D/training.html"
+  cp mock-royalty.html mock-email.html mock-workflow.html "$D/"
+  sed 's#\.\./\.\./soeru-lp/balencer-logo\.png#balencer-logo.png#g' ../../proposals/ai-training-2026/case-study.html > "$D/case-study.html"
+  cp ../../soeru-lp/balencer-logo.png "$D/"; cp img/mock-*.png "$D/img/"
+  cd "$D" && npx vercel deploy --prod --yes --scope tabe-balencerjps-projects
+  ```
+  ※CLI認証は `~/Library/Application Support/com.vercel.cli/auth.json` に保存済（ログイン済）。
+
 ## 赤入れ用Notion（提案HTMLの原稿）
 - 提案HTMLの全内容をセクション構造で書き出したページ：https://app.notion.com/p/38553269fc5e81048f58d06344a74b2a
 - 運用：本文・言い回しはNotionで直接編集（赤入れ）、デザインは箇所コメントで指示。各見出しに `【#section-id】` でHTML対応箇所を明記。編集後「反映して」でNotion→HTMLへ反映する

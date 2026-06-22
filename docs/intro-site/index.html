@@ -32,7 +32,23 @@
   .navlinks{display:flex;gap:26px;font-size:13px}
   .navlinks a{color:var(--cap);text-decoration:none}
   .navlinks a:hover{color:var(--ink)}
-  @media(max-width:680px){.navlinks{display:none}}
+  .navtoggle{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px;padding:9px;margin-right:-9px}
+  .navtoggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px auto;transition:transform .3s,opacity .3s}
+  .navtoggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .navtoggle.open span:nth-child(2){opacity:0}
+  .navtoggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:680px){
+    .navtoggle{display:block}
+    .navlinks{
+      position:absolute;top:60px;left:0;right:0;
+      flex-direction:column;gap:0;
+      background:var(--bg);border-bottom:1px solid var(--border);
+      max-height:0;overflow:hidden;transition:max-height .32s ease;
+      box-shadow:0 12px 24px -16px rgba(28,28,28,.35);
+    }
+    .navlinks.open{max-height:320px}
+    .navlinks a{padding:16px 28px;border-top:1px solid var(--border);font-size:15px;color:var(--ink)}
+  }
 
   /* ===== Hero ===== */
   .hero{padding:76px 0 64px;border-bottom:1px solid var(--border)}
@@ -147,12 +163,15 @@
 <div class="topbar">
   <div class="wrap">
     <span class="brand">BALENCER &nbsp;/&nbsp; TSUGI &amp; PARTNERS</span>
-    <nav class="navlinks">
+    <nav class="navlinks" id="navlinks">
       <a href="#balencer">バレンサー</a>
       <a href="#tsugi">TSUGI＆PARTNERS</a>
       <a href="#refer">ご紹介について</a>
       <a href="#contact">ご相談</a>
     </nav>
+    <button class="navtoggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="navlinks">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </div>
 
@@ -348,6 +367,21 @@
   <div class="fb">BALENCER &nbsp;/&nbsp; TSUGI &amp; PARTNERS</div>
   <div>大阪市北区梅田1-11-4 大阪駅前第4ビル9階　／　代表 阿部 貴之</div>
 </footer>
+
+<script>
+/* モバイル ハンバーガーメニュー */
+(function(){
+  var btn=document.getElementById('navToggle'), nav=document.getElementById('navlinks');
+  if(!btn||!nav) return;
+  function setOpen(open){
+    btn.classList.toggle('open',open);
+    nav.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  }
+  btn.addEventListener('click',function(){ setOpen(!btn.classList.contains('open')); });
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setOpen(false); }); });
+})();
+</script>
 
 <script>
 (function(){

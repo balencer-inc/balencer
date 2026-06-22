@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阿部貴之｜株式会社バレンサー / 株式会社TSUGI＆PARTNERS</title>
+<meta name="description" content="経営者の右腕がつとまるブランディングAXカンパニー「バレンサー」と、事業承継・M&Aの伴走会社「TSUGI＆PARTNERS」。代表 阿部貴之の事業紹介。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#C5956B; --accent-dark:#A87C58;
+    --bg:#F5F3F0; --cream:#EDE9E3; --white:#FFFFFF;
+    --ink:#1C1C1C; --text:#3A3838; --cap:#6B6864;
+    --border:#E2E0DA;
+    --tsugi:#3E5C54; --tsugi-bg:#EEF1EF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);line-height:1.9;font-weight:400;-webkit-font-smoothing:antialiased}
+  .en{font-family:'Inter',sans-serif}
+  .serif{font-family:'Playfair Display',serif}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+  .label{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.28em;color:var(--accent-dark);font-weight:600;margin-bottom:18px;text-transform:uppercase}
+  a{color:var(--accent-dark)}
+
+  /* ===== Header ===== */
+  .topbar{border-bottom:1px solid var(--border);background:rgba(245,243,240,.85);backdrop-filter:blur(6px);position:sticky;top:0;z-index:20}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:'Inter',sans-serif;font-weight:300;letter-spacing:.22em;font-size:17px;color:var(--ink)}
+  .navlinks{display:flex;gap:26px;font-size:13px}
+  .navlinks a{color:var(--cap);text-decoration:none}
+  .navlinks a:hover{color:var(--ink)}
+  @media(max-width:680px){.navlinks{display:none}}
+
+  /* ===== Hero ===== */
+  .hero{padding:76px 0 64px;border-bottom:1px solid var(--border)}
+  .hero .wrap{display:flex;gap:48px;align-items:center}
+  .hero-photo{flex:0 0 auto}
+  .hero-photo img{width:188px;height:188px;border-radius:50%;display:block;box-shadow:0 18px 50px -22px rgba(28,28,28,.4)}
+  .hero-text{flex:1}
+  .hero .tagline{font-family:'Playfair Display',serif;color:var(--accent);font-size:19px;font-style:italic;margin-bottom:14px}
+  .hero h1{font-size:34px;font-weight:700;color:var(--ink);line-height:1.45;letter-spacing:.02em}
+  .hero h1 .role{display:block;font-size:15px;font-weight:500;color:var(--cap);letter-spacing:.04em;margin-top:14px;font-family:'Noto Sans JP',sans-serif}
+  .hero .companies{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-size:13px;border:1px solid var(--border);background:var(--white);padding:7px 14px;border-radius:40px;color:var(--ink)}
+  .chip b{font-weight:700}
+  @media(max-width:680px){
+    .hero .wrap{flex-direction:column;text-align:center;gap:28px}
+    .hero h1{font-size:27px}
+    .hero .companies{justify-content:center}
+  }
+
+  /* ===== Section base ===== */
+  section.block{padding:62px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.5}
+  .lead{font-size:15px;color:var(--text);margin-bottom:26px;max-width:640px}
+  p{margin-bottom:15px}
+
+  /* profile */
+  .profile-list{list-style:none;display:grid;gap:0;border-top:1px solid var(--border)}
+  .profile-list li{display:flex;gap:18px;padding:15px 2px;border-bottom:1px dashed var(--border);font-size:14.5px}
+  .profile-list .yr{font-family:'Inter',sans-serif;font-weight:600;color:var(--accent-dark);min-width:74px;font-size:13px;letter-spacing:.04em}
+  .book{display:flex;gap:18px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);padding:22px 24px;margin-top:24px}
+  .book .bi{font-family:'Playfair Display',serif;font-size:13px;letter-spacing:.2em;color:var(--accent-dark)}
+  .book b{color:var(--ink);font-size:16px}
+
+  /* flags */
+  .flags{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+  .flag{background:var(--white);border:1px solid var(--border);padding:26px 24px}
+  .flag .no{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--cap)}
+  .flag b{display:block;font-size:17px;color:var(--ink);margin:7px 0 10px}
+  .flag span{font-size:14px;color:var(--text);line-height:1.85}
+  .kakezan{text-align:center;font-size:14px;color:var(--cap);margin-top:18px}
+  @media(max-width:680px){.flags{grid-template-columns:1fr}}
+
+  /* fit box */
+  .fit{background:var(--cream);border:1px solid var(--border);padding:24px 26px;margin-top:24px}
+  .fit h3{font-size:14px;color:var(--ink);margin-bottom:10px;letter-spacing:.04em}
+  .fit ul{list-style:none;display:grid;gap:9px}
+  .fit li{position:relative;padding-left:22px;font-size:14.5px;color:var(--text)}
+  .fit li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;background:var(--accent);border-radius:50%}
+
+  /* cases */
+  .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .case{background:var(--white);border:1px solid var(--border);padding:22px 20px}
+  .case .ind{font-size:12px;color:var(--accent-dark);font-weight:600;letter-spacing:.04em;margin-bottom:10px}
+  .case b{display:block;font-size:15px;color:var(--ink);margin-bottom:8px;line-height:1.6}
+  .case span{font-size:13.5px;color:var(--text);line-height:1.8}
+  @media(max-width:680px){.cases{grid-template-columns:1fr}}
+
+  /* TSUGI */
+  .tsugi-block{background:var(--tsugi-bg)}
+  .tsugi-block .label{color:var(--tsugi)}
+  .tsugi-flow{display:flex;flex-wrap:wrap;gap:0;margin-top:22px;background:var(--white);border:1px solid var(--border)}
+  .tstep{flex:1;min-width:150px;padding:20px 18px;border-right:1px solid var(--border)}
+  .tstep:last-child{border-right:none}
+  .tstep .n{font-family:'Inter',sans-serif;font-size:11px;color:var(--tsugi);letter-spacing:.16em;font-weight:600}
+  .tstep b{display:block;font-size:14.5px;color:var(--ink);margin:6px 0 6px}
+  .tstep span{font-size:12.5px;color:var(--cap);line-height:1.7}
+  @media(max-width:680px){.tstep{border-right:none;border-bottom:1px solid var(--border)}.tstep:last-child{border-bottom:none}}
+
+  /* referral CTA */
+  .refer{background:var(--ink);color:#EDEBE7}
+  .refer .label{color:var(--accent)}
+  .refer h2{color:#fff}
+  .refer .lead{color:#C9C6C0}
+  .refer-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+  .rcard{border:1px solid #383634;padding:24px 22px;background:#222120}
+  .rcard .rc-h{font-size:13px;letter-spacing:.06em;color:var(--accent);font-weight:600;margin-bottom:14px}
+  .rcard ul{list-style:none;display:grid;gap:10px}
+  .rcard li{position:relative;padding-left:20px;font-size:14px;color:#D8D5D0;line-height:1.7}
+  .rcard li::before{content:"→";position:absolute;left:0;top:0;color:var(--accent)}
+  .links{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:4px;font-size:14px;text-decoration:none;font-weight:500}
+  .btn-main{background:var(--accent);color:#1C1C1C}
+  .btn-line{background:transparent;border:1px solid #4a4845;color:#EDEBE7}
+  @media(max-width:680px){.refer-grid{grid-template-columns:1fr}}
+
+  footer{padding:40px 0 64px;text-align:center;color:var(--cap);font-size:12.5px}
+  footer .fb{font-family:'Inter',sans-serif;letter-spacing:.2em;color:var(--ink);font-size:14px;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">BALENCER &nbsp;/&nbsp; TSUGI &amp; PARTNERS</span>
+    <nav class="navlinks">
+      <a href="#balencer">バレンサー</a>
+      <a href="#tsugi">TSUGI＆PARTNERS</a>
+      <a href="#refer">ご紹介について</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-photo">
+      <img src="img/abe-round.png" alt="阿部貴之">
+    </div>
+    <div class="hero-text">
+      <div class="tagline">for loved ones.</div>
+      <h1>阿部 貴之
+        <span class="role">株式会社バレンサー 代表 ／ 株式会社TSUGI＆PARTNERS 代表</span>
+      </h1>
+      <div class="companies">
+        <span class="chip"><b>バレンサー</b>　経営者の右腕・ブランディングAX</span>
+        <span class="chip"><b>TSUGI＆PARTNERS</b>　事業承継・M&amp;Aの伴走</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROFILE -->
+<section class="block" id="profile">
+  <div class="wrap">
+    <div class="label">Profile</div>
+    <h2>経営者の隣に立ち、組織の中から会社を変える</h2>
+    <p class="lead">大阪・梅田を拠点に、2つの会社を経営しています。人材・採用支援の現場で経験を積み、ブランディングの世界へ。今は「対話で組織の内側に入り、実装まで自分たちの手でやり切る」伴走を軸にしています。</p>
+    <ul class="profile-list">
+      <li><span class="yr">〜2018</span><span>人材コンサルティング・採用支援の領域で経験を積む（10年以上）</span></li>
+      <li><span class="yr">2018</span><span>ブランディングプランナーとして独立</span></li>
+      <li><span class="yr">2019.12</span><span>株式会社バレンサー設立</span></li>
+      <li><span class="yr">2025</span><span>株式会社TSUGI＆PARTNERS設立（事業承継・M&amp;A）</span></li>
+    </ul>
+    <div class="book">
+      <div>
+        <div class="bi">BOOK</div>
+        <b>『社長のためのコンサル3.0』を出版</b>
+        <p style="margin:8px 0 0;font-size:14px">レポートを出して終わりではなく、町医者のように寄り添い、実行までやり切る——という伴走の思想をまとめました。この考え方が、2社すべての土台になっています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BALENCER -->
+<section class="block" id="balencer">
+  <div class="wrap">
+    <div class="label">Company 01 — BALENCER</div>
+    <h2>バレンサーは、経営者の右腕がつとまるブランディングAXカンパニー</h2>
+    <p class="lead">AXとは、AIを使って会社の戦い方そのものをつくり直すこと。DXが「仕事のやり方」をデジタルに変えることなら、AXは「会社の戦い方」を変えることだと考えています。</p>
+    <p>やることは創業時から一つです。<b>組織を変える（インナー）→ 魅せ方を変える（アウター）→ 戦い方を変える（事業）</b>。この順番で会社を変え、そのすべてにAIを通します。私たちはデザイン会社でもDX会社でもコンサル会社でもありません。本丸は、経営者の隣に立ち、組織の中から会社を変えること。デザインもDXもAIも、そのための手段です。</p>
+
+    <div class="flags">
+      <div class="flag">
+        <span class="no">FLAG 01</span>
+        <b>組織開発・MVV</b>
+        <span>理念（MVV）の策定からCI、人事制度づくり、現場への浸透まで一気通貫で伴走。対話で進めるこの領域は、システム開発会社やデザイン会社といったプロからもご相談いただいています。</span>
+      </div>
+      <div class="flag">
+        <span class="no">FLAG 02</span>
+        <b>AI実装</b>
+        <span>業務の仕組み化からAI組織づくりまで、実際にコードを書いて動かします。私たち自身が外部委託の多くをAIに任せて会社を回しており、その作り方ごとお渡しします。</span>
+      </div>
+    </div>
+    <div class="kakezan">この2枚の掛け算が、ブランディングAXです。</div>
+
+    <div class="fit">
+      <h3>こんな会社と相性がいい</h3>
+      <ul>
+        <li>売上1〜30億円・創業10年以上の地域オーナー企業</li>
+        <li>承継した2代目・3代目の社長</li>
+        <li>「課題はあるが、何から手をつけるか整理できていない」経営者</li>
+        <li>組織開発・ブランディングの相棒を探すシステム開発・制作会社（同業）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 変遷と事例 -->
+<section class="block" id="cases">
+  <div class="wrap">
+    <div class="label">Transformation</div>
+    <h2>変遷と、いま — 「変革」の事例は一つではありません</h2>
+    <p class="lead">デザイン・制作の支援から始まり、組織開発、そしてAI実装へ。関わり方を広げながら、複数の企業で「会社の変わり方」そのものを伴走してきました。<span style="color:var(--cap)">（下記は匿名化した代表例。社名・数字の掲載可否はご相談ください）</span></p>
+    <div class="cases">
+      <div class="case">
+        <div class="ind">製造業 / オーナー企業</div>
+        <b>バラバラだった現場の言葉を、理念で揃える</b>
+        <span>MVVを策定し、半年かけて現場へ浸透。社内の判断基準と採用で語る言葉が一本化した。</span>
+      </div>
+      <div class="case">
+        <div class="ind">サービス業 / 承継企業</div>
+        <b>理念を、人事制度まで接続する</b>
+        <span>MVV策定にとどめず、評価・等級など制度へ落とし込み、日々の運用に組み込んだ。</span>
+      </div>
+      <div class="case">
+        <div class="ind">中小企業 / 全社</div>
+        <b>外注の多くをAIに置き換えて回す</b>
+        <span>分析・制作・運用の実働をAI組織化。自社が実証第一号となり、その仕組みごと提供している。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TSUGI -->
+<section class="block tsugi-block" id="tsugi">
+  <div class="wrap">
+    <div class="label">Company 02 — TSUGI &amp; PARTNERS</div>
+    <h2>TSUGI＆PARTNERSは、事業承継とM&amp;Aの伴走会社</h2>
+    <p class="lead">この会社は、バレンサーの現場から生まれました。ブランディングの支援を続けるなかで、後継者の不在や、M&amp;Aで会社の文化・想いが失われていく場面に、何度も向き合ってきたからです。</p>
+    <p>数字だけでなく、社長の想いや社風、歴史ごと次の世代へつなぐ。「売る」ことをゴールにせず、「売れる状態」を磨き上げてから次へ進む、伴走型の支援です。</p>
+    <div class="tsugi-flow">
+      <div class="tstep"><span class="n">STEP 01</span><b>企業ドック診断</b><span>財務・組織・ブランド・デジタルの4軸で現在地と概算企業価値を見える化。</span></div>
+      <div class="tstep"><span class="n">STEP 02</span><b>磨き上げ設計</b><span>診断をもとに価値向上のロードマップを描き、実行を伴走。</span></div>
+      <div class="tstep"><span class="n">STEP 03</span><b>M&amp;A仲介・コンサル</b><span>売れる状態をつくった上で、仲介・コンサルティングを行う。</span></div>
+      <div class="tstep"><span class="n">STEP 04</span><b>PMI（経営統合）</b><span>引き継いだ後の統合まで一貫伴走。ブランド・組織文化を守る。</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2社の関係 -->
+<section class="block" id="synergy">
+  <div class="wrap">
+    <div class="label">Synergy</div>
+    <h2>バレンサーが「実行」を、TSUGIが「診断と設計」を</h2>
+    <p class="lead">2社で、会社を強くするところから、次の世代へつなぐところまでを、ひとつながりで支えています。組織開発・ブランディングの知見を、そのまま事業承継・M&amp;Aに活かせるのが、他にない組み合わせです。</p>
+  </div>
+</section>
+
+<!-- 紹介者向け CTA -->
+<section class="block refer" id="refer">
+  <div class="wrap">
+    <div class="label">For those who connect us</div>
+    <h2>こんな経営者がいたら、つないでください</h2>
+    <p class="lead">どちらの会社に当てはまりそうか、下の合図を目安にしていただけると、スムーズにご紹介いただけます。まずは一度、お話を聞くところから始めます。</p>
+    <div class="refer-grid">
+      <div class="rcard">
+        <div class="rc-h">バレンサーへ</div>
+        <ul>
+          <li>理念やブランドを作り直したい・浸透させたい</li>
+          <li>組織・採用・社内の言葉がバラバラで揃えたい</li>
+          <li>AIを業務に入れたいが、何から手をつけるか分からない</li>
+          <li>戦略から実行まで、丸ごと任せられる右腕がほしい</li>
+        </ul>
+      </div>
+      <div class="rcard">
+        <div class="rc-h">TSUGI＆PARTNERSへ</div>
+        <ul>
+          <li>事業承継・M&amp;Aを考え始めている</li>
+          <li>後継者が不在、または社内に承継の準備がない</li>
+          <li>自社の今の価値・売れる状態を客観的に知りたい</li>
+          <li>想いや文化を残したまま、次へつなぎたい</li>
+        </ul>
+      </div>
+    </div>
+    <div class="links">
+      <a class="btn btn-main" href="https://balencer.jp/" target="_blank" rel="noopener">バレンサー 公式サイト</a>
+      <a class="btn btn-line" href="https://tsugiandpartners.jp/" target="_blank" rel="noopener">TSUGI＆PARTNERS 公式サイト</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">BALENCER &nbsp;/&nbsp; TSUGI &amp; PARTNERS</div>
+  <div>大阪市北区梅田1-11-4 大阪駅前第4ビル9階　／　代表 阿部 貴之</div>
+</footer>
+
+</body>
+</html>

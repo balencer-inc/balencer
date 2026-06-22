@@ -118,6 +118,26 @@
   .btn-line{background:transparent;border:1px solid #4a4845;color:#EDEBE7}
   @media(max-width:680px){.refer-grid{grid-template-columns:1fr}}
 
+  /* contact form */
+  .contact .lead{max-width:560px}
+  .lead-form{background:var(--white);border:1px solid var(--border);padding:30px 30px 28px;margin-top:8px;max-width:680px}
+  .lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+  .lf-field{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--ink)}
+  .lf-field.full{grid-column:1 / -1}
+  .lf-field i{font-style:normal;color:#fff;background:var(--accent);font-size:10px;padding:1px 7px;border-radius:3px;margin-left:7px;letter-spacing:.04em;vertical-align:middle}
+  .lf-field input,.lf-field select,.lf-field textarea{font-family:inherit;font-size:14.5px;color:var(--ink);background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:11px 13px;width:100%;line-height:1.6}
+  .lf-field input:focus,.lf-field select:focus,.lf-field textarea:focus{outline:none;border-color:var(--accent)}
+  .lf-field textarea{resize:vertical;min-height:70px}
+  .lf-submit{margin-top:20px;width:100%;background:var(--ink);color:#fff;border:none;border-radius:4px;padding:15px;font-family:inherit;font-size:15px;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:background .2s}
+  .lf-submit:hover{background:#000}
+  .lf-submit:disabled{opacity:.55;cursor:default}
+  .lf-note{font-size:12.5px;color:var(--cap);margin-top:14px;text-align:center}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .lf-done{text-align:center;padding:24px 0}
+  .lf-done .ic{width:54px;height:54px;border-radius:50%;background:var(--accent);color:#fff;font-size:26px;line-height:54px;margin:0 auto 14px}
+  .lf-done h3{color:var(--ink);font-size:18px;margin-bottom:8px}
+  @media(max-width:680px){.lf-grid{grid-template-columns:1fr}.lead-form{padding:24px 20px}}
+
   footer{padding:40px 0 64px;text-align:center;color:var(--cap);font-size:12.5px}
   footer .fb{font-family:'Inter',sans-serif;letter-spacing:.2em;color:var(--ink);font-size:14px;margin-bottom:8px}
 </style>
@@ -131,6 +151,7 @@
       <a href="#balencer">バレンサー</a>
       <a href="#tsugi">TSUGI＆PARTNERS</a>
       <a href="#refer">ご紹介について</a>
+      <a href="#contact">ご相談</a>
     </nav>
   </div>
 </div>
@@ -294,10 +315,72 @@
   </div>
 </section>
 
+<!-- 相談フォーム -->
+<section class="block contact" id="contact">
+  <div class="wrap">
+    <div class="label">Contact</div>
+    <h2>ご相談・お問い合わせ</h2>
+    <p class="lead">ご自身のご相談でも、お知り合いのご紹介でも構いません。下記からお気軽にお寄せください。いただいた内容を確認し、1〜2営業日でご返信します。</p>
+    <form class="lead-form" id="leadForm" autocomplete="on">
+      <div class="lf-grid">
+        <label class="lf-field"><span>お名前<i>必須</i></span><input type="text" name="お名前" required></label>
+        <label class="lf-field"><span>会社名</span><input type="text" name="会社名"></label>
+        <label class="lf-field"><span>メールアドレス<i>必須</i></span><input type="email" name="メール" required placeholder="info@your-company.co.jp"></label>
+        <label class="lf-field"><span>電話番号</span><input type="tel" name="電話番号"></label>
+        <label class="lf-field full"><span>ご相談先</span>
+          <select name="ご相談先">
+            <option>バレンサー（組織・ブランド・AI実装）</option>
+            <option>TSUGI＆PARTNERS（事業承継・M&amp;A）</option>
+            <option>まだ決まっていない・どちらも相談したい</option>
+          </select>
+        </label>
+        <label class="lf-field full"><span>ご相談内容</span><textarea name="ご相談内容" rows="3" placeholder="例：理念やブランドを整理したい／事業承継を考え始めている　など"></textarea></label>
+      </div>
+      <input type="text" name="_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="source" value="イベント紹介ページ">
+      <button type="submit" class="lf-submit">送信する</button>
+      <p class="lf-note" id="lfNote">いただいた内容はバレンサーで確認し、1〜2営業日でご返信します。</p>
+    </form>
+  </div>
+</section>
+
 <footer>
   <div class="fb">BALENCER &nbsp;/&nbsp; TSUGI &amp; PARTNERS</div>
   <div>大阪市北区梅田1-11-4 大阪駅前第4ビル9階　／　代表 阿部 貴之</div>
 </footer>
+
+<script>
+(function(){
+  var form=document.getElementById('leadForm');
+  if(!form) return;
+  var note=document.getElementById('lfNote');
+  var ENDPOINT='https://balencer.jp/intro-lead.php';
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.querySelector('[name="_hp"]').value){ return; } // bot
+    var fd=new FormData(form), payload={};
+    fd.forEach(function(v,k){ if(k!=='_hp') payload[k]=v; });
+    var btn=form.querySelector('.lf-submit');
+    btn.disabled=true; btn.textContent='送信中…';
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
+      .then(function(res){
+        if(res.ok && res.j.ok){
+          form.innerHTML='<div class="lf-done"><div class="ic">✓</div><h3>送信しました</h3><p>ありがとうございます。1〜2営業日でご返信します。</p></div>';
+        }else{
+          btn.disabled=false; btn.textContent='送信する';
+          note.style.color='#C0392B';
+          note.innerHTML=(res.j&&res.j.error)?res.j.error:'送信に失敗しました。お手数ですが <a href="mailto:info@balencer.jp">info@balencer.jp</a> までご連絡ください。';
+        }
+      })
+      .catch(function(){
+        btn.disabled=false; btn.textContent='送信する';
+        note.style.color='#C0392B';
+        note.innerHTML='送信できませんでした。<a href="mailto:info@balencer.jp" style="color:var(--accent-dark)">info@balencer.jp</a> までご連絡ください。';
+      });
+  });
+})();
+</script>
 
 </body>
 </html>

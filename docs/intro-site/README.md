@@ -22,6 +22,12 @@
 | `img/abe-round.png` | まる抜き（円形）顔写真。SOERU LPと同一素材 |
 | `img/balencer-logo.png` | バレンサーロゴ |
 
+## 相談フォーム（他LPと同じ PHP→Notion 方式）
+- ページ末尾 `#contact` に設置。送信先＝`https://balencer.jp/intro-lead.php`（絶対URL）。
+- 受け皿PHP＝`server-scripts/intro-lead.php`。①info@balencer.jp へメール通知 ②Notion DB（補助金/SOERUリードと同一DB）へ「流入元＝イベント紹介ページ」で登録。設定は既存 `hojokin-config.php` を流用（新規設定不要）。
+- **Vercel(別ドメイン)→balencer.jp へ送るため CORS 対応済**（`Access-Control-Allow-Origin: *`＋OPTIONSプリフライト処理）。
+- **稼働に必要な手動作業（FTP）**：`server-scripts/intro-lead.php` を balencer.jp のルートへアップロード（= `https://balencer.jp/intro-lead.php`。`soeru-lead.php` と同じ置き場所）。アップロードするまでフォーム送信は失敗し、`info@balencer.jp` へのメール導線で代替される。
+
 ## 内容の根拠・トーン
 - 会社定義は**再定義の正本**（`docs/handoff/` concept-summary.html）から引用。旧表現（「1,000社支援」「デザインコンサルティングカンパニー」「組織に魂を/ビジネスに武器を」）は不使用。
 - 看板は2枚（①組織開発・MVV ②AI実装）。ブランディングAX＝AIで会社の戦い方を変える、で統一。

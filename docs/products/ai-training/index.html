@@ -28,6 +28,7 @@
   .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.85) 42%,rgba(255,255,255,.4) 72%,rgba(255,255,255,.12) 100%)}
   .hero .wrap{position:relative;z-index:1;min-height:560px;padding-top:76px;padding-bottom:76px;display:flex;flex-direction:column;justify-content:center}
   .hero-copy{max-width:640px}
+  .hero-hl{display:inline-block;background:rgba(255,255,255,.9);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);padding:18px 26px 22px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.07);margin-bottom:8px}
   .hero-img{display:none}
   .hero .tag{display:inline-block;font-family:var(--font-ja);font-size:17px;font-weight:700;letter-spacing:.06em;background:var(--ink);color:#fff;padding:11px 22px;margin-bottom:26px}
   .hero .tag .x{color:var(--neon);margin:0 6px;font-family:var(--font-en);font-weight:800}
@@ -145,8 +146,10 @@
   <div class="wrap">
     <div class="hero-copy">
       <span class="tag">AI実装研修<span class="x">×</span>リスキリング助成金</span>
-      <h1>AI研修</h1>
-      <p style="font-size:24px;font-weight:900;color:var(--ink-2);margin-top:14px;line-height:1.5">研修して終わり、にしない。<span class="hl">自社の業務が回り出すまで。</span></p>
+      <div class="hero-hl">
+        <h1>AI研修</h1>
+        <p style="font-size:24px;font-weight:900;color:var(--ink-2);margin-top:12px;line-height:1.5">研修して終わり、にしない。<span class="hl">自社の業務が回り出すまで。</span></p>
+      </div>
       <p class="lead">主要なAIを一通り学び、自社の仕事で本当に使えるところまで持っていく研修です。実務で効くClaudeを軸にしつつ、ChatGPTやGeminiなどそれぞれの得意分野も押さえます。アナログ中心の会社でも、チームが「AIで手作業を減らし、簡単な業務アプリを自分で作れる」状態になるまで設計します。人材開発支援助成金（事業展開等リスキリング支援コース）の活用で、実質負担を抑えて始められます。</p>
       <p class="sub">中小企業の経費助成 最大75%＋賃金助成。標準コースなら実質負担の目安 約10〜25万円。</p>
     </div>

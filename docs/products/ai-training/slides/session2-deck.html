@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2回 Claudeを使いこなす｜頼み方の型｜AI実装研修｜株式会社バレンサー</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --neon:#E6FF2F;--neon-tint:rgba(230,255,47,.55);
+  --ink:#000;--ink2:#3A3838;--ink3:#595959;--muted:#7A7575;
+  --bg:#fff;--bg2:#F5F3F3;--bg3:#F2F2F2;--line:#E2E0DA;--line2:#D0CECE;
+  --good:#0E7A5F;--good-bg:#E6F4EF;--warn:#B4232A;--warn-bg:#FCF3F3;
+  --en:'Poppins',sans-serif;--ja:'Noto Sans JP','Hiragino Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:1280px 720px;margin:0}
+body{font-family:var(--ja);color:var(--ink2);background:var(--bg3);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.deck{display:flex;flex-direction:column;align-items:center;gap:26px;padding:26px 0}
+.slide{width:1280px;height:720px;position:relative;overflow:hidden;background:#fff;padding:62px 80px;box-shadow:0 6px 24px rgba(0,0,0,.10)}
+.bar{position:absolute;left:0;top:0;width:100%;height:10px;background:var(--ink)}
+.bar::after{content:"";position:absolute;left:0;top:0;height:10px;width:230px;background:var(--neon)}
+.logo{height:22px;position:absolute;right:80px;top:54px;opacity:.92}
+.kick{font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:var(--neon);display:inline-block;padding:3px 12px}
+.h2{font-size:40px;font-weight:900;color:var(--ink);line-height:1.3;margin:16px 0 0;letter-spacing:-.01em}
+.sub{font-size:19px;color:var(--ink3);margin-top:16px;line-height:1.75;max-width:1040px}
+.sub b{color:var(--ink)}
+.mk{background:linear-gradient(180deg,transparent 56%,var(--neon-tint) 56%);padding:0 4px;font-weight:900;color:var(--ink)}
+.foot{position:absolute;left:80px;right:80px;bottom:34px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.page-n{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.body{margin-top:30px}
+.cover{display:flex;flex-direction:column;justify-content:center;background:radial-gradient(680px 480px at 86% 14%,var(--neon-tint),transparent 60%)}
+.cover .badge{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;border-radius:999px;padding:12px 26px;font-size:16px;font-weight:800;width:max-content}
+.cover .badge .dot{width:10px;height:10px;border-radius:50%;background:var(--neon)}
+.cover .wm{font-family:var(--en);font-weight:800;font-size:30px;color:var(--ink3);margin:26px 0 6px}
+.cover h1{font-size:52px;font-weight:900;color:var(--ink);line-height:1.28;letter-spacing:-.01em}
+.cover .for{margin-top:30px;font-size:17px;color:var(--muted)}
+.cover .for b{color:var(--ink2)}
+.blist{list-style:none;margin-top:8px}
+.blist li{font-size:23px;color:var(--ink2);line-height:1.5;margin-bottom:20px;padding-left:38px;position:relative}
+.blist li b{color:var(--ink);font-weight:900}
+.blist li::before{content:"";position:absolute;left:0;top:11px;width:16px;height:16px;background:var(--neon);border:2px solid var(--ink)}
+.blist.check li::before{content:"✓";background:none;border:none;color:var(--ink);font-weight:900;font-size:22px;top:-2px;font-family:var(--en)}
+.blist.warn li::before{content:"!";background:var(--warn);border:none;color:#fff;font-weight:800;font-size:13px;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;top:5px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.card{background:#fff;border:1.5px solid var(--line2);padding:24px 26px}
+.card .q{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink)}
+.card h3{font-size:21px;font-weight:900;color:var(--ink);margin:8px 0 8px;line-height:1.35}
+.card p{font-size:16px;color:var(--ink3);line-height:1.6}
+.card.hl{border:2px solid var(--ink);background:var(--ink);color:#fff}
+.card.hl h3,.card.hl .q{color:#fff}.card.hl .q{color:var(--neon)}.card.hl p{color:rgba(255,255,255,.8)}
+.bigstmt{font-size:38px;font-weight:900;color:var(--ink);line-height:1.45;margin-top:40px}
+.bigstmt .hl{background:var(--neon);padding:0 8px}
+.note{margin-top:30px;background:var(--ink);color:#fff;padding:20px 28px;font-size:19px;font-weight:700;line-height:1.6}
+.note b{color:var(--neon)}
+.box{margin-top:24px;border:1.5px solid var(--line2);padding:22px 26px;font-size:19px;line-height:1.7}
+.box.bad{background:var(--bg2)} .box.good{border:2px solid var(--ink);background:#fff}
+.box .lbl{font-size:13px;font-weight:800;letter-spacing:.06em;display:inline-block;padding:3px 11px;margin-bottom:12px}
+.box.bad .lbl{background:var(--bg3);color:var(--muted)} .box.good .lbl{background:var(--neon);color:var(--ink)}
+.box .ex{font-size:21px;color:var(--ink);font-weight:700;line-height:1.6}
+.demo-flag{position:absolute;top:54px;left:80px;font-size:13px;font-weight:800;letter-spacing:.1em;color:var(--ink);background:var(--neon);padding:4px 12px}
+.notes{width:1280px;background:#1A1A1A;color:#EDEDED;padding:22px 30px;font-size:15px;line-height:1.7;border-left:6px solid var(--neon)}
+.notes .nt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--neon);font-weight:600;margin-bottom:8px}
+.notes b{color:#fff}.notes p{margin-bottom:6px}
+@media print{body{background:#fff}.deck{gap:0;padding:0}.slide{box-shadow:none;page-break-after:always}.notes{display:none}}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 1 cover -->
+<section class="slide cover">
+  <div class="bar"></div>
+  <div class="badge"><span class="dot"></span>AI実装研修　第2回</div>
+  <div class="wm">SESSION 02</div>
+  <h1>Claudeを使いこなす<br><span class="mk">頼み方の型</span></h1>
+  <div class="for"><b>今日のひとこと：</b>AIが「なんとなく」から「狙って使える」に変わります。</div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>前回「触れた」人を「毎回狙った成果を引き出せる」人に。今日からClaudeを"いつもの相棒"に。</p></div>
+
+<!-- 2 review homework -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Look back</div>
+  <div class="h2">前回の宿題、どうでしたか？</div>
+  <div class="body">
+    <ul class="blist">
+      <li>AIに<b>3回</b>頼んでみた？ うまくいった例／いまいちな例は？</li>
+      <li>今日はその<b>「いまいち」を「狙いどおり」</b>に変えます</li>
+    </ul>
+  </div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">02</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>2〜3人に実体験を共有してもらう。<b>失敗例を歓迎</b>（今日の改善材料）。テンプレ題材も確認。</p></div>
+
+<!-- 3 goals -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Today's goal</div>
+  <div class="h2">今日のゴール</div>
+  <div class="g4">
+    <div class="card"><div class="q">01</div><h3>頼み方の型</h3><p>5つの要素で狙って引き出す。</p></div>
+    <div class="card"><div class="q">02</div><h3>会話で仕上げる</h3><p>一発でなく、やりとりで。</p></div>
+    <div class="card"><div class="q">03</div><h3>自社の前提を渡す</h3><p>長文・社内事情を渡す。</p></div>
+    <div class="card hl"><div class="q">04</div><h3>テンプレ化</h3><p>定番作業を使い回す形に。</p></div>
+  </div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">03</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>「ツールより頼み方」を体で覚える回、と宣言。</p></div>
+
+<!-- 4 demo why it changes -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 1 ・ なぜ頼み方で変わる</div>
+  <div class="h2">同じテーマ、頼み方で<span class="mk">別物</span>に</div>
+  <div class="box bad"><div class="lbl">ダメ例</div><div class="ex">「お知らせ作って」</div></div>
+  <div class="box good"><div class="lbl">良い例</div><div class="ex">「常連客向けに、夏の営業時間変更のお知らせを、やわらかい口調で、150字で、LINE配信用に作って」</div></div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">04</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p><b>その場で両方を実行</b>し、出力の差を見せる。差の大きさで"型"の価値を実感させる。</p></div>
+
+<!-- 5 not telepathic -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 1 ・ なぜ頼み方で変わる</div>
+  <div class="h2">AIは「察してくれない」、でも「言えば応える」</div>
+  <div class="body">
+    <ul class="blist">
+      <li>足りないのは<b>AIの能力ではなく「情報」</b></li>
+      <li>具体的に伝えるほど、欲しいものに近づく</li>
+      <li><b>新人さんに仕事を頼むとき</b>と同じ</li>
+    </ul>
+  </div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">05</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>第1回「超優秀な新人さん」を再利用。新人に"いい指示"を出す感覚。</p></div>
+
+<!-- 6 top3 fail -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 1 ・ なぜ頼み方で変わる</div>
+  <div class="h2">うまくいかない原因 トップ3</div>
+  <div class="g3">
+    <div class="card"><div class="q">01</div><h3>ざっくりすぎ</h3><p>誰に・何を・どんな形か不明。</p></div>
+    <div class="card"><div class="q">02</div><h3>前提を渡してない</h3><p>社内事情を知らないまま。</p></div>
+    <div class="card"><div class="q">03</div><h3>一発で完璧を求める</h3><p>会話で直す前提がない。</p></div>
+  </div>
+  <div class="note">今日、この3つを<b>つぶします</b>。</div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">06</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>このあとの型・会話・前提の3パートが、それぞれこの3原因に対応。</p></div>
+
+<!-- 7 the 5 elements -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 2 ・ 頼み方の型</div>
+  <div class="h2">頼み方の型 ＝ <span class="mk">5つの要素</span></div>
+  <div class="body">
+    <ul class="blist">
+      <li><b>①役割</b>（誰として）　<b>②目的・相手</b>（何のため・誰向け）</li>
+      <li><b>③前提・背景</b>（事情・条件・NG・締切）</li>
+      <li><b>④形式</b>（長さ・体裁）　<b>⑤例</b>（見本・トーン）</li>
+    </ul>
+  </div>
+  <div class="note">覚え方：<b>だれが・なんのため・どんな事情で・どんな形で・お手本は</b></div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">07</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>全部を毎回使わなくてよい。<b>困ったらこの5つを足していく道具</b>として渡す。</p></div>
+
+<!-- 8 elements detail -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 2 ・ 頼み方の型</div>
+  <div class="h2">5要素を、具体で</div>
+  <div class="g2" style="gap:16px">
+    <div class="card"><h3>①役割 ／ ②目的・相手</h3><p>「ベテラン総務として」「新入社員向けに」「クレーム対応の下書きとして」</p></div>
+    <div class="card hl"><h3>③前提・背景（差がつく）</h3><p>「当社は土日休み」「専門用語は使わない」「A4半分まで」</p></div>
+    <div class="card"><h3>④形式</h3><p>文字数・箇条書き/表・メール/投稿/社内文書</p></div>
+    <div class="card"><h3>⑤例</h3><p>「こんな感じで（見本を貼る）」「過去のこの口調で」</p></div>
+  </div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">08</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>③前提が今日の最重要（第4回まで効く）。⑤例を1つ貼るだけで再現度が跳ね上がる、を実演。</p></div>
+
+<!-- 9 mini exercise -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Exercise ・ ミニ演習</div>
+  <div class="h2">型で1つ、作ってみる</div>
+  <div class="bigstmt">自分の仕事のメール or お知らせを、<br><span class="hl">5要素を入れて</span>1つ作る</div>
+  <div class="sub" style="margin-top:24px">3分でやってみる → 2人に共有。手元の「早見カード」を見ながらでOK。</div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">09</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>全員着手を確認。手が止まる人に「役割と形式だけでも足して」と声かけ。早見カード配布。</p></div>
+
+<!-- 10 break -->
+<section class="slide cover" style="background:radial-gradient(680px 480px at 50% 50%,var(--neon-tint),transparent 62%);align-items:center;text-align:center">
+  <div class="bar"></div>
+  <div style="margin:0 auto"><div class="kick" style="margin:0 auto">Break ・ 5分</div><div class="h2" style="font-size:46px">休憩（5分）</div></div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">10</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>短い休憩。戻ったら「会話で仕上げる」へ。</p></div>
+
+<!-- 11 dont aim perfect -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 3 ・ 会話で仕上げる</div>
+  <div class="h2">一発で完璧を、狙わない</div>
+  <div class="body">
+    <ul class="blist">
+      <li>1回目は<b>「たたき台」</b>。そこから会話で寄せる</li>
+      <li>AIは<b>何度でも直してくれる</b>（怒らない・疲れない）</li>
+    </ul>
+  </div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">11</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>アナログ層は「一発で出して使う」と思いがち。<b>往復が普通</b>を強調。</p></div>
+
+<!-- 12 fix phrases -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 3 ・ 会話で仕上げる</div>
+  <div class="h2">直しの注文フレーズ集</div>
+  <div class="g3">
+    <div class="card"><p style="font-size:18px">「もっと短く／やわらかく／専門用語なしで」</p></div>
+    <div class="card"><p style="font-size:18px">「箇条書きにして」「3案ちょうだい」</p></div>
+    <div class="card"><p style="font-size:18px">「いい所を残して別の言い方も」「なぜそうしたか教えて」</p></div>
+  </div>
+  <div class="note">早見カードの<b>裏面</b>にして、いつでも使えるように。</div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">12</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>デモ：たたき台→「短く」→「やわらかく」→「件名3案」の3往復で仕上がる様子を見せる。</p></div>
+
+<!-- 13 exercise refine -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Exercise ・ 演習</div>
+  <div class="h2">さっきの自作を、会話で仕上げる</div>
+  <div class="bigstmt">ミニ演習の出力を、<span class="hl">3回の注文</span>で仕上げる</div>
+  <div class="sub" style="margin-top:24px">「直す前」と「直した後」を見比べてみましょう。</div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">13</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>改善実感が定着のカギ。ビフォーアフターを必ず見比べさせる。</p></div>
+
+<!-- 14 long docs -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 4 ・ 自社の前提を渡す</div>
+  <div class="h2">長い資料を、読ませる</div>
+  <div class="body">
+    <ul class="blist">
+      <li>議事録・マニュアル・規程を貼って<b>「要約して」「手順書にして」</b></li>
+      <li>Claudeは<b>長い文章が得意</b>（第1回の使い分け）</li>
+    </ul>
+  </div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">14</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>「読む・まとめる」を任せると一番ラクになる人が多い。</p></div>
+
+<!-- 15 give company premises -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 4 ・ 自社の前提を渡す</div>
+  <div class="h2">自社の"お決まり"を、毎回渡す</div>
+  <div class="body">
+    <ul class="blist">
+      <li>会社概要・口調・NGワード・よくある条件を<b>ひとまとめにして冒頭に貼る</b></li>
+      <li>これで毎回<b>"自社仕様"の答え</b>になる</li>
+    </ul>
+  </div>
+  <div class="note">これが次回以降の<b>「テンプレ化・自動化」の素地</b>になります。</div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">15</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>デモ：自社前提つき/なしで作り比べ、差を体感させる。</p></div>
+
+<!-- 16 safety reminder -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 4 ・ 安全の復習</div>
+  <div class="h2">前提を渡す回だからこそ、<span style="color:var(--warn)">情報の扱い</span></div>
+  <div class="body">
+    <ul class="blist warn">
+      <li>顧客の個人情報・未公開数字・機密は<b>安易に入れない</b></li>
+      <li>迷ったら「<b>社外の人に見せて大丈夫？</b>」</li>
+    </ul>
+  </div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">16</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>第1回の再確認。前提を渡す＝情報を入れる行為なので、ここで必ず釘を刺す。</p></div>
+
+<!-- 17 main exercise -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Exercise ・ メイン演習</div>
+  <div class="h2">自分の定番作業を、<span class="mk">テンプレ化</span></div>
+  <div class="body">
+    <ul class="blist">
+      <li>毎週・毎月くり返す作業を<b>1つ</b>選ぶ</li>
+      <li>その「頼み文」を<b>5要素＋自社前提</b>で作り、保存して使い回す</li>
+    </ul>
+  </div>
+  <div class="note">一度作れば、<b>次から貼るだけ</b>。ここが時短の入り口。</div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">17</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>手順：①くり返し作業を選ぶ②型で書く③試す→直す④<b>完成した頼み文を保存</b>（できれば共有フォルダ/Notion＝第5回で会社の資産に）。題材が浮かばない人へ：メール返信・議事録要約・日報・告知文。</p></div>
+
+<!-- 18 work + share -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Exercise ・ 作成 → 共有</div>
+  <div class="h2">20分でつくる → 共有</div>
+  <div class="g2">
+    <div class="card"><div class="q">個別ワーク</div><p style="font-size:17px;margin-top:6px">20分で各自、使えるテンプレを1つ完成。困ったら手を挙げる。</p></div>
+    <div class="card hl"><div class="q">共有</div><p style="font-size:17px;margin-top:6px">3〜4人が「作ったテンプレと時短イメージ」を発表。</p></div>
+  </div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">18</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>机間巡視で個別フォロー。1人1つ「使えるテンプレ」完成が目標。他人の用途が刺激になる。</p></div>
+
+<!-- 19 summary -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Wrap up</div>
+  <div class="h2">今日のまとめ</div>
+  <div class="body">
+    <ul class="blist check">
+      <li>頼み方の型 ＝ <b>5要素</b>（役割・目的・前提・形式・例）</li>
+      <li>一発でなく<b>会話で仕上げる</b></li>
+      <li><b>自社前提を渡す</b>と"自社仕様"に</li>
+      <li>定番は<b>テンプレ化して使い回す</b></li>
+    </ul>
+  </div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">19</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>「大事なのは使い回すこと」で締める。</p></div>
+
+<!-- 20 homework + next -->
+<section class="slide cover" style="background:radial-gradient(680px 480px at 84% 14%,var(--neon-tint),transparent 60%)">
+  <div class="bar"></div>
+  <div class="kick">Homework → Next</div>
+  <h1 style="font-size:40px;margin-top:14px">宿題 ＆ 次回</h1>
+  <div class="body" style="margin-top:18px">
+    <ul class="blist">
+      <li><b>宿題①</b>　今日のテンプレを実務で3回使う</li>
+      <li><b>宿題②</b>　「毎回面倒なくり返し作業」を1つ選んでくる</li>
+      <li><b>第3回</b>　手作業を減らす｜身近な業務の自動化</li>
+    </ul>
+  </div>
+  <div class="for" style="margin-top:24px">次回はいよいよ「手作業を減らす」。今日のテンプレが土台になります。</div>
+  <div class="foot"><span>AI実装研修　第2回</span><span class="page-n">20</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>宿題②が第3回の題材。質問歓迎で締める。</p></div>
+
+</div>
+</body>
+</html>

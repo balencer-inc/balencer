@@ -15,6 +15,23 @@
 | `market-research.md` | 競合相場分析・価格設計の根拠・実質負担シミュレーション | 社内 |
 | `sales-playbook.md` | 営業の型（入口トーク・想定問答・引き上げ動線・守る線） | 社内 |
 
+## 研修教材（全5回・OFF-JT各3時間）
+
+`materials/`＝内容のテキスト版（講師ノート・進行・時間配分の元データ）、`slides/`＝投影用HTMLスライド（白×蛍光イエロー。講師ノートは画面で表示・PDF印刷時は非表示）。
+
+| 回 | テーマ | テキスト | スライド |
+|---|---|---|---|
+| 第1回 | AIの全体像と主要ツールの使い分け | `materials/session1-slides.md` | `slides/session1-deck.html` |
+| 第2回 | Claudeを使いこなす（頼み方の型） | `materials/session2-slides.md` | `slides/session2-deck.html` |
+| 第3回 | 手作業を減らす（身近な業務の自動化） | `materials/session3-slides.md` | `slides/session3-deck.html` |
+| 第4回 | 小さな業務アプリを作ってみる | `materials/session4-slides.md` | `slides/session4-deck.html` |
+| 第5回 | 効果測定と続け方（月次で回す土台） | `materials/session5-slides.md` | `slides/session5-deck.html` |
+| 設計記録 | 全5回の整合性・ステップ確認 | `materials/progression-review.md` | — |
+
+- 第4回の「作る道具」は **Claude Code（デスクトップ版/Cowork）主役・CLIなし**。壁打ちはClaude/Gemini/ChatGPT/Codexから相性で選ぶ。Manusは発展枠。設定は伴走前提。
+- ツールの優劣・名称は更新が速い。各回の実施前に最新を確認して差し替える（本文でも「暫定」と明言）。
+- PDF化：各 `slides/*.html` をChromeで開き、印刷→PDF（1280×720。講師ノートは自動で消える）。
+
 ## 使い方（案件ごと）
 
 1. `index.html` で興味喚起 → 商談。商談トークは `sales-playbook.md`。

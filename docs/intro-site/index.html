@@ -134,6 +134,18 @@
   .btn-line{background:transparent;border:1px solid #4a4845;color:#EDEBE7}
   @media(max-width:680px){.refer-grid{grid-template-columns:1fr}}
 
+  /* pickup (AI研修) */
+  .pickup{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);padding:28px 30px;margin-top:8px;display:flex;gap:28px;align-items:center}
+  .pickup .pk-body{flex:1}
+  .pickup .pk-eyebrow{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--accent-dark);font-weight:600;margin-bottom:8px}
+  .pickup h3{font-size:18px;color:var(--ink);margin-bottom:10px;line-height:1.55}
+  .pickup p{font-size:14px;color:var(--text);margin-bottom:0}
+  .pickup .pk-num{color:var(--accent-dark);font-weight:700}
+  .pickup .pk-cta{flex:0 0 auto}
+  .pickup .pk-cta a{display:inline-flex;align-items:center;gap:7px;background:var(--ink);color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:13px 22px;border-radius:4px;white-space:nowrap;transition:background .2s}
+  .pickup .pk-cta a:hover{background:#000}
+  @media(max-width:680px){.pickup{flex-direction:column;align-items:stretch;gap:18px;padding:24px 22px}.pickup .pk-cta a{justify-content:center}}
+
   /* contact form */
   .contact .lead{max-width:560px}
   .lead-form{background:var(--white);border:1px solid var(--border);padding:30px 30px 28px;margin-top:8px;max-width:680px}
@@ -165,6 +177,7 @@
     <span class="brand">BALENCER &nbsp;/&nbsp; TSUGI &amp; PARTNERS</span>
     <nav class="navlinks" id="navlinks">
       <a href="#balencer">バレンサー</a>
+      <a href="#ai-training">AI研修</a>
       <a href="#tsugi">TSUGI＆PARTNERS</a>
       <a href="#refer">ご紹介について</a>
       <a href="#contact">ご相談</a>
@@ -246,6 +259,25 @@
         <li>「課題はあるが、何から手をつけるか整理できていない」経営者</li>
         <li>組織開発・ブランディングの相棒を探すシステム開発・制作会社（同業）</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ピックアップ: AI研修 -->
+<section class="block" id="ai-training">
+  <div class="wrap">
+    <div class="label">Pick Up — AI実装研修 × リスキリング助成金</div>
+    <h2>「AIについていけていない」会社でも、ゼロから始められます</h2>
+    <p class="lead">私たちの会社では、まったくのゼロから一般社員がAIで業務アプリを作れるようになりました。同じやり方を、御社の現場に合わせた研修としてお渡しします。研修して終わりではなく、自社の業務が回り出すまで設計します。</p>
+    <div class="pickup">
+      <div class="pk-body">
+        <div class="pk-eyebrow">RESKILLING SUBSIDY</div>
+        <h3>リスキリング助成金で、<span class="pk-num">100万円規模の研修も実質10万円台から</span></h3>
+        <p>人材開発支援助成金（事業展開等リスキリング支援コース）の活用で、中小企業なら経費助成 最大75％＋賃金助成。標準コースの実質負担は約10〜25万円が目安です。</p>
+      </div>
+      <div class="pk-cta">
+        <a href="https://balencer.jp/ai-training/" target="_blank" rel="noopener">AI研修の詳細を見る →</a>
+      </div>
     </div>
   </div>
 </section>

@@ -25,6 +25,8 @@
   header.site .cta-mini:hover{background:var(--neon)}
   /* hero */
   .hero{padding:84px 0 64px;position:relative;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero-img img{width:100%;height:auto;display:block;border-radius:14px}
   .hero .tag{display:inline-block;font-family:var(--font-ja);font-size:17px;font-weight:700;letter-spacing:.06em;background:var(--ink);color:#fff;padding:11px 22px;margin-bottom:26px}
   .hero .tag .x{color:var(--neon);margin:0 6px;font-family:var(--font-en);font-weight:800}
   .hero h1{font-size:42px;line-height:1.3;font-weight:900;color:var(--ink);letter-spacing:-.01em}
@@ -124,7 +126,7 @@
   footer.site a{color:rgba(255,255,255,.7);text-decoration:none}
   footer.site a:hover{color:var(--neon)}
   .disclaimer{font-size:11px;color:var(--ink-4);line-height:1.8;margin-top:18px;padding:16px 0 0;border-top:1px solid var(--border-soft)}
-  @media(max-width:680px){.cols2,.value{grid-template-columns:1fr}.value .vcell:first-child{border-right:none;border-bottom:1px solid var(--border)}.hero h1{font-size:32px}.hero .tag{font-size:14px}.feature{padding:34px 24px}.feature h3{font-size:25px}.money .big{font-size:56px}.curtable td.t{width:auto}.lf-grid{grid-template-columns:1fr}}
+  @media(max-width:680px){.cols2,.value{grid-template-columns:1fr}.value .vcell:first-child{border-right:none;border-bottom:1px solid var(--border)}.hero .wrap{grid-template-columns:1fr;gap:28px}.hero-img{order:-1}.hero h1{font-size:32px}.hero .tag{font-size:14px}.feature{padding:34px 24px}.feature h3{font-size:25px}.money .big{font-size:56px}.curtable td.t{width:auto}.lf-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -139,11 +141,14 @@
 <!-- HERO -->
 <div class="hero">
   <div class="wrap">
-    <span class="tag">AI実装研修<span class="x">×</span>リスキリング助成金</span>
-    <h1>AI研修</h1>
-    <p style="font-size:24px;font-weight:900;color:var(--ink2);margin-top:14px;line-height:1.5">研修して終わり、にしない。<span class="hl">自社の業務が回り出すまで。</span></p>
-    <p class="lead">主要なAIを一通り学び、自社の仕事で本当に使えるところまで持っていく研修です。実務で効くClaudeを軸にしつつ、ChatGPTやGeminiなどそれぞれの得意分野も押さえます。アナログ中心の会社でも、チームが「AIで手作業を減らし、簡単な業務アプリを自分で作れる」状態になるまで設計します。人材開発支援助成金（事業展開等リスキリング支援コース）の活用で、実質負担を抑えて始められます。</p>
-    <p class="sub">中小企業の経費助成 最大75%＋賃金助成。標準コースなら実質負担の目安 約10〜25万円。</p>
+    <div class="hero-copy">
+      <span class="tag">AI実装研修<span class="x">×</span>リスキリング助成金</span>
+      <h1>AI研修</h1>
+      <p style="font-size:24px;font-weight:900;color:var(--ink-2);margin-top:14px;line-height:1.5">研修して終わり、にしない。<span class="hl">自社の業務が回り出すまで。</span></p>
+      <p class="lead">主要なAIを一通り学び、自社の仕事で本当に使えるところまで持っていく研修です。実務で効くClaudeを軸にしつつ、ChatGPTやGeminiなどそれぞれの得意分野も押さえます。アナログ中心の会社でも、チームが「AIで手作業を減らし、簡単な業務アプリを自分で作れる」状態になるまで設計します。人材開発支援助成金（事業展開等リスキリング支援コース）の活用で、実質負担を抑えて始められます。</p>
+      <p class="sub">中小企業の経費助成 最大75%＋賃金助成。標準コースなら実質負担の目安 約10〜25万円。</p>
+    </div>
+    <div class="hero-img"><img src="hero.png" alt="AIで業務が回り出すイメージ"></div>
   </div>
 </div>
 

@@ -31,6 +31,10 @@
 - 対象年度は令和8年度（2026）。数字・要件は改定あり、最終は労働局／社労士で確認。
 - 制度の確定事項の正本＝`docs/_knowledge/consulting.md`（2026-06-23エントリ）。
 
+## 問い合わせフォーム（index.html）
+
+`index.html` のCTAは他LPと同じリードフォーム。送信先は `/ai-training-lead.php`（`server-scripts/ai-training-lead.php`）。社内へメール通知＋Notion DB（補助金/ヒトツと同一DB・流入元「AI実装研修（リスキリング助成金）」で区別）に登録。Notion認証は `hojokin-config.php` を共用。**公開時はindex.htmlとai-training-lead.phpを同じ階層にFTPアップロードする**（フォームは絶対パス `/ai-training-lead.php` を叩く）。
+
 ## PDF化
 
-各HTMLをChromeで開き、印刷 → PDF保存（A4縦）。`index.html` はWeb共有想定（必要ならVercel/FTP公開は別判断）。
+各HTMLをChromeで開き、印刷 → PDF保存（A4縦）。`index.html` はWeb公開想定（FTP）。

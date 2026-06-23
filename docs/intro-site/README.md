@@ -2,9 +2,12 @@
 
 対外イベントの場で、**繋いでくれる人（紹介者）が2社を理解して、いろんな人にアサイン（紹介）しやすくする**ための一枚もの紹介ページ。コーポレートサイトとは別建て・公式サイトには未反映。読み手の中心は**大手メーカー・中小企業の経営者**。
 
-## 公開URL（Vercel）
-- **本番: https://balencer-intro.vercel.app**
-- Vercelプロジェクト名 `balencer-intro`（チーム tabe-balencerjps-projects）。**本番balencer(Next.js)とは別プロジェクト**＝公式サイトに影響なし。
+## 公開URL
+- **本番（正・SEO的に最強）: https://balencer.jp/abe-takayuki/** ← balencer.jpサブディレクトリ。FTPで静的設置（WP/Elementor外で素通り公開）。ドメイン評価をbalencer.jp本体に集約でき、初見の信頼も高い。
+  - 設置手順：`index.html`＋`img/` を `public_html/abe-takayuki/` に上げる（= `ai-training/` 等と同じ静的設置パターン）。`server-scripts/README.md` 参照。FTPで上げやすいよう **デスクトップに `abe-takayuki/` フォルダ一式を用意済**（フォルダごとpublic_htmlへドラッグ＝そのままURLになる）。
+  - フォーム送信先は絶対URL `https://balencer.jp/intro-lead.php` のため、同一ドメインになっても変更不要（むしろ同一オリジンで構成がシンプル）。
+- **ステージング（下書き確認用）: https://balencer-intro.vercel.app**
+  - Vercelプロジェクト名 `balencer-intro`（チーム tabe-balencerjps-projects）。**本番balencer(Next.js)とは別プロジェクト**＝公式サイトに影響なし。編集中の確認用に残す。
 - 再デプロイ手順（自己完結フォルダを組んでCLIデプロイ。画像は `img/` 同梱で相対パスのみ＝書換え不要）:
   ```bash
   cd docs/intro-site

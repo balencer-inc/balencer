@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI実装研修｜リスキリング助成金で実質負担を抑えて始める｜株式会社バレンサー</title>
+<meta name="description" content="Claude特化のAI実装研修。人材開発支援助成金（事業展開等リスキリング支援コース）の活用で実質負担を抑えて始められます。研修して終わりにせず、自社の業務が回り出すまで伴走します。">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --neon:#E6FF2F;--neon-tint:rgba(230,255,47,.18);
+    --ink:#000;--ink-2:#3A3838;--ink-3:#595959;--ink-4:#757070;
+    --bg:#FFF;--bg-2:#F5F3F3;--bg-3:#F2F2F2;--border:#D0CECE;--border-soft:#E2E0DA;--good:#0E7A5F;
+    --font-en:'Poppins',system-ui,sans-serif;--font-ja:'Noto Sans JP','Hiragino Sans',sans-serif;--font-script:'Caveat',cursive;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink-2);font-family:var(--font-ja);font-size:15px;line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-soft)}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+  header.site img{height:22px}
+  header.site .cta-mini{font-size:12px;font-weight:700;color:var(--ink);text-decoration:none;border:1px solid var(--ink);padding:7px 14px;border-radius:999px}
+  header.site .cta-mini:hover{background:var(--neon)}
+  /* hero */
+  .hero{padding:84px 0 64px;position:relative;overflow:hidden}
+  .hero .tag{display:inline-block;font-family:var(--font-en);font-size:11px;font-weight:700;letter-spacing:.18em;background:var(--ink);color:#fff;padding:6px 14px;margin-bottom:24px}
+  .hero h1{font-size:42px;line-height:1.3;font-weight:900;color:var(--ink);letter-spacing:-.01em}
+  .hero h1 .hl{background:linear-gradient(180deg,transparent 62%,var(--neon) 62%);padding:0 4px}
+  .hero .lead{margin-top:24px;font-size:17px;color:var(--ink-2);max-width:680px}
+  .hero .sub{margin-top:14px;font-size:13px;color:var(--ink-4)}
+  /* section */
+  section{padding:56px 0;border-top:1px solid var(--border-soft)}
+  .eyebrow{font-family:var(--font-script);font-size:24px;color:var(--ink-3);line-height:1}
+  .h2{font-size:27px;font-weight:900;color:var(--ink);margin-top:6px;letter-spacing:-.01em}
+  .p{margin-top:18px;color:var(--ink-2)}
+  /* problem cards */
+  .cols2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+  .card{border:1px solid var(--border);padding:24px;background:#fff}
+  .card .k{font-family:var(--font-en);font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--ink-4)}
+  .card h3{font-size:17px;font-weight:700;color:var(--ink);margin:8px 0 8px}
+  .card p{font-size:13.5px;color:var(--ink-3)}
+  /* value */
+  .value{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);margin-top:28px}
+  .value .vcell{padding:28px 26px}
+  .value .vcell:first-child{border-right:1px solid var(--border)}
+  .value .vnum{font-family:var(--font-en);font-weight:800;font-size:13px;color:var(--ink);background:var(--neon);display:inline-block;padding:2px 10px;margin-bottom:12px}
+  .value h3{font-size:19px;font-weight:900;color:var(--ink);margin-bottom:8px}
+  .value p{font-size:13.5px;color:var(--ink-3)}
+  /* money */
+  .money{background:var(--ink);color:#fff;padding:40px 38px;margin-top:28px;position:relative}
+  .money .ml{font-size:13px;color:rgba(255,255,255,.6);font-weight:700}
+  .money .big{font-family:var(--font-en);font-size:50px;font-weight:800;letter-spacing:-.02em;line-height:1.05;margin:10px 0 4px}
+  .money .big .mark{background:var(--neon);color:var(--ink);padding:2px 12px}
+  .money .mnote{font-size:12px;color:rgba(255,255,255,.55);line-height:1.8}
+  .moneyrows{margin-top:24px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;display:grid;gap:10px}
+  .mrow{display:flex;justify-content:space-between;font-size:13px}
+  .mrow .l{color:rgba(255,255,255,.6)}
+  .mrow .v{font-family:var(--font-en);font-weight:600}
+  .mrow.hl .l{color:#fff;font-weight:700}.mrow.hl .v{color:var(--neon)}
+  /* steps */
+  .steps{margin-top:28px;display:grid;gap:0}
+  .step{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--border-soft)}
+  .step .n{font-family:var(--font-en);font-weight:800;font-size:22px;color:var(--ink);background:var(--bg-3);width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+  .step h3{font-size:16px;font-weight:700;color:var(--ink)}
+  .step p{font-size:13.5px;color:var(--ink-3);margin-top:4px}
+  .step .who{font-size:11px;font-weight:700;color:var(--good);background:#E6F4EF;padding:2px 8px;border-radius:4px;margin-left:8px;white-space:nowrap}
+  .step .who.cl{color:var(--ink-4);background:var(--bg-3)}
+  /* curriculum mini */
+  .curtable{width:100%;border-collapse:collapse;margin-top:24px;font-size:13.5px}
+  .curtable th{background:var(--ink);color:#fff;text-align:left;padding:10px 14px;font-weight:500;font-size:12px}
+  .curtable td{padding:12px 14px;border-bottom:1px solid var(--border-soft);vertical-align:top}
+  .curtable td.t{font-weight:700;color:var(--ink);width:240px}
+  .curtable td.h{text-align:right;font-family:var(--font-en);font-weight:700;color:var(--ink);width:60px}
+  /* faq */
+  .faq{margin-top:24px}
+  .faq details{border-bottom:1px solid var(--border-soft);padding:16px 0}
+  .faq summary{font-weight:700;color:var(--ink);cursor:pointer;font-size:15px;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::before{content:'＋';color:var(--ink-4);margin-right:10px;font-family:var(--font-en)}
+  .faq details[open] summary::before{content:'−'}
+  .faq p{font-size:13.5px;color:var(--ink-3);margin-top:10px;padding-left:24px}
+  /* cta */
+  .ctaband{background:var(--neon);padding:52px 0;margin-top:0;border-top:2px solid var(--ink)}
+  .ctaband h2{font-size:28px;font-weight:900;color:var(--ink)}
+  .ctaband p{color:var(--ink-2);margin-top:12px;font-size:14px}
+  .ctaband .btn{display:inline-block;margin-top:24px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;padding:15px 34px;border-radius:999px;font-size:15px}
+  /* footer */
+  footer.site{background:var(--ink);color:rgba(255,255,255,.7);padding:44px 0;font-size:13px}
+  footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px}
+  footer.site .fb .name{font-family:var(--font-en);font-weight:700;color:#fff;font-size:16px}
+  footer.site .fb .tag{font-family:var(--font-script);color:var(--neon);font-size:18px}
+  footer.site .links{display:flex;gap:20px;flex-wrap:wrap}
+  footer.site a{color:rgba(255,255,255,.7);text-decoration:none}
+  footer.site a:hover{color:var(--neon)}
+  .disclaimer{font-size:11px;color:var(--ink-4);line-height:1.8;margin-top:18px;padding:16px 0 0;border-top:1px solid var(--border-soft)}
+  @media(max-width:680px){.cols2,.value{grid-template-columns:1fr}.value .vcell:first-child{border-right:none;border-bottom:1px solid var(--border)}.hero h1{font-size:32px}.curtable td.t{width:auto}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <img src="../../soeru-lp/balencer-logo.png" alt="BALENCER">
+    <a class="cta-mini" href="#contact">相談する</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="tag">AI実装研修 × リスキリング助成金</span>
+    <h1>研修して終わり、にしない。<br><span class="hl">自社の業務が回り出すまで。</span></h1>
+    <p class="lead">Claudeに特化したAI実装研修です。チームが「AIで自社の手作業を減らせる」状態になるところまで設計し、人材開発支援助成金（事業展開等リスキリング支援コース）の活用で実質負担を抑えて始められます。</p>
+    <p class="sub">中小企業の経費助成 最大75%＋賃金助成。標準コースなら実質負担の目安 約10〜25万円。</p>
+  </div>
+</div>
+
+<!-- WHO / PROBLEM -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">For</div>
+    <div class="h2">こんな会社のための研修です</div>
+    <div class="cols2">
+      <div class="card"><div class="k">CASE 01</div><h3>AIを入れたいが、何から手をつけるか分からない</h3><p>ツールは契約したが現場で使われない。汎用の研修を受けても自社の仕事に落ちてこない。</p></div>
+      <div class="card"><div class="k">CASE 02</div><h3>外注に頼り続けるのをやめたい</h3><p>毎回お金を払って人に頼むのではなく、自社のチームがAIで内製できる土台をつくりたい。</p></div>
+      <div class="card"><div class="k">CASE 03</div><h3>助成金を使って、負担を抑えて始めたい</h3><p>リスキリング助成金が使えると聞いたが、制度も手続きも複雑で踏み出せていない。</p></div>
+      <div class="card"><div class="k">CASE 04</div><h3>研修だけで終わらせたくない</h3><p>学んだことを、実際の業務改善・自動化まで地続きで進めたい。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE / 差別化 -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Why us</div>
+    <div class="h2">バレンサーの研修が、他と違うところ</div>
+    <p class="p">市場のAI研修の多くは「安価なeラーニング（自社業務に落ちない）」か「単発の講師派遣（知識を入れて終わり）」。バレンサーは、その先まで設計します。</p>
+    <div class="value">
+      <div class="vcell"><div class="vnum">01</div><h3>Claude特化 × コードを書いて動かす</h3><p>汎用のChatGPT入門ではなく、Claude／Claude Codeで実際に手作業を自動化するところまで。自社が外注の7割をAIで回している実証会社だからこそ、現場で動く形を教えられます。</p></div>
+      <div class="vcell"><div class="vnum">02</div><h3>研修で終わらせず、実装まで地続き</h3><p>研修で洗い出した自社のパイロット業務は、希望に応じて受託開発（仕組みを構築してお渡し）やSOERU（月額AI顧問）でそのまま実装まで伴走。研修＝助成対象／実装＝別建てで整理します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MONEY -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Cost</div>
+    <div class="h2">助成金を使うと、実質いくら？</div>
+    <p class="p">研修本体は「委託訓練」として実施するため、受講料の全体が経費助成の対象になります（1人あたり経費助成上限30万円／OFF-JT 10〜100時間未満の範囲）。下記は標準コース（10名・OFF-JT 15時間）の目安です。</p>
+    <div class="money">
+      <div class="ml">標準コース 研修本体（税抜）</div>
+      <div class="big">¥1,000,000</div>
+      <div class="mnote">10名・OFF-JT 15時間・ハイブリッド全5回</div>
+      <div class="moneyrows">
+        <div class="mrow"><span class="l">経費助成（中小・75%想定）</span><span class="v">− 約750,000</span></div>
+        <div class="mrow"><span class="l">賃金助成（約1,000円/h × 15h × 10名）</span><span class="v">− 約150,000</span></div>
+        <div class="mrow hl"><span class="l">助成適用後の実質負担（目安）</span><span class="v">約 100,000〜250,000</span></div>
+      </div>
+    </div>
+    <p class="p" style="font-size:12px;color:var(--ink-4);">※経費助成率を基本60%で堅く見ると実質負担は約25万円。助成率・支給の可否は管轄労働局の審査によります。人数・時間は調整可能です。</p>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Curriculum</div>
+    <div class="h2">標準カリキュラム（OFF-JT 15時間）</div>
+    <p class="p">基礎から、自社業務への適用、全社展開計画まで。ライト（10h）／実装重視（20h+）の構成も選べます。</p>
+    <table class="curtable">
+      <thead><tr><th>テーマ</th><th>内容</th><th style="text-align:right;">時間</th></tr></thead>
+      <tbody>
+        <tr><td class="t">AIの全体像とClaude基本操作</td><td>生成AIの動向／安全な使い方・社内ルール／Claudeの基本操作</td><td class="h">3.0h</td></tr>
+        <tr><td class="t">プロンプト設計と自社業務への適用</td><td>頼み方の型／自部署の業務への落とし込み演習</td><td class="h">3.0h</td></tr>
+        <tr><td class="t">業務自動化の基礎</td><td>Claude／Claude Codeと外部ツール連携で手作業を減らす</td><td class="h">3.0h</td></tr>
+        <tr><td class="t">パイロット業務の設計演習</td><td>自社の業務を題材に、自動化の進め方を設計</td><td class="h">3.0h</td></tr>
+        <tr><td class="t">効果測定と全社展開計画</td><td>削減効果の測り方／社内展開の計画づくり</td><td class="h">3.0h</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Flow</div>
+    <div class="h2">始め方（助成金活用の流れ）</div>
+    <p class="p">助成金の申請主体は御社（事業主）です。申請手続きは社会保険労務士が、研修と添付書類はバレンサーが担当します。役割を分けて、無理なく進めます。</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><h3>無料相談・カリキュラム設計 <span class="who">バレンサー</span></h3><p>御社の業務をヒアリングし、対象者・時間・題材を一緒に決めます。カリキュラム表と見積書をお渡しします。</p></div></div>
+      <div class="step"><div class="n">2</div><div><h3>計画届の提出（研修開始の1ヶ月前まで）<span class="who cl">御社＋社労士</span></h3><p>社労士のサポートで、労働局へ訓練実施計画届を提出。バレンサーの添付書類を使います。<b>1日でも遅れると対象外</b>になるため、ここが最重要。</p></div></div>
+      <div class="step"><div class="n">3</div><div><h3>研修の実施 <span class="who">バレンサー</span></h3><p>全5回・OFF-JT 15時間を実施。出席簿・実施報告書を整え、出勤記録の取り方もご案内します。</p></div></div>
+      <div class="step"><div class="n">4</div><div><h3>支給申請（研修終了の翌日から2ヶ月以内）<span class="who cl">御社＋社労士</span></h3><p>実施報告書・出勤簿等を添えて支給申請。期限超過は不支給になるため注意。</p></div></div>
+      <div class="step"><div class="n">5</div><div><h3>助成金の入金 ＋ 実装へ <span class="who">バレンサー</span></h3><p>審査を経て入金（申請から数ヶ月）。研修で洗い出した業務は、希望に応じて実装まで伴走します。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <div class="h2">よくあるご質問</div>
+    <div class="faq">
+      <details><summary>本当に助成金は使えますか？提供側に登録は要らない？</summary><p>研修を提供する会社（バレンサー）に、事前の登録・認定は不要です。申請するのは研修を受ける御社（事業主）で、研修委託先のバレンサーに特別な資格要件はありません。制度・最終要件は管轄労働局／社会保険労務士でご確認ください。</p></details>
+      <details><summary>申請の代行はしてもらえますか？</summary><p>助成金の申請代行は社会保険労務士の専権業務のため、バレンサーは行いません。バレンサーは研修の提供と添付書類（カリキュラム表・見積書・講師要件確認書・出席簿・実施報告書）の用意までを担当します。お付き合いのある社労士がいない場合はご相談ください。</p></details>
+      <details><summary>ChatGPTの研修とは何が違いますか？</summary><p>バレンサーはClaude／Claude Codeに特化し、知識のインプットで終わらせず、自社の手作業を実際に自動化するところまで設計します。研修後の実装（受託開発・SOERU）まで地続きで支援できるのが特徴です。</p></details>
+      <details><summary>何名から、何時間からできますか？</summary><p>OFF-JT 10時間以上が助成要件です。標準は10名・15時間ですが、人数・時間・回数は御社に合わせて調整します。少人数（5名）構成も可能です。</p></details>
+      <details><summary>入金まではどのくらいかかりますか？</summary><p>計画届から数えると半年前後を見込んでください（支給申請から入金まで数ヶ月）。助成金は後払いのため、研修費は一旦御社でご負担いただく前提です。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="ctaband" id="contact">
+  <div class="wrap">
+    <h2>まずは、できる・できないの交通整理から。</h2>
+    <p>御社の業務をうかがって、助成金が使えるか・どんな研修が合うかを一緒に確認します。無理な売り込みはしません。</p>
+    <a class="btn" href="mailto:info@balencer.jp?subject=AI実装研修の相談">相談する（info@balencer.jp）</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="wrap">
+    <div class="fb">
+      <div class="name">BALENCER Inc.</div>
+      <div class="tag">for loved ones.</div>
+    </div>
+    <div class="links">
+      <a href="https://balencer.jp">会社サイト</a>
+      <a href="https://balencer.jp/soeru">SOERU（月額AI顧問）</a>
+      <a href="https://balencer.jp/notion/">ヒトツ（Notion業務基盤）</a>
+      <a href="mailto:info@balencer.jp">お問い合わせ</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">本ページの助成金に関する記載は2026年6月時点の公開情報にもとづく参考情報です。人材開発支援助成金（事業展開等リスキリング支援コース）の最終的な支給要件・助成率・可否は管轄の都道府県労働局の判断によります。申請手続きは社会保険労務士へご相談ください。同コースは令和8年度（2026年度）が対象年度です。<br>© 2026 株式会社バレンサー　All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

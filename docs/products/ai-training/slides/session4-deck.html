@@ -180,6 +180,20 @@ body{font-family:var(--ja);color:var(--ink2);background:var(--bg3);-webkit-print
 </section>
 <div class="notes"><div class="nt">講師ノート</div><p>第2〜3回でやった「頼み方・自動化」の延長線。新しい難しい話ではない、と接続。</p></div>
 
+<!-- 8b 頼み文の実例 -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 2 ・ そのまま使える頼み文</div>
+  <div class="h2">Claude Codeへの「頼み文」実例</div>
+  <div class="box good"><div class="lbl">作りはじめ</div><div class="ex">「問い合わせ受付の仕組みを作りたい。入力する項目は"会社名・名前・用件"。回答がたまる表と、用件を種類別に分けて返信の下書きを作る画面を、<u>初心者にも分かるように</u>作って」</div></div>
+  <div class="g2" style="margin-top:18px;gap:16px">
+    <div class="card"><div class="q">直す</div><p style="font-size:16px;margin-top:4px">「表を"緊急度の高い順"に並べ替えて」</p></div>
+    <div class="card"><div class="q">困った</div><p style="font-size:16px;margin-top:4px">「動かない。エラーはこれ（貼る）。原因と直し方をやさしく教えて」</p></div>
+  </div>
+  <div class="foot"><span>AI実装研修　第4回</span><span class="page-n">08b</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>コピーして使える"型"を渡す＝ここが薄さ解消の肝。第2回の5要素（誰として/何を/どんな形で）がそのまま効く、と接続。受講者の業務に置き換えさせる。</p></div>
+
 <!-- 9 use on screen, not CLI -->
 <section class="slide">
   <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
@@ -285,6 +299,22 @@ body{font-family:var(--ja);color:var(--ink2);background:var(--bg3);-webkit-print
 </section>
 <div class="notes"><div class="nt">講師ノート</div><p>設計＝紙に書ける。ここを飛ばすと作っても使えない。演習の最初にこれを埋めさせる。</p></div>
 
+<!-- 16b 設計シート記入例 -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Part 3 ・ 設計シートの記入例</div>
+  <div class="h2">記入例：問い合わせ受付</div>
+  <div class="g2" style="gap:16px">
+    <div class="card"><div class="q">困りごと</div><p style="font-size:16px;margin-top:4px">問い合わせ対応に毎回時間がかかる</p></div>
+    <div class="card"><div class="q">使う人</div><p style="font-size:16px;margin-top:4px">営業事務（2名）</p></div>
+    <div class="card"><div class="q">必要な項目</div><p style="font-size:16px;margin-top:4px">会社名・連絡先・用件・緊急度</p></div>
+    <div class="card hl"><div class="q">AIに任せる</div><p style="font-size:16px;margin-top:4px">用件の分類と、返信の下書き</p></div>
+  </div>
+  <div class="note">流れ：フォーム入力 → 表にたまる → AIが分類＆下書き → <b>人が確認して送信</b></div>
+  <div class="foot"><span>AI実装研修　第4回</span><span class="page-n">16b</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>埋まった状態を見せると一気に書きやすくなる。受講者は自分の困りごとでこの4枠＋流れを埋める。「AIに任せる」と「人が確認」の線引きを意識させる。</p></div>
+
 <!-- 17 good topic -->
 <section class="slide">
   <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
@@ -338,6 +368,22 @@ body{font-family:var(--ja);color:var(--ink2);background:var(--bg3);-webkit-print
   <div class="foot"><span>AI実装研修　第4回</span><span class="page-n">20</span></div>
 </section>
 <div class="notes"><div class="nt">講師ノート</div><p>オンラインはブレイクアウトで小グループ化＋サブ講師がチャット/個別画面共有でフォロー（机間巡視ができない前提）。</p></div>
+
+<!-- 20b つまずき対処集 -->
+<section class="slide">
+  <div class="bar"></div><img class="logo" src="../../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  <div class="kick">Exercise ・ つまずいたら</div>
+  <div class="h2">つまずき対処集（手元に置く）</div>
+  <div class="g2" style="gap:16px">
+    <div class="card"><div class="q">思い通り動かない</div><p style="font-size:16px;margin-top:4px">「何がどうなってほしいか」を具体的に言い直す</p></div>
+    <div class="card"><div class="q">エラーが出た</div><p style="font-size:16px;margin-top:4px">そのままClaude Codeに貼って「やさしく直して」</p></div>
+    <div class="card"><div class="q">何を頼めばいいか不明</div><p style="font-size:16px;margin-top:4px">設計シートの「流れ」を、上から1つずつ頼む</p></div>
+    <div class="card hl"><div class="q">大きくしすぎた</div><p style="font-size:16px;margin-top:4px">項目を減らす・1機能に絞る（まず動かす）</p></div>
+  </div>
+  <div class="note">迷ったら<b>「小さく・1つずつ・言い直す」</b>。詰まりは全部、AIに相談していい。</div>
+  <div class="foot"><span>AI実装研修　第4回</span><span class="page-n">20b</span></div>
+</section>
+<div class="notes"><div class="nt">講師ノート</div><p>第4回は最もつまずく回。この1枚を手元に置かせる。エラーは"そのまま貼る"が最強、を体で覚えさせる。</p></div>
 
 <!-- 21 share -->
 <section class="slide">

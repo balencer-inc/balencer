@@ -65,6 +65,9 @@
   .hero .companies{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
   .chip{font-size:13px;border:1px solid var(--border);background:var(--white);padding:7px 14px;border-radius:40px;color:var(--ink)}
   .chip b{font-weight:700}
+  .chip.main{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip.sub{font-size:12px;color:var(--cap);background:transparent;border-style:dashed;padding:6px 13px}
+  .chip.sub b{font-weight:600;color:var(--text)}
   @media(max-width:680px){
     .hero .wrap{flex-direction:column;text-align:center;gap:28px}
     .hero h1{font-size:27px}
@@ -100,6 +103,11 @@
   .fit ul{list-style:none;display:grid;gap:9px}
   .fit li{position:relative;padding-left:22px;font-size:14.5px;color:var(--text)}
   .fit li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;background:var(--accent);border-radius:50%}
+  /* concrete services (具) */
+  .services{margin-top:22px;border-top:1px dashed var(--border);padding-top:18px}
+  .services .sv-h{font-size:12.5px;color:var(--cap);margin-bottom:11px}
+  .services .sv-tags{display:flex;flex-wrap:wrap;gap:8px}
+  .services .sv-tags span{font-size:12.5px;color:var(--text);background:var(--cream);border:1px solid var(--border);padding:6px 13px;border-radius:4px}
 
   /* cases (横スクロール) */
   .scroll-hint{font-size:12px;color:var(--cap);margin:6px 0 0;display:none}
@@ -226,13 +234,13 @@
     <div class="hero-text">
       <div class="tagline">for loved ones.</div>
       <h1>阿部 貴之
-        <span class="role">株式会社バレンサー 代表 ／ 株式会社TSUGI＆PARTNERS 代表</span>
+        <span class="role">株式会社バレンサー 代表<br><span style="font-size:13px;color:var(--cap)">（事業承継・M&amp;Aの 株式会社TSUGI＆PARTNERS も代表）</span></span>
       </h1>
       <p class="hero-catch"><span class="u">AI組織をつくる会社</span>です。</p>
       <p class="hero-sub">経営者の右腕として、組織から会社を変え、AIまで自分たちで実装します。</p>
       <div class="companies">
-        <span class="chip"><b>バレンサー</b>　経営者の右腕・ブランディングAX</span>
-        <span class="chip"><b>TSUGI＆PARTNERS</b>　事業承継・M&amp;Aの伴走</span>
+        <span class="chip main"><b>バレンサー</b>　経営者の右腕・ブランディングAX</span>
+        <span class="chip sub">＋ <b>TSUGI＆PARTNERS</b>（事業承継・M&amp;A）</span>
       </div>
     </div>
   </div>
@@ -300,6 +308,17 @@
         <li>「課題はあるが、何から手をつけるか整理できていない」経営者</li>
         <li>組織開発・ブランディングの相棒を探すシステム開発・制作会社（同業）</li>
       </ul>
+    </div>
+    <div class="services">
+      <div class="sv-h">「MVVや組織開発」がイメージしにくい方へ — その先の「手が動く」ところまで、自分たちで作ります</div>
+      <div class="sv-tags">
+        <span>ホームページ制作</span>
+        <span>SNS運用</span>
+        <span>業務アプリ</span>
+        <span>ネイティブアプリ制作</span>
+        <span>広告運用</span>
+        <span>動画・EC など</span>
+      </div>
     </div>
   </div>
 </section>
@@ -380,9 +399,9 @@
 <!-- TSUGI -->
 <section class="block tsugi-block" id="tsugi">
   <div class="wrap">
-    <div class="label">Company 02 — TSUGI &amp; PARTNERS</div>
-    <h2>TSUGI＆PARTNERSは、事業承継とM&amp;Aの伴走会社</h2>
-    <p class="lead">この会社は、バレンサーの現場から生まれました。ブランディングの支援を続けるなかで、後継者の不在や、M&amp;Aで会社の文化・想いが失われていく場面に、何度も向き合ってきたからです。</p>
+    <div class="label">Also — もう一つの取り組み</div>
+    <h2>事業承継・M&amp;Aをお考えの方へ｜TSUGI＆PARTNERS</h2>
+    <p class="lead">こういう会社もやっています。事業承継やM&amp;Aに関心がある方は、こちらもご覧ください（今すぐでなくても構いません）。この会社は、バレンサーの現場から生まれました。M&amp;Aで会社の文化・想いが失われていく場面に、何度も向き合ってきたからです。</p>
     <p>数字だけでなく、社長の想いや社風、歴史ごと次の世代へつなぐ。「売る」ことをゴールにせず、「売れる状態」を磨き上げてから次へ進む、伴走型の支援です。</p>
     <div class="tsugi-flow">
       <div class="tstep"><span class="n">STEP 01</span><b>企業ドック診断</b><span>財務・組織・ブランド・デジタルの4軸で現在地と概算企業価値を見える化。</span></div>
@@ -390,15 +409,8 @@
       <div class="tstep"><span class="n">STEP 03</span><b>M&amp;A仲介・コンサル</b><span>売れる状態をつくった上で、仲介・コンサルティングを行う。</span></div>
       <div class="tstep"><span class="n">STEP 04</span><b>PMI（経営統合）</b><span>引き継いだ後の統合まで一貫伴走。ブランド・組織文化を守る。</span></div>
     </div>
-  </div>
-</section>
-
-<!-- 2社の関係 -->
-<section class="block" id="synergy">
-  <div class="wrap">
-    <div class="label">Synergy</div>
-    <h2>バレンサーが「実行」を、TSUGIが「診断と設計」を</h2>
-    <p class="lead">2社で、会社を強くするところから、次の世代へつなぐところまでを、ひとつながりで支えています。組織開発・ブランディングの知見を、そのまま事業承継・M&amp;Aに活かせるのが、他にない組み合わせです。</p>
+    <p style="margin-top:22px;font-size:14px"><a href="https://tsugiandpartners.jp/" target="_blank" rel="noopener" style="font-weight:600">TSUGI＆PARTNERS 公式サイトを見る →</a></p>
+    <p style="margin-top:14px;font-size:13.5px;color:var(--cap)">バレンサーが本体。その組織・ブランディングの知見を、承継・M&amp;Aの現場に活かすのがTSUGIです。</p>
   </div>
 </section>
 

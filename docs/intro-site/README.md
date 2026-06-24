@@ -6,6 +6,7 @@
 - **本番（正・SEO的に最強）: https://balencer.jp/abe-takayuki/** ← balencer.jpサブディレクトリ。FTPで静的設置（WP/Elementor外で素通り公開）。ドメイン評価をbalencer.jp本体に集約でき、初見の信頼も高い。
   - 設置手順：`index.html`＋`img/` を `public_html/abe-takayuki/` に上げる（= `ai-training/` 等と同じ静的設置パターン）。`server-scripts/README.md` 参照。FTPで上げやすいよう **デスクトップに `abe-takayuki/` フォルダ一式を用意済**（フォルダごとpublic_htmlへドラッグ＝そのままURLになる）。
   - フォーム送信先は絶対URL `https://balencer.jp/intro-lead.php` のため、同一ドメインになっても変更不要（むしろ同一オリジンで構成がシンプル）。
+- **検索登録**: 2026-06-24、Google Search Console（balencer.jpプロパティ）でURL検査→`https://balencer.jp/abe-takayuki/` のインデックス登録をリクエスト済み。静的フォルダのためWP自動sitemap.xmlには非掲載＝URL検査が登録ルート。確認は数日後 `site:balencer.jp/abe-takayuki/` で。
 - **ステージング（下書き確認用）: https://balencer-intro.vercel.app**
   - Vercelプロジェクト名 `balencer-intro`（チーム tabe-balencerjps-projects）。**本番balencer(Next.js)とは別プロジェクト**＝公式サイトに影響なし。編集中の確認用に残す。
 - 再デプロイ手順（自己完結フォルダを組んでCLIデプロイ。画像は `img/` 同梱で相対パスのみ＝書換え不要）:

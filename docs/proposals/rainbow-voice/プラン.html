@@ -9,9 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --accent:#C5956B; --accent-light:#D4AA82; --accent-dark:#A87C58;
-    --bg:#F5F3F0; --cream:#EDE9E3; --ink:#1C1C1C; --stone:#7C766E; --border:#E2E0DA; --white:#fff;
-    --ja:"Noto Sans JP",system-ui,sans-serif; --en:"Inter",system-ui,sans-serif; --hand:"Caveat",cursive;
+    --accent:#1A1A1A; --accent-light:#D2D2D0; --accent-dark:#5C5C5A;
+    --yellow:#E6FF2F; --yellow-deep:#C9E000; --yellow-soft:rgba(230,255,47,.85);
+    --bg:#FFFFFF; --cream:#F5F5F4; --ink:#171717; --stone:#6E6E6C; --border:#E7E6E3; --white:#fff;
+    --ja:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif; --en:"Inter",-apple-system,system-ui,sans-serif; --hand:"Caveat",cursive;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:var(--ja);color:var(--ink);background:var(--bg);line-height:1.85;-webkit-font-smoothing:antialiased}
@@ -22,7 +23,7 @@
   header{border-bottom:1px solid var(--border);padding-bottom:3rem;margin-bottom:3.5rem}
   .logo{font-family:var(--en);font-weight:300;letter-spacing:.24em;font-size:1rem;margin-bottom:2.4rem;display:flex;justify-content:space-between;color:var(--stone)}
   h1{font-weight:700;font-size:clamp(1.7rem,4.4vw,2.7rem);line-height:1.35;letter-spacing:.01em}
-  h1 .hl{color:var(--accent-dark)}
+  h1 .hl{color:var(--ink);background:linear-gradient(transparent 62%, var(--yellow-soft) 62%);padding:0 .06em}
   .sub{color:var(--stone);margin-top:1.2rem;font-weight:300;max-width:52ch}
   h2{font-weight:700;font-size:1.35rem;margin:3.5rem 0 1.4rem;display:flex;align-items:center;gap:.7rem}
   h2 .bar{width:9px;height:9px;border-radius:50%;background:var(--accent)}
@@ -117,8 +118,7 @@
   <h2><span class="bar"></span>伴走プラン（リテイナー3層）</h2>
   <p class="body">「何をやるか」ではなく「どう関わるか（関与度）」で選べます。まずは軽く、手応えを見ながら上げていけます。</p>
   <div class="plans">
-    <div class="plan reco">
-      <span class="badge">おすすめの始め方</span>
+    <div class="plan">
       <span class="tag">ENTRY</span>
       <div class="rank">壁打ち相手</div>
       <div class="role">経営の壁打ち・交通整理</div>
@@ -154,13 +154,6 @@
         <li>担当：阿部＋メンバー＋CTO</li>
       </ul>
     </div>
-  </div>
-
-  <!-- recommended start -->
-  <div class="start">
-    <div class="st">まずは「梅・壁打ち（月20万）」から。</div>
-    <div class="sd">いきなり大きく始める必要はありません。月2回、経営の壁打ちをしながら、強みの言語化と方向づけを一緒に。手応えが見えたら、竹・松へ広げていけます。</div>
-    <div class="ex">スモールスタート例：企業価値診断 50万円 ＋ Entry 月20万 × 6ヶ月 ＝ 約170万円 から</div>
   </div>
 
   <ul class="notes">

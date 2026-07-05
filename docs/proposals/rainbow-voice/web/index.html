@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初回お打ち合わせ｜Rainbow Voice 金丸様 × BALENCER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* monotone base, tokens kept for minimal edits */
+    --accent:#1A1A1A; --accent-light:#D2D2D0; --accent-dark:#5C5C5A;
+    --yellow:#E6FF2F; --yellow-deep:#C9E000; --yellow-soft:rgba(230,255,47,.85);
+    --bg:#FFFFFF; --cream:#F5F5F4; --ink:#171717; --stone:#6E6E6C; --border:#E7E6E3; --white:#fff;
+    --hl:rgba(230,255,47,.9);
+    --ja:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+    --en:"Inter",-apple-system,system-ui,sans-serif; --hand:"Caveat",cursive;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-snap-type:y mandatory;height:100%}
+  body{font-family:var(--ja);color:var(--ink);background:var(--bg);line-height:1.8;-webkit-font-smoothing:antialiased;font-weight:400}
+  section{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
+    padding:7vh 8vw;position:relative;overflow:hidden}
+  section:nth-child(even){background:var(--cream)}
+  .dots{position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(20,20,20,.055) 1.3px,transparent 1.3px);background-size:26px 26px;
+    -webkit-mask-image:radial-gradient(circle at 92% 6%,#000,transparent 40%);mask-image:radial-gradient(circle at 92% 6%,#000,transparent 40%);opacity:.8}
+  .kicker{font-family:var(--en);letter-spacing:.22em;text-transform:uppercase;font-size:.7rem;color:var(--accent-dark);font-weight:500;margin-bottom:1.1rem;display:flex;align-items:center;gap:.8rem}
+  .kicker::before{content:"";width:24px;height:1px;background:var(--accent)}
+  h1{font-family:var(--en);font-weight:300;letter-spacing:.16em;font-size:clamp(2.2rem,6.5vw,4.4rem);line-height:1}
+  h2{font-weight:700;font-size:clamp(1.35rem,3.1vw,2.15rem);line-height:1.45;letter-spacing:.01em;max-width:24ch;text-wrap:balance}
+  h2 .hl{color:var(--ink);background:linear-gradient(transparent 62%, var(--yellow-soft) 62%);padding:0 .06em}
+  .lead{color:var(--stone);font-size:clamp(.95rem,1.4vw,1.1rem);max-width:52ch;margin-top:1.3rem;font-weight:300}
+  .num{position:absolute;top:5.5vh;right:8vw;font-family:var(--en);font-size:.75rem;color:var(--stone);letter-spacing:.1em}
+  .logo{font-family:var(--en);font-weight:300;letter-spacing:.24em;font-size:1.05rem}
+  .tagline{font-family:var(--en);color:var(--accent-dark);letter-spacing:.05em}
+  .hand{font-family:var(--hand);color:var(--accent-dark);font-size:1.45rem;display:inline-block;transform:rotate(-2deg)}
+
+  /* cover */
+  .cover{justify-content:space-between}
+  .cover .top{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--stone)}
+  .cover .mid{margin:auto 0}
+  .cover .who{font-size:clamp(1.05rem,2.3vw,1.55rem);font-weight:500;margin-top:1.7rem}
+  .cover .who span{color:var(--stone);font-weight:300;font-size:.75em}
+  .cover .bottom{display:flex;justify-content:space-between;align-items:flex-end;font-size:.8rem;color:var(--stone)}
+
+  /* agenda */
+  .agenda{display:flex;flex-direction:column;gap:.2rem;margin-top:2.2rem;max-width:760px}
+  .agenda .row{display:grid;grid-template-columns:2.6rem 1fr;gap:1.1rem;align-items:baseline;padding:1.05rem 0;border-top:1px solid var(--border)}
+  .agenda .row:last-child{border-bottom:1px solid var(--border)}
+  .agenda .an{font-family:var(--en);color:var(--accent);font-weight:500;font-size:1rem}
+  .agenda .at{font-weight:700;font-size:1.1rem}
+  .agenda .ad{color:var(--stone);font-weight:300;font-size:.85rem;grid-column:2}
+
+  /* company map */
+  .map{margin-top:1.6rem;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:1px;
+    background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;position:relative;max-width:1120px;width:100%}
+  .quad{background:var(--bg);padding:1.15rem 1.25rem}
+  section:nth-child(even) .quad{background:var(--cream)}
+  .quad .qh{display:flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.02rem;margin-bottom:.75rem}
+  .quad .qh b{width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block}
+  .chips{display:flex;flex-wrap:wrap;gap:.4rem}
+  .chip{font-size:.73rem;padding:.28rem .6rem;border:1px solid var(--border);border-radius:999px;background:var(--white);color:#4a453e;white-space:nowrap;font-weight:400}
+  section:nth-child(even) .chip{background:var(--bg)}
+  .chip.hl{background:var(--yellow);border-color:var(--yellow-deep);color:#171717;font-weight:600}
+  .center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;background:var(--white);
+    border:1px solid var(--border);border-radius:14px;padding:1rem 1.6rem;text-align:center;box-shadow:0 10px 40px rgba(120,90,60,.12);width:min(46%,340px)}
+  .center .bl{font-family:var(--en);font-weight:300;letter-spacing:.2em;font-size:1.5rem;line-height:1}
+  .center .tg{font-family:var(--en);color:var(--accent-dark);font-size:.72rem;letter-spacing:.05em;margin:.35rem 0 .5rem}
+  .center .cd{font-size:.72rem;color:var(--stone);font-weight:400;line-height:1.5;border-top:1px solid var(--border);padding-top:.5rem}
+  .mapfoot{display:flex;gap:2.2rem;flex-wrap:wrap;margin-top:1.1rem;font-size:.8rem;color:var(--stone)}
+  .mapfoot b{color:var(--ink);font-weight:700}
+
+  /* two edges */
+  .edges{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem;max-width:960px}
+  .edge{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.7rem 1.7rem}
+  section:nth-child(even) .edge{background:var(--bg)}
+  .edge .en{font-family:var(--en);font-size:.72rem;letter-spacing:.14em;color:var(--accent-dark);font-weight:600;margin-bottom:.6rem}
+  .edge .et{font-weight:700;font-size:1.15rem;margin-bottom:.5rem;line-height:1.4}
+  .edge .ed{font-size:.86rem;color:var(--stone);font-weight:300;line-height:1.7}
+  .pill{display:inline-block;margin-top:1.8rem;font-size:.9rem;border-left:3px solid var(--yellow-deep);padding:.15rem 0 .15rem 1rem;font-weight:500}
+
+  /* case */
+  .before{margin-top:1.9rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.15rem 1.5rem;max-width:820px}
+  section:nth-child(even) .before{background:var(--bg)}
+  .before .bl{font-family:var(--en);font-size:.68rem;letter-spacing:.18em;color:var(--stone);font-weight:600;margin-bottom:.35rem}
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;margin-top:1.4rem;max-width:1080px}
+  .flow .step{background:var(--white);border:1px solid var(--border);border-radius:11px;padding:1.1rem 1rem}
+  section:nth-child(even) .flow .step{background:var(--bg)}
+  .flow .n{font-family:var(--en);font-size:.68rem;color:var(--accent-dark);letter-spacing:.1em;font-weight:600;margin-bottom:.5rem}
+  .flow .st{font-weight:700;font-size:.92rem;margin-bottom:.4rem;line-height:1.35}
+  .flow .sd{font-size:.74rem;color:var(--stone);font-weight:300;line-height:1.55}
+  .after{margin-top:1.5rem;font-weight:500;color:var(--accent-dark);font-size:1.02rem}
+
+  /* understanding */
+  .under{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2.4rem;margin-top:1.8rem;max-width:1000px}
+  .uitem{border-top:1px solid var(--border);padding-top:.9rem}
+  .uitem .ul{font-family:var(--en);font-size:.68rem;letter-spacing:.14em;color:var(--accent-dark);font-weight:600;margin-bottom:.35rem}
+  .uitem .ut{font-weight:500;font-size:.95rem;line-height:1.65}
+  .uitem .ut b{color:var(--accent-dark);font-weight:700}
+  .src{margin-top:1.6rem;font-size:.72rem;color:var(--stone);font-weight:300}
+  /* diagnosis */
+  .diag{margin-top:1.7rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.1rem 2.6rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;max-width:940px}
+  section:nth-child(even) .diag{background:var(--bg)}
+  .diag .dtype{display:flex;align-items:baseline;gap:.65rem}
+  .diag .dl{font-family:var(--en);font-size:.64rem;letter-spacing:.14em;color:var(--accent-dark);font-weight:600}
+  .diag .dtype b{font-size:1.12rem}
+  .diag .dscore{font-family:var(--en);font-weight:600;font-size:1.25rem;color:var(--accent-dark)}
+  .diag .dscore small{font-size:.68rem;color:var(--stone);font-weight:400}
+  .diag .dbars{display:flex;gap:1.5rem;flex-wrap:wrap}
+  .diag .db{display:flex;flex-direction:column;gap:.35rem;min-width:88px}
+  .diag .dbl{font-size:.72rem;color:var(--stone);display:flex;justify-content:space-between;gap:.5rem}
+  .diag .dbl em{font-style:normal;color:var(--ink);font-weight:700}
+  .diag .db i{display:block;height:5px;border-radius:3px;background:var(--cream);position:relative}
+  section:nth-child(even) .diag .db i{background:var(--border)}
+  .diag .db i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--v);background:var(--accent);border-radius:3px}
+  .diag .db.low i::after{background:var(--yellow-deep)}
+
+  /* positioning map */
+  .posmap{margin-top:1.5rem;max-width:920px}
+  .axcap{font-size:.74rem;color:var(--stone);margin-bottom:.5rem;font-weight:400}
+  .axcap b{color:var(--accent-dark);font-weight:600}
+  .plane{position:relative;background:var(--white);border:1px solid var(--border);border-radius:14px;height:290px}
+  section:nth-child(even) .plane{background:var(--bg)}
+  .plane .axis{position:absolute;background:var(--border)}
+  .plane .ax-h{left:5%;right:5%;top:50%;height:1px}
+  .plane .ax-v{top:6%;bottom:6%;left:50%;width:1px}
+  .qlab{position:absolute;font-size:.66rem;color:#b9b3aa;font-weight:500;letter-spacing:.03em}
+  .blob{position:absolute;border-radius:12px;padding:.6rem .9rem;font-size:.77rem;line-height:1.45;font-weight:500;max-width:40%}
+  .blob .bt{font-weight:700;display:block;margin-bottom:.1rem}
+  .blob.red{left:4%;top:56%;background:var(--cream);border:1px solid var(--border);color:var(--stone)}
+  .blob.gold{right:4%;top:9%;background:rgba(230,255,47,.28);border:1.5px solid var(--yellow-deep);color:var(--ink);box-shadow:0 8px 22px rgba(20,20,20,.08)}
+  .xlab{display:flex;justify-content:space-between;font-size:.72rem;color:var(--stone);margin-top:.45rem;padding:0 .3rem}
+
+  /* question / method reuse */
+  .method{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;max-width:960px}
+  .method .mn{font-family:var(--en);font-weight:300;font-size:2.2rem;color:var(--accent);line-height:1;margin-bottom:.6rem}
+  .method .mt{font-weight:700;font-size:1.1rem;margin-bottom:.45rem}
+  .method .md{font-size:.83rem;color:var(--stone);font-weight:300;line-height:1.65}
+  .note{margin-top:2rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.3rem 1.6rem;max-width:840px}
+  section:nth-child(even) .note{background:var(--bg)}
+  .note .nl{font-weight:700;margin-bottom:.4rem}
+  .note .nd{font-size:.88rem;color:var(--stone);font-weight:300}
+  .qs{margin-top:2.4rem;display:flex;flex-direction:column;gap:1.3rem;max-width:840px}
+  .q{display:flex;gap:1.2rem;align-items:baseline}
+  .q .qn{font-family:var(--en);font-weight:300;font-size:1.7rem;color:var(--accent);line-height:1;min-width:1.3em}
+  .q .qt{font-size:clamp(1rem,1.9vw,1.3rem);font-weight:500;line-height:1.5}
+  .foot{margin-top:2.4rem;color:var(--stone);font-weight:300}
+  .cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.4rem;align-self:flex-start;background:var(--yellow);color:#171717;font-weight:700;font-size:1.02rem;padding:.95rem 2rem;border-radius:999px;text-decoration:none;box-shadow:0 10px 26px rgba(20,20,20,.1);transition:.2s}
+  .cta:hover{background:var(--yellow-deep);transform:translateY(-2px)}
+  .cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+  .nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:30}
+  .nav a{width:8px;height:8px;border-radius:50%;background:var(--border);transition:.25s;display:block}
+  .nav a:hover{background:var(--accent-light);transform:scale(1.3)}
+  @media(max-width:820px){
+    section{padding:7vh 6vw}
+    .map,.edges,.under,.method{grid-template-columns:1fr}
+    .flow{grid-template-columns:1fr 1fr}
+    .center{position:static;transform:none;width:auto;margin:1px 0;box-shadow:none;grid-column:1/-1}
+    .posmap{grid-template-columns:1fr}.yaxis{writing-mode:horizontal-tb;transform:none}
+    .nav{display:none}.num{right:6vw}
+  }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="#s1"></a><a href="#s2"></a><a href="#s3"></a><a href="#s4"></a><a href="#s5"></a><a href="#s6"></a><a href="#s7"></a><a href="#s10"></a><a href="#snext"></a>
+</div>
+
+<!-- S1 表紙 -->
+<section id="s1" class="cover">
+  <span class="dots"></span>
+  <div class="top"><span class="logo">BALENCER</span><span>2026.07.08</span></div>
+  <div class="mid">
+    <div class="kicker">First Meeting</div>
+    <h1>初回お打ち合わせ</h1>
+    <p class="who">Rainbow Voice 株式会社<br><span>代表取締役　金丸 明日香 様</span></p>
+  </div>
+  <div class="bottom"><span class="tagline">for loved ones.</span><span>株式会社バレンサー</span></div>
+</section>
+
+<!-- S2 アジェンダ -->
+<section id="s2">
+  <span class="dots"></span><span class="num">01 / 08</span>
+  <div class="kicker">Agenda</div>
+  <h2>本日、お話ししたいこと。</h2>
+  <div class="agenda">
+    <div class="row"><span class="an">01</span><span class="at">バレンサーのご紹介</span><span class="ad">私たちが何をしている会社か</span></div>
+    <div class="row"><span class="an">02</span><span class="at">私たちの事例</span><span class="ad">似た状況の会社を、どう変えていったか</span></div>
+    <div class="row"><span class="an">03</span><span class="at">Rainbow Voice さんへの理解</span><span class="ad">拝見して、私たちが受け取っていること</span></div>
+    <div class="row"><span class="an">04</span><span class="at">これから、ご一緒するなら</span><span class="ad">進め方の考え方と、今日伺いたいこと</span></div>
+  </div>
+</section>
+
+<!-- S3 会社全体像マップ -->
+<section id="s3">
+  <span class="dots"></span><span class="num">02 / 08</span>
+  <div class="kicker">About us</div>
+  <h2>経営者の右腕を、まるごと。<br><span class="hl">バレンサーの全体像。</span></h2>
+  <div class="map">
+    <div class="quad">
+      <div class="qh"><b></b>ブランド・組織</div>
+      <div class="chips">
+        <span class="chip hl">ブランド戦略</span><span class="chip">MVV策定</span><span class="chip">リブランディング</span><span class="chip">採用ブランディング</span><span class="chip">組織開発</span><span class="chip hl">経営伴走</span><span class="chip">1on1設計</span><span class="chip">社内報</span><span class="chip">読書会</span><span class="chip">ワークショップ</span><span class="chip">中期経営計画</span>
+      </div>
+    </div>
+    <div class="quad">
+      <div class="qh"><b></b>DX・AI</div>
+      <div class="chips">
+        <span class="chip hl">業務自動化</span><span class="chip">Notion構築</span><span class="chip">Slack設計</span><span class="chip">Google Workspace導入</span><span class="chip">Make</span><span class="chip">Zapier</span><span class="chip">n8n</span><span class="chip">AppSheet</span><span class="chip hl">バレンサーAI</span><span class="chip hl">Claude活用</span><span class="chip">OCR</span><span class="chip">ナレッジAI</span><span class="chip">コーチングAI</span>
+      </div>
+    </div>
+    <div class="quad">
+      <div class="qh"><b></b>Web・SNS</div>
+      <div class="chips">
+        <span class="chip">Webサイト制作</span><span class="chip">EC構築</span><span class="chip">next.js</span><span class="chip">SNS運用設計</span><span class="chip">動画制作</span><span class="chip hl">AIアニメ</span><span class="chip">広告運用</span><span class="chip">オウンドメディア</span>
+      </div>
+    </div>
+    <div class="quad">
+      <div class="qh"><b></b>経営・承継</div>
+      <div class="chips">
+        <span class="chip">事業承継準備</span><span class="chip hl">M&A磨き上げ</span><span class="chip">5カ年計画</span><span class="chip">企業価値診断</span><span class="chip">PMI</span><span class="chip">AI導入補助金2026</span><span class="chip">TSUGI&PARTNERS連携</span>
+      </div>
+    </div>
+    <div class="center">
+      <div class="bl">BALENCER</div>
+      <div class="tg">for loved ones.</div>
+      <div class="cd">経営者の右腕を外注する<br>ブランディングAXカンパニー</div>
+    </div>
+  </div>
+  <div class="mapfoot"><span><b>設立6年半</b></span><span>大阪本社 ／ <b>東京・福岡</b>もサブで対応</span><span><b>全員 Claude Code</b> が使えるチーム</span></div>
+</section>
+
+<!-- S4 なぜ選ばれるか -->
+<section id="s4">
+  <span class="dots"></span><span class="num">03 / 08</span>
+  <div class="kicker">Why us</div>
+  <h2>デザイン会社でも、AI会社でもない。<br><span class="hl">組織の内側に入り、実装まで。</span></h2>
+  <div class="edges">
+    <div class="edge">
+      <div class="en">EDGE 01</div>
+      <div class="et">組織に入り込む対話の力</div>
+      <div class="ed">経営者と同じ目線で課題を再定義し、一人ひとりの行動が変わるまで伴走する。AIでは代替できない、対面の領域。</div>
+    </div>
+    <div class="edge">
+      <div class="en">EDGE 02</div>
+      <div class="et">でも、AI・技術にもちゃんと強い</div>
+      <div class="ed">全員がClaude Codeを日常的に使い、ブランディングからAI実装まで一社で完結。作って終わりにしない。</div>
+    </div>
+  </div>
+  <span class="pill">レポートで終わらない<b>町医者型</b>。実装まで、自分たちの手でやり切ります。</span>
+</section>
+
+<!-- S5 事例 -->
+<section id="s5">
+  <span class="dots"></span><span class="num">04 / 08</span>
+  <div class="kicker">Our case ・ 音楽教育の会社（GUITARの東大）</div>
+  <h2>強みも理念もある会社を、<span class="hl">こう変えていきました。</span></h2>
+  <div class="before">
+    <div class="bl">BEFORE</div>
+    強烈なメソッドと理念がある。でも集客は外部頼みでなかなか伸びず、展開も講師個人に依存しがちだった。
+  </div>
+  <div class="flow">
+    <div class="step"><div class="n">PHASE 1</div><div class="st">立ち位置の再定義</div><div class="sd">ビジョン・ポジショニングを整理し直す。オンライン全国→リアルの価値が上がる設計へ。</div></div>
+    <div class="step"><div class="n">PHASE 2</div><div class="st">武器を活かす</div><div class="sd">既にあったSNSの入口を戦略化。TikTok＝入口／YouTube＝収益の棲み分け。</div></div>
+    <div class="step"><div class="n">PHASE 3</div><div class="st">仕組みに落とす</div><div class="sd">収益の階段づくり →「生徒→講師」のキャリアパス制度 → 認定教室（FC）へ。</div></div>
+    <div class="step"><div class="n">PHASE 4</div><div class="st">属人を制度で外す</div><div class="sd">レーティング・ライセンス制度で、メソッドを再現できる形に。契約・法務まで整備。</div></div>
+    <div class="step"><div class="n">PHASE 5</div><div class="st">今も伴走中</div><div class="sd">LP・メンバーシップまで実装。ビジョンに沿ったデジタル戦略を一緒に走らせている。</div></div>
+  </div>
+  <p class="after">強みは、言語化して → 仕組みにして → 展開すると、伸びていく。</p>
+</section>
+
+<!-- S6 理解（問い化） -->
+<section id="s6">
+  <span class="dots"></span><span class="num">05 / 08</span>
+  <div class="kicker">Our understanding</div>
+  <h2>拝見して、私たちが<br>受け取っている<span class="hl">Rainbow Voice さん。</span></h2>
+  <div class="under">
+    <div class="uitem"><div class="ul">METHOD</div><div class="ut">ハリウッド式を土台に、<b>声・呼吸・身体・脳・メンタルを統合</b>して整える独自メソッド「BRAND VOICE」。単なる発声指導ではない。</div></div>
+    <div class="uitem"><div class="ul">TRACK RECORD</div><div class="ut">経営者・政治家など<b>2,000人以上</b>の指導。<b>ポルシェEBIグループ</b>・ラグジュアリーブランド・商工会議所の法人研修。著書（小学館）・TV出演。</div></div>
+    <div class="uitem"><div class="ul">PHILOSOPHY</div><div class="ut">「<b>声から、人と組織を本来の姿へ導く</b>」。Rainbow＝一人ひとりの個性を、その色のまま輝かせ、集まって虹に。安心できるサードプレイス。</div></div>
+    <div class="uitem"><div class="ul">DIRECTION</div><div class="ut">これから広げたいのは、健康経営・人的資本経営の文脈での<b>「ボイス・ウェルビーイング」</b>。声で、組織の状態を上げていく。</div></div>
+  </div>
+  <div class="diag">
+    <div class="dtype"><span class="dl">経営診断の結果</span><b>立て直し型</b><span class="dscore">49<small> / 100</small></span></div>
+    <div class="dbars">
+      <div class="db"><span class="dbl">ブランド <em>18</em></span><i style="--v:72%"></i></div>
+      <div class="db low"><span class="dbl">集客 <em>10</em></span><i style="--v:40%"></i></div>
+      <div class="db"><span class="dbl">組織 <em>11</em></span><i style="--v:44%"></i></div>
+      <div class="db"><span class="dbl">デジタル <em>10</em></span><i style="--v:40%"></i></div>
+    </div>
+  </div>
+  <p class="src">※ 御社サイト・掲載記事・ご記入いただいた経営診断からの、あくまで私たちの受け取りです。認識のズレは、ぜひ今日この場で。</p>
+</section>
+
+<!-- S7 立ち位置の見立て（仮置き） -->
+<section id="s7">
+  <span class="dots"></span><span class="num">06 / 08</span>
+  <div class="kicker">たたき台 ・ 立ち位置の仮置き</div>
+  <h2>ポジショニング<span class="hl">整理</span>。</h2>
+  <div class="posmap">
+    <div class="axcap">縦軸：<b>声の技術（出し方）→ 経営・組織の成果</b>　／　横軸：<b>個人 → 法人・組織</b></div>
+    <div class="plane">
+      <span class="axis ax-h"></span><span class="axis ax-v"></span>
+      <span class="qlab" style="left:3%;top:4%">技術 × 個人</span>
+      <span class="qlab" style="right:3%;bottom:4%">成果 × 法人</span>
+      <div class="blob red"><span class="bt">一般のボイストレーニング（歌）</span>個人 × 技術。競合が多いレッドオーシャン。</div>
+      <div class="blob gold"><span class="bt">経営者の声・ボイス・ウェルビーイング</span>法人 × 経営の成果。金丸さんの実績と理念が、既にここにある。</div>
+    </div>
+    <div class="xlab"><span>対象：個人</span><span>法人・組織</span></div>
+  </div>
+  <p class="src" style="margin-top:1.1rem">※ これは現状の<b>仮置き</b>です。実際はもっと別の置き方になる可能性が高い。軸ごと、一緒に置き直したい前提でお持ちしました。</p>
+</section>
+
+<!-- S10 聞く -->
+<section id="s10">
+  <span class="dots"></span><span class="num">07 / 08</span>
+  <div class="kicker">Today</div>
+  <h2>ここからは、金丸さんの<br>お話を<span class="hl">聞かせてください。</span></h2>
+  <div class="qs">
+    <div class="q"><span class="qn">1</span><span class="qt">今、一番気になっている（困っている）ことを、1つ挙げるなら？</span></div>
+    <div class="q"><span class="qn">2</span><span class="qt">お客様から言われる、御社の<b>強み</b>は何ですか？</span></div>
+    <div class="q"><span class="qn">3</span><span class="qt">これから展開したい事業・ビジョンは？</span></div>
+  </div>
+  <p class="foot"><span class="hand">この整理を、一緒にやるところから。</span></p>
+</section>
+
+<!-- S-next CTA → プラン -->
+<section id="snext">
+  <span class="dots"></span><span class="num">08 / 08</span>
+  <div class="kicker">Next step</div>
+  <h2>この後、ご一緒するとしたら。</h2>
+  <p class="lead">ご支援の<b>流れ</b>と<b>プラン</b>を、別紙にまとめています。ご興味があれば、こちらから。</p>
+  <a class="cta" href="plan.html" target="_blank" rel="noopener">ご支援の流れとプランを見る　→</a>
+</section>
+
+<script>
+  const secs=[...document.querySelectorAll('section')];let i=0;
+  const go=n=>{i=Math.max(0,Math.min(secs.length-1,n));secs[i].scrollIntoView({behavior:'smooth'})};
+  addEventListener('keydown',e=>{
+    if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(i+1)}
+    if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(i-1)}
+  });
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)i=secs.indexOf(x.target)}),{threshold:.5});
+  secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

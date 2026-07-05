@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BALENCER｜提案資料</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171717; --sub:#6E6E6C; --border:#E7E6E3; --bg:#FFFFFF; --panel:#F5F5F4;
+    --yellow:#E6FF2F; --yellow-deep:#C9E000; --yellow-soft:rgba(230,255,47,.85);
+    --ja:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+    --en:"Inter",-apple-system,system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--ja);color:var(--ink);background:var(--bg);line-height:1.8;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:9vh 7vw 12vh}
+  .logo{font-family:var(--en);font-weight:300;letter-spacing:.24em;font-size:1rem;color:var(--sub);display:flex;justify-content:space-between;margin-bottom:3.2rem}
+  .kicker{font-family:var(--en);letter-spacing:.22em;text-transform:uppercase;font-size:.7rem;color:var(--sub);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+  .kicker::before{content:"";width:24px;height:1px;background:var(--ink)}
+  h1{font-weight:700;font-size:clamp(1.8rem,4.5vw,2.8rem);letter-spacing:.01em}
+  h1 .hl{background:linear-gradient(transparent 62%, var(--yellow-soft) 62%);padding:0 .06em}
+  .sub{color:var(--sub);font-weight:300;margin-top:1rem;max-width:52ch}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:3rem}
+  .card{border:1px solid var(--border);border-radius:16px;padding:1.9rem 1.8rem;display:flex;flex-direction:column;transition:.2s;background:var(--bg)}
+  .card:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .card .co{font-family:var(--en);font-size:.68rem;letter-spacing:.14em;color:var(--sub);font-weight:600;margin-bottom:.5rem}
+  .card .nm{font-weight:700;font-size:1.25rem;margin-bottom:.2rem}
+  .card .ps{color:var(--sub);font-size:.85rem;font-weight:300;margin-bottom:1.5rem}
+  .links{display:flex;gap:.7rem;margin-top:auto}
+  .links a{flex:1;text-align:center;text-decoration:none;font-weight:600;font-size:.9rem;padding:.7rem 1rem;border-radius:999px;transition:.2s}
+  .links .primary{background:var(--yellow);color:#171717}
+  .links .primary:hover{background:var(--yellow-deep)}
+  .links .ghost{border:1px solid var(--border);color:var(--ink)}
+  .links .ghost:hover{border-color:var(--ink)}
+  footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--sub);font-weight:300}
+  @media(max-width:680px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo"><span>BALENCER</span><span>for loved ones.</span></div>
+  <div class="kicker">Proposals</div>
+  <h1>提案<span class="hl">資料</span>。</h1>
+  <p class="sub">初回お打ち合わせ用のデッキとプランです。各社ごとにまとめています。</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="co">RAINBOW VOICE</div>
+      <div class="nm">Rainbow Voice 株式会社</div>
+      <div class="ps">金丸 明日香 様 ／ 初回 7月8日</div>
+      <div class="links">
+        <a class="primary" href="/rainbow-voice/">初回デッキ</a>
+        <a class="ghost" href="/rainbow-voice/plan">プラン</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="co">CLAVIS PARTNERS</div>
+      <div class="nm">株式会社 Clavis Partners</div>
+      <div class="ps">杉山 康之 様 ／ 初回 7月7日</div>
+      <div class="links">
+        <a class="primary" href="/clavis-partners/">初回デッキ</a>
+        <a class="ghost" href="/clavis-partners/plan">プラン</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>株式会社バレンサー ／ 社内・提案用</footer>
+</div>
+</body>
+</html>

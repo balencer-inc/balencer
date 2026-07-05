@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ご一緒する進め方とプラン｜Clavis Partners 杉山様 × BALENCER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#1A1A1A; --accent-light:#D2D2D0; --accent-dark:#5C5C5A;
+    --yellow:#E6FF2F; --yellow-deep:#C9E000; --yellow-soft:rgba(230,255,47,.85);
+    --bg:#FFFFFF; --cream:#F5F5F4; --ink:#171717; --stone:#6E6E6C; --border:#E7E6E3; --white:#fff;
+    --ja:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif; --en:"Inter",-apple-system,system-ui,sans-serif; --hand:"Caveat",cursive;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--ja);color:var(--ink);background:var(--bg);line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:7vh 6vw 12vh}
+  .kicker{font-family:var(--en);letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;
+    color:var(--accent-dark);font-weight:500;margin-bottom:1.1rem;display:flex;align-items:center;gap:.8rem}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--accent)}
+  header{border-bottom:1px solid var(--border);padding-bottom:3rem;margin-bottom:3.5rem}
+  .logo{font-family:var(--en);font-weight:300;letter-spacing:.24em;font-size:1rem;margin-bottom:2.4rem;display:flex;justify-content:space-between;color:var(--stone)}
+  h1{font-weight:700;font-size:clamp(1.7rem,4.4vw,2.7rem);line-height:1.35;letter-spacing:.01em}
+  h1 .hl{color:var(--ink);background:linear-gradient(transparent 62%, var(--yellow-soft) 62%);padding:0 .06em}
+  .sub{color:var(--stone);margin-top:1.2rem;font-weight:300;max-width:52ch}
+  h2{font-weight:700;font-size:1.35rem;margin:3.5rem 0 1.4rem;display:flex;align-items:center;gap:.7rem}
+  h2 .bar{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+  p.body{color:#3a352f;font-weight:300;max-width:60ch;margin-bottom:1rem}
+
+  .sandwich{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin:1.6rem 0;font-size:.9rem}
+  .sandwich .b{padding:.7rem 1.2rem;border-radius:999px;font-weight:500}
+  .sandwich .r{background:var(--cream);border:1px solid var(--border)}
+  .sandwich .p{background:#fff;border:1px dashed var(--accent-light);color:var(--accent-dark)}
+  .sandwich .ar{color:var(--accent);font-family:var(--en)}
+
+  /* roadmap */
+  .road{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+  .road .ph{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.5rem;position:relative}
+  .road .pk{font-family:var(--en);font-size:.72rem;letter-spacing:.14em;color:var(--accent-dark);font-weight:600;margin-bottom:.3rem}
+  .road .pt{font-weight:700;font-size:1.08rem;margin-bottom:.7rem;line-height:1.4}
+  .road .pd{font-size:.83rem;color:var(--stone);font-weight:300;line-height:1.7}
+  .road .pw{font-size:.72rem;color:var(--accent-dark);margin-top:.9rem;font-family:var(--en);letter-spacing:.05em}
+
+  /* plans */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+  .plan{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.8rem 1.6rem;display:flex;flex-direction:column}
+  .plan.reco{border:1.5px solid var(--accent);box-shadow:0 8px 30px rgba(197,149,107,.13)}
+  .plan .tag{font-family:var(--en);font-size:.7rem;letter-spacing:.12em;color:var(--stone);font-weight:600}
+  .plan .rank{font-size:1.5rem;font-weight:700;margin:.2rem 0 .1rem}
+  .plan .role{color:var(--accent-dark);font-weight:500;font-size:.92rem;margin-bottom:1rem}
+  .plan .price{font-family:var(--en);font-size:1.7rem;font-weight:600;letter-spacing:.01em}
+  .plan .price small{font-size:.8rem;color:var(--stone);font-weight:400}
+  .plan ul{list-style:none;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:.6rem}
+  .plan li{font-size:.83rem;color:#3a352f;font-weight:300;padding-left:1.2rem;position:relative;line-height:1.6}
+  .plan li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent-light)}
+  .badge{display:inline-block;background:var(--accent);color:#fff;font-size:.64rem;letter-spacing:.08em;font-weight:600;
+    padding:.25rem .7rem;border-radius:999px;margin-bottom:.9rem;font-family:var(--en);align-self:flex-start}
+
+  .start{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:2rem 2rem;margin-top:1.6rem}
+  .start .st{font-weight:700;font-size:1.15rem;margin-bottom:.7rem}
+  .start .sd{color:#3a352f;font-weight:300;max-width:60ch}
+  .start .ex{margin-top:1.2rem;font-family:var(--en);font-size:.9rem;color:var(--accent-dark);font-weight:500}
+
+  .notes{margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--stone);font-weight:300}
+  .notes li{margin-bottom:.4rem;list-style:none;padding-left:1rem;position:relative}
+  .notes li::before{content:"※";position:absolute;left:0;color:var(--accent)}
+  .hand{font-family:var(--hand);color:var(--accent-dark);font-size:1.4rem}
+  @media(max-width:720px){.road,.plans{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><span>BALENCER</span><span>for loved ones.</span></div>
+    <div class="kicker">Proposal ｜ 株式会社 Clavis Partners 杉山 康之 様</div>
+    <h1>ご一緒する進め方とプラン。</h1>
+    <p class="sub">「正しい順番で、1つずつ」。まず強みを言語化し、仕組みにして、展開する。町医者のように隣に立ち、レポートで終わらず実装まで伴走します。</p>
+  </header>
+
+  <!-- philosophy -->
+  <h2><span class="bar"></span>進め方の考え方</h2>
+  <p class="body">私たちは、制作（作りもの）を単体で受けません。かならず前後に<b>戦略</b>と<b>定着</b>を挟みます。作って終わりにせず、成果が回るところまで見届けるためです。</p>
+  <div class="sandwich">
+    <span class="b r">① 戦略・言語化<br><small style="color:var(--stone)">リテイナー</small></span>
+    <span class="ar">→</span>
+    <span class="b p">② 制作・実装<br><small style="color:var(--stone)">プロジェクト（都度）</small></span>
+    <span class="ar">→</span>
+    <span class="b r">③ 育成・定着<br><small style="color:var(--stone)">リテイナー</small></span>
+  </div>
+
+  <!-- roadmap -->
+  <h2><span class="bar"></span>想定ロードマップ（たたき台）</h2>
+  <p class="body">杉山さんのお話を伺いながら固めますが、順番のイメージはこの3段階です。</p>
+  <div class="road">
+    <div class="ph">
+      <div class="pk">PHASE 0 ・ 最初の90日</div>
+      <div class="pt">強みとポジショニングの言語化</div>
+      <div class="pd">「なぜ御社に頼むのか」をお客様の言葉で1文に。25年の専門性と実績を、伝わる旗に。ここが全ての起点。</div>
+      <div class="pw">→ 看板の再定義</div>
+    </div>
+    <div class="ph">
+      <div class="pk">PHASE 1</div>
+      <div class="pt">仕組みにする</div>
+      <div class="pd">再定義した旗のもとで、看板商品と集客導線を設計。個人の稼働に頼らず回る形（再現できるメソッド・入口）へ。</div>
+      <div class="pw">→ 商品・導線の設計</div>
+    </div>
+    <div class="ph">
+      <div class="pk">PHASE 2</div>
+      <div class="pt">展開する</div>
+      <div class="pd">法人・オンライン・仲間づくりなど、ビジョンに沿った戦い方へ。AIで発信と集客のファネルを回す。</div>
+      <div class="pw">→ 事業の展開</div>
+    </div>
+  </div>
+
+  <!-- plans -->
+  <h2><span class="bar"></span>伴走プラン（リテイナー3層）</h2>
+  <p class="body">「何をやるか」ではなく「どう関わるか（関与度）」で選べます。まずは軽く、手応えを見ながら上げていけます。</p>
+  <div class="plans">
+    <div class="plan">
+      <span class="tag">ENTRY</span>
+      <div class="rank">壁打ち相手</div>
+      <div class="role">経営の壁打ち・交通整理</div>
+      <div class="price">20<small>万円 / 月</small></div>
+      <ul>
+        <li>月1〜2回の経営MTG（各1h）</li>
+        <li>課題の整理と「次の一手」の交通整理</li>
+        <li>強みの言語化・方向づけから着手</li>
+        <li>担当：阿部</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <span class="tag">MAIN</span>
+      <div class="rank">右腕</div>
+      <div class="role">戦略＋施策ディレクション</div>
+      <div class="price">30–50<small>万円 / 月</small></div>
+      <ul>
+        <li>月2〜4回のMTG＋チャット随時</li>
+        <li>戦略策定＋施策のディレクション</li>
+        <li>制作チームへの発注・品質管理</li>
+        <li>担当：阿部＋メンバー</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <span class="tag">PREMIUM</span>
+      <div class="rank">経営参謀</div>
+      <div class="role">経営チームの一員として</div>
+      <div class="price">60–100<small>万円 / 月</small></div>
+      <ul>
+        <li>週次MTG＋常時チャット</li>
+        <li>意思決定支援・全施策のPM</li>
+        <li>組織設計・AI実装まで参画</li>
+        <li>担当：阿部＋メンバー＋CTO</li>
+      </ul>
+    </div>
+  </div>
+
+  <ul class="notes">
+    <li>全プラン最低契約期間は3ヶ月・税別です（まず3ヶ月やってみて判断いただけます）。</li>
+    <li>Webサイト・LP・動画・AI実装などの制作物は、テーマに応じて別途お見積もりします（サンドイッチの②）。</li>
+    <li>金額・期間は、初回のお話を踏まえて杉山さんに合わせて調整します。上記は考え方の<b>たたき台</b>です。</li>
+  </ul>
+  <p style="margin-top:2.5rem;text-align:center"><span class="hand">正しい順番で、1つずつ。ご一緒できれば嬉しいです。</span></p>
+</div>
+</body>
+</html>

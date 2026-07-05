@@ -129,6 +129,9 @@
   .q .qn{font-family:var(--en);font-weight:300;font-size:1.7rem;color:var(--accent);line-height:1;min-width:1.3em}
   .q .qt{font-size:clamp(1rem,1.9vw,1.3rem);font-weight:500;line-height:1.5}
   .foot{margin-top:2.4rem;color:var(--stone);font-weight:300}
+  .cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.4rem;align-self:flex-start;background:var(--accent);color:#fff;font-weight:600;font-size:1.02rem;padding:.95rem 2rem;border-radius:999px;text-decoration:none;box-shadow:0 12px 32px rgba(197,149,107,.3);transition:.2s}
+  .cta:hover{background:var(--accent-dark);transform:translateY(-2px)}
+  .cta:focus-visible{outline:2px solid var(--accent-dark);outline-offset:3px}
 
   .nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:30}
   .nav a{width:8px;height:8px;border-radius:50%;background:var(--border);transition:.25s;display:block}
@@ -145,7 +148,7 @@
 </head>
 <body>
 <div class="nav">
-  <a href="#s1"></a><a href="#s2"></a><a href="#s3"></a><a href="#s4"></a><a href="#s5"></a><a href="#s6"></a><a href="#s7"></a><a href="#s8"></a><a href="#s9"></a><a href="#s10"></a>
+  <a href="#s1"></a><a href="#s2"></a><a href="#s3"></a><a href="#s4"></a><a href="#s5"></a><a href="#s6"></a><a href="#s7"></a><a href="#s10"></a><a href="#snext"></a>
 </div>
 
 <!-- S1 表紙 -->
@@ -162,7 +165,7 @@
 
 <!-- S2 アジェンダ -->
 <section id="s2">
-  <span class="dots"></span><span class="num">01 / 10</span>
+  <span class="dots"></span><span class="num">01 / 08</span>
   <div class="kicker">Agenda</div>
   <h2>本日、お話ししたいこと。</h2>
   <div class="agenda">
@@ -175,7 +178,7 @@
 
 <!-- S3 会社全体像マップ -->
 <section id="s3">
-  <span class="dots"></span><span class="num">02 / 10</span>
+  <span class="dots"></span><span class="num">02 / 08</span>
   <div class="kicker">About us</div>
   <h2>経営者の右腕を、まるごと。<br><span class="hl">バレンサーの全体像。</span></h2>
   <div class="map">
@@ -214,7 +217,7 @@
 
 <!-- S4 なぜ選ばれるか -->
 <section id="s4">
-  <span class="dots"></span><span class="num">03 / 10</span>
+  <span class="dots"></span><span class="num">03 / 08</span>
   <div class="kicker">Why us</div>
   <h2>デザイン会社でも、AI会社でもない。<br><span class="hl">組織の内側に入り、実装まで。</span></h2>
   <div class="edges">
@@ -234,7 +237,7 @@
 
 <!-- S5 事例 -->
 <section id="s5">
-  <span class="dots"></span><span class="num">04 / 10</span>
+  <span class="dots"></span><span class="num">04 / 08</span>
   <div class="kicker">Our case ・ 音楽教育の会社（GUITARの東大）</div>
   <h2>強みも理念もある会社を、<span class="hl">こう変えていきました。</span></h2>
   <div class="before">
@@ -251,25 +254,28 @@
   <p class="after">強みは、言語化して → 仕組みにして → 展開すると、伸びていく。</p>
 </section>
 
-<!-- S6 理解 -->
+<!-- S6 理解（問い化） -->
 <section id="s6">
-  <span class="dots"></span><span class="num">05 / 10</span>
-  <div class="kicker">Our understanding</div>
-  <h2>拝見して、私たちが<br>受け取っている<span class="hl">Rainbow Voice さん。</span></h2>
+  <span class="dots"></span><span class="num">05 / 08</span>
+  <div class="kicker">Our understanding ・ 確認したいこと</div>
+  <h2>拝見して、こう受け取っています。<br><span class="hl">— 合っていますか？</span></h2>
   <div class="under">
     <div class="uitem"><div class="ul">METHOD</div><div class="ut">ハリウッド式を土台に、<b>声・呼吸・身体・脳・メンタルを統合</b>して整える独自メソッド「BRAND VOICE」。単なる発声指導ではない。</div></div>
     <div class="uitem"><div class="ul">TRACK RECORD</div><div class="ut">経営者・政治家など<b>2,000人以上</b>の指導。<b>ポルシェEBIグループ</b>・ラグジュアリーブランド・商工会議所の法人研修。著書（小学館）・TV出演。</div></div>
     <div class="uitem"><div class="ul">PHILOSOPHY</div><div class="ut">「<b>声から、人と組織を本来の姿へ導く</b>」。Rainbow＝一人ひとりの個性を、その色のまま輝かせ、集まって虹に。安心できるサードプレイス。</div></div>
     <div class="uitem"><div class="ul">DIRECTION</div><div class="ut">これから広げたいのは、健康経営・人的資本経営の文脈での<b>「ボイス・ウェルビーイング」</b>。声で、組織の状態を上げていく。</div></div>
   </div>
-  <p class="src">※ 御社サイト・掲載記事・ご記入いただいた経営診断をもとに、私たちの理解を整理したものです。認識のズレは、ぜひ今日直してください。</p>
+  <div class="qs" style="margin-top:1.7rem;gap:.7rem">
+    <div class="q"><span class="qn">?</span><span class="qt" style="font-size:clamp(.98rem,1.7vw,1.2rem)">この中で、一番しっくりくるのはどれですか？ そして、ズレているのはどこですか？</span></div>
+  </div>
+  <p class="src">※ 御社サイト・掲載記事・ご記入いただいた経営診断からの、あくまで私たちの受け取りです。答え合わせは、ぜひ今日この場で。</p>
 </section>
 
-<!-- S7 立ち位置の見立て -->
+<!-- S7 立ち位置の見立て（仮置き） -->
 <section id="s7">
-  <span class="dots"></span><span class="num">06 / 10</span>
-  <div class="kicker">Our hypothesis ・ 市場での立ち位置</div>
-  <h2>金丸さんの本当の土俵は、<br><span class="hl">“歌のボイトレ”の外側にある。</span></h2>
+  <span class="dots"></span><span class="num">06 / 08</span>
+  <div class="kicker">たたき台 ・ 立ち位置の仮置き</div>
+  <h2>金丸さんの土俵は、<br><span class="hl">“歌のボイトレ”の外側かもしれない。</span></h2>
   <div class="posmap">
     <div class="axcap">縦軸：<b>声の技術（出し方）→ 経営・組織の成果</b>　／　横軸：<b>個人 → 法人・組織</b></div>
     <div class="plane">
@@ -281,40 +287,12 @@
     </div>
     <div class="xlab"><span>対象：個人</span><span>法人・組織</span></div>
   </div>
-  <p class="lead">あくまで私たちの“見立て”です。強みも実績も、希少なゾーンに既にある――そう見えています。</p>
-</section>
-
-<!-- S8 だから一緒に整理したい -->
-<section id="s8">
-  <span class="dots"></span><span class="num">07 / 10</span>
-  <div class="kicker">The question</div>
-  <h2>強みは、十分にある。<br>問いは<span class="hl">「どの順番で伸ばすか」。</span></h2>
-  <p class="lead">ご記入いただいた診断は「立て直し型」。これは“できていない”のではなく、多くの場合<b style="color:var(--accent-dark)">「やれることが多すぎて、何から手をつけるか」</b>の状態です。だから、一緒に順番を決めたい。</p>
-  <div class="note">
-    <div class="nl">今日、決めつけるつもりはありません。</div>
-    <div class="nd">「①言語化 → ②仕組み化 → ③展開」のどこから始めるのが金丸さんにとって最短か。それは、お話を伺ってから一緒に。まずは “1つ” に絞るところから。</div>
-  </div>
-</section>
-
-<!-- S9 やり方 -->
-<section id="s9">
-  <span class="dots"></span><span class="num">08 / 10</span>
-  <div class="kicker">How we work</div>
-  <h2>正しい順番で、1つずつ。<br>まずは<span class="hl">“強みの言語化”</span>から。</h2>
-  <div class="method">
-    <div class="m"><div class="mn">01</div><div class="mt">言語化する</div><div class="md">「なぜ、あなたに頼むのか」をお客様の言葉で1文に。ここが決まると、Web・SNS・営業・採用、すべてがここから導けます。</div></div>
-    <div class="m"><div class="mn">02</div><div class="mt">仕組みにする</div><div class="md">その強みを、個人の頑張りに頼らず回る形へ。再現できる商品・導線に落とし込みます。</div></div>
-    <div class="m"><div class="mn">03</div><div class="mt">展開する</div><div class="md">法人・オンライン・仲間づくりなど、ビジョンに沿った“戦い方”へ広げていきます。</div></div>
-  </div>
-  <div class="note">
-    <div class="nl">私たち（外部）を使うと良いタイミング</div>
-    <div class="nd">同じ課題を3ヶ月以上考えて進んでいない ／ やることは見えているが手が足りない ／ 社内にない知見が要る ―― そんな時こそ、隣で。</div>
-  </div>
+  <p class="src" style="margin-top:1.1rem">※ これは現状の“仮置き”です。実際はもっと別の置き方になる可能性が高い。軸ごと、一緒に置き直したい前提でお持ちしました。</p>
 </section>
 
 <!-- S10 聞く -->
 <section id="s10">
-  <span class="dots"></span><span class="num">09 / 10</span>
+  <span class="dots"></span><span class="num">07 / 08</span>
   <div class="kicker">Today</div>
   <h2>ここからは、金丸さんの<br>お話を<span class="hl">聞かせてください。</span></h2>
   <div class="qs">
@@ -323,6 +301,15 @@
     <div class="q"><span class="qn">3</span><span class="qt">これから展開したい事業・ビジョンは？</span></div>
   </div>
   <p class="foot"><span class="hand">この整理を、一緒にやるところから。</span></p>
+</section>
+
+<!-- S-next CTA → プラン -->
+<section id="snext">
+  <span class="dots"></span><span class="num">08 / 08</span>
+  <div class="kicker">Next step</div>
+  <h2>この後、ご一緒するとしたら。</h2>
+  <p class="lead">ご支援の“流れ”と“プラン”を、別紙にまとめています。ご興味があれば、こちらから。</p>
+  <a class="cta" href="プラン.html" target="_blank" rel="noopener">ご支援の流れとプランを見る　→</a>
 </section>
 
 <script>

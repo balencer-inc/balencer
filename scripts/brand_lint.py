@@ -56,6 +56,18 @@ HASHTAG = re.compile(r"(?:^|\s)[#＃][^\s#＃]+")
 # SNSモード: 問いかけ連続（？で終わる文が2つ以上連続）
 CONSECUTIVE_QUESTIONS = re.compile(r"[^？?。\n]+[？?]\s*[^？?。\n]+[？?]")
 
+# 見出し（タイトル/キャッチ）検出。HTMLの h1〜h3 と Markdown の #〜###
+HTML_HEADING = re.compile(r"<h[1-3][^>]*>(.*?)</h[1-3]>", re.I)
+MD_HEADING = re.compile(r"^\s{0,3}#{1,3}\s+(.*\S)")
+TAG_STRIP = re.compile(r"<[^>]+>")
+
+# 見出しの一部だけ黄色ハイライト/下線を当てる部分強調（タイトルでは使わない）
+# ＝見出し要素の内側に hl クラスや黄色の linear-gradient がある状態
+PARTIAL_HL = re.compile(r"""class=["']hl["']|linear-gradient\([^)]*(?:var\(--yellow|rgba\(\s*230)""", re.I)
+
+# 対外文書の敬称：クライアント名は「さん」でなく「様」。たくさん/みなさん/皆さん等は除外
+HONORIFIC_SAN = re.compile(r"(?<!たく)(?<!みな)(?<!皆)さん")
+
 
 def normalize(line: str) -> str:
     """NFKC正規化はせず原文のまま扱う（全角検出のため）。前後空白のみ除去。"""
@@ -99,6 +111,21 @@ def lint_file(path: str, sns_mode: bool):
             # 禁止表現(1000社)側で既にERROR報告済みのものは二重報告しない
             if m.group(1) != "64" and m.group(0) not in [p for p, _ in FORBIDDEN_PHRASES]:
                 findings.append((i, "WARN", f"実績数字らしき「{m.group(0)}」。正は64社・生涯4.03億。出どころを確認", stripped))
+
+        # 見出し（タイトル/キャッチ）の表記ルール
+        for hm in HTML_HEADING.finditer(line):
+            inner = hm.group(1)
+            if PARTIAL_HL.search(inner):
+                findings.append((i, "WARN", "見出しの一部だけ黄色ハイライト/下線を当てている疑い。タイトルは部分強調しない（外すか全体で統一）", stripped))
+            if "、" in TAG_STRIP.sub("", inner):
+                findings.append((i, "WARN", "タイトル/キャッチコピーに読点「、」を入れない。改行・句点・スペースで区切る", stripped))
+        mdh = MD_HEADING.match(line)
+        if mdh and "、" in mdh.group(1):
+            findings.append((i, "WARN", "タイトル/キャッチコピー（見出し）に読点「、」を入れない。改行・句点・スペースで区切る", stripped))
+
+        # 対外文書の敬称：クライアント名は「様」
+        if HONORIFIC_SAN.search(line):
+            findings.append((i, "WARN", "対外文書の敬称は「様」。クライアント名が「さん」になっていないか確認", stripped))
 
         if sns_mode:
             if HASHTAG.search(line):

@@ -23,3 +23,10 @@
 - 根本原因: 三層構造（正本docs/→ミラーNotion→実務Drive）の実装が半分止まり。特に `docs/company/` が正本宣言なのに実質空（sales-strategy 1本のみ）。
 - 最優先: Drive内 pass+.txt（平文パスワード疑い）の処理 → docs/company/ 正本実体化（P1）→ Notion旧定義8ページ矯正（P2）→ Drive整理（P3）→ 月1仕分けの自動化（P4）。
 - 眠っている資産: Drive休眠クライアントフォルダ約30個＝営業戦略2026「休眠掘り起こし」の一次材料。Notion顧客管理DBへの接続が宿題。
+
+## 2026-07-07 P1完了: docs/company/ 正本を実体化
+- `docs/company/` に正本4ファイルを作成: README.md（正本宣言・ミラー関係・更新ルール）／identity.md（会社定義・看板2枚・NGリスト）／services.md（サービスの階段と各商品の置き場）／results.md（実績の正64社・4.03億と数字ルール）。
+- 出典: handoff/background/concept-summary.html（2026年6月制定の再定義文書）＋CLAUDE.md 1章。concept-summary自身が指す正本名 identity.md に合わせた。
+- CLAUDE.md 1章の正本ポインタを更新（handoff＝共有用ミラーに降格、正本はdocs/company/一本）。
+- Notion情報マップ（37c53269fc5e81c3…）の「※整備中」を解消し、引用元をdocs/company/の3ファイルに更新。「未整備の間はサービス資料マスター原本」の代理指定を廃止。
+- 残課題: Notionサービス資料マスター原本の旧定義（R-1 Entry）矯正はP2で実施。情報マップ記載の docs/go-to-market/ はローカルに未作成（実体は docs/company/sales-strategy-2026.md と docs/_knowledge/）。

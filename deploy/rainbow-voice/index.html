@@ -53,24 +53,34 @@
   .agenda .at{font-weight:700;font-size:1.1rem}
   .agenda .ad{color:var(--stone);font-weight:300;font-size:.85rem;grid-column:2}
 
-  /* company map */
-  .map{margin-top:1.6rem;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:1px;
-    background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;position:relative;max-width:1120px;width:100%}
-  .quad{background:var(--bg);padding:1.15rem 1.25rem}
-  section:nth-child(even) .quad{background:var(--cream)}
-  .quad .qh{display:flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.02rem;margin-bottom:.75rem}
-  .quad .qh b{width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block}
-  .chips{display:flex;flex-wrap:wrap;gap:.4rem}
-  .chip{font-size:.73rem;padding:.28rem .6rem;border:1px solid var(--border);border-radius:999px;background:var(--white);color:#4a453e;white-space:nowrap;font-weight:400}
+  /* company map — 2x2 quadrants around a center card (no overlap) */
+  .cmap{margin-top:1.5rem;display:grid;grid-template-columns:1fr minmax(288px,360px) 1fr;grid-template-rows:auto auto;
+    gap:1.4rem 1.6rem;max-width:1180px;width:100%;align-items:start}
+  .cq.tl{grid-column:1;grid-row:1}.cq.tr{grid-column:3;grid-row:1}
+  .cq.bl{grid-column:1;grid-row:2}.cq.br{grid-column:3;grid-row:2}
+  .cq .qh{display:flex;align-items:center;gap:.65rem;font-weight:700;font-size:1.08rem;margin-bottom:.85rem}
+  .qi{width:32px;height:32px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  section:nth-child(even) .qi{background:#fff}
+  .qi svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .chips{display:flex;flex-wrap:wrap;gap:.44rem}
+  .chip{font-size:.75rem;padding:.3rem .72rem;border:1px solid var(--border);border-radius:999px;background:var(--white);color:#4a453e;white-space:nowrap;font-weight:400}
   section:nth-child(even) .chip{background:var(--bg)}
   .chip.hl{background:var(--yellow);border-color:var(--yellow-deep);color:#171717;font-weight:600}
-  .center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;background:var(--white);
-    border:1px solid var(--border);border-radius:14px;padding:1rem 1.6rem;text-align:center;box-shadow:0 10px 40px rgba(120,90,60,.12);width:min(46%,340px)}
-  .center .bl{font-family:var(--en);font-weight:300;letter-spacing:.2em;font-size:1.5rem;line-height:1}
-  .center .tg{font-family:var(--en);color:var(--accent-dark);font-size:.72rem;letter-spacing:.05em;margin:.35rem 0 .5rem}
-  .center .cd{font-size:.72rem;color:var(--stone);font-weight:400;line-height:1.5;border-top:1px solid var(--border);padding-top:.5rem}
-  .mapfoot{display:flex;gap:2.2rem;flex-wrap:wrap;margin-top:1.1rem;font-size:.8rem;color:var(--stone)}
-  .mapfoot b{color:var(--ink);font-weight:700}
+  .ccard{grid-column:2;grid-row:1 / span 2;align-self:center;justify-self:center;background:var(--yellow);
+    border-radius:22px;padding:2rem 2.2rem;text-align:center;width:100%;box-shadow:0 18px 50px rgba(201,224,0,.32)}
+  .ccard .ruby{font-family:var(--ja);font-size:.7rem;letter-spacing:.34em;color:#3a4a00;font-weight:600;margin-bottom:.15rem;padding-left:.34em}
+  .ccard .bl{font-family:var(--en);font-weight:700;letter-spacing:.12em;font-size:clamp(1.7rem,3vw,2.5rem);line-height:1;color:#131400}
+  .ccard .tg{font-family:var(--en);color:#26310a;font-size:.95rem;letter-spacing:.04em;margin-top:.55rem;font-weight:500}
+  .ccard .cdiv{height:1px;background:rgba(19,20,0,.28);margin:1.05rem auto;width:80%}
+  .ccard .cd{font-size:.82rem;color:#1c2408;font-weight:600;line-height:1.65}
+  .cfoot{display:flex;flex-wrap:wrap;margin-top:1.7rem;border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:1180px;width:100%;background:var(--white)}
+  section:nth-child(even) .cfoot{background:var(--bg)}
+  .cfoot .fi{display:flex;align-items:center;gap:.75rem;padding:1.05rem 1.5rem;flex:1;min-width:220px;font-size:.92rem;font-weight:700;color:var(--ink)}
+  .cfoot .fi + .fi{border-left:1px solid var(--border)}
+  .cfoot .fic{width:34px;height:34px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  section:nth-child(even) .cfoot .fic{background:#fff}
+  .cfoot .fic svg{width:17px;height:17px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .cfoot .fi small{display:block;font-weight:400;color:var(--stone);font-size:.72rem;line-height:1.4}
 
   /* two edges */
   .edges{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem;max-width:960px}
@@ -156,9 +166,10 @@
   .nav a:hover{background:var(--accent-light);transform:scale(1.3)}
   @media(max-width:820px){
     section{padding:7vh 6vw}
-    .map,.edges,.under,.method{grid-template-columns:1fr}
+    .cmap,.edges,.under,.method{grid-template-columns:1fr}
+    .cmap .cq,.ccard{grid-column:1!important;grid-row:auto!important}
+    .cfoot .fi + .fi{border-left:none;border-top:1px solid var(--border)}
     .flow{grid-template-columns:1fr 1fr}
-    .center{position:static;transform:none;width:auto;margin:1px 0;box-shadow:none;grid-column:1/-1}
     .posmap{grid-template-columns:1fr}.yaxis{writing-mode:horizontal-tb;transform:none}
     .nav{display:none}.num{right:6vw}
   }
@@ -199,38 +210,44 @@
   <span class="dots"></span><span class="num">02 / 08</span>
   <div class="kicker">About us</div>
   <h2>経営者の右腕をまるごと。<br>バレンサーの全体像。</h2>
-  <div class="map">
-    <div class="quad">
-      <div class="qh"><b></b>ブランド・組織</div>
+  <div class="cmap">
+    <div class="cq tl">
+      <div class="qh"><span class="qi"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>ブランド・組織</div>
       <div class="chips">
         <span class="chip hl">ブランド戦略</span><span class="chip">MVV策定</span><span class="chip">リブランディング</span><span class="chip">採用ブランディング</span><span class="chip">組織開発</span><span class="chip hl">経営伴走</span><span class="chip">1on1設計</span><span class="chip">社内報</span><span class="chip">読書会</span><span class="chip">ワークショップ</span><span class="chip">中期経営計画</span>
       </div>
     </div>
-    <div class="quad">
-      <div class="qh"><b></b>DX・AI</div>
+    <div class="cq tr">
+      <div class="qh"><span class="qi"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span>DX・AI</div>
       <div class="chips">
         <span class="chip hl">業務自動化</span><span class="chip">Notion構築</span><span class="chip">Slack設計</span><span class="chip">Google Workspace導入</span><span class="chip">Make</span><span class="chip">Zapier</span><span class="chip">n8n</span><span class="chip">AppSheet</span><span class="chip hl">バレンサーAI</span><span class="chip hl">Claude活用</span><span class="chip">OCR</span><span class="chip">ナレッジAI</span><span class="chip">コーチングAI</span>
       </div>
     </div>
-    <div class="quad">
-      <div class="qh"><b></b>Web・SNS</div>
+    <div class="cq bl">
+      <div class="qh"><span class="qi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>Web・SNS</div>
       <div class="chips">
         <span class="chip">Webサイト制作</span><span class="chip">EC構築</span><span class="chip">next.js</span><span class="chip">SNS運用設計</span><span class="chip">動画制作</span><span class="chip hl">AIアニメ</span><span class="chip">広告運用</span><span class="chip">オウンドメディア</span>
       </div>
     </div>
-    <div class="quad">
-      <div class="qh"><b></b>経営・承継</div>
+    <div class="cq br">
+      <div class="qh"><span class="qi"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg></span>経営・承継</div>
       <div class="chips">
-        <span class="chip">事業承継準備</span><span class="chip hl">M&A磨き上げ</span><span class="chip">5カ年計画</span><span class="chip">企業価値診断</span><span class="chip">PMI</span><span class="chip">AI導入補助金2026</span><span class="chip">TSUGI&PARTNERS連携</span>
+        <span class="chip">事業承継準備</span><span class="chip hl">M&A磨き上げ</span><span class="chip">5カ年計画</span><span class="chip">企業価値診断</span><span class="chip">PMI</span><span class="chip">AI導入補助金2026</span><span class="chip">TSUGI&PARTNERS連携（M&A出口）</span>
       </div>
     </div>
-    <div class="center">
+    <div class="ccard">
+      <div class="ruby">バレンサー</div>
       <div class="bl">BALENCER</div>
       <div class="tg">for loved ones.</div>
-      <div class="cd">経営者の右腕を外注する<br>ブランディングAXカンパニー</div>
+      <div class="cdiv"></div>
+      <div class="cd">経営者の右腕がつとまる<br>ブランディングAXカンパニー</div>
     </div>
   </div>
-  <div class="mapfoot"><span><b>設立6年半</b></span><span>大阪本社 ／ <b>東京・福岡</b>もサブで対応</span><span><b>全員 Claude Code</b> が使えるチーム</span></div>
+  <div class="cfoot">
+    <span class="fi"><span class="fic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>設立6年半</span>
+    <span class="fi"><span class="fic"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>大阪本社<small>東京・福岡もサブで対応</small></span>
+    <span class="fi"><span class="fic"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></span>全員 Claude Code 使えるチーム</span>
+  </div>
 </section>
 
 <!-- S4 なぜ選ばれるか -->

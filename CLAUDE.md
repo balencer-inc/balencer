@@ -76,15 +76,24 @@
 
 ## 3. ファイルの保存ルール
 
-成果物は必ず決められた場所へ。迷ったら下表に従う。
+成果物は必ず決められた場所へ。**まず用件を4つの箱のどれかに当てはめる**:
+
+| 箱 | 用件 | 作業場所 |
+|---|---|---|
+| 🏢 バレンサー自社 | 会社定義・サービス・戦略・自社サイト | `docs/company/`（正本）ほか下表 |
+| 🔗 TSUGI | TSUGI＆PARTNERSの仕事 | `docs/tsugi/` |
+| 🤝 顧客 | どちらかの顧客の仕事 | `docs/clients/<顧客スラッグ>/`（**あればそこで、なければ作って作業**。ルール: clients/README.md） |
+| 💡 未分類 | 思いつき・まだ箱が決まらない材料 | `docs/inbox/`（通過点。月次仕分けで検出） |
+
+種類別の置き場所（上の箱の中で使う）:
 
 | 種類 | 置き場所 |
 |---|---|
 | LP（HTML一式・画像） | `docs/<プロダクト>-lp/` |
 | サービスページ（HP中核） | `docs/products/<サービス>/` |
-| 提案書・営業デッキ | `docs/proposals/<案件>/`（無ければ作る） |
-| 見積 | `docs/estimates/<顧客>-<年>/` |
-| 会社の定義・戦略の正本 | `docs/company/` ／ `docs/handoff/` |
+| 提案書・営業デッキ | 新規は `docs/clients/<顧客>/01_提案/`。既存の `docs/proposals/<案件>/` はそのまま |
+| 見積 | 新規は `docs/clients/<顧客>/02_契約・見積/`。既存の `docs/estimates/` はそのまま |
+| 会社の定義・戦略の正本 | `docs/company/`（handoffは共有用ミラー） |
 | サーバーPHP（LPリード処理） | `server-scripts/`（実値configはgitignore） |
 | バレンサー本体サイト（コード） | `src/`（※本番はWordPress+Elementor。静的HTMLはFTP公開） |
 | outreach アプリ（コード） | `apps/outreach/` |

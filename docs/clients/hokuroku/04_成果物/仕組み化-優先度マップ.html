@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>北麓｜仕組み化 優先度マップ</title>
+<style>
+  :root{
+    --ink:#1c2530; --sub:#5b6675; --line:#e2e6ec; --bg:#f7f8fa; --card:#fff;
+    --honmei:#2f6f8f;   /* 本命 くすんだブルー */
+    --shisan:#b98a3e;   /* 資産化 */
+    --iriguchi:#5a8f6b; /* 入口 */
+    --kishutsu:#aab3bf;  /* 既出①-④ */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;padding:32px 40px 48px}
+  .wrap{max-width:1180px;margin:0 auto}
+  header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:8px;flex-wrap:wrap;gap:8px}
+  h1{font-size:26px;letter-spacing:.02em}
+  .meta{font-size:12px;color:var(--sub);text-align:right}
+  .lead{font-size:13px;color:var(--sub);margin:14px 0 20px}
+  .lead b{color:var(--ink)}
+
+  /* 関わり方バー */
+  .stance{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--honmei);border-radius:10px;padding:14px 18px;margin-bottom:24px}
+  .stance h3{font-size:12.5px;font-weight:700;margin-bottom:9px}
+  .stance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:760px){.stance-grid{grid-template-columns:1fr}}
+  .st{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:11.5px;color:var(--sub)}
+  .st b{color:var(--ink);font-size:12px}
+  .badge{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:12px;line-height:1;color:var(--ink)}
+  .b-light{background:var(--ink)} .b-light::before{content:"";width:9px;height:9px;border-radius:50%;background:#fff;display:none}
+  .stance .tail{font-size:11.5px;color:var(--sub);margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+  .stance .tail b{color:var(--ink)}
+
+  .grid{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;align-items:start}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+  /* map */
+  .plot-shell{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 20px 12px}
+  .plot-title{font-size:13px;font-weight:700;margin-bottom:14px}
+  .plot{position:relative;width:100%;padding-top:88%;
+      background:linear-gradient(90deg,#eef0f3 0%,#f3f5f7 45%,#f0f5f2 100%),var(--card);
+      border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .plot .field{position:absolute;inset:0}
+  .qlabel{position:absolute;font-size:10.5px;color:#9aa4b1;font-weight:700;letter-spacing:.04em}
+  .zone{position:absolute;top:6px;font-size:10px;font-weight:700;letter-spacing:.02em;opacity:.9}
+  .axis-x{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--sub);font-weight:700}
+  .axis-y{position:absolute;top:50%;left:6px;transform:translateY(-50%) rotate(-180deg);writing-mode:vertical-rl;font-size:11px;color:var(--sub);font-weight:700}
+  .cross{position:absolute;background:var(--line)}
+  .cross.v{left:50%;top:0;bottom:0;width:1px}
+  .cross.h{top:50%;left:0;right:0;height:1px}
+  .dot{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:2px;width:0}
+  .dot i{position:relative;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;font-style:normal;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+  .dot i::after{position:absolute;top:-5px;right:-5px;width:15px;height:15px;border-radius:50%;background:#fff;border:1px solid var(--ink);font-size:10px;line-height:13px;color:var(--ink);font-style:normal;font-weight:700}
+  .lv-light i::after{content:"●"}
+  .lv-mid i::after{content:"◐"}
+  .lv-heavy i::after{content:"○"}
+  .dot span{font-size:10px;color:var(--ink);white-space:nowrap;background:rgba(255,255,255,.82);padding:0 3px;border-radius:3px;font-weight:600}
+  .dot.big i{width:38px;height:38px;font-size:15px}
+  .c-honmei i{background:var(--honmei)} .c-shisan i{background:var(--shisan)}
+  .c-iriguchi i{background:var(--iriguchi)} .c-kishutsu i{background:var(--kishutsu)}
+
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:11px;color:var(--sub)}
+  .legend b{display:inline-flex;align-items:center;gap:5px;font-weight:600;color:var(--ink)}
+  .swatch{width:11px;height:11px;border-radius:50%;display:inline-block}
+
+  /* list */
+  .col h2{font-size:13px;font-weight:700;margin:2px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .item{display:grid;grid-template-columns:26px 1fr auto;gap:9px;padding:8px 0;border-bottom:1px dashed var(--line);align-items:start}
+  .item:last-child{border-bottom:0}
+  .tag{width:24px;height:24px;border-radius:6px;color:#fff;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+  .t-honmei{background:var(--honmei)} .t-shisan{background:var(--shisan)}
+  .t-iriguchi{background:var(--iriguchi)} .t-kishutsu{background:var(--kishutsu)}
+  .item .name{font-size:13px;font-weight:700}
+  .item .desc{font-size:11.5px;color:var(--sub)}
+  .lvtag{font-size:14px;line-height:24px;color:var(--ink);white-space:nowrap}
+  .lvtag small{font-size:9.5px;color:var(--sub);display:block;line-height:1;text-align:center;margin-top:-2px}
+
+  .foot{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:900px){.foot{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .box h3{font-size:12.5px;font-weight:700;margin-bottom:8px}
+  .order{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px}
+  .order .step{background:var(--honmei);color:#fff;border-radius:20px;padding:3px 11px;font-weight:700}
+  .order .step.alt{background:#eef1f4;color:var(--ink)}
+  .order .arw{color:var(--sub)}
+  .note{font-size:11.5px;color:var(--sub)}
+  .note b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>北麓｜仕組み化 優先度マップ</h1>
+    <div class="meta">2026-07-10 定例用<br>バレンサー（阿部・ブランドプロデューサー / 月8時間）</div>
+  </header>
+  <p class="lead">
+    判断軸は<b>「オーナーの手がどれだけ空くか（＝誰かに渡せるか）」</b>（縦）×<b>実装のボリューム</b>（横）。
+    既出①〜④（グレー）も同じ盤上に。右上ほど「効いて、軽く手を付けられる」。
+    <b>今きつい工程はどこか</b>を藤橋さんに選んでいただく前提のたたき台です。
+  </p>
+
+  <!-- 関わり方の温度感 -->
+  <div class="stance">
+    <h3>阿部さんの関わり方の温度感 ── きっちり全部「別料金」ではありません</h3>
+    <div class="stance-grid">
+      <div class="st"><div class="badge">●</div><div><b>8時間内で作れる</b><br>ルール策定・テンプレ・軽いNotion。月8時間の枠でそのまま巻き取る</div></div>
+      <div class="st"><div class="badge">◐</div><div><b>設計は8時間内／実装は相談</b><br>中規模。段取り・設計まで枠内、作り込みは量を見て一緒に決める</div></div>
+      <div class="st"><div class="badge">○</div><div><b>実装は別立て</b><br>システム構築級。工数が別に出るので社内実装／外注／別途請負を相談</div></div>
+    </div>
+    <p class="tail">線引きは固定ではなく、<b>重さに応じて都度すり合わせ</b>。軽いものは巻き取り、重いものほど別立て。<b>際限なく増えて曖昧になるのは避ける</b>、という温度感です。</p>
+  </div>
+
+  <div class="grid">
+    <!-- MAP -->
+    <div class="plot-shell">
+      <div class="plot-title">効果 × 実装ボリューム マップ（●◐○＝関わり方）</div>
+      <div class="plot">
+        <div class="field">
+          <div class="cross v"></div><div class="cross h"></div>
+          <div class="zone" style="right:10px;color:var(--iriguchi)">軽い＝8h内で巻き取れる →</div>
+          <div class="zone" style="left:10px;color:#a98">← 重い＝実装は別立て寄り</div>
+          <div class="qlabel" style="top:26px;right:10px;">◎ 効く・軽い</div>
+          <div class="qlabel" style="bottom:24px;left:10px;">後回し</div>
+          <div class="axis-x">← 実装が重い ／ 軽い →</div>
+          <div class="axis-y">オーナーの手が空く →</div>
+
+          <!-- 本命 -->
+          <div class="dot big c-honmei lv-mid" style="left:58%;top:12%"><i>A</i><span>制作進行テンプレ</span></div>
+          <div class="dot c-honmei lv-light" style="left:84%;top:26%"><i>B</i><span>データ管理ルール</span></div>
+          <div class="dot c-honmei lv-light" style="left:72%;top:22%"><i>C</i><span>外注台帳</span></div>
+          <!-- 資産化 -->
+          <div class="dot c-shisan lv-mid" style="left:60%;top:47%"><i>D</i><span>実績DB</span></div>
+          <div class="dot c-shisan lv-light" style="left:78%;top:60%"><i>E</i><span>多面展開</span></div>
+          <!-- 入口 -->
+          <div class="dot c-iriguchi lv-heavy" style="left:34%;top:42%"><i>F</i><span>一次対応自動化</span></div>
+          <!-- 既出 -->
+          <div class="dot c-kishutsu lv-heavy" style="left:30%;top:62%"><i>1</i></div>
+          <div class="dot c-kishutsu lv-mid" style="left:52%;top:54%"><i>2</i></div>
+          <div class="dot c-kishutsu lv-mid" style="left:46%;top:31%"><i>3</i></div>
+          <div class="dot c-kishutsu lv-mid" style="left:44%;top:72%"><i>4</i></div>
+        </div>
+      </div>
+      <div class="legend">
+        <b><span class="swatch" style="background:var(--honmei)"></span>本命（制作〜現場の空白）</b>
+        <b><span class="swatch" style="background:var(--shisan)"></span>資産化</b>
+        <b><span class="swatch" style="background:var(--iriguchi)"></span>営業入口</b>
+        <b><span class="swatch" style="background:var(--kishutsu)"></span>既出①〜④</b>
+        <b>●◐○＝関わり方（上の温度感）</b>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div class="col">
+      <h2>追加ネタ A〜F</h2>
+      <div class="item"><div class="tag t-honmei">A</div><div><div class="name">制作進行の標準化テンプレ</div><div class="desc">工程をNotionテンプレ＋チェックリスト化。進行管理をオーナー→鈴木さん/外注へ渡す</div></div><div class="lvtag">◐<small>実装相談</small></div></div>
+      <div class="item"><div class="tag t-honmei">B</div><div><div class="name">撮影データ・納品物の管理ルール</div><div class="desc">命名・保管・納品形式を決めるだけ。「あのデータどこ？」を消す</div></div><div class="lvtag">●<small>8h内</small></div></div>
+      <div class="item"><div class="tag t-honmei">C</div><div><div class="name">外注・パートナー台帳</div><div class="desc">外注費が売上の約半分＝生命線。単価・稼働・得意分野をDB化し発注判断を頭から出す</div></div><div class="lvtag">●<small>8h内</small></div></div>
+      <div class="item"><div class="tag t-shisan">D</div><div><div class="name">実績・ポートフォリオDB</div><div class="desc">過去映像を業種・用途でタグ付け。営業・提案・記事(④)に即転用</div></div><div class="lvtag">◐<small>実装相談</small></div></div>
+      <div class="item"><div class="tag t-shisan">E</div><div><div class="name">1案件→多面展開の運用ルール</div><div class="desc">メイキング/事例/短尺を型で取り出しSNS・メルマガ(④)へ。制作物が営業素材に</div></div><div class="lvtag">●<small>8h内</small></div></div>
+      <div class="item"><div class="tag t-iriguchi">F</div><div><div class="name">問い合わせ一次対応の自動化</div><div class="desc">フォーム→自動返信＋ヒアリング＋予約連携。③の入口パーツ</div></div><div class="lvtag">○<small>別立て</small></div></div>
+      <h2 style="margin-top:16px">既出（参考）</h2>
+      <div class="item"><div class="tag t-kishutsu">1</div><div><div class="name">ステップ/フォローメール自動化</div></div><div class="lvtag">○<small>別立て</small></div></div>
+      <div class="item"><div class="tag t-kishutsu">2</div><div><div class="name">顧客リストのDB化（鈴木さんの電話フォロー用）</div></div><div class="lvtag">◐<small>実装相談</small></div></div>
+      <div class="item"><div class="tag t-kishutsu">3</div><div><div class="name">営業プロセス設計（問い合わせ→引き継ぎ）</div></div><div class="lvtag">◐<small>実装相談</small></div></div>
+      <div class="item"><div class="tag t-kishutsu">4</div><div><div class="name">メルマガでの記事活用施策</div></div><div class="lvtag">◐<small>実装相談</small></div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="box">
+      <h3>提案する着手順（月8時間の使い方）</h3>
+      <div class="order">
+        <span class="step">A 制作進行</span><span class="arw">→</span>
+        <span class="step">B データ管理</span><span class="arw">→</span>
+        <span class="step">D 実績DB</span><span class="arw">→</span>
+        <span class="step alt">C 外注台帳</span><span class="arw">→</span>
+        <span class="step alt">F 一次対応</span><span class="arw">→</span>
+        <span class="step alt">E 多面展開</span>
+      </div>
+      <p class="note" style="margin-top:10px">まず<b>●8h内で巻き取れる軽いもの</b>で手応えを作り、効果の大きい<b>◐中規模</b>は設計まで進めて実装量を見てから決める。<b>○システム級</b>は別立てで相談。後回し推奨：G 新規サービス商品化・H ナレッジ蓄積（過負荷が減ってから）。</p>
+    </div>
+    <div class="box">
+      <h3>確定の前提（次回ここを確認）</h3>
+      <p class="note">
+        すべて仮説です。<b>①鈴木さん・外注体制の実態</b>（どこまで渡せるか）、
+        <b>②藤橋さんが「今いちばんきつい工程」はどこか</b> ─ この2点を確認してから着手対象を確定します。
+        マップ上の位置（効果・実装ボリューム）も、実態を聞いて動かす前提です。
+      </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

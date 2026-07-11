@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>次回ご提案｜Clavis Partners 杉山様 × BALENCER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#1A1A1A; --accent-light:#D2D2D0; --accent-dark:#5C5C5A;
+    --yellow:#E6FF2F; --yellow-deep:#C9E000; --yellow-soft:rgba(230,255,47,.85);
+    --bg:#FFFFFF; --cream:#F5F5F4; --ink:#171717; --stone:#6E6E6C; --border:#E7E6E3; --white:#fff;
+    --ja:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+    --en:"Inter",-apple-system,system-ui,sans-serif; --hand:"Caveat",cursive;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--ja);color:var(--ink);background:var(--bg);line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:7vh 6vw 12vh}
+  .kicker{font-family:var(--en);letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;
+    color:var(--accent-dark);font-weight:500;margin-bottom:1.1rem;display:flex;align-items:center;gap:.8rem}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--accent)}
+  header{border-bottom:1px solid var(--border);padding-bottom:3rem;margin-bottom:3rem}
+  .logo{font-family:var(--en);font-weight:300;letter-spacing:.24em;font-size:1rem;margin-bottom:2.4rem;display:flex;justify-content:space-between;color:var(--stone)}
+  h1{font-weight:700;font-size:clamp(1.7rem,4.4vw,2.6rem);line-height:1.4;letter-spacing:.01em}
+  h1 .hl{color:var(--ink);background:linear-gradient(transparent 62%, var(--yellow-soft) 62%);padding:0 .06em}
+  .sub{color:var(--stone);margin-top:1.3rem;font-weight:300;max-width:60ch;font-size:.95rem}
+  h2{font-weight:700;font-size:1.35rem;margin:3.4rem 0 1.3rem;display:flex;align-items:center;gap:.7rem}
+  h2 .bar{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+  .num{font-family:var(--en);color:var(--accent-dark);font-size:.9rem;font-weight:600}
+  p.body{color:#3a352f;font-weight:300;max-width:64ch;margin-bottom:1rem}
+  p.body b{font-weight:700;color:var(--ink)}
+  /* purpose box */
+  .purpose{background:var(--cream);border:1px solid var(--border);border-left:4px solid var(--yellow-deep);
+    border-radius:12px;padding:1.8rem 2rem;margin:1.4rem 0}
+  .purpose .lead{font-weight:700;font-size:1.12rem;line-height:1.7}
+  .purpose .lead .hl{background:linear-gradient(transparent 60%, var(--yellow-soft) 60%);padding:0 .05em}
+  .purpose p{margin-top:1rem;color:#3a352f;font-weight:300;font-size:.92rem;max-width:64ch}
+  /* phases */
+  .phase{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.9rem 1.9rem;margin-top:1.2rem}
+  .phase .ph-head{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:1rem;margin-bottom:1.1rem}
+  .phase .pk{font-family:var(--en);font-size:.72rem;letter-spacing:.14em;color:#fff;background:var(--accent);
+    font-weight:600;padding:.28rem .7rem;border-radius:999px}
+  .phase .pt{font-weight:700;font-size:1.15rem}
+  .phase .pn{font-size:.82rem;color:var(--stone);font-weight:300;width:100%}
+  .menu{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+  .menu li{position:relative;padding-left:1.4rem;font-size:.9rem;color:#3a352f;font-weight:300;line-height:1.7}
+  .menu li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;
+    border:1.5px solid var(--accent-light);background:#fff}
+  .menu li b{font-weight:700;color:var(--ink)}
+  .menu li.opt{color:var(--stone)}
+  .menu li.opt::before{border-style:dashed;border-color:var(--accent-light)}
+  .menu li .tag-opt{font-family:var(--en);font-size:.62rem;letter-spacing:.06em;color:var(--accent-dark);
+    border:1px solid var(--border);border-radius:999px;padding:.05rem .5rem;margin-right:.4rem;vertical-align:.08em}
+  .deliv{margin-top:1.2rem;padding-top:1rem;border-top:1px dashed var(--border);font-size:.82rem;color:var(--accent-dark);font-weight:500}
+  .deliv .en{font-family:var(--en);letter-spacing:.08em;font-size:.68rem;text-transform:uppercase;color:var(--stone);margin-right:.6rem}
+  .pick{font-size:.83rem;color:var(--stone);font-weight:300;margin:1rem 0 0;padding-left:1.4rem;position:relative}
+  .pick::before{content:"\261F";position:absolute;left:0;color:var(--accent-dark)}
+  /* sandwich */
+  .sandwich{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:1.3rem 0;font-size:.85rem}
+  .sandwich .b{padding:.6rem 1.1rem;border-radius:999px;font-weight:500}
+  .sandwich .r{background:var(--cream);border:1px solid var(--border)}
+  .sandwich .p{background:#fff;border:1px dashed var(--accent-light);color:var(--accent-dark)}
+  .sandwich .ar{color:var(--accent-dark);font-family:var(--en)}
+  ul.plain{list-style:none;display:flex;flex-direction:column;gap:.6rem;max-width:64ch}
+  ul.plain li{position:relative;padding-left:1.3rem;font-size:.9rem;color:#3a352f;font-weight:300;line-height:1.7}
+  ul.plain li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--accent-light)}
+  ul.plain li b{font-weight:700;color:var(--ink)}
+  .close{background:var(--cream);border-radius:14px;padding:1.8rem 2rem;margin-top:3rem;font-weight:500;color:var(--ink)}
+  .close .hand{font-family:var(--hand);color:var(--accent-dark);font-size:1.35rem;display:block;margin-top:.4rem}
+  footer{margin-top:3.5rem;padding-top:1.6rem;border-top:1px solid var(--border);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.75rem;color:var(--stone);font-family:var(--en);letter-spacing:.05em}
+  footer a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid var(--border)}
+  @media(max-width:640px){.wrap{padding:6vh 6vw 10vh}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo"><span>BALENCER</span><span>for loved ones.</span></div>
+    <div class="kicker">Proposal ｜ 株式会社 Clavis Partners 杉山 康之 様</div>
+    <h1>杉山さん個人に集まる「判断」と「集客」を、<br><span class="hl">仕組みと組織</span>に移していく。</h1>
+    <p class="sub">前回のお話と、いただいた会社資料（会社紹介・支援実績・2016年の修士論文「RMアウトソーシング事業」）を読み込みました。今回は、何を目的に何へ取り組むかをご提示し、方向性のフィットを確かめる回にできればと思います。テーマは幅広く並べています。全部やるのではなく、この中から一緒に優先順位をつけて進めます。</p>
+  </header>
+
+  <h2><span class="bar"></span><span class="num">01</span>今回の位置づけ</h2>
+  <p class="body">前回は課題をうかがう回でした。今回は、<b>こちらから「こう関わらせてください」を具体でお出しする回</b>です。</p>
+  <ul class="plain">
+    <li>前回の共通認識：紹介依存からの脱却／3年で3億／社長ブランディング／暗黙知の共有</li>
+    <li>いただいた資料から見えたこと：会社の事業の原型は、<b>2016年の修士論文で描いた「RMアウトソーシング事業」</b>。約10年前の設計思想が、いまもそのまま会社の旗になっている。</li>
+  </ul>
+
+  <h2><span class="bar"></span><span class="num">02</span>お手伝いの目的</h2>
+  <div class="purpose">
+    <div class="lead"><span class="hl">杉山さん個人に集まっている「判断」と「集客」を、仕組みと組織に移し、紹介に頼らなくても伸びる会社にする。</span></div>
+    <p>その起点として、10年前に描いた会社の旗を、いまの時代に定義し直すところから始めます。3期6,000万までの伸びは杉山さんの専門性と人脈の成果です。ただし次の3億は、同じやり方の延長では届きません。集客も最終判断も杉山さん個人にぶら下がっているからです。ここを個人から仕組みへ移すのが、私たちの役割です。</p>
+  </div>
+
+  <h2><span class="bar"></span><span class="num">03</span>ロードマップと、取り組むテーマ</h2>
+  <p class="body">前回お見せした3段階（PHASE 0/1/2）を、具体的なテーマまで開きました。<b>上から着手します。各フェーズのテーマは、この中から一緒に選びます。</b></p>
+
+  <div class="phase">
+    <div class="ph-head">
+      <span class="pk">PHASE 0</span><span class="pt">旗の再定義（最初の90日）</span>
+      <span class="pn">これをやらないと、発信も商品も組織も全部ぼやける。全ての起点。</span>
+    </div>
+    <ul class="menu">
+      <li><b>事業ポジショニングの再定義</b> ── 2016年修論の前提（RMアウトソーシング）が、2026年の市場（コロナ後・インバウンド回復・人手不足・AI・RMSツールの進化）でも通用するか検証し、旗を描き直す</li>
+      <li><b>顧客セグメントの再整理</b> ── 施設タイプ×規模×関与の深さで、どこを主戦場にするか</li>
+      <li><b>競合ポジショニングの整理</b> ── 他のRM会社・RMSツールとの違い、言えることを明確に</li>
+      <li><b>提供価値の言語化</b> ── 洞察力／協力／革新の3価値を、いまの言葉に置き直す</li>
+      <li><b>社長ブランディングの軸</b> ── 「杉山康之といえば◯◯」の第一想起を決める</li>
+      <li><b>ビジョンの言語化</b> ── 3年後3億の絵、何屋になっていたいか</li>
+    </ul>
+    <div class="deliv"><span class="en">Output</span>再定義した会社の旗（1枚）＋社長ブランディングの軸</div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-head">
+      <span class="pk">PHASE 1</span><span class="pt">仕組みにする</span>
+      <span class="pn">個人稼働に頼らず回る形へ。</span>
+    </div>
+    <ul class="menu">
+      <li><b>RM判断基準の言語化</b> ── 相場観／調整ルール（OTA・競合・残室日数）／例外判断を、施設タイプ別の型に</li>
+      <li><b>レポーティングの標準化</b> ── 週次・隔週オーナー報告・月次のフォーマット統一</li>
+      <li><b>業務委託12名のオペレーション標準化</b> ── 定型作業をチェックリスト＋テンプレに</li>
+      <li><b>新規案件の立ち上げ手順化</b> ── オンボーディングの型（立ち上げが早く・ブレなく）</li>
+      <li><b>看板商品の設計</b> ── HOTEL LAB.RM を含む提供メニューの再設計</li>
+      <li><b>集客導線の作り直し</b> ── GA4導入 → 資料DL→相談のCVゼロの原因を可視化 → 設計し直し</li>
+      <li><b>広告・SEO・記事の費用対効果の可視化</b> ── 続ける・止める・作り直すを数字で判断</li>
+      <li><b>軽い入口の設計</b> ── 診断・チェックリストなど、いきなり無料相談ではない一段</li>
+      <li class="opt"><span class="tag-opt">状況次第</span><b>判断基準のAI化</b> ── 委託チームが一次判断できる社内AI。後輩の方の動き次第で役割が被らないよう、お役に立てる範囲で</li>
+    </ul>
+    <div class="deliv"><span class="en">Output</span>RM判断ガイド／標準オペ手順／改善した集客導線</div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-head">
+      <span class="pk">PHASE 2</span><span class="pt">展開する</span>
+      <span class="pn">紹介以外の入口を増やし、ビジョンに沿った戦い方へ。</span>
+    </div>
+    <ul class="menu">
+      <li><b>Note／SNSの発信の型づくり</b> ── 杉山さんは素材出しだけ、記事化はこちら、週1本目安</li>
+      <li><b>実績・登壇・講義の資産化</b> ── すでに強いのに使い切れていない資産を、営業に効く形に</li>
+      <li><b>プロフィール・会社サイトの再設計</b> ── 個人が立つ見せ方へ</li>
+      <li><b>サービスのパッケージ化</b> ── 高単価型／型で回せる標準パッケージの2階建て</li>
+      <li><b>新チャネルの開拓</b> ── 法人・オンライン・仲間づくりなど</li>
+      <li><b>正社員3名の組織設計</b> ── 役割・採用基準・育成の道筋。AI・標準化が進むほど採用ハードルは下がる</li>
+      <li><b>採用ブランディング</b> ── RM人材を採り・育てる型</li>
+      <li class="opt"><span class="tag-opt">状況次第</span><b>AI・自動化の展開</b></li>
+    </ul>
+    <div class="deliv"><span class="en">Output</span>発信の仕組み／サービスメニュー／組織プラン</div>
+  </div>
+
+  <p class="pick">各テーマの詳しい中身（狙い・やること・成果物・杉山さんの負担）は、別紙「取り組み具体案」に。まずは方向性が合うかを確認し、そこからテーマの優先順位を一緒に決めます。</p>
+
+  <h2><span class="bar"></span><span class="num">04</span>進め方</h2>
+  <ul class="plain">
+    <li><b>毎月2回ほどの打ち合わせ</b>を軸に、あいだはチャットで随時。手を動かすのはこちら、杉山さんは壁打ちと素材出しが中心</li>
+    <li><b>制作物は伴走に挟む</b>：作って終わりにしない</li>
+  </ul>
+  <div class="sandwich">
+    <span class="b r">① 戦略・言語化</span><span class="ar">→</span>
+    <span class="b p">② 制作・実装（都度）</span><span class="ar">→</span>
+    <span class="b r">③ 育成・定着</span>
+  </div>
+  <p class="body">どの頻度・どの関わり方がやりやすいかは、この場で擦り合わせさせてください。</p>
+
+  <h2><span class="bar"></span><span class="num">05</span>期間について（正直な温度感）</h2>
+  <ul class="plain">
+    <li>入口のハードルを下げる意味で「<b>まず半年から</b>」とお伝えしています</li>
+    <li>ただ実際は、複数年ご一緒する中で<b>やっと形が固まる</b>ことが多いです。旗の再定義も、発信も、組織も、続けて初めて効くものだからです</li>
+    <li>縛るための約束ではありません。<b>毎月「関わってよかった」と思える成果物を必ず残します。</b>続ける価値は毎月、成果で判断してください</li>
+  </ul>
+
+  <div class="close">
+    まずは方向性のフィット。そこがそろえば、テーマの優先順位と進め方を一緒に詰めていきましょう。
+    <span class="hand">正しい順番で、1つずつ。</span>
+  </div>
+
+  <footer>
+    <span>BALENCER ｜ for loved ones.</span>
+    <span><a href="初回デッキ.html">初回デッキ</a> ・ <a href="プラン.html">プラン</a></span>
+  </footer>
+
+</div>
+</body>
+</html>

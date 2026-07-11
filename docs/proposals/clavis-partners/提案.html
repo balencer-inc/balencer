@@ -11,60 +11,68 @@
   :root{
     --ink:#171717; --stone:#6E6E6C; --accent-dark:#3f3f3d; --line:#E4E3E0;
     --bg:#FFFFFF; --cream:#F6F5F3; --paper:#FBFAF8;
+    --yellow:#E6FF2F; --yellow-deep:#C9E000;
     --ja:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
     --en:"Inter",-apple-system,system-ui,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:var(--ja);color:var(--ink);background:var(--bg);line-height:1.9;-webkit-font-smoothing:antialiased;font-weight:400}
-  .wrap{max-width:920px;margin:0 auto;padding:8vh 6vw 14vh}
+  .wrap{max-width:1120px;margin:0 auto;padding:8vh 6vw 14vh}
   .kicker{font-family:var(--en);letter-spacing:.24em;text-transform:uppercase;font-size:.7rem;
     color:var(--stone);font-weight:500;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
-  .kicker::before{content:"";width:26px;height:1px;background:var(--ink)}
+  .kicker::before{content:"";width:30px;height:3px;background:var(--yellow-deep);border-radius:2px}
   header{border-bottom:1px solid var(--line);padding-bottom:3.2rem;margin-bottom:3.4rem}
-  .logo{font-family:var(--en);font-weight:300;letter-spacing:.26em;font-size:.95rem;margin-bottom:2.6rem;display:flex;justify-content:space-between;color:var(--stone)}
-  h1{font-weight:700;font-size:clamp(1.65rem,4.2vw,2.5rem);line-height:1.5;letter-spacing:.01em}
-  .sub{color:var(--accent-dark);margin-top:1.4rem;font-weight:300;max-width:62ch;font-size:.96rem}
-  h2{font-weight:700;font-size:1.3rem;margin:3.6rem 0 1.3rem;display:flex;align-items:baseline;gap:.8rem}
+  .logo{margin-bottom:2.6rem;display:flex;justify-content:space-between;align-items:center}
+  .logo img{height:24px;width:auto;display:block}
+  .logo .tag{font-family:var(--en);font-weight:300;letter-spacing:.14em;font-size:.82rem;color:var(--stone)}
+  h1{font-weight:700;font-size:clamp(1.7rem,4vw,2.55rem);line-height:1.5;letter-spacing:.01em;max-width:24ch}
+  .sub{color:var(--accent-dark);margin-top:1.4rem;font-weight:300;max-width:64ch;font-size:.96rem}
+  h2{font-weight:700;font-size:1.32rem;margin:3.6rem 0 1.6rem;display:flex;align-items:baseline;gap:.8rem;
+    position:relative;padding-bottom:.9rem}
+  h2::after{content:"";position:absolute;left:0;bottom:0;width:46px;height:3px;background:var(--yellow-deep);border-radius:2px}
   .n{font-family:var(--en);color:var(--stone);font-size:.85rem;font-weight:600;letter-spacing:.05em}
-  p.body{color:#39352f;font-weight:300;max-width:64ch;margin-bottom:1rem}
+  p.body{color:#39352f;font-weight:300;max-width:70ch;margin-bottom:1rem}
   p.body b,li b{font-weight:700;color:var(--ink)}
-  /* lists */
-  ul.plain{list-style:none;display:flex;flex-direction:column;gap:.7rem;max-width:66ch}
+  ul.plain{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.7rem 2.4rem}
   ul.plain li{position:relative;padding-left:1.35rem;font-size:.92rem;color:#39352f;font-weight:300;line-height:1.75}
   ul.plain li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--ink);opacity:.35}
-  /* recap box */
+  /* recap */
   .recap{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.7rem 1.9rem;margin:.4rem 0 1.2rem}
-  .recap .rt{font-size:.78rem;font-weight:600;letter-spacing:.08em;color:var(--stone);margin-bottom:.9rem;font-family:var(--en);text-transform:uppercase}
-  .bridge{color:#39352f;font-weight:300;max-width:64ch;margin-top:1rem}
+  .recap .rt{font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--stone);margin-bottom:1rem;font-family:var(--en);text-transform:uppercase}
+  .diag{margin-top:1.2rem;padding-top:1.1rem;border-top:1px dashed var(--line);font-size:.9rem;color:#39352f;font-weight:300;line-height:1.75}
+  .diag b{font-weight:700;color:var(--ink)}
+  .score{display:inline-flex;align-items:baseline;gap:.15rem;font-family:var(--en);font-weight:700;color:var(--ink)}
+  .score .s{font-size:1.15rem}
+  .bars{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem}
+  .bars span{font-size:.76rem;color:var(--stone);background:#fff;border:1px solid var(--line);border-radius:6px;padding:.15rem .6rem}
+  .bars span.low{border-color:var(--yellow-deep);color:var(--ink);font-weight:500}
+  .bridge{color:#39352f;font-weight:300;max-width:70ch;margin-top:1.1rem}
   /* purpose */
-  .purpose{border-left:2px solid var(--ink);padding:.3rem 0 .3rem 1.4rem;margin:1.2rem 0}
-  .purpose .lead{font-weight:700;font-size:1.12rem;line-height:1.75}
-  .purpose p{margin-top:.9rem;color:#39352f;font-weight:300;font-size:.93rem;max-width:64ch}
+  .purpose{border-left:3px solid var(--yellow-deep);padding:.4rem 0 .4rem 1.5rem;margin:1.2rem 0}
+  .purpose .lead{font-weight:700;font-size:1.14rem;line-height:1.75;max-width:52ch}
+  .purpose p{margin-top:.9rem;color:#39352f;font-weight:300;font-size:.93rem;max-width:70ch}
   /* phases */
-  .phase{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.9rem 1.9rem;margin-top:1.1rem}
-  .phase .ph-head{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1.1rem}
+  .phase{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.9rem 2rem;margin-top:1.1rem}
+  .phase .ph-head{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1.2rem}
   .phase .pk{font-family:var(--en);font-size:.7rem;letter-spacing:.14em;color:#fff;background:var(--ink);
     font-weight:600;padding:.3rem .75rem;border-radius:6px}
   .phase .pt{font-weight:700;font-size:1.12rem}
   .phase .pn{font-size:.83rem;color:var(--stone);font-weight:300;width:100%}
-  .menu{list-style:none;display:flex;flex-direction:column;gap:.7rem}
-  .menu li{position:relative;padding-left:1.4rem;font-size:.9rem;color:#39352f;font-weight:300;line-height:1.75}
-  .menu li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:2px;border:1.5px solid #c9c7c2;background:#fff}
+  .menu{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.75rem 2.6rem}
+  .menu li{position:relative;padding-left:1.4rem;font-size:.89rem;color:#39352f;font-weight:300;line-height:1.7}
+  .menu li::before{content:"";position:absolute;left:0;top:.58em;width:7px;height:7px;border-radius:2px;border:1.5px solid #c9c7c2;background:#fff}
   .menu li.opt{color:var(--stone)}
   .menu li.opt::before{border-style:dashed}
-  .menu li .tag-opt{font-family:var(--en);font-size:.62rem;letter-spacing:.06em;color:var(--accent-dark);
+  .menu li .tag-opt{font-family:var(--en);font-size:.6rem;letter-spacing:.06em;color:var(--accent-dark);
     border:1px solid var(--line);border-radius:5px;padding:.05rem .5rem;margin-right:.45rem;vertical-align:.08em}
-  .deliv{margin-top:1.2rem;padding-top:1rem;border-top:1px dashed var(--line);font-size:.83rem;color:var(--accent-dark);font-weight:500}
+  .deliv{margin-top:1.3rem;padding-top:1rem;border-top:1px dashed var(--line);font-size:.83rem;color:var(--accent-dark);font-weight:500}
   .deliv .en{font-family:var(--en);letter-spacing:.1em;font-size:.66rem;text-transform:uppercase;color:var(--stone);margin-right:.6rem}
-  /* scope note */
-  .scope{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:1.5rem 1.8rem;margin-top:1.6rem;font-size:.9rem;color:#39352f;font-weight:300;line-height:1.8}
+  /* scope */
+  .scope{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:1.5rem 1.9rem;margin-top:1.6rem;font-size:.9rem;color:#39352f;font-weight:300;line-height:1.85;max-width:none}
   .scope b{font-weight:700;color:var(--ink)}
   /* plans */
-  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.4rem}
-  .plan{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.7rem 1.5rem;display:flex;flex-direction:column}
-  .plan.reco{border:1.5px solid var(--ink)}
-  .plan .badge{font-family:var(--en);font-size:.6rem;letter-spacing:.1em;font-weight:600;color:#fff;background:var(--ink);
-    align-self:flex-start;padding:.2rem .6rem;border-radius:5px;margin-bottom:.8rem}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.4rem}
+  .plan{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.7rem 1.6rem;display:flex;flex-direction:column}
   .plan .tag{font-family:var(--en);font-size:.68rem;letter-spacing:.12em;color:var(--stone);font-weight:600}
   .plan .rank{font-size:1.35rem;font-weight:700;margin:.15rem 0 .1rem}
   .plan .role{color:var(--accent-dark);font-weight:500;font-size:.9rem;margin-bottom:.9rem}
@@ -74,18 +82,18 @@
   .plan li{font-size:.82rem;color:#39352f;font-weight:300;padding-left:1.1rem;position:relative;line-height:1.65}
   .plan li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:#c2c0bb}
   .plan .who{margin-top:.9rem;font-size:.76rem;color:var(--stone);font-weight:400}
-  .plan-note{margin-top:1.2rem;font-size:.82rem;color:var(--stone);font-weight:300;line-height:1.8;max-width:66ch}
+  .plan-note{margin-top:1.3rem;font-size:.82rem;color:var(--stone);font-weight:300;line-height:1.85;max-width:74ch}
   .plan-note b{color:var(--accent-dark);font-weight:600}
   /* flow */
-  .flow{display:flex;flex-direction:column;gap:.7rem;margin-top:1rem;counter-reset:step}
-  .flow .f{display:flex;gap:1rem;align-items:baseline;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:1rem 1.3rem}
-  .flow .f .fn{font-family:var(--en);font-weight:600;color:var(--ink);font-size:.95rem;flex:none;width:1.4rem}
-  .flow .f .fd{font-size:.9rem;color:#39352f;font-weight:300}
+  .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+  .flow .f{display:flex;gap:.9rem;align-items:baseline;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.3rem}
+  .flow .f .fn{font-family:var(--en);font-weight:600;color:var(--ink);font-size:.95rem;flex:none}
+  .flow .f .fd{font-size:.88rem;color:#39352f;font-weight:300;line-height:1.6}
   .flow .f .fd b{font-weight:700;color:var(--ink)}
   footer{margin-top:3.8rem;padding-top:1.6rem;border-top:1px solid var(--line);
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.74rem;color:var(--stone);font-family:var(--en);letter-spacing:.05em}
   footer a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid var(--line)}
-  @media(max-width:720px){.plans{grid-template-columns:1fr}}
+  @media(max-width:760px){.plans,.flow,.menu,ul.plain{grid-template-columns:1fr}}
   @media(max-width:640px){.wrap{padding:6vh 6vw 10vh}}
 </style>
 </head>
@@ -93,14 +101,13 @@
 <div class="wrap">
 
   <header>
-    <div class="logo"><span>BALENCER</span><span>for loved ones.</span></div>
+    <div class="logo"><a href="https://balencer.jp/"><img src="balencer-logo.png" alt="BALENCER"></a><span class="tag">for loved ones.</span></div>
     <div class="kicker">Proposal ｜ 株式会社 Clavis Partners 御中</div>
     <h1>これからの取り組みと、成長ロードマップのご提案</h1>
     <p class="sub">前回のお打ち合わせを踏まえ、ご一緒できる取り組みとロードマップをまとめました。本日はこの内容を一緒に見ながら、進め方の方向性を擦り合わせられればと思います。</p>
   </header>
 
   <h2><span class="n">01</span>前回の振り返り</h2>
-  <p class="body">まず、前回どんなお話をしたかの振り返りから。</p>
   <div class="recap">
     <div class="rt">Recap ― 前回の共通認識</div>
     <ul class="plain">
@@ -110,6 +117,12 @@
       <li>会社ブランドより、<b>杉山さん個人を前面に出す社長ブランディング</b>が効きそう</li>
       <li>杉山さんの判断や暗黙知を、組織で共有できる形にしていきたい</li>
     </ul>
+    <div class="diag">
+      前回の簡易診断は <span class="score"><span class="s">53</span>/100</span>・<b>立て直し型</b>。専門性と実績は強い一方で、仕組みとデジタルが弱い、という現在地でした。
+      <div class="bars">
+        <span>ブランド 20</span><span>組織 13</span><span>集客 11</span><span class="low">デジタル 9（最も低い）</span>
+      </div>
+    </div>
   </div>
   <p class="bridge">この前回のお話を踏まえて、<b>ご一緒するとしたら、こんなテーマとロードマップで進められるのでは</b>というものを考えてきました。今日はこれを一緒に見ていただいて、方向性を議論できればと思っています。</p>
 
@@ -128,7 +141,7 @@
       <span class="pn">これをやらないと、発信も商品も組織も全部ぼやける。全ての起点。</span>
     </div>
     <ul class="menu">
-      <li><b>事業ポジショニングの再定義</b> ── 10年前に描いた事業の原型（RMアウトソーシング）が、いまの市場（コロナ後・インバウンド回復・人手不足・AI・RMSツールの進化）でも通用するか検証し、旗を描き直す</li>
+      <li><b>事業ポジショニングの再定義</b> ── 10年前の事業の原型（RMアウトソーシング）が、いまの市場（コロナ後・インバウンド回復・人手不足・AI・RMSツールの進化）でも通用するか検証し、旗を描き直す</li>
       <li><b>顧客セグメントの再整理</b> ── 施設タイプ×規模×関与の深さで、どこを主戦場にするか</li>
       <li><b>競合ポジショニングの整理</b> ── 他のRM会社・RMSツールとの違い、言えることを明確に</li>
       <li><b>提供価値の言語化</b> ── 洞察力／協力／革新の3価値を、いまの言葉に置き直す</li>
@@ -176,7 +189,7 @@
   </div>
 
   <div class="scope">
-    <b>関わり方について（念のため）</b><br>
+    <b>関わり方について</b><br>
     月々の伴走でご一緒するのは、<b>方向性の壁打ちと、進め方のディレクション</b>（やり方を一緒に決めて、お伝えするところ）までです。たとえば社長ブランディングでのSNSショート動画の企画・編集、LP・サイトなどの<b>制作物は、テーマに応じて別立て</b>でご用意します。何から何まで丸ごと、ではなく、頭の整理と設計を隣で担い、手を動かす制作はその都度ご相談する形です。
   </div>
 
@@ -195,8 +208,7 @@
       </ul>
       <div class="who">担当：阿部</div>
     </div>
-    <div class="plan reco">
-      <span class="badge">RECOMMEND</span>
+    <div class="plan">
       <span class="tag">MAIN</span>
       <div class="rank">右腕</div>
       <div class="role">戦略＋施策ディレクション</div>

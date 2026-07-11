@@ -25,7 +25,8 @@
   .logo{margin-bottom:2.6rem;display:flex;justify-content:space-between;align-items:center}
   .logo img{height:24px;width:auto;display:block}
   .logo .tag{font-family:var(--en);font-weight:300;letter-spacing:.14em;font-size:.82rem;color:var(--stone)}
-  h1{font-weight:700;font-size:clamp(1.7rem,4vw,2.55rem);line-height:1.5;letter-spacing:.01em;max-width:24ch}
+  h1{font-weight:700;font-size:clamp(1.5rem,3.4vw,2.35rem);line-height:1.5;letter-spacing:.01em;word-break:keep-all;white-space:nowrap}
+  .sub,p.body,.bridge,.purpose .lead,.purpose p,.scope,.plan-note,.diag{text-wrap:pretty}
   .sub{color:var(--accent-dark);margin-top:1.4rem;font-weight:300;max-width:64ch;font-size:.96rem}
   h2{font-weight:700;font-size:1.32rem;margin:3.6rem 0 1.6rem;display:flex;align-items:baseline;gap:.8rem;
     position:relative;padding-bottom:.9rem}
@@ -93,6 +94,7 @@
   footer{margin-top:3.8rem;padding-top:1.6rem;border-top:1px solid var(--line);
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.74rem;color:var(--stone);font-family:var(--en);letter-spacing:.05em}
   footer a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid var(--line)}
+  @media(max-width:960px){h1{white-space:normal;text-wrap:balance}}
   @media(max-width:760px){.plans,.flow,.menu,ul.plain{grid-template-columns:1fr}}
   @media(max-width:640px){.wrap{padding:6vh 6vw 10vh}}
 </style>

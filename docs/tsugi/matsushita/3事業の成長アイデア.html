@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3事業の、次の伸ばし方｜松下様</title>
+<style>
+  :root{
+    --navy:#16233f;
+    --navy2:#1e2d4d;
+    --gold:#b89468;
+    --ink:#2b2b2e;
+    --sub:#5c5c5e;
+    --line:#e4e2dd;
+    --bg:#ffffff;
+    --paper:#faf9f7;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--ink);
+    background:#d9d7d2;
+    line-height:1.85;
+    font-size:14px;
+  }
+  .page{
+    width:210mm;height:296mm;
+    background:var(--bg);
+    margin:0 auto;
+    padding:22mm 20mm 18mm;
+    position:relative;
+    overflow:hidden;
+    page-break-after:always;
+  }
+  .page:last-child{page-break-after:auto;}
+
+  /* ヘッダー／フッター共通 */
+  .brand-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1px solid var(--line);
+    padding-bottom:10px;margin-bottom:26px;
+  }
+  .brand-name{font-family:"Times New Roman",serif;letter-spacing:.22em;font-size:15px;color:var(--navy);font-weight:600;}
+  .brand-tag{font-size:10.5px;color:var(--sub);letter-spacing:.04em;}
+  .confidential{font-size:9.5px;color:var(--gold);letter-spacing:.14em;border:1px solid var(--gold);padding:2px 8px;border-radius:2px;}
+  .foot{
+    position:absolute;left:20mm;right:20mm;bottom:12mm;
+    display:flex;justify-content:space-between;
+    font-size:9px;color:#9a9893;letter-spacing:.06em;
+    border-top:1px solid var(--line);padding-top:7px;
+  }
+
+  /* 表紙 */
+  .cover{background:var(--navy);color:#fff;padding:0;}
+  .cover-inner{padding:38mm 22mm;height:296mm;display:flex;flex-direction:column;}
+  .cover .brand-name{color:#fff;font-size:17px;}
+  .cover-top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(255,255,255,.22);padding-bottom:12px;}
+  .cover-tag{color:rgba(255,255,255,.7);font-size:10.5px;letter-spacing:.04em;}
+  .cover-mid{margin-top:auto;margin-bottom:auto;}
+  .cover-eyebrow{color:var(--gold);letter-spacing:.34em;font-size:12px;margin-bottom:22px;}
+  .cover-title{font-size:40px;line-height:1.35;font-weight:700;letter-spacing:.02em;}
+  .cover-title small{display:block;font-size:19px;font-weight:400;color:rgba(255,255,255,.78);margin-top:18px;letter-spacing:.04em;}
+  .cover-to{margin-top:34px;font-size:15px;color:rgba(255,255,255,.92);letter-spacing:.06em;}
+  .cover-lead{margin-top:14px;font-size:13px;color:rgba(255,255,255,.7);line-height:2;max-width:150mm;}
+  .cover-foot{color:rgba(255,255,255,.6);font-size:10px;letter-spacing:.1em;border-top:1px solid rgba(255,255,255,.2);padding-top:12px;}
+
+  /* セクション見出し */
+  .sec-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:6px;}
+  .sec-no{font-family:"Times New Roman",serif;font-size:46px;line-height:1;color:var(--gold);font-weight:700;}
+  .sec-titles h2{font-size:23px;color:var(--navy);font-weight:700;letter-spacing:.02em;line-height:1.4;}
+  .sec-titles .en{font-size:10.5px;color:var(--gold);letter-spacing:.24em;text-transform:uppercase;margin-bottom:3px;}
+  .sec-status{font-size:11px;color:var(--sub);background:var(--paper);border-left:3px solid var(--gold);padding:9px 13px;margin:16px 0 22px;line-height:1.8;}
+
+  .block-label{font-size:11px;color:var(--gold);letter-spacing:.16em;font-weight:700;margin:22px 0 9px;}
+  .big-move{
+    background:var(--navy);color:#fff;padding:18px 20px;border-radius:3px;margin:6px 0 4px;
+  }
+  .big-move .k{font-size:10px;letter-spacing:.2em;color:var(--gold);margin-bottom:7px;}
+  .big-move p{font-size:14.5px;line-height:1.85;}
+  .big-move strong{color:#fff;border-bottom:2px solid var(--gold);padding-bottom:1px;}
+
+  .flips{display:grid;grid-template-columns:1fr;gap:10px;margin-top:6px;}
+  .flip{border:1px solid var(--line);border-radius:3px;padding:13px 15px;}
+  .flip .n{color:var(--gold);font-weight:700;font-size:12px;margin-bottom:3px;letter-spacing:.04em;}
+  .flip .t{font-weight:700;color:var(--navy);font-size:13.5px;margin-bottom:4px;}
+  .flip .d{font-size:12px;color:var(--sub);line-height:1.8;}
+
+  ul.moves{list-style:none;margin-top:4px;}
+  ul.moves li{position:relative;padding-left:20px;margin-bottom:9px;font-size:12.5px;line-height:1.8;color:var(--ink);}
+  ul.moves li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;background:var(--gold);border-radius:50%;}
+  ul.moves li b{color:var(--navy);}
+
+  .try{margin-top:20px;font-size:11.5px;color:var(--sub);background:var(--paper);padding:11px 14px;border-radius:3px;line-height:1.85;}
+  .try b{color:var(--navy);}
+
+  .closing{padding:26mm 20mm;}
+  .closing h2{font-size:22px;color:var(--navy);margin-bottom:18px;letter-spacing:.03em;}
+  .closing p{font-size:13.5px;color:var(--ink);line-height:2.1;margin-bottom:14px;max-width:150mm;}
+  .closing .steps{margin-top:8px;}
+  .sign{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-family:"Times New Roman",serif;letter-spacing:.2em;color:var(--navy);font-size:14px;}
+  .sign small{display:block;font-family:inherit;letter-spacing:.04em;color:var(--sub);font-size:10.5px;margin-top:4px;}
+
+  @media print{ body{background:#fff;} .page{margin:0;} }
+</style>
+</head>
+<body>
+
+<!-- 表紙 -->
+<section class="page cover">
+  <div class="cover-inner">
+    <div class="cover-top">
+      <span class="brand-name">TSUGI &amp; PARTNERS</span>
+      <span class="cover-tag">経営と承継の、伴走者であるために</span>
+    </div>
+    <div class="cover-mid">
+      <div class="cover-eyebrow">GROWTH IDEAS</div>
+      <h1 class="cover-title">3事業の、次の伸ばし方。<small>ノンネームと合わせて、方向性を一緒に決めるためのたたき台です。</small></h1>
+      <div class="cover-to">松下 康之 様</div>
+      <p class="cover-lead">先日お伺いした3つの事業について、それぞれ「こう伸ばせるのではないか」というアイデアをまとめました。正解の押し付けではなく、松下さんと一緒に本線を選ぶための材料です。ノンネームシート3枚と合わせてご覧ください。</p>
+    </div>
+    <div class="cover-foot">株式会社 TSUGI &amp; PARTNERS ｜ tsugiandpartners.jp ｜ CONFIDENTIAL</div>
+  </div>
+</section>
+
+<!-- ① つきみち -->
+<section class="page">
+  <div class="brand-top">
+    <span class="brand-name">TSUGI &amp; PARTNERS</span>
+    <span class="brand-tag">経営と承継の、伴走者であるために</span>
+    <span class="confidential">CONFIDENTIAL</span>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-no">01</div>
+    <div class="sec-titles">
+      <div class="en">Restaurant — Tsukimichi</div>
+      <h2>つきみち｜「会員制ディナー客を探す」のをやめる</h2>
+    </div>
+  </div>
+
+  <div class="sec-status">見立て：赤字の原因は集客の量ではなく、集客する相手と埋める時間のミスマッチ。コロナで会員制接待ディナーという業態が細っただけで、優勝経験のある内装・日本酒や寿司の体験・現場のもてなしという資産はそのまま生きています。同じディナー客をチラシやSNSで探し続けても、市場そのものが縮んでいるので効きにくい。</div>
+
+  <div class="big-move">
+    <div class="k">一番効く一手</div>
+    <p>福岡の富裕層インバウンド向け<strong>「日本酒 × 寿司 × 隠れ家の会員制ダイニング」</strong>として、高級ホテルのコンシェルジュや訪日富裕層を手配するDMCに「卸す」。広告費をかけず、単価の高い体験で空き時間を埋め、内装・体験・会員制の希少性がすべて強みに転じます。</p>
+  </div>
+
+  <div class="block-label">3つの発想の転換</div>
+  <div class="flips">
+    <div class="flip"><div class="n">①</div><div class="t">集客する相手を「個人客」から「送客者」へ</div><div class="d">会員制・高単価の店は、広告より送客ネットワーク（幹事・法人・ホテルのコンシェルジュ）がお客様を連れてくる構造。松下さんの経営者ネットワークもその送客ハブになります。</div></div>
+    <div class="flip"><div class="n">②</div><div class="t">埋めるものを「同じ席×同じ客」から「空き時間×別用途」へ</div><div class="d">昼から夕方を、インバウンド体験（寿司作り・日本酒の飲み比べ。すでにニーズは確認済み）と、空間貸し（撮影・ロケ・企業の懇親会場）で埋める。松下さんの映画のお話ともロケ地提供でつながります。</div></div>
+    <div class="flip"><div class="n">③</div><div class="t">「会員制」を弱みから強みへ反転</div><div class="d">富裕層インバウンドや接待には「予約の取れない隠れ家」はむしろ価値。全部開放するのではなく、表は体験・貸切で開き、コアの会員制は残す二層構造に。</div></div>
+  </div>
+
+  <div class="try"><b>まずは小さく。</b>高級ホテルのコンシェルジュ2〜3件と、富裕層向けDMC1件に体験プランを持ち込むところから。反応が出てから、多言語メニューや予約導線を整えます。手応えを見ながら進められる形です。</div>
+
+  <div class="foot"><span>3事業の、次の伸ばし方</span><span>01 — つきみち</span></div>
+</section>
+
+<!-- ② スカッシュ -->
+<section class="page">
+  <div class="brand-top">
+    <span class="brand-name">TSUGI &amp; PARTNERS</span>
+    <span class="brand-tag">経営と承継の、伴走者であるために</span>
+    <span class="confidential">CONFIDENTIAL</span>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-no">02</div>
+    <div class="sec-titles">
+      <div class="en">Indoor Sport — Squash</div>
+      <h2>スカッシュ｜「単店を売る」より「先行者の物語で組む」</h2>
+    </div>
+  </div>
+
+  <div class="sec-status">見立て：本当の資産は、いまの一店舗の利益ではありません。天神一等地・LA2028に向けた日本の先行者ポジション・オリンピック代表候補クラスのコーチという「物語」こそが価値。単店の譲渡で終わらせると、この物語の値段が乗りません。</div>
+
+  <div class="big-move">
+    <div class="k">一番効く一手</div>
+    <p>単店の売却ではなく、<strong>全国展開・FCのプラットフォームとしての物語</strong>で、多店舗展開したいスポーツ／フィットネス事業者や投資家に持ち込む。同時に、成約を待たずに稼働50%を埋めることで、事業価値そのものを引き上げます。</p>
+  </div>
+
+  <div class="block-label">稼働と価値を上げる打ち手</div>
+  <ul class="moves">
+    <li><b>法人・健康経営</b>：企業に日中の空き枠を時間貸し・法人会員化。空き時間を安定収益に変える。</li>
+    <li><b>ジュニアスクール</b>：五輪競技 × 子どもの運動需要。継続率が高く、家庭単位で長く通ってもらえる。</li>
+    <li><b>無料のPR露出</b>：五輪の追い風 × 代表候補コーチはニュース価値。TV・地方メディア・SNSで「福岡の五輪競技が体験できる施設」として、広告費ゼロで名前を広げる。</li>
+    <li><b>まず1回の体験導線</b>：認知がまだ低い競技だからこそ「一度やってみる」入口が決定的。天神の人通りを体験に変える。</li>
+    <li><b>コンテンツ化</b>：代表候補選手の育成を映像・SNSで発信し話題に。松下さんの映像のリソースが、施設集客と全国展開のブランドづくりに効いてきます。</li>
+  </ul>
+
+  <div class="try"><b>ねらい。</b>稼働が上がるほど、パートナー・買い手に見せられる数字が良くなり、物語の値段も上がる。「伸ばす」と「高く組む」が同じ方向を向きます。</div>
+
+  <div class="foot"><span>3事業の、次の伸ばし方</span><span>02 — スカッシュ</span></div>
+</section>
+
+<!-- ③ セクレトーム -->
+<section class="page">
+  <div class="brand-top">
+    <span class="brand-name">TSUGI &amp; PARTNERS</span>
+    <span class="brand-tag">経営と承継の、伴走者であるために</span>
+    <span class="confidential">CONFIDENTIAL</span>
+  </div>
+
+  <div class="sec-head">
+    <div class="sec-no">03</div>
+    <div class="sec-titles">
+      <div class="en">Stem Cell — Secretome</div>
+      <h2>セクレトーム｜「1件ずつメール」より「信頼で1点突破」</h2>
+    </div>
+  </div>
+
+  <div class="sec-status">見立て：この商品の強みは、4大学との共同開発・高純度という「信頼」です。ところが1件ずつのメール営業では、その信頼が相手に伝わりません。強みを最も活かせる売り方に変えます。</div>
+
+  <div class="big-move">
+    <div class="k">一番効く一手</div>
+    <p>数を打つのではなく、<strong>信頼で1点を突破する</strong>。松下さんの武器である「無料の成分分析 → 競合からの切り替え」を、クリニックの側から申し込む入口（プル型）に組み替え、影響力のある医師や美容医療の卸に一点集中で広げます。</p>
+  </div>
+
+  <div class="block-label">売り方の打ち手</div>
+  <ul class="moves">
+    <li><b>プッシュをプルに</b>：「無料成分診断」をサービスとして見せ、既存の製品に不安を持つクリニックが自分から問い合わせる導線をつくる。追いかける営業から、来てもらう営業へ。</li>
+    <li><b>1点突破</b>：100通のメールより、発信力のある医師1人に採用・発信してもらう、あるいは美容医療材料の卸に載せるほうが、横に一気に広がる。</li>
+    <li><b>院内で使ってもらう（B2B2C）</b>：個人のEC客を追うより、クリニックやエステが院内で使う・売る形へ。業務用は単価も安定も上がる。</li>
+    <li><b>インバウンド美容医療</b>：訪日富裕層向けの美容クリニックに高純度セクレトーム。つきみちのインバウンド送客とも人脈が重なります。</li>
+  </ul>
+
+  <div class="try"><b>補足。</b>広告・発信が一人で回らない部分は、AIで仕組み化して回す形もご一緒できます。効能表現には薬機法の配慮が要るので、そこは事実ベースで丁寧に設計します。</div>
+
+  <div class="foot"><span>3事業の、次の伸ばし方</span><span>03 — セクレトーム</span></div>
+</section>
+
+<!-- 結び -->
+<section class="page">
+  <div class="brand-top">
+    <span class="brand-name">TSUGI &amp; PARTNERS</span>
+    <span class="brand-tag">経営と承継の、伴走者であるために</span>
+    <span class="confidential">CONFIDENTIAL</span>
+  </div>
+  <div class="closing">
+    <h2>どれから、ご一緒しましょうか。</h2>
+    <p>ここに書いたのは、あくまで方向性のたたき台です。3つを一度に進めるのではなく、松下さんの手応えとタイミングに合わせて、上から一緒に優先順位をつけていければと思います。</p>
+    <p class="steps">まずは、ノンネームシート3枚で「知り合いに当てられる形」を用意しました。あわせて、つきみちの送客提携については、当てにいく先の候補をこちらで整理しています。次にお会いするときに、どこから動くかを一緒に決められればうれしいです。</p>
+    <div class="sign">TSUGI &amp; PARTNERS<small>経営と承継の、伴走者であるために ｜ tsugiandpartners.jp</small></div>
+  </div>
+  <div class="foot"><span>3事業の、次の伸ばし方</span><span>松下 康之 様</span></div>
+</section>
+
+</body>
+</html>

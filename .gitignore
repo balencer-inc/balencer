@@ -46,3 +46,4 @@ server-scripts/*-config.php
 
 # FTP配布用ステージング。中身は docs/*-lp/ と server-scripts/ の複製(古い版含む)なので手元のみ
 docs/balencer公開アップロード/
+docs/proposals/clavis-partners/deploy-teian/

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オイシーズ様 AI情報活用ロードマップ ご提案 | BALENCER</title>
+<style>
+  :root{
+    --ink:#1C1C1C; --accent:#A6453E; --paper:#F5F3F0; --stone:#888580;
+    --line:#DDDACE; --white:#fff;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; color:var(--ink); background:var(--paper);
+    font-family:"Calibri","Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    line-height:1.8; font-size:16px;
+  }
+  .page{max-width:840px; margin:0 auto; padding:0 28px;}
+  h1,h2,h3,.brand,.cover-title{font-family:Georgia,"Times New Roman",serif;}
+  /* cover */
+  .cover{background:var(--white); padding:80px 28px 72px; border-bottom:6px solid var(--accent);}
+  .cover-inner{max-width:840px; margin:0 auto;}
+  .brand{font-size:26px; font-weight:700; letter-spacing:.08em;}
+  .tagline{color:var(--stone); font-size:14px; margin-top:2px;}
+  .client{font-size:22px; font-weight:700; margin:44px 0 18px; padding-top:20px; border-top:4px solid var(--accent);}
+  .cover-title{font-size:34px; font-weight:700; line-height:1.35; margin:0;}
+  .cover-title .em{color:var(--accent);}
+  .cover-sub{color:var(--stone); font-style:italic; margin-top:18px; font-size:16px;}
+  .cover-meta{margin-top:56px; color:var(--stone); font-size:14px;}
+  .cover-meta b{color:var(--ink); font-weight:700;}
+  /* sections */
+  section{background:var(--white); margin:26px auto; max-width:840px; padding:40px 44px; border-radius:2px; box-shadow:0 1px 3px rgba(0,0,0,.05);}
+  h1.sec{font-size:25px; margin:0 0 4px; padding-bottom:8px; border-bottom:2px solid var(--accent);}
+  .sec-sub{color:var(--stone); font-style:italic; font-size:14px; margin:0 0 22px;}
+  h2.sub{font-size:18px; margin:26px 0 8px; padding-left:2px;}
+  h2.sub::before{content:"— "; color:var(--accent); font-weight:700;}
+  p{margin:0 0 14px;}
+  .em{color:var(--accent); font-weight:700;}
+  b{font-weight:700;}
+  ul{margin:0 0 14px; padding-left:0; list-style:none;}
+  ul li{position:relative; padding-left:20px; margin-bottom:8px;}
+  ul li::before{content:"•"; color:var(--accent); position:absolute; left:2px; font-weight:700;}
+  /* callout */
+  .callout{background:var(--paper); border-left:6px solid var(--accent); border-top:1px solid var(--accent); border-bottom:1px solid var(--accent); padding:18px 22px; margin:18px 0; border-radius:2px;}
+  .callout.stone{border-left-color:var(--stone); border-top-color:var(--stone); border-bottom-color:var(--stone);}
+  .callout .ct{font-weight:700; color:var(--accent); margin-bottom:8px;}
+  .callout.stone .ct{color:var(--stone);}
+  .callout ul li{margin-bottom:5px; font-size:15px;}
+  .callout ul li::before{content:"›"; }
+  /* table */
+  table{border-collapse:collapse; width:100%; margin:16px 0; font-size:14px;}
+  th{background:var(--ink); color:#fff; text-align:left; padding:9px 11px; font-weight:700; border:1px solid var(--ink);}
+  td{padding:9px 11px; border:1px solid var(--line); vertical-align:top;}
+  tr:nth-child(even) td{background:var(--paper);}
+  td .h{font-weight:700; display:block;}
+  .phase{color:var(--accent); font-weight:700;}
+  .footer{max-width:840px; margin:20px auto 60px; text-align:center; color:var(--stone); font-size:12px; font-family:Georgia,serif; letter-spacing:.1em;}
+  @media print{
+    body{background:#fff;} section,.cover{box-shadow:none;} section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-inner">
+    <div class="brand">BALENCER</div>
+    <div class="tagline">経営者の右腕がつとまる、ブランディングAXカンパニー。</div>
+    <div class="client">オイシーズ株式会社 御中</div>
+    <h1 class="cover-title">AIを「使える資産」に変えるための<br><span class="em">情報活用ロードマップ ご提案</span></h1>
+    <div class="cover-sub">── 何から、誰が、どうやるか。そして我々はどこで役に立つか。</div>
+    <div class="cover-meta">
+      2026年7月29日  ご商談用<br>
+      <b>株式会社バレンサー  代表  阿部 貴之</b>
+    </div>
+  </div>
+</div>
+
+<section>
+  <h1 class="sec">はじめに</h1>
+  <p class="sec-sub">本日のゴールと、このご提案のスタンス</p>
+  <p>本日は、貴社が関心をお持ちの「<b>溜めた情報をどう生きた情報にしてAIで活用するか</b>」というテーマについて、具体的な道筋をご一緒に描くことを目的としています。</p>
+  <p>ご提案にあたり、まず私たちのスタンスをお伝えします。私たちは「自社のサービスを売り込む」ためではなく、<span class="em">貴社にとって本当に効果の大きい順番でAI活用を並べ、その中で外部専門ベンダーに任せるべき領域は正直にそうお伝えする</span>、という立場を取ります。経営者の右腕として、当然のことと考えています。</p>
+  <div class="callout">
+    <div class="ct">本日お持ち帰りいただきたい3つの結論</div>
+    <ul>
+      <li>① 「きれいに整理してからAI」ではなく「AIに読ませてから、使われ方が整理の優先順位を教えてくれる」。順番が逆です。</li>
+      <li>② 貴社がすでに使っているGoogle環境の中に、答えの半分はすでに入っています。新システムの導入はまず不要です。</li>
+      <li>③ 効果の大きい領域には「すでに勝者がいる領域」と「まだ誰もやっていない領域」がある。後者にこそ、貴社の伸びしろがあります。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h1 class="sec">1. 現状の整理</h1>
+  <p class="sec-sub">お伺いした課題を、経営の視点で並べ直す</p>
+  <p>お伺いした内容から、貴社の情報・AIまわりの現状は次のように整理できます。</p>
+  <ul>
+    <li><b>情報基盤：</b>社内ポータル（Googleサイト）にPDF・スプレッドシートを中心に情報を蓄積中。「一旦ためている」が、その先の活用像はこれから。</li>
+    <li><b>格納ルールの迷い：</b>店舗メニューのマニュアルなどを、どこまで・誰が（本部か店舗か）格納するのかが定まらず苦戦。</li>
+    <li><b>仕組み化・AI：</b>蓄積したデータを効率化にどうつなげるかが未着手。</li>
+    <li><b>組織の特性：</b>直営・FC・シェアリング加盟店、そして多国籍スタッフという多様な現場。均質な情報伝達が難しい構造。</li>
+    <li><b>MVV：</b>コンテスト形式での策定に関心。ただし策定自体は社内主導の見込み。</li>
+  </ul>
+  <h2 class="sub">最初に、格納ルールの迷いへの答え</h2>
+  <p>「どこまで格納するか」で止まっているのは、順番が逆だからです。AI活用が進んだ企業は、<b>完璧なマニュアル体系を作ってからAIを載せるのではなく、まず今あるものをAIに読ませ、現場が実際に何を聞いてくるか（＝質問ログ）で「整備すべき文書の優先順位」を決めています。</b></p>
+  <div class="callout stone">
+    <div class="ct">参考：松屋フーズ（約1,200店舗）の進め方</div>
+    <ul>
+      <li>完璧な体系からではなく、店舗が実際に聞いてくる「よくある質問」から着手。</li>
+      <li>課題FAQをExcelで一括登録し、わずか1週間で運用開始。</li>
+      <li>LINEの親しみやすいUIで現場に浸透させ、月間1万件以上の問い合わせにAIが自動対応。本社への電話問い合わせを約41%削減。</li>
+      <li>質問ログをもとに回答を追加・改善するサイクルを回し、知識を「育てて」いる。</li>
+    </ul>
+  </div>
+  <p>つまり格納ルールの正解は、「<span class="em">レシピ・メニューマニュアルはブランドシェアリング事業の商品そのものなので、マスターは本部が一元管理。店舗は質問と例外の報告だけ</span>」と言い切れます。これは後述のPhase 0で一枚に定義します。</p>
+</section>
+
+<section>
+  <h1 class="sec">2. AI活用マップ</h1>
+  <p class="sec-sub">効果の大きい順に、そして「誰がやるか」で色分けする</p>
+  <p>貴社の規模（117店舗・売上100億円超 ※2025年3月時点）でAIの投資対効果を冷静に並べると、序列はこうなります。重要なのは、<b>効果が最大の領域と、私たちがお手伝いすべき領域は、あえてズラして考えるべき</b>という点です。</p>
+  <table>
+    <thead><tr><th></th><th>領域</th><th>経営インパクト</th><th>現状（誰が勝っているか）</th><th>バレンサーの関わり</th></tr></thead>
+    <tbody>
+      <tr><td><b>①</b></td><td><span class="h">発注・シフト</span>需要予測による原価・人件費最適化</td><td>★★★<br>粗利に直結</td><td><span class="em">勝者ほぼ確定</span><br>HANZO（Goals社）等の専門SaaS</td><td><b>関与しない</b><br>名前を渡すのみ・無償</td></tr>
+      <tr><td><b>②</b></td><td><span class="h">加盟店支援AI</span>シェアリング加盟店向けの多言語オペAI</td><td>★★★<br>成長事業を拡張</td><td><span class="em">まだ勝者なし</span><br>汎用ツールの芽はあるが事業設計は空白</td><td><b class="em">本命</b><br>事業設計から伴走</td></tr>
+      <tr><td><b>③</b></td><td><span class="h">社内ナレッジAI</span>溜めたPDFに答えさせる／教育・問い合わせ</td><td>★★<br>工数・教育コスト減</td><td>自社構築が可能<br>Google環境内で内製できる</td><td><b class="em">伴走</b><br>研修で内製化＋一部実装</td></tr>
+      <tr><td><b>④</b></td><td><span class="h">MVV浸透</span>決まった理念をAIに住まわせる</td><td>★<br>組織の一体感</td><td>社内主導<br>策定は貴社が実施</td><td><b>軽く伴走</b><br>浸透設計のみ</td></tr>
+    </tbody>
+  </table>
+  <h2 class="sub">①はなぜ「関与しない」のか</h2>
+  <p>発注・シフトの需要予測は粗利に最も直結する領域ですが、ここは<b>HANZO（株式会社Goals）がほぼデファクト</b>です。串カツ田中・福しん・吉野家クラスが導入し、初期設定から店舗浸透まで専属チームが伴走、既存システムとも連携するためリプレース不要。私たちが間に入る価値はありません。だからこそ、<span class="em">「HANZOに直接お話しになるのが一番です、我々は一円もいただきません」とお伝えするのが最も誠実</span>だと考えます。紹介料もいただきません。この一貫性が、右腕としての信頼につながると信じています。</p>
+  <h2 class="sub">②こそが、貴社の伸びしろ</h2>
+  <p>一方②は、FC本部が加盟店をAIで支援するという発想自体は登場し始めていますが、いずれも「本部の問い合わせ対応を楽にする汎用ツール」の域を出ていません。<span class="em">貴社のブランドシェアリング事業（冷凍・粉末での提供、1〜3分オペレーション、加盟店は本業を続けながらの副収入）に固有の文脈を設計し込み、『加盟店に配るパッケージの中に、24時間多言語で答えるオペレーションAIが最初から入っている』という商品設計は、まだ誰もやっていません。</span></p>
+  <p>これは、生成AIを実装でき、かつ事業構造を理解して伴走できる右腕にしかできない仕事です。ツールを作って売るベンダーには、構造的にできません。実装のエンジンは既存のもので構いません。<b>私たちが握るのは「設計」と「内製化」です。</b></p>
+</section>
+
+<section>
+  <h1 class="sec">3. 技術の道筋</h1>
+  <p class="sec-sub">Google環境が、そのまま武器になる</p>
+  <p>今回タイミングが良いのは、2026年1月のアップデートで、<b>法人版GeminiからNotebookLMを直接参照できるようになった</b>点です。これにより「社内マニュアルに基づいて新人の質問に答えるAI」が、専用の知識ベース（Gem）として簡単に構築できます。</p>
+  <div class="callout">
+    <div class="ct">Google環境で「導入ゼロ」で始められる理由</div>
+    <ul>
+      <li>新システムの導入ゼロ：すでにお使いのGoogle Workspaceの中で完結。</li>
+      <li>データ移行ゼロ：Googleドライブ上のPDF・ドキュメントをそのまま参照。元ファイルを更新すればAI側にも反映。</li>
+      <li>セキュリティ審査ほぼゼロ：ドライブの既存アクセス権限がそのまま適用。法人版はやり取りが外部に開示されず、モデル学習にも使われない。</li>
+    </ul>
+  </div>
+  <h2 class="sub">本部＝Gemini／店舗＝LINE の二層設計</h2>
+  <p>店舗スタッフ（アルバイト・特定技能人材）はWorkspaceアカウントを持たない場合が多いため、入口を二層に分けます。</p>
+  <ul>
+    <li><b>本部・SV・人事：</b>Gemini＋NotebookLM。資料の要約、提案準備、評価・面談準備などの知的作業を高速化。</li>
+    <li><b>店舗スタッフ：</b>LINE。使い慣れたスマホのUIで、「この仕込み手順は？」「機器が止まったら？」を多言語で質問→即回答。松屋型の運用。</li>
+  </ul>
+  <p>LINEはMessaging APIで自社ボットを作る道と、まずLINE公式アカウント標準のAIチャットボット機能（PDF・画像からQ&A自動生成）で検証する軽い道の両方があり、<b>いきなり作り込まず、本部で60分で動くものを先に体感いただく</b>のが正解です。</p>
+</section>
+
+<section>
+  <h1 class="sec">4. 実行ロードマップ</h1>
+  <p class="sec-sub">何から・誰が・いつ・我々はどこで</p>
+  <table>
+    <thead><tr><th>フェーズ</th><th>やること</th><th>主体</th><th>バレンサーの役割</th></tr></thead>
+    <tbody>
+      <tr><td><span class="phase">Phase 0</span><br>〜1ヶ月</td><td><span class="h">診断（AI版・企業ドック）</span>情報資産の棚卸し＋店舗問い合わせを2〜4週ログ取り。格納ルールを一枚に確定。</td><td>総務＋バレンサー</td><td>診断・設計</td></tr>
+      <tr><td><span class="phase">Phase 1</span><br>1〜2ヶ月目</td><td><span class="h">本部PoC</span>主要マニュアルでGem／NotebookLMを構築。総務・SV・人事で使い倒し、質問ログから整備優先度トップ20を可視化。</td><td><b>本部スタッフ自身</b><br>（内製化）</td><td>AI研修で伴走<br>（助成金活用）</td></tr>
+      <tr><td><span class="phase">Phase 2</span><br>3〜6ヶ月目</td><td><span class="h">店舗展開</span>LINE＋多言語ボット。松屋型の「質問ログ→知識改善」サイクルを運用に実装。</td><td>バレンサー＋本部</td><td>開発を実装<br>（別建て）</td></tr>
+      <tr><td><span class="phase">Phase 3</span><br>並行</td><td><span class="h">MVV接続（軽く）</span>コンテストは社内主導を全面肯定。決まったMVVをAIのプロンプトに組み込み、日報・掲示物が自然にMVVの言葉になる状態へ。</td><td>本部主導</td><td>浸透設計のみ助言</td></tr>
+      <tr><td><span class="phase">横断</span></td><td><span class="h">②加盟店支援AIの事業設計</span>③で作った資産を、加盟店に配る商品として横展開。新たな収益源に。</td><td>バレンサー＋経営</td><td><b class="em">本命の伴走</b></td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <div class="ct">投資判断の階段（CFO視点）</div>
+    <ul>
+      <li>Phase 0〜1：ほぼ追加投資ゼロ（既存のGoogle Workspace内で完結）。</li>
+      <li>研修：人材開発支援助成金（リスキリング支援コース）の活用で、実質負担を大きく圧縮。</li>
+      <li>投資判断が要るのは Phase 2 のLINE開発と、②の事業化から。小さく始めて、効果を見てから広げられる設計です。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h1 class="sec">5. まとめ</h1>
+  <p class="sec-sub">バレンサーがご一緒したいこと</p>
+  <p>貴社にはすでに、優れた制度設計・企画のノウハウ（QSC、等級要件、MVVコンテストの構想）と、Googleに蓄積された膨大な資産があります。ですから私たちは「制度を作り直しましょう」とは申しません。</p>
+  <p>私たちがお役に立てるのは、<span class="em">その資産を、AIで自動的に回る仕組みに変換すること。そしてそれを貴社の皆様自身ができるようになるまで伴走すること。</span>さらにその先で、まだ誰もやっていない②「加盟店支援AI」を、貴社の新しい商品として一緒に立ち上げることです。</p>
+  <div class="callout">
+    <div class="ct">ご一緒したいことの要約</div>
+    <ul>
+      <li>① 発注・シフト（HANZO）は、直接お話しになるのが一番。私たちは一円もいただきません。</li>
+      <li>② 加盟店支援AI ── 誰もやっていない領域。ここを事業設計から本気でご一緒したい。</li>
+      <li>③ 社内ナレッジAI ── Google環境で導入ゼロから。研修で内製化まで伴走します。</li>
+      <li>④ MVVは貴社主導で。決まった理念をAIに住まわせる部分だけ、お手伝いします。</li>
+    </ul>
+  </div>
+  <p style="color:var(--stone); font-style:italic;">「町医者のように現場に入り込み、実行までやり切る」。それが私たちのスタンスです。本日はどうぞよろしくお願いいたします。</p>
+</section>
+
+<div class="footer">BALENCER  ×  OISHIES</div>
+
+</body>
+</html>

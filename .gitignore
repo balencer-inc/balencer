@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# Obsidian: docs/ を第2vaultとして開いた時に生成される設定フォルダ。手元のみ
+.obsidian/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -2,7 +2,6 @@
   "permissions": {
     "disableBypassPermissionsMode": "disable",
     "deny": [
-      "Bash(curl:*)",
       "Bash(wget:*)",
       "Bash(sudo:*)",
       "Read(.env)",
@@ -10,6 +9,7 @@
       "Read(**/.ssh/**)"
     ],
     "ask": [
+      "Bash(curl:*)",
       "Bash(git push:*)",
       "Bash(rm:*)"
     ]

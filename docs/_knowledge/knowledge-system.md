@@ -54,9 +54,9 @@
 
 **GitHub 連携は不採用**（リポが重い＝`.git` 1.4GB／`apps/` 1.8GB／`node_modules/` 等で、AI が読みたくもないアプリ・ビルド・巨大履歴ごと掴もうとして詰まる）。**Notion/Drive 代替も不採用**（二重化を生む）。
 
-**本命（※2026-07-15 時点で未検証。実地テストして効いたら CLAUDE.md §6 を更新する。未検証のまま §6 を上書きしない）**: claude.ai に Project を1つ作り、ナレッジに**安定コアだけ**を読み取り専用でアップロードする ── `CLAUDE.md` ＋ `docs/company/identity.md・services.md・results.md`（合計数十KB、滅多に変わらない＝腐らない）。
+**本命（2026-07-15 実地テストで成功確認済＝64社/4.03億・ENTRY月20万〜・看板2枚を正答。CLAUDE.md §6 を本方式で改訂済）**: claude.ai に Project を1つ作り、ナレッジに**安定コアだけ**を読み取り専用でアップロードする ── 実運用は `docs/company/_project-bundle.md`（CLAUDE.md＋company/3本を1本化した生成物。git管理外・`~/Desktop/バレンサー会社の記憶.md` にコピー）。
 
-なお 2026-07-14 の検証で「claude.ai＋GitHub 追加」は技術的には繋がると確定済み（CLAUDE.md §6）。ただしリポが重く（§4冒頭）実用上詰まるため、本方式へ切り替えたい。GitHub 追加は Plan B として残す。
+なお 2026-07-14 の検証で「claude.ai＋GitHub 追加」は技術的には繋がると確定済み。ただしリポが重く（§4冒頭）実用上詰まるため本方式に切り替えた。GitHub 追加は Plan B として残す。
 
 - これは**二重化ではない**。条件は3つ: (1)読み取り専用（誰もそこを編集して正本扱いしない） (2)向きは git→Project の一方通行、逆流させない (3)載せるのは滅多に変わらない安定コアのみ。→「正本から焼き直した使い捨てのプロジェクション（ビルド成果物）」。Notion が危険なのは*人が中で編集して勝手に育ち正本と食い違う*から。Project ナレッジは育たない。
 - **顧客ごとの動的情報（brief）は Project に載せない。** その場で手貼り（2,000字だから一瞬）。
@@ -100,8 +100,9 @@ AI は答える前に材料を集める。CLAUDE.md は「正本は `docs/compan
 ## 7. 未完の宿題（この設計を完成させる残タスク）
 
 - [x] Obsidian に `~/Projects/balencer/docs` を第2 vault 追加（2026-07-15 実施・`.obsidian/` は gitignore）
-- [ ] **`docs/company/` の肉付け**（identity/services/results を CLAUDE.md §1 と食い違いゼロまで厚く）← 精度事故の根を断つ最重要。賢いモデルで
-- [ ] claude.ai に Project 作成＋安定コア4ファイルをアップロード（阿部さんの手）＋バンドル生成スクリプト（Claude Code）
-- [ ] `docs/clients/README.md` に `00_brief.md` テンプレを追記
-- [ ] CLAUDE.md §3 に「置き場判定基準」1行と「読ませ方ルール」を追記
+- [x] **`docs/company/` を CLAUDE.md §1 に整合**（SOERU控えめ・ENTRY正式呼称のドリフトを解消。2026-07-15）
+- [x] Project バンドル生成（`docs/company/_project-bundle.md`）＋実地テストで方式の有効性を確認（2026-07-15）
+- [x] `docs/clients/README.md` に README「5行サマリ」型＋`00_brief.md` テンプレを追記（2026-07-15）
+- [x] CLAUDE.md §3 に「置き場判定基準」と「読ませ方ルール」を追記、§6 を Project 方式に改訂（2026-07-15）
+- [ ] 阿部さんが claude.ai/Desktop に「バレンサー会社の記憶」Project を常設し、company/更新時にバンドルを差し替える運用を定着（金曜棚卸しに同乗）
 - [ ] （後続）Notion の純化・git への昇格、Drive のポインタ md 整備

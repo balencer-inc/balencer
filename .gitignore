@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# Obsidian: docs/ を第2vaultとして開いた時に生成される設定フォルダ。手元のみ
+.obsidian/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -47,3 +50,6 @@ server-scripts/*-config.php
 # FTP配布用ステージング。中身は docs/*-lp/ と server-scripts/ の複製(古い版含む)なので手元のみ
 docs/balencer公開アップロード/
 docs/proposals/clavis-partners/deploy-teian/
+
+# Claude Project用バンドル(正本からの生成物・再生成可)。手元のみ
+docs/company/_project-bundle.md

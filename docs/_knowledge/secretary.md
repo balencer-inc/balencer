@@ -53,3 +53,11 @@
 **副産物の学び**: claude.ai と Claude Code はモデルが同じ(Opus)。「claude.aiの方が対話精度が高い気がする」の実体は"repoを読めるか"の差だった。CLAUDE.md §6 を本結論で全面改訂。
 
 **重い場合の将来案（未着手）**: PDF/画像を除いたmd中心の軽量ミラーリポを別に用意して claude.ai 用にする案。今回はリトライで通ったので保留。
+
+## 2026-07-15（更新）正本の読ませ方＝「Claude Projectバンドル」に切替（GitHub追加はPlan Bへ）
+
+7/14の結論「GitHubから追加」は技術的には正解だったが、リポが重く（`.git`1.4GB／`apps/`1.8GB等）実用上コネクタが詰まる。knowledge-system.md の全体設計に沿い、**常用の読ませ方を切替**:
+
+- **✅採用: Claude Project ＋ 読み取り専用バンドル**。`docs/company/_project-bundle.md`（CLAUDE.md＋company/を1本化。Claude Code生成・git管理外・`~/Desktop/バレンサー会社の記憶.md`にコピー）をプロジェクトのナレッジにアップロード。顧客ごとの `00_brief.md`(2000字)はチャットに手貼り。**実地テストで64社/4.03億・ENTRY月20万〜・看板2枚を正答＝成功確認済**。
+- **Plan Bへ格下げ: GitHubから追加**（7/14導線）。繋がるが重くて詰まるため常用しない。「重い場合の軽量ミラーリポ案」も同じ理由でこの Project 方式に置換。
+- CLAUDE.md §6 を本結論で改訂。設計全体は [[knowledge-system]]。この上の「道具の役割を固定」節（GitHubコネクタ推奨）と 7/14「Desktop直読み採用/GitHub追加決着」は**履歴として残すが、最新の運用は本節**。

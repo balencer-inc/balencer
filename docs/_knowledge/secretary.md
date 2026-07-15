@@ -61,3 +61,11 @@
 - **✅採用: Claude Project ＋ 読み取り専用バンドル**。`docs/company/_project-bundle.md`（CLAUDE.md＋company/を1本化。Claude Code生成・git管理外・`~/Desktop/バレンサー会社の記憶.md`にコピー）をプロジェクトのナレッジにアップロード。顧客ごとの `00_brief.md`(2000字)はチャットに手貼り。**実地テストで64社/4.03億・ENTRY月20万〜・看板2枚を正答＝成功確認済**。
 - **Plan Bへ格下げ: GitHubから追加**（7/14導線）。繋がるが重くて詰まるため常用しない。「重い場合の軽量ミラーリポ案」も同じ理由でこの Project 方式に置換。
 - CLAUDE.md §6 を本結論で改訂。設計全体は [[knowledge-system]]。この上の「道具の役割を固定」節（GitHubコネクタ推奨）と 7/14「Desktop直読み採用/GitHub追加決着」は**履歴として残すが、最新の運用は本節**。
+
+## 2026-07-15 顧客README「何者か＝事業内容」と「当社との関係＝関わり方」を混同しない
+
+顧客フォルダのREADMEを一括生成した際、**当社がクライアントに実施している関わり方・提案内容を、その会社の事業内容と誤認**する誤りが多発した（例: NAILIT「催事ToCの営業DX」＝当社の営業ダッシュボード案件／tri-works「社内報・課題図書運営」＝当社の社内浸透伴走／clavis「RM＝リレーションシップ・マネジメント」＝Revenue Managementの誤訳／adachi-onken「音響機器」→実は音楽教室／tas「デザイン会社」→実はIT/AI開発）。
+
+- **ルール**: READMEの「何者か」は**会社そのものの事業**だけを書く。当社の案件・提案は「当社との関係」に分けて書き、必要なら「（＝当社の支援テーマであって事業内容ではない）」と明示する。
+- **不明な会社は憶測で埋めない**。NotebookLMで新規Web調査（`research_start`→`research_status`→`research_import`→`notebook_query`）して一次情報から確定する。既存ノートブックがあれば`notebook_list`で拾って`notebook_query`。同名法人が複数あり特定できない時（例: 清美会）は候補列挙＋要確認にとどめ、断定しない。
+- 各README末尾に「会社調査→NotebookLMリンク」と「修正履歴」を残すと次セッションで追える。設計全体は [[knowledge-system]]。

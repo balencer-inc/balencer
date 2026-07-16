@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>営業フロー｜株式会社バレンサー</title>
-<meta name="description" content="出会いから契約までを1本の線でつなぐ営業フロー。流入・診断・予約・クロージング・コンサル開始の5ステージごとに、バレンサーにお願いできることをまとめました。この流れを、あなたの会社にも。">
+<meta name="description" content="出会いから契約までを1本の線でつなぐ営業フロー。流入・診断・予約・クロージング・コンサル開始の5ステージごとに、バレンサーにお願いできることとめざす状態をまとめました。この流れを、あなたの会社にも。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -20,7 +20,7 @@
   ::selection{background:var(--accent);color:var(--ink)}
   a{color:inherit;text-decoration:none}
 
-  .board{min-height:100svh;display:flex;flex-direction:column;max-width:1320px;margin:0 auto;padding:24px 34px 20px}
+  .board{min-height:100svh;display:flex;flex-direction:column;max-width:1360px;margin:0 auto;padding:24px 34px 20px}
 
   /* top bar */
   .top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:15px}
@@ -31,25 +31,29 @@
   .top .brand{font-family:var(--serif);font-size:16px;letter-spacing:.14em;font-weight:600;white-space:nowrap;text-align:right}
   .top .brand span{display:block;font-family:'Inter';font-size:9.5px;letter-spacing:.24em;color:var(--sub);text-transform:uppercase;font-weight:500;margin-top:3px}
 
-  /* stages row */
-  .stages{flex:1;display:grid;grid-template-columns:repeat(5,1fr);align-items:stretch;margin-top:20px}
-  .stage{position:relative;padding:4px 22px 4px 0;display:flex;flex-direction:column}
-  .stage:not(:last-child){border-right:1px dashed var(--line-d);margin-right:22px}
-  .stage:not(:last-child)::after{content:"";position:absolute;right:-6px;top:26px;width:11px;height:11px;border-top:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transform:rotate(45deg);background:var(--bg)}
+  /* stages row — cards */
+  .stages{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:34px;align-items:stretch;margin-top:22px}
+  .stage{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:22px 20px;display:flex;flex-direction:column;transition:border-color var(--d1,.3s) var(--ease),transform .3s var(--ease)}
+  .stage:hover{border-color:var(--line-d);transform:translateY(-3px)}
+  .stage:not(:last-child)::after{content:"";position:absolute;right:-23px;top:50%;width:12px;height:12px;border-top:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transform:translateY(-50%) rotate(45deg);z-index:2}
   .stage .idx{font-family:var(--serif);font-style:italic;font-size:30px;line-height:1;color:var(--ink)}
   .stage .idx b{display:inline-block;width:7px;height:7px;background:var(--accent);border-radius:50%;margin-left:5px;vertical-align:7px}
   .stage h3{font-size:16px;font-weight:700;margin-top:11px}
-  .stage .role{font-family:'Inter';font-size:9px;letter-spacing:.13em;color:var(--sub);text-transform:uppercase;margin-top:3px}
-  .stage p{color:var(--sub);font-size:12px;line-height:1.7;margin-top:10px}
-  .stage .ask{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
-  .stage .ask .h{font-family:'Inter';font-size:9px;letter-spacing:.14em;color:var(--ink);text-transform:uppercase;margin-bottom:9px;font-weight:600}
-  .stage ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .stage .role{font-family:'Inter';font-size:9px;letter-spacing:.12em;color:var(--sub);text-transform:uppercase;margin-top:3px}
+  .stage p{color:var(--sub);font-size:12px;line-height:1.7;margin-top:11px}
+  .stage .ask{margin-top:15px;padding-top:13px;border-top:1px solid var(--line)}
+  .stage .ask .h{font-family:'Inter';font-size:9px;letter-spacing:.13em;color:var(--ink);text-transform:uppercase;margin-bottom:10px;font-weight:600}
+  .stage ul{list-style:none;display:flex;flex-direction:column;gap:8px}
   .stage li{position:relative;padding-left:19px;font-size:11.5px;line-height:1.5;color:var(--ink)}
   .stage li::before{content:"";position:absolute;left:0;top:1px;width:11px;height:11px;border:1.5px solid var(--line-d);border-radius:3px}
-  .stage li::after{content:"";position:absolute;left:3.4px;top:3.4px;width:5px;height:3px;border-left:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(-45deg)}
+  .stage li::after{content:"";position:absolute;left:3.4px;top:3.6px;width:5px;height:3px;border-left:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(-45deg)}
+  .stage .goal{margin-top:auto;padding-top:15px}
+  .stage .goal .g{background:var(--mid);border-radius:9px;padding:11px 13px;font-size:11.5px;line-height:1.55;color:var(--ink)}
+  .stage .goal .g span{display:block;font-family:'Inter';font-size:8.5px;letter-spacing:.14em;color:var(--sub);text-transform:uppercase;margin-bottom:4px}
+  .stage .goal .g b{font-weight:600}
 
   /* nurture band */
-  .nurture{background:var(--dark);color:#EDEDE8;border-radius:13px;padding:16px 24px;margin-top:20px;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:26px;align-items:center}
+  .nurture{background:var(--dark);color:#EDEDE8;border-radius:13px;padding:16px 24px;margin-top:22px;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:26px;align-items:center}
   .nurture .lbl{max-width:200px}
   .nurture .lbl .k{font-family:'Inter';font-size:9px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
   .nurture .lbl b{color:#fff;font-size:13.5px;font-weight:700;line-height:1.5}
@@ -69,8 +73,7 @@
     .board{min-height:0;padding:22px 20px 30px}
     .top{flex-direction:column;align-items:flex-start;gap:12px}
     .top .brand{text-align:left}
-    .stages{grid-template-columns:1fr;margin-top:16px}
-    .stage{padding:16px 0;border-right:0!important;margin-right:0!important;border-bottom:1px solid var(--line)}
+    .stages{grid-template-columns:1fr;gap:14px;margin-top:16px}
     .stage:not(:last-child)::after{content:none}
     .nurture{grid-template-columns:1fr;gap:16px;padding:22px}
     .nurture .it{border-left:0;border-top:1px solid var(--dline);padding-left:0;padding-top:14px}
@@ -106,6 +109,7 @@
           <li>名刺・イベントのリスト化</li>
         </ul>
       </div>
+      <div class="goal"><div class="g"><span class="en">Goal</span><b>毎月、新しい接点が生まれる</b></div></div>
     </div>
 
     <div class="stage">
@@ -122,6 +126,7 @@
           <li>診断ページの制作</li>
         </ul>
       </div>
+      <div class="goal"><div class="g"><span class="en">Goal</span><b>見込み客の課題が見える</b></div></div>
     </div>
 
     <div class="stage">
@@ -138,6 +143,7 @@
           <li>リード情報の自動記録</li>
         </ul>
       </div>
+      <div class="goal"><div class="g"><span class="en">Goal</span><b>相談の予約が自動で埋まる</b></div></div>
     </div>
 
     <div class="stage">
@@ -154,6 +160,7 @@
           <li>クロージング資料</li>
         </ul>
       </div>
+      <div class="goal"><div class="g"><span class="en">Goal</span><b>2回の面談で受注が決まる</b></div></div>
     </div>
 
     <div class="stage">
@@ -170,6 +177,7 @@
           <li>AIでの業務仕組み化</li>
         </ul>
       </div>
+      <div class="goal"><div class="g"><span class="en">Goal</span><b>続く伴走関係になる</b></div></div>
     </div>
   </div>
 

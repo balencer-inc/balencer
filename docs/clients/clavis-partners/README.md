@@ -7,7 +7,9 @@
 - **要確認**: Notion顧客DBへの登録漏れ → 追って登録
 
 ## リンク集
-- 会社調査 → NotebookLM「Clavis Partners: Strategic Revenue Management for Hospitality」: https://notebooklm.google.com/notebook/adcdd644-3579-4c24-b690-c6550fea3b21
+- 会社調査＋業界外部環境調査 → NotebookLM「Clavis Partners」: https://notebooklm.google.com/notebook/adcdd644-3579-4c24-b690-c6550fea3b21 （2026-07-16に2016→2026のRM外部環境19ソース追加）
+- **次回セッション①用｜ポジショニング再定義ワークシート（ビフォー→アフター）** → Notion: https://app.notion.com/p/39f53269fc5e8104a152c8da862eedb9
+- RM業界ナレッジ（相場・競合・マクロ） → docs/_knowledge/revenue-management.md
 - 提案 → docs/proposals/clavis-partners/
 - 引き継ぎメモ → docs/proposals/clavis-partners/_引き継ぎメモ_2026-07-08.md
 - 案件詳細 → memory「Clavis Partners案件」

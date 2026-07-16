@@ -1,0 +1,282 @@
+<title>Clavis Partners｜ポジショニング ビフォー/アフター</title>
+<style>
+  :root {
+    --ground: #F6F8FA;
+    --panel: #FFFFFF;
+    --ink: #1A1C1F;
+    --slate: #4A4E57;
+    --mute: #7C818B;
+    --line: #E2E6EC;
+    --blue: #3E5C76;
+    --blue-soft: #6B89A8;
+    --blue-wash: #EAF0F6;
+    --past: #9E9A92;
+    --past-wash: #EEEBE6;
+    --gold: #B8863B;
+    --gold-wash: #F6EEDD;
+    --serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", Georgia, serif;
+    --sans: "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #14161A;
+      --panel: #1C1F24;
+      --ink: #ECEEF1;
+      --slate: #C2C7CF;
+      --mute: #8A909B;
+      --line: #2C313A;
+      --blue: #8FB0CE;
+      --blue-soft: #6B89A8;
+      --blue-wash: #1E2A36;
+      --past: #8A867E;
+      --past-wash: #262320;
+      --gold: #D2A254;
+      --gold-wash: #2A2416;
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #F6F8FA; --panel: #FFFFFF; --ink: #1A1C1F; --slate: #4A4E57; --mute: #7C818B;
+    --line: #E2E6EC; --blue: #3E5C76; --blue-soft: #6B89A8; --blue-wash: #EAF0F6;
+    --past: #9E9A92; --past-wash: #EEEBE6; --gold: #B8863B; --gold-wash: #F6EEDD;
+  }
+  :root[data-theme="dark"] {
+    --ground: #14161A; --panel: #1C1F24; --ink: #ECEEF1; --slate: #C2C7CF; --mute: #8A909B;
+    --line: #2C313A; --blue: #8FB0CE; --blue-soft: #6B89A8; --blue-wash: #1E2A36;
+    --past: #8A867E; --past-wash: #262320; --gold: #D2A254; --gold-wash: #2A2416;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--sans); line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: clamp(28px, 5vw, 64px) clamp(18px, 4vw, 40px); }
+
+  .eyebrow {
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--blue); font-weight: 700; margin: 0 0 10px;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 600; letter-spacing: .01em;
+    font-size: clamp(26px, 4.4vw, 40px); line-height: 1.25; margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .lede { color: var(--slate); font-size: clamp(15px, 1.6vw, 17px); max-width: 62ch; margin: 0; }
+  .rule { height: 1px; background: var(--line); border: 0; margin: clamp(28px, 4vw, 44px) 0; }
+
+  h2 {
+    font-family: var(--serif); font-weight: 600; font-size: clamp(20px, 2.6vw, 26px);
+    margin: 0 0 6px; letter-spacing: .01em;
+  }
+  .sub { color: var(--mute); font-size: 14px; margin: 0 0 22px; }
+
+  .maps { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.4vw, 28px); }
+  @media (max-width: 760px) { .maps { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: clamp(16px, 2.2vw, 24px);
+  }
+  .card-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .tag {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .tag.before { background: var(--past-wash); color: var(--past); }
+  .tag.after { background: var(--blue-wash); color: var(--blue); }
+  .card h3 { font-family: var(--serif); font-weight: 600; font-size: 18px; margin: 0; }
+  .card .note { color: var(--slate); font-size: 13.5px; margin: 2px 0 14px; min-height: 3em; }
+
+  svg { width: 100%; height: auto; display: block; }
+  .axis-line { stroke: var(--line); stroke-width: 1.5; }
+  .axis-label { fill: var(--mute); font-size: 11px; font-family: var(--sans); }
+  .axis-title { fill: var(--slate); font-size: 12px; font-weight: 700; font-family: var(--sans); }
+  .dot-label { font-size: 11.5px; font-family: var(--sans); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 14px 20px; margin-top: 16px; font-size: 12.5px; color: var(--slate); }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .sw { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+
+  .takeaway {
+    background: var(--blue-wash); border-left: 3px solid var(--blue);
+    border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 26px 0 0;
+    color: var(--ink); font-size: 15px;
+  }
+  .takeaway b { color: var(--blue); }
+
+  .scen { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2vw, 20px); }
+  @media (max-width: 860px) { .scen { grid-template-columns: 1fr; } }
+  .scen .card { display: flex; flex-direction: column; gap: 12px; }
+  .scen .pos { font-family: var(--serif); font-size: 17px; font-weight: 600; }
+  .scen .k { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 2px; }
+  .scen .block { font-size: 13.5px; color: var(--slate); }
+  .scen .block p { margin: 3px 0 0; }
+  .badge { align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); background: var(--blue-wash); padding: 4px 10px; border-radius: 999px; }
+
+  .foot { color: var(--mute); font-size: 12.5px; margin-top: 34px; line-height: 1.7; }
+  .foot a { color: var(--blue); }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Clavis Partners ／ 再定義セッション補助資料</p>
+  <h1>ポジショニングマップ：2016 → 2026 の10年で、地図はこう変わった</h1>
+  <p class="lede">左＝杉山さんが修士論文（2016）で描いた地図。右＝同じ軸で見た2026年の現実。縦は<b>単価・Fee</b>、横は<b>関与の深さ（助言だけ〜実務まるごと代行）</b>。この2枚を並べて、いまクラビスが旗を立て直す場所を一緒に決めます。</p>
+
+  <hr class="rule" />
+
+  <div class="maps">
+    <!-- BEFORE -->
+    <div class="card">
+      <div class="card-head"><span class="tag before">Before ・ 2016</span></div>
+      <h3>修論が見た地図：RM特化は「空白」だった</h3>
+      <p class="note">RM特化アウトソーシングは当時どこもやっていない空白地帯。そこを狙う＝ブルーオーシャン戦略だった。</p>
+      <svg viewBox="0 0 400 380" role="img" aria-label="2016年のポジショニングマップ">
+        <!-- axes -->
+        <line class="axis-line" x1="56" y1="30" x2="56" y2="336"/>
+        <line class="axis-line" x1="56" y1="336" x2="384" y2="336"/>
+        <text class="axis-title" x="46" y="24" text-anchor="middle" transform="rotate(-90 14 183)"></text>
+        <text class="axis-title" x="14" y="188" text-anchor="middle" transform="rotate(-90 14 188)">単価・Fee</text>
+        <text class="axis-label" x="60" y="24">高</text>
+        <text class="axis-label" x="60" y="332">低</text>
+        <text class="axis-title" x="220" y="368" text-anchor="middle">関与の深さ →</text>
+        <text class="axis-label" x="70" y="352">助言のみ</text>
+        <text class="axis-label" x="330" y="352">実務まるごと</text>
+
+        <!-- blue ocean zone -->
+        <ellipse cx="300" cy="150" rx="62" ry="52" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-dasharray="5 4"/>
+        <text class="dot-label" x="300" y="150" text-anchor="middle" fill="var(--gold)" font-weight="700">空白</text>
+        <text class="dot-label" x="300" y="166" text-anchor="middle" fill="var(--gold)">RM特化代行</text>
+        <text class="dot-label" x="300" y="112" text-anchor="middle" fill="var(--gold)" font-style="italic">★ クラビスの狙い</text>
+
+        <!-- points -->
+        <g fill="var(--past)">
+          <circle cx="110" cy="300" r="6"/><text class="dot-label" x="120" y="304" fill="var(--slate)">ツール/レポート</text>
+          <circle cx="195" cy="205" r="6"/><text class="dot-label" x="205" y="209" fill="var(--slate)">RMコンサル（亜欧堂）</text>
+          <circle cx="140" cy="150" r="6"/><text class="dot-label" x="150" y="146" fill="var(--slate)">経営コンサル</text>
+          <circle cx="225" cy="95" r="6"/><text class="dot-label" x="235" y="99" fill="var(--slate)">企業再生</text>
+          <circle cx="345" cy="70" r="6"/><text class="dot-label" x="322" y="58" fill="var(--slate)" text-anchor="middle">MC（運営受託）</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- AFTER -->
+    <div class="card">
+      <div class="card-head"><span class="tag after">After ・ 2026</span></div>
+      <h3>空白は埋まった：競合とツールが面で覆う</h3>
+      <p class="note">狙った空白には既に競合（ホテル結ら）。ツールはAIで上へ。クラビスは何でも屋化で散らばり気味。旗の立て直しどころ。</p>
+      <svg viewBox="0 0 400 380" role="img" aria-label="2026年のポジショニングマップ">
+        <line class="axis-line" x1="56" y1="30" x2="56" y2="336"/>
+        <line class="axis-line" x1="56" y1="336" x2="384" y2="336"/>
+        <text class="axis-title" x="14" y="188" text-anchor="middle" transform="rotate(-90 14 188)">単価・Fee</text>
+        <text class="axis-label" x="60" y="24">高</text>
+        <text class="axis-label" x="60" y="332">低</text>
+        <text class="axis-title" x="220" y="368" text-anchor="middle">関与の深さ →</text>
+        <text class="axis-label" x="70" y="352">助言のみ</text>
+        <text class="axis-label" x="330" y="352">実務まるごと</text>
+
+        <!-- Clavis current spread -->
+        <ellipse cx="230" cy="205" rx="118" ry="70" fill="var(--blue-wash)" stroke="var(--blue-soft)" stroke-width="1.4" stroke-dasharray="4 4" opacity="0.85"/>
+        <text class="dot-label" x="150" y="250" fill="var(--blue)" font-weight="700">クラビス現状</text>
+        <text class="dot-label" x="150" y="264" fill="var(--blue)">（散らばり）</text>
+
+        <!-- target zone -->
+        <ellipse cx="338" cy="120" rx="46" ry="46" fill="var(--gold-wash)" stroke="var(--gold)" stroke-width="1.6" stroke-dasharray="5 4"/>
+        <text class="dot-label" x="338" y="116" text-anchor="middle" fill="var(--gold)" font-weight="700">★狙い目</text>
+        <text class="dot-label" x="338" y="130" text-anchor="middle" fill="var(--gold)">人の判断×特化</text>
+
+        <!-- tools (rising) -->
+        <g fill="var(--past)">
+          <circle cx="105" cy="308" r="5"/><text class="dot-label" x="113" y="311" fill="var(--mute)">メトロエンジン/Yado View</text>
+          <circle cx="150" cy="288" r="5"/><text class="dot-label" x="158" y="291" fill="var(--mute)">ANDPLUS</text>
+          <circle cx="215" cy="250" r="5"/><text class="dot-label" x="223" y="248" fill="var(--mute)">IDeaS/EzRMS（AI）↑</text>
+        </g>
+        <!-- competitors -->
+        <g fill="var(--blue)">
+          <circle cx="188" cy="190" r="6"/><text class="dot-label" x="120" y="180" fill="var(--slate)">亜欧堂</text>
+          <circle cx="262" cy="168" r="6"/><text class="dot-label" x="200" y="150" fill="var(--slate)">ダイナミックプラス</text>
+          <circle cx="300" cy="150" r="7" fill="var(--gold)"/><text class="dot-label" x="270" y="205" fill="var(--gold)" font-weight="700">ホテル結（代行+内製化）</text>
+          <circle cx="352" cy="66" r="6"/><text class="dot-label" x="344" y="54" fill="var(--slate)" text-anchor="end">運営完全代行</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="maps" style="margin-top:16px">
+    <div class="card">
+      <span class="eyebrow" style="color:var(--past)">読み方 ・ ビフォー</span>
+      <ul style="margin:8px 0 0; padding-left:18px; color:var(--slate); font-size:14px; line-height:1.9">
+        <li>点が少なく、右上（高単価×実務代行）が<b>空いていた</b>。</li>
+        <li>亜欧堂だけがRMコンサルに存在。ツールは低単価の隅。</li>
+        <li>クラビスは「空白＝RM特化代行」に一番乗りする作戦だった。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="eyebrow">読み方 ・ アフター</span>
+      <ul style="margin:8px 0 0; padding-left:18px; color:var(--slate); font-size:14px; line-height:1.9">
+        <li>空白に<b>ホテル結マネージメント</b>（月10万〜・代行+内製化育成）が着地。ほぼ同ポジ。</li>
+        <li>RMSツールがAIで単価も守備範囲も<b>上へ拡大</b>。下からの突き上げ。</li>
+        <li>クラビスは開業支援〜HP・SNSまで広げ<b>散らばっている</b>。第一想起が立ちにくい。</li>
+        <li>残る勝ち筋は<b>★右上の「人の判断×特化」</b>＝ツールにも新規参入にも真似しにくい場所。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    修論の前提（ブルーオーシャン・低い参入障壁）は<b>崩れた</b>。でも追い風（地方分散＋19.1%・人手不足72.2%・値上げ局面）は全部、25年の実務力に有利。<b>「一番強い施設タイプ」×「人にしかできない判断」で右上に旗を立て直す</b>——それがアフターの本命仮説。
+  </div>
+
+  <hr class="rule" />
+
+  <p class="eyebrow" style="color:var(--gold)">半歩先の読み</p>
+  <h2>予測アフター → 集客はこう変わる</h2>
+  <p class="sub">集客の型は「どこに旗を立てるか」で決まる。今は決め打ちせず、アフターの出方を3方向で予測し、当たりだけ付けておく（本格設計はアフター確定後）。</p>
+
+  <div class="scen">
+    <div class="card">
+      <span class="badge">シナリオ A</span>
+      <div class="pos">特化の尖り</div>
+      <div class="block">高単価×実務代行を、<b>一番強い施設タイプ1つ</b>に絞る（例：地方リゾート／コンド／ホステル運営）。</div>
+      <div>
+        <div class="k">集客はこうなる</div>
+        <div class="block"><p>広く撒かない。その施設タイプの<b>業界メディア・団体・オーナー網に絞ったABM</b>＋「同タイプの立て直し事例」特化コンテンツ。狭く深く。</p></div>
+      </div>
+      <div>
+        <div class="k">今から仕込めること</div>
+        <div class="block"><p>3事例（沖縄・福岡・ホステル）を<b>タイプ別の型</b>に整理。一番勝てる型を見極める材料に。</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">シナリオ B</span>
+      <div class="pos">内製化の設計者</div>
+      <div class="block">代行から、<b>RM人材の育成・内製化支援・RM-OS提供</b>へ軸足。人手不足の追い風に直結。</div>
+      <div>
+        <div class="k">集客はこうなる</div>
+        <div class="block"><p><b>研修・ウェビナー・登壇</b>で「教える人（先生）」ポジション。既にベンダー共催セミナー実績あり＝伸ばせる。書籍・講義の資産化。</p></div>
+      </div>
+      <div>
+        <div class="k">今から仕込めること</div>
+        <div class="block"><p>非常勤講師・登壇の実績を<b>1か所に集約</b>。「内製化を考える施設」向けの入口に育てる。</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">シナリオ C</span>
+      <div class="pos">プロダクト × 人</div>
+      <div class="block">後輩の予測ツール×杉山ナレッジを<b>プロダクト化</b>し、ツール＋伴走のハイブリッドへ（修論のBIツール構想の実現）。</div>
+      <div>
+        <div class="k">集客はこうなる</div>
+        <div class="block"><p><b>無料診断・ツール体験</b>のデジタル導線→伴走アップセル。CVゼロだった資料DL集客が、初めて機能しやすい形に。</p></div>
+      </div>
+      <div>
+        <div class="k">今から仕込めること</div>
+        <div class="block"><p>GA4で今のDL導線の離脱を可視化。<b>「軽い入口（診断）」の設計</b>を先に準備しておく。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot">
+    ※ アフター（右上のどこに旗を立てるか）は、次回セッションで杉山さんの生の答えを聞いて確定します。本図はビフォー（修論2016）＋外部環境調査（NotebookLM 2016→2026・19ソース）からの<b>仮説</b>です。競合・相場の裏取りは <a href="https://notebooklm.google.com/notebook/adcdd644-3579-4c24-b690-c6550fea3b21">NotebookLM「Clavis Partners」</a>／記入シートは Notion ワークシート参照。
+  </p>
+</div>

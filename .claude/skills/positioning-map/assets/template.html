@@ -1,0 +1,104 @@
+<title>ポジショニングマップ テンプレート</title>
+<!--
+  使い方：このファイルをコピーし、<title>・軸ラベル・点(circle+text)・読み方・Takeawayを差し替える。
+  TSUGIで使う時は :root の --blue 系をTSUGIのブランド色に差し替える（他はそのまま）。
+  自己完結HTML（外部リソース禁止）。ライト/ダーク両対応。
+-->
+<style>
+  :root {
+    --ground:#F6F8FA; --panel:#FFFFFF; --ink:#1A1C1F; --slate:#4A4E57; --mute:#7C818B; --line:#E2E6EC;
+    --blue:#3E5C76; --blue-soft:#6B89A8; --blue-wash:#EAF0F6;
+    --past:#9E9A92; --past-wash:#EEEBE6; --gold:#B8863B; --gold-wash:#F6EEDD;
+    --serif:"Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+    --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){:root{
+    --ground:#14161A; --panel:#1C1F24; --ink:#ECEEF1; --slate:#C2C7CF; --mute:#8A909B; --line:#2C313A;
+    --blue:#8FB0CE; --blue-soft:#6B89A8; --blue-wash:#1E2A36;
+    --past:#8A867E; --past-wash:#262320; --gold:#D2A254; --gold-wash:#2A2416;
+  }}
+  :root[data-theme="light"]{--ground:#F6F8FA;--panel:#FFFFFF;--ink:#1A1C1F;--slate:#4A4E57;--mute:#7C818B;--line:#E2E6EC;--blue:#3E5C76;--blue-soft:#6B89A8;--blue-wash:#EAF0F6;--past:#9E9A92;--past-wash:#EEEBE6;--gold:#B8863B;--gold-wash:#F6EEDD;}
+  :root[data-theme="dark"]{--ground:#14161A;--panel:#1C1F24;--ink:#ECEEF1;--slate:#C2C7CF;--mute:#8A909B;--line:#2C313A;--blue:#8FB0CE;--blue-soft:#6B89A8;--blue-wash:#1E2A36;--past:#8A867E;--past-wash:#262320;--gold:#D2A254;--gold-wash:#2A2416;}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(28px,5vw,64px) clamp(18px,4vw,40px);}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:700;margin:0 0 10px;}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4.4vw,40px);line-height:1.25;margin:0 0 14px;text-wrap:balance;}
+  .lede{color:var(--slate);font-size:clamp(15px,1.6vw,17px);max-width:62ch;margin:0;}
+  .rule{height:1px;background:var(--line);border:0;margin:clamp(28px,4vw,44px) 0;}
+  .maps{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px);}
+  @media (max-width:760px){.maps{grid-template-columns:1fr;}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:clamp(16px,2.2vw,24px);}
+  .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:3px 9px;border-radius:999px;}
+  .tag.before{background:var(--past-wash);color:var(--past);}
+  .tag.after{background:var(--blue-wash);color:var(--blue);}
+  .card h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:8px 0 0;}
+  .card .note{color:var(--slate);font-size:13.5px;margin:2px 0 14px;}
+  svg{width:100%;height:auto;display:block;}
+  .axis-line{stroke:var(--line);stroke-width:1.5;}
+  .axis-label{fill:var(--mute);font-size:11px;font-family:var(--sans);}
+  .axis-title{fill:var(--slate);font-size:12px;font-weight:700;font-family:var(--sans);}
+  .dot-label{font-size:11.5px;font-family:var(--sans);}
+  .takeaway{background:var(--blue-wash);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:16px 20px;margin:26px 0 0;font-size:15px;}
+  .takeaway b{color:var(--blue);}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">〇〇社 ／ 補助資料</p>
+  <h1>ポジショニングマップ：〔サブタイトル〕</h1>
+  <p class="lede">縦は<b>〔縦軸〕</b>、横は<b>〔横軸：両端の言葉〕</b>。〔この図で何を決めたいか1文〕。</p>
+  <hr class="rule" />
+
+  <div class="maps">
+    <!-- 単独マップならこの片方だけ使う。ビフォー/アフターなら2枚。 -->
+    <div class="card">
+      <span class="tag before">Before ・ 〔年〕</span>
+      <h3>〔見出し〕</h3>
+      <p class="note">〔1〜2行の説明〕</p>
+      <svg viewBox="0 0 400 380" role="img" aria-label="ビフォーのマップ">
+        <line class="axis-line" x1="56" y1="30" x2="56" y2="336"/>
+        <line class="axis-line" x1="56" y1="336" x2="384" y2="336"/>
+        <text class="axis-title" x="14" y="188" text-anchor="middle" transform="rotate(-90 14 188)">〔縦軸〕</text>
+        <text class="axis-label" x="60" y="24">高</text>
+        <text class="axis-label" x="60" y="332">低</text>
+        <text class="axis-title" x="220" y="368" text-anchor="middle">〔横軸〕 →</text>
+        <text class="axis-label" x="70" y="352">〔左端〕</text>
+        <text class="axis-label" x="330" y="352">〔右端〕</text>
+        <!-- 空白/狙い目ゾーン（任意） -->
+        <ellipse cx="300" cy="150" rx="60" ry="50" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-dasharray="5 4"/>
+        <text class="dot-label" x="300" y="150" text-anchor="middle" fill="var(--gold)" font-weight="700">★狙い目</text>
+        <!-- 点：coordinateは x56〜384 / y30〜336（上=高） -->
+        <g fill="var(--past)">
+          <circle cx="110" cy="300" r="6"/><text class="dot-label" x="120" y="304" fill="var(--slate)">〔項目A〕</text>
+          <circle cx="195" cy="205" r="6"/><text class="dot-label" x="205" y="209" fill="var(--slate)">〔項目B〕</text>
+          <circle cx="330" cy="80" r="6"/><text class="dot-label" x="322" y="68" fill="var(--slate)" text-anchor="middle">〔項目C〕</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="card">
+      <span class="tag after">After ・ 〔年〕</span>
+      <h3>〔見出し〕</h3>
+      <p class="note">〔1〜2行の説明〕</p>
+      <svg viewBox="0 0 400 380" role="img" aria-label="アフターのマップ">
+        <line class="axis-line" x1="56" y1="30" x2="56" y2="336"/>
+        <line class="axis-line" x1="56" y1="336" x2="384" y2="336"/>
+        <text class="axis-title" x="14" y="188" text-anchor="middle" transform="rotate(-90 14 188)">〔縦軸〕</text>
+        <text class="axis-label" x="60" y="24">高</text>
+        <text class="axis-label" x="60" y="332">低</text>
+        <text class="axis-title" x="220" y="368" text-anchor="middle">〔横軸〕 →</text>
+        <text class="axis-label" x="70" y="352">〔左端〕</text>
+        <text class="axis-label" x="330" y="352">〔右端〕</text>
+        <ellipse cx="230" cy="205" rx="110" ry="66" fill="var(--blue-wash)" stroke="var(--blue-soft)" stroke-width="1.4" stroke-dasharray="4 4"/>
+        <text class="dot-label" x="150" y="250" fill="var(--blue)" font-weight="700">〔自社の現状〕</text>
+        <g fill="var(--blue)">
+          <circle cx="300" cy="150" r="7" fill="var(--gold)"/><text class="dot-label" x="268" y="200" fill="var(--gold)" font-weight="700">〔競合/狙い目〕</text>
+          <circle cx="188" cy="190" r="6"/><text class="dot-label" x="120" y="180" fill="var(--slate)">〔競合A〕</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="takeaway">〔だから何か＝1文の示唆。<b>太字</b>で要点を1つだけ立てる〕</div>
+</div>

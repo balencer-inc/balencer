@@ -9,10 +9,16 @@
 ## リンク集
 - 会社調査＋業界外部環境調査 → NotebookLM「Clavis Partners」: https://notebooklm.google.com/notebook/adcdd644-3579-4c24-b690-c6550fea3b21 （2026-07-16に2016→2026のRM外部環境19ソース追加）
 - **次回セッション①用｜ポジショニング再定義ワークシート（ビフォー→アフター）** → Notion: https://app.notion.com/p/39f53269fc5e8104a152c8da862eedb9
+- **ビフォー/アフター ポジショニングマップ（視覚版）** → 01_提案/ポジショニングマップ_before-after.html
 - RM業界ナレッジ（相場・競合・マクロ） → docs/_knowledge/revenue-management.md
-- 提案 → docs/proposals/clavis-partners/
-- 引き継ぎメモ → docs/proposals/clavis-partners/_引き継ぎメモ_2026-07-08.md
+- 提案・戦略ロードマップ・取り組み具体案 → 01_提案/
+- 契約書 → 02_契約・見積/
+- 議事録（初回7/7・2回目7/14） → 03_議事録/
+- 提供資料（修論RBS201701・プロフィール・会社紹介・事例集・集客リサーチ） → 05_素材/
+- 引き継ぎメモ → 00_引き継ぎ/_引き継ぎメモ_2026-07-08.md
 - 案件詳細 → memory「Clavis Partners案件」
-- 議事録 → Notion議事録DB（「杉山さん」で検索・未タグの可能性）: https://app.notion.com/p/balencer/21753269fc5e804a84cedc7916059edb
+- Notion議事録DB（「杉山さん」で検索・未タグの可能性）: https://app.notion.com/p/balencer/21753269fc5e804a84cedc7916059edb
 
-> 修正履歴: 2026-07-15 「RM＝リレーションシップ・マネジメント」は誤り。正しくは Revenue Management（ホテル・旅館の収益管理）。「何者か」を全面修正し、正式名を株式会社Clavis Partnersに確定。
+> 修正履歴:
+> - 2026-07-15 「RM＝リレーションシップ・マネジメント」は誤り。正しくは Revenue Management（ホテル・旅館の収益管理）。「何者か」を全面修正し、正式名を株式会社Clavis Partnersに確定。
+> - 2026-07-16 バレンサー顧客として案件一式を docs/proposals/clavis-partners/ から本フォルダ（docs/clients/clavis-partners/）配下の正規構造（00〜05）へ集約。

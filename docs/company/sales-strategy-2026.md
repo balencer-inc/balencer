@@ -1,6 +1,7 @@
 # バレンサー営業戦略 2026（第7期・6月始動版）
 
 作成: 2026-06-12 ／ 正本: このファイル（docs/company/）
+関連正本: [受注方程式](juchu-hoteishiki.md)（どう受注するかの型。実証第1号=Clavis 2026-07-14契約）
 前提資料: docs/handoff/（再定義一式）・docs/products/hojokin-2026/（補助金申請）・Notion「[バレンサー 集客ファネル＆サービス定義](https://app.notion.com/p/balencer/37c53269fc5e81348151e60561664eff)」（広告→受注の8工程設計図）・個社別の実名リストは docs/sales/（機密・Git管理外）
 
 ---

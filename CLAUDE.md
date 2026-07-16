@@ -72,6 +72,8 @@
 
 純汎用スキル（`design-system-builder`・`ui-ux-pro-max`）はグローバル設置のまま利用。
 
+工程スキル（リポジトリ `.claude/skills/`）: `positioning-map`（戦略を綺麗な2軸マップ＝ポジショニング/ビフォー・アフター/競合マップに視覚化。バレンサー/TSUGI両対応）。
+
 ---
 
 ## 3. ファイルの保存ルール

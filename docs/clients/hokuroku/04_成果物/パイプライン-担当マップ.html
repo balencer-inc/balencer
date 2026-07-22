@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>北麓｜集客→受注→納品→リピート パイプライン</title>
+<style>
+  :root{
+    --sumi:#1c1c1c;      /* 墨 */
+    --dou:#a6453e;       /* 赤銅 */
+    --washi:#f5f3f0;     /* 和紙 */
+    --ishi:#888580;      /* 石 */
+    --line:#e0dcd6;
+    --card:#fffdfb;
+    --green:#5f7d5c;     /* 回っている（低彩度） */
+    --amber:#b0894e;     /* 詰まり（低彩度） */
+    --red:#a6453e;       /* 空白＝赤銅 */
+    --serif:Georgia,"Hiragino Mincho ProN","Yu Mincho",serif;
+    --sans:Calibri,"Helvetica Neue","Hiragino Kaku Gothic ProN","Yu Gothic",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--sumi);background:var(--washi);line-height:1.65;padding:30px 34px 48px}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1,h2,h3{font-family:var(--serif);font-weight:600}
+  header{border-bottom:2px solid var(--sumi);padding-bottom:14px;margin-bottom:16px}
+  h1{font-size:25px;letter-spacing:.02em}
+  .sub{font-size:12px;color:var(--ishi);margin-top:6px;font-family:var(--sans)}
+  .lead{font-size:13px;color:#4a4744;margin:14px 0 24px}
+  .lead b{color:var(--sumi)}
+  .sect-label{font-family:var(--serif);font-size:13px;color:var(--dou);font-weight:600;margin:0 0 12px;letter-spacing:.03em}
+
+  /* パイプライン */
+  .pipe{display:flex;gap:0;align-items:stretch;overflow-x:auto;padding-bottom:6px}
+  .stage{flex:1 1 0;min-width:158px;position:relative;padding:0 6px}
+  .stage .arrow{position:absolute;right:-9px;top:34px;z-index:2;color:var(--ishi);font-size:20px;line-height:1}
+  .stage:last-child .arrow{display:none}
+  .box{border:1px solid var(--line);border-top:4px solid var(--ishi);border-radius:8px;background:var(--card);padding:11px 12px;height:100%}
+  .box .no{font-family:var(--serif);font-size:12px;color:#fff;background:var(--ishi);border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-weight:600}
+  .box .nm{font-size:12.5px;font-weight:700;margin:7px 0 4px;font-family:var(--sans);line-height:1.35}
+  .box .who{font-size:11px;color:var(--ishi)}
+  .box .st{font-size:11px;font-weight:700;margin-top:6px}
+  .s-green .box{border-top-color:var(--green)} .s-green .st{color:var(--green)}
+  .s-amber .box{border-top-color:var(--amber)} .s-amber .st{color:var(--amber)}
+  .s-red .box{border-top-color:var(--red)} .s-red .st{color:var(--red)}
+  .hole{font-size:10.5px;color:#6f4a46;background:rgba(166,69,62,.06);border-left:2px solid var(--dou);padding:5px 7px;margin-top:8px;border-radius:0 4px 4px 0}
+  @media(max-width:760px){
+    .pipe{flex-direction:column}
+    .stage{min-width:0}
+    .stage .arrow{right:auto;left:24px;top:auto;bottom:-16px;transform:rotate(90deg)}
+    .box{margin-bottom:20px}
+  }
+
+  /* カード */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
+  @media(max-width:760px){.cards{grid-template-columns:1fr}}
+  .intro{font-size:12px;color:#4a4744;margin:0 0 12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;border-left:4px solid var(--dou)}
+  .card .top{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+  .card .cno{font-family:var(--serif);font-size:15px;color:var(--dou);font-weight:700}
+  .card .ttl{font-size:13.5px;font-weight:700}
+  .card .row{font-size:11.5px;color:#4a4744;margin:3px 0}
+  .card .row b{color:var(--sumi)}
+  .card .hole-tag{display:inline-block;font-size:10.5px;font-weight:700;color:#fff;background:var(--dou);border-radius:4px;padding:1px 7px;margin-left:2px}
+  .card .temp{font-size:11.5px;margin-top:7px;padding-top:7px;border-top:1px dashed var(--line)}
+  .card .temp b{color:var(--sumi)}
+  .card .note{font-size:10.5px;color:var(--ishi);margin-top:6px;font-style:normal}
+
+  /* 温度感 */
+  .stance{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sumi);border-radius:10px;padding:14px 18px;margin-top:26px}
+  .stance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:760px){.stance-grid{grid-template-columns:1fr}}
+  .st-item{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:11.5px;color:#4a4744}
+  .st-item b{color:var(--sumi)}
+  .badge{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--sumi);display:flex;align-items:center;justify-content:center;font-size:12px;line-height:1}
+  .stance .tail{font-size:11.5px;color:#4a4744;margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+  .stance .tail b{color:var(--sumi)}
+
+  /* 前提 */
+  .assume{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-top:20px}
+  .assume p{font-size:12px;color:#4a4744;margin-bottom:8px}
+  .assume ol{margin:0 0 0 18px;font-size:12px;color:#4a4744}
+  .assume li{margin:4px 0}
+  .assume b{color:var(--sumi)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>北麓｜集客 → 受注 → 納品 → リピート パイプライン</h1>
+    <div class="sub">2026-08 定例用 ／ バレンサー（阿部・月8時間）</div>
+  </header>
+
+  <p class="lead">
+    入口（記事・Note）の水量は増やしている。では<b>入ってきた水はどこで漏れているか</b>。
+    流れの各段に「担当」と「穴」を置いて、<b>誰の担当でもない領域</b>を見つけるためのたたき台です。
+  </p>
+
+  <!-- 2. パイプライン -->
+  <div class="sect-label">流れと担当と穴</div>
+  <div class="pipe">
+    <div class="stage s-green">
+      <div class="box">
+        <span class="no">①</span>
+        <div class="nm">集客・入口<br><span style="font-weight:400;font-size:11px">記事 / Note / YouTube</span></div>
+        <div class="who">遠藤さん（記事）・宮崎さん（一次情報素材）</div>
+        <div class="st">◎ 回り始めている</div>
+      </div>
+      <div class="arrow">▶</div>
+    </div>
+    <div class="stage s-amber">
+      <div class="box">
+        <span class="no">②</span>
+        <div class="nm">問い合わせ → ヒアリング → 見積</div>
+        <div class="who">藤橋さん（属人）</div>
+        <div class="st">△ 藤橋さん1本で詰まりやすい</div>
+      </div>
+      <div class="hole">入口の水量を増やしても、受ける管が藤橋さん1本だと変換されない</div>
+      <div class="arrow">▶</div>
+    </div>
+    <div class="stage s-amber">
+      <div class="box">
+        <span class="no">③</span>
+        <div class="nm">受注 → 制作進行 → 納品</div>
+        <div class="who">鈴木さん（集中）・藤橋さん（演出/品質の最終砦）</div>
+        <div class="st">△ 業務集中／品質基準が未言語化</div>
+      </div>
+      <div class="hole">「北麓の70点とは何か」が藤橋さんの頭の中にしかない</div>
+      <div class="arrow">▶</div>
+    </div>
+    <div class="stage s-red">
+      <div class="box">
+        <span class="no">④</span>
+        <div class="nm">納品後フォロー → リピート</div>
+        <div class="who">ほぼ手つかず</div>
+        <div class="st">✕ 「良かったです次回も」で止まる</div>
+      </div>
+      <div class="hole">フォローが属人的・仕組みがない＝リピートを取り逃す</div>
+      <div class="arrow">▶</div>
+    </div>
+    <div class="stage s-red">
+      <div class="box">
+        <span class="no">⑤</span>
+        <div class="nm">数字で全体を見る<br><span style="font-weight:400;font-size:11px">受注予測・季節変動・施策効果</span></div>
+        <div class="who">いない</div>
+        <div class="st">✕ 「夏場が落ちる」が毎年繰り返す</div>
+      </div>
+      <div class="hole">リードが何件の受注に変わったか追えていない</div>
+    </div>
+  </div>
+
+  <!-- 3. カード -->
+  <div class="sect-label" style="margin-top:30px">誰の担当でもない空白 ＝ 阿部さんが取る</div>
+  <p class="intro">上の②〜⑤の穴に対して、阿部さんが<b>設計・判断・言語化まで</b>を担うたたき台。（①集客の担当は遠藤さん＝カードには入れない）</p>
+  <div class="cards">
+    <div class="card">
+      <div class="top"><span class="cno">2</span><span class="ttl">制作クオリティ基準の言語化</span></div>
+      <div class="row">効く穴：<span class="hole-tag">③</span></div>
+      <div class="row">藤橋さんの暗黙知（構成・演出・北麓の70点）をヒアリングで引き出し、評価軸・チェックリストに翻訳する</div>
+      <div class="row"><b>阿部が持つ範囲</b>：ヒアリングと基準の言語化まで。基準を使ったAIチェック化の実装は宮崎さんへ</div>
+      <div class="temp"><b>● 8h内</b>（対話と構造化が主）／運用実装は別立て</div>
+      <div class="note">すぐ数字には出ないが、③④⑤が回るための前提。地味だが土台。</div>
+    </div>
+    <div class="card">
+      <div class="top"><span class="cno">3</span><span class="ttl">リード→受注パイプラインの全体設計</span></div>
+      <div class="row">効く穴：<span class="hole-tag">②</span> <span class="hole-tag">④</span></div>
+      <div class="row">問い合わせ→ヒアリング→見積→受注→フォローを一本の流れとして設計。取りこぼしの穴を塞ぐ</div>
+      <div class="row"><b>阿部が持つ範囲</b>：全体設計・段取りまで。フォーム/自動返信/予約連携/CRMの実装は宮崎さんと共同→別立て</div>
+      <div class="temp"><b>◐ 設計は枠内／実装は別立て</b></div>
+    </div>
+    <div class="card">
+      <div class="top"><span class="cno">4</span><span class="ttl">パイプラインの数字可視化</span></div>
+      <div class="row">効く穴：<span class="hole-tag">⑤</span></div>
+      <div class="row">受注予測・季節変動・施策（記事/Note）の効果測定を数字で見る。何を可視化すべきかを定義</div>
+      <div class="row"><b>阿部が持つ範囲</b>：可視化の定義・設計まで。集計システムは宮崎さんのAIエージェント側</div>
+      <div class="temp"><b>◐ 定義は枠内／集計実装は別立て</b></div>
+      <div class="note">3とセットで動く（3が穴を塞ぐ、4が穴と水量を数字で見る）。</div>
+    </div>
+    <div class="card">
+      <div class="top"><span class="cno">5</span><span class="ttl">情報共有の設計<span style="font-weight:400;font-size:11px;color:var(--ishi)">（将来：軽いマネジメント支援の芽）</span></span></div>
+      <div class="row">効く穴：<span class="hole-tag">③</span>（鈴木さんの情報キャッチアップ）</div>
+      <div class="row">会議要約→鈴木さんへ、など「何を・誰に・どの粒度で流すか」の設計</div>
+      <div class="row"><b>阿部が持つ範囲</b>：流す粒度・対象の設計だけ。実装は宮崎さんのAIエージェント主導</div>
+      <div class="temp"><b>● 設計は軽い</b>／実装は宮崎さん</div>
+      <div class="note">情報共有に留めるが、必要が見えれば「人と業務の交通整理＝軽いマネジメント支援」に育つ芽。今は無理に広げない。</div>
+    </div>
+  </div>
+
+  <!-- 4. 温度感 -->
+  <div class="stance">
+    <h3 style="font-size:12.5px;margin-bottom:9px">阿部さんの関わり方の温度感</h3>
+    <div class="stance-grid">
+      <div class="st-item"><div class="badge">●</div><div><b>8時間内で巻き取る</b><br>設計・判断・言語化・軽いNotion</div></div>
+      <div class="st-item"><div class="badge">◐</div><div><b>設計は枠内／実装は相談</b><br>実装は量を見て一緒に決める</div></div>
+      <div class="st-item"><div class="badge">○</div><div><b>システム構築級は別立て</b><br>社内実装／外注／別途請負</div></div>
+    </div>
+    <p class="tail"><b>制作物・システム実装が絡むものは別立て</b>にします。線引きは固定でなく重さに応じて都度すり合わせ。際限なく増えて曖昧になるのを避ける、という温度感です。</p>
+  </div>
+
+  <!-- 5. 前提 -->
+  <div class="assume">
+    <h3 style="font-size:12.5px;margin-bottom:8px">次回確認する前提</h3>
+    <p>すべて仮説です。次回ここを確認してから着手対象を確定します：</p>
+    <ol>
+      <li><b>鈴木さん・外注体制の実態</b>（②③のどこまで渡せるか）</li>
+      <li><b>藤橋さんが「今いちばんきつい工程」はどこか</b>（②〜⑤のどれか）</li>
+      <li><b>4カードの優先順</b>（阿部の見立て：2＝土台を仕込む／3・4＝穴を塞ぐ本命／5＝軽く添える）</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>

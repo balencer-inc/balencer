@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Clavis Partners 案件ドシエ（社内共有用）</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif;
+    color: #1a1a1a; line-height: 1.75; font-size: 10.5pt; margin: 0;
+  }
+  .page-break { page-break-before: always; }
+  h1, h2, h3, h4 { line-height: 1.4; }
+  h2 { font-size: 16pt; margin: 0 0 4px; padding-bottom: 8px; border-bottom: 2px solid #111; }
+  h3 { font-size: 12.5pt; margin: 22px 0 6px; padding-left: 10px; border-left: 4px solid #111; }
+  h4 { font-size: 11pt; margin: 16px 0 4px; color: #333; }
+  p { margin: 6px 0; }
+  ul, ol { margin: 6px 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  strong { font-weight: 700; }
+  a { color: #1a1a1a; text-decoration: underline; word-break: break-all; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 9.5pt; }
+  th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: #f2f2f2; font-weight: 700; }
+  blockquote {
+    margin: 12px 0; padding: 10px 14px; background: #f7f7f5;
+    border-left: 4px solid #b8a000; color: #333; font-size: 10pt;
+  }
+  .sectlabel { display:inline-block; font-size: 8.5pt; font-weight:700; letter-spacing:.08em;
+    color:#666; margin-bottom:2px; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+
+  /* Cover */
+  .cover { height: 245mm; display: flex; flex-direction: column; justify-content: center; }
+  .cover .kicker { font-size: 10pt; letter-spacing:.25em; color:#666; }
+  .cover h1 { font-size: 30pt; margin: 14px 0 6px; letter-spacing:.01em; }
+  .cover .sub { font-size: 13pt; color:#444; margin-bottom: 40px; }
+  .cover .meta { font-size: 10pt; color:#555; border-top:1px solid #ddd; padding-top: 16px; }
+  .cover .meta div { margin: 4px 0; }
+  .badge { display:inline-block; background:#111; color:#fff; font-size:9pt; font-weight:700;
+    padding:3px 10px; border-radius: 3px; margin-right:6px; }
+  .toc { font-size: 10.5pt; }
+  .toc li { margin: 6px 0; }
+  .note { background:#f7f7f5; border:1px solid #e5e5e0; border-radius:6px; padding:14px 18px; font-size:10pt; }
+  .small { font-size: 9pt; color:#666; }
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<section class="cover">
+  <div class="kicker">CLIENT DOSSIER ／ 社内共有用</div>
+  <h1>株式会社 Clavis Partners</h1>
+  <div class="sub">案件ドシエ ── 経緯・最新資料・提供資料の一式</div>
+  <div class="meta">
+    <div><span class="badge">契約締結済</span><span class="badge">ENTRY 月20万／6ヶ月〜</span></div>
+    <div>クライアント：株式会社 Clavis Partners（東京都渋谷区・宿泊業のレベニューマネジメント支援）</div>
+    <div>キーパーソン：代表取締役 杉山 康之 様</div>
+    <div>担当：阿部（バレンサー）　／　紹介経路：Rainbow Voice 姉妹案件</div>
+    <div>作成：2026-07-27　／　発行元：株式会社バレンサー（社内限定）</div>
+  </div>
+</section>
+
+<!-- ===== 使い方 + 目次 ===== -->
+<section class="page-break">
+  <h2>この資料について（チーム向け）</h2>
+  <div class="note">
+    <p>本資料は、Clavis Partners 案件を<strong>チームで引き継いで進められるように</strong>、これまでの経緯・最新の準備物・先方提供の会社情報を1冊にまとめたものです。Claudeプロジェクトのナレッジ、または壁打ちチャットに貼って使ってください。</p>
+    <ul>
+      <li><strong>本体（前半）</strong>：バレンサー側で整理した「案件サマリ → 経緯 → 最新の戦略資料」。まずここを読めば全体像が掴めます。</li>
+      <li><strong>参考資料（後半）</strong>：議事録の原本・先方提供の会社紹介／支援実績／プロフィール・契約書。一次情報として添付。</li>
+      <li>案件の最新の詳細・リンクは <strong>docs/clients/clavis-partners/README.md</strong> が正本。動的に変わる情報はそちらを参照。</li>
+    </ul>
+    <p class="small">※ 社外秘。フィー・売上などの数字を含みます。取り扱い注意。</p>
+  </div>
+
+  <h3 style="margin-top:26px;">目次</h3>
+  <ol class="toc">
+    <li>案件サマリ（Clavis Partnersとは・現在地）</li>
+    <li>経緯① 引き継ぎメモ（2026-07-08）</li>
+    <li>経緯② 2回目お打ち合わせ議事録（2026-07-14・契約締結）</li>
+    <li>最新① これからの取り組みと成長ロードマップ（提案本文）</li>
+    <li>最新② 取り組み具体案（施策の中身）</li>
+    <li>【参考資料・原本添付】初回議事録(7/7)／会社紹介／支援実績／プロフィール／契約書</li>
+  </ol>
+</section>
+
+<!-- ===== 1. 案件サマリ ===== -->
+<section class="page-break">
+  <div class="sectlabel">01 ── SUMMARY</div>
+  <h2>案件サマリ</h2>
+
+  <h3>何者か</h3>
+  <p>ホテル・旅館など宿泊業の<strong>レベニューマネジメント（＝Revenue Management／収益の最大化・最適化）</strong>専門のコンサル／実務支援会社。</p>
+  <ul>
+    <li>① コンサルティング（企業・販売戦略、開業／開発支援）</li>
+    <li>② RMアウトソーシング（OTA/AGT対策・需要予測・予算実績管理・担当者トレーニング）</li>
+    <li>③ オペレーションサポート（宿泊プラン作成・PR広報・HP制作・SNS運用）</li>
+  </ul>
+  <p>「実践」と「組織体制構築」まで踏み込むのが特徴。2023年11月設立・東京都渋谷区円山町・代表取締役 杉山康之（ホテル業界25年超・立教大MBA・国士舘大非常勤講師）。</p>
+
+  <h3>当社との関係・現在地</h3>
+  <ul>
+    <li><strong>2026-07-14に6ヶ月のサポート契約を締結（ENTRY／月20万円・税別）</strong>。クラウドサイン契約済み。</li>
+    <li>紹介経路：足立氏 → 杉山さんの奥様（金丸明日香さん＝Rainbow Voice）の10年来の縁。<strong>Rainbow Voiceの姉妹案件</strong>。</li>
+    <li>初回オンライン 7/7、2回目 7/14（クロージング）実施済み。</li>
+    <li>キーパーソン：杉山 康之 様（代表取締役）</li>
+  </ul>
+
+  <h3>数字と体制</h3>
+  <ul>
+    <li>業績：1期 約1,200万 → 2期 約4,700万 → 3期（今期）6,000万超。会計年度10月〜9月。<strong>3年後3億円が目標</strong>。</li>
+    <li>体制：1人経営＋業務委託12名。報酬は月額固定、25〜30%を業務委託費。</li>
+    <li>主要クライアント：フォションホテル京都、福岡のホテル、Tマークシティ（大森・札幌・金沢）。ほぼ紹介・親会社・人脈経由。</li>
+    <li>簡易診断＝<strong>立て直し型 53/100</strong>（ブランド20・組織13・集客11・デジタル9が最低）。専門性と実績は強いが、仕組みとデジタルが弱いのが現在地。</li>
+  </ul>
+
+  <h3>案件を貫く軸</h3>
+  <blockquote>Clavisが顧客ホテルにやっている「属人 → 仕組み化・内製化・組織化」を、<strong>Clavis自身に</strong>。杉山さん個人に集まっている「判断」と「集客」を、仕組みと組織へ移す。</blockquote>
+
+  <h3>主要リンク（正本・詳細）</h3>
+  <ul>
+    <li>案件フォルダ正本：<code>docs/clients/clavis-partners/</code>（README.md がハブ）</li>
+    <li>会社調査＋業界外部環境調査：NotebookLM「Clavis Partners」</li>
+    <li>ポジショニング再定義ワークシート（次回セッション用）：Notion</li>
+    <li>RM業界ナレッジ（相場・競合・マクロ）：<code>docs/_knowledge/revenue-management.md</code></li>
+  </ul>
+</section>
+
+<!-- ===== 2. 引き継ぎメモ ===== -->
+<section class="page-break">
+  <div class="sectlabel">02 ── 経緯①</div>
+  <h2>引き継ぎメモ（2026-07-08時点）</h2>
+
+  <h3>30秒サマリー</h3>
+  <p>杉山康之さん／<strong>Clavis Partners</strong>（渋谷・RM＝レベニューマネジメント支援、RM歴25年超）。Rainbow Voice（奥様＝金丸明日香さん）の姉妹案件。7/7初回オンライン済み、<strong>7/14でクロージング</strong>狙い。診断は立て直し型53/100。現状6,000万→3年で3億、紹介依存脱却がテーマ。</p>
+
+  <h3>案件の位置づけ</h3>
+  <ul>
+    <li>杉山康之さん ＝ 株式会社Clavis Partners 代表（渋谷／2023年11月設立）。RM歴25年超。ホテル・旅館のRM支援／アウトソーシング／開業運営支援。</li>
+    <li>7/7 初回オンライン実施済み。次回 7/14 でクロージングを狙う。</li>
+    <li>課題：紹介依存の脱却。デジタル施策（SEO・AIブログ・SNS広告）を外注したが、資料DL→無料相談のCVがゼロ。</li>
+  </ul>
+
+  <h3>この時点の重要な決定（前提）</h3>
+  <ul>
+    <li>提示媒体はNotionでよい（HTMLは中身が固まってから任意で）。</li>
+    <li>クロージング資料の狙い：月次コンサル＋中長期課題を並べ、相手が「取り組む価値がある」と自分ごと化。<strong>最低6ヶ月／前提は数年</strong>（強制せず、毎月の成果物で価値を感じさせる）。</li>
+    <li>「作るAI・仕組み」はプロダクトレベルの詳細まで。RMのプロを唸らせる解像度が必要。「通うほど価値が複利する」構造を複数粒度（Layer）で見せて選んでもらう。</li>
+    <li><strong>方針転換（最重要）</strong>：AI/仕組みの中身は<strong>Web調査ベースで作らない</strong>。抽象化・不正確な一般論はRMプロには逆効果。杉山さん／阿部さんのRM実務経験を一次情報として受け取り、それを正典にする。Web調査は「他社RMSの最新スペック・価格の裏取り」だけに限定。</li>
+  </ul>
+
+  <h3>この時点の宿題（順番）</h3>
+  <ol>
+    <li>阿部さんからRM実務経験を受け取る（①日次/週次/月次の作業の流れ ②使用ツールと手作業部分 ③経験者だからやる例外判断 ④委託12名に任せられる/られないこと ⑤既存RMSをなぜ使わない/使えないのか）。</li>
+    <li>受け取った実務知識を <code>docs/_knowledge/revenue-management.md</code> として恒久ナレッジ化。</li>
+    <li>それを正典に「作るAI・仕組み」の詳細設計を複数粒度（Layer案）で書く。</li>
+    <li>戦略ロードマップ＋具体案＋Layer設計を統合してNotion化。</li>
+    <li>（杉山さん側の宿題）広告運用・記事作成の分析データ共有／GA4導入前提。</li>
+  </ol>
+  <p class="small">※ このメモはクロージング前（7/8）時点の想定。実際の契約は次章 7/14 議事録のとおり ENTRY（月20万・6ヶ月）で締結。</p>
+</section>
+
+<!-- ===== 3. 7/14 議事録 ===== -->
+<section class="page-break">
+  <div class="sectlabel">03 ── 経緯②</div>
+  <h2>2回目お打ち合わせ 議事録（2026-07-14・契約締結）</h2>
+  <p class="small">杉山様オンライン ／ Geminiメモをもとに整理</p>
+
+  <h3>概要</h3>
+  <p>売上拡大を目指す成長戦略と組織構築を議論し、<strong>半年間の戦略サポート契約を締結</strong>。</p>
+  <ul>
+    <li><strong>売上目標と課題</strong>：3年後に売上3億円を目指す成長目標を策定。業務の自動化やAI活用による効率化が最優先課題と確認。</li>
+    <li><strong>集客と組織戦略</strong>：安定的な集客に向けたブランディング・Web戦略の重要性を議論。専門性を補完するハイブリッド型組織の構築が今後の方向性。</li>
+    <li><strong>契約合意</strong>：包括的な戦略策定とドキュメンテーション支援のため、6ヶ月間のサポート契約を締結。</li>
+  </ul>
+
+  <h3>次のステップ（この打合せ時点）</h3>
+  <ul>
+    <li>［杉山康之］デジタルマーケティング進捗共有：施策状況を記録したスプレッドシートを阿部へ共有する。</li>
+    <li>［阿部貴之］契約書作成：6ヶ月の契約ドラフトを作成し杉山康之へ送付する。</li>
+  </ul>
+
+  <h3>議論の詳細（要点）</h3>
+  <ul>
+    <li><strong>目的と目標設定</strong>：3年後3億円を確認。達成には業務の仕組み化と組織的な共有が不可欠との認識で一致。</li>
+    <li><strong>デジタルマーケの現状</strong>：ブログ等の反響が低い課題。デジタルに強い後輩人材との連携可能性→組織としての補完体制が重要。</li>
+    <li><strong>RMの業務効率化</strong>：手作業のデータ分析・料金コントロールは限界。後輩とクラウド上の自動予測ツールを開発中と報告。</li>
+    <li><strong>自動化アプローチ</strong>：エラーのリスクを考慮し、情報集約とメール下書き作成などの工程を切り分けて自動化する手法を阿部が提案。</li>
+    <li><strong>集客・認知</strong>：紹介以外の手段としてSNS・ブログでの認知拡大。社長ブランディングとしてショート動画・YouTubeで潜在層へのリーチを提案。</li>
+    <li><strong>ビジネス戦略の再構築</strong>：ポジショニング・ビジネスモデルをAI時代に合わせて更新。組織拡大時のビジョン言語化の重要性。</li>
+    <li><strong>ナレッジ管理の仕組み化</strong>：「個人知」「会社ルール」「提案資料」の3分類でAIに蓄積・活用する自社の仕組みを紹介。新メンバー教育コスト削減。</li>
+    <li><strong>RM言語化の難しさ</strong>：投資家からの圧力や案件個別性から、判断基準を一律にマニュアル化するのは難しい。少人数チームで柔軟対応が現実的。</li>
+    <li><strong>優先事項は集客</strong>：まず集客を安定させ、そこから組織拡大。2026年の案件減少リスクに備え、HPリニューアル・SEO・広告運用を優先。</li>
+    <li><strong>広告・ブログ運用</strong>：月額5万円ずつで委託、AI執筆を杉山さんが最終チェック。月2回のアップデートMTG実施中。</li>
+    <li><strong>避けるべき営業</strong>：サービスが特殊なため営業代行への丸投げは品質リスク大。オーナー・金融機関との個人ネットワーキング重視。</li>
+    <li><strong>信頼獲得のコンテンツ</strong>：YouTube・LPは会う前の信頼の土台になる。対談形式など自然な形なら社長ブランディングは有効。</li>
+    <li><strong>スケーリング</strong>：社員＋業務委託のハイブリッド型。仕組み化されていれば少数精鋭でも大規模売上が可能。</li>
+    <li><strong>組織構築・採用</strong>：初期に異なる専門性（CTO・マーケ責任者等）で同じ思想のメンバーを採用することが重要。</li>
+    <li><strong>今後の体制</strong>：6ヶ月契約で合意。チャットツールも活用し、ドキュメンテーション・戦略策定の壁打ち相手として阿部が包括サポート。</li>
+  </ul>
+</section>
+
+<!-- ===== 4. 戦略ロードマップ（提案本文） ===== -->
+<section class="page-break">
+  <div class="sectlabel">04 ── 最新①</div>
+  <h2>これからの取り組みと、成長ロードマップ</h2>
+  <p class="small">Proposal ｜ 株式会社 Clavis Partners 御中 ／ 2026.07.14（対外提示物の本文）</p>
+  <blockquote>前回のお打ち合わせを踏まえ、ご一緒できる取り組みとロードマップをまとめました。</blockquote>
+
+  <h3>01. 前回の振り返り（Recap）</h3>
+  <ul>
+    <li>紹介中心で伸びてきたが、<strong>将来の紹介の枯れを見据え、紹介以外の入口をつくりたい</strong></li>
+    <li>デジタル施策（SEO・AIブログ・SNS広告）を外注したが、資料DLから相談への手応えがまだ出ていない</li>
+    <li><strong>3年後に売上3億円</strong>を目指す</li>
+    <li>会社ブランドより、<strong>杉山さん個人を前面に出す社長ブランディング</strong>が効きそう</li>
+    <li>杉山さんの判断や暗黙知を、組織で共有できる形にしていきたい</li>
+    <li>簡易診断＝<strong>立て直し型 53/100</strong>（ブランド20・組織13・集客11・デジタル9が最低）</li>
+  </ul>
+
+  <h3>02. ご一緒する目的</h3>
+  <blockquote><strong>杉山さん個人に集まっている「判断」と「集客」を、仕組みと組織に移し、紹介に頼らなくても伸びる会社にする。</strong></blockquote>
+  <p>その起点として、10年前に描いた会社の旗を、いまの時代に定義し直すところから始めます。</p>
+
+  <h3>03. ロードマップと、取り組むテーマ</h3>
+  <p>前回お見せした3段階を具体的なテーマまで開きました。<strong>上から着手。各フェーズのテーマは一緒に優先順位をつけて選びます。全部を一度にやるわけではありません。</strong></p>
+
+  <h4>PHASE 0 ｜ 旗の再定義（最初の90日）</h4>
+  <ul>
+    <li>事業ポジショニングの再定義／顧客セグメントの再整理／競合ポジショニングの整理</li>
+    <li>提供価値の言語化（洞察力／協力／革新）／社長ブランディングの軸／ビジョンの言語化</li>
+    <li>→ Output：再定義した会社の旗（1枚）＋社長ブランディングの軸</li>
+  </ul>
+  <h4>PHASE 1 ｜ 仕組みにする</h4>
+  <ul>
+    <li>RM判断基準の言語化／レポーティングの標準化／業務委託12名のオペレーション標準化</li>
+    <li>新規案件の立ち上げ手順化／看板商品の設計（HOTEL LAB.RM等）</li>
+    <li>集客導線の作り直し（GA4導入→原因可視化→設計し直し）／広告・SEO・記事のROI可視化／軽い入口の設計</li>
+    <li>（状況次第）判断基準のAI化 ── 後輩の方の動き次第で役割が被らないよう、お役に立てる範囲で</li>
+    <li>→ Output：RM判断ガイド／標準オペ手順／改善した集客導線</li>
+  </ul>
+  <h4>PHASE 2 ｜ 展開する</h4>
+  <ul>
+    <li>Note／SNSの発信の型づくり／実績・登壇・講義の資産化／プロフィール・会社サイトの再設計</li>
+    <li>サービスのパッケージ化（高単価型／標準パッケージの2階建て）／新チャネルの開拓</li>
+    <li>正社員3名の組織設計／採用ブランディング／（状況次第）AI・自動化の展開</li>
+    <li>→ Output：発信の仕組み／サービスメニュー／組織プラン</li>
+  </ul>
+
+  <h4>関わり方について（念のため）</h4>
+  <p>月々の伴走でご一緒するのは、<strong>方向性の壁打ちと、進め方のディレクション</strong>まで。SNSショート動画の企画・編集、LP・サイトなどの<strong>制作物はテーマに応じて別立て</strong>。頭の整理と設計を隣で担い、手を動かす制作はその都度ご相談する形。</p>
+
+  <h3>04. ご一緒するプラン</h3>
+  <p><strong>今回ご一緒する内容 ＝ ENTRY（経営の壁打ち）｜月20万円（税別）／6ヶ月〜</strong>（2026-07-14合意）</p>
+  <ul>
+    <li>定例ミーティング：月1〜2回（各60分程度）── 経営・戦略の壁打ち、次の一手の整理</li>
+    <li>チャット随時 ── 日々の相談・壁打ち</li>
+    <li>月8時間程度の稼働（調査・支援）── ドキュメンテーション支援、たたき台づくり、調査など</li>
+    <li>毎月、ロードマップ（PHASE 0〜）のテーマから優先順位を一緒に決めて進める</li>
+    <li>別立て：SNSショート動画の企画・編集、LP・サイト制作、AI実装などの制作物はテーマに応じ都度見積</li>
+  </ul>
+  <table>
+    <thead><tr><th>プラン</th><th>役割</th><th>月額</th><th>中身</th><th>担当</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ENTRY（今回）</strong></td><td>壁打ち相手</td><td>20万円</td><td>月1〜2回の定例(各60分)＋チャット随時＋月8h稼働／課題整理と次の一手</td><td>阿部</td></tr>
+      <tr><td>MAIN</td><td>右腕</td><td>30–50万円</td><td>月2〜4回MTG＋チャット随時／戦略＋施策ディレクション／制作発注・品質管理</td><td>阿部＋メンバー</td></tr>
+      <tr><td>PREMIUM</td><td>経営参謀</td><td>60–100万円</td><td>週次MTG＋常時チャット／意思決定支援・全施策PM／組織設計まで</td><td>阿部＋メンバー＋CTO</td></tr>
+    </tbody>
+  </table>
+  <p class="small">最低6ヶ月から・税別。制作物（Web・LP・動画など）はテーマに応じ別途見積。関わりが深まれば MAIN・PREMIUM へ。実際は2〜3年ご一緒するケースが多い。</p>
+
+  <h3>05. この後の流れ</h3>
+  <ol>
+    <li>本日の内容をもとに、取り組むテーマと料金プランをまとめて送付</li>
+    <li>クラウドサインでご契約</li>
+    <li>初回の打ち合わせ日を決めてスタート</li>
+  </ol>
+</section>
+
+<!-- ===== 5. 取り組み具体案 ===== -->
+<section class="page-break">
+  <div class="sectlabel">05 ── 最新②</div>
+  <h2>取り組み具体案（施策の中身）</h2>
+  <p class="small">本体の第3章の各テーマを「何をどうやるか」まで落とした別紙。各施策は【狙い】【やること】【成果物】【杉山さんの負担】で記載。</p>
+  <blockquote>順番の考え方：<strong>まず大元（会社の旗）を定義し直す → 個人依存を仕組みに移す → 紹介以外の戦い方を広げる</strong>。上から着手します。</blockquote>
+
+  <h3>【まず・大元】会社の旗を、いまの時代に定義し直す（PHASE 0）</h3>
+  <h4>0-1. 事業ポジショニングの再定義</h4>
+  <p><strong>狙い</strong>：会社の原型＝2016年の修士論文「RMアウトソーシング事業」の設計思想が、いまの市場でも通用するかを見直し、旗を描き直す。</p>
+  <ul>
+    <li>修論の前提（ホテルはRM専門職を育成・維持できない→中核部門を外部委託）を棚卸しし、この10年の変化（コロナ、インバウンドの戻り、人手不足、AI登場、RMSツール普及）と突き合わせる</li>
+    <li>今の案件を「施設タイプ×関与の深さ×報酬」で並べ、一番強くて儲かる型を特定</li>
+    <li>「誰の・どのホテルの・何屋か」を、いまの言葉で1つに絞る</li>
+  </ul>
+  <p class="small">成果物：再定義した事業ポジショニング（1枚）。負担：棚卸しの壁打ち。書くのはこちら。</p>
+
+  <h4>0-2. 社長ブランディングの軸決め</h4>
+  <p><strong>狙い</strong>：会社名より「杉山康之」で指名相談が来る状態の、軸を決める。</p>
+  <ul>
+    <li>杉山さんを一言で言い切る肩書きを決める（例：ホテルの収益を立て直す人／RMを仕組みにする人）</li>
+    <li>「杉山さんに頼む理由」を3つに絞る（25年の実務／属人にしない仕組み化／開業から立て直しまで一気通貫）</li>
+    <li>発信・プロフィール・資料を、この軸で統一する</li>
+  </ul>
+  <p class="small">成果物：ブランドの軸（1枚）。負担：軸決めの壁打ち1〜2回。</p>
+
+  <h3>【次・仕組み】杉山さん個人への依存を外す（PHASE 1）</h3>
+  <h4>1-1. RM判断基準の言語化 ＝「杉山さんの脳内マニュアル」化</h4>
+  <ul>
+    <li>実案件を題材に「なぜこの価格にしたか」を月1〜2回・各30分話してもらい、こちらで文章化</li>
+    <li>判断を3層に分解：<strong>相場観</strong>（エリア・室数・季節・イベント）／<strong>調整ルール</strong>（OTA・競合・残室日数）／<strong>例外判断</strong>（機械的にやらず手を入れる時）</li>
+    <li>「都市シティ型」「ラグジュアリー型」など施設タイプ別の型に束ねる</li>
+  </ul>
+  <p class="small">成果物：RM判断ガイド（施設タイプ別）。まず1タイプから。負担：月1〜2回・各30分の壁打ちのみ。</p>
+
+  <h4>1-2.（状況次第）判断基準のAI化</h4>
+  <blockquote>⚠️ <strong>扱いは控えめに</strong>。後輩の方がAI活用を進められる可能性があるため、役割が被らないよう、状況を見てお役に立てる範囲でお手伝いする位置づけ。こちらの目玉としては前に出さない。</blockquote>
+  <ul>
+    <li>1-1のガイドを社内チャットAIに載せ、具体的な状況設定に杉山さんの型で回答</li>
+    <li><strong>AIが下書き、最終判断は人</strong>（前回合意を厳守）。最初は杉山さんが添削し精度を上げる</li>
+  </ul>
+
+  <h4>1-3. 業務委託12名のオペレーション標準化</h4>
+  <ul>
+    <li>12名の動きを棚卸し→定型作業（レポート・OTA管理・予実チェック）をチェックリスト＋テンプレ化</li>
+    <li>「杉山さんしかできない仕事／型化して任せられる仕事」を仕分け、後者を巻き取る</li>
+  </ul>
+
+  <h4>1-4. 集客導線の作り直し ＝「なぜCVがゼロなのか」を潰す</h4>
+  <ul>
+    <li><strong>まずGA4を入れて離脱箇所を可視化</strong>（今は勘でしか語れない状態）</li>
+    <li>資料DL後に相談へ案内する導線があるか点検／外注中のSEO・広告のROIを数字で出し、続ける・止める・作り直すを判断</li>
+    <li>いきなり無料相談ではなく、診断・チェックリストなど軽い入口を設計</li>
+  </ul>
+  <p class="small">成果物：アクセス解析レポート＋改善したリード導線。負担：現在の広告・記事の分析データ共有（前回の宿題）。</p>
+
+  <h3>【展開】紹介以外の戦い方を広げる（PHASE 2）</h3>
+  <h4>2-1. Note／SNSの発信の型づくり</h4>
+  <ul>
+    <li>テーマの型を用意（事例の裏側／RMのよくある誤解／業界ニュース一言解説）</li>
+    <li><strong>杉山さんは5〜10分の素材出しだけ</strong>、記事化はこちら、週1本目安</li>
+  </ul>
+  <h4>2-2. 実績・登壇の資産化</h4>
+  <p>登壇・講義・掲載を1ヶ所に集約し「信頼の証拠」に／事例集（Occ/ADR/RevPAR改善）を相談前に読む導線へ／プロフィール・サイトを個人が立つ見せ方に。</p>
+  <h4>2-3. サービスのパッケージ化（HOTEL LAB.RM 等）</h4>
+  <p>提供内容を「杉山さんが必ず入る高単価」と「型で回せる標準パッケージ」に分ける／HOTEL LAB.RMを価格・範囲・成果の見せ方まで整える／【仕組み】が進むほどこの商品は強くなる。</p>
+  <h4>2-4. 正社員3名の組織設計</h4>
+  <p>3名の役割仮置き（RMオペ統括／コンテンツ・広報／営業・CS）／AI・標準化が進むほど採用ハードルが下がることを織り込む／採用基準・育成ステップ・任せる範囲を1枚に。</p>
+
+  <h3>通し方（優先順位）</h3>
+  <ol>
+    <li><strong>【大元】旗の再定義</strong>（0-1・0-2）── 起点。ここが決まらないと他がぼやける</li>
+    <li><strong>GA4導入＋数字の可視化</strong>（1-4）── 判断の土台。並行で早めに</li>
+    <li><strong>RM判断の言語化に着手</strong>（1-1）── 月1〜2回の壁打ちで少しずつ。早く始めるほど資産が貯まる</li>
+    <li><strong>発信の型づくり</strong>（2-1）── 軸が決まれば供給体制でこちらが回す</li>
+  </ol>
+  <blockquote><strong>杉山さんの負担は、ほぼ「壁打ち」と「素材出し」だけ</strong>になるよう設計。手を動かす作業はこちらが引き受けます。だからこそ、続けられます。</blockquote>
+</section>
+
+<!-- ===== 6. 参考資料 区切り ===== -->
+<section class="page-break">
+  <div class="sectlabel">06 ── APPENDIX</div>
+  <h2>参考資料（以下、原本を添付）</h2>
+  <div class="note">
+    <p>ここから先は、一次情報として原本をそのまま添付しています。</p>
+    <ol>
+      <li><strong>初回お打ち合わせ議事録（2026-07-07）</strong> ── Geminiによる自動メモの原本（4ページ）</li>
+      <li><strong>株式会社Clavis Partners｜会社・事業紹介資料</strong> ── 先方提供（14ページ）</li>
+      <li><strong>株式会社Clavis Partners｜支援実績・事例集</strong> ── 先方提供（16ページ）</li>
+      <li><strong>プロフィール（杉山康之 様）</strong> ── 先方提供（1ページ）</li>
+      <li><strong>コンサルティング業務委託契約書</strong> ── 締結済み（3ページ）</li>
+    </ol>
+    <p class="small">※ 契約書・支援実績にはフィー・売上等の数字を含みます。社外秘。</p>
+  </div>
+</section>
+
+</body>
+</html>

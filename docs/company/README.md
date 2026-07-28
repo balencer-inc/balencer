@@ -9,8 +9,9 @@
 |---|---|
 | ★ [BALENCER_MASTER_CONTEXT.md](BALENCER_MASTER_CONTEXT.md) | **会社理解の最上位正本**。定義・中心思想・4支援領域・事例・言葉遣い基準・NG表現・基本情報 |
 | ★ [BALENCER_DESIGN_SYSTEM.md](BALENCER_DESIGN_SYSTEM.md) | **デザイン判断の最上位正本**。カラー（白×グラファイト×コバルト）・タイポ・レイアウト・素材・生成AIプロンプト基準 |
+| ★ [BALENCER_SERVICE_PRICING_MASTER.md](BALENCER_SERVICE_PRICING_MASTER.md) | **サービス・料金・契約の最上位正本**。SPOT／CONSULT／PARTNER／EXECUTIVE／PROJECT・料金・契約条件・相談導線 |
 | [identity.md](identity.md) | （配下の補足）会社定義・対象顧客・体制・NGリスト |
-| [services.md](services.md) | （配下の補足）サービスの階段と各商品の置き場・価格 |
+| [services.md](services.md) | （配下の補足）サービス正式名称と各商品の置き場・価格 |
 | [results.md](results.md) | （配下の補足）実績の正（64社・生涯4.03億）と数字の使い方 |
 | [sales-strategy-2026.md](sales-strategy-2026.md) | 営業戦略2026（対面フェーズ） |
 

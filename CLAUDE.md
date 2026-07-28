@@ -72,7 +72,7 @@
 
 純汎用スキル（`design-system-builder`・`ui-ux-pro-max`）はグローバル設置のまま利用。
 
-工程スキル（リポジトリ `.claude/skills/`）: `positioning-map`（戦略を綺麗な2軸マップ＝ポジショニング/ビフォー・アフター/競合マップに視覚化。バレンサー/TSUGI両対応）。
+工程スキル（リポジトリ `.claude/skills/`）: `positioning-map`（戦略を綺麗な2軸マップ＝ポジショニング/ビフォー・アフター/競合マップに視覚化。バレンサー/TSUGI両対応）／`design-md`（資料・LP・スライドを作る前に awesome-design-md-jp ギャラリー414ブランドから見た目を1枚選んで着手。「○○風で作って」「デザインmd」で発火）。
 
 ---
 

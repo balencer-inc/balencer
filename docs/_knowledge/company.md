@@ -13,6 +13,7 @@
   6. 実績数字（64社・4.03億）は事実として持つが**前面で誇張しない**。代表事例＝睦備建設（Wi-Fi相談→全社変革）・TOMONI・半兵衛麸・DXHUB。
 - 反映先: CLAUDE.md §1 / docs/company/README.md・identity.md・results.md にマスター優先の明記。memory（project_balencer_brand・_design_system・_redefinition_2026）とMEMORY.md索引を上書き。
 - 先日デプロイの会社案内デッキ（balencer-brand-profile.vercel.app）は既に新デザイン正本と一致（白×グラファイト×コバルト、ページめくり）。
+- **同日追加（サービス正本）**: 3本目のマスター `docs/company/BALENCER_SERVICE_PRICING_MASTER.md` を制定。正式サービス名を **SPOT 経営整理・ミッション(30万/回)／CONSULT 経営相談(月20万)／PARTNER 経営伴走(月30-50万)／EXECUTIVE 経営参画(月60-100万)／PROJECT 制作・開発・実装(個別見積)** に統一。月額=初回6ヶ月・以降3ヶ月更新・末日締め翌月末、基本契約先=CONSULT/PARTNER。**ENTRY／MAIN／PREMIUM／ENTRANCE／CORE／SUMMIT は退役**。SOERU／M&A／補助金／保守／AIアニメは一般資料に載せない。CLAUDE.md §1 サービス節・services.md・README・memory(front_product)・MEMORY.md索引を整合。※マスター本体ファイルは阿部さんのクリーンmd待ち（デスクトップ格納後にcpで格納予定。派生正本は先行反映済み）。
 
 ## 2026-06-14 秘書＋担当システムをリポジトリに集約
 - バレンサーのAI社員（秘書＋各担当）を `.claude/skills/` に集約し、リポジトリを唯一の正解にした。CLI・デスクトップ・クラウド/Webのどこでも同じ秘書が使える状態。

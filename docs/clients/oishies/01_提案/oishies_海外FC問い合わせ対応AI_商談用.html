@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>オイシーズ提案資料 ― 商談用本編</title>
+<style>
+body { margin: 0; background: #ccc; overflow-x: hidden; }
+.sheet { position: relative; margin: 0 auto 10mm auto; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+@media print {
+  body { background: #fff; }
+  .sheet { margin: 0; box-shadow: none; break-after: page; page-break-after: always; }
+}
+/* ---- cover ---- */
+#p0 * { box-sizing:border-box; margin:0; padding:0; }
+#p0 { width:297mm; height:210mm; font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; background:#fff; color:#16213e; }
+#p0 .page { width:297mm; height:210mm; padding:13mm; position:relative; overflow:hidden; }
+#p0 { background:linear-gradient(135deg,#111a34 0%,#16213e 58%,#24335e 100%); color:#fff; }
+#p0 .brand { display:flex; align-items:center; justify-content:space-between; }
+#p0 .oishes { font-size:25px; font-weight:900; letter-spacing:.16em; color:#fff; }
+#p0 .oishes i { color:#c9a24a; font-style:normal; }
+#p0 .balencer { font-size:10px; letter-spacing:.12em; color:rgba(255,255,255,.65); }
+#p0 .cover-copy { margin-top:40mm; max-width:210mm; }
+#p0 .eyebrow { color:#c9a24a; font-size:12px; font-weight:800; letter-spacing:.12em; }
+#p0 h1 { margin-top:5mm; font-size:37px; line-height:1.35; letter-spacing:-.03em; }
+#p0 .lead { margin-top:6mm; font-size:14px; line-height:1.8; color:rgba(255,255,255,.78); }
+#p0 .cover-note { position:absolute; left:13mm; bottom:13mm; font-size:9px; color:rgba(255,255,255,.48); }
+#p0 .orb { position:absolute; border-radius:50%; border:1px solid rgba(201,162,74,.3); }
+#p0 .orb.a { width:100mm; height:100mm; right:-18mm; top:28mm; }
+#p0 .orb.b { width:63mm; height:63mm; right:35mm; top:68mm; background:rgba(201,162,74,.06); }
+/* ---- page 1: 01_architecture.html ---- */
+:root {
+    --navy: #16213e; --gold: #c9a24a; --red: #c0392b; --green: #2f9e57;
+    --green-bg: #eaf6ee; --amber-bg: #fdf3e2; --gray: #6b6f76; --border: #e6e6e6;
+  }
+@page { size: 297mm 210mm; margin: 0; }
+#p1 * { box-sizing: border-box; margin: 0; padding: 0; }
+#p1, #p1 {
+    width: 297mm; height: 210mm;
+    font-family: "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: #ffffff; color: #222;
+  }
+#p1 .header h1, #p1 .badge, #p1 .step-pill, #p1 .stage-card h3, #p1 .branch b, #p1 .callout .num {
+    font-family: "Roboto Condensed", "DejaVu Sans Condensed", "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+#p1 .page {
+    width: 297mm; height: 210mm;
+    padding: 11mm 13mm 9mm 13mm;
+    display: flex; flex-direction: column; position: relative; overflow: hidden;
+  }
+#p1 .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    border-bottom: 1px solid var(--border); padding-bottom: 4mm; margin-bottom: 7mm;
+  }
+#p1 .header h1 { font-size: 27px; font-weight: 800; color: var(--navy); letter-spacing: 0.3px; }
+#p1 .header .sub { font-size: 12px; color: var(--gray); margin-top: 2mm; }
+#p1 .badge {
+    font-size: 11px; font-weight: 700; padding: 2.6mm 6mm; border-radius: 999px;
+    white-space: nowrap; flex-shrink: 0; margin-top: 1mm;
+  }
+#p1 .badge.outline-navy { background: #fff; border: 1.6px solid var(--navy); color: var(--navy); }
+#p1 .footer-note { position: absolute; bottom: 6mm; right: 13mm; font-size: 8px; color: #a3a3a3; }
+#p1 .icon-circle {
+    width: 20mm; height: 20mm; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+#p1 .icon-circle.navy { background: var(--navy); }
+#p1 .icon-circle.gold { background: var(--gold); }
+#p1 .icon-circle svg { width: 48%; height: 48%; }
+#p1 /* problem strip */
+  .problem-strip { display: flex; gap: 5mm; margin-bottom: 8mm; }
+#p1 .problem-chip {
+    flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    padding: 4mm 5mm; display: flex; gap: 3mm;
+  }
+#p1 .problem-chip .bar { width: 1.3mm; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+#p1 .problem-chip .txt b { display: block; color: var(--red); font-size: 13px; margin-bottom: 1.5mm; }
+#p1 .problem-chip .txt span { font-size: 10px; color: var(--gray); line-height: 1.5; }
+#p1 /* main flow */
+  .flow { display: flex; align-items: flex-start; gap: 0; margin-bottom: 7mm; }
+#p1 .stage-col { flex: 1; text-align: center; }
+#p1 .icon-row { text-align: center; }
+#p1 .arrow-gap { width: 8mm; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 20px; margin-top: 10mm; }
+#p1 .icon-circle { display: inline-flex; }
+#p1 .step-pill {
+    display: inline-block;
+    margin-top: 3mm; font-size: 10px; font-weight: 700; color: var(--gold);
+    background: #fff; border: 1.4px solid var(--gold); border-radius: 999px; padding: 1mm 4mm;
+  }
+#p1 .stage-card {
+    margin-top: 3mm; width: 100%; background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    padding: 4mm 4.5mm; display: flex; flex-direction: column;
+  }
+#p1 .stage-card h3 { font-size: 13.5px; font-weight: 800; color: var(--navy); margin-bottom: 2.5mm; text-align: center; }
+#p1 .stage-card.accent h3 { color: var(--gold); }
+#p1 .stage-card p, #p1 .stage-card ul { font-size: 9.3px; color: #333; line-height: 1.6; }
+#p1 .stage-card ul { list-style: none; }
+#p1 .stage-card li { position: relative; padding-left: 3mm; margin-bottom: 1mm; }
+#p1 .stage-card li::before { content: "・"; position: absolute; left: 0; }
+#p1 .lang-tags { display: flex; flex-wrap: wrap; gap: 1.5mm; justify-content: center; margin-top: 2.5mm; }
+#p1 .lang-tags span { font-size: 8.5px; background: #f2f2f2; color: #333; border-radius: 999px; padding: 1mm 3mm; }
+#p1 .branch-wrap { display: flex; flex-direction: column; gap: 3mm; width: 100%; margin-top: 3mm; }
+#p1 .branch { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 3mm 3.5mm; }
+#p1 .branch .bar { width: 1.3mm; border-radius: 2px; display: inline-block; }
+#p1 .branch-inner { display: flex; gap: 2.5mm; }
+#p1 .branch.win .bar { background: var(--green); }
+#p1 .branch.esc .bar { background: var(--gold); }
+#p1 .branch b { display: block; font-size: 11px; margin-bottom: 0.8mm; }
+#p1 .branch.win b { color: var(--green); }
+#p1 .branch.esc b { color: var(--gold); }
+#p1 .branch span.desc { font-size: 9px; color: var(--gray); line-height: 1.5; }
+#p1 /* footer callouts */
+  .callouts { display: flex; gap: 5mm; margin-top: auto; }
+#p1 .callout { flex: 1; background: var(--navy); border-radius: 8px; padding: 4mm 5mm; display: flex; align-items: center; gap: 4mm; }
+#p1 .callout .cicon {
+    width: 13mm; height: 13mm; border-radius: 50%; background: #fff; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+#p1 .callout .cicon svg { width: 55%; height: 55%; stroke: var(--navy); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#p1 .callout .num { font-size: 15px; font-weight: 800; color: #fff; }
+#p1 .callout .num .tag { color: var(--gold); }
+#p1 .callout .txt { font-size: 10px; line-height: 1.55; color: #fff; margin-top: 1mm; }
+
+/* ---- page 2: 02_ui_mockup.html ---- */
+@page { size: 297mm 210mm; margin: 0; }
+#p2 * { box-sizing: border-box; margin: 0; padding: 0; }
+#p2, #p2 {
+    width: 297mm; height: 210mm;
+    font-family: "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: #ffffff;
+    color: #16213e;
+  }
+#p2 .header h1, #p2 .header .tag, #p2 .dash-top .title, #p2 .kpi .val {
+    font-family: "Roboto Condensed", "DejaVu Sans Condensed", "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+#p2 .page {
+    width: 297mm; height: 210mm;
+    padding: 11mm 13mm 9mm 13mm;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+#p2 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 4mm;
+    margin-bottom: 7mm;
+  }
+#p2 .header h1 { font-size: 27px; font-weight: 800; color: #16213e; letter-spacing: 0.3px; }
+#p2 .header .sub { font-size: 12px; color: #6b6f76; margin-top: 2mm; }
+#p2 .header .tag {
+    font-size: 11px; color: #16213e; background: #fff; border: 1.6px solid #16213e;
+    padding: 2.6mm 6mm; border-radius: 999px; white-space: nowrap; font-weight: 700; margin-top: 1mm;
+  }
+#p2 .body-row {
+    flex: 1;
+    display: flex;
+    gap: 8mm;
+    min-height: 0;
+  }
+#p2 /* LEFT: field device column */
+  .field-col {
+    width: 95mm;
+    display: flex;
+    flex-direction: column;
+  }
+#p2 .col-label {
+    font-size: 13px; font-weight: 700; color: #16213e; margin-bottom: 1.5mm;
+  }
+#p2 .col-note { font-size: 8.5px; color: #8a8f9c; margin-bottom: 4mm; }
+#p2 .phone {
+    width: 100%;
+    flex: 1;
+    background: #16213e;
+    border-radius: 9mm;
+    padding: 2.6mm;
+    position: relative;
+  }
+#p2 .notch {
+    position: absolute; top: 2.6mm; left: 50%; transform: translateX(-50%);
+    width: 22mm; height: 4mm; background: #0a0d1a; border-radius: 999px; z-index: 2;
+  }
+#p2 .phone-screen {
+    height: 100%;
+    background: #f6f1e7;
+    border-radius: 6.5mm;
+    overflow: hidden;
+    position: relative;
+  }
+#p2 .status-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 2.2mm 5mm 0.5mm 5mm; background: #fff; font-size: 8px; font-weight: 700; color: #16213e;
+  }
+#p2 .status-icons { line-height: 0; }
+#p2 .chat-bar {
+    background: #fff;
+    padding: 2mm 4mm 3mm 4mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ececec;
+  }
+#p2 .chat-bar .who { display: flex; align-items: center; gap: 2.2mm; }
+#p2 .avatar {
+    width: 8mm; height: 8mm; border-radius: 50%;
+    background: linear-gradient(135deg, #3b6fd6, #1e3a8a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; flex-shrink: 0;
+  }
+#p2 .chat-bar .name-block .name { font-size: 10.5px; font-weight: 700; color: #16213e; white-space: nowrap; }
+#p2 .chat-bar .name-block .status { font-size: 7.5px; color: #3f9a56; font-weight: 700; margin-top: 0.3mm; white-space: nowrap; }
+#p2 .chat-bar .status .dotpx { color: #3f9a56; }
+#p2 .chat-bar .menu { color: #8a8f9c; font-size: 12px; font-weight: 700; }
+#p2 .chat-body {
+    padding: 2.4mm 3.5mm 17mm 3.5mm;
+    overflow: hidden;
+  }
+#p2 .msg-row { margin-bottom: 2.1mm; }
+#p2 .msg-row.out { text-align: right; }
+#p2 .msg-meta {
+    font-size: 7.3px; color: #6b7280; margin-bottom: 1mm;
+  }
+#p2 .msg-meta .flag {
+    display: inline-block; background: #fff; border: 1px solid #e2ddd0; border-radius: 999px; padding: 0.3mm 2mm; font-weight: 700; color: #16213e; margin-left: 1.8mm;
+  }
+#p2 .bubble-in {
+    display: inline-block;
+    text-align: left;
+    background: #ffffff;
+    border-radius: 2.5mm 2.5mm 2.5mm 0.5mm;
+    padding: 2.2mm 3.2mm;
+    font-size: 7.8px;
+    line-height: 1.55;
+    max-width: 88%;
+    color: #2b2f3d;
+  }
+#p2 .bubble-out {
+    display: inline-block;
+    text-align: left;
+    background: #16213e;
+    color: #fff;
+    border-radius: 2.5mm 2.5mm 0.5mm 2.5mm;
+    padding: 2.2mm 3.2mm;
+    font-size: 7.8px;
+    line-height: 1.55;
+    max-width: 88%;
+  }
+#p2 .bubble-out .tag-cat {
+    display: inline-block; font-size: 6.7px; background: #c9a24a; color: #16213e; border-radius: 999px;
+    padding: 0.3mm 2.2mm; margin-bottom: 1.3mm; font-weight: 700;
+  }
+#p2 .bubble-out .meta-out {
+    text-align: right; font-size: 6.5px; color: rgba(255,255,255,0.55);
+    margin-top: 1mm;
+  }
+#p2 .bubble-out .meta-out svg { vertical-align: -1px; margin-left: 1mm; }
+#p2 .chat-input {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: #fff; border-top: 1px solid #ececec; padding: 2.5mm 3.5mm;
+    display: flex; align-items: center; gap: 2.2mm;
+  }
+#p2 .chat-input .cam {
+    width: 7mm; height: 7mm; border-radius: 50%; border: 1.3px solid #d8d2c2;
+    display: flex; align-items: center; justify-content: center; font-size: 9px; color: #8a8f9c; flex-shrink: 0;
+  }
+#p2 .chat-input .box {
+    flex: 1; background: #f6f1e7; border-radius: 999px; padding: 2mm 3.5mm; font-size: 8px; color: #a3a8b3;
+  }
+#p2 .chat-input .send {
+    width: 7mm; height: 7mm; border-radius: 50%; background: #16213e; color: #fff;
+    display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0;
+  }
+#p2 /* RIGHT: HQ dashboard column */
+  .hq-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+#p2 .dashboard {
+    flex: 1;
+    background: #fff;
+    border-radius: 6mm;
+    padding: 5mm 6mm;
+    border: 1px solid #ececec;
+  }
+#p2 .dash-top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 4mm;
+  }
+#p2 .dash-top .title { font-size: 15px; font-weight: 700; color: #16213e; }
+#p2 .dash-top .win { font-size: 9px; color: #8a8f9c; }
+#p2 .kpi-row { display: flex; gap: 4mm; margin-bottom: 4.5mm; }
+#p2 .kpi {
+    flex: 1; background: #f6f1e7; border-radius: 4mm; padding: 4mm 3mm; text-align: center;
+  }
+#p2 .kpi .val { font-size: 26px; font-weight: 700; color: #16213e; line-height: 1.1; }
+#p2 .kpi .lbl { font-size: 8px; color: #8a8f9c; margin-top: 1.5mm; }
+#p2 .kpi.accent .val { color: #c9a24a; }
+#p2 table { width: 100%; border-collapse: collapse; font-size: 9px; flex: 1; }
+#p2 thead th {
+    text-align: center; font-size: 8.5px; color: #8a8f9c; font-weight: 700;
+    border-bottom: 1px solid #ececec; padding: 2mm 1.5mm; letter-spacing: 0.02em;
+  }
+#p2 tbody td {
+    padding: 3mm 1.5mm; border-bottom: 1px solid #f2f2f2; text-align: center; vertical-align: middle; color: #2b2f3d;
+  }
+#p2 .pill {
+    display: inline-block; font-size: 8px; font-weight: 700; border-radius: 999px; padding: 0.8mm 3mm;
+  }
+#p2 .pill.auto { background: #e3f3e6; color: #3f9a56; }
+#p2 .pill.esc { background: #fff; color: #c9a24a; border: 1.3px solid #c9a24a; }
+#p2 .lang-pill { font-size: 8px; background: #f2f2f2; color: #2b2f3d; border-radius: 999px; padding: 0.6mm 2.5mm; }
+#p2 .footer-note {
+    position: absolute; bottom: 6mm; right: 13mm; font-size: 8px; color: #a3a3a3;
+  }
+
+/* ---- page 3: 03_knowledge_loop.html ---- */
+:root {
+    --navy: #16213e; --gold: #c9a24a; --red: #c0392b; --green: #2f9e57;
+    --green-bg: #eaf6ee; --amber-bg: #fdf3e2; --gray: #6b6f76; --border: #e6e6e6;
+  }
+@page { size: 297mm 210mm; margin: 0; }
+#p3 * { box-sizing: border-box; margin: 0; padding: 0; }
+#p3, #p3 {
+    width: 297mm; height: 210mm;
+    font-family: "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: #ffffff; color: #222;
+  }
+#p3 .header h1, #p3 .badge, #p3 .col-title, #p3 .center-node .t1, #p3 .node .badge-num, #p3 .stack-row .layer-name, #p3 .stack-row .layer-tool {
+    font-family: "Roboto Condensed", "DejaVu Sans Condensed", "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+#p3 .page {
+    width: 297mm; height: 210mm;
+    padding: 11mm 13mm 9mm 13mm;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+#p3 .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    border-bottom: 1px solid var(--border); padding-bottom: 4mm; margin-bottom: 7mm;
+  }
+#p3 .header h1 { font-size: 27px; font-weight: 800; color: var(--navy); letter-spacing: 0.3px; }
+#p3 .header .sub { font-size: 12px; color: var(--gray); margin-top: 2mm; }
+#p3 .badge {
+    font-size: 11px; font-weight: 700; padding: 2.6mm 6mm; border-radius: 999px;
+    white-space: nowrap; flex-shrink: 0; margin-top: 1mm;
+  }
+#p3 .badge.outline-navy { background: #fff; border: 1.6px solid var(--navy); color: var(--navy); }
+#p3 .footer-note { position: absolute; bottom: 6mm; right: 13mm; font-size: 8px; color: #a3a3a3; }
+#p3 .body-row { flex: 1; display: flex; gap: 10mm; min-height: 0; }
+#p3 /* LEFT: loop diagram */
+  .loop-col { width: 155mm; display: flex; flex-direction: column; }
+#p3 .col-title { font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4mm; }
+#p3 .loop-wrap { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; }
+#p3 .loop-container { width: 148mm; height: 148mm; position: relative; }
+#p3 .ring { position: absolute; left: 50%; top: 50%; width: 96mm; height: 96mm; border-radius: 50%; border: 2px dashed var(--gold); transform: translate(-50%, -50%); }
+#p3 .ring-arrow { position: absolute; top: -1mm; left: 50%; transform: translateX(-50%); width: 8mm; height: 8mm; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
+#p3 .ring-arrow svg { width: 70%; height: 70%; stroke: var(--gold); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+#p3 .center-node {
+    position: absolute; left: 50%; top: 50%; width: 42mm; height: 42mm; transform: translate(-50%, -50%);
+    border-radius: 50%; background: var(--navy); color: #fff;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 3mm;
+  }
+#p3 .center-node .ic { width: 9mm; height: 9mm; margin-bottom: 1.5mm; }
+#p3 .center-node .t1 { font-size: 12px; font-weight: 800; }
+#p3 .center-node .t2 { font-size: 7.3px; color: var(--gold); margin-top: 1.5mm; line-height: 1.35; }
+#p3 .node {
+    position: absolute; width: 44mm; background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    padding: 3mm 3.5mm; font-size: 8.2px; line-height: 1.45; color: #333; display: flex; gap: 2.2mm; align-items: flex-start;
+  }
+#p3 .node .badge-num {
+    width: 5.5mm; height: 5.5mm; border-radius: 50%; background: var(--gold); color: #fff;
+    font-size: 8px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+#p3 /* RIGHT: tech stack panel */
+  .stack-col { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+#p3 .stack-panel { flex: 1; display: flex; flex-direction: column; }
+#p3 .stack-row { display: flex; gap: 3.5mm; padding: 3mm 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+#p3 .stack-row:last-child { border-bottom: none; }
+#p3 .stack-row .layer-num {
+    width: 7mm; height: 7mm; border-radius: 50%; background: var(--navy); color: #fff;
+    font-size: 9px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+#p3 .stack-row .layer-body { flex: 1; }
+#p3 .stack-row .layer-head { display: flex; align-items: center; gap: 3mm; margin-bottom: 1.2mm; }
+#p3 .stack-row .layer-name { font-size: 11px; font-weight: 800; color: var(--navy); }
+#p3 .stack-row .layer-tool {
+    display: inline-block; font-size: 9px; background: #fff; color: var(--gold); border: 1.3px solid var(--gold);
+    border-radius: 999px; padding: 0.8mm 3.5mm; font-weight: 700;
+  }
+#p3 .stack-row .layer-desc { font-size: 9px; color: var(--gray); line-height: 1.55; }
+#p3 .gov-note {
+    margin-top: 4mm; background: var(--amber-bg); border-radius: 6px;
+    padding: 3.5mm 4.5mm; font-size: 9px; color: #333; line-height: 1.6;
+  }
+#p3 .gov-note b { color: var(--navy); }
+
+/* ---- page 4: 04_honest_scope.html ---- */
+:root {
+    --navy: #16213e; --gold: #c9a24a; --red: #c0392b; --green: #2f9e57;
+    --green-bg: #eaf6ee; --amber-bg: #fdf3e2; --gray: #6b6f76; --border: #e6e6e6;
+  }
+@page { size: 297mm 210mm; margin: 0; }
+#p4 * { box-sizing: border-box; margin: 0; padding: 0; }
+#p4, #p4 {
+    width: 297mm; height: 210mm;
+    font-family: "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: #ffffff; color: #222;
+  }
+#p4 .header h1, #p4 .badge, #p4 .grid-panel .ptitle, #p4 .col-title, #p4 .why-card .wtitle, #p4 .item .num, #p4 .ptitle .mark {
+    font-family: "Roboto Condensed", "DejaVu Sans Condensed", "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+#p4 .page {
+    width: 297mm; height: 210mm;
+    padding: 11mm 13mm 9mm 13mm;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+#p4 .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    border-bottom: 1px solid var(--border); padding-bottom: 4mm; margin-bottom: 7mm;
+  }
+#p4 .header h1 { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 0.3px; }
+#p4 .header .sub { font-size: 12.5px; color: var(--gray); margin-top: 2mm; }
+#p4 .badge {
+    font-size: 11px; font-weight: 700; padding: 2.6mm 6mm; border-radius: 999px;
+    white-space: nowrap; flex-shrink: 0; margin-top: 1mm;
+  }
+#p4 .badge.outline-navy { background: #fff; border: 1.6px solid var(--navy); color: var(--navy); }
+#p4 .footer-note { position: absolute; bottom: 6mm; right: 13mm; font-size: 8px; color: #a3a3a3; }
+#p4 .body-row { flex: 1; display: flex; gap: 10mm; min-height: 0; }
+#p4 /* LEFT: honesty grid */
+  .honest-col { width: 158mm; display: flex; flex-direction: column; }
+#p4 .grid2 { flex: 1; display: flex; gap: 5mm; }
+#p4 .grid-panel { flex: 1; border-radius: 10px; padding: 6mm 7mm; display: flex; flex-direction: column; }
+#p4 .grid-panel.can { background: var(--green-bg); }
+#p4 .grid-panel.cant { background: var(--amber-bg); }
+#p4 .grid-panel .ptitle { font-size: 15.5px; font-weight: 800; margin-bottom: 2mm; display: flex; align-items: center; gap: 3mm; flex-shrink: 0; }
+#p4 .grid-panel.can .ptitle { color: var(--green); }
+#p4 .grid-panel.cant .ptitle { color: var(--gold); }
+#p4 .ptitle .mark {
+    width: 7.5mm; height: 7.5mm; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 11.5px; font-weight: 800; flex-shrink: 0;
+  }
+#p4 .grid-panel.can .mark { background: var(--green); }
+#p4 .grid-panel.cant .mark { background: var(--gold); }
+#p4 .item { display: flex; gap: 4mm; padding: 5.8mm 0; border-bottom: 1px dashed rgba(0,0,0,0.15); align-items: flex-start; }
+#p4 .item:last-child { border-bottom: none; }
+#p4 .item .num {
+    font-size: 10.5px; font-weight: 800; color: #fff; width: 6.5mm; height: 6.5mm; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.2mm;
+  }
+#p4 .grid-panel.can .item .num { background: var(--green); }
+#p4 .grid-panel.cant .item .num { background: var(--gold); }
+#p4 .item .txt { font-size: 11.5px; line-height: 1.65; color: #333; }
+#p4 .item .txt b { color: #111; }
+#p4 .promise {
+    margin-top: 5mm; background: var(--navy); color: #fff; border-radius: 10px; padding: 5.5mm 7mm;
+    display: flex; align-items: center; gap: 5mm; flex-shrink: 0;
+  }
+#p4 .promise .pic {
+    width: 13mm; height: 13mm; border-radius: 50%; background: rgba(255,255,255,0.1); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+#p4 .promise .pic svg { width: 60%; height: 60%; stroke: var(--gold); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#p4 .promise .txt { font-size: 11.8px; line-height: 1.65; }
+#p4 .promise b { color: var(--gold); }
+#p4 /* RIGHT: why us */
+  .why-col { flex: 1; min-width: 0; }
+#p4 .col-title { font-size: 16.5px; font-weight: 800; color: var(--navy); margin-bottom: 5mm; flex-shrink: 0; }
+#p4 .why-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 6.5mm 7.5mm; margin-bottom: 5mm;
+    display: flex; gap: 5mm; align-items: center;
+  }
+#p4 .why-card .qn { color: var(--gold); font-size: 30px; font-weight: 800; line-height: 1; flex-shrink: 0; font-family: Georgia, serif; }
+#p4 .why-card .wtitle { font-size: 14.5px; font-weight: 800; color: var(--navy); margin-bottom: 2.4mm; }
+#p4 .why-card .wtxt { font-size: 11.5px; line-height: 1.7; color: #333; }
+#p4 .signoff {
+    margin-top: 6mm; border-top: 1px dashed var(--gold); padding-top: 4mm; flex-shrink: 0;
+    font-size: 10.8px; color: var(--gray); line-height: 1.7; font-style: italic;
+  }
+
+/* ---- page 5: 05_updated_flow.html ---- */
+:root {
+    --navy: #16213e; --gold: #c9a24a; --red: #c0392b; --green: #2f9e57;
+    --green-bg: #eaf6ee; --amber-bg: #fdf3e2; --gray: #6b6f76; --border: #e6e6e6;
+  }
+@page { size: 297mm 210mm; margin: 0; }
+#p5 * { box-sizing: border-box; margin: 0; padding: 0; }
+#p5, #p5 {
+    width: 297mm; height: 210mm;
+    font-family: "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: #ffffff; color: #222;
+  }
+#p5 .header h1, #p5 .badge, #p5 .who-pill, #p5 .stage-col h3, #p5 .panel .ptitle, #p5 .qa-item .num, #p5 .compress-visual .big, #p5 .compress-bar .ai, #p5 .compress-bar .hq {
+    font-family: "Roboto Condensed", "DejaVu Sans Condensed", "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+#p5 .page {
+    width: 297mm; height: 210mm;
+    padding: 11mm 13mm 9mm 13mm;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+#p5 .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    border-bottom: 1px solid var(--border); padding-bottom: 4mm; margin-bottom: 8mm;
+  }
+#p5 .header h1 { font-size: 27px; font-weight: 800; color: var(--navy); letter-spacing: 0.3px; }
+#p5 .header .sub { font-size: 12px; color: var(--gray); margin-top: 2mm; }
+#p5 .badge {
+    font-size: 11px; font-weight: 700; padding: 2.6mm 6mm; border-radius: 999px;
+    white-space: nowrap; flex-shrink: 0; margin-top: 1mm;
+  }
+#p5 .badge.outline-navy { background: #fff; border: 1.6px solid var(--navy); color: var(--navy); }
+#p5 .footer-note { position: absolute; bottom: 6mm; right: 13mm; font-size: 8px; color: #a3a3a3; }
+#p5 .icon-circle { width: 19mm; height: 19mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+#p5 .icon-circle.navy { background: var(--navy); }
+#p5 .icon-circle.gold { background: var(--gold); }
+#p5 .icon-circle svg { width: 50%; height: 50%; }
+#p5 /* main flow */
+  .flow { display: flex; align-items: flex-start; gap: 0; margin-bottom: 7mm; }
+#p5 .stage-col { flex: 1; text-align: center; }
+#p5 .who-pill { display: inline-block; font-size: 9.5px; font-weight: 700; color: #333; background: #f2f2f2; border-radius: 999px; padding: 1.3mm 4mm; margin-bottom: 3.5mm; white-space: nowrap; }
+#p5 .who-pill.hq { background: var(--amber-bg); color: #a97a1e; }
+#p5 .icon-row { text-align: center; }
+#p5 .icon-circle { display: inline-flex; }
+#p5 .arrow-gap { width: 7mm; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 16px; margin-top: 9.5mm; }
+#p5 .stage-col h3 { font-size: 12.5px; font-weight: 800; color: var(--navy); margin-top: 3mm; margin-bottom: 3mm; text-align: center; }
+#p5 .stage-card {
+    width: 100%; background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    padding: 3mm 3.5mm; font-size: 8.6px; line-height: 1.55; color: #333; flex: 1;
+  }
+#p5 /* bottom row */
+  .bottom-row { flex: 1; display: flex; gap: 10mm; min-height: 0; }
+#p5 .panel { flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 5mm 6mm; display: flex; flex-direction: column; }
+#p5 .panel .ptitle { font-size: 13px; font-weight: 800; color: var(--navy); margin-bottom: 3.5mm; }
+#p5 .qa-item { display: flex; gap: 3mm; padding: 2.5mm 0; border-bottom: 1px dashed rgba(0,0,0,0.15); }
+#p5 .qa-item:last-child { border-bottom: none; }
+#p5 .qa-item .num {
+    width: 5.5mm; height: 5.5mm; border-radius: 50%; background: var(--navy); color: #fff; font-size: 9px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.2mm;
+  }
+#p5 .qa-item .txt { font-size: 9.5px; line-height: 1.55; color: #333; }
+#p5 .qa-item .txt b { color: #111; }
+#p5 .compress-visual { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+#p5 .compress-visual .big { font-size: 36px; color: var(--navy); font-weight: 800; }
+#p5 .compress-visual .cap { font-size: 10.5px; color: var(--gray); margin-top: 3mm; line-height: 1.65; max-width: 88mm; }
+#p5 .compress-bar { display: flex; width: 100%; max-width: 95mm; height: 8mm; border-radius: 999px; overflow: hidden; margin-top: 5mm; }
+#p5 .compress-bar .ai { background: var(--navy); flex: 8.3; display:flex; align-items:center; justify-content:center; color:#fff; font-size:8.5px; font-weight:700; }
+#p5 .compress-bar .hq { background: var(--gold); flex: 1.7; display:flex; align-items:center; justify-content:center; color:#fff; font-size:8.5px; font-weight:700; }
+
+/* PAGE 6 — discovery questions */
+#p6 .header { display:flex; align-items:flex-start; justify-content:space-between; gap:10mm; margin-bottom:8mm; }
+#p6 .header h1 { font-size:24px; font-weight:800; color:var(--navy); letter-spacing:-0.02em; }
+#p6 .header .sub { font-size:10.5px; color:var(--gray); margin-top:2mm; }
+#p6 .badge { border:1px solid var(--navy); color:var(--navy); border-radius:999px; padding:2mm 4mm; font-size:9px; font-weight:700; white-space:nowrap; }
+#p6 .intro { display:flex; gap:5mm; align-items:center; background:linear-gradient(90deg, rgba(22,33,62,.06), rgba(200,169,81,.08)); border:1px solid var(--border); border-radius:10px; padding:5mm 6mm; margin-bottom:6mm; }
+#p6 .intro .num { width:11mm; height:11mm; border-radius:50%; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; flex-shrink:0; }
+#p6 .intro .txt { font-size:11px; line-height:1.7; color:#2d3448; }
+#p6 .question-grid { display:grid; grid-template-columns:1fr 1fr; gap:5mm; flex:1; }
+#p6 .qcard { background:#fff; border:1px solid var(--border); border-radius:10px; padding:5mm 6mm; display:flex; gap:4mm; min-height:27mm; }
+#p6 .qcard .qnum { width:7mm; height:7mm; border-radius:50%; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:800; flex-shrink:0; }
+#p6 .qcard h3 { font-size:11.5px; color:var(--navy); font-weight:800; margin-bottom:1.5mm; }
+#p6 .qcard p { font-size:9.2px; line-height:1.6; color:#4b5265; }
+#p6 .next-step { margin-top:6mm; background:var(--navy); color:#fff; border-radius:10px; padding:5mm 7mm; display:flex; align-items:center; justify-content:space-between; gap:8mm; }
+#p6 .next-step .label { font-size:9px; color:rgba(255,255,255,.65); font-weight:700; letter-spacing:.08em; }
+#p6 .next-step .main { font-size:13px; line-height:1.55; font-weight:700; margin-top:1mm; }
+#p6 .next-step .steps { display:flex; align-items:center; gap:2.5mm; white-space:nowrap; }
+#p6 .next-step .step { border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:2mm 3.5mm; font-size:8.5px; font-weight:700; }
+#p6 .next-step .arrow { color:var(--gold); font-size:13px; }
+</style>
+<style>
+
+
+</style>
+</head>
+<body>
+<div class="sheet" id="p0">
+<div class="page">
+  <div class="orb a"></div><div class="orb b"></div>
+  <div class="brand">
+    <div class="oishes" style="font-size:18px; letter-spacing:.06em;">株式会社オイシーズ 御中</div>
+    <div class="balencer">BALENCER / DISCUSSION MATERIAL</div>
+  </div>
+  <div class="cover-copy">
+    <div class="eyebrow">OVERSEAS FRANCHISE × KNOWLEDGE × AI</div>
+    <h1>海外FCの問い合わせ対応と<br>マニュアル運用を、ひとつにつなぐ。</h1>
+    <div class="lead">既存のGoogle環境を活かした、現場・FC・本部のための<br>AI活用と運用設計の仮説</div>
+  </div>
+  <div class="cover-note">2026.07.29　Discussion Draft　｜　株式会社バレンサー</div>
+</div>
+</div>
+<div class="sheet" id="p1">
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1>海外FC 問い合わせ対応AI ― 仕組みの仮説</h1>
+      <div class="sub">香港・上海・LA拠点｜現時点で伺っている内容をもとにした活用イメージ。実際の課題・運用体制を確認しながら設計します</div>
+    </div>
+    <div class="badge outline-navy">共通Webチャット窓口構想</div>
+  </div>
+
+  <div class="problem-strip">
+    <div class="problem-chip"><div class="bar"></div><div class="txt"><b>時間がバラバラ</b><span>時差のある深夜・営業中の緊急連絡が本部に集中</span></div></div>
+    <div class="problem-chip"><div class="bar"></div><div class="txt"><b>言語がバラバラ</b><span>広東語・中国語・英語・スペイン語…担当者が都度翻訳</span></div></div>
+    <div class="problem-chip"><div class="bar"></div><div class="txt"><b>内容がバラバラ</b><span>調理手順から機器故障、クレーム対応まで種類が混在</span></div></div>
+  </div>
+
+  <div class="flow">
+
+    <div class="stage-col">
+      <div class="icon-row"><div class="spacer">
+        <div class="icon-circle navy"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18v12H3z"/><path d="M3 6l9 7 9-7"/><path d="M19 4l1.3 -1.6M22 5l2 -0.8M20.5 7l2 0.6"/>
+        </svg></div>
+      </div></div>
+      <div class="step-pill">STEP 1</div>
+      <div class="stage-card">
+        <h3>現場からの問い合わせ</h3>
+        <p style="text-align:center;">調理・食材・機器・クレーム・ブランド表示など多様な内容</p>
+        <div class="lang-tags"><span>日本語</span><span>English</span><span>廣東話</span><span>中文</span><span>Español</span></div>
+      </div>
+    </div>
+
+    <div class="arrow-gap">→</div>
+
+    <div class="stage-col">
+      <div class="icon-row"><div class="spacer">
+        <div class="icon-circle gold"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 6h11a2 2 0 012 2v5a2 2 0 01-2 2h-2l-3 3v-3H9a2 2 0 01-2-2V8a2 2 0 012-2z"/>
+          <path d="M2.5 5h9a2 2 0 012 2v5a2 2 0 01-2 2h-6l-2.5 2.4V14h-.5a2 2 0 01-2-2V7a2 2 0 012-2z"/>
+        </svg></div>
+      </div></div>
+      <div class="step-pill">STEP 2</div>
+      <div class="stage-card accent">
+        <h3>共通Webチャット窓口</h3>
+        <ul>
+          <li>LINE / WhatsApp / QRなど、利用環境に合う入口を検討</li>
+          <li>スマホ・タブレット最適化</li>
+          <li>写真添付・カテゴリ選択で入力の迷いを減らす</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arrow-gap">→</div>
+
+    <div class="stage-col">
+      <div class="icon-row"><div class="spacer">
+        <div class="icon-circle navy"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8.5 3.2c-2 0-3.2 1.5-3.2 3.1-1.6.5-2.2 2.1-1.6 3.6C2.5 10.9 2 12.4 3 13.5c-.6 1.6 0 3.2 1.6 3.7.2 1.9 1.9 3.1 3.7 3.1.9 0 1.7-.3 2.2-.9"/>
+          <path d="M15.5 3.2c2 0 3.2 1.5 3.2 3.1 1.6.5 2.2 2.1 1.6 3.6 1.1 1.1 1.6 2.6.6 3.7.6 1.6 0 3.2-1.6 3.7-.2 1.9-1.9 3.1-3.7 3.1-.9 0-1.7-.3-2.2-.9"/>
+          <path d="M12 3.2v16.2"/>
+          <circle cx="7.5" cy="8.3" r="0.6" fill="#fff" stroke="none"/><circle cx="9.5" cy="13.5" r="0.6" fill="#fff" stroke="none"/><circle cx="16.5" cy="9.3" r="0.6" fill="#fff" stroke="none"/>
+        </svg></div>
+      </div></div>
+      <div class="step-pill">STEP 3</div>
+      <div class="stage-card">
+        <h3>AIナレッジエンジン</h3>
+        <ul>
+          <li>本部マニュアル・過去回答を横断参照（RAG）</li>
+          <li>質問の言語のまま自動応答</li>
+          <li>ブランド（つじ田／金子半之助 等）ごとの参照切替を想定</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arrow-gap">→</div>
+
+    <div class="stage-col">
+      <div class="icon-row"><div class="spacer">
+        <div class="icon-circle navy"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12.3l2.6 2.6L17 8.5"/>
+        </svg></div>
+      </div></div>
+      <div class="step-pill">STEP 4</div>
+      <h3 style="font-size:13.5px;font-weight:800;color:var(--navy);margin-top:3mm;text-align:center;">解決 or 本部連携</h3>
+      <div class="branch-wrap">
+        <div class="branch win"><div class="branch-inner"><div class="bar"></div><div><b>即時回答</b><span class="desc">マニュアル範囲内は、その場での解決を目指す</span></div></div></div>
+        <div class="branch esc"><div class="branch-inner"><div class="bar"></div><div><b>本部エスカレーション</b><span class="desc">判断が必要な内容をSV・本部へ連携する想定</span></div></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callouts">
+    <div class="callout">
+      <div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/><path d="M7 13V9M11 13V7M15 13v-4"/></svg></div>
+      <div><div class="num">01 <span class="tag">— HQ</span></div><div class="txt">本部（PC主・SPサブ）は<b>問い合わせログを一覧管理</b>。頻出質問と対応漏れを可視化</div></div>
+    </div>
+    <div class="callout">
+      <div class="cicon"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 00-14.9-3.5"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0014.9 3.5"/><path d="M20 20v-5h-5"/></svg></div>
+      <div><div class="num">02 <span class="tag">— LOOP</span></div><div class="txt">未回答質問を<b>マニュアルの改善候補</b>として蓄積し、更新判断につなげる</div></div>
+    </div>
+    <div class="callout">
+      <div class="cicon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M3 11h16M11 3a11 11 0 010 16M11 3a11 11 0 000 16"/><circle cx="18.5" cy="17" r="2" fill="var(--navy)" stroke="none"/></svg></div>
+      <div><div class="num">03 <span class="tag">— SCALE</span></div><div class="txt">1ブランド・1拠点で作った型を、<b>言語とマニュアルの差し替えだけ</b>で他拠点へ展開</div></div>
+    </div>
+  </div>
+
+  <div class="footer-note">Balencer — Oishies Franchise Support AI Concept</div>
+</div>
+</div>
+
+<div class="sheet" id="p2">
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1>海外FC 問い合わせ対応 ― 画面イメージ</h1>
+      <div class="sub">現場（香港・上海・LA / スマホ・タブレット）と本部（PC）、それぞれの活用イメージ</div>
+    </div>
+    <div class="tag">UIモックアップ</div>
+  </div>
+
+  <div class="body-row">
+
+    <div class="field-col">
+      <div class="col-label">現場｜スマホ・タブレット</div>
+      <div class="col-note">LINE / WhatsApp 等どこから開いても同じチャット画面へ</div>
+
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-screen">
+          <div class="status-bar">
+            <span>9:41</span>
+            <div class="status-icons">
+              <svg width="60" height="16" viewBox="0 0 60 16">
+                <rect x="0" y="9" width="3" height="4" fill="#16213e"/>
+                <rect x="5" y="7" width="3" height="6" fill="#16213e"/>
+                <rect x="10" y="5" width="3" height="8" fill="#16213e"/>
+                <rect x="15" y="3" width="3" height="10" fill="#16213e"/>
+                <path d="M23 11a7 7 0 0110 0" stroke="#16213e" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                <circle cx="28" cy="12.5" r="1.2" fill="#16213e"/>
+                <rect x="38" y="4" width="18" height="9" rx="1.5" stroke="#16213e" stroke-width="1.2" fill="none"/>
+                <rect x="56.5" y="6.5" width="2" height="4" fill="#16213e"/>
+                <rect x="40" y="6" width="12" height="5" fill="#16213e"/>
+              </svg>
+            </div>
+          </div>
+          <div class="chat-bar">
+            <div class="who">
+              <div class="avatar"><svg viewBox="0 0 24 24" width="18" height="18" stroke="#fff" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="10" rx="3"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1" fill="#fff" stroke="none"/><circle cx="9" cy="13" r="1" fill="#fff" stroke="none"/><circle cx="15" cy="13" r="1" fill="#fff" stroke="none"/><path d="M2 12h3M19 12h3"/></svg></div>
+              <div class="name-block">
+                <div class="name">本部サポートAI</div>
+                <div class="status">● 24時間対応中</div>
+              </div>
+            </div>
+            <div class="menu">⋮</div>
+          </div>
+          <div class="chat-body">
+
+            <div class="msg-row">
+              <div class="msg-meta"><span>香港店・03:40</span><span class="flag">廣東話</span></div>
+              <div class="bubble-in">急凍嘅湯底融化咗要幾耐？同平時嘅唔一樣，可唔可以直接用？</div>
+            </div>
+            <div class="msg-row out">
+              <div class="bubble-out">
+                <span class="tag-cat">調理・解凍</span><br>
+                標準解凍時間係20分。如果仲有冰粒，可以再等5分鐘，唔好加熱催谷。
+                <div class="meta-out">03:42 <svg viewBox="0 0 24 24" width="9" height="9" stroke="rgba(255,255,255,0.6)" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12l4 4L14 7"/><path d="M9 12l4 4L22 7"/></svg></div>
+              </div>
+            </div>
+
+            <div class="msg-row">
+              <div class="msg-meta"><span>上海店・14:12</span><span class="flag">中文</span></div>
+              <div class="bubble-in">天妇罗的面糊比例好像有点问题，图片如下 <svg viewBox="0 0 24 24" width="10" height="10" style="vertical-align:-1px;" stroke="#16213e" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h6.5l1.5 2h3v11H4z"/><circle cx="12" cy="13.5" r="3"/></svg></div>
+            </div>
+            <div class="msg-row out">
+              <div class="bubble-out">
+                <span class="tag-cat">品質・要確認</span><br>
+                已收到图片，配比看起来偏稀。已同步给督导，稍后联系您确认。
+                <div class="meta-out">14:14 <svg viewBox="0 0 24 24" width="9" height="9" stroke="rgba(255,255,255,0.6)" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12l4 4L14 7"/><path d="M9 12l4 4L22 7"/></svg></div>
+              </div>
+            </div>
+
+            <div class="msg-row">
+              <div class="msg-meta"><span>LA店・21:05</span><span class="flag">English</span></div>
+              <div class="bubble-in">Customer says the noodles taste different today. What should I tell them?</div>
+            </div>
+            <div class="msg-row out">
+              <div class="bubble-out">
+                <span class="tag-cat">クレーム対応</span><br>
+                Apologize and offer a fresh remake following the standard script. Escalating to SV for QC check.
+                <div class="meta-out">21:07 <svg viewBox="0 0 24 24" width="9" height="9" stroke="rgba(255,255,255,0.6)" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12l4 4L14 7"/><path d="M9 12l4 4L22 7"/></svg></div>
+              </div>
+            </div>
+
+          </div>
+          <div class="chat-input">
+            <div class="cam"><svg viewBox="0 0 24 24" width="14" height="14" stroke="#8a8f9c" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h6.5l1.5 2h3v11H4z"/><circle cx="12" cy="13.5" r="3"/></svg></div>
+            <div class="box">メッセージを入力 / 写真を送る…</div>
+            <div class="send"><svg viewBox="0 0 24 24" width="12" height="12" stroke="#fff" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-7-6 7 6 7z"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hq-col">
+      <div class="col-label">本部｜PC（サブ：SP）</div>
+      <div class="col-note">全拠点の問い合わせをログとして一覧管理</div>
+
+      <div class="dashboard">
+        <div class="dash-top">
+          <div class="title">問い合わせダッシュボード</div>
+          <div class="win">2026/07/27 本日分</div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi"><div class="val">128</div><div class="lbl">本日の問い合わせ件数</div></div>
+          <div class="kpi accent"><div class="val">86%</div><div class="lbl">AI自動解決率</div></div>
+          <div class="kpi"><div class="val">7</div><div class="lbl">本部エスカレーション</div></div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>時刻</th><th>拠点</th><th>言語</th><th>カテゴリ</th><th>内容（要約）</th><th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>03:40</td><td>香港</td><td><span class="lang-pill">廣東話</span></td><td>調理・解凍</td><td>冷凍スープの解凍時間</td><td><span class="pill auto">自動解決</span></td></tr>
+            <tr><td>14:12</td><td>上海</td><td><span class="lang-pill">中文</span></td><td>品質・要確認</td><td>天ぷら衣の配合（画像添付）</td><td><span class="pill esc">SV確認中</span></td></tr>
+            <tr><td>21:05</td><td>LA</td><td><span class="lang-pill">English</span></td><td>クレーム対応</td><td>麺の味の変化を指摘</td><td><span class="pill esc">SV確認中</span></td></tr>
+            <tr><td>21:30</td><td>東京</td><td><span class="lang-pill">日本語</span></td><td>発注・在庫</td><td>つゆパックの欠品連絡</td><td><span class="pill auto">自動解決</span></td></tr>
+            <tr><td>22:02</td><td>LA</td><td><span class="lang-pill">Español</span></td><td>機器トラブル</td><td>フライヤー温度計エラー</td><td><span class="pill auto">自動解決</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">※画面・機能・数値はすべて検討用のイメージです　｜　Balencer — Oishies Franchise Support AI Concept</div>
+</div>
+</div>
+
+<div class="sheet" id="p3">
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1>ナレッジ・メンテナンス・ループ ― 概念図</h1>
+      <div class="sub">Google Drive上の既存マニュアルを正本候補とし、AIが「抜け・漏れ」を見つけ、現場と本部で継続的に改善する仕組み</div>
+    </div>
+    <div class="badge outline-navy">既存のGoogle環境を活かす構成案</div>
+  </div>
+
+  <div class="body-row">
+
+    <div class="loop-col">
+      <div class="col-title">更新サイクル（6ステップ・循環）</div>
+      <div class="loop-wrap">
+        <div class="loop-container">
+          <div class="ring"></div>
+          <div class="ring-arrow"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 00-14.9-3.5"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0014.9 3.5"/><path d="M20 20v-5h-5"/></svg></div>
+
+          <div class="center-node">
+            <svg class="ic" viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            <div class="t1">Google Drive</div>
+            <div class="t2">唯一のナレッジ源<br>（移行・新規格納なし）</div>
+          </div>
+
+          <div class="node" style="left:calc(50% + 0mm); top:calc(50% + -48mm); transform:translate(-50%,-50%);">
+            <div class="badge-num">1</div><div>AIがDrive内マニュアルを精査し現状把握</div>
+          </div>
+          <div class="node" style="left:calc(50% + 41.6mm); top:calc(50% + -24mm); transform:translate(-50%,-50%);">
+            <div class="badge-num">2</div><div>抜け・漏れ・古い情報を自動検知しアラート</div>
+          </div>
+          <div class="node" style="left:calc(50% + 41.6mm); top:calc(50% + 24mm); transform:translate(-50%,-50%);">
+            <div class="badge-num">3</div><div>本部の定例MTGでバレンサー(AI)が概要を報告</div>
+          </div>
+          <div class="node" style="left:calc(50% + 0mm); top:calc(50% + 48mm); transform:translate(-50%,-50%);">
+            <div class="badge-num">4</div><div>バレンサー(AI)がマニュアル改訂の草案を作成</div>
+          </div>
+          <div class="node" style="left:calc(50% + -41.6mm); top:calc(50% + 24mm); transform:translate(-50%,-50%);">
+            <div class="badge-num">5</div><div>現場担当者をアサインしヒアリング・草案確認</div>
+          </div>
+          <div class="node" style="left:calc(50% + -41.6mm); top:calc(50% + -24mm); transform:translate(-50%,-50%);">
+            <div class="badge-num">6</div><div>ヒアリングを反映し磨いた上で本部承認→更新</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-col">
+      <div class="col-title">技術構成の候補（レイヤー別）</div>
+      <div class="stack-panel">
+
+        <div class="stack-row">
+          <div class="layer-num">1</div>
+          <div class="layer-body">
+            <div class="layer-head"><span class="layer-name">ソース層</span><span class="layer-tool">Google Drive</span></div>
+            <div class="layer-desc">既存のDocs / Sheets / PDFをそのまま参照。データ移行・再入力は行わない。</div>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <div class="layer-num">2</div>
+          <div class="layer-body">
+            <div class="layer-head"><span class="layer-name">検索・索引層（RAG）</span><span class="layer-tool">NotebookLM Enterprise / Vertex AI Search</span></div>
+            <div class="layer-desc">Drive内の変更を索引へ反映し、マニュアル更新がAIの回答にも反映される構成を検討。</div>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <div class="layer-num">3</div>
+          <div class="layer-body">
+            <div class="layer-head"><span class="layer-name">ギャップ検知層</span><span class="layer-tool">Gemini / Claude API</span></div>
+            <div class="layer-desc">「回答不能」「低確信度」の質問を自動フラグし、ログに記録。</div>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <div class="layer-num">4</div>
+          <div class="layer-body">
+            <div class="layer-head"><span class="layer-name">集計・アラート層</span><span class="layer-tool">Apps Script + Cloud Scheduler</span></div>
+            <div class="layer-desc">週次でギャップを自動集計し、定例ミーティング前にレポートを本部へ通知。</div>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <div class="layer-num">5</div>
+          <div class="layer-body">
+            <div class="layer-head"><span class="layer-name">ドラフト生成層</span><span class="layer-tool">バレンサー(AI) = LLM</span></div>
+            <div class="layer-desc">不足箇所の改訂案をGoogle Docs上に「ドラフト」として作成する想定。</div>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <div class="layer-num">6</div>
+          <div class="layer-body">
+            <div class="layer-head"><span class="layer-name">ヒアリング・反映層</span><span class="layer-tool">既存チャット窓口 + Docs コメント</span></div>
+            <div class="layer-desc">現場への確認方法と、回答をドラフトへ反映する流れを運用体制に合わせて設計。</div>
+          </div>
+        </div>
+
+        <div class="gov-note">
+          <b>ガバナンス：</b>AIが正式マニュアルを無断で書き換えることはない。ドラフト作成と情報集約のみをAIが担い、<b>正式反映は必ず本部承認を経て確定</b>。Docsの変更履歴で誰がいつ何を直したか常に追跡可能。
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">Balencer — Oishies Knowledge Maintenance Loop Concept</div>
+</div>
+</div>
+
+<div class="sheet" id="p4">
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1>まず、ご一緒に整理・検証できること</h1>
+      <div class="sub">海外FC問い合わせ対応の仕組みについて — 現時点の仮説と、本格導入前に確認すること</div>
+    </div>
+    <div class="badge outline-navy">人とAIの協業をデザインします</div>
+  </div>
+
+  <div class="body-row">
+
+    <div class="honest-col">
+      <div class="grid2">
+
+        <div class="grid-panel can">
+          <div class="ptitle"><span class="mark">✓</span>最初に取り組めること</div>
+          <div class="items">
+            <div class="item"><span class="num">1</span><span class="txt">既存マニュアルの状態と、<b>現在の管理・更新方法を整理</b>します</span></div>
+            <div class="item"><span class="num">2</span><span class="txt">AIで「古い・足りない」を<b>検知できるか小さく検証</b>します</span></div>
+            <div class="item"><span class="num">3</span><span class="txt">改訂ドラフトと現場確認の流れを、<b>実際のデータで試します</b></span></div>
+            <div class="item"><span class="num">4</span><span class="txt">本部・店舗・FC・バレンサーの<b>無理のない役割分担を設計</b>します</span></div>
+          </div>
+        </div>
+
+        <div class="grid-panel cant">
+          <div class="ptitle"><span class="mark">!</span>本格導入前に確認が必要なこと</div>
+          <div class="items">
+            <div class="item"><span class="num">1</span><span class="txt">どのデータを<b>正式な情報（正本）</b>として扱うか</span></div>
+            <div class="item"><span class="num">2</span><span class="txt">AIに任せる範囲と、<b>人が判断・承認する範囲</b></span></div>
+            <div class="item"><span class="num">3</span><span class="txt"><b>上海拠点などの通信環境</b>、言語・ブランド別の運用条件</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="promise">
+        <div class="pic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/><path d="M8.5 12.3l2.5 2.5L16 9.3"/></svg></div>
+        <div class="txt">情報処理、管理、監視など速さ・正確さを求められる作業はAIに任せ、大切な部分は人が行います。<br>現場が安定運用できる状態にしてから、次のフェーズへ向かいます。</div>
+      </div>
+    </div>
+
+    <div class="why-col">
+      <div class="col-title">バレンサーが大切にしたいこと</div>
+
+      <div class="cards-wrap">
+        <div class="why-card">
+          <div class="qn">“</div>
+          <div><div class="wtitle">「作って終わり」にしない</div><div class="wtxt">納品後、現場に定着するまでが成果物だと考えています。現場が無理なく運用できる前提で設計し、「もっと楽に、より便利に」を目指して一緒に向き合います。</div></div>
+        </div>
+
+        <div class="why-card">
+          <div class="qn">“</div>
+          <div><div class="wtitle">現場ヒアリングで、使えるシステムに</div><div class="wtxt">効率化・自動化は大切ですが、目的ではありません。「こうあるべき」よりも、現場に寄り添う使い勝手にもこだわります。</div></div>
+        </div>
+
+        <div class="why-card">
+          <div class="qn">“</div>
+          <div><div class="wtitle">抜けても回る仕組みにする</div><div class="wtxt">社内で運用できる状態まで整えてから受け渡し。それが私たちの一貫したスタンスです。</div></div>
+        </div>
+      </div>
+
+      <div class="signoff">
+        私たちは「事業の成長を、ヒト（組織づくり）とAIの両面からお手伝いする」会社です。事業にとって効率化すべき部分と、人が関わるべき部分を見極め、無理なく安定的に成長する仕組みを作ります。
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">Balencer — Oishies Franchise Support AI / Honest Scope</div>
+</div>
+</div>
+
+<div class="sheet" id="p5">
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1>想定する運用フロー（仮説）</h1>
+      <div class="sub">店舗はチャットで質問。AIによる検知・下書き・確認依頼を活用し、本部の作業負担を最終判断中心にする構成案</div>
+    </div>
+    <div class="badge outline-navy">2026年7月29日時点</div>
+  </div>
+
+  <div class="flow">
+
+    <div class="stage-col">
+      <div class="who-pill">現場</div>
+      <div class="icon-row"><div class="spacer"><div class="icon-circle navy"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13a2 2 0 012 2v6a2 2 0 01-2 2H9l-4 3v-3H4a2 2 0 01-2-2V7a2 2 0 012-2z"/><circle cx="8.5" cy="10.5" r="0.6" fill="#fff" stroke="none"/><circle cx="11.5" cy="10.5" r="0.6" fill="#fff" stroke="none"/><circle cx="14.5" cy="10.5" r="0.6" fill="#fff" stroke="none"/></svg></div></div></div>
+      <h3>チャットで聞くだけ</h3>
+      <div class="stage-card">店舗はスマホ・タブレットで問い合わせ。ブラウザアプリ・LINE等どこからでも同じ管理画面で対応</div>
+    </div>
+    <div class="arrow-gap">→</div>
+
+    <div class="stage-col">
+      <div class="who-pill">本部アカウント</div>
+      <div class="icon-row"><div class="spacer"><div class="icon-circle navy"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div></div></div>
+      <h3>元ファイルを一元管理</h3>
+      <div class="stage-card">Docs・PDF・画像、形式は問わない。本部専用アカウントのみが読み書き</div>
+    </div>
+    <div class="arrow-gap">→</div>
+
+    <div class="stage-col">
+      <div class="who-pill">AI</div>
+      <div class="icon-row"><div class="spacer"><div class="icon-circle navy"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8.5 3.2c-2 0-3.2 1.5-3.2 3.1-1.6.5-2.2 2.1-1.6 3.6C2.5 10.9 2 12.4 3 13.5c-.6 1.6 0 3.2 1.6 3.7.2 1.9 1.9 3.1 3.7 3.1.9 0 1.7-.3 2.2-.9"/>
+        <path d="M15.5 3.2c2 0 3.2 1.5 3.2 3.1 1.6.5 2.2 2.1 1.6 3.6 1.1 1.1 1.6 2.6.6 3.7.6 1.6 0 3.2-1.6 3.7-.2 1.9-1.9 3.1-3.7 3.1-.9 0-1.7-.3-2.2-.9"/>
+        <path d="M12 3.2v16.2"/></svg></div></div></div>
+      <h3>AIが回答</h3>
+      <div class="stage-card">NotebookLM／Drive直接参照など、方式は後で選べる柔軟設計</div>
+    </div>
+    <div class="arrow-gap">→</div>
+
+    <div class="stage-col">
+      <div class="who-pill">AI</div>
+      <div class="icon-row"><div class="spacer"><div class="icon-circle navy"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l5.5 5.5"/></svg></div></div></div>
+      <h3>マニュアル更新を楽に</h3>
+      <div class="stage-card">答えられない／古い箇所を検知し、週次で要点だけ本部へ</div>
+    </div>
+    <div class="arrow-gap">→</div>
+
+    <div class="stage-col">
+      <div class="who-pill">バレンサー(AI)</div>
+      <div class="icon-row"><div class="spacer"><div class="icon-circle navy"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4.2L15.8 5 19 8.2 8.2 19z"/><path d="M13.8 6.2l3 3"/></svg></div></div></div>
+      <h3>下書き→現場に確認</h3>
+      <div class="stage-card">草案を作成し、本部または現場へ確認。マニュアル改訂をスピーディに</div>
+    </div>
+    <div class="arrow-gap">→</div>
+
+    <div class="stage-col">
+      <div class="who-pill hq">本部｜最終判断</div>
+      <div class="icon-row"><div class="spacer"><div class="icon-circle gold"><svg viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 7"/></svg></div></div></div>
+      <h3>承認して更新</h3>
+      <div class="stage-card">権限・責任範囲に合わせ、正式反映に必要な内容を確認・承認</div>
+    </div>
+
+  </div>
+
+  <div class="bottom-row">
+
+    <div class="panel">
+      <div class="ptitle">マニュアルを早く・正確に更新する仕組み</div>
+      <div class="qa-item"><span class="num">1</span><span class="txt"><b>本部専用アカウント</b>だけがDriveの読み書き権限を持つ。店舗はチャットに送付された情報を参照</span></div>
+      <div class="qa-item"><span class="num">2</span><span class="txt">新着・更新ファイルは<b>自動変換（GAS）</b>でスマホ閲覧用のPDF・画像に整形</span></div>
+      <div class="qa-item"><span class="num">3</span><span class="txt">店舗は、本部アカウント配下のAIに<b>問い合わせるだけ</b>。</span></div>
+      <div class="qa-item"><span class="num">4</span><span class="txt">AIエンジンは<b>NotebookLMに固執せず</b>、店舗からの自動応答に向く方式（Drive直接参照 等）を検証の上で選ぶ</span></div>
+    </div>
+
+    <div class="panel">
+      <div class="compress-visual">
+        <div class="big">判断をシンプルに</div>
+        <div class="cap">検知・集計・下書き・確認依頼をAIで支援し、<b>本部の負担を最終判断中心にできる運用</b>を目指します。</div>
+        <div class="compress-bar">
+          <div class="ai">AI・バレンサーが支援</div>
+          <div class="hq">本部が判断</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">Balencer — Oishies Franchise Support AI / Updated Flow</div>
+</div>
+</div>
+
+
+<script>
+(function () {
+  function fitSheets() {
+    document.querySelectorAll('.mobile-sheet-wrap').forEach(function (w) {
+      var s = w.querySelector('.sheet');
+      if (s) { w.parentNode.insertBefore(s, w); w.remove(); }
+    });
+    if (window.innerWidth > 900 || window.matchMedia('print').matches) return;
+    document.querySelectorAll('.sheet').forEach(function (sheet) {
+      var width = sheet.offsetWidth, height = sheet.offsetHeight;
+      var scale = window.innerWidth / width;
+      var wrap = document.createElement('div');
+      wrap.className = 'mobile-sheet-wrap';
+      wrap.style.height = (height * scale) + 'px';
+      sheet.parentNode.insertBefore(wrap, sheet);
+      wrap.appendChild(sheet);
+      sheet.style.transform = 'scale(' + scale + ')';
+    });
+  }
+  window.addEventListener('load', fitSheets);
+  window.addEventListener('resize', fitSheets);
+  window.addEventListener('beforeprint', function(){ location.reload(); });
+})();
+</script>
+</body>
+</html>

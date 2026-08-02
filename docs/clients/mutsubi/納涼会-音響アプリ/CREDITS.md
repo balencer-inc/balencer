@@ -9,9 +9,9 @@
 - 規約: https://pocket-se.info/rule/
 
 ## 表彰BGMについて
-- pl3/01.mp3「威風堂々 第1番」（エルガー）… シカゴ交響楽団＋グランドオルガン、1926年録音。実オーケストラ演奏（パブリックドメイン）。
-- 出典: Internet Archive（78回転SPのデジタル化） https://archive.org/details/78_pomp-and-circumstance-march-no-1-in-d-pompa-y-circumstancia-marcha-no-1_c_gbia0295275b
-- ※古い録音のため多少のヒスノイズ（サーッという音）あり。クリーンな音質を優先したい場合は Audiostock 等の有料サビ版で差し替え可能。02・03は魔王魂のクリーンなオーケストラ。
+- pl3/01.mp3「見よ勇者は帰る」（ヘンデル／表彰式・運動会の定番）… 弦楽アレンジ、出典 mu-tech https://www.mu-tech.org/Traditional/brave_man_returns.html
+- 曲自体はパブリックドメイン。この録音は打ち込み音源のためノイズはなく、生オケほどの厚みはないがクリーン。
+- 02・03は魔王魂のクリーンなオーケストラ（orchestra23・13）。
 
 ## 効果音（audio/se/）
 | ファイル | ボタン | 出典 | 元素材 | クレジット |
@@ -33,7 +33,7 @@
 | pl2b | 卓球決勝 | 魔王魂 | fantasy15・11・12（勇ましい） |
 | pl2c | パター | 魔王魂 | acoustic50・51・52（カフェ・ピアノ） |
 | pl2d | クイズ準備 | 魔王魂 | neorock57・55・piano25（元気系） |
-| pl3 | 表彰・中締め | Internet Archive＋魔王魂 | 威風堂々（実オケ・1926）＋orchestra23・13 |
+| pl3 | 表彰・中締め | mu-tech＋魔王魂 | 見よ勇者は帰る（弦楽）＋orchestra23・13 |
 
 - 魔王魂 規約: https://maou.audio/rule/ （商用可・クレジット不要）作曲: 森田交一
 

@@ -9,10 +9,10 @@
 - s3.mp3 ドラムロール（ドン付き）… ポケットサウンド「結果発表前のドラムロール」 https://pocket-se.info/archives/479/
 - 規約: https://pocket-se.info/rule/
 
-## 表彰の定番曲について（要確認）
-- pl3/01.mp3「見よ勇者は帰る」（ヘンデル／表彰式の定番）… 出典 mu-tech（弦楽アレンジ・打ち込み音源） https://www.mu-tech.org/Traditional/brave_man_returns.html
-- 曲自体は著作権切れ（パブリックドメイン）。この**録音データ**は打ち込み音源のためオーケストラ生録ほどの厚みはありません。会場スピーカーで聴いて気になれば差し替え可。
-- 利用条件はサイトの規約を一読してください。
+## 表彰の定番曲について
+- pl3/01.mp3「威風堂々 第1番」（エルガー）… シカゴ交響楽団＋グランドオルガン、1926年録音。実オーケストラ演奏。
+- 出典: Internet Archive（78回転SPのデジタル化） https://archive.org/details/78_pomp-and-circumstance-march-no-1-in-d-pompa-y-circumstancia-marcha-no-1_c_gbia0295275b
+- 曲・録音ともパブリックドメイン（1926年）。実演奏なので厚みはあるが、古い録音のため多少のヒスノイズ（サーッという音）があります。
 
 ## 効果音（audio/se/）
 | ファイル | ボタン | 出典 | 元素材 | クレジット |
@@ -29,12 +29,12 @@
 ## BGM（audio/bgm/）
 | フォルダ | ボタン | 出典 | 収録曲 |
 |---|---|---|---|
-| pl1 | 開場歓談 | 魔王魂 | piano25・acoustic34（サンバ）・acoustic35（爽やか） |
+| pl1 | 開場歓談 | 魔王魂 | acoustic34（サンバ）・neorock58・neorock59（明るく賑やか） |
 | pl2a | 卓球 | 魔王魂 | game_rock01・05・08・12 |
 | pl2b | 卓球決勝 | 魔王魂 | fantasy15・11・12（勇ましい） |
 | pl2c | パター | 魔王魂 | acoustic50・51・52（カフェ・ピアノ） |
-| pl2d | クイズ準備 | 魔王魂 | neorock57・59・55（明るいネオロック） |
-| pl3 | 表彰・中締め | mu-tech＋魔王魂 | 見よ勇者は帰る＋orchestra23・13 |
+| pl2d | クイズ準備 | 魔王魂 | neorock57・55・piano25（元気系） |
+| pl3 | 表彰・中締め | Internet Archive＋魔王魂 | 威風堂々（実オケ）＋orchestra23・13 |
 
 - 魔王魂 規約: https://maou.audio/rule/ （商用可・クレジット不要）作曲: 森田交一
 

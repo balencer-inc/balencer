@@ -134,7 +134,7 @@
     <li>📢 本体側面の<b>消音スイッチをOFF</b>（オレンジが見えない状態）に</li>
     <li>🔋 設定 → 画面表示と明るさ → 自動ロックを<b>「なし」</b>に</li>
     <li>🔊 音量を上げておく（会場のスピーカーにも接続）</li>
-    <li>👇 下のボタンを押すと<b>テスト音</b>が鳴ります。鳴らなければ上を確認</li>
+    <li>👇 開始後、<b>いずれかのボタンを押して</b>音が出るか確認（起動時は無音です）</li>
   </ul>
   <button id="startBtn">タップして開始</button>
   <div id="loadmsg"></div>
@@ -222,7 +222,8 @@ function makeBeepBuffer(freq, dur, kind) {
 /* ---------- URLの存在確認 ---------- */
 async function urlExists(url) {
   try {
-    const r = await fetch(url, { cache: 'reload' });
+    // HEADで存在確認（本体をDLしないので起動が軽い）
+    const r = await fetch(url, { method: 'HEAD' });
     return r.ok;
   } catch (e) { return false; }
 }
@@ -517,7 +518,7 @@ function buildButtons() {
 async function precacheAudio() {
   if (!('caches' in window)) return;
   try {
-    const cache = await caches.open('noryo-v5');
+    const cache = await caches.open('noryo-v6');
     const urls = [];
     config.bgm.forEach(b => b.tracks.forEach(t => urls.push(t)));
     config.se.forEach(s => urls.push(s.file));
@@ -571,32 +572,8 @@ async function boot() {
 
   buildButtons();
 
-  // iOS: media要素を「無音(ミュート)」で一度だけ触って autoplay 制限を解除する。
-  // ※音声グラフ未接続の生再生なので、ミュートしないとフル音量で流れてしまう（不具合対策）
-  Object.values(bgmPlayers).forEach(p => {
-    p.tracks.forEach(t => {
-      if (t.type === 'media') {
-        t.el.muted = true;
-        const pr = t.el.play();
-        if (pr && pr.then) {
-          pr.then(() => { t.el.pause(); try { t.el.currentTime = 0; } catch (e) {} t.el.muted = false; })
-            .catch(() => { t.el.muted = false; });
-        } else {
-          try { t.el.pause(); t.el.currentTime = 0; } catch (e) {}
-          t.el.muted = false;
-        }
-      }
-    });
-  });
-
-  // テスト音（音が出るか本人が確認）
-  const test = ctx.createOscillator();
-  const tg = ctx.createGain();
-  tg.gain.value = 0.001;
-  tg.gain.linearRampToValueAtTime(0.25, ctx.currentTime + 0.02);
-  tg.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 0.35);
-  test.frequency.value = 880; test.connect(tg); tg.connect(master);
-  test.start(); test.stop(ctx.currentTime + 0.4);
+  // 起動時は完全無音。BGMは各ボタンのタップ（ユーザー操作）で再生を開始するため、
+  // iOSでも問題なく鳴る。起動時に曲を鳴らす“解除処理”は行わない（勝手に曲が流れる不具合の対策）。
 
   keepAwake();
   precacheAudio();
@@ -626,16 +603,11 @@ document.getElementById('startBtn').addEventListener('click', () => {
   });
 });
 
-/* ---------- Service Worker 登録（自動更新つき） ---------- */
+/* ---------- Service Worker 登録 ---------- */
+// SWはネットワーク優先なので、リロードすれば毎回最新HTMLが読まれる。
+// 使用中に勝手にリロードすると再生が止まるため、自動リロードは行わない。
 if ('serviceWorker' in navigator) {
-  // 新しい版に入れ替わったら1回だけ自動リロード（古い音が残らないように）
-  let reloaded = false;
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (reloaded) return; reloaded = true;
-    location.reload();
-  });
   window.addEventListener('load', () => {
-    // updateViaCache:'none' で sw.js 自体のキャッシュを無効化し、毎回更新を確認
     navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' })
       .then(reg => { reg.update().catch(() => {}); })
       .catch(() => {});

@@ -1,7 +1,7 @@
 {
-  "name": "納涼会 音響卓",
-  "short_name": "音響卓",
-  "description": "納涼会当日のBGM・効果音をスマホで操作する音響卓",
+  "name": "イベント音響アプリ by BALENCER",
+  "short_name": "音響アプリ",
+  "description": "イベントのBGM・効果音をスマホで操作する音響アプリ",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

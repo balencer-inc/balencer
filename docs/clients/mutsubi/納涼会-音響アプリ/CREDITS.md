@@ -9,8 +9,8 @@
 - 規約: https://pocket-se.info/rule/
 
 ## 表彰BGMについて
-- pl3/01.mp3「見よ勇者は帰る」（ヘンデル／表彰式・運動会の定番）… 弦楽アレンジ、出典 mu-tech https://www.mu-tech.org/Traditional/brave_man_returns.html
-- 曲自体はパブリックドメイン。この録音は打ち込み音源のためノイズはなく、生オケほどの厚みはないがクリーン。
+- pl3/01.mp3「見よ勇者は帰る」（ヘンデル／表彰式・運動会の定番）… 弦楽アレンジ（E♭）、出典 MMT STUDIO https://mmt38.info/jingle/brave/ （商用・YouTube利用OK）
+- 曲自体はパブリックドメイン。阿部さんが試聴して選定・DLした版。
 - 02・03は魔王魂のクリーンなオーケストラ（orchestra23・13）。
 
 ## 効果音（audio/se/）
@@ -33,7 +33,7 @@
 | pl2b | 卓球決勝 | 魔王魂 | fantasy15・11・12（勇ましい） |
 | pl2c | パター | 魔王魂 | acoustic50・51・52（カフェ・ピアノ） |
 | pl2d | クイズ準備 | 魔王魂 | neorock57・55・piano25（元気系） |
-| pl3 | 表彰・中締め | mu-tech＋魔王魂 | 見よ勇者は帰る（弦楽）＋orchestra23・13 |
+| pl3 | 表彰・中締め | MMT STUDIO＋魔王魂 | 見よ勇者は帰る（弦楽E♭）＋orchestra23・13 |
 
 - 魔王魂 規約: https://maou.audio/rule/ （商用可・クレジット不要）作曲: 森田交一
 

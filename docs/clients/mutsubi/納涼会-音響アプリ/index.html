@@ -181,6 +181,7 @@ let ctx, master, seBus, bgmVolume, bgmDuck;
 let config = null;
 const bgmPlayers = {};     // id -> BgmPlayer
 const seBuffers  = {};     // id -> AudioBuffer | null
+const seGains    = {};     // id -> 個別音量(0〜1)
 let currentBgm = null;     // 再生中/一時停止中の BgmPlayer
 let activeSe = 0;          // 同時に鳴っている効果音の数（ダッキング復帰判定）
 let userVolume = 0.8;
@@ -227,6 +228,7 @@ async function urlExists(url) {
 
 /* ---------- 効果音の読み込み（AudioBuffer化） ---------- */
 async function loadSe(def) {
+  seGains[def.id] = (typeof def.gain === 'number') ? def.gain : 1;
   try {
     const r = await fetch(def.file);
     if (!r.ok) throw new Error('404');
@@ -252,7 +254,7 @@ function playSe(id) {
   if (!buf) return;
   const src = ctx.createBufferSource();
   src.buffer = buf;
-  const g = ctx.createGain(); g.gain.value = 0.9;
+  const g = ctx.createGain(); g.gain.value = 0.9 * (seGains[id] != null ? seGains[id] : 1);
   src.connect(g); g.connect(seBus);
   // ダッキング開始
   activeSe++;
@@ -308,6 +310,9 @@ class BgmPlayer {
 
   get available() { return this.tracks.length > 0; }
 
+  // このプレイリストの目標音量（0〜1）。省略時は1.0
+  _target() { return (typeof this.def.gain === 'number') ? this.def.gain : 1; }
+
   // media要素をWeb Audioに接続（一度だけ）
   _connectMedia(t) {
     if (!t._node) {
@@ -357,7 +362,7 @@ class BgmPlayer {
     const now = ctx.currentTime;
     this.gain.gain.cancelScheduledValues(now);
     this.gain.gain.setValueAtTime(this.gain.gain.value, now);
-    this.gain.gain.linearRampToValueAtTime(1, now + XFADE_TIME);
+    this.gain.gain.linearRampToValueAtTime(this._target(), now + XFADE_TIME);
   }
 
   // フェードアウトして停止（クロスフェードの旧側）

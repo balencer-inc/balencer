@@ -6,6 +6,9 @@
 - **キーパーソン**: 高さん、大和田さん、池内さん
 - **数字/機微**: 収益構造・前受金プールは機微。本文には貼らず、memory「睦備の売上構造」＋営業管理シートを参照
 
+## 成果物
+- 納涼会 音響卓（当日スマホ操作アプリ・BGM/効果音同時再生PWA）→ [`納涼会-音響アプリ/`](納涼会-音響アプリ/README.md) ／ 公開URL https://noryo-audio.vercel.app
+
 ## リンク集
 - 会社調査 → NotebookLM「睦備建設DX推進ヒアリング：2026年への成果と展望」: https://notebooklm.google.com/notebook/be8f7550-3eb2-47ed-8fa1-e21cfb0f53b7
 - 議事録 → Notion議事録DB（睦備タグ）: https://app.notion.com/p/balencer/21753269fc5e804a84cedc7916059edb

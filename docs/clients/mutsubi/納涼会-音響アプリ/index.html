@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="音響卓" />
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<title>納涼会 音響卓</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --bgm: #1f6feb;        /* BGM = 青 */
+    --bgm-on: #388bfd;
+    --bgm-paused: #1b3a5c;
+    --se: #d98324;         /* 効果音 = 琥珀 */
+    --se-flash: #ffcc66;
+    --stop: #da3633;       /* 全停止 = 赤 */
+    --stop-press: #f85149;
+    --text: #f0f6fc;
+    --muted: #8b949e;
+    --line: #30363d;
+    --disabled: #21262d;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    overscroll-behavior: none; touch-action: manipulation;
+    user-select: none; -webkit-user-select: none;
+  }
+  body { display: flex; flex-direction: column; }
+
+  /* ===== 開始画面 ===== */
+  #start {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--bg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 24px;
+    padding-top: calc(24px + env(safe-area-inset-top));
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+  #start h1 { font-size: 26px; margin: 0 0 8px; letter-spacing: .04em; }
+  #start .sub { color: var(--muted); font-size: 15px; margin-bottom: 28px; }
+  #start ul {
+    text-align: left; max-width: 340px; font-size: 15px; line-height: 1.9;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 20px; margin: 0 0 28px;
+  }
+  #start ul b { color: var(--se-flash); }
+  #startBtn {
+    width: 88%; max-width: 360px; min-height: 96px;
+    font-size: 24px; font-weight: 700; color: #fff;
+    background: linear-gradient(180deg, var(--bgm-on), var(--bgm));
+    border: none; border-radius: 20px; cursor: pointer;
+    box-shadow: 0 6px 24px rgba(31,111,235,.5);
+  }
+  #startBtn:active { transform: scale(.98); }
+  #loadmsg { color: var(--muted); font-size: 14px; margin-top: 16px; min-height: 20px; }
+
+  /* ===== メイン ===== */
+  #app { display: none; flex: 1; flex-direction: column; padding: 8px 10px;
+    padding-top: calc(8px + env(safe-area-inset-top));
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    gap: 8px; max-width: 480px; width: 100%; margin: 0 auto; }
+  #app.show { display: flex; }
+
+  /* 状態バー */
+  #status {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 14px; font-size: 17px; min-height: 48px;
+  }
+  #status .icon { font-size: 18px; }
+  #status .label { font-weight: 700; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #status .time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 16px; }
+  #status.idle .label { color: var(--muted); font-weight: 500; }
+
+  .sectitle { font-size: 12px; color: var(--muted); letter-spacing: .1em; margin: 2px 4px -2px; }
+
+  /* ボタングリッド */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pad {
+    min-height: 84px; border-radius: 14px; border: 2px solid transparent;
+    font-size: 18px; font-weight: 700; color: #fff; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    line-height: 1.25; padding: 6px; position: relative; transition: transform .05s;
+  }
+  .pad .note { font-size: 11px; font-weight: 500; opacity: .8; margin-top: 3px; }
+  .pad:active { transform: scale(.97); }
+  .pad.disabled { background: var(--disabled) !important; color: #6e7681 !important; box-shadow: none !important; }
+  .pad.disabled .tag { display: block; }
+  .pad .tag { display: none; position: absolute; top: 5px; right: 7px; font-size: 9px; color: #6e7681; font-weight: 700; }
+
+  /* BGM */
+  .bgm .pad { background: var(--bgm); box-shadow: inset 0 -3px 0 rgba(0,0,0,.25); }
+  .bgm .pad.playing { background: var(--bgm-on); border-color: #79c0ff; box-shadow: 0 0 0 3px rgba(121,192,255,.35), 0 0 18px rgba(56,139,253,.6); }
+  .bgm .pad.paused { background: var(--bgm-paused); border-color: #388bfd; }
+  .bgm .pad.playing::after { content: "▶ 再生中"; }
+  .bgm .pad.paused::after { content: "⏸ 一時停止"; }
+  .bgm .pad::after { font-size: 10px; font-weight: 700; opacity: .9; margin-top: 4px; min-height: 12px; }
+  .bgm .pad::after { content: ""; }
+
+  /* 音量 */
+  .vol { display: flex; align-items: center; gap: 10px; padding: 4px 6px; }
+  .vol span { font-size: 12px; color: var(--muted); }
+  input[type=range] { flex: 1; height: 36px; accent-color: var(--bgm-on); }
+
+  /* 効果音 */
+  .se .pad { background: var(--se); box-shadow: inset 0 -3px 0 rgba(0,0,0,.25); font-size: 17px; }
+  .se .pad.flash { background: var(--se-flash); color: #3d2600; box-shadow: 0 0 0 3px rgba(255,204,102,.6), 0 0 22px rgba(255,204,102,.7); }
+
+  /* 全停止 */
+  #stopAll {
+    margin-top: auto; min-height: 76px; border-radius: 16px; border: none;
+    background: var(--stop); color: #fff; font-size: 22px; font-weight: 800; letter-spacing: .3em;
+    cursor: pointer; box-shadow: inset 0 -4px 0 rgba(0,0,0,.3);
+  }
+  #stopAll:active { background: var(--stop-press); transform: scale(.99); }
+</style>
+</head>
+<body>
+
+<!-- ===== 開始画面（iOS unlock） ===== -->
+<div id="start">
+  <h1>納涼会 音響卓</h1>
+  <div class="sub">本番前チェック → タップして開始</div>
+  <ul>
+    <li>📢 本体側面の<b>消音スイッチをOFF</b>（オレンジが見えない状態）に</li>
+    <li>🔋 設定 → 画面表示と明るさ → 自動ロックを<b>「なし」</b>に</li>
+    <li>🔊 音量を上げておく（会場のスピーカーにも接続）</li>
+    <li>👇 下のボタンを押すと<b>テスト音</b>が鳴ります。鳴らなければ上を確認</li>
+  </ul>
+  <button id="startBtn">タップして開始</button>
+  <div id="loadmsg"></div>
+</div>
+
+<!-- ===== メイン ===== -->
+<div id="app">
+  <div id="status" class="idle">
+    <span class="icon">■</span>
+    <span class="label">停止中</span>
+    <span class="time">00:00</span>
+  </div>
+
+  <div class="sectitle">BGM（曲を流す）</div>
+  <div id="bgmGrid" class="grid bgm"></div>
+  <div class="vol">
+    <span>音量</span>
+    <input id="vol" type="range" min="0" max="100" value="80" />
+  </div>
+
+  <div class="sectitle">効果音（タップで即再生）</div>
+  <div id="seGrid" class="grid se"></div>
+
+  <button id="stopAll">■ 全 停 止</button>
+</div>
+
+<script>
+"use strict";
+/* =======================================================================
+   納涼会 音響卓 — タップ即再生・BGM/効果音 同時再生・オートダッキング
+   単一ページ / 完全オフライン / iOS unlock 対応
+   音源が無いボタンは自動で無効表示。DEV_SYNTH_FALLBACK=true の間は
+   音源が未配置でも合成ビープで動作確認できる（本番前に false 推奨）。
+   ======================================================================= */
+
+// 音源ファイルがまだ無いときに合成ビープで代替するか（本番は false 推奨）
+const DEV_SYNTH_FALLBACK = true;
+
+const DUCK_LEVEL = 0.30;   // 効果音中のBGM音量（30%）
+const DUCK_TIME  = 0.20;   // ダッキングのフェード秒
+const XFADE_TIME = 1.0;    // BGM切り替えのクロスフェード秒
+
+let ctx, master, seBus, bgmVolume, bgmDuck;
+let config = null;
+const bgmPlayers = {};     // id -> BgmPlayer
+const seBuffers  = {};     // id -> AudioBuffer | null
+let currentBgm = null;     // 再生中/一時停止中の BgmPlayer
+let activeSe = 0;          // 同時に鳴っている効果音の数（ダッキング復帰判定）
+let userVolume = 0.8;
+
+/* ---------- オーディオグラフ構築 ---------- */
+function buildGraph() {
+  master = ctx.createGain();
+  master.gain.value = 1;
+  master.connect(ctx.destination);
+
+  // BGM: 音量スライダー(bgmVolume) → ダッキング(bgmDuck) → master
+  bgmDuck = ctx.createGain();   bgmDuck.gain.value = 1;   bgmDuck.connect(master);
+  bgmVolume = ctx.createGain();  bgmVolume.gain.value = userVolume;  bgmVolume.connect(bgmDuck);
+
+  // 効果音はダッキングを受けない別バス
+  seBus = ctx.createGain();  seBus.gain.value = 1;  seBus.connect(master);
+}
+
+/* ---------- 合成ビープ（フォールバック用） ---------- */
+function makeBeepBuffer(freq, dur, kind) {
+  const sr = ctx.sampleRate;
+  const len = Math.floor(sr * dur);
+  const buf = ctx.createBuffer(1, len, sr);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) {
+    const t = i / sr;
+    const env = Math.min(1, t * 40) * Math.max(0, 1 - t / dur); // 立ち上がり＋減衰
+    let s;
+    if (kind === 'noise') s = (Math.random() * 2 - 1);
+    else if (kind === 'square') s = Math.sign(Math.sin(2 * Math.PI * freq * t));
+    else s = Math.sin(2 * Math.PI * freq * t);
+    d[i] = s * env * 0.5;
+  }
+  return buf;
+}
+
+/* ---------- URLの存在確認 ---------- */
+async function urlExists(url) {
+  try {
+    const r = await fetch(url, { cache: 'reload' });
+    return r.ok;
+  } catch (e) { return false; }
+}
+
+/* ---------- 効果音の読み込み（AudioBuffer化） ---------- */
+async function loadSe(def) {
+  try {
+    const r = await fetch(def.file);
+    if (!r.ok) throw new Error('404');
+    const ab = await r.arrayBuffer();
+    seBuffers[def.id] = await ctx.decodeAudioData(ab);
+  } catch (e) {
+    // 音源なし
+    if (DEV_SYNTH_FALLBACK) {
+      const map = { s1:[880,0.6,'sine'], s2:[0,0.7,'noise'], s3:[0,0.9,'noise'],
+                    s4:[0,0.8,'noise'], s5:[520,0.35,'sine'], s6:[660,0.25,'square'] };
+      const p = map[def.id] || [700,0.4,'sine'];
+      seBuffers[def.id] = makeBeepBuffer(p[0], p[1], p[2]);
+      def._synth = true;
+    } else {
+      seBuffers[def.id] = null; // → ボタン無効
+    }
+  }
+}
+
+/* ---------- 効果音の再生（重ねて鳴る／ダッキング） ---------- */
+function playSe(id) {
+  const buf = seBuffers[id];
+  if (!buf) return;
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  const g = ctx.createGain(); g.gain.value = 0.9;
+  src.connect(g); g.connect(seBus);
+  // ダッキング開始
+  activeSe++;
+  const now = ctx.currentTime;
+  bgmDuck.gain.cancelScheduledValues(now);
+  bgmDuck.gain.setTargetAtTime(DUCK_LEVEL, now, DUCK_TIME / 3);
+  src.onended = () => {
+    activeSe = Math.max(0, activeSe - 1);
+    if (activeSe === 0) {
+      const t = ctx.currentTime;
+      bgmDuck.gain.cancelScheduledValues(t);
+      bgmDuck.gain.setTargetAtTime(1.0, t, DUCK_TIME / 3);
+    }
+  };
+  src.start();
+}
+
+/* =======================================================================
+   BgmPlayer — 1プレイリスト。曲順に連続再生し末尾で先頭へループ。
+   各トラックは media(<audio>) か synth(合成ループ) のどちらか。
+   自前の playerGain を持ち、クロスフェード・一時停止・音量を制御する。
+   ======================================================================= */
+class BgmPlayer {
+  constructor(def) {
+    this.def = def;
+    this.tracks = [];       // { type:'media'|'synth', el?, freq? }
+    this.index = 0;
+    this.paused = false;
+    this.playing = false;
+    this.trackStart = 0;    // ctx時刻（synthの経過計算用）
+    this.pauseOffset = 0;   // 一時停止した位置(秒)
+    this.mediaSource = null;
+    this.synthSource = null;
+    this.gain = ctx.createGain();
+    this.gain.gain.value = 0;
+    this.gain.connect(bgmVolume);
+  }
+
+  async init() {
+    for (let i = 0; i < this.def.tracks.length; i++) {
+      const url = this.def.tracks[i];
+      if (await urlExists(url)) {
+        const el = new Audio();
+        el.src = url; el.preload = 'auto'; el.crossOrigin = 'anonymous';
+        this.tracks.push({ type: 'media', el });
+      } else if (DEV_SYNTH_FALLBACK) {
+        // プレイリストごとに雰囲気の違う音程を与える
+        const base = { pl1:196, pl2a:262, pl2b:330, pl2c:220, pl2d:523, pl3:294 }[this.def.id] || 262;
+        this.tracks.push({ type: 'synth', freq: base + i * 40, kind: this.def.id === 'pl2d' ? 'square' : 'sine' });
+      }
+    }
+  }
+
+  get available() { return this.tracks.length > 0; }
+
+  // media要素をWeb Audioに接続（一度だけ）
+  _connectMedia(t) {
+    if (!t._node) {
+      t._node = ctx.createMediaElementSource(t.el);
+      t._node.connect(this.gain);
+      t.el.addEventListener('ended', () => this._advance());
+    }
+  }
+
+  _startTrack(offset) {
+    const t = this.tracks[this.index];
+    if (!t) return;
+    if (t.type === 'media') {
+      this._connectMedia(t);
+      try { t.el.currentTime = offset || 0; } catch (e) {}
+      t.el.play().catch(() => {});
+    } else {
+      // synth: ループする長めのトーンを生成
+      const buf = makeBeepBuffer(t.freq, 4.0, t.kind);
+      const src = ctx.createBufferSource();
+      src.buffer = buf; src.loop = true;
+      src.connect(this.gain);
+      src.start(0, offset || 0);
+      this.synthSource = src;
+      this.trackStart = ctx.currentTime - (offset || 0);
+    }
+  }
+
+  _stopCurrent() {
+    const t = this.tracks[this.index];
+    if (!t) return;
+    if (t.type === 'media') { try { t.el.pause(); } catch (e) {} }
+    else if (this.synthSource) { try { this.synthSource.stop(); } catch (e) {} this.synthSource = null; }
+  }
+
+  _advance() {
+    if (!this.playing || this.paused) return;
+    this._stopCurrent();
+    this.index = (this.index + 1) % this.tracks.length; // 末尾→先頭ループ
+    this._startTrack(0);
+  }
+
+  // 別プレイリストからの切り替え：0→1でフェードイン
+  start() {
+    this.playing = true; this.paused = false; this.index = 0;
+    this._startTrack(0);
+    const now = ctx.currentTime;
+    this.gain.gain.cancelScheduledValues(now);
+    this.gain.gain.setValueAtTime(this.gain.gain.value, now);
+    this.gain.gain.linearRampToValueAtTime(1, now + XFADE_TIME);
+  }
+
+  // フェードアウトして停止（クロスフェードの旧側）
+  fadeOutStop() {
+    const now = ctx.currentTime;
+    this.gain.gain.cancelScheduledValues(now);
+    this.gain.gain.setValueAtTime(this.gain.gain.value, now);
+    this.gain.gain.linearRampToValueAtTime(0, now + XFADE_TIME);
+    setTimeout(() => this.hardStop(), XFADE_TIME * 1000 + 60);
+  }
+
+  hardStop() {
+    this._stopCurrent();
+    this.playing = false; this.paused = false; this.index = 0; this.pauseOffset = 0;
+    this.gain.gain.cancelScheduledValues(ctx.currentTime);
+    this.gain.gain.value = 0;
+  }
+
+  pause() {
+    if (!this.playing || this.paused) return;
+    const t = this.tracks[this.index];
+    if (t.type === 'media') this.pauseOffset = t.el.currentTime || 0;
+    else this.pauseOffset = (ctx.currentTime - this.trackStart) % 4.0;
+    this._stopCurrent();
+    this.paused = true;
+  }
+
+  resume() {
+    if (!this.paused) return;
+    this.paused = false;
+    this._startTrack(this.pauseOffset);
+  }
+
+  // 状態バー用：現在トラックの経過秒
+  elapsed() {
+    const t = this.tracks[this.index];
+    if (!t) return 0;
+    if (this.paused) return this.pauseOffset;
+    if (t.type === 'media') return t.el.currentTime || 0;
+    return (ctx.currentTime - this.trackStart);
+  }
+}
+
+/* ---------- BGMボタンの操作 ---------- */
+function onBgmTap(id) {
+  const p = bgmPlayers[id];
+  if (!p || !p.available) return;
+
+  if (currentBgm === p) {
+    // 同じボタン → 一時停止/再開トグル
+    if (p.paused) p.resume(); else p.pause();
+  } else {
+    // 別ボタン → クロスフェード切り替え
+    if (currentBgm) currentBgm.fadeOutStop();
+    currentBgm = p;
+    p.start();
+  }
+  renderBgmState();
+}
+
+/* ---------- 全停止 ---------- */
+function stopAll() {
+  Object.values(bgmPlayers).forEach(p => p.hardStop());
+  currentBgm = null;
+  // 効果音は自然減衰に任せられないので seBus を一瞬0にして戻す
+  const now = ctx.currentTime;
+  seBus.gain.cancelScheduledValues(now);
+  seBus.gain.setValueAtTime(0, now);
+  seBus.gain.setValueAtTime(1, now + 0.05);
+  activeSe = 0;
+  bgmDuck.gain.cancelScheduledValues(now);
+  bgmDuck.gain.setValueAtTime(1, now + 0.05);
+  renderBgmState();
+}
+
+/* ---------- 画面描画 ---------- */
+function renderBgmState() {
+  document.querySelectorAll('#bgmGrid .pad').forEach(btn => {
+    const p = bgmPlayers[btn.dataset.id];
+    btn.classList.toggle('playing', currentBgm === p && !p.paused);
+    btn.classList.toggle('paused',  currentBgm === p &&  p.paused);
+  });
+}
+
+function fmt(sec) {
+  sec = Math.max(0, Math.floor(sec));
+  const m = String(Math.floor(sec / 60)).padStart(2, '0');
+  const s = String(sec % 60).padStart(2, '0');
+  return m + ':' + s;
+}
+
+function tick() {
+  const st = document.getElementById('status');
+  const icon = st.querySelector('.icon');
+  const label = st.querySelector('.label');
+  const time = st.querySelector('.time');
+  if (currentBgm && currentBgm.playing) {
+    st.classList.remove('idle');
+    if (currentBgm.paused) { icon.textContent = '⏸'; }
+    else { icon.textContent = '▶'; }
+    label.textContent = '再生中：' + currentBgm.def.label;
+    if (currentBgm.paused) label.textContent = '一時停止：' + currentBgm.def.label;
+    time.textContent = fmt(currentBgm.elapsed());
+  } else {
+    st.classList.add('idle');
+    icon.textContent = '■';
+    label.textContent = '停止中';
+    time.textContent = '00:00';
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ---------- ボタン生成 ---------- */
+function buildButtons() {
+  const bg = document.getElementById('bgmGrid');
+  config.bgm.forEach(def => {
+    const p = bgmPlayers[def.id];
+    const btn = document.createElement('button');
+    btn.className = 'pad' + (p && p.available ? '' : ' disabled');
+    btn.dataset.id = def.id;
+    btn.innerHTML = `<span>${def.label}</span>` +
+      (def.note ? `<span class="note">${def.note}</span>` : '') +
+      `<span class="tag">音源なし</span>`;
+    if (p && p.available) btn.addEventListener('click', () => onBgmTap(def.id));
+    bg.appendChild(btn);
+  });
+
+  const se = document.getElementById('seGrid');
+  config.se.forEach(def => {
+    const ok = !!seBuffers[def.id];
+    const btn = document.createElement('button');
+    btn.className = 'pad' + (ok ? '' : ' disabled');
+    btn.dataset.id = def.id;
+    btn.innerHTML = `<span>${def.label}</span><span class="tag">音源なし</span>`;
+    if (ok) {
+      const fire = (e) => {
+        e.preventDefault();
+        playSe(def.id);
+        btn.classList.add('flash');
+        setTimeout(() => btn.classList.remove('flash'), 140);
+      };
+      // pointerdown で最速反応（50ms以内）
+      btn.addEventListener('pointerdown', fire);
+    }
+    se.appendChild(btn);
+  });
+}
+
+/* ---------- オフライン用に音源をキャッシュへ ---------- */
+async function precacheAudio() {
+  if (!('caches' in window)) return;
+  try {
+    const cache = await caches.open('noryo-audio-v1');
+    const urls = [];
+    config.bgm.forEach(b => b.tracks.forEach(t => urls.push(t)));
+    config.se.forEach(s => urls.push(s.file));
+    await Promise.allSettled(urls.map(u => cache.add(u).catch(() => {})));
+  } catch (e) {}
+}
+
+/* ---------- Wake Lock（画面スリープ抑止） ---------- */
+let wakeLock = null;
+async function keepAwake() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+      document.addEventListener('visibilitychange', async () => {
+        if (wakeLock !== null && document.visibilityState === 'visible') {
+          try { wakeLock = await navigator.wakeLock.request('screen'); } catch (e) {}
+        }
+      });
+    }
+  } catch (e) {}
+}
+
+/* ---------- 起動シーケンス ---------- */
+async function boot() {
+  const loadmsg = document.getElementById('loadmsg');
+  loadmsg.textContent = '準備中…';
+
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  await ctx.resume();
+  buildGraph();
+
+  // 設定読み込み
+  try {
+    config = await (await fetch('sounds.json')).json();
+  } catch (e) {
+    loadmsg.textContent = 'sounds.json が読めません。配置を確認してください。';
+    return;
+  }
+
+  // 効果音を全部メモリへ（低遅延のため）
+  loadmsg.textContent = '効果音を読み込み中…';
+  await Promise.all(config.se.map(loadSe));
+
+  // BGMプレイヤー初期化（存在確認・接続準備）
+  loadmsg.textContent = 'BGMを準備中…';
+  for (const def of config.bgm) {
+    const p = new BgmPlayer(def);
+    await p.init();
+    bgmPlayers[def.id] = p;
+  }
+
+  buildButtons();
+
+  // iOS: media要素を一度触って autoplay 制限を解除（ジェスチャ内で実行）
+  Object.values(bgmPlayers).forEach(p => {
+    p.tracks.forEach(t => {
+      if (t.type === 'media') {
+        t.el.play().then(() => t.el.pause()).catch(() => {});
+      }
+    });
+  });
+
+  // テスト音（音が出るか本人が確認）
+  const test = ctx.createOscillator();
+  const tg = ctx.createGain();
+  tg.gain.value = 0.001;
+  tg.gain.linearRampToValueAtTime(0.25, ctx.currentTime + 0.02);
+  tg.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+  test.frequency.value = 880; test.connect(tg); tg.connect(master);
+  test.start(); test.stop(ctx.currentTime + 0.4);
+
+  keepAwake();
+  precacheAudio();
+
+  // 画面切り替え
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('app').classList.add('show');
+  requestAnimationFrame(tick);
+}
+
+/* ---------- 音量スライダー ---------- */
+document.getElementById('vol').addEventListener('input', (e) => {
+  userVolume = e.target.value / 100;
+  if (bgmVolume) bgmVolume.gain.setTargetAtTime(userVolume, ctx.currentTime, 0.05);
+});
+
+/* ---------- 全停止ボタン ---------- */
+document.getElementById('stopAll').addEventListener('click', stopAll);
+
+/* ---------- 開始ボタン ---------- */
+let booted = false;
+document.getElementById('startBtn').addEventListener('click', () => {
+  if (booted) return; booted = true;
+  boot().catch(err => {
+    document.getElementById('loadmsg').textContent = 'エラー: ' + err.message;
+    booted = false;
+  });
+});
+
+/* ---------- Service Worker 登録 ---------- */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

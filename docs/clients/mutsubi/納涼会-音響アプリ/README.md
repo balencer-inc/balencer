@@ -1,6 +1,6 @@
-# 納涼会 音響卓（音響操作アプリ）
+# イベント音響アプリ by BALENCER（音響操作アプリ）
 
-**公開URL（スマホで開く）: https://noryo-audio.vercel.app**
+**公開URL（スマホで開く）: https://balencer-audio.vercel.app**
 （再デプロイしてもこのURLは変わりません。ホーム画面に追加して使ってください）
 
 納涼会当日、スマホ1台でBGMと効果音を操作するためのアプリです。

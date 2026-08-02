@@ -171,7 +171,8 @@
    ======================================================================= */
 
 // 音源ファイルがまだ無いときに合成ビープで代替するか（本番は false 推奨）
-const DEV_SYNTH_FALLBACK = true;
+// 本物の音源を配置済みのため false（音源が無いボタンはグレー無効表示になる）
+const DEV_SYNTH_FALLBACK = false;
 
 const DUCK_LEVEL = 0.30;   // 効果音中のBGM音量（30%）
 const DUCK_TIME  = 0.20;   // ダッキングのフェード秒

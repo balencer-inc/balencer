@@ -19,7 +19,9 @@
       "gain": 0.85,
       "tracks": [
         "audio/bgm/pl2a/01.mp3",
-        "audio/bgm/pl2a/02.mp3"
+        "audio/bgm/pl2a/02.mp3",
+        "audio/bgm/pl2a/03.mp3",
+        "audio/bgm/pl2a/04.mp3"
       ]
     },
     {
@@ -28,7 +30,9 @@
       "note": "13:49–14:00",
       "gain": 0.9,
       "tracks": [
-        "audio/bgm/pl2b/01.mp3"
+        "audio/bgm/pl2b/01.mp3",
+        "audio/bgm/pl2b/02.mp3",
+        "audio/bgm/pl2b/03.mp3"
       ]
     },
     {
@@ -38,7 +42,8 @@
       "gain": 0.8,
       "tracks": [
         "audio/bgm/pl2c/01.mp3",
-        "audio/bgm/pl2c/02.mp3"
+        "audio/bgm/pl2c/02.mp3",
+        "audio/bgm/pl2c/03.mp3"
       ]
     },
     {
@@ -47,7 +52,9 @@
       "note": "14:35–14:50（8bit）",
       "gain": 0.85,
       "tracks": [
-        "audio/bgm/pl2d/01.mp3"
+        "audio/bgm/pl2d/01.mp3",
+        "audio/bgm/pl2d/02.mp3",
+        "audio/bgm/pl2d/03.mp3"
       ]
     },
     {

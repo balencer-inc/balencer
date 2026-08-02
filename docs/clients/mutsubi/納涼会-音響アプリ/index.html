@@ -516,7 +516,7 @@ function buildButtons() {
 async function precacheAudio() {
   if (!('caches' in window)) return;
   try {
-    const cache = await caches.open('noryo-audio-v1');
+    const cache = await caches.open('noryo-v4');
     const urls = [];
     config.bgm.forEach(b => b.tracks.forEach(t => urls.push(t)));
     config.se.forEach(s => urls.push(s.file));
@@ -616,10 +616,19 @@ document.getElementById('startBtn').addEventListener('click', () => {
   });
 });
 
-/* ---------- Service Worker 登録 ---------- */
+/* ---------- Service Worker 登録（自動更新つき） ---------- */
 if ('serviceWorker' in navigator) {
+  // 新しい版に入れ替わったら1回だけ自動リロード（古い音が残らないように）
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (reloaded) return; reloaded = true;
+    location.reload();
+  });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    // updateViaCache:'none' で sw.js 自体のキャッシュを無効化し、毎回更新を確認
+    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' })
+      .then(reg => { reg.update().catch(() => {}); })
+      .catch(() => {});
   });
 }
 </script>

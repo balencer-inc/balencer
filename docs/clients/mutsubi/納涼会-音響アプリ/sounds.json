@@ -49,7 +49,7 @@
     {
       "id": "pl2d",
       "label": "クイズ準備",
-      "note": "14:35–14:50（8bit）",
+      "note": "14:35–14:50",
       "gain": 0.85,
       "tracks": [
         "audio/bgm/pl2d/01.mp3",
@@ -64,7 +64,8 @@
       "gain": 0.9,
       "tracks": [
         "audio/bgm/pl3/01.mp3",
-        "audio/bgm/pl3/02.mp3"
+        "audio/bgm/pl3/02.mp3",
+        "audio/bgm/pl3/03.mp3"
       ]
     }
   ],
@@ -74,6 +75,6 @@
     { "id": "s3", "label": "ドラムロール",   "gain": 1.0, "file": "audio/se/s3.mp3" },
     { "id": "s4", "label": "歓声",         "gain": 1.0, "file": "audio/se/s4.mp3" },
     { "id": "s5", "label": "場面転換",      "gain": 0.9, "file": "audio/se/s5.mp3" },
-    { "id": "s6", "label": "8bit決定音",   "gain": 1.0, "file": "audio/se/s6.mp3" }
+    { "id": "s6", "label": "正解音",       "gain": 1.0, "file": "audio/se/s6.mp3" }
   ]
 }

@@ -1,8 +1,8 @@
 /* 納涼会 音響卓 — Service Worker
    会場のWi-Fiは信用しない前提。一度読んだものは全部キャッシュから返す。
    バージョンを上げると古いキャッシュを捨てて入れ替える。 */
-const SHELL = 'noryo-shell-v2';
-const AUDIO = 'noryo-audio-v1';
+const SHELL = 'noryo-shell-v3';
+const AUDIO = 'noryo-audio-v2';
 
 // アプリ本体（音源以外）を先読みキャッシュ
 const SHELL_ASSETS = [

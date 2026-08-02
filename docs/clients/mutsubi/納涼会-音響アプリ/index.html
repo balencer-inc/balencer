@@ -328,6 +328,7 @@ class BgmPlayer {
     if (!t) return;
     if (t.type === 'media') {
       this._connectMedia(t);
+      t.el.muted = false;
       try { t.el.currentTime = offset || 0; } catch (e) {}
       t.el.play().catch(() => {});
     } else {
@@ -516,7 +517,7 @@ function buildButtons() {
 async function precacheAudio() {
   if (!('caches' in window)) return;
   try {
-    const cache = await caches.open('noryo-v4');
+    const cache = await caches.open('noryo-v5');
     const urls = [];
     config.bgm.forEach(b => b.tracks.forEach(t => urls.push(t)));
     config.se.forEach(s => urls.push(s.file));
@@ -570,11 +571,20 @@ async function boot() {
 
   buildButtons();
 
-  // iOS: media要素を一度触って autoplay 制限を解除（ジェスチャ内で実行）
+  // iOS: media要素を「無音(ミュート)」で一度だけ触って autoplay 制限を解除する。
+  // ※音声グラフ未接続の生再生なので、ミュートしないとフル音量で流れてしまう（不具合対策）
   Object.values(bgmPlayers).forEach(p => {
     p.tracks.forEach(t => {
       if (t.type === 'media') {
-        t.el.play().then(() => t.el.pause()).catch(() => {});
+        t.el.muted = true;
+        const pr = t.el.play();
+        if (pr && pr.then) {
+          pr.then(() => { t.el.pause(); try { t.el.currentTime = 0; } catch (e) {} t.el.muted = false; })
+            .catch(() => { t.el.muted = false; });
+        } else {
+          try { t.el.pause(); t.el.currentTime = 0; } catch (e) {}
+          t.el.muted = false;
+        }
       }
     });
   });

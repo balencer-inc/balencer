@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAILIT案件 現状まとめ 2026-08-03</title>
+<style>
+  :root{
+    --ink:#1a1d23; --sub:#5b616e; --line:#e5e7eb; --bg:#ffffff;
+    --cobalt:#3158D4; --cobalt-bg:#eef2fd; --amber:#b7791f; --amber-bg:#fdf6e9;
+    --green:#2f855a; --green-bg:#eaf6ef; --red:#c53030; --red-bg:#fdedeb;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--ink); background:#f6f7f9; margin:0; line-height:1.75; font-size:15px;}
+  .wrap{max-width:900px; margin:0 auto; padding:48px 28px 80px;}
+  header{border-bottom:2px solid var(--ink); padding-bottom:20px; margin-bottom:36px;}
+  .eyebrow{font-size:12px; letter-spacing:.14em; color:var(--cobalt); font-weight:700;}
+  h1{font-size:26px; margin:8px 0 6px; letter-spacing:.01em;}
+  .meta{font-size:13px; color:var(--sub);}
+  h2{font-size:18px; margin:44px 0 14px; padding-left:12px; border-left:4px solid var(--cobalt);}
+  h3{font-size:15px; margin:22px 0 8px; color:var(--ink);}
+  p{margin:8px 0;}
+  .card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:14px 0;
+    box-shadow:0 1px 2px rgba(0,0,0,.03);}
+  .grid2{display:grid; grid-template-columns:130px 1fr; gap:6px 18px; font-size:14px;}
+  .grid2 dt{color:var(--sub); font-weight:600;}
+  .grid2 dd{margin:0;}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:14px; background:#fff;
+    border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  th,td{text-align:left; padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:#f0f2f6; font-size:12px; letter-spacing:.04em; color:var(--sub);}
+  tr:last-child td{border-bottom:none;}
+  .tl{position:relative; margin:16px 0 0; padding:0;}
+  .tl li{list-style:none; position:relative; padding:0 0 18px 26px; border-left:2px solid var(--line);}
+  .tl li:last-child{border-left:2px solid transparent;}
+  .tl li::before{content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px;
+    background:#fff; border:3px solid var(--cobalt); border-radius:50%;}
+  .tl .date{font-size:12px; color:var(--cobalt); font-weight:700;}
+  .req li{margin:6px 0;}
+  .tag{display:inline-block; font-size:11px; font-weight:700; padding:2px 9px; border-radius:20px; letter-spacing:.03em;}
+  .t-notion{background:var(--cobalt-bg); color:var(--cobalt);}
+  .t-hub{background:var(--amber-bg); color:var(--amber);}
+  .box{border-radius:10px; padding:16px 20px; margin:14px 0; font-size:14px;}
+  .box.key{background:var(--cobalt-bg); border:1px solid #c9d6f7;}
+  .box.warn{background:var(--amber-bg); border:1px solid #f0e2c0;}
+  .box b{color:var(--ink);}
+  .next{background:#fff; border:1px solid var(--line); border-radius:10px; padding:6px 0;}
+  .next li{padding:12px 22px; border-bottom:1px solid var(--line); font-size:14px;}
+  .next li:last-child{border-bottom:none;}
+  .next .n{display:inline-block; width:24px; height:24px; line-height:24px; text-align:center;
+    background:var(--cobalt); color:#fff; border-radius:50%; font-size:12px; font-weight:700; margin-right:10px;}
+  .quote{font-size:13px; color:var(--sub); border-left:3px solid var(--line); padding-left:12px; margin:6px 0;}
+  footer{margin-top:50px; padding-top:18px; border-top:1px solid var(--line); font-size:12px; color:var(--sub);}
+  strong{color:var(--cobalt);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">BALENCER ／ クライアント案件 現状まとめ</div>
+  <h1>株式会社NAILIT — 営業ダッシュボード案件</h1>
+  <div class="meta">作成: 2026-08-03 ／ 窓口: 犬飼真帆さん ／ 当社担当: 阿部さん（Taka）</div>
+</header>
+
+<h2>1. 案件の全体像</h2>
+<div class="card">
+  <dl class="grid2">
+    <dt>クライアント</dt><dd>株式会社NAILIT（大阪・2022年設立・社員30名・資本金300万）</dd>
+    <dt>事業</dt><dd>ウォーターサーバー等の催事・対面販売（フィールドセールス）＋「売れる仕組み」構築のセールスコンサル。急成長（'24/8期 10億 → '25/8期 16億）</dd>
+    <dt>当社の支援テーマ</dt><dd>営業（ブース／催事）オペレーションのダッシュボード化・仕組み化</dd>
+    <dt>キーパーソン</dt><dd>茨木凌さん（代表）／ 高橋亮さん（副社長・COO）／ 窓口＝犬飼真帆さん ／ 岩本さん（HubSpot調査担当）</dd>
+    <dt>フェーズ</dt><dd>提案検討中。v3壁打ちメモ確定・OCRはGemini for Workspace併走でPhase 0実証段階</dd>
+    <dt>状態</dt><dd><b style="color:#b7791f;">検討中（1）</b>。副社長判断で他社比較を並走中。7月中に決めたい意向だったが、比較が長引き8月に持ち越し</dd>
+  </dl>
+</div>
+
+<h2>2. いまの争点 — Notion vs HubSpot</h2>
+<p>副社長発の「ブース管理でやりたいこと7項目」をどのツールで叶えるかで、<strong>Notionハブ構成（当社案）</strong>と<strong>HubSpot</strong>を天秤にかけている局面。</p>
+<table>
+  <tr><th>観点</th><th>Notionハブ構成（当社案）</th><th>HubSpot</th></tr>
+  <tr><td>費用</td><td><b style="color:#2f855a;">◎ 圧倒的に安い</b></td><td>△ 割引でも30万/月＝<b style="color:#c53030;">年1000万規模</b>（人増で更に）</td></tr>
+  <tr><td>機能の網羅感</td><td>○ ツールを繋げば叶う（要・具体提示）</td><td><b style="color:#b7791f;">◎ 副社長の心証リード</b></td></tr>
+  <tr><td>分析ダッシュボード</td><td>○「データさえあればできる」（要・実物提示）</td><td><b style="color:#b7791f;">◎ ここが一番刺さっている</b></td></tr>
+  <tr><td>拡張・将来性</td><td>◎ ハブ化して足していける自由度</td><td>○ カスタムで寄せられる</td></tr>
+</table>
+<div class="box key">
+  <b>勝敗の分かれ目：</b> 副社長は「<b>7項目を網羅できるか</b>」を最重視。網羅感で HubSpot がリード。<br>
+  当社の手札は「その網羅、Notionハブでも同等にできる。しかも 1/N の費用」。<b>相手が惚れている“分析ダッシュボード”を具体で見せられれば逆転できる</b>局面。
+</div>
+
+<h2>3. 副社長からの「ブース管理でやりたいこと」7項目</h2>
+<div class="card">
+  <ol class="req">
+    <li>ブースごとに、回答期限・申請期限などの<b>リマインド確認</b>を入れられるように</li>
+    <li>期限接近／到来分を<b>自動でタスク化</b>し、関係者に<b>通知</b>が届くように</li>
+    <li>各ブースごとの<b>生産性を可視化</b>（区画・ブース名・期間で検索、期間比較・実績回数）</li>
+    <li><b>他社実績も含めて比較</b>、エリア別・県別でも分析できる状態に</li>
+    <li>ブースを<b>ランク分け（1軍/2軍/3軍）</b>し成果の出やすいブースを判断（誰がどこに入ったか履歴も蓄積）</li>
+    <li>シフト確定時に担当者全員へ<b>通知</b>（<b>シフト管理も移行</b>したい）</li>
+    <li>区画ごとの<b>注意事項・集合時間・アラーム</b>を通知し、現場の抜け漏れ防止</li>
+  </ol>
+  <p class="quote">現状オペ：シフトはスプシ管理。ブース場所が毎日変わり、翌日配置を夕方確定→担当者がメンバーをメンションし、スプシを見ながら集合場所・時間を毎日手動で伝えている。</p>
+</div>
+
+<h2>4. 当社から伝えている「難所」（正直な申し送り）</h2>
+<div class="box warn">
+  <ul style="margin:0; padding-left:18px;">
+    <li>Notion は<b>期間比較・ピボット分析が苦手</b>。BIレベルを求めるなら別途システムが要る</li>
+    <li>Make は Notion 変更を<b>リアルタイム検知できない</b>（ポーリング／最短1〜15分の遅延）</li>
+    <li><b>シフト管理の「移行」（⑥）は Phase 1 スコープ外</b>。現状調査なしでは工数が読めない → 段階設計が必要</li>
+    <li>スクラッチ開発は桁が変わる＋運用問題＋AI活用から遠ざかる → <b>Notion主体を推奨</b></li>
+    <li>kintone は業態不適合で除外済み</li>
+  </ul>
+</div>
+
+<h2>5. これまでの経緯（時系列）</h2>
+<ul class="tl">
+  <li><div class="date">2026-05-29</div>オンライン。v3壁打ちメモ確定・OCRはGemini併走でPhase 0実証の方針</li>
+  <li><div class="date">2026-06-05</div>副社長発の<b>ブース管理7項目</b>を犬飼さん経由で受領。当社が難所を申し送り、<span class="tag t-notion">Notion主体推奨</span>を回答</li>
+  <li><div class="date">2026-06-06〜12</div>SOERU代理店（AI導入コンサル紹介の副業）を犬飼さん個人に打診→「頭の片隅に」で受領。あわせて犬飼さんの業務痛み（全社総会スライド／360度評価×20人）が露出＝<b>顧問AI活用のフック</b></li>
+  <li><div class="date">2026-06-17〜18</div>当社が「①検討中/②見送り/③やる」で判断を打診。<b>①検討中・7月に決めたい</b>（他社比較のため）と回答</li>
+  <li><div class="date">2026-07-28〜31</div>比較が<span class="tag t-hub">HubSpot</span>に接近。<b>分析ダッシュボードが刺さる</b>が、割引30万/月＝年1000万がネック。副社長は「7項目の網羅」を最重視</li>
+  <li><div class="date">2026-08-02</div>当社「それだけの価値が見えない」と費用対効果に疑問提示。「納得いく方法がいいね、応援してる」で一旦保留</li>
+</ul>
+
+<h2>6. 論点・当社の宿題</h2>
+<div class="card">
+  <ol>
+    <li><b>網羅感を正面から返す</b>：7項目 × Notionハブ構成の対応表を作り、「全部叶う」を可視化する</li>
+    <li><b>分析ダッシュボードの実物提示</b>：相手が惚れている点を、Notion＋接続ツールで同等以上に出せると具体で示す（＝勝負の決め手）</li>
+    <li><b>費用対効果の1枚</b>：HubSpot 年1000万 vs 当社構成の初期＋ランニング総額を並べ、「同じ網羅・1/Nの費用」を数字で見せる</li>
+    <li><b>シフト移行（⑥⑦）のPhase設計</b>：スコープ外を隠さず、段階導入として正直に提示</li>
+    <li><b>顧問接点の種</b>：犬飼さんの業務痛み（総会スライド／360度評価）はAI活用支援＝顧問の入口として温めておく</li>
+  </ol>
+</div>
+
+<h2>7. 次の一手（提案）</h2>
+<ul class="next">
+  <li><span class="n">1</span>犬飼さん（→副社長）に出す <b>「7項目 × Notionハブ構成 対応表＋費用対効果」1枚</b>を作成（本命）</li>
+  <li><span class="n">2</span>刺さっている <b>分析ダッシュボードのサンプル</b>を用意し「データさえあればこう出せる」を具体化</li>
+  <li><span class="n">3</span>⑥⑦シフト移行を <b>Phase分け</b>して提示（現状調査の要否も明記）</li>
+  <li><span class="n">4</span>上記を <b>そのまま送れるHTML比較シート</b>にまとめて納品</li>
+</ul>
+
+<footer>
+  出典: docs/clients/nailit/00_やりとり/2026-08_LINE_犬飼さん_ブース管理要件.md ／ docs/clients/nailit/README.md ／ memory「NAILIT様 営業ダッシュボード案件」<br>
+  作業ブランチ: claude/nailit-work ／ 見積: docs/estimates/nailit-2026/
+</footer>
+
+</div>
+</body>
+</html>

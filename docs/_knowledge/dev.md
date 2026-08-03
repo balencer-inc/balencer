@@ -31,3 +31,14 @@
   - 音源未配置でも落ちない：`DEV_SYNTH_FALLBACK`で合成ビープ代替、本番前に`false`で「音源なし＝グレー無効」に
 - **重要な環境更新**：2026-07-05メモの「この実行環境はVercelへ直接デプロイ不可」は**現時点では解消**。`npx vercel deploy --prod --yes`がCLIログイン済み(tabe-9167)で通った。ただし**新規プロジェクトは既定でSSO(Deployment Protection)が有効**で302に弾かれる → Vercel MCP `update_project_deployment_protection` で `ssoProtection:{enabled:false}` にして公開化する手順が必要（curlで200確認）
 - 却下：日本語フォルダ名のままデプロイ（URL/CLIで事故る）→ ASCII名の独立フォルダにコピーしてからデプロイ（メモリ「独立フォルダ+CLI」方針どおり）
+
+## 2026-08-03 音響卓アプリ 完成（最終アーキ・ハマりどころの結論）
+- **完成品**：`docs/clients/mutsubi/納涼会-音響アプリ/`。公開URL **https://balencer-audio.vercel.app**（旧 noryo-audio はプロジェクトごと削除。アプリ名「イベント音響アプリ by BALENCER」）。Vercelプロジェクト=`balencer-audio`(team tabe-balencerjps-projects)
+- **音源**（全て商用可／CREDITS.md参照）：効果音=効果音ラボ(UA+Referer付きcurlでDL可)、BGM=魔王魂(`maou_loop_bgm_<genre><n>.mp3`/ロックは`sound/game/maou_game_rock<n>.mp3`)、表彰=阿部さんがMMT STUDIOから選定DLした「見よ勇者は帰る」弦楽E♭を`~/Downloads`から取り込み。gain値で音量を揃える設計
+- **ハマりどころの結論（重要）**：
+  - iOSの音声解除で全`<audio>`をplay→pauseする“bless”は**やってはいけない**。ミュートしても環境で鳴り「起動時に知らない曲が流れる」不具合になる。→ **起動は完全無音**、BGMは各ボタンのタップ(=ユーザー操作)で`el.play()`すればiOSでも鳴る（テスト音も廃止）
+  - SWは**ネットワーク優先**(cache-firstは「更新したのに古い音」の主因)。ただし**controllerchangeでの自動リロードは入れない**（使用中に再生が止まる）。更新はリロードで反映される旨を案内
+  - 起動時の存在確認は**GETでなくHEAD**（GETだと全mp3をフルDLして激重）。Vercelは静的ファイルにHEADで200を返す
+  - 検証は必ず**サーバー実測**で（curlでファイルの実バイトサイズを期待値と突合／HEADの200確認）。「変わってない」の大半はブラウザ/SWキャッシュで、サーバーは正しいことが多い→まずサイズ照合で切り分ける
+- 反復差し替えの型：`/tmp/_pool2`に候補DL→`file`でMPEG検証→採用分だけ配置→sounds.json整合→独立フォルダにcp→`vercel deploy --prod`→curlでサイズ照合→commit&main。ブラウザ確認用に`open URL/?v=fixN`でキャッシュ回避
+- ※2026-08-02メモのSSO手順は当時の話。balencer-audio新規作成時はSSO無効のまま200で公開できた（環境/チーム設定次第。302なら要無効化）

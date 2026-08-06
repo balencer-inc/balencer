@@ -1,0 +1,48 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>アサイン打診ドラフト｜トラベルダイン保守</title>
+<style>
+:root{--ink:#20242b;--sub:#5b6068;--line:#e6e9ee;--cobalt:#3158D4;--bubble:#eef2fb}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--ink);background:#f4f6f9;line-height:1.85;font-size:15px}
+.wrap{max-width:680px;margin:0 auto;padding:28px 18px 70px}
+.hd{margin:0 0 6px;font-size:13px;letter-spacing:.12em;color:var(--cobalt);font-weight:700}
+h1{font-size:20px;margin:0 0 4px}
+.meta{color:var(--sub);font-size:12.5px;margin:0 0 20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 26px 22px;box-shadow:0 2px 10px rgba(20,30,60,.05)}
+.card>p:first-child{margin-top:0}
+h3{font-size:15px;margin:22px 0 6px;display:flex;align-items:center;gap:8px}
+.num{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:var(--cobalt);color:#fff;border-radius:7px;font-size:13px;font-weight:700;padding:0 4px}
+p{margin:7px 0}
+ul{margin:6px 0;padding-left:1.25em}
+li{margin:4px 0}
+strong{font-weight:700}
+.copy{margin:16px 0 0;font-size:12px;color:var(--sub);text-align:center}
+@media (prefers-color-scheme:dark){body{background:#15171c;color:#e7e9ee}.card{background:#1d2027;border-color:#2c313a;box-shadow:none}.meta,.copy{color:#9aa0aa}}
+</style></head><body><div class=wrap>
+<div class=hd>ASSIGN DRAFT</div>
+<h1>アサイン打診｜トラベルダイン保守</h1>
+<p class=meta>2026-08 ／ 候補メンバー向け・そのまま送れる文面 ／ フィー10〜20万＝打診条件</p>
+<div class=card><p>ありがとう！判断しやすいよう、分かってる範囲でまとめるね。ガッツリのフルスクラッチというより、<strong>AIも使いながら維持と軽微な改修を回していくイメージ</strong>です。</p>
+<h3><span class='num'>①</span>普段の月工数</h3>
+<p>先方にも確認したけど、今は特別大きな開発は走っていない状態。基本は<strong>障害対応＋軽微な改修が中心</strong>で、AIを効かせれば十分巻き取れる範囲だと思ってます。改修が重なる時期に多少波が出るくらいの想定。<br>（引き継ぎ当初の1〜2ヶ月だけ、コード把握のぶん少し多めになる見込み）</p>
+<h3><span class='num'>②</span>夜間・休日の急ぎ連絡</h3>
+<p>本番の予約系サービスなので可能性はゼロではないけど、<strong>今は特別なことはしていないと先方も言っていて、頻繁ではない想定</strong>。緊急対応の持ち方は、負担が読める形で一緒に決めたい。</p>
+<h3><span class='num'>③</span>保守の範囲</h3>
+<p>障害対応だけじゃなく、<strong>軽微な改修も含めて&quot;全部お任せ&quot;</strong>したいイメージ。大きめの機能追加・大規模改修だけは別途見積で切り分けます。</p>
+<h3><span class='num'>④</span>技術・システム構成</h3>
+<p>よくある構成で、特殊な技術は一切なし。<strong>AIとも相性のいいスタック</strong>です。</p>
+<ul>
+<li>サーバー側：<strong>PHP / Laravel</strong></li>
+<li>画面側：<strong>Vue / Nuxt（TypeScript）</strong></li>
+<li>LINEログイン・予約まわり・PDF出力・多言語対応など、標準的な機能で構成</li>
+<li>Docker・自動テスト・自動デプロイの下地も整っていて、環境構築の手順書もあり</li>
+</ul>
+<p>普段さわるのは全体のごく一部で、日常の保守で毎回まるごと相手にするようなものではないです。慣れれば十分回せる範囲かと。</p>
+<h3><span class='num'>⑤</span>引き継ぎ資料・説明期間</h3>
+<p>README／環境構築手順／動作確認ガイドは揃ってる。加えて、<strong>現担当の定例に同席しながら段階的に引き継ぐ</strong>形にできるので、引き継ぎ期間は設けられます（正式な移管手順は今調整中）。</p>
+<h3><span class='num'>⑥</span>フィー条件</h3>
+<p><strong>月10〜20万で、上記ぜんぶ込み（AI活用前提）</strong>でお願いしたいイメージ。改修が重なる月は<strong>30万くらいまで変動あり</strong>。大型開発は別途見積で別建てにします。</p>
+<p>まずは「維持＋軽微改修は全部込み、大型は別途」という前提で、感触もらえると嬉しいです。詳細（障害頻度・チケット内訳）は追って共有するね。</p></div>
+<p class=copy>この文面をコピーして送付できます</p>
+</div></body></html>

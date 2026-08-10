@@ -2,6 +2,16 @@
 
 > 詳細の正本は `docs/handoff/`（concept-summary.html）と `docs/company/`。ここは引き継ぎ用の要点ログ。
 
+## 2026-08-10 コーポレートサイトの全ページ文言を正本から書き起こし
+- 阿部さんが2026-07にNotionで進めていた「トップページ コピー v2」は、7/28の正本更新で**全面失効**（FOR LOVED ONES.主役／右腕をH1に／町医者型／外注7割をAI／SOERU・ENTRY・Core・Summit／2本柱）。上書きではなく書き直しで対応した。
+- 保留の理由は「トップだけ決めても下層・サービスページで全部やり直しになる」だったため、**サイト全体（9ページ＋4領域下位ページ）を一度に書き切る**方針に変更。
+- 成果物: `docs/company/website-copy-master.md`（文言の正本）／Notion「バレンサー コーポレートサイト｜全ページ文言マスター（2026-08版）」 https://app.notion.com/p/3b853269fc5e81c9a56ad2a29b0d1be2
+- サイト構成の決定: トップ／about／about/philosophy／service（＋organization・brand・digital・ai）／plan／project／insight／recruit／contact。
+- 掲載判断: SOERU・M&A・補助金・保守・AIアニメは非掲載（サービス正本§9）。既存の個別LP（ヒトツ／経営ボード等）はサイト本体に統合せず `/service/` からのリンクに留める。
+- 料金はWebに参考料金を出す（足切り設計・税別明記・確定額としない）。PROJECTは領域別レンジ表のみ、内部見積レンジは非掲載。
+- サイトの役割は「紹介を受けた人が検索して信頼できると判断できること」（2026-07定例）。マス集客装置として設計しない。
+- 未着手: デザイン・実装（WP+Elementorからの移行判断含む）、事例ページの写真素材、読みものの初回記事。
+
 ## 2026-07-28 会社・デザインの正本を2マスターに一本化
 - 阿部さんが会社正本 `docs/company/BALENCER_MASTER_CONTEXT.md` とデザイン正本 `docs/company/BALENCER_DESIGN_SYSTEM.md` を制定（デスクトップ経由でクリーンUTF-8格納）。**この2ファイルが最上位正本**。矛盾したら常にこれを優先。
 - 変わった主な点（旧CLAUDE.md/identity/memoryから更新）:

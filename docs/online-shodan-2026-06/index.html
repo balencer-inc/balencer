@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>商談ナビ — バレンサー / TSUGI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF8; --surface:#FFFFFF; --ink:#141414; --sub:#5c5c58;
+    --line:#E8E6E0; --line-d:#D6D4CC; --accent:#E6FF2F;
+    --serif:'Noto Serif JP',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+  .en{font-family:'Inter',sans-serif}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+  /* header */
+  header{padding:54px 0 30px;border-bottom:1px solid var(--line)}
+  .kick{font-family:'Inter';font-size:11px;letter-spacing:.32em;color:var(--sub);text-transform:uppercase;margin-bottom:14px}
+  header h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5vw,46px);line-height:1.35}
+  header h1 mark{background:linear-gradient(transparent 62%, var(--accent) 62%);padding:0 .05em}
+  header .lead{margin-top:16px;color:var(--sub);font-size:15px;max-width:760px}
+
+  /* preflight */
+  .pre{margin:28px 0 8px;background:var(--surface);border:1px solid var(--line-d);border-radius:14px;padding:22px 24px}
+  .pre h2{font-size:14px;letter-spacing:.04em;display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .pre h2 .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #E6FF2F33}
+  .pre ol{margin:0 0 0 4px;padding:0;list-style:none;counter-reset:s}
+  .pre li{position:relative;padding:9px 0 9px 34px;border-top:1px dashed var(--line);font-size:14px}
+  .pre li:first-child{border-top:none}
+  .pre li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;border-radius:50%;border:1px solid var(--ink);font-family:'Inter';font-size:12px;display:grid;place-items:center}
+  code{font-family:'Inter','SF Mono',monospace;background:#F1F0EA;border:1px solid var(--line-d);border-radius:6px;padding:2px 8px;font-size:13px;color:#141414}
+  .pre small{color:var(--sub)}
+
+  /* sections */
+  section{padding:38px 0 8px}
+  .shead{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .shead .no{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--sub)}
+  .shead h2{font-family:var(--serif);font-weight:600;font-size:clamp(22px,3.2vw,30px)}
+  .sdesc{color:var(--sub);font-size:14px;margin:0 0 20px 40px;max-width:780px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+  .card{background:var(--surface);border:1px solid var(--line-d);border-radius:14px;padding:20px 20px 18px;display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .card:hover{transform:translateY(-2px);box-shadow:0 10px 28px -16px rgba(20,20,20,.28);border-color:var(--ink)}
+  .card .tag{font-family:'Inter';font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--sub);margin-bottom:8px}
+  .card h3{font-size:16.5px;font-weight:700;line-height:1.45;margin-bottom:8px}
+  .card .what{font-size:13.5px;color:#3a3a38;margin-bottom:12px;flex:1}
+  .card .note{font-size:12.5px;color:var(--sub);background:#FBFBF7;border-left:3px solid var(--accent);padding:8px 11px;border-radius:0 7px 7px 0;margin-bottom:14px;line-height:1.65}
+  .card .note b{color:var(--ink);font-weight:700}
+  .btn{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-family:'Inter';font-weight:600;font-size:13px;text-decoration:none;color:var(--ink);background:var(--accent);border:1px solid var(--ink);border-radius:8px;padding:9px 16px;transition:.15s}
+  .btn:hover{background:var(--ink);color:#fff}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:#fff}
+  .btn .ar{font-size:15px;line-height:1}
+  .card .links2{display:flex;flex-wrap:wrap;gap:8px}
+
+  footer{margin:46px 0 60px;padding-top:22px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px;line-height:1.9}
+  footer code{font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kick">Online Meeting Navigator</div>
+    <h1>商談ナビ — <mark>バレンサー</mark> & <mark>TSUGI</mark></h1>
+    <p class="lead">オンライン画面共有用。このページを開いたまま、各カードの「開く」を押すと別タブで資料が立ち上がります。上から順に話すと流れになります。各カードの黄色枠は「話すこと」のメモです。</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 事前準備 -->
+  <div class="pre">
+    <h2><span class="dot"></span>はじめる前に（AI社員デモを動かす場合のみ）</h2>
+    <ol>
+      <li>ターミナルで <code>cd ~/Projects/balencer/apps/outreach && npm run dev</code> を実行（営業メール自動化 → <code>localhost:3100</code>）</li>
+      <li><small>起動に10〜20秒。<code>localhost:3100</code> が開けばOK。HTMLの資料系（バレンサー/提案事例/TSUGI）はサーバー不要でそのまま開けます。</small></li>
+    </ol>
+  </div>
+
+  <!-- 1. バレンサーとは -->
+  <section>
+    <div class="shead"><span class="no en">01</span><h2>バレンサーとは（再定義・非公開版）</h2></div>
+    <p class="sdesc">2026年に再定義した「経営者の右腕がつとまる、ブランディングAXカンパニー」。看板は2枚 — 組織開発・MVV × AI実装。一般公開していない社内正本ページです。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="tag">Concept Hub</div>
+        <h3>会社の再定義ハブ</h3>
+        <p class="what">二本柱・AX・サービスの階段を一望できる入口。ここから各ページへ。</p>
+        <div class="note"><b>話す:</b> 「デザイン会社でもDX会社でもなく、組織の中から会社の戦い方を変える会社に再定義しました」</div>
+        <a class="btn" href="../handoff/index.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">Top</div>
+        <h3>二本柱トップページ</h3>
+        <p class="what">組織を変える→魅せ方を変える→戦い方を変える、の全体像。AX思想。</p>
+        <div class="note"><b>話す:</b> 「インナー→アウター→事業の順で会社を変え、その全部にAIを通す」</div>
+        <a class="btn" href="../handoff/pages/top/index.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">Pillar 1</div>
+        <h3>組織開発・MVV</h3>
+        <p class="what">MVV策定〜CI/VI〜制度接続〜浸透まで一気通貫。対話はAIに代替されない領域。</p>
+        <div class="note"><b>話す:</b> 「ここは人にしかできない。AIで代替されない対話の領域」</div>
+        <a class="btn" href="../handoff/pages/mvv/index.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">Pillar 2</div>
+        <h3>AI実装</h3>
+        <p class="what">業務の仕組み化からAI組織OS構築まで。自社が実証第一号（外注の7割をAIに）。</p>
+        <div class="note"><b>話す:</b> 「人を増やさない。AI社員を増やす。それを自社でまず実証している」</div>
+        <a class="btn" href="../handoff/pages/ai/index.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">Core</div>
+        <h3>右腕（コアサービス）</h3>
+        <p class="what">経営者の隣に立つ右腕／経営参謀。月額の伴走で会社を変える本丸。</p>
+        <div class="note"><b>話す:</b> 「レポートで終わらない町医者型。隣に立って実装までやり切る」</div>
+        <a class="btn" href="../handoff/pages/migiude/index.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">Entrance</div>
+        <h3>SOERU（入口サービス）</h3>
+        <p class="what">月10万/20万。経営壁打ち＋裏でAI分析＋毎月「使えるもの」を1つ納品。</p>
+        <div class="note"><b>話す:</b> 「まずここから。毎月必ず使えるものが1つ手元に残る入口商品」</div>
+        <a class="btn" href="../handoff/pages/soeru/index.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. AI社員デモ -->
+  <section>
+    <div class="shead"><span class="no en">02</span><h2>AI社員のデモ（実際に動かす）</h2></div>
+    <p class="sdesc">「AIに仕事を指示する」体験そのものを見せる。事前準備でローカル起動しておくこと。一番「おぉ」となるパート。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="tag">Live App · :3100</div>
+        <h3>営業メール自動化（outreach）</h3>
+        <p class="what">AIが営業先をリサーチ→メール下書き→送信まで回す営業パイプライン画面。</p>
+        <div class="note"><b>話す:</b> 「この営業活動を、人ではなくAI社員が回しています」／<b>起動必須</b></div>
+        <a class="btn" href="http://localhost:3100" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 提案事例 -->
+  <section>
+    <div class="shead"><span class="no en">03</span><h2>提案事例（実際の納品物）</h2></div>
+    <p class="sdesc">「こういうものを作って出している」という具体物。社名は伏せて業種で話す前提（NAILIT＝催事ToCの会社、1st PLACE＝出版系の会社）。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="tag">NAILIT · 営業DX</div>
+        <h3>営業ダッシュボード 設計サンプル集</h3>
+        <p class="what">フィールド営業100名＋代理店向けの営業可視化ダッシュボードの設計サンプル。</p>
+        <div class="note"><b>話す:</b> 「現場100名の営業数字を、こう可視化する設計まで出します」</div>
+        <a class="btn" href="../../public/docs/nailit-2026/samples/index.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">NAILIT · Brief</div>
+        <h3>エグゼクティブブリーフ</h3>
+        <p class="what">経営層向けの提案要約。何を解決し、いくらで、どう進めるか。</p>
+        <div class="note"><b>話す:</b> 「提案はこの1枚に集約。意思決定者がすぐ判断できる形に」</div>
+        <div class="links2">
+          <a class="btn ghost" href="../../public/docs/nailit-2026/exec-brief/index.html" target="_blank">ブリーフ <span class="ar">→</span></a>
+          <a class="btn ghost" href="../../public/docs/nailit-2026/estimate/index.html" target="_blank">見積 <span class="ar">→</span></a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="tag">1st PLACE · 提案デッキ</div>
+        <h3>AI研修×業務自動化 提案</h3>
+        <p class="what">リスキリング研修＋後段の受託開発/SOERへ設計した提案デッキ。</p>
+        <div class="note"><b>話す:</b> 「入口は研修、その先に仕組み化を置く。階段で受注を設計します」</div>
+        <a class="btn" href="../proposals/ai-training-2026/index.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">1st PLACE · 匿名事例</div>
+        <h3>業務自動化の型（匿名事例）</h3>
+        <p class="what">NAILIT案件を匿名化した「型」。他社にそのまま見せられる事例デッキ。</p>
+        <div class="note"><b>話す:</b> 「実際にこの型で、ある会社の業務を自動化しました」</div>
+        <a class="btn" href="../proposals/ai-training-2026/case-study.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TSUGI -->
+  <section>
+    <div class="shead"><span class="no en">04</span><h2>TSUGI（事業承継・M&A）</h2></div>
+    <p class="sdesc">TSUGI & PARTNERS の本格・企業ドック診断。会社を健康診断にかけ、企業価値レンジとTYPE判定・改善ロードマップまで出すレポートシステム。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="tag">Live Tool</div>
+        <h3>企業ドック診断レポート（本番）</h3>
+        <p class="what">財務＋定性6軸（TSUGI独自の組織文化・無形資産を含む）で全16ページのレポートを生成。</p>
+        <div class="note"><b>見せ方:</b> ページ内の <b>「デモデータで体験する」</b> を押す → サンプル商事（TYPE C）のレポートが即生成。待ち時間なし</div>
+        <a class="btn" href="https://tsugiandpartners.jp/test/dock/" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">M&A · 任意</div>
+        <h3>M&A 売り手ヒアリングシート</h3>
+        <p class="what">売却検討者向けのA4・3ページのヒアリングシート（先日作成）。</p>
+        <div class="note"><b>話す:</b> 「診断の次。売却を検討する経営者にはこのシートから入ります」</div>
+        <a class="btn ghost" href="../proposals/tsugi-ma-hearing/TSUGI_M&amp;Aご売却ヒアリングシート.pdf" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 余力があれば -->
+  <section>
+    <div class="shead"><span class="no en">05</span><h2>余力があれば（追加で「おぉ」）</h2></div>
+    <p class="sdesc">時間と相手の反応次第で。LP一式は「自社のものは自分たちで作って動かしている」証拠として効きます。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="tag">LP</div>
+        <h3>SOERU 商談デッキ</h3>
+        <p class="what">SOERU初回商談用の昂り系スライド（13枚）。</p>
+        <a class="btn ghost" href="../proposals/soeru-client-deck/soeru-client-deck.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">LP</div>
+        <h3>SOERU LP</h3>
+        <p class="what">入口サービスSOERUのランディングページ。</p>
+        <a class="btn ghost" href="../soeru-lp/index.html" target="_blank">開く <span class="ar">→</span></a>
+      </div>
+      <div class="card">
+        <div class="tag">LP</div>
+        <h3>ヒトツ / 経営ボード LP</h3>
+        <p class="what">Notion業務基盤「ヒトツ」と経営ボードのLP。</p>
+        <div class="links2">
+          <a class="btn ghost" href="../hitotsu-lp/index.html" target="_blank">ヒトツ <span class="ar">→</span></a>
+          <a class="btn ghost" href="../keiei-board-lp/index.html" target="_blank">経営ボード <span class="ar">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    バレンサー社内用・商談ナビ（2026-06-16）／ このページの開き方：ターミナルで <code>open ~/Projects/balencer/docs/online-shodan-2026-06/index.html</code><br>
+    リンクは別タブで開きます。資料系はサーバー不要。AI社員デモ（02）のみ事前にローカル起動が必要です。
+  </footer>
+
+</div>
+</body>
+</html>

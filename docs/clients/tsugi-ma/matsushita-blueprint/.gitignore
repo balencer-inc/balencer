@@ -1,0 +1,8 @@
+# 顧客の機密（決算書・交渉条件・作成物すべて）はGitHubに出さない。
+# 残すのは README / .gitignore / フォルダ構成（.gitkeep）だけ。中身は全部ローカル保管。
+
+*
+!*/
+!.gitignore
+!README.md
+!**/.gitkeep

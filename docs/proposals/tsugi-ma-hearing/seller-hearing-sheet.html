@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>M&Aご売却ヒアリングシート｜TSUGI & PARTNERS</title>
+<style>
+  :root{
+    --navy:#1b2a4a;
+    --navy-2:#2c4068;
+    --ink:#1f2733;
+    --sub:#5b6675;
+    --line:#d7dce3;
+    --line-strong:#b9c1cc;
+    --fill:#f4f6f9;
+    --accent:#1b2a4a;
+  }
+  *{box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,sans-serif;
+    color:var(--ink);
+    font-size:11px;
+    line-height:1.7;
+    background:#fff;
+  }
+  .page{
+    width:210mm;
+    height:297mm;
+    overflow:hidden;
+    margin:0 auto;
+    padding:16mm 16mm 14mm;
+    background:#fff;
+    page-break-after:always;
+    break-after:page;
+    position:relative;
+  }
+  .page:last-child{page-break-after:auto;break-after:auto;}
+
+  /* ---- header ---- */
+  .brand{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:2px solid var(--navy);
+    padding-bottom:10px;margin-bottom:6px;
+  }
+  .brand .logo{font-size:16px;font-weight:700;letter-spacing:.18em;color:var(--navy);}
+  .brand .logo small{display:block;font-size:8px;letter-spacing:.22em;color:var(--sub);font-weight:400;margin-top:3px;}
+  .brand .tag{font-size:8.5px;color:var(--sub);text-align:right;letter-spacing:.04em;}
+
+  .doc-title{margin:14px 0 4px;}
+  .doc-title h1{font-size:19px;color:var(--navy);margin:0;letter-spacing:.04em;font-weight:700;}
+  .doc-title .en{font-size:9px;color:var(--sub);letter-spacing:.18em;margin-top:3px;}
+
+  .lead{
+    background:var(--fill);
+    border-left:3px solid var(--navy);
+    padding:9px 12px;margin:12px 0 16px;
+    font-size:10px;color:var(--ink);line-height:1.75;
+  }
+  .lead b{color:var(--navy);}
+
+  /* ---- section ---- */
+  .sec{margin-bottom:14px;page-break-inside:avoid;}
+  .sec-head{
+    display:flex;align-items:center;gap:8px;margin-bottom:7px;
+  }
+  .sec-num{
+    background:var(--navy);color:#fff;font-size:10px;font-weight:700;
+    width:20px;height:20px;border-radius:3px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  .sec-title{font-size:12.5px;font-weight:700;color:var(--navy);letter-spacing:.03em;}
+  .sec-note{font-size:8.5px;color:var(--sub);margin-left:auto;}
+
+  table{width:100%;border-collapse:collapse;}
+  td,th{border:1px solid var(--line);padding:6px 8px;vertical-align:top;font-size:10px;}
+  th{
+    background:var(--fill);color:var(--navy);font-weight:600;text-align:left;
+    width:34%;white-space:nowrap;
+  }
+  td.write{background:#fff;min-height:26px;}
+  .hint{font-size:8px;color:var(--sub);font-weight:400;display:block;margin-top:1px;}
+
+  .blank{display:block;min-height:24px;}
+  .blank.tall{min-height:52px;}
+
+  /* checklist */
+  .check-list{list-style:none;margin:0;padding:0;}
+  .check-list li{
+    display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px dashed var(--line);font-size:10px;
+  }
+  .check-list li:last-child{border-bottom:none;}
+  .box{width:13px;height:13px;border:1.5px solid var(--line-strong);border-radius:2px;flex:0 0 auto;margin-top:2px;}
+  .check-list .must{color:var(--navy);font-weight:600;}
+  .tag-must{font-size:7.5px;background:var(--navy);color:#fff;border-radius:2px;padding:1px 4px;margin-left:4px;vertical-align:middle;letter-spacing:.05em;}
+  .tag-after{font-size:7.5px;background:#fff;color:var(--sub);border:1px solid var(--line-strong);border-radius:2px;padding:0 4px;margin-left:4px;vertical-align:middle;}
+
+  .pill{display:inline-block;border:1px solid var(--line-strong);border-radius:11px;padding:2px 10px;margin:0 4px 4px 0;font-size:9.5px;color:var(--ink);}
+
+  .nda{
+    border:1px solid var(--line-strong);border-radius:5px;padding:11px 13px;background:var(--fill);font-size:9.5px;line-height:1.8;
+  }
+  .nda b{color:var(--navy);}
+
+  .foot{
+    position:absolute;bottom:11mm;left:16mm;right:16mm;
+    display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid var(--line);padding-top:7px;font-size:8px;color:var(--sub);letter-spacing:.04em;
+  }
+  .foot .r{text-align:right;}
+
+  .two{display:flex;gap:10px;}
+  .two > div{flex:1;}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="brand">
+    <div class="logo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="tag">経営と承継の、伴走者であるために<br>tsugiandpartners.jp</div>
+  </div>
+
+  <div class="doc-title">
+    <h1>M&amp;A ご売却ヒアリングシート</h1>
+    <div class="en">SELLER&nbsp;INTAKE&nbsp;SHEET&nbsp;/&nbsp;CONFIDENTIAL</div>
+  </div>
+
+  <div class="lead">
+    この度はご相談をいただきありがとうございます。買い手候補へお出しする<b>会社概要書（社名は伏せたうえで作成）</b>の土台にするため、わかる範囲でご記入ください。
+    <b>すべての項目が埋まっていなくて構いません</b>。空欄はお打ち合わせで一緒に確認します。
+    ご記入いただいた情報は<b>秘密保持のもとお預かりし</b>、お客様の許可なく社名が外部に出ることはありません。
+  </div>
+
+  <!-- 1 -->
+  <div class="sec">
+    <div class="sec-head"><div class="sec-num">1</div><div class="sec-title">基本情報</div><div class="sec-note">わかる範囲で</div></div>
+    <table>
+      <tr><th>会社名（屋号）</th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>ご記入者・お立場</th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>ご連絡先（電話／メール）</th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>所在地（市区町村まで）</th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>設立年月・法人形態<span class="hint">例：合同会社／株式会社、設立◯年◯月</span></th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>事業内容<span class="hint">何をしている会社か、ひとことで</span></th><td class="write"><span class="blank tall"></span></td></tr>
+    </table>
+  </div>
+
+  <!-- 2 -->
+  <div class="sec">
+    <div class="sec-head"><div class="sec-num">2</div><div class="sec-title">ご売却のご意向</div><div class="sec-note">ここが一番大切です</div></div>
+    <table>
+      <tr><th>ご希望のかたち</th><td class="write">
+        <span class="pill">会社ごと譲渡（持分・株式）</span>
+        <span class="pill">事業のみ譲渡</span>
+        <span class="pill">資本提携・一部出資</span>
+        <span class="pill">まだ決めていない</span>
+      </td></tr>
+      <tr><th>ご希望の譲渡価格<span class="hint">おおよそで結構です／「相場で」も可</span></th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>譲渡を考えた理由<span class="hint">買い手が必ず気にされる点です</span></th><td class="write"><span class="blank tall"></span></td></tr>
+      <tr><th>ご希望の時期</th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>ご売却後のご自身の関わり方</th><td class="write">
+        <span class="pill">完全に退きたい</span>
+        <span class="pill">一定期間は引き継ぎ協力</span>
+        <span class="pill">継続して関わりたい</span>
+        <span class="pill">未定</span>
+      </td></tr>
+      <tr><th>譲れない条件<span class="hint">例：屋号を残したい／従業員の雇用維持／事業の継続 など</span></th><td class="write"><span class="blank tall"></span></td></tr>
+    </table>
+  </div>
+
+  <div class="foot">
+    <div>株式会社TSUGI &amp; PARTNERS｜M&amp;A ご売却ヒアリングシート</div>
+    <div class="r">CONFIDENTIAL　/　1 — 3</div>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="brand">
+    <div class="logo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="tag">経営と承継の、伴走者であるために<br>tsugiandpartners.jp</div>
+  </div>
+
+  <!-- 3 -->
+  <div class="sec">
+    <div class="sec-head"><div class="sec-num">3</div><div class="sec-title">事業・売上の中身</div><div class="sec-note">わかる範囲で</div></div>
+    <table>
+      <tr><th>直近年商（売上）</th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>おおよその利益<span class="hint">黒字／赤字の別だけでも可</span></th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>売上の柱・内訳<span class="hint">例：会員収入◯％、レッスン◯％、レンタル◯％ など</span></th><td class="write"><span class="blank tall"></span></td></tr>
+      <tr><th>顧客・会員の状況<span class="hint">会員数、リピート率、稼働率など、わかる指標</span></th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>料金体系<span class="hint">主な料金メニューと価格</span></th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>必要な許認可の有無</th><td class="write"><span class="blank"></span></td></tr>
+    </table>
+  </div>
+
+  <!-- 4 -->
+  <div class="sec">
+    <div class="sec-head"><div class="sec-num">4</div><div class="sec-title">設備・資産・物件</div><div class="sec-note">譲渡価格の根拠になります</div></div>
+    <table>
+      <tr><th>主要な設備の取得金額・取得時期<span class="hint">例：コート設備一式 ◯◯万円／◯年導入</span></th><td class="write"><span class="blank tall"></span></td></tr>
+      <tr><th>物件は賃貸／所有</th><td class="write">
+        <span class="pill">賃貸</span><span class="pill">所有</span>
+        <span class="hint">賃貸の場合：賃料・保証金・契約の残り期間もわかれば</span>
+      </td></tr>
+      <tr><th>借入金・リース残・未払金<span class="hint">おおよその残額。なければ「なし」</span></th><td class="write"><span class="blank"></span></td></tr>
+    </table>
+  </div>
+
+  <div class="foot">
+    <div>株式会社TSUGI &amp; PARTNERS｜M&amp;A ご売却ヒアリングシート</div>
+    <div class="r">CONFIDENTIAL　/　2 — 3</div>
+  </div>
+</section>
+
+<!-- ============ PAGE 3 ============ -->
+<section class="page">
+  <div class="brand">
+    <div class="logo">TSUGI &amp; PARTNERS<small>株式会社TSUGI &amp; PARTNERS</small></div>
+    <div class="tag">経営と承継の、伴走者であるために<br>tsugiandpartners.jp</div>
+  </div>
+
+  <!-- 5 -->
+  <div class="sec">
+    <div class="sec-head"><div class="sec-num">5</div><div class="sec-title">人・契約</div><div class="sec-note">わかる範囲で</div></div>
+    <table>
+      <tr><th>従業員・業務委託の人数<span class="hint">役割もわかれば</span></th><td class="write"><span class="blank"></span></td></tr>
+      <tr><th>引き継ぐ主な契約<span class="hint">取引先・業者・保険・リースなど</span></th><td class="write"><span class="blank"></span></td></tr>
+    </table>
+  </div>
+
+  <!-- 6 -->
+  <div class="sec">
+    <div class="sec-head"><div class="sec-num">6</div><div class="sec-title">その他の事業（資本提携をお考えの場合）</div><div class="sec-note">該当する場合のみ</div></div>
+    <table>
+      <tr><th>事業の概要</th><td class="write"><span class="blank tall"></span></td></tr>
+      <tr><th>提携で得たいもの<span class="hint">例：資金／販路／運営をまかせたい 人材 など</span></th><td class="write"><span class="blank"></span></td></tr>
+    </table>
+  </div>
+
+  <!-- 7 -->
+  <div class="sec">
+    <div class="sec-head"><div class="sec-num">7</div><div class="sec-title">ご提出いただきたい書類</div></div>
+    <ul class="check-list">
+      <li><span class="box"></span><span class="must">決算書 直近3期分<span class="tag-must">必須</span></span>＜可能なら税務申告書一式（別表・勘定科目内訳明細書まで）＞</li>
+      <li><span class="box"></span><span class="must">登記簿謄本（履歴事項全部証明書）<span class="tag-must">必須</span></span></li>
+      <li><span class="box"></span>直近の試算表（今期分）</li>
+      <li><span class="box"></span>物件の賃貸借契約書（賃貸の場合）<span class="tag-after">後ほどで可</span></li>
+      <li><span class="box"></span>主要設備の購入時の書類・金額がわかるもの<span class="tag-after">後ほどで可</span></li>
+      <li><span class="box"></span>料金表・パンフレット・Webサイトなど、事業がわかる資料<span class="tag-after">後ほどで可</span></li>
+    </ul>
+  </div>
+
+  <!-- NDA -->
+  <div class="sec">
+    <div class="nda">
+      <b>秘密保持について。</b>　いただいた決算書・資料・社名を含むすべての情報は、当社が秘密として厳重にお預かりします。買い手候補への最初のご案内は<b>社名を伏せた概要</b>で行い、社名・詳細資料の開示は、お客様の同意と買い手候補との秘密保持契約の締結後に限ります。正式にお手伝いを始める際は、別途<b>秘密保持契約・媒介契約</b>を取り交わさせていただきます。
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>株式会社TSUGI &amp; PARTNERS｜M&amp;A ご売却ヒアリングシート</div>
+    <div class="r">CONFIDENTIAL　/　3 — 3</div>
+  </div>
+</section>
+
+</body>
+</html>

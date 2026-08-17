@@ -1,0 +1,443 @@
+/*
+  DADS コンポーネント層（静的HTML用）
+  デジタル庁デザインシステム v2 の公式サンプル実装（React/Tailwind, MIT）の
+  クラス定義を、素のCSSに書き起こしたもの。値はすべて公式実装からの写し。
+  依存: dads-tokens.css → dads-typography.css → このファイル の順に読み込む。
+
+  出典:
+  - https://github.com/digital-go-jp/design-system-example-components-react
+  - https://design.digital.go.jp/dads/
+*/
+
+/* ---------------------------------------------------------------
+   1. ベース
+   --------------------------------------------------------------- */
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-175);
+  letter-spacing: 0.02em;
+  color: var(--color-neutral-solid-gray-800);
+  background: var(--color-neutral-white);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* フォーカスリング（DADS共通。黒4pxのアウトライン＋黄色2pxのリング） */
+.dads-focus:focus-visible,
+.dads-button:focus-visible,
+.dads-link:focus-visible,
+.dads-input:focus,
+.dads-textarea:focus,
+.dads-select:focus {
+  outline: 4px solid var(--color-neutral-black);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--color-primitive-yellow-300);
+}
+
+/* ---------------------------------------------------------------
+   2. ボタン
+   variant: solid-fill / outline / text     size: lg / md / sm / xs
+   --------------------------------------------------------------- */
+.dads-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.25rem;
+  width: fit-content;
+  max-width: 100%;
+  font-family: inherit;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.dads-button[aria-disabled='true'] {
+  pointer-events: none;
+}
+
+/* --- variant --- */
+.dads-button--solid-fill {
+  border: 4px double transparent;
+  background: var(--color-key-900);
+  color: var(--color-neutral-white);
+}
+.dads-button--solid-fill:hover {
+  background: var(--color-key-1000);
+  text-decoration: underline;
+}
+.dads-button--solid-fill:active {
+  background: var(--color-key-1200);
+  text-decoration: underline;
+}
+.dads-button--solid-fill[aria-disabled='true'] {
+  background: var(--color-neutral-solid-gray-300);
+  color: var(--color-neutral-solid-gray-50);
+}
+
+.dads-button--outline {
+  border: 1px solid currentColor;
+  background: var(--color-neutral-white);
+  color: var(--color-key-900);
+}
+.dads-button--outline:hover {
+  background: var(--color-key-200);
+  color: var(--color-key-1000);
+  text-decoration: underline;
+}
+.dads-button--outline:active {
+  background: var(--color-key-300);
+  color: var(--color-key-1200);
+  text-decoration: underline;
+}
+.dads-button--outline[aria-disabled='true'] {
+  background: var(--color-neutral-white);
+  color: var(--color-neutral-solid-gray-300);
+}
+
+.dads-button--text {
+  border: none;
+  background: transparent;
+  color: var(--color-key-900);
+  text-decoration: underline;
+}
+.dads-button--text:hover {
+  background: var(--color-key-50);
+  color: var(--color-key-1000);
+  text-decoration-thickness: 3px;
+}
+.dads-button--text:active {
+  background: var(--color-key-100);
+  color: var(--color-key-1200);
+}
+.dads-button--text:focus-visible {
+  background: var(--color-primitive-yellow-300);
+}
+.dads-button--text[aria-disabled='true'] {
+  background: transparent;
+  color: var(--color-neutral-solid-gray-300);
+}
+
+/* --- size --- */
+.dads-button--lg {
+  min-width: 8.5rem; /* 136px */
+  min-height: 3.5rem; /* 56px */
+  border-radius: var(--border-radius-8);
+  padding: 0.75rem 1rem;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-100);
+  letter-spacing: 0.02em;
+}
+.dads-button--md {
+  min-width: 6rem; /* 96px */
+  min-height: 3rem; /* 48px */
+  border-radius: var(--border-radius-8);
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-100);
+  letter-spacing: 0.02em;
+}
+.dads-button--sm {
+  position: relative;
+  min-width: 5rem; /* 80px */
+  min-height: 2.25rem; /* 36px */
+  border-radius: var(--border-radius-6);
+  padding: 0.125rem 0.75rem;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-100);
+  letter-spacing: 0.02em;
+}
+.dads-button--xs {
+  position: relative;
+  min-width: 4.5rem; /* 72px */
+  min-height: 1.75rem; /* 28px */
+  border-radius: var(--border-radius-4);
+  padding: 0.125rem 0.5rem;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-100);
+  letter-spacing: 0.02em;
+}
+/* sm / xs は見た目が小さくてもタップ領域を44px確保する（公式仕様） */
+.dads-button--sm::after,
+.dads-button--xs::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: -100%;
+  bottom: -100%;
+  margin: auto;
+  height: 44px;
+}
+
+/* ---------------------------------------------------------------
+   3. リンク
+   --------------------------------------------------------------- */
+.dads-link {
+  color: var(--color-primitive-blue-1000);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dads-link:visited {
+  color: var(--color-primitive-magenta-900);
+}
+.dads-link:hover {
+  color: var(--color-primitive-blue-1000);
+  text-decoration-thickness: 3px;
+}
+.dads-link:active {
+  color: var(--color-primitive-orange-800);
+  text-decoration-thickness: 1px;
+}
+.dads-link:focus-visible {
+  border-radius: var(--border-radius-4);
+  background: var(--color-primitive-yellow-300);
+  color: var(--color-primitive-blue-1000);
+}
+/* 新規タブで開くリンクにはアイコンを付ける（公式のSVGは reference/snippets.md 参照） */
+
+/* ---------------------------------------------------------------
+   4. フォーム
+   --------------------------------------------------------------- */
+.dads-input,
+.dads-textarea,
+.dads-select {
+  max-width: 100%;
+  border: 1px solid var(--color-neutral-solid-gray-600);
+  border-radius: var(--border-radius-8);
+  background: var(--color-neutral-white);
+  padding: 0.75rem 1rem;
+  font-family: inherit;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-100);
+  letter-spacing: 0.02em;
+  color: var(--color-neutral-solid-gray-800);
+}
+.dads-input:hover:read-write,
+.dads-textarea:hover:read-write {
+  border-color: var(--color-neutral-black);
+}
+.dads-input[data-size='sm'] { height: 2.5rem; }
+.dads-input[data-size='md'] { height: 3rem; }
+.dads-input[data-size='lg'] { height: 3.5rem; }
+.dads-input[aria-invalid='true'],
+.dads-textarea[aria-invalid='true'] {
+  border-color: var(--color-semantic-error-1);
+}
+.dads-input:read-only,
+.dads-textarea:read-only {
+  border-style: dashed;
+}
+.dads-input[aria-disabled='true'],
+.dads-textarea[aria-disabled='true'],
+.dads-select[aria-disabled='true'] {
+  border: 1px solid var(--color-neutral-solid-gray-300);
+  background: var(--color-neutral-solid-gray-50);
+  color: var(--color-neutral-solid-gray-420);
+  pointer-events: none;
+}
+.dads-textarea {
+  line-height: var(--line-height-170);
+}
+
+.dads-label {
+  display: block;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-150);
+  letter-spacing: 0.02em;
+  color: var(--color-neutral-solid-gray-900);
+}
+.dads-support-text {
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-170);
+  color: var(--color-neutral-solid-gray-700);
+}
+.dads-error-text {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-150);
+  color: var(--color-semantic-error-1);
+}
+/* 必須／任意バッジ */
+.dads-requirement-badge {
+  display: inline-block;
+  border-radius: var(--border-radius-4);
+  padding: 0 0.25rem;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-150);
+}
+.dads-requirement-badge--required {
+  background: var(--color-primitive-red-800);
+  color: var(--color-neutral-white);
+}
+.dads-requirement-badge--optional {
+  border: 1px solid var(--color-neutral-solid-gray-600);
+  color: var(--color-neutral-solid-gray-700);
+}
+
+/* ---------------------------------------------------------------
+   5. 見出し（チップ付き／罫線付き）
+   --------------------------------------------------------------- */
+.dads-heading {
+  margin: 0;
+  color: var(--color-neutral-solid-gray-900);
+}
+/* 左に太いキーカラーの縦棒を出す（公式の chip 装飾） */
+.dads-heading--chip {
+  position: relative;
+  padding-left: calc(1em / 3 + 0.5em);
+}
+.dads-heading--chip::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.1em;
+  width: calc(1em / 3);
+  background: var(--color-key-900);
+}
+/* 下罫線（rule）。太さ 8/6/4/2 px に対応 */
+.dads-heading--rule-8 { border-bottom: 8px solid var(--color-neutral-solid-gray-200); padding-bottom: 2rem; }
+.dads-heading--rule-6 { border-bottom: 6px solid var(--color-neutral-solid-gray-200); padding-bottom: 1.5rem; }
+.dads-heading--rule-4 { border-bottom: 4px solid var(--color-neutral-solid-gray-200); padding-bottom: 1rem; }
+.dads-heading--rule-2 { border-bottom: 2px solid var(--color-neutral-solid-gray-200); padding-bottom: 0.5rem; }
+/* 肩見出し（本見出しの上に置く小さい行） */
+.dads-heading-shoulder {
+  margin: 0 0 0.25rem;
+  font-weight: var(--font-weight-700);
+  color: var(--color-neutral-solid-gray-800);
+}
+
+/* ---------------------------------------------------------------
+   6. カード・ディバイダー・チップラベル
+   --------------------------------------------------------------- */
+.dads-card {
+  border: 1px solid var(--color-neutral-solid-gray-200);
+  border-radius: var(--border-radius-8);
+  background: var(--color-neutral-white);
+  padding: 1.5rem;
+}
+.dads-card--elevated {
+  border: none;
+  box-shadow: var(--elevation-2);
+}
+.dads-divider {
+  border: none;
+  border-top: 1px solid var(--color-neutral-solid-gray-300);
+  margin: 0;
+}
+.dads-divider--thick {
+  border-top-width: 4px;
+  border-top-color: var(--color-neutral-solid-gray-200);
+}
+.dads-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--border-radius-full);
+  padding: 0.25rem 0.75rem;
+  background: var(--color-neutral-solid-gray-50);
+  color: var(--color-neutral-solid-gray-800);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-100);
+}
+
+/* ---------------------------------------------------------------
+   7. テーブル
+   --------------------------------------------------------------- */
+.dads-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-170);
+}
+.dads-table th,
+.dads-table td {
+  border: 1px solid var(--color-neutral-solid-gray-300);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+.dads-table thead th {
+  background: var(--color-neutral-solid-gray-50);
+  font-weight: var(--font-weight-700);
+  color: var(--color-neutral-solid-gray-900);
+}
+
+/* ---------------------------------------------------------------
+   8. ノティフィケーションバナー（info / success / warning / error）
+   --------------------------------------------------------------- */
+.dads-notification {
+  display: flex;
+  gap: 0.75rem;
+  border: 1px solid;
+  border-radius: var(--border-radius-8);
+  padding: 1rem;
+  background: var(--color-neutral-white);
+}
+.dads-notification--info {
+  border-color: var(--color-primitive-blue-900);
+  color: var(--color-primitive-blue-900);
+}
+.dads-notification--success {
+  border-color: var(--color-semantic-success-1);
+  color: var(--color-semantic-success-2);
+}
+.dads-notification--warning {
+  border-color: var(--color-semantic-warning-yellow-1);
+  color: var(--color-semantic-warning-yellow-2);
+}
+.dads-notification--error {
+  border-color: var(--color-semantic-error-1);
+  color: var(--color-semantic-error-2);
+}
+.dads-notification__body {
+  color: var(--color-neutral-solid-gray-800);
+}
+
+/* ---------------------------------------------------------------
+   9. レイアウト補助（公式トークンにはないが実務で必要な最小限）
+   --------------------------------------------------------------- */
+.dads-container {
+  width: 100%;
+  max-width: 75rem; /* 1200px */
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+.dads-stack > * + * {
+  margin-top: 1rem;
+}
+.dads-section {
+  padding-block: 3rem;
+}
+@media (min-width: 48rem) {
+  .dads-section {
+    padding-block: 5rem;
+  }
+}
+/* スキップリンク（アクセシビリティ。公式サイトの実装に準拠） */
+.dads-skip-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-100%);
+  background: var(--color-neutral-white);
+  padding: 0.75rem 1rem;
+}
+.dads-skip-link:focus {
+  transform: translateY(0);
+}

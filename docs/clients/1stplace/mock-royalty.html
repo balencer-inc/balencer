@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>印税分配エンジン（サンプル画面）｜BALENCER mock</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F1626;--ink2:#3C475C;--muted:#7A879C;--line:#E7EBF1;--line2:#D6DCE6;--blue:#2563EB;--cyan:#22B8E6;--soft:#EEF3FF;--bg:#F4F7FB;--neon:#E6FF2F;--good:#0E7A5F;--goodbg:#E6F4EF;--warn:#B5460F;--warnbg:#FBEEE6;--panel:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);background:var(--bg);-webkit-font-smoothing:antialiased}
+.app{max-width:1180px;margin:0 auto;padding:22px 22px 60px}
+
+/* mock banner */
+.mockflag{background:var(--warnbg);border:1px solid #f0d2bf;color:var(--warn);border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.mockflag b{color:var(--warn)}
+
+/* top bar */
+.bar{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand .mk{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Poppins';font-weight:800;font-size:19px}
+.brand .nm{font-size:17px;font-weight:900;color:var(--ink);line-height:1.2}
+.brand .nm small{display:block;font-size:11px;font-weight:600;color:var(--muted);font-family:'JetBrains Mono'}
+.period{font-size:13px;color:var(--ink2)}
+.period b{color:var(--ink);font-weight:800}
+.period .sel{display:inline-block;margin-left:8px;background:var(--soft);color:var(--blue);border-radius:8px;padding:5px 12px;font-weight:800;font-size:12.5px}
+
+/* steps */
+.steps{display:flex;gap:8px;margin-bottom:18px}
+.step{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 16px;position:relative}
+.step.done{border-color:#bcd3ff;background:#fff}
+.step .sn{font-family:'JetBrains Mono';font-size:11px;font-weight:700;color:var(--blue)}
+.step h4{font-size:14px;font-weight:900;color:var(--ink);margin-top:3px}
+.step p{font-size:11.5px;color:var(--muted);margin-top:2px}
+.step .ck{position:absolute;top:12px;right:14px;color:var(--good);font-weight:900;font-size:14px}
+
+/* kpi */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.kpi .n{font-family:'Poppins';font-size:27px;font-weight:800;color:var(--ink);line-height:1}
+.kpi .n small{font-size:14px;color:var(--muted);font-weight:700}
+.kpi .n.bl{color:var(--blue)}.kpi .n.gd{color:var(--good)}.kpi .n.wn{color:var(--warn)}
+.kpi .t{font-size:12.5px;color:var(--ink2);margin-top:8px}
+
+/* layout grid */
+.grid{display:grid;grid-template-columns:260px 1fr;gap:16px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.panel h3{font-size:14px;font-weight:900;color:var(--ink);display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.panel h3 .pill{font-size:10.5px;font-weight:800;background:var(--goodbg);color:var(--good);border-radius:999px;padding:3px 9px}
+
+/* sources */
+.src{border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:10px}
+.src:last-child{margin-bottom:0}
+.src .top{display:flex;align-items:center;justify-content:space-between}
+.src .co{font-size:13.5px;font-weight:800;color:var(--ink)}
+.src .fmt{font-family:'JetBrains Mono';font-size:10px;font-weight:700;border-radius:5px;padding:2px 7px}
+.fmt.pdf{background:#FDECEC;color:#C0392B}.fmt.xls{background:#E6F4EE;color:#1E8E5A}.fmt.csv{background:#EAF1FF;color:#2563EB}
+.src .meta{font-size:11.5px;color:var(--muted);margin-top:5px}
+.src .st{font-size:11px;font-weight:800;color:var(--good);margin-top:7px;display:flex;align-items:center;gap:5px}
+.src .st.warn{color:var(--warn)}
+
+/* unified table */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:560px}
+th{background:var(--ink);color:#fff;text-align:left;padding:9px 12px;font-weight:600;font-size:11.5px;white-space:nowrap}
+th.r,td.r{text-align:right}
+td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+td b{color:var(--ink)}
+td .mono{font-family:'JetBrains Mono';font-size:12px}
+.src-tag{font-family:'JetBrains Mono';font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px;color:#fff}
+.src-tag.a{background:#C0392B}.src-tag.b{background:#1E8E5A}.src-tag.c{background:#2563EB}
+.flag{display:inline-block;font-size:10px;font-weight:800;background:var(--warnbg);color:var(--warn);border-radius:5px;padding:1px 7px}
+
+/* distribution */
+.dist{margin-top:16px}
+.drow{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.drow:last-child{border-bottom:none}
+.drow .who{flex:0 0 150px;font-size:13px;font-weight:700;color:var(--ink)}
+.drow .who small{display:block;font-size:11px;color:var(--muted);font-weight:500}
+.drow .barwrap{flex:1;background:var(--bg);border-radius:6px;height:9px;overflow:hidden}
+.drow .barv{height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:6px}
+.drow .amt{flex:0 0 110px;text-align:right;font-family:'Poppins';font-weight:800;color:var(--ink);font-size:14px}
+.drow .rate{flex:0 0 52px;text-align:right;font-size:11.5px;color:var(--muted);font-family:'JetBrains Mono'}
+
+/* notice card */
+.notice{margin-top:16px;border:1px solid var(--line2);border-radius:12px;overflow:hidden}
+.notice .nh{background:var(--bg);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.notice .nh b{font-size:13px;color:var(--ink);font-weight:900}
+.notice .nh .no{font-family:'JetBrains Mono';font-size:11px;color:var(--muted)}
+.notice .nb{padding:16px 18px}
+.notice .nrow{display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px dotted var(--line)}
+.notice .nrow:last-child{border-bottom:none}
+.notice .nrow b{color:var(--ink)}
+.notice .tot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:2px solid var(--ink)}
+.notice .tot .lb{font-size:13px;font-weight:800;color:var(--ink)}
+.notice .tot .vv{font-family:'Poppins';font-size:22px;font-weight:800;color:var(--blue)}
+.trace{margin-top:10px;font-size:11px;color:var(--muted);background:var(--bg);border-radius:8px;padding:9px 12px;line-height:1.6}
+.trace b{color:var(--ink2)}
+
+.foot{margin-top:22px;text-align:center;font-size:11px;color:var(--muted);line-height:1.6}
+.foot .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:13px}
+.actions{display:flex;gap:9px;margin-top:14px}
+.btn{font-size:12px;font-weight:800;border-radius:9px;padding:9px 16px;border:1px solid var(--line2);color:var(--ink2);background:#fff}
+.btn.pri{background:var(--blue);color:#fff;border-color:var(--blue)}
+</style></head>
+<body>
+<div class="app">
+
+  <div class="mockflag">⚠ <b>サンプル画面（モック）です。</b>＝こういう仕組みが作れます、というイメージ。数字・社名・楽曲はすべて架空で、実データではありません。</div>
+
+  <div class="bar">
+    <div class="brand">
+      <div class="mk">¥</div>
+      <div class="nm">印税分配エンジン<small>royalty engine ・ by BALENCER</small></div>
+    </div>
+    <div class="period">対象期間 <b>2026年 上期（1–6月）</b><span class="sel">3社・3フォーマット取込済</span></div>
+  </div>
+
+  <!-- steps -->
+  <div class="steps">
+    <div class="step done"><span class="ck">✓</span><div class="sn">STEP 1</div><h4>明細を取込</h4><p>各社のPDF/Excel/CSV</p></div>
+    <div class="step done"><span class="ck">✓</span><div class="sn">STEP 2</div><h4>共通の形に正規化</h4><p>項目名・通貨をそろえる</p></div>
+    <div class="step done"><span class="ck">✓</span><div class="sn">STEP 3</div><h4>ルールで自動分配</h4><p>権利者・料率・按分</p></div>
+    <div class="step"><div class="sn">STEP 4</div><h4>通知書を発行</h4><p>根拠つきで出力</p></div>
+  </div>
+
+  <!-- kpi -->
+  <div class="kpis">
+    <div class="kpi"><div class="n">1,248<small> 件</small></div><div class="t">今期の対象明細（3社合算）</div></div>
+    <div class="kpi"><div class="n bl">37<small> 名</small></div><div class="t">分配先の権利者</div></div>
+    <div class="kpi"><div class="n gd">98.6<small> %</small></div><div class="t">ルールで自動分配できた割合</div></div>
+    <div class="kpi"><div class="n wn">17<small> 件</small></div><div class="t">要確認（名寄せ・料率未設定）</div></div>
+  </div>
+
+  <div class="grid">
+    <!-- left: sources -->
+    <div class="panel">
+      <h3>取り込んだ明細 <span class="pill">取込済</span></h3>
+      <div class="src">
+        <div class="top"><span class="co">A社（配信）</span><span class="fmt pdf">PDF</span></div>
+        <div class="meta">royalty_2026H1.pdf ・ 412行</div>
+        <div class="st">● 正規化済</div>
+      </div>
+      <div class="src">
+        <div class="top"><span class="co">B社（原盤）</span><span class="fmt xls">XLSX</span></div>
+        <div class="meta">statement_H1.xlsx ・ 631行</div>
+        <div class="st">● 正規化済</div>
+      </div>
+      <div class="src">
+        <div class="top"><span class="co">C社（出版）</span><span class="fmt csv">CSV</span></div>
+        <div class="meta">payout_jan-jun.csv ・ 205行</div>
+        <div class="st warn">▲ 17件 名寄せ要確認</div>
+      </div>
+      <div class="trace" style="margin-top:14px"><b>名寄せ辞書</b>：A社「青井 葵」＝B社「AOI」＝C社「Aoi A.」を同一人物として自動統合（手動で上書き可）。</div>
+    </div>
+
+    <!-- right: unified + dist + notice -->
+    <div class="panel">
+      <h3>共通明細にそろえた状態 <span class="pill" style="background:var(--soft);color:var(--blue)">正規化ビュー</span></h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>楽曲</th><th>権利種別</th><th>権利者</th><th class="r">売上</th><th class="r">料率</th><th class="r">分配額</th><th>出所</th></tr></thead>
+          <tbody>
+            <tr><td><b>Midnight Bloom</b></td><td>原盤</td><td>青井 葵</td><td class="r mono">¥482,300</td><td class="r mono">12%</td><td class="r mono"><b>¥57,876</b></td><td><span class="src-tag b">B</span></td></tr>
+            <tr><td><b>Midnight Bloom</b></td><td>出版（作詞）</td><td>森口 海</td><td class="r mono">¥482,300</td><td class="r mono">5%</td><td class="r mono"><b>¥24,115</b></td><td><span class="src-tag c">C</span></td></tr>
+            <tr><td><b>City Lights</b></td><td>配信</td><td>青井 葵</td><td class="r mono">¥318,900</td><td class="r mono">15%</td><td class="r mono"><b>¥47,835</b></td><td><span class="src-tag a">A</span></td></tr>
+            <tr><td><b>City Lights</b></td><td>出版（作曲）</td><td>橘 律</td><td class="r mono">¥318,900</td><td class="r mono">5%</td><td class="r mono"><b>¥15,945</b></td><td><span class="src-tag c">C</span></td></tr>
+            <tr><td><b>Echoes</b></td><td>原盤</td><td>—</td><td class="r mono">¥96,400</td><td class="r mono">—</td><td class="r mono"><span class="flag">料率未設定</span></td><td><span class="src-tag c">C</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:24px">権利者ごとの分配（自動算出）</h3>
+      <div class="dist">
+        <div class="drow"><div class="who">青井 葵<small>原盤＋配信</small></div><div class="barwrap"><div class="barv" style="width:100%"></div></div><div class="rate">—</div><div class="amt">¥620,400</div></div>
+        <div class="drow"><div class="who">橘 律<small>出版（作曲）</small></div><div class="barwrap"><div class="barv" style="width:58%"></div></div><div class="rate">—</div><div class="amt">¥358,900</div></div>
+        <div class="drow"><div class="who">森口 海<small>出版（作詞）</small></div><div class="barwrap"><div class="barv" style="width:41%"></div></div><div class="rate">—</div><div class="amt">¥254,100</div></div>
+        <div class="drow"><div class="who">そのほか 34名</div><div class="barwrap"><div class="barv" style="width:72%"></div></div><div class="rate">—</div><div class="amt">¥441,250</div></div>
+      </div>
+
+      <!-- notice -->
+      <div class="notice">
+        <div class="nh"><b>支払通知書（プレビュー）</b><span class="no">No. RP-2026H1-018 ／ 青井 葵 様</span></div>
+        <div class="nb">
+          <div class="nrow"><span>Midnight Bloom（原盤 12%）</span><b>¥57,876</b></div>
+          <div class="nrow"><span>City Lights（配信 15%）</span><b>¥47,835</b></div>
+          <div class="nrow"><span>そのほか 9曲</span><b>¥514,689</b></div>
+          <div class="tot"><span class="lb">お支払額（源泉前）</span><span class="vv">¥620,400</span></div>
+          <div class="trace"><b>算出根拠：</b>B社statement_H1.xlsx 3行＋A社royalty_2026H1.pdf 6行を統合。各行の売上×契約料率で算出。クリックで元明細まで遡れます。</div>
+        </div>
+      </div>
+      <div class="actions">
+        <span class="btn pri">通知書を一括発行（37名）</span>
+        <span class="btn">要確認17件をレビュー</span>
+        <span class="btn">CSV / PDFで書き出し</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="bn">BALENCER</div>
+    <p>印税分配エンジン サンプル画面（モック）｜ 実装時は御社の実ステートメント2〜3種をもとに、項目・料率・名寄せルールを設計します。<br>本画面の数字・社名・楽曲・人物はすべて架空です。</p>
+  </div>
+
+</div>
+</body></html>

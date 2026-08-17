@@ -141,6 +141,21 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
 .ctaS .pill{background:#fff;color:var(--ink);font-weight:800;font-size:19px;padding:17px 38px;border-radius:999px}
 .ctaS .em{margin-top:16px;font-size:15px;color:#9ec3ff}
 .disc{font-size:11px;color:var(--muted);margin-top:10px;line-height:1.5}
+
+/* lanes (themes sorting) */
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.lane{border-radius:16px;padding:22px 26px;background:#fff;border:1px solid var(--line)}
+.lane.build{border:2px solid var(--blue);box-shadow:0 14px 34px rgba(37,99,235,.12)}
+.lane .lh{font-size:18px;font-weight:900;color:var(--ink);margin-bottom:14px;line-height:1.4}
+.lane .lh span{font-size:11px;font-weight:800;border-radius:999px;padding:4px 11px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.lane.train .lh span{background:#E6F4EF;color:var(--good)}
+.lane.build .lh span{background:var(--blue);color:#fff}
+.lane li{list-style:none;font-size:15px;color:var(--ink2);line-height:1.55;margin-bottom:12px;padding-left:2px}
+.lane li b{color:var(--blue);font-family:'Poppins';margin-right:7px}
+.lane li small{display:block;color:var(--muted);font-size:13px;margin-top:2px;padding-left:22px}
+.later{margin-top:18px;background:var(--ink);color:#fff;border-radius:12px;padding:14px 24px;font-size:15px;font-weight:700;line-height:1.6}
+.later b{color:var(--neon);font-family:'Poppins';margin:0 3px}
+.later em{display:block;font-style:normal;font-size:12.5px;color:#9aa6ba;font-weight:500;margin-top:5px}
 </style></head>
 <body>
 
@@ -150,10 +165,35 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
   <span class="badge"><span class="dot"></span>助成金を使う AI研修 ＋ 印税分配の仕組み化</span>
   <div class="wm">AI研修 ご提案</div>
   <h1>研修で土台をつくり、<br>印税分配の仕組み化まで。</h1>
-  <div class="for">ご提案資料　│　<b>1st PLACE株式会社　村山様</b>　│　株式会社バレンサー</div>
+  <div class="for">ご提案資料　│　<b>1st PLACE株式会社　村山様</b>　│　株式会社バレンサー　│　2026.06.22</div>
 </section>
 
-<!-- 2 今回のご提案 -->
+<!-- 2 ご相談の整理（前提合わせ） -->
+<section class="slide" style="background:var(--bg2)">
+  <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
+  <span class="kick">your themes, sorted</span>
+  <div class="h2">いただいたご相談を、<span class="bl">2つのレーンに整理</span>します。</div>
+  <div class="sub">村山様からいただいた検討テーマを、<b>御社が自分で回せるよう研修でお渡しするもの</b>と、<b>私たちが作ってお渡しするもの</b>に分けました。まずここを揃えてから中身に入ります。</div>
+  <div class="lanes">
+    <div class="lane train">
+      <div class="lh">研修で自走する<span>リスキリング助成金の対象</span></div>
+      <ul>
+        <li><b>A</b> 各業務のワークフロー仕組み化・マニュアル化<small>属人化した作業を、誰でも回せる形に</small></li>
+        <li><b>B</b> 問い合わせメールの仕分け・返信下書き<small>まず自分たちでできる状態をつくる</small></li>
+      </ul>
+    </div>
+    <div class="lane build">
+      <div class="lh">作ってお渡しする<span>受託開発・本命</span></div>
+      <ul>
+        <li><b>C</b> 印税分配の仕組み化<small>複数社・複数フォームの明細を共通化し、権利者・楽曲・料率で自動分配・自動計算。正確性が命なので作ってお渡しが確実</small></li>
+      </ul>
+    </div>
+  </div>
+  <div class="later">後回しでOK　│　<b>D</b> サイボウズ移管　／　<b>E</b> Eight移管（急ぎでなければ本命のあとで）<em>※法務は既存のAIで運用中のため、今回の対象外とします。</em></div>
+  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">02</span></div>
+</section>
+
+<!-- 3 今回のご提案 -->
 <section class="slide">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">this proposal</span>
@@ -164,10 +204,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
     研修と必要書類を用意するのが<span class="hl">バレンサー</span>です。
   </div>
   <div class="note">なお <b>AI導入補助金（経済産業省系）</b> はこれとは別の制度で、今回の研修とは直接関係しません。ただしバレンサーはそちらもツール登録を進めており、御社が導入するAIの仕組みが登録ツールと合致すれば、別途その補助金を活用できる可能性もあります。</div>
-  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">02</span></div>
+  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">03</span></div>
 </section>
 
-<!-- 3 2制度の違い -->
+<!-- 4 2制度の違い -->
 <section class="slide" style="background:var(--bg2)">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">two subsidies</span>
@@ -195,10 +235,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
       </ul>
     </div>
   </div>
-  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">03</span></div>
+  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">04</span></div>
 </section>
 
-<!-- 4 市場の今 -->
+<!-- 5 市場の今 -->
 <section class="slide">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">the market now</span>
@@ -210,10 +250,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
     <div class="stat"><div class="n">60<small>〜75％</small></div><div class="t">リスキリング助成金の経費補助（中小・上乗せ要件で最大75％）</div></div>
   </div>
   <div class="sub" style="margin-top:22px">助成金を使えば、実質負担は相場から大きく下がります。だからこそ「どんな研修を選ぶか」が、そのまま投資対効果を決めます。</div>
-  <div class="foot"><span>出典：厚生労働省ほか各種調査（2026年6月時点・最終要確認）</span><span class="page-n">04</span></div>
+  <div class="foot"><span>出典：厚生労働省ほか各種調査（2026年6月時点・最終要確認）</span><span class="page-n">05</span></div>
 </section>
 
-<!-- 5 競合の隙間とバレンサーの取り所 -->
+<!-- 6 競合の隙間とバレンサーの取り所 -->
 <section class="slide" style="background:var(--bg2)">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">where balencer fits</span>
@@ -224,10 +264,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
     <div class="p"><div class="n">03</div><h3>組織に入り込む<br>のが本業</h3><p>バレンサーは組織開発を生業にする会社です。座学を配って終わりにせず、現場に根づくところまで責任を持ちます。</p></div>
   </div>
   <div class="note">ChatGPTの基礎研修は提供各社がひしめく激戦領域。<b>Claude特化 × 実装まで伴走</b>は、まだ手薄な取り所です。</div>
-  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">05</span></div>
+  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">06</span></div>
 </section>
 
-<!-- 6 プラン全体像 -->
+<!-- 7 プラン全体像 -->
 <section class="slide">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">the plan</span>
@@ -262,10 +302,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
       </ul>
     </div>
   </div>
-  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">06</span></div>
+  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">07</span></div>
 </section>
 
-<!-- 7 カリキュラム -->
+<!-- 8 カリキュラム -->
 <section class="slide" style="background:var(--bg2)">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">curriculum</span>
@@ -281,10 +321,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
       <tr class="sum"><td class="no"></td><td class="th">合計（OFF-JT 実訓練時間）</td><td>助成金の要件「10時間以上」を満たします</td><td class="hr">15h</td></tr>
     </tbody>
   </table>
-  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">07</span></div>
+  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">08</span></div>
 </section>
 
-<!-- 8 お金の話 -->
+<!-- 9 お金の話 -->
 <section class="slide">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">the numbers</span>
@@ -304,10 +344,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
     </div>
   </div>
   <div class="cnote">※ 経費助成は中小企業で基本60％、賃金上昇など上乗せ要件を満たすと最大75％。賃金助成は受講中の賃金に1時間あたり1,000円（15時間×10名で約15万円）。実質額は助成率・支給の可否によって変わります（労働局の審査による）。金額は御社の人数・回数で調整します。</div>
-  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">08</span></div>
+  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">09</span></div>
 </section>
 
-<!-- 9 助成金フロー -->
+<!-- 10 助成金フロー -->
 <section class="slide" style="background:var(--bg2)">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">how to apply</span>
@@ -320,10 +360,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
     <div class="fstep"><div class="dot">5</div><div class="when">6〜8ヶ月後</div><h4>入金</h4><p>労働局の審査を経て助成金が御社へ入金。</p></div>
   </div>
   <div class="note" style="margin-top:34px">制度はいまのところ <b>2026年度（令和8年度）まで</b>。来年度以降は未定のため、動かすなら今年度中が確実です。</div>
-  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">09</span></div>
+  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">10</span></div>
 </section>
 
-<!-- 10 役割分担 -->
+<!-- 11 役割分担 -->
 <section class="slide">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">who does what</span>
@@ -337,10 +377,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
     <div class="role us"><div class="who">バレンサー</div><div class="cap">研修と書類の提供</div>
       <ul><li>研修の実施（全5回15時間）</li><li>カリキュラム表・見積書・講師要件確認書・出席簿・実施報告書の提供</li><li class="x">申請書類の作成・提出代行はしません</li></ul></div>
   </div>
-  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">10</span></div>
+  <div class="foot"><span>AI研修ご提案｜株式会社バレンサー</span><span class="page-n">11</span></div>
 </section>
 
-<!-- 11 提出書類イメージ -->
+<!-- 12 提出書類イメージ -->
 <section class="slide" style="background:var(--bg2)">
   <div class="bar"></div><img class="logo" src="../../soeru-lp/balencer-logo.png">
   <span class="kick">documents we provide</span>
@@ -368,10 +408,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
       </div>
     </div>
   </div>
-  <div class="foot"><span>実物の見本：samples/curriculum.html ／ samples/estimate.html</span><span class="page-n">11</span></div>
+  <div class="foot"><span>実物の見本：samples/curriculum.html ／ samples/estimate.html</span><span class="page-n">12</span></div>
 </section>
 
-<!-- 12 CTA -->
+<!-- 13 CTA -->
 <section class="slide ctaS">
   <div class="bar"></div>
   <div class="wm">AI実装研修</div>
@@ -380,7 +420,7 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);-we
   <span class="pill">日程と進め方を、この場で決める</span>
   <div class="em">株式会社バレンサー　│　info@balencer.jp　／　balencer.jp</div>
   <div class="disc">本資料の数値は2026年6月時点の調査・公開情報にもとづく参考値です。助成金の最終的な要件・支給可否は管轄労働局の判断によります。申請手続きは社労士にご相談ください。</div>
-  <span class="page-n" style="position:absolute;right:76px;bottom:32px;color:#7e8aa0">12</span>
+  <span class="page-n" style="position:absolute;right:76px;bottom:32px;color:#7e8aa0">13</span>
 </section>
 
 </body></html>

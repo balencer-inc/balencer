@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI実装研修｜リスキリング助成金 ご利用の手引き（契約後〜入金まで）｜株式会社バレンサー</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --neon:#E6FF2F;--neon-tint:rgba(230,255,47,.18);
+    --ink:#000;--ink-2:#3A3838;--ink-3:#595959;--ink-4:#757070;
+    --bg:#FFF;--bg-2:#F5F3F3;--bg-3:#F2F2F2;--border:#D0CECE;--border-soft:#E2E0DA;--good:#0E7A5F;--warn:#B4232A;
+    --font-en:'Poppins',system-ui,sans-serif;--font-ja:'Noto Sans JP','Hiragino Sans',sans-serif;--font-script:'Caveat',cursive;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink-2);font-family:var(--font-ja);font-size:13px;line-height:1.8;-webkit-font-smoothing:antialiased}
+  .page{max-width:880px;margin:0 auto;padding:52px 56px 80px}
+  .doc-header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--ink);padding-bottom:24px;margin-bottom:32px}
+  .brand-block .label{font-family:var(--font-script);font-size:22px;color:var(--ink-3);line-height:1}
+  .brand-block .title{font-family:var(--font-ja);font-weight:900;font-size:26px;letter-spacing:-.01em;color:var(--ink);line-height:1.25;margin-top:6px}
+  .brand-block .ja{font-size:12px;color:var(--ink-3);margin-top:10px}
+  .brand-block .logo{height:20px;margin-bottom:14px}
+  .meta{text-align:right;font-size:11px;color:var(--ink-4);line-height:1.9}
+  .lead{background:var(--bg-2);border-left:4px solid var(--neon);padding:18px 22px;font-size:13px;margin-bottom:36px;line-height:1.85}
+  section{margin-bottom:38px;page-break-inside:avoid}
+  .section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;padding-bottom:9px;border-bottom:1px solid var(--ink)}
+  .section-head .en{font-family:var(--font-script);font-size:22px;color:var(--ink-3)}
+  .section-head .ja{font-weight:900;font-size:18px;color:var(--ink)}
+  /* roles */
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .role{border:1px solid var(--border);padding:16px 18px}
+  .role .who{font-weight:900;font-size:14px;color:var(--ink);margin-bottom:6px}
+  .role .who .pill{font-family:var(--font-en);font-size:9px;font-weight:700;letter-spacing:.1em;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle}
+  .role.c1 .pill{background:var(--neon);color:var(--ink)}
+  .role.c2 .pill{background:#E6F4EF;color:var(--good)}
+  .role.c3 .pill{background:var(--bg-3);color:var(--ink-4)}
+  .role ul{list-style:none;font-size:12px;color:var(--ink-3)}
+  .role li{padding-left:14px;position:relative;margin-bottom:4px}
+  .role li::before{content:'•';position:absolute;left:0;color:var(--ink-4)}
+  /* timeline */
+  .tl{position:relative;margin-top:8px}
+  .tl::before{content:'';position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:var(--border)}
+  .tlrow{display:grid;grid-template-columns:46px 1fr;gap:16px;margin-bottom:18px;position:relative}
+  .tlrow .dot{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--font-en);font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:1}
+  .tlrow .body{border:1px solid var(--border);padding:14px 18px}
+  .tlrow .body h3{font-size:15px;font-weight:700;color:var(--ink)}
+  .tlrow .body .when{font-size:11px;font-weight:700;color:var(--warn);margin-top:2px}
+  .tlrow .body .who{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px}
+  .tlrow .body .who.b{background:var(--neon);color:var(--ink)}
+  .tlrow .body .who.s{background:#E6F4EF;color:var(--good)}
+  .tlrow .body .who.cl{background:var(--bg-3);color:var(--ink-4)}
+  .tlrow .body p{font-size:12.5px;color:var(--ink-3);margin-top:6px}
+  /* checklist */
+  .check{border:1px solid var(--border);padding:0}
+  .check .row{display:flex;gap:12px;padding:12px 18px;border-bottom:1px solid var(--border-soft);font-size:12.5px}
+  .check .row:last-child{border-bottom:none}
+  .check .box{width:16px;height:16px;border:1.5px solid var(--ink-4);border-radius:3px;flex:none;margin-top:2px}
+  .check .row b{color:var(--ink)}
+  /* warn */
+  .pitfalls{background:#FCF3F3;border:1px solid #E8C9CB;padding:20px 24px}
+  .pitfalls h3{color:var(--warn);font-size:14px;font-weight:900;margin-bottom:10px}
+  .pitfalls ul{list-style:none}
+  .pitfalls li{padding-left:22px;position:relative;margin-bottom:9px;font-size:12.5px;color:var(--ink-2)}
+  .pitfalls li::before{content:'!';position:absolute;left:0;top:0;width:15px;height:15px;background:var(--warn);color:#fff;font-family:var(--font-en);font-weight:700;font-size:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:3px}
+  .pitfalls li b{color:var(--warn)}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border)}
+  .fact{display:flex;border-bottom:1px solid var(--border-soft)}
+  .fact:nth-last-child(-n+2){border-bottom:none}
+  .fact .k{width:140px;background:var(--bg-2);padding:11px 15px;font-weight:700;color:var(--ink);font-size:12px;flex:none}
+  .fact .v{padding:11px 15px;font-size:12.5px;color:var(--ink-2)}
+  .disclaimer{font-size:10.5px;color:var(--ink-4);line-height:1.85;background:var(--bg-2);padding:16px 20px;margin-top:8px}
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-end}
+  .footer-brand .name{font-family:var(--font-en);font-weight:700;font-size:14px;color:var(--ink)}
+  .footer-brand .tagline{font-family:var(--font-script);font-size:16px;color:var(--ink-4)}
+  .footer-legal{font-size:10px;color:var(--ink-4);text-align:right;line-height:1.8}
+  @media print{.page{padding:30px 38px}section{page-break-inside:avoid}}
+  @media(max-width:680px){.roles,.facts{grid-template-columns:1fr}.page{padding:32px 22px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc-header">
+    <div class="brand-block">
+      <img class="logo" src="../../soeru-lp/balencer-logo.png" alt="BALENCER">
+      <div class="label">Guide</div>
+      <div class="title">リスキリング助成金 ご利用の手引き</div>
+      <div class="ja">AI実装研修｜契約後から助成金の入金まで・注意点まとめ</div>
+    </div>
+    <div class="meta">
+      <div>発行　<strong>2026年〇月</strong></div>
+      <div>株式会社バレンサー</div>
+      <div>info@balencer.jp</div>
+    </div>
+  </header>
+
+  <div class="lead">
+    バレンサーのAI実装研修は、<strong>人材開発支援助成金（事業展開等リスキリング支援コース）</strong>を活用して実質負担を抑えて受けられます。この助成金は<strong>研修を受ける御社（事業主）が申請する</strong>しくみです。本書は、御社が「いつ・何を・誰と」進めればよいかを、契約後から入金までの流れで整理したものです。
+  </div>
+
+  <!-- 役割分担 -->
+  <section>
+    <div class="section-head"><span class="en">Roles</span><span class="ja">登場人物と役割分担</span></div>
+    <div class="roles">
+      <div class="role c1"><div class="who">御社<span class="pill">申請主体</span></div><ul><li>助成金の申請主体（事業主）</li><li>計画届・支給申請の提出</li><li>受講者の出勤・賃金の記録</li><li>研修費の立替（後払いのため）</li></ul></div>
+      <div class="role c2"><div class="who">社労士<span class="pill">申請代行</span></div><ul><li>計画届・支給申請の作成代行</li><li>労働局とのやりとり</li><li>要件の最終確認</li><li>※申請代行は社労士の専権業務</li></ul></div>
+      <div class="role c3"><div class="who">バレンサー<span class="pill">研修提供</span></div><ul><li>カリキュラム設計・研修実施</li><li>添付書類の用意（下記）</li><li>出席簿・実施報告書の整備</li><li>研修後の実装伴走（任意）</li></ul></div>
+    </div>
+    <div class="disclaimer" style="margin-top:14px;">バレンサーが用意する添付書類：カリキュラム表／見積書・請求書／講師要件確認書（部外講師確認書の情報提供）／出席簿／実施報告書／修了証。<strong>助成金の申請書類そのもの（計画届・支給申請書）の作成・提出は行いません（社労士の専権業務のため）。</strong>お付き合いのある社労士がいない場合はご相談ください。</div>
+  </section>
+
+  <!-- タイムライン -->
+  <section>
+    <div class="section-head"><span class="en">Timeline</span><span class="ja">契約後〜入金までの流れ</span></div>
+    <div class="tl">
+      <div class="tlrow"><div class="dot">1</div><div class="body"><h3>カリキュラム確定・見積<span class="who b">バレンサー</span></h3><p>御社の業務をヒアリングし、対象者・時間・題材を確定。カリキュラム表と見積書をお渡しします。並行して、申請を依頼する社労士を決めます。</p></div></div>
+      <div class="tlrow"><div class="dot">2</div><div class="body"><h3>訓練実施計画届の提出<span class="who s">社労士</span><span class="who cl">御社</span></h3><div class="when">★ 研修開始日の「1ヶ月前まで」に提出（最重要）</div><p>労働局へ計画届を提出。バレンサーの添付書類（カリキュラム表等）を使います。1日でも遅れると全額対象外になるため、研修日程は逆算して余裕を持って決めます。</p></div></div>
+      <div class="tlrow"><div class="dot">3</div><div class="body"><h3>研修の実施（OFF-JT 10時間以上）<span class="who b">バレンサー</span></h3><p>計画どおりに研修を実施。御社は受講者の<b>出勤簿・タイムカード・賃金台帳</b>で受講時間と賃金を記録します（後の証拠書類になります）。バレンサーは出席簿・実施報告書を整えます。</p></div></div>
+      <div class="tlrow"><div class="dot">4</div><div class="body"><h3>研修費のお支払い<span class="who cl">御社</span></h3><p>研修費は御社から先にお支払いいただきます（助成金は後払いのため）。領収書・振込記録は支給申請の証拠になるので保管します。</p></div></div>
+      <div class="tlrow"><div class="dot">5</div><div class="body"><h3>支給申請<span class="who s">社労士</span><span class="who cl">御社</span></h3><div class="when">★ 研修終了日の翌日から「2ヶ月以内」に提出</div><p>実施報告書・出勤簿・賃金台帳・支払記録等を添えて労働局へ支給申請。この期限を過ぎると不支給になります。</p></div></div>
+      <div class="tlrow"><div class="dot">6</div><div class="body"><h3>審査・助成金の入金<span class="who cl">御社</span></h3><p>労働局の審査を経て、御社の口座へ入金。<b>計画届から数えて半年前後</b>を見込んでください（支給申請から入金まで数ヶ月）。</p></div></div>
+    </div>
+  </section>
+
+  <!-- 制度の基本数字 -->
+  <section>
+    <div class="section-head"><span class="en">Facts</span><span class="ja">制度の基本（中小企業の場合）</span></div>
+    <div class="facts">
+      <div class="fact"><div class="k">制度名</div><div class="v">人材開発支援助成金<br>事業展開等リスキリング支援コース</div></div>
+      <div class="fact"><div class="k">対象年度</div><div class="v">令和8年度（2026年度）。延長は未定</div></div>
+      <div class="fact"><div class="k">経費助成率</div><div class="v">最大75%（基本60%＋賃金引上げ等の上乗せ）</div></div>
+      <div class="fact"><div class="k">賃金助成</div><div class="v">受講中の賃金に 約1,000円/時間（最新を要確認）</div></div>
+      <div class="fact"><div class="k">経費助成上限</div><div class="v">1人 30万円（OFF-JT 10〜100時間未満）</div></div>
+      <div class="fact"><div class="k">最低訓練時間</div><div class="v">OFF-JT 10時間以上</div></div>
+    </div>
+  </section>
+
+  <!-- 御社で用意する書類 -->
+  <section>
+    <div class="section-head"><span class="en">Documents</span><span class="ja">御社で用意・保管するもの</span></div>
+    <div class="check">
+      <div class="row"><span class="box"></span><span><b>受講者の出勤簿・タイムカード</b>（研修日の受講時間がわかるもの）</span></div>
+      <div class="row"><span class="box"></span><span><b>賃金台帳</b>（受講者の賃金がわかるもの。賃金助成の根拠）</span></div>
+      <div class="row"><span class="box"></span><span><b>研修費の支払記録</b>（請求書・振込控え・領収書）</span></div>
+      <div class="row"><span class="box"></span><span><b>雇用保険の加入を示す書類</b>（受講者が被保険者であること）</span></div>
+      <div class="row"><span class="box"></span><span><b>労働保険料の納付状況</b>（未納があると対象外になります）</span></div>
+      <div class="row"><span class="box"></span><span>計画届・支給申請の各様式（社労士が作成。バレンサーの添付書類を使用）</span></div>
+    </div>
+  </section>
+
+  <!-- 落とし穴 -->
+  <section>
+    <div class="section-head"><span class="en">Pitfalls</span><span class="ja">よくある不支給・減額の落とし穴</span></div>
+    <div class="pitfalls">
+      <ul>
+        <li><b>計画届の提出が研修開始の1ヶ月前を過ぎた</b> → 全額不支給。日程は必ず逆算する。</li>
+        <li><b>支給申請が研修終了後2ヶ月を過ぎた</b> → 不支給。研修が終わったらすぐ準備。</li>
+        <li><b>出勤簿・タイムカードの記録不備</b> → 受講時間を証明できず減額・不支給。</li>
+        <li><b>研修費を御社が全額負担していない</b>（受講者の自己負担がある等）→ 対象外。</li>
+        <li><b>労働保険料の未納</b>（前年度以前を含む）→ 対象外。先に確認を。</li>
+        <li><b>計画の内容と実際の研修がずれた</b>（時間・人数・日程の無断変更）→ 変更は事前に届け出る。</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="disclaimer">
+    本書の助成金に関する記載は2026年6月時点の公開情報にもとづく参考情報です。助成率・上限額・賃金助成の単価・様式・要件は改定されることがあり、<strong>最終的な支給要件・可否は管轄の都道府県労働局の判断によります</strong>。申請手続き（計画届・支給申請の作成・提出）は社会保険労務士へご相談ください。バレンサーは研修の提供と添付書類の用意を行い、申請代行は行いません。
+  </div>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="name">BALENCER Inc.</div>
+      <div class="tagline">for loved ones.</div>
+    </div>
+    <div class="footer-legal">
+      © 2026 株式会社バレンサー　All rights reserved.<br>
+      info@balencer.jp　／　https://balencer.jp
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

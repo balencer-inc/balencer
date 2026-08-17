@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阿部貴之｜株式会社バレンサー / 株式会社TSUGI＆PARTNERS</title>
+<meta name="description" content="経営者の右腕がつとまるブランディングAXカンパニー「バレンサー」と、事業承継・M&Aの伴走会社「TSUGI＆PARTNERS」。代表 阿部貴之の事業紹介。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#C5956B; --accent-dark:#A87C58;
+    --bg:#F5F3F0; --cream:#EDE9E3; --white:#FFFFFF;
+    --ink:#1C1C1C; --text:#3A3838; --cap:#6B6864;
+    --border:#E2E0DA;
+    --tsugi:#3E5C54; --tsugi-bg:#EEF1EF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);line-height:1.9;font-weight:400;-webkit-font-smoothing:antialiased}
+  .en{font-family:'Inter',sans-serif}
+  .serif{font-family:'Playfair Display',serif}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+  .label{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.28em;color:var(--accent-dark);font-weight:600;margin-bottom:18px;text-transform:uppercase}
+  a{color:var(--accent-dark)}
+
+  /* ===== Header ===== */
+  .topbar{border-bottom:1px solid var(--border);background:rgba(245,243,240,.85);backdrop-filter:blur(6px);position:sticky;top:0;z-index:20}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:'Inter',sans-serif;font-weight:300;letter-spacing:.22em;font-size:17px;color:var(--ink)}
+  .navlinks{display:flex;gap:26px;font-size:13px}
+  .navlinks a{color:var(--cap);text-decoration:none}
+  .navlinks a:hover{color:var(--ink)}
+  .navtoggle{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px;padding:9px;margin-right:-9px}
+  .navtoggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px auto;transition:transform .3s,opacity .3s}
+  .navtoggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .navtoggle.open span:nth-child(2){opacity:0}
+  .navtoggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:680px){
+    .navtoggle{display:block}
+    .navlinks{
+      position:absolute;top:60px;left:0;right:0;
+      flex-direction:column;gap:0;
+      background:var(--bg);border-bottom:1px solid var(--border);
+      max-height:0;overflow:hidden;transition:max-height .32s ease;
+      box-shadow:0 12px 24px -16px rgba(28,28,28,.35);
+    }
+    .navlinks.open{max-height:320px}
+    .navlinks a{padding:16px 28px;border-top:1px solid var(--border);font-size:15px;color:var(--ink)}
+  }
+
+  /* ===== Hero ===== */
+  .hero{padding:76px 0 64px;border-bottom:1px solid var(--border)}
+  .hero .wrap{display:flex;gap:48px;align-items:center}
+  .hero-photo{flex:0 0 auto}
+  .hero-photo img{width:188px;height:188px;border-radius:50%;display:block;box-shadow:0 18px 50px -22px rgba(28,28,28,.4)}
+  .hero-text{flex:1}
+  .hero .tagline{font-family:'Playfair Display',serif;color:var(--accent);font-size:19px;font-style:italic;margin-bottom:14px}
+  .hero-catch{font-size:21px;font-weight:700;color:var(--ink);margin-top:18px;letter-spacing:.01em;line-height:1.5}
+  .hero-catch .u{background:linear-gradient(180deg,transparent 58%,rgba(197,149,107,.35) 58%);padding:0 3px}
+  .hero-sub{font-size:14px;color:var(--cap);margin-top:9px;line-height:1.75}
+  .hero h1{font-size:34px;font-weight:700;color:var(--ink);line-height:1.45;letter-spacing:.02em}
+  .hero h1 .role{display:block;font-size:15px;font-weight:500;color:var(--cap);letter-spacing:.04em;margin-top:14px;font-family:'Noto Sans JP',sans-serif}
+  .hero .companies{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-size:13px;border:1px solid var(--border);background:var(--white);padding:7px 14px;border-radius:40px;color:var(--ink)}
+  .chip b{font-weight:700}
+  .chip.main{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip.sub{font-size:12px;color:var(--cap);background:transparent;border-style:dashed;padding:6px 13px}
+  .chip.sub b{font-weight:600;color:var(--text)}
+  @media(max-width:680px){
+    .hero .wrap{flex-direction:column;text-align:center;gap:28px}
+    .hero h1{font-size:27px}
+    .hero .companies{justify-content:center}
+  }
+
+  /* ===== Section base ===== */
+  section.block{padding:62px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:23px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.5}
+  .lead{font-size:15px;color:var(--text);margin-bottom:26px;max-width:640px}
+  p{margin-bottom:15px}
+
+  /* profile */
+  .profile-list{list-style:none;display:grid;gap:0;border-top:1px solid var(--border)}
+  .profile-list li{display:flex;gap:18px;padding:15px 2px;border-bottom:1px dashed var(--border);font-size:14.5px}
+  .profile-list .yr{font-family:'Inter',sans-serif;font-weight:600;color:var(--accent-dark);min-width:74px;font-size:13px;letter-spacing:.04em}
+  .book{display:flex;gap:18px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);padding:22px 24px;margin-top:24px}
+  .book .bi{font-family:'Playfair Display',serif;font-size:13px;letter-spacing:.2em;color:var(--accent-dark)}
+  .book b{color:var(--ink);font-size:16px}
+
+  /* flags */
+  .flags{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+  .flag{background:var(--white);border:1px solid var(--border);padding:26px 24px}
+  .flag .no{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--cap)}
+  .flag b{display:block;font-size:17px;color:var(--ink);margin:7px 0 10px}
+  .flag span{font-size:14px;color:var(--text);line-height:1.85}
+  .kakezan{text-align:center;font-size:14px;color:var(--cap);margin-top:18px}
+  @media(max-width:680px){.flags{grid-template-columns:1fr}}
+
+  /* fit box */
+  .fit{background:var(--cream);border:1px solid var(--border);padding:24px 26px;margin-top:24px}
+  .fit h3{font-size:14px;color:var(--ink);margin-bottom:10px;letter-spacing:.04em}
+  .fit ul{list-style:none;display:grid;gap:9px}
+  .fit li{position:relative;padding-left:22px;font-size:14.5px;color:var(--text)}
+  .fit li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;background:var(--accent);border-radius:50%}
+  /* concrete services (具) */
+  .services{margin-top:22px;border-top:1px dashed var(--border);padding-top:18px}
+  .services .sv-h{font-size:12.5px;color:var(--cap);margin-bottom:11px}
+  .services .sv-tags{display:flex;flex-wrap:wrap;gap:8px}
+  .services .sv-tags span{font-size:12.5px;color:var(--text);background:var(--cream);border:1px solid var(--border);padding:6px 13px;border-radius:4px}
+
+  /* cases (横スクロール) */
+  .scroll-hint{font-size:12px;color:var(--cap);margin:6px 0 0;display:none}
+  .cases{display:flex;gap:16px;overflow-x:auto;margin-top:14px;padding:2px 2px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .cases::-webkit-scrollbar{height:7px}
+  .cases::-webkit-scrollbar-track{background:var(--cream);border-radius:4px}
+  .cases::-webkit-scrollbar-thumb{background:#cfc8bd;border-radius:4px}
+  .case{flex:0 0 262px;scroll-snap-align:start;background:var(--white);border:1px solid var(--border);border-top:3px solid var(--accent);padding:24px 22px;display:flex;flex-direction:column}
+  .case .ind{font-size:12px;color:var(--accent-dark);font-weight:600;letter-spacing:.04em;margin-bottom:14px}
+  .case .metric{font-family:'Inter',sans-serif;font-size:42px;font-weight:600;color:var(--ink);line-height:1;letter-spacing:-.02em}
+  .case .metric .u{font-size:19px;font-weight:600;margin-left:1px}
+  .case .metric .pre{font-size:19px;font-weight:600;margin-right:2px;color:var(--cap)}
+  .case .mlabel{font-size:12.5px;color:var(--text);font-weight:600;margin:9px 0 14px}
+  .case b{display:block;font-size:14.5px;color:var(--ink);margin-bottom:7px;line-height:1.6}
+  .case span{font-size:13px;color:var(--cap);line-height:1.75}
+  @media(max-width:680px){.scroll-hint{display:block}.case{flex-basis:240px}}
+  /* stats strip (経歴) */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);margin-top:24px;background:var(--white)}
+  .stat{padding:22px 18px;text-align:center;border-right:1px solid var(--border)}
+  .stat:last-child{border-right:none}
+  .stat .n{font-family:'Inter',sans-serif;font-size:30px;font-weight:600;color:var(--ink);line-height:1;letter-spacing:-.01em}
+  .stat .n .u{font-size:15px;font-weight:600;margin-left:1px}
+  .stat .l{font-size:11.5px;color:var(--cap);margin-top:9px;line-height:1.6}
+  @media(max-width:680px){.stats{grid-template-columns:1fr}.stat{border-right:none;border-bottom:1px solid var(--border)}.stat:last-child{border-bottom:none}}
+  /* creds (著書・講師) */
+  .creds{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  .cred{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);padding:20px 22px}
+  .cred .ck{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;color:var(--accent-dark);font-weight:600}
+  .cred b{display:block;color:var(--ink);font-size:15px;margin:7px 0 6px;line-height:1.5}
+  .cred p{font-size:13px;color:var(--cap);margin:0;line-height:1.7}
+  @media(max-width:680px){.creds{grid-template-columns:1fr}}
+
+  /* TSUGI */
+  .tsugi-block{background:var(--tsugi-bg)}
+  .tsugi-block .label{color:var(--tsugi)}
+  .tsugi-flow{display:flex;flex-wrap:wrap;gap:0;margin-top:22px;background:var(--white);border:1px solid var(--border)}
+  .tstep{flex:1;min-width:150px;padding:20px 18px;border-right:1px solid var(--border)}
+  .tstep:last-child{border-right:none}
+  .tstep .n{font-family:'Inter',sans-serif;font-size:11px;color:var(--tsugi);letter-spacing:.16em;font-weight:600}
+  .tstep b{display:block;font-size:14.5px;color:var(--ink);margin:6px 0 6px}
+  .tstep span{font-size:12.5px;color:var(--cap);line-height:1.7}
+  @media(max-width:680px){.tstep{border-right:none;border-bottom:1px solid var(--border)}.tstep:last-child{border-bottom:none}}
+
+  /* referral CTA */
+  .refer{background:var(--ink);color:#EDEBE7}
+  .refer .label{color:var(--accent)}
+  .refer h2{color:#fff}
+  .refer .lead{color:#C9C6C0}
+  .refer-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+  .rcard{border:1px solid #383634;padding:24px 22px;background:#222120}
+  .rcard .rc-h{font-size:13px;letter-spacing:.06em;color:var(--accent);font-weight:600;margin-bottom:14px}
+  .rcard ul{list-style:none;display:grid;gap:10px}
+  .rcard li{position:relative;padding-left:20px;font-size:14px;color:#D8D5D0;line-height:1.7}
+  .rcard li::before{content:"→";position:absolute;left:0;top:0;color:var(--accent)}
+  .links{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:4px;font-size:14px;text-decoration:none;font-weight:500}
+  .btn-main{background:var(--accent);color:#1C1C1C}
+  .btn-line{background:transparent;border:1px solid #4a4845;color:#EDEBE7}
+  @media(max-width:680px){.refer-grid{grid-template-columns:1fr}}
+
+  /* pickup (AI研修) */
+  .pickup{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);padding:28px 30px;margin-top:8px;display:flex;gap:28px;align-items:center}
+  .pickup .pk-body{flex:1}
+  .pickup .pk-eyebrow{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--accent-dark);font-weight:600;margin-bottom:8px}
+  .pickup h3{font-size:18px;color:var(--ink);margin-bottom:10px;line-height:1.55}
+  .pickup p{font-size:14px;color:var(--text);margin-bottom:0}
+  .pickup .pk-num{color:var(--accent-dark);font-weight:700}
+  .pickup .pk-cta{flex:0 0 auto}
+  .pickup .pk-cta a{display:inline-flex;align-items:center;gap:7px;background:var(--ink);color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:13px 22px;border-radius:4px;white-space:nowrap;transition:background .2s}
+  .pickup .pk-cta a:hover{background:#000}
+  @media(max-width:680px){.pickup{flex-direction:column;align-items:stretch;gap:18px;padding:24px 22px}.pickup .pk-cta a{justify-content:center}}
+
+  /* contact form */
+  .contact .lead{max-width:560px}
+  .lead-form{background:var(--white);border:1px solid var(--border);padding:30px 30px 28px;margin-top:8px;max-width:680px}
+  .lf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+  .lf-field{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--ink)}
+  .lf-field.full{grid-column:1 / -1}
+  .lf-field i{font-style:normal;color:#fff;background:var(--accent);font-size:10px;padding:1px 7px;border-radius:3px;margin-left:7px;letter-spacing:.04em;vertical-align:middle}
+  .lf-field input,.lf-field select,.lf-field textarea{font-family:inherit;font-size:14.5px;color:var(--ink);background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:11px 13px;width:100%;line-height:1.6}
+  .lf-field input:focus,.lf-field select:focus,.lf-field textarea:focus{outline:none;border-color:var(--accent)}
+  .lf-field textarea{resize:vertical;min-height:70px}
+  .lf-submit{margin-top:20px;width:100%;background:var(--ink);color:#fff;border:none;border-radius:4px;padding:15px;font-family:inherit;font-size:15px;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:background .2s}
+  .lf-submit:hover{background:#000}
+  .lf-submit:disabled{opacity:.55;cursor:default}
+  .lf-note{font-size:12.5px;color:var(--cap);margin-top:14px;text-align:center}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .lf-done{text-align:center;padding:24px 0}
+  .lf-done .ic{width:54px;height:54px;border-radius:50%;background:var(--accent);color:#fff;font-size:26px;line-height:54px;margin:0 auto 14px}
+  .lf-done h3{color:var(--ink);font-size:18px;margin-bottom:8px}
+  @media(max-width:680px){.lf-grid{grid-template-columns:1fr}.lead-form{padding:24px 20px}}
+
+  footer{padding:40px 0 64px;text-align:center;color:var(--cap);font-size:12.5px}
+  footer .fb{font-family:'Inter',sans-serif;letter-spacing:.2em;color:var(--ink);font-size:14px;margin-bottom:8px}
+  .social{display:flex;justify-content:center;gap:12px;margin:18px 0 18px;flex-wrap:wrap}
+  .social a{color:var(--cap);text-decoration:none;font-size:13px;font-family:'Inter',sans-serif;letter-spacing:.04em;border:1px solid var(--border);padding:7px 18px;border-radius:40px;transition:color .2s,border-color .2s}
+  .social a:hover{color:var(--ink);border-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">BALENCER &nbsp;/&nbsp; TSUGI &amp; PARTNERS</span>
+    <nav class="navlinks" id="navlinks">
+      <a href="#balencer">バレンサー</a>
+      <a href="#ai-training">AI研修</a>
+      <a href="#tsugi">TSUGI＆PARTNERS</a>
+      <a href="#refer">ご紹介について</a>
+      <a href="#contact">ご相談</a>
+    </nav>
+    <button class="navtoggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="navlinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-photo">
+      <img src="img/abe-round.png" alt="阿部貴之">
+    </div>
+    <div class="hero-text">
+      <div class="tagline">for loved ones.</div>
+      <h1>阿部 貴之
+        <span class="role">株式会社バレンサー 代表<br><span style="font-size:13px;color:var(--cap)">（事業承継・M&amp;Aの 株式会社TSUGI＆PARTNERS も代表）</span></span>
+      </h1>
+      <p class="hero-catch"><span class="u">AI組織をつくる会社</span>です。</p>
+      <p class="hero-sub">経営者の右腕として、組織から会社を変え、AIまで自分たちで実装します。</p>
+      <div class="companies">
+        <span class="chip main"><b>バレンサー</b>　経営者の右腕・ブランディングAX</span>
+        <span class="chip sub">＋ <b>TSUGI＆PARTNERS</b>（事業承継・M&amp;A）</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROFILE -->
+<section class="block" id="profile">
+  <div class="wrap">
+    <div class="label">Profile</div>
+    <h2>採用と組織のプロとして、経営者の隣に立つ</h2>
+    <p class="lead">現リクルート、およびリクルートの代理店でHR領域に長く携わり、人材採用と組織風土改革を専門にしてきました。数えきれない企業の「人」と「組織」の現場に入ってきた経験が、いまの伴走の土台です。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">20<span class="u">年+</span></div><div class="l">採用・組織領域のキャリア</div></div>
+      <div class="stat"><div class="n">500<span class="u">社+</span></div><div class="l">これまで携わった企業・採用/組織プロジェクト累計</div></div>
+      <div class="stat"><div class="n">No.1</div><div class="l">著書 Amazon経営戦略カテゴリ</div></div>
+    </div>
+    <ul class="profile-list" style="margin-top:28px">
+      <li><span class="yr">リクルート</span><span>現リクルートおよびリクルート代理店で、HR領域（人材採用・組織風土改革）に長年従事</span></li>
+      <li><span class="yr">2018</span><span>ブランディングプランナーとして独立</span></li>
+      <li><span class="yr">2019.12</span><span>株式会社バレンサー設立</span></li>
+      <li><span class="yr">2025</span><span>株式会社TSUGI＆PARTNERS設立（事業承継・M&amp;A）</span></li>
+    </ul>
+    <div class="creds">
+      <div class="cred">
+        <div class="ck">BOOK</div>
+        <b>『社長のためのコンサル3.0』</b>
+        <p>Amazon経営戦略カテゴリ1位。レポートで終わらせず、町医者のように寄り添い実行までやり切る——2社すべての土台になっている考え方をまとめました。</p>
+      </div>
+      <div class="cred">
+        <div class="ck">SEMINAR</div>
+        <b>AI研修・ブランディング研修の登壇実績</b>
+        <p>AI実装やブランディング・組織づくりをテーマに、研修・講演の講師として登壇。学んだ知見は自社の現場で実証し、研修としても提供しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BALENCER -->
+<section class="block" id="balencer">
+  <div class="wrap">
+    <div class="label">Company 01 — BALENCER</div>
+    <h2>バレンサーは、経営者の右腕がつとまるブランディングAXカンパニー</h2>
+    <p class="lead">AXとは、AIを使って会社の戦い方そのものをつくり直すこと。DXが「仕事のやり方」をデジタルに変えることなら、AXは「会社の戦い方」を変えることだと考えています。</p>
+    <p>やることは創業時から一つです。<b>組織を変える（インナー）→ 魅せ方を変える（アウター）→ 戦い方を変える（事業）</b>。この順番で会社を変え、そのすべてにAIを通します。私たちはデザイン会社でもDX会社でもコンサル会社でもありません。本丸は、経営者の隣に立ち、組織の中から会社を変えること。デザインもDXもAIも、そのための手段です。</p>
+
+    <div class="flags">
+      <div class="flag">
+        <span class="no">FLAG 01</span>
+        <b>組織開発・MVV</b>
+        <span>理念（MVV）の策定からCI、人事制度づくり、現場への浸透まで一気通貫で伴走。対話で進めるこの領域は、システム開発会社やデザイン会社といったプロからもご相談いただいています。</span>
+      </div>
+      <div class="flag">
+        <span class="no">FLAG 02</span>
+        <b>AI実装</b>
+        <span>業務の仕組み化からAI組織づくりまで、実際にコードを書いて動かします。私たち自身が外部委託の多くをAIに任せて会社を回しており、その作り方ごとお渡しします。</span>
+      </div>
+    </div>
+    <div class="kakezan">この2枚の掛け算が、ブランディングAXです。</div>
+
+    <div class="fit">
+      <h3>こんな会社と相性がいい</h3>
+      <ul>
+        <li>売上1〜30億円・創業10年以上の地域オーナー企業</li>
+        <li>承継した2代目・3代目の社長</li>
+        <li>「課題はあるが、何から手をつけるか整理できていない」経営者</li>
+        <li>組織開発・ブランディングの相棒を探すシステム開発・制作会社（同業）</li>
+      </ul>
+    </div>
+    <div class="services">
+      <div class="sv-h">「MVVや組織開発」がイメージしにくい方へ — その先の「手が動く」ところまで、自分たちで作ります</div>
+      <div class="sv-tags">
+        <span>ホームページ制作</span>
+        <span>SNS運用</span>
+        <span>業務アプリ</span>
+        <span>ネイティブアプリ制作</span>
+        <span>システム開発</span>
+        <span>AI試作開発</span>
+        <span>広告運用</span>
+        <span>動画・EC など</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ピックアップ: AI研修 -->
+<section class="block" id="ai-training">
+  <div class="wrap">
+    <div class="label">Pick Up — AI実装研修 × リスキリング助成金</div>
+    <h2>「AIについていけていない」会社でも、ゼロから始められます</h2>
+    <p class="lead">私たちの会社では、まったくのゼロから一般社員がAIで業務アプリを作れるようになりました。同じやり方を、御社の現場に合わせた研修としてお渡しします。研修して終わりではなく、自社の業務が回り出すまで設計します。</p>
+    <div class="pickup">
+      <div class="pk-body">
+        <div class="pk-eyebrow">RESKILLING SUBSIDY</div>
+        <h3>リスキリング助成金で、<span class="pk-num">100万円規模の研修も実質10万円台から</span></h3>
+        <p>人材開発支援助成金（事業展開等リスキリング支援コース）の活用で、中小企業なら経費助成 最大75％＋賃金助成。標準コースの実質負担は約10〜25万円が目安です。</p>
+      </div>
+      <div class="pk-cta">
+        <a href="https://balencer.jp/ai-training/" target="_blank" rel="noopener">AI研修の詳細を見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 変遷と事例 -->
+<section class="block" id="cases">
+  <div class="wrap">
+    <div class="label">Transformation</div>
+    <h2>異なる業種で、「会社の変わり方」を伴走してきました</h2>
+    <p class="lead">組織開発・ブランディングからAI実装まで。関わり方を変えながら、業種の違う会社で成果を出してきました。<span style="color:var(--cap)">（社名は伏せた代表例）</span></p>
+    <p class="scroll-hint">← 横にスワイプ →</p>
+    <div class="cases">
+      <div class="case">
+        <div class="ind">製造業 / オーナー企業</div>
+        <div class="metric"><span class="pre">+</span>18<span class="u">pt</span></div>
+        <div class="mlabel">従業員満足度スコア 向上</div>
+        <b>理念で、現場の言葉を揃える</b>
+        <span>MVVを策定し半年かけて浸透。判断基準と採用で語る言葉が一本化した。</span>
+      </div>
+      <div class="case">
+        <div class="ind">サービス業 / 承継企業</div>
+        <div class="metric"><span class="pre">+</span>22<span class="u">%</span></div>
+        <div class="mlabel">定着率 向上（離職ほぼ半減）</div>
+        <b>理念を、人事制度まで接続</b>
+        <span>評価・等級など制度へ落とし込み、日々の運用に組み込んだ。</span>
+      </div>
+      <div class="case">
+        <div class="ind">建設業</div>
+        <div class="metric">2.4<span class="u">倍</span></div>
+        <div class="mlabel">採用応募数 増加</div>
+        <b>採用ブランディングで母集団を広げる</b>
+        <span>自社の魅力を言語化し直し、応募が集まる採用の入口をつくった。</span>
+      </div>
+      <div class="case">
+        <div class="ind">飲食業</div>
+        <div class="metric"><span class="pre">−</span>30<span class="u">%</span></div>
+        <div class="mlabel">業務工数 削減</div>
+        <b>業務DX・AI導入で手作業を減らす</b>
+        <span>アナログ中心の業務をデジタル化し、現場の負担を軽くした。</span>
+      </div>
+      <div class="case">
+        <div class="ind">制作 / システム会社（同業）</div>
+        <div class="metric"><span class="pre">+</span>25<span class="u">pt</span></div>
+        <div class="mlabel">eNPS（会社推奨度）向上</div>
+        <b>プロの組織開発の外部委託先として</b>
+        <span>同業プロの組織づくりに伴走し、社員の会社への愛着を高めた。</span>
+      </div>
+      <div class="case">
+        <div class="ind">中小企業 / 全社</div>
+        <div class="metric"><span class="pre">−</span>40<span class="u">%</span></div>
+        <div class="mlabel">外注コスト 削減</div>
+        <b>外注の多くをAIに置き換えて内製化</b>
+        <span>分析・制作・運用をAI組織化。自社が実証第一号となり仕組みごと提供。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TSUGI -->
+<section class="block tsugi-block" id="tsugi">
+  <div class="wrap">
+    <div class="label">Also — もう一つの取り組み</div>
+    <h2>事業承継・M&amp;Aをお考えの方へ｜TSUGI＆PARTNERS</h2>
+    <p class="lead">バレンサーの現場から生まれた、事業承継・M&amp;Aの伴走会社です。企業ドック診断 → 磨き上げ → M&amp;A仲介・コンサル → PMI まで一貫して支援します。関心がある方は、こちらもご覧ください。</p>
+    <p style="margin-top:6px;font-size:14px"><a href="https://tsugiandpartners.jp/" target="_blank" rel="noopener" style="font-weight:600">TSUGI＆PARTNERS 公式サイトを見る →</a></p>
+  </div>
+</section>
+
+<!-- 紹介者向け CTA -->
+<section class="block refer" id="refer">
+  <div class="wrap">
+    <div class="label">For those who connect us</div>
+    <h2>こんな経営者がいらっしゃいましたら、ご紹介ください</h2>
+    <p class="lead">どちらの会社が合いそうか、下の目安をご参考にしていただけますと幸いです。まずは一度、お話をうかがうところから始めます。</p>
+    <div class="refer-grid">
+      <div class="rcard">
+        <div class="rc-h">バレンサーへ</div>
+        <ul>
+          <li>理念やブランドを作り直したい・浸透させたい</li>
+          <li>組織・採用・社内の言葉がバラバラで揃えたい</li>
+          <li>AIを業務に入れたいが、何から手をつけるか分からない</li>
+          <li>戦略から実行まで、丸ごと任せられる右腕がほしい</li>
+        </ul>
+      </div>
+      <div class="rcard">
+        <div class="rc-h">TSUGI＆PARTNERSへ</div>
+        <ul>
+          <li>事業承継・M&amp;Aを考え始めている</li>
+          <li>後継者が不在、または社内に承継の準備がない</li>
+          <li>自社の今の価値・売れる状態を客観的に知りたい</li>
+          <li>想いや文化を残したまま、次へつなぎたい</li>
+        </ul>
+      </div>
+    </div>
+    <div class="links">
+      <a class="btn btn-main" href="https://balencer.jp/" target="_blank" rel="noopener">バレンサー 公式サイト</a>
+      <a class="btn btn-line" href="https://tsugiandpartners.jp/" target="_blank" rel="noopener">TSUGI＆PARTNERS 公式サイト</a>
+    </div>
+  </div>
+</section>
+
+<!-- 相談フォーム -->
+<section class="block contact" id="contact">
+  <div class="wrap">
+    <div class="label">Contact</div>
+    <h2>ご相談・お問い合わせ</h2>
+    <p class="lead">ご自身のご相談でも、お知り合いのご紹介でも構いません。下記からお気軽にお寄せください。いただいた内容を確認し、1〜2営業日でご返信します。</p>
+    <form class="lead-form" id="leadForm" autocomplete="on">
+      <div class="lf-grid">
+        <label class="lf-field"><span>お名前<i>必須</i></span><input type="text" name="お名前" required></label>
+        <label class="lf-field"><span>会社名</span><input type="text" name="会社名"></label>
+        <label class="lf-field"><span>メールアドレス<i>必須</i></span><input type="email" name="メール" required placeholder="info@your-company.co.jp"></label>
+        <label class="lf-field"><span>電話番号</span><input type="tel" name="電話番号"></label>
+        <label class="lf-field full"><span>ご相談先</span>
+          <select name="ご相談先">
+            <option>バレンサー（組織・ブランド・AI実装）</option>
+            <option>AI研修（リスキリング助成金）</option>
+            <option>TSUGI＆PARTNERS（事業承継・M&amp;A）</option>
+            <option>まだ決まっていない・どちらも相談したい</option>
+          </select>
+        </label>
+        <label class="lf-field full"><span>ご相談内容</span><textarea name="ご相談内容" rows="3" placeholder="例：理念やブランドを整理したい／事業承継を考え始めている　など"></textarea></label>
+      </div>
+      <input type="text" name="_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="source" value="イベント紹介ページ">
+      <button type="submit" class="lf-submit">送信する</button>
+      <p class="lf-note" id="lfNote">いただいた内容はバレンサーで確認し、1〜2営業日でご返信します。</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">BALENCER &nbsp;/&nbsp; TSUGI &amp; PARTNERS</div>
+  <div class="social">
+    <a href="https://x.com/tabebalencer" target="_blank" rel="noopener">X</a>
+    <a href="https://www.instagram.com/abetakasan_mark/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/takayuki.abe.77964" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://note.com/abefis" target="_blank" rel="noopener">note</a>
+  </div>
+  <div>大阪市北区梅田1-11-4 大阪駅前第4ビル　／　代表 阿部 貴之</div>
+</footer>
+
+<script>
+/* モバイル ハンバーガーメニュー */
+(function(){
+  var btn=document.getElementById('navToggle'), nav=document.getElementById('navlinks');
+  if(!btn||!nav) return;
+  function setOpen(open){
+    btn.classList.toggle('open',open);
+    nav.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  }
+  btn.addEventListener('click',function(){ setOpen(!btn.classList.contains('open')); });
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setOpen(false); }); });
+})();
+</script>
+
+<script>
+(function(){
+  var form=document.getElementById('leadForm');
+  if(!form) return;
+  var note=document.getElementById('lfNote');
+  var ENDPOINT='https://balencer.jp/intro-lead.php';
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.querySelector('[name="_hp"]').value){ return; } // bot
+    var fd=new FormData(form), payload={};
+    fd.forEach(function(v,k){ if(k!=='_hp') payload[k]=v; });
+    var btn=form.querySelector('.lf-submit');
+    btn.disabled=true; btn.textContent='送信中…';
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
+      .then(function(res){
+        if(res.ok && res.j.ok){
+          form.innerHTML='<div class="lf-done"><div class="ic">✓</div><h3>送信しました</h3><p>ありがとうございます。1〜2営業日でご返信します。</p></div>';
+        }else{
+          btn.disabled=false; btn.textContent='送信する';
+          note.style.color='#C0392B';
+          note.innerHTML=(res.j&&res.j.error)?res.j.error:'送信に失敗しました。お手数ですが <a href="mailto:info@balencer.jp">info@balencer.jp</a> までご連絡ください。';
+        }
+      })
+      .catch(function(){
+        btn.disabled=false; btn.textContent='送信する';
+        note.style.color='#C0392B';
+        note.innerHTML='送信できませんでした。<a href="mailto:info@balencer.jp" style="color:var(--accent-dark)">info@balencer.jp</a> までご連絡ください。';
+      });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -6,6 +6,7 @@
 - **キーパーソン**: 村山 久美子さん（代表取締役社長）
 
 ## リンク集
+- 6月商談の詳細メモ（資料一覧・見積方針・再デプロイ手順） → [_案件メモ_2026-06_村山様商談.md](_案件メモ_2026-06_村山様商談.md)
 - 会社調査 → NotebookLM「調査: 株式会社1st PLACE」: https://notebooklm.google.com/notebook/c46c0965-cb99-4b92-a5de-8cb9c6108c18
 - 案件詳細 → memory「1st PLACE印税分配案件」
 - 議事録 → Notion議事録DB（1stPLACEタグ／村山様）: https://app.notion.com/p/balencer/21753269fc5e804a84cedc7916059edb

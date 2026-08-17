@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>問い合わせ自動対応（サンプル画面）｜BALENCER mock</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F1626;--ink2:#3C475C;--muted:#7A879C;--line:#E7EBF1;--line2:#D6DCE6;--blue:#2563EB;--cyan:#22B8E6;--soft:#EEF3FF;--bg:#F4F7FB;--neon:#E6FF2F;--good:#0E7A5F;--goodbg:#E6F4EF;--warn:#B5460F;--warnbg:#FBEEE6;--panel:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);background:var(--bg);-webkit-font-smoothing:antialiased}
+.app{max-width:1120px;margin:0 auto;padding:22px 22px 56px}
+.mockflag{background:var(--warnbg);border:1px solid #f0d2bf;color:var(--warn);border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:700;margin-bottom:16px}
+.mockflag b{color:var(--warn)}
+.bar{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand .mk{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px}
+.brand .nm{font-size:17px;font-weight:900;color:var(--ink);line-height:1.2}
+.brand .nm small{display:block;font-size:11px;font-weight:600;color:var(--muted);font-family:'JetBrains Mono'}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
+.kpi .n{font-family:'Poppins';font-size:26px;font-weight:800;color:var(--ink);line-height:1}
+.kpi .n small{font-size:13px;color:var(--muted);font-weight:700}
+.kpi .n.bl{color:var(--blue)}.kpi .n.gd{color:var(--good)}.kpi .n.wn{color:var(--warn)}
+.kpi .t{font-size:12px;color:var(--ink2);margin-top:7px}
+.grid{display:grid;grid-template-columns:380px 1fr;gap:16px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.panel h3{font-size:14px;font-weight:900;color:var(--ink);margin-bottom:14px}
+.mail{border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:10px;cursor:default}
+.mail:last-child{margin-bottom:0}
+.mail.sel{border:2px solid var(--blue);background:#fff;box-shadow:0 8px 22px rgba(37,99,235,.08)}
+.mail .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+.mail .from{font-size:13px;font-weight:800;color:var(--ink)}
+.cat{font-family:'JetBrains Mono';font-size:10px;font-weight:700;border-radius:5px;padding:2px 8px;color:#fff;white-space:nowrap}
+.cat.estimate{background:#2563EB}.cat.recruit{background:#0E7A5F}.cat.press{background:#8a5a00}.cat.invoice{background:#7c3aed}.cat.other{background:#7A879C}
+.mail .subj{font-size:13px;color:var(--ink2);line-height:1.4}
+.mail .pre{font-size:11.5px;color:var(--muted);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mail .conf{font-size:10.5px;color:var(--good);font-weight:700;margin-top:6px}
+/* detail */
+.dhead{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}
+.dhead .s{font-size:17px;font-weight:900;color:var(--ink)}
+.dhead .m{font-size:12px;color:var(--muted);margin-top:5px}
+.body-txt{font-size:13.5px;color:var(--ink2);line-height:1.85;background:var(--bg);border-radius:10px;padding:16px 18px}
+.routed{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.chip{font-size:11.5px;font-weight:700;background:var(--soft);color:var(--blue);border-radius:999px;padding:6px 13px}
+.chip b{color:var(--ink)}
+.draft{border:1px solid var(--line2);border-radius:12px;margin-top:6px;overflow:hidden}
+.draft .dh{background:var(--ink);color:#fff;padding:10px 16px;font-size:12.5px;font-weight:800;display:flex;align-items:center;gap:8px}
+.draft .dh .ai{background:var(--neon);color:var(--ink);font-size:10px;font-weight:800;border-radius:5px;padding:2px 7px}
+.draft .dt{padding:16px 18px;font-size:13px;color:var(--ink2);line-height:1.9}
+.actions{display:flex;gap:9px;margin-top:14px}
+.btn{font-size:12px;font-weight:800;border-radius:9px;padding:9px 16px;border:1px solid var(--line2);color:var(--ink2);background:#fff}
+.btn.pri{background:var(--blue);color:#fff;border-color:var(--blue)}
+.foot{margin-top:22px;text-align:center;font-size:11px;color:var(--muted);line-height:1.6}
+.foot .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:13px}
+</style></head>
+<body>
+<div class="app">
+  <div class="mockflag">⚠ <b>サンプル画面（モック）です。</b>＝こういうイメージで作れます、というデモ。差出人・本文はすべて架空です。</div>
+  <div class="bar">
+    <div class="brand"><div class="mk">✉</div><div class="nm">問い合わせ自動対応<small>inbox assistant ・ by BALENCER</small></div></div>
+    <div style="font-size:13px;color:var(--ink2)">受信箱：<b style="color:var(--ink)">info@</b> を自動で仕分け・下書き</div>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="n">28<small> 件</small></div><div class="t">今日の受信</div></div>
+    <div class="kpi"><div class="n bl">26<small> 件</small></div><div class="t">自動で仕分け済</div></div>
+    <div class="kpi"><div class="n gd">21<small> 件</small></div><div class="t">返信の下書き生成済</div></div>
+    <div class="kpi"><div class="n wn">3<small> 件</small></div><div class="t">要対応（人の判断が必要）</div></div>
+  </div>
+  <div class="grid">
+    <div class="panel">
+      <h3>受信箱（自動で仕分け済）</h3>
+      <div class="mail sel">
+        <div class="top"><span class="from">スターライト音楽出版</span><span class="cat estimate">見積依頼</span></div>
+        <div class="subj">楽曲使用に関するお見積りのお願い</div>
+        <div class="pre">お世話になっております。貴社管理楽曲の使用について…</div>
+        <div class="conf">● 確信度 96% ・ 担当：制作 へ自動振り分け</div>
+      </div>
+      <div class="mail">
+        <div class="top"><span class="from">個人（採用応募）</span><span class="cat recruit">採用</span></div>
+        <div class="subj">アシスタントディレクター職への応募</div>
+        <div class="pre">はじめまして。求人を拝見しご連絡しました…</div>
+        <div class="conf">● 確信度 93% ・ 担当：人事 へ</div>
+      </div>
+      <div class="mail">
+        <div class="top"><span class="from">月刊ミュージックゲート編集部</span><span class="cat press">取材</span></div>
+        <div class="subj">所属アーティスト様への取材依頼</div>
+        <div class="pre">突然のご連絡失礼します。特集記事の企画で…</div>
+        <div class="conf">● 確信度 90% ・ 担当：広報 へ</div>
+      </div>
+      <div class="mail">
+        <div class="top"><span class="from">クラウド会計サービス</span><span class="cat invoice">請求</span></div>
+        <div class="subj">2026年6月分ご利用明細</div>
+        <div class="pre">いつもご利用ありがとうございます…</div>
+        <div class="conf">● 確信度 98% ・ 担当：経理 へ</div>
+      </div>
+      <div class="mail">
+        <div class="top"><span class="from">不明な送信元</span><span class="cat other">要確認</span></div>
+        <div class="subj">（件名なし）ご相談です</div>
+        <div class="pre">内容が判別しにくいため人の確認へ回送…</div>
+        <div class="conf" style="color:var(--warn)">▲ 確信度 41% ・ 人の判断へ</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="dhead">
+        <div class="s">楽曲使用に関するお見積りのお願い</div>
+        <div class="m">スターライト音楽出版 ＜license@example.com＞ ・ 本日 10:24</div>
+      </div>
+      <div class="body-txt">お世話になっております。スターライト音楽出版の山田と申します。<br>貴社が管理されている楽曲「Midnight Bloom」を、当社制作のCM映像（放映3ヶ月・Web併用）で使用したく、使用料のお見積りをいただけますでしょうか。<br>ご多用のところ恐れ入りますが、よろしくお願いいたします。</div>
+      <div class="routed">
+        <span class="chip">仕分け：<b>見積依頼</b></span>
+        <span class="chip">振り分け先：<b>制作チーム</b></span>
+        <span class="chip">楽曲：<b>Midnight Bloom</b> を自動特定</span>
+        <span class="chip">対応期限：<b>3営業日</b></span>
+      </div>
+      <div class="draft">
+        <div class="dh">返信の下書き <span class="ai">AI生成</span> ・ 送信前に人が確認</div>
+        <div class="dt">スターライト音楽出版 山田様<br><br>お問い合わせありがとうございます。バレンサー○○でございます。<br>「Midnight Bloom」のCM使用（放映3ヶ月・Web併用）につきまして、使用範囲を確認のうえお見積りいたします。下記2点をご教示ください。<br>　・放映エリア（全国／地域）<br>　・Web使用の想定期間と媒体<br>折り返し、概算を3営業日以内にお送りします。引き続きよろしくお願いいたします。</div>
+      </div>
+      <div class="actions">
+        <span class="btn pri">この下書きで返信</span>
+        <span class="btn">手直しして返信</span>
+        <span class="btn">制作チームに転送</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="bn">BALENCER</div>
+    <p>問い合わせ自動対応 サンプル画面（モック）｜ 仕分けのカテゴリ・振り分け先・返信トーンは御社の実際の運用に合わせて設計します。送信は必ず人の確認を挟む設計が標準です。</p>
+  </div>
+</div>
+</body></html>

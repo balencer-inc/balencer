@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>バックオフィスDX化・AI研修｜1st PLACE 村山様</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111726;--ink2:#3C475C;--muted:#7A879C;--line:#E7EBF1;--line2:#D6DCE6;
+  --blue:#2563EB;--cyan:#22B8E6;--soft:#EEF3FF;--bg:#F7F9FC;--neon:#E6FF2F;
+  --good:#0E7A5F;--goodbg:#E6F4EF;--warn:#B5460F;--warnbg:#FBEEE6;--amber:#8a6d00;--amberbg:#FBF6E3;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;color:var(--ink2);background:var(--bg);line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 100px}
+.topbar{height:8px;background:linear-gradient(90deg,var(--cyan),var(--blue))}
+
+header{background:#fff;border-radius:0 0 22px 22px;padding:42px 50px 38px;box-shadow:0 2px 10px rgba(17,23,38,.04)}
+.hrow{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
+.kick{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+header .logo{height:22px;opacity:.9}
+header h1{font-size:33px;font-weight:900;color:var(--ink);line-height:1.4;letter-spacing:.01em}
+header h1 .bl{color:var(--blue)}
+.meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:700}
+
+section{background:#fff;border-radius:18px;padding:38px 50px;margin-top:22px;box-shadow:0 2px 8px rgba(17,23,38,.04)}
+.sec-no{font-family:'Poppins';font-size:14px;font-weight:800;color:var(--blue)}
+h2{font-size:24px;font-weight:900;color:var(--ink);line-height:1.45;margin:6px 0 0}
+h2 .bl{color:var(--blue)}
+.note-lead{font-size:15.5px;color:var(--ink2);margin-top:14px;max-width:780px}
+.note-lead b{color:var(--ink)}
+h3{font-size:17px;font-weight:900;color:var(--ink);margin:26px 0 10px}
+p{font-size:15px;color:var(--ink2)}p+p{margin-top:12px}
+strong{color:var(--ink);font-weight:700}
+
+/* theme groups */
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+@media(max-width:680px){.groups{grid-template-columns:1fr}}
+.grp{border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:var(--bg)}
+.grp.main{background:#fff;border:2px solid var(--blue);box-shadow:0 14px 32px rgba(37,99,235,.08)}
+.grp .gt{font-size:16px;font-weight:900;color:var(--ink)}
+.grp .gs{font-size:12.5px;color:var(--muted);margin:3px 0 14px}
+.grp ul{list-style:none}
+.grp li{font-size:14.5px;color:var(--ink2);line-height:1.5;margin-bottom:13px;padding-left:22px;position:relative}
+.grp li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--blue)}
+.grp li b{color:var(--ink);font-weight:700}
+.grp li small{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+.ex{display:inline-block;margin-top:5px;font-size:11.5px;font-weight:700;color:var(--blue);background:var(--soft);border-radius:6px;padding:3px 9px;text-decoration:none}
+.excl{margin-top:16px;font-size:13px;color:var(--muted);background:var(--bg);border:1px dashed var(--line2);border-radius:10px;padding:12px 18px}
+
+/* option cards */
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+@media(max-width:680px){.opts{grid-template-columns:1fr}}
+.opt{border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:#fff}
+.opt .on{font-family:'Poppins';font-size:13px;font-weight:800;color:var(--blue)}
+.opt h4{font-size:17px;font-weight:900;color:var(--ink);margin:5px 0 8px;line-height:1.4}
+.opt p{font-size:13.5px;color:var(--ink2);line-height:1.65}
+.opt .fit{margin-top:13px;font-size:12px;color:var(--ink);background:var(--soft);border-radius:8px;padding:7px 12px;font-weight:700}
+.opt .fit span{color:var(--blue)}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin-top:22px;font-size:14px}
+th{background:var(--ink);color:#fff;text-align:left;padding:12px 16px;font-weight:500;font-size:13px}
+td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+td b{color:var(--ink)}
+td .way{font-family:'Poppins';font-weight:800;font-size:12px;color:#fff;background:var(--blue);border-radius:6px;padding:3px 9px;white-space:nowrap}
+td .way.g{background:var(--good)}td .way.a{background:var(--amber)}td .way.m{background:var(--muted)}
+tr.dim td{color:var(--muted)}
+
+/* pipeline */
+.pipe{display:flex;align-items:stretch;gap:0;margin-top:24px;flex-wrap:wrap}
+.pstep{flex:1;min-width:150px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:18px}
+.pstep .pn{font-family:'Poppins';font-size:13px;font-weight:800;color:var(--blue)}
+.pstep h4{font-size:14.5px;font-weight:900;color:var(--ink);margin:6px 0 5px;line-height:1.4}
+.pstep p{font-size:12.5px;color:var(--ink2);line-height:1.55}
+.parrow{display:flex;align-items:center;color:var(--line2);font-weight:900;padding:0 6px;font-size:18px}
+@media(max-width:680px){.parrow{display:none}.pstep{min-width:100%;margin-bottom:10px}}
+
+/* mock shots */
+.shot{margin-top:22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg)}
+.shot .sh{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;border-bottom:1px solid var(--line);background:#fff}
+.shot .sh .sl{font-size:13px;font-weight:900;color:var(--ink)}
+.shot .sh .st{font-size:11px;font-weight:700;color:var(--warn);background:var(--warnbg);border-radius:6px;padding:3px 9px}
+.shot img{display:block;width:100%;height:auto}
+.shot .cap{font-size:12px;color:var(--muted);padding:11px 18px;background:#fff;border-top:1px solid var(--line)}
+.shot .cap a{color:var(--blue);font-weight:700;text-decoration:none}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+@media(max-width:680px){.gal{grid-template-columns:1fr}}
+.gal .shot{margin-top:0}
+.refs{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.refs a{font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:8px 14px;text-decoration:none}
+.refs a b{color:var(--good)}
+
+/* callouts */
+.callout{border-radius:12px;padding:16px 20px;margin-top:20px;font-size:14px;color:var(--ink2);border-left:4px solid var(--blue);background:var(--soft)}
+.callout b{color:var(--blue)}
+.callout.amber{background:var(--amberbg);border-left-color:var(--amber)}.callout.amber b{color:var(--amber)}
+
+/* training facts */
+.lite{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;margin-top:22px;align-items:start}
+@media(max-width:680px){.lite{grid-template-columns:1fr}}
+.lite .facts{border:1px solid var(--line);border-radius:14px;padding:6px 22px}
+.lite .facts .row{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;padding:11px 0;border-bottom:1px solid var(--line)}
+.lite .facts .row:last-child{border-bottom:none}
+.lite .facts .row b{color:var(--ink)}
+.lite .facts .row span{color:var(--ink2);text-align:right}
+
+footer{text-align:center;margin-top:30px;padding:30px;color:var(--muted);font-size:12.5px;line-height:1.7}
+footer .bn{font-family:'Poppins';font-weight:800;color:var(--ink);font-size:15px;letter-spacing:.04em}
+.disc{max-width:760px;margin:14px auto 0;font-size:11px;color:var(--muted)}
+</style></head>
+<body>
+<div class="topbar"></div>
+<div class="wrap">
+
+<header>
+  <div class="hrow">
+    <span class="kick">For 1st PLACE</span>
+    <img class="logo" src="../../soeru-lp/balencer-logo.png" alt="BALENCER">
+  </div>
+  <h1>バックオフィス<span class="bl">DX化</span>・<span class="bl">AI研修</span></h1>
+  <div class="meta">
+    <span>宛先　<b>1st PLACE株式会社　村山久美子 様</b></span>
+    <span>作成　<b>株式会社バレンサー</b></span>
+    <span>日付　<b>2026年6月22日</b></span>
+  </div>
+</header>
+
+<!-- 01 要件整理 -->
+<section id="themes">
+  <span class="sec-no">01</span>
+  <h2>要件整理</h2>
+  <p class="note-lead">5つのご相談と他社例。</p>
+  <div class="groups">
+    <div class="grp main">
+      <div class="gt">A. 仕組みにして自動で回したい</div>
+      <div class="gs">人手でやっている処理を、ルールで動く形に</div>
+      <ul>
+        <li><b>印税分配の仕組み化</b><small>複数社・複数フォームの明細を共通化し、料率・按分で自動計算</small><a class="ex" href="mock-royalty.html">サンプル：こんな画面を簡易モックで作ってみました →</a></li>
+        <li><b>各業務のワークフロー仕組み化・マニュアル化</b><small>属人化した作業を、誰でも回せる形に</small><a class="ex" href="mock-workflow.html">こういう方法もあります：Claudeスキル×Notion →</a></li>
+        <li><b>問い合わせメール対応</b><small>仕分けから返信下書きまで</small><a class="ex" href="mock-email.html">サンプル：問い合わせ自動対応の簡易モック →</a></li>
+      </ul>
+    </div>
+    <div class="grp">
+      <div class="gt">B. 引っ越し・整理</div>
+      <div class="gs">現状の用途を確認し、代替できるかを検討</div>
+      <ul>
+        <li><b>サイボウズ移管</b><small>現状の用途は何か？確認して機能確認し代替できるか検討</small></li>
+        <li><b>Eight（名刺管理）移管</b><small>現状の用途は何か？確認して機能確認し代替できるか検討</small></li>
+      </ul>
+      <div class="excl">C. 対象外 ―― 法務はすでに別のAIで運用中とうかがったため</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ４つの方法について -->
+<section id="options">
+  <span class="sec-no">02</span>
+  <h2>４つの方法について</h2>
+  <div class="opts">
+    <div class="opt">
+      <div class="on">①</div>
+      <h4>受託で作ってお渡し</h4>
+      <p>私たちが仕組みを設計・構築してお渡しし、その後の保守まで。</p>
+    </div>
+    <div class="opt">
+      <div class="on">②</div>
+      <h4>研修で御社が自走</h4>
+      <p>チームがClaudeで自分の業務を仕組み化できるようになります。厚労省のリスキリング助成金が使え、費用負担を下げられます。ご希望なら、次回に具体的な研修プランをお持ちします。</p>
+      <div class="fit">向いている：<span>ワークフロー仕組み化・メール対応</span></div>
+    </div>
+    <div class="opt">
+      <div class="on">③</div>
+      <h4>AI導入補助金を活用する場合</h4>
+      <p>当社の経営分析システム「ミタテ」はAI導入補助金の対象として採択済み。経営の数字を見える化したいニーズがあれば、御社用に機能を拡張し、補助金を使って導入できます。要件に合わないものを適用はできないためこのようなニーズがある場合のみ</p>
+      <div class="fit">向いている：<span>経営の数字の見える化（ご要望があれば）</span></div>
+    </div>
+    <div class="opt">
+      <div class="on">④</div>
+      <h4>引っ越し支援（スポット）</h4>
+      <p>ツールの移行とデータ整理。AIが主役の作業ではないので、本命が動き出してからで十分間に合います。</p>
+      <div class="fit">向いている：<span>サイボウズ／Eight移管</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 テーマごとの、おすすめの進め方 -->
+<section id="map">
+  <span class="sec-no">03</span>
+  <h2>テーマごと<span class="bl">進め方</span></h2>
+  <table>
+    <thead><tr><th>テーマ</th><th style="width:150px">おすすめの道</th><th>ひとこと</th></tr></thead>
+    <tbody>
+      <tr><td><b>印税分配の仕組み化</b></td><td><span class="way">① 受託？</span></td><td>作ってお渡しも視野に。まずサンプルを拝見するところから</td></tr>
+      <tr><td><b>ワークフロー仕組み化・マニュアル化</b></td><td><span class="way g">② 研修</span></td><td>御社が自分たちで回せるように。助成金が使える。ご希望なら次回に詳細プラン（05）</td></tr>
+      <tr><td><b>問い合わせメール対応</b></td><td><span class="way g">② 研修</span> → 重ければ①</td><td>まず自走を体験。負荷が大きければ受託で巻き取り</td></tr>
+      <tr><td><b>経営の数字の見える化</b><br><span style="color:var(--muted);font-size:12px">※ご要望があれば</span></td><td><span class="way a">③ ミタテ</span></td><td>補助金対象の既存ツールを御社用に拡張して導入（06）</td></tr>
+      <tr><td><b>サイボウズ／Eight移管</b></td><td><span class="way m">④ 引っ越し</span></td><td>急ぎでなければ本命のあとで。Eightは実現性の確認が先</td></tr>
+      <tr class="dim"><td>法務</td><td>—</td><td>別のAIで運用中のため対象外</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 04 まず何をするか -->
+<section id="royalty">
+  <span class="sec-no">04</span>
+  <h2>まず何をするか</h2>
+  <p class="note-lead">印税分配の方から現状確認させていただきたいです。</p>
+  <div class="pipe">
+    <div class="pstep"><div class="pn">01</div><h4>明細を読み取る</h4><p>各社・各フォーマットのステートメント（PDF・Excel）を取り込む</p></div>
+    <div class="parrow">›</div>
+    <div class="pstep"><div class="pn">02</div><h4>共通の形に整える</h4><p>バラバラの項目を、ひとつの共通明細にそろえる</p></div>
+    <div class="parrow">›</div>
+    <div class="pstep"><div class="pn">03</div><h4>ルールで分配</h4><p>権利者・楽曲・料率・按分の条件で自動計算する</p></div>
+    <div class="parrow">›</div>
+    <div class="pstep"><div class="pn">04</div><h4>根拠つきで出す</h4><p>計算の根拠を追えるかたちで支払通知書を発行する</p></div>
+  </div>
+  <div class="shot">
+    <div class="sh"><span class="sl">印税分配エンジン｜サンプル画面</span><span class="st">架空データ・モック</span></div>
+    <img src="img/mock-royalty.png" alt="印税分配エンジンのサンプル画面">
+    <div class="cap">取込→正規化→自動分配→支払通知書まで。要確認の名寄せも可視化します。 <a href="mock-royalty.html">▸ 実際の画面を開く</a></div>
+  </div>
+  <p style="margin-top:20px"><strong>業務の流れを見直してDX化した事例もあります。</strong>NAILIT様では、業務フローを一つずつ確認し、仕組み化・DX化を進めました。AIに限らず、業務全体を整理して変える進め方です。詳しくは<a href="../../proposals/ai-training-2026/case-study.html" style="color:var(--blue);font-weight:700;text-decoration:none">事例資料</a>でご覧いただけます（社名・金額は伏せています）。</p>
+  <div class="callout"><b>最短で確度を出すために。</b>実際のステートメントを2〜3種お見せいただければ、どこまで自動化できて、どこが難しいかをすぐに判定できます。金額は範囲が定まってからのお見積もりにしたいので、まずはサンプルからご一緒できればと思います。</div>
+
+  <h3>ほかのテーマのイメージ</h3>
+  <div class="gal">
+    <div class="shot">
+      <div class="sh"><span class="sl">問い合わせ自動対応</span><span class="st">サンプル</span></div>
+      <img src="img/mock-email.png" alt="問い合わせ自動対応のサンプル画面">
+      <div class="cap">自動で仕分け→担当へ→返信下書き。送信前は人が確認。 <a href="mock-email.html">▸ 開く</a></div>
+    </div>
+    <div class="shot">
+      <div class="sh"><span class="sl">業務を仕組み化</span><span class="st">イメージ図</span></div>
+      <img src="img/mock-workflow.png" alt="業務を仕組み化のイメージ図">
+      <div class="cap">Claudeスキル＋Notionで、誰でも回せる形に。 <a href="mock-workflow.html">▸ 開く</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 その他 研修はご希望があれば設計可能 -->
+<section id="training">
+  <span class="sec-no">05</span>
+  <h2>その他　研修は<span class="bl">ご希望があれば設計可能</span></h2>
+  <p class="note-lead"><b>具体的な研修プラン（カリキュラム・見積・助成金の段取り）もご用意可能。</b></p>
+  <div class="lite">
+    <div>
+      <p>ポイントは制度の選び方です。研修への補助は <strong>AI導入補助金（経産省）ではなく、リスキリング助成金（厚労省）</strong> が正しい受け皿になります。申請するのは御社で、申請書の作成・提出代行は社会保険労務士の専門業務です。私たちは研修の中身と、申請に添える書類を用意し、社労士との連携の段取りまでお手伝いさせていただきます。</p>
+    </div>
+    <div class="facts">
+      <div class="row"><b>受け皿の制度</b><span>リスキリング助成金<br>（厚労省）</span></div>
+      <div class="row"><b>補助の目安</b><span>経費 最大75％<br>＋賃金 1,000円/h</span></div>
+      <div class="row"><b>申請の主体</b><span>御社（社労士が代行）</span></div>
+      <div class="row"><b>私たちの役割</b><span>研修と添付書類</span></div>
+      <div class="row"><b>使える期限</b><span>2026年度まで</span></div>
+    </div>
+  </div>
+  <div class="callout"><b>ご希望のときだけ、次の一歩。</b>研修を進めたいとなれば、御社の人数・業務に合わせた詳細プランと見積、助成金の段取りを次回お持ちします。今日は「やる/やらない/保留」を決めていただくだけで結構です。</div>
+</section>
+
+<!-- 06 経営の数字を見たいならミタテ -->
+<section id="mitate">
+  <span class="sec-no">06</span>
+  <h2><span class="bl">AI導入補助金</span>採択済みITツール</h2>
+  <p class="note-lead">これはご要望があればの選択肢です。当社は「ミタテ」という <strong>経営分析システム</strong> を持っており、<strong>AI導入補助金の対象として採択済み</strong> です（ソフト・導入支援・保守まで）。</p>
+  <p>もし、いただいたテーマの先に「会社の数字をリアルタイムで見える化したい」「KPIや資金繰りを一目で追いたい」というニーズがあれば、ミタテを御社用に拡張し、<strong>補助金を使って導入</strong> できます。要件が補助金の枠で叶うなら、こちらで受けるのも十分にアリ。</p>
+  <div class="refs" style="margin-top:18px"><a href="https://balencer.jp/keiei-demo/" target="_blank"><b>デモ</b>　ミタテ 経営分析（balencer.jp/keiei-demo/）</a></div>
+</section>
+
+<footer>
+  <div class="bn">BALENCER</div>
+  <p>株式会社バレンサー　│　info@balencer.jp　│　balencer.jp</p>
+  <p class="disc">本資料の数値は2026年6月時点の調査・公開情報にもとづく参考値です。助成金・補助金の最終的な要件や支給・採択の可否は、管轄の労働局および各事務局の判断によります。申請手続きは社会保険労務士など各専門家にご相談ください。サンプル画面の数値・社名・人物はすべて架空です。</p>
+</footer>
+
+</div>
+</body></html>

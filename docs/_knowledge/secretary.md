@@ -125,6 +125,6 @@
 
 **安全策**: 着手前に `before-branch-cleanup-20260817` タグを打ってpush。問題があればここへ戻せる。マージは全て `--no-ff`。
 
-**残った宿題**: `docs/proposals/hokuroku/` に北麓の定例メモ2件（6/18・8/24）があるが、現行ルールでは `docs/clients/hokuroku/03_議事録/` が正。移動は未実施（リンク切れ確認が要るため別途）。
+**北麓ファイルの置き場所を是正（同日実施）**: `docs/proposals/hokuroku/` にあった2件を性質で分けて顧客フォルダへ移動。6/18定例メモ→`docs/clients/hokuroku/03_議事録/`、8/24営業関与の座組検討（提案ドラフト）→`docs/clients/hokuroku/01_提案/`。ファイル名は同フォルダの既存規則（`YYYY-MM-DD_名前.md`）に合わせ、README の作業履歴と「進行中」節にも反映。**顧客の仕事は必ず `docs/clients/<スラッグ>/` 配下に置く**（proposals/ は既存の案件フォルダのみ）。
 
 **同日の別件**: AIクローラー制御の手順書を作成（`docs/_knowledge/cloudflare-ai-crawler.md`）。robots.txtでの段階1は未実施・阿部さん作業待ち。

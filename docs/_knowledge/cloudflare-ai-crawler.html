@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIクローラー制御 — balencer.jp 実装手順と営業展開</title>
+<style>
+:root{--ink:#1A1A1A;--sub:#5B6068;--line:#E4E6EA;--cobalt:#3158D4;--bg:#FFFFFF;--soft:#F6F7F9;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+ line-height:1.9;font-size:15.5px;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:860px;margin:0 auto;padding:64px 28px 120px;}
+h1{font-size:29px;line-height:1.45;letter-spacing:.01em;margin:0 0 28px;padding-bottom:22px;border-bottom:2px solid var(--ink);font-weight:700;}
+h2{font-size:21px;margin:56px 0 18px;padding-left:14px;border-left:4px solid var(--cobalt);font-weight:700;line-height:1.5;}
+h3{font-size:16.5px;margin:34px 0 12px;color:var(--cobalt);font-weight:700;}
+p{margin:0 0 16px;}
+strong{font-weight:700;}
+a{color:var(--cobalt);text-decoration:none;border-bottom:1px solid rgba(49,88,212,.3);}
+a:hover{border-bottom-color:var(--cobalt);}
+hr{border:0;border-top:1px solid var(--line);margin:48px 0;}
+table{border-collapse:collapse;width:100%;margin:20px 0 26px;font-size:14px;display:block;overflow-x:auto;}
+th,td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);font-weight:700;white-space:nowrap;}
+ul,ol{margin:0 0 18px;padding-left:24px;}
+li{margin-bottom:8px;}
+code{background:var(--soft);padding:2px 6px;border-radius:3px;font-size:13px;
+ font-family:"SF Mono",Menlo,Consolas,monospace;color:#B03A2E;}
+pre{background:#1A1D21;color:#E8EAED;padding:20px 22px;border-radius:6px;overflow-x:auto;
+ font-size:13px;line-height:1.75;margin:0 0 22px;}
+pre code{background:none;color:inherit;padding:0;font-size:13px;}
+blockquote{margin:22px 0;padding:16px 22px;background:var(--soft);border-left:3px solid var(--cobalt);
+ color:var(--ink);font-size:16px;}
+blockquote p{margin:0;}
+.meta{color:var(--sub);font-size:13px;margin-bottom:44px;}
+</style></head><body><div class="wrap">
+<h1 id="ai-balencerjp">AIクローラー制御 — balencer.jp 実装手順と営業展開</h1>
+<p>作成: 2026-08-17 ／ 対象: balencer.jp（自社サイト）
+目的: 自社コンテンツをAIに学習させるかを自社で決められる状態にし、それをそのまま顧客提案の切り口にする</p>
+<hr />
+<h2 id="0-2">0. 結論（2段階でやる）</h2>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>やること</th>
+<th>効き目</th>
+<th>リスク</th>
+<th>所要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>段階1</strong></td>
+<td>robots.txt にAIクローラーの方針を書く</td>
+<td>お願いベース。主要AI各社は従う</td>
+<td><strong>ほぼゼロ</strong></td>
+<td>30分</td>
+</tr>
+<tr>
+<td><strong>段階2</strong></td>
+<td>DNSをCloudflareに移し、ネットワークで遮断</td>
+<td>強制力あり。従わないクローラーも止まる</td>
+<td><strong>中</strong>（メール停止の可能性）</td>
+<td>半日＋様子見1週間</td>
+</tr>
+</tbody>
+</table>
+<p><strong>まず段階1だけやる。</strong> 段階2は、やる価値はあるが、メールの引っ越しを伴うので別日に落ち着いて。</p>
+<hr />
+<h2 id="1-2026-08-17">1. 現状（2026-08-17 調査）</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>現状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ドメイン・DNS管理</td>
+<td><strong>ConoHa</strong>（ns-a1.conoha.io / ns-a2 / ns-a3）</td>
+</tr>
+<tr>
+<td>サイト本体</td>
+<td>118.27.122.183 ／ nginx + WordPress + Elementor</td>
+</tr>
+<tr>
+<td><strong>メール</strong></td>
+<td><strong>Google Workspace</strong>（MX = aspmx.l.google.com ほか4本）</td>
+</tr>
+<tr>
+<td>SPF</td>
+<td><code>v=spf1 include:_spf.conoha.ne.jp ~all</code></td>
+</tr>
+<tr>
+<td>その他TXT</td>
+<td>Google Search Console の所有権確認</td>
+</tr>
+<tr>
+<td>robots.txt</td>
+<td>WordPress標準のまま。<strong>AIクローラーの指定は一切なし＝現在は全部読まれている</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-1-robotstxt">2. 段階1: robots.txt（今日できる）</h2>
+<h3 id="2-1">2-1. 先に決めること（経営判断）</h3>
+<p>AIクローラーは大きく2種類ある。<strong>ここを分けずに全部ブロックすると損をする。</strong></p>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>何をするか</th>
+<th>バレンサーの方針</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>学習用</strong>（GPTBot, ClaudeBot, Google-Extended など）</td>
+<td>記事や文章をAIの学習データに取り込む</td>
+<td><strong>拒否</strong></td>
+</tr>
+<tr>
+<td><strong>AI検索用</strong>（OAI-SearchBot, ChatGPT-User, PerplexityBot など）</td>
+<td>ユーザーの質問に答えるため、その場で読んで引用・リンクする</td>
+<td><strong>許可</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>なぜこの分け方か</strong>: バレンサーは「ブランディング会社を探している人」にChatGPTやPerplexityの回答の中で見つけてもらいたい会社。<strong>全部ブロックするとAI検索の回答に出てこなくなる。</strong> 一方、書いた文章がタダで学習素材にされるのは断る。この線引きが方針。</p>
+<h3 id="2-2">2-2. 貼り付ける内容</h3>
+<p>WordPress標準の記述を残したまま、末尾に追記する。</p>
+<pre><code># --- AI学習クローラー: 拒否 ---
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+# --- AI検索・引用クローラー: 許可 ---
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+</code></pre>
+<h3 id="2-3-wordpress">2-3. WordPressでの入れ方</h3>
+<p>balencer.jp の robots.txt は WordPress が自動生成している（実ファイルが無い）。入れ方は2通り。</p>
+<ul>
+<li><strong>A: SEOプラグインの管理画面から編集</strong>（推奨）。Yoast等なら「ツール → ファイルエディター」に robots.txt の編集欄がある</li>
+<li><strong>B: 実ファイルを置く</strong>。FTP（FileZilla）でドキュメントルートに <code>robots.txt</code> を置くと、そちらが優先される。ただし WordPress の自動生成分（wp-admin の除外・サイトマップの記述）を<strong>自分で書き写す必要がある</strong>ので、消し忘れに注意</li>
+</ul>
+<h3 id="2-4">2-4. 確認方法</h3>
+<p>反映後、ブラウザで <code>https://balencer.jp/robots.txt</code> を開いて追記分が出ていればOK。Search Console の robots.txt テスターでも確認できる。</p>
+<h3 id="2-5">2-5. 運用</h3>
+<p><strong>四半期に1回、見直す。</strong> AI各社は新しいクローラーを頻繁に追加し、名前を変えることもある。カレンダーに入れておく。</p>
+<hr />
+<h2 id="3-2-cloudflare-dns">3. 段階2: Cloudflare へのDNS移管（別日に）</h2>
+<p>robots.txt は<strong>お願い</strong>であって、無視するクローラーは無視する。本当に止めたいならネットワークで遮断する。それがCloudflare。</p>
+<h3 id="3-1-cloudflare">3-1. Cloudflare 側でできること</h3>
+<ul>
+<li>AIボットを <strong>Search / Agent / Training</strong> の3区分で個別に許可・拒否</li>
+<li>名乗らずに来るクローラーも検知して遮断</li>
+<li>ついでにサイト高速化・攻撃遮断・無料SSLが付く</li>
+<li><strong>2026年9月15日から、新規ドメインは Training と Agent がデフォルト拒否・Search は許可</strong>（＝上の方針とほぼ同じ）</li>
+</ul>
+<h3 id="3-2">3-2. 最大のリスク</h3>
+<p><strong>メールが止まること。</strong> balencer.jp のメールは Google Workspace。DNSをCloudflareに移すと、MXレコードも一緒に引っ越す。<strong>MXの写し漏れ＝会社のメールが全停止</strong>する。サイトが落ちるより重い。</p>
+<h3 id="3-3">3-3. 手順</h3>
+<p><strong>事前準備（これが本番）</strong>
+1. Cloudflareアカウントを作る（無料）
+2. <strong>ConoHaの現在のDNSレコードを全部書き出して保存する</strong>（画面のスクリーンショットでもよい）。切り戻しの命綱
+3. 書き出しに以下が含まれているか目視で確認する
+   - A レコード（118.27.122.183 と www）
+   - <strong>MX 5本すべて</strong>（aspmx.l.google.com / alt1〜alt4）
+   - <strong>SPF の TXT</strong>（<code>v=spf1 include:_spf.conoha.ne.jp ~all</code>）
+   - <strong>Google Search Console の確認用TXT</strong>
+   - DKIM の TXT（Google Workspace用。ConoHa画面で <code>_domainkey</code> を含むものを探す）</p>
+<p><strong>実行</strong>
+4. Cloudflare にドメインを追加する。既存レコードを自動で読み込むので、<strong>上の一覧と1件ずつ突き合わせる</strong>。足りないものは手で足す
+5. この時点ではまだ切り替わっていない。<strong>メール系レコードは必ずグレーの雲アイコン（DNS only）にする</strong>。オレンジ（Proxied）にするとメールが壊れる
+6. ConoHa側でネームサーバーをCloudflareの指定する2つに変更する
+7. 反映まで数分〜48時間。切り替わりの瞬間に2〜5秒サイトが見えなくなることがある</p>
+<p><strong>直後の確認（必ず全部）</strong>
+8. サイトが表示されるか
+9. <strong>自分宛にテストメールを送って届くか</strong>
+10. <strong>自分から外部宛に送って届くか</strong>
+11. フォーム（お問い合わせ・補助金LP・ヒトツLP）から実際に送信して、通知が届くか</p>
+<p><strong>切り戻し</strong>
+- 何かおかしければ、ConoHaのネームサーバーを元（ns-a1〜a3.conoha.io）に戻す。反映に時間はかかるが元に戻る</p>
+<p><strong>落ち着いてから</strong>
+12. 1週間ほど様子を見て問題なければ、AIボット制御を設定する
+13. サイト高速化（キャッシュ）は<strong>さらに後</strong>。WordPress + Elementor はキャッシュ設定を誤ると管理画面が壊れることがあるので、一度に触らない</p>
+<h3 id="3-4">3-4. やらないこと</h3>
+<ul>
+<li><strong>ドメイン自体のCloudflare移管はできない</strong>。Cloudflare Registrar は原価で安いが、<strong>2026年時点で .jp に非対応</strong>。DNSだけCloudflare、ドメインはConoHaのままで運用する</li>
+</ul>
+<hr />
+<h2 id="4">4. 営業への展開</h2>
+<h3 id="4-1">4-1. なぜバレンサーの話になるか</h3>
+<p>これは技術の話ではなく、<strong>「自社の言葉をAIに渡すのか」というブランドの意思決定</strong>。ブランディング会社が答えを持っているべき問い。</p>
+<h3 id="4-2">4-2. 顧客への切り出し方</h3>
+<blockquote>
+<p>御社のサイトの文章、いまAIに読み取られて学習に使われているの、ご存じですか。</p>
+</blockquote>
+<ul>
+<li><strong>MVV・コピー・記事を作った会社ほど刺さる</strong>。作った言葉が勝手に持っていかれる話だから</li>
+<li><strong>既存顧客への再訪問の理由</strong>として使える（休眠掘り起こしとも噛み合う）</li>
+<li>9月15日の仕様変更は<strong>期限のある話題</strong>なので、連絡する口実になる</li>
+</ul>
+<h3 id="4-3">4-3. 対象</h3>
+<p>MVV策定・リブランディング・サイト制作をやった先。睦備建設・北麓・アダチ音研など、コンテンツを持っている会社。</p>
+<h3 id="4-4">4-4. 前提</h3>
+<p><strong>自社でやっていないと売れない。</strong> 段階1を先に済ませること。</p>
+<hr />
+<h2 id="5">5. 参考リンク</h2>
+<ul>
+<li><a href="https://developers.cloudflare.com/bots/concepts/bot/">Cloudflare公式: AIボットの3区分（Search / Agent / Training）</a></li>
+<li><a href="https://gihyo.jp/article/2026/07/content-independence-day-one-year-on">AIボット制御とPay per crawl（gihyo.jp）</a></li>
+<li><a href="https://www.blog.ai-kansoku.com/robots-txt-ai-crawler-complete/">robots.txt完全ガイド 2026年版</a></li>
+<li><a href="https://0120.co.jp/blog/aio-123/">AIクローラー一覧2026｜GPTBot・ClaudeBotは許可すべきか</a></li>
+</ul>
+</div></body></html>

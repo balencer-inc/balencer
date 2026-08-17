@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DADS スターター / 見本</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dads-tokens.css">
+<link rel="stylesheet" href="dads-typography.css">
+<link rel="stylesheet" href="dads-components.css">
+</head>
+<body>
+<a class="dads-skip-link dads-link" href="#main">本文へスキップ</a>
+
+<main id="main" class="dads-container dads-section">
+
+  <p class="dads-heading-shoulder text-std-18B-160">肩見出し</p>
+  <h1 class="dads-heading dads-heading--chip text-std-36B-140">見出し（チップ付き）</h1>
+
+  <p class="text-std-16N-175" style="margin-top:1.5rem;max-width:44rem">
+    本文はこのサイズが基準。デジタル庁デザインシステムはフォントウェイトを 400 と 700 の2つしか使わない。
+    リンクは<a class="dads-link" href="#main">この見た目</a>で、外部リンクには新規タブアイコンを付ける。
+  </p>
+
+  <h2 class="dads-heading dads-heading--rule-4 text-std-28B-150" style="margin-top:3rem">ボタン</h2>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem">
+    <button class="dads-button dads-button--solid-fill dads-button--lg" type="button">申請する</button>
+    <button class="dads-button dads-button--outline dads-button--lg" type="button">戻る</button>
+    <button class="dads-button dads-button--text dads-button--md" type="button">詳細を見る</button>
+    <button class="dads-button dads-button--solid-fill dads-button--md" type="button" aria-disabled="true">送信できません</button>
+  </div>
+
+  <h2 class="dads-heading dads-heading--rule-4 text-std-28B-150" style="margin-top:3rem">フォーム</h2>
+  <div class="dads-stack" style="margin-top:1.5rem;max-width:32rem">
+    <div>
+      <label class="dads-label" for="company">
+        会社名 <span class="dads-requirement-badge dads-requirement-badge--required">必須</span>
+      </label>
+      <p class="dads-support-text" id="company-desc">登記上の正式名称を入力してください。</p>
+      <input class="dads-input" id="company" data-size="lg" aria-describedby="company-desc" style="width:100%">
+    </div>
+    <div>
+      <label class="dads-label" for="mail">メールアドレス</label>
+      <input class="dads-input" id="mail" type="email" data-size="lg" aria-invalid="true" aria-describedby="mail-err" style="width:100%">
+      <p class="dads-error-text" id="mail-err">メールアドレスの形式が正しくありません。</p>
+    </div>
+  </div>
+
+  <h2 class="dads-heading dads-heading--rule-4 text-std-28B-150" style="margin-top:3rem">通知・カード・表</h2>
+
+  <div class="dads-notification dads-notification--warning" style="margin-top:1.5rem">
+    <div class="dads-notification__body">
+      <p class="text-std-16B-170" style="margin:0">受付は3月31日で終了します</p>
+      <p class="text-std-16N-175" style="margin:.25rem 0 0">期限を過ぎた申請は受け付けられません。</p>
+    </div>
+  </div>
+
+  <div class="dads-card" style="margin-top:1.5rem;max-width:32rem">
+    <h3 class="dads-heading text-std-20B-150">カード見出し</h3>
+    <p class="text-std-16N-175" style="margin:.5rem 0 0">カードは境界線＋角丸8pxが基本。影を使う場合は elevation-2 まで。</p>
+  </div>
+
+  <table class="dads-table" style="margin-top:1.5rem">
+    <thead>
+      <tr><th scope="col">項目</th><th scope="col">内容</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>キーカラー</td><td>#0017c1（key-900）</td></tr>
+      <tr><td>本文色</td><td>#333333（solid-gray-800）</td></tr>
+    </tbody>
+  </table>
+
+</main>
+</body>
+</html>

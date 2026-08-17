@@ -42,3 +42,16 @@
   - 検証は必ず**サーバー実測**で（curlでファイルの実バイトサイズを期待値と突合／HEADの200確認）。「変わってない」の大半はブラウザ/SWキャッシュで、サーバーは正しいことが多い→まずサイズ照合で切り分ける
 - 反復差し替えの型：`/tmp/_pool2`に候補DL→`file`でMPEG検証→採用分だけ配置→sounds.json整合→独立フォルダにcp→`vercel deploy --prod`→curlでサイズ照合→commit&main。ブラウザ確認用に`open URL/?v=fixN`でキャッシュ回避
 - ※2026-08-02メモのSSO手順は当時の話。balencer-audio新規作成時はSSO無効のまま200で公開できた（環境/チーム設定次第。302なら要無効化）
+
+## 2026-08-17 デジタル庁デザインシステム（DADS v2）をスキル化 `.claude/skills/dads/`
+- 依頼：「デジタル庁のやつで作って」で呼び出せるように保存。発火語＝デジタル庁／DADS／デジタル庁風／行政っぽく
+- **公式StorybookはWebFetchで中身が取れない**（JSレンダリングでタイトルしか返らない）。取得ルートの結論:
+  - トークン実体 → `npm pack @digital-go-jp/design-tokens`（v2.0.1・MIT）の `dist/tokens.css`
+  - タイポ58種 → `@digital-go-jp/tailwind-theme-plugin`（v1.0.1）の `dist/v4.css` の `@utility` 定義
+  - コンポーネント仕様 → GitHub raw `digital-go-jp/design-system-example-components-react`（**リポ名は `-react`／`-html` 付きが正**。`design-system-example-components` は301）
+  - 全体像（部品71件の一覧）→ Storybookの静的JSON `https://design.digital.go.jp/dads/react/index.json`
+- 保存物：`reference/tokens.md`（10色相×13階調・タイポ58・角丸・影8段の全量表）／`assets/dads-tokens.css`（公式そのまま）／`dads-typography.css`（55クラスを素CSSに機械展開）／`dads-components.css`（ボタン・リンク・フォーム・見出し・カード・表・通知を書き起こし）／`starter.html`（雛形兼見本）／MITライセンス原文
+- 設計判断：バレンサーの成果物は**静的HTMLが主**なので、React/Tailwind前提の公式実装を素のCSSに落とす層を自前で持つことにした。公式コピー部分（tokens.css）と書き起こし部分（components.css）はファイルを分けて、バージョン更新時に前者だけ差し替えられるようにした
+- 押さえた仕様：キー#0017c1(key-900)／本文#333333／境界#666666／ウェイトは400と700のみ／角丸はボタン8px／フォーカスは黒4pxアウトライン+黄#ffd43d 2pxリング／sm・xsボタンも擬似要素でタップ領域44px／hoverは色でなく下線で示す
+- ガードレール：コードはMITだがブランドは別。デジタル庁のロゴ・省庁名は使わず、公的機関の制作物と誤認させない。自社対外物は `docs/company/BALENCER_DESIGN_SYSTEM.md` が優先、混ぜる時は `--color-key-*` だけ自社色に差し替える（key はblueのエイリアスなので全体が追従する）
+- 却下：design-md ギャラリー（awesome-design-md-jp）に混ぜる案 → あれは公開CSSの実測値集。DADSは公式仕様書があるので独立スキルにした

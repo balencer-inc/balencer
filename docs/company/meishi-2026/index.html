@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>名刺 記載内容の改訂（2026-08版）｜株式会社バレンサー</title>
+<title>名刺 記載内容 差し替え指示書｜株式会社バレンサー</title>
 <style>
   :root{
     --white:#FFFFFF; --cool:#F7F8F9; --pale:#F0F2F4;
@@ -17,24 +17,40 @@
   }
   .wrap{max-width:960px;margin:0 auto}
   .eyebrow{font-size:11px;letter-spacing:.24em;color:var(--mid);font-family:system-ui,sans-serif}
-  h1{font-size:30px;font-weight:400;letter-spacing:.04em;margin:14px 0 10px}
-  .lead{color:var(--mid);font-size:14px;max-width:44em}
+  h1{font-size:30px;font-weight:400;letter-spacing:.04em;margin:14px 0 12px}
+  .lead{color:var(--mid);font-size:14px;max-width:46em}
   section{margin-top:72px}
   h2{font-size:12px;letter-spacing:.22em;font-family:system-ui,sans-serif;font-weight:600;
      color:var(--graphite);padding-bottom:10px;border-bottom:1px solid var(--hair);margin-bottom:28px}
   h2 span{color:var(--cobalt)}
+  h3{font-size:13px;font-family:system-ui,sans-serif;font-weight:600;letter-spacing:.06em;
+     margin:34px 0 12px;color:var(--graphite)}
 
-  /* ---- card mockups ---- */
-  .cards{display:flex;gap:28px;flex-wrap:wrap}
-  .card{
-    background:var(--white);width:420px;min-height:250px;
-    border:1px solid var(--hair);padding:30px 32px;position:relative;
-    box-shadow:0 1px 2px rgba(69,72,77,.05);
-  }
+  .banner{background:var(--white);border-left:3px solid var(--cobalt);padding:22px 26px;margin-top:28px;font-size:14px}
+  .banner b{font-weight:600}
+
+  /* ---- copy blocks ---- */
+  .pair{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:8px}
+  .copy{flex:1;min-width:280px;background:var(--white);border:1px solid var(--hair);padding:18px 22px}
+  .copy.before{background:var(--pale);color:var(--mid)}
+  .copy.after{border-color:var(--cobalt)}
+  .copy .k{font-size:9.5px;letter-spacing:.18em;font-family:system-ui,sans-serif;color:var(--mid);display:block;margin-bottom:10px}
+  .copy.after .k{color:var(--cobalt)}
+  .copy p{font-size:16px;line-height:1.75;letter-spacing:.02em}
+  .copy.before p{text-decoration:line-through;text-decoration-color:var(--hair)}
+  .copy ul{list-style:none;font-size:14px;line-height:2.05}
+  .copy li::before{content:"▸ ";color:var(--cobalt)}
+  .copy.before li::before{color:var(--hair)}
+  .copy.before li{text-decoration:line-through;text-decoration-color:var(--hair)}
+  .sub{font-size:11.5px;color:var(--mid);margin-top:12px;padding-top:10px;border-top:1px dotted var(--hair)}
+  .sub b{color:var(--graphite);font-weight:400}
+
+  /* ---- card mockup ---- */
+  .cards{display:flex;gap:28px;flex-wrap:wrap;margin-top:8px}
+  .card{background:var(--white);width:420px;min-height:250px;border:1px solid var(--hair);
+    padding:30px 32px;position:relative;box-shadow:0 1px 2px rgba(69,72,77,.05)}
   .card .tag{position:absolute;top:-11px;left:20px;background:var(--cobalt);color:#fff;
     font-size:10px;letter-spacing:.16em;padding:3px 10px;font-family:system-ui,sans-serif}
-  .card.old{background:var(--pale)}
-  .card.old .tag{background:var(--mid)}
   .lbl{font-size:9px;letter-spacing:.18em;color:var(--mid);font-family:system-ui,sans-serif;
     display:block;margin-bottom:6px;padding-left:14px;position:relative}
   .lbl::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:1px;background:var(--hair)}
@@ -46,79 +62,107 @@
   .origin i{font-style:normal;color:var(--mid)}
   .headline{font-size:15px;line-height:1.7;letter-spacing:.02em}
   .desc{font-size:11px;color:var(--mid);line-height:1.8;margin-top:8px}
-  ul{list-style:none;margin-top:12px;font-size:11.5px;line-height:2}
-  li::before{content:"▸ ";color:var(--cobalt)}
-  .card.old li::before{color:var(--mid)}
-  .gone{color:#B9432E;font-size:10.5px;font-family:system-ui,sans-serif;letter-spacing:.04em;margin-top:14px}
+  .card ul{list-style:none;margin-top:12px;font-size:11px;line-height:2}
+  .card li::before{content:"▸ ";color:var(--cobalt)}
+  .shopify{font-size:9.5px;color:var(--mid);margin-top:8px;letter-spacing:.04em}
+  .space{margin-top:14px;border:1px dashed var(--hair);color:var(--mid);font-size:9px;
+    font-family:system-ui,sans-serif;text-align:center;padding:10px 4px;letter-spacing:.08em}
   .front .name{font-size:24px;letter-spacing:.5em;margin:16px 0 4px}
   .front .role{font-size:10px;color:var(--mid);letter-spacing:.08em}
   .front .meta{font-size:10.5px;color:var(--mid);line-height:1.9;margin-top:18px}
   .front .logo{font-size:19px;letter-spacing:.22em;font-weight:600}
-  .front .logo small{display:block;font-size:9px;font-style:italic;letter-spacing:.1em;color:var(--mid);
+  .front .logo small{display:block;font-size:9px;font-style:italic;color:var(--mid);
     font-weight:400;letter-spacing:.08em}
-  .edge{margin-top:16px;font-size:9px;font-style:italic;color:var(--mid);border-top:1px solid var(--hair);padding-top:10px}
-  .hilite{background:linear-gradient(transparent 62%, rgba(49,88,212,.14) 62%)}
-  .todo{color:var(--cobalt);font-family:system-ui,sans-serif;font-size:10.5px}
+  .edge{margin-top:16px;font-size:9px;font-style:italic;color:var(--mid);
+    border-top:1px solid var(--hair);padding-top:10px}
+  mark{background:rgba(49,88,212,.12);color:var(--cobalt);padding:1px 3px}
 
   /* ---- tables ---- */
-  table{width:100%;border-collapse:collapse;font-size:13px}
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--white)}
   th,td{text-align:left;vertical-align:top;padding:14px 16px;border-bottom:1px solid var(--hair)}
-  th{font-size:11px;letter-spacing:.12em;color:var(--mid);font-family:system-ui,sans-serif;font-weight:600;
-     background:var(--cool);white-space:nowrap}
+  th{font-size:11px;letter-spacing:.12em;color:var(--mid);font-family:system-ui,sans-serif;
+     font-weight:600;background:var(--cool);white-space:nowrap}
   td.why{color:var(--mid);font-size:12px}
-  .ref{font-size:10px;color:var(--cobalt);font-family:system-ui,sans-serif;white-space:nowrap}
+  tr.hit td{background:rgba(49,88,212,.05)}
+  tr.hit td:first-child{font-weight:600}
 
-  .note{background:var(--white);border-left:2px solid var(--cobalt);padding:20px 24px;font-size:13px;margin-top:24px}
-  .note b{font-weight:600}
-  .alt{background:var(--white);border:1px solid var(--hair);padding:22px 26px;font-size:12px;line-height:2}
   .check{background:var(--white);border:1px solid var(--hair);padding:22px 26px;font-size:13px;list-style:none}
   .check li{padding-left:26px;position:relative;line-height:2.2}
   .check li::before{content:"□";position:absolute;left:2px;color:var(--mid)}
-  footer{margin-top:80px;font-size:11px;color:var(--mid);text-align:center;font-family:system-ui,sans-serif}
+  footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--hair);
+    font-size:11px;color:var(--mid);text-align:center;font-family:system-ui,sans-serif}
   @media(max-width:900px){.card{width:100%}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <p class="eyebrow">BUSINESS CARD ─ CONTENT REVISION</p>
-  <h1>名刺 記載内容の改訂（2026-08版）</h1>
-  <p class="lead">デザイン・レイアウト・書体・配置は現行のまま。記載内容だけを、2026-07-28 更新の会社正本に合わせて差し替えます。</p>
+  <p class="eyebrow">BUSINESS CARD ─ CONTENT REVISION / FOR DESIGNER</p>
+  <h1>名刺 記載内容 差し替え指示書</h1>
+  <p class="lead">株式会社バレンサー ／ 2026年8月17日 確定版</p>
+
+  <div class="banner">
+    <b>デザインは一切変更しません。</b>レイアウト・書体・級数・配置・紙・加工はすべて現行のまま、<b>記載されている文言だけを差し替え</b>てください。<br>
+    変更箇所は<mark>裏面の3ブロック</mark>と<mark>表面の拠点表記</mark>、それに<mark>QRコードの再生成</mark>です。それ以外は触らないでください。
+  </div>
 
   <!-- ============ 裏面 ============ -->
   <section>
-    <h2>裏面｜<span>BEFORE → AFTER</span></h2>
-    <div class="cards">
+    <h2>裏面｜<span>CONTENTS OF BUSINESS のみ差し替え</span></h2>
 
-      <div class="card old">
-        <span class="tag">現行</span>
-        <div class="blk">
-          <span class="lbl">SLOGAN</span>
-          <p class="slogan">For loved ones.<small>大切な人のためにどこまでも。</small></p>
-        </div>
-        <div class="blk">
-          <span class="lbl">ORIGIN OF THE COMPANY NAME</span>
-          <p class="origin"><b>BA</b><i>BUSINESS ANALYTICS</i><br>
-          <b>BAL</b><i>手を取り合って交流する</i><br>
-          <b>LENCER</b><i>寄り添う人</i></p>
-        </div>
-        <div class="blk">
-          <span class="lbl">CONTENTS OF BUSINESS</span>
-          <p class="headline">組織に魂を。<br>ビジネスに武器を。</p>
-          <p class="desc">文化性の高いブランディングを得意とする<br>デザインコンサルティング集団です。</p>
-          <ul>
-            <li>WEB / EC（Shopify公式パートナー）</li>
-            <li>組織デザイン・採用ブランディング</li>
-            <li>SNSマーケティング</li>
-            <li>生成AIコンサルティング</li>
-            <li>パーソナルブランディング I am</li>
-          </ul>
-          <p class="gone">shopify partners ロゴ</p>
-        </div>
+    <p class="lead" style="margin-bottom:8px">SLOGAN と ORIGIN OF THE COMPANY NAME（BA／BAL／LENCER）は<b>変更ありません</b>。</p>
+
+    <h3>① 見出し ─ 2行組み</h3>
+    <div class="pair">
+      <div class="copy before"><span class="k">現行</span><p>組織に魂を。<br>ビジネスに武器を。</p></div>
+      <div class="copy after"><span class="k">差し替え後</span><p>経営と並走する、<br>ブランディングカンパニー。</p></div>
+    </div>
+
+    <h3>② 説明文 ─ 2行組み</h3>
+    <div class="pair">
+      <div class="copy before"><span class="k">現行</span><p>文化性の高いブランディングを得意とする<br>デザインコンサルティング集団です。</p></div>
+      <div class="copy after"><span class="k">差し替え後</span><p>対話を起点に組織を整え、ブランドを形にし、<br>デジタルとAIで事業をつくる。</p></div>
+    </div>
+
+    <h3>③ 箇条書き ─ 5項目のまま（項目数は増減なし）</h3>
+    <div class="pair">
+      <div class="copy before"><span class="k">現行</span>
+        <ul>
+          <li>WEB / EC（Shopify公式パートナー）</li>
+          <li>組織デザイン・採用ブランディング</li>
+          <li>SNSマーケティング</li>
+          <li>生成AIコンサルティング</li>
+          <li>パーソナルブランディング I am</li>
+        </ul>
       </div>
+      <div class="copy after"><span class="k">差し替え後</span>
+        <ul>
+          <li>組織開発/ミッション・ビジョン・バリュー策定</li>
+          <li>ブランド戦略立案・クリエイティブ制作</li>
+          <li>デジタル・業務基盤構築</li>
+          <li>AI実装（研修〜業務アプリまで）</li>
+          <li>経営伴走・プロジェクト推進</li>
+        </ul>
+        <p class="sub">箇条書きの直下に、<b>小さめの級数で1行</b>：<br><b>＜Shopify公式パートナー＞</b></p>
+      </div>
+    </div>
 
+    <h3>④ 削除するもの</h3>
+    <table>
+      <tr><th>対象</th><th>扱い</th></tr>
+      <tr class="hit"><td>shopify partners ロゴ</td><td class="why">画像として<b>削除</b>。資格は③のテキスト1行（＜Shopify公式パートナー＞）で示すため、ロゴでの主張はしません</td></tr>
+      <tr class="hit"><td>パーソナルブランディング I am</td><td class="why">削除。現在のサービス体系に含まれないため</td></tr>
+    </table>
+
+    <div class="banner">
+      <b>ロゴを抜いた分の余白は、詰めずに空きのまま残してください。</b><br>
+      他の要素を大きくしたり、行間を広げて埋めたりしないでください。余白そのものがバレンサーの見せ方です。
+    </div>
+
+    <h3>差し替え後の裏面イメージ</h3>
+    <div class="cards">
       <div class="card">
-        <span class="tag">改訂案</span>
+        <span class="tag">差し替え後</span>
         <div class="blk">
           <span class="lbl">SLOGAN</span>
           <p class="slogan">For loved ones.<small>大切な人のためにどこまでも。</small></p>
@@ -131,103 +175,68 @@
         </div>
         <div class="blk">
           <span class="lbl">CONTENTS OF BUSINESS</span>
-          <p class="headline"><span class="hilite">経営と並走する、<br>ブランディングカンパニー。</span></p>
-          <p class="desc">対話を起点に組織を整え、ブランドを形にし、<br>デジタルとAIで事業を動かします。</p>
+          <p class="headline">経営と並走する、<br>ブランディングカンパニー。</p>
+          <p class="desc">対話を起点に組織を整え、ブランドを形にし、<br>デジタルとAIで事業をつくる。</p>
           <ul>
-            <li>組織開発・MVV</li>
-            <li>ブランド戦略・クリエイティブ</li>
-            <li>デジタル・業務基盤</li>
-            <li>AI実装</li>
+            <li>組織開発/ミッション・ビジョン・バリュー策定</li>
+            <li>ブランド戦略立案・クリエイティブ制作</li>
+            <li>デジタル・業務基盤構築</li>
+            <li>AI実装（研修〜業務アプリまで）</li>
             <li>経営伴走・プロジェクト推進</li>
           </ul>
+          <p class="shopify">＜Shopify公式パートナー＞</p>
+          <p class="space">ロゴを抜いた余白 ─ 詰めずに残す</p>
         </div>
       </div>
 
-    </div>
-
-    <div class="note">
-      <b>Shopifyロゴと I am を抜いた余白は、詰めずに空きのまま残します。</b><br>
-      正本のデザイン人格（余白・秩序・呼吸）に沿う判断です。行数は現行と同じ5項目のままなので、組版の作り直しは発生しません。
-    </div>
-  </section>
-
-  <!-- ============ 差し替え理由 ============ -->
-  <section>
-    <h2>なぜ差し替えるか<span>（正本との照合）</span></h2>
-    <table>
-      <tr><th>現行の記載</th><th>問題</th><th>正本</th></tr>
-      <tr>
-        <td>デザインコンサルティング集団です</td>
-        <td class="why">「デザインコンサルティング〜」は使わない表現。会社を一業種に固定してしまう</td>
-        <td class="ref">§15／§17-1</td>
-      </tr>
-      <tr>
-        <td>組織に魂を。ビジネスに武器を。</td>
-        <td class="why">現在の中心思想と別系統。表面の英文コピー（＝中心思想そのもの）と裏表で呼応していない</td>
-        <td class="ref">§3</td>
-      </tr>
-      <tr>
-        <td>WEB/EC・組織デザイン・SNS・生成AI・I am</td>
-        <td class="why">手段の羅列で、現在の支援4領域と不一致。EC制作やSNS運用の会社に見える</td>
-        <td class="ref">§7</td>
-      </tr>
-      <tr>
-        <td>Shopify公式パートナーロゴ／I am</td>
-        <td class="why">現在のサービス体系（SPOT／CONSULT／PARTNER／EXECUTIVE／PROJECT）に載っていない</td>
-        <td class="ref">SERVICE<br>PRICING</td>
-      </tr>
-    </table>
-  </section>
-
-  <!-- ============ 表面 ============ -->
-  <section>
-    <h2>表面｜<span>変更は拠点表記とQRのみ</span></h2>
-    <div class="cards">
       <div class="card front">
-        <span class="tag">改訂案</span>
+        <span class="tag">表面（拠点のみ変更）</span>
         <p class="logo">BALENCER<small>for loved ones.</small></p>
         <p class="role">株式会社バレンサー</p>
         <p class="role">CEO | Business designer</p>
         <p class="name">阿部 貴之</p>
         <p class="role">TAKAYUKI ABE</p>
-        <p class="meta">
-          tabe@balencer.jp<br>
-          mobile 090.9662.7610
-        </p>
+        <p class="meta">tabe@balencer.jp<br>mobile 090.9662.7610</p>
         <p class="meta">
           HEAD OFFICE 530-0001<br>
           大阪市北区梅田1-11-4 大阪駅前第4ビル 9F 923 1542号<br>
           TEL. 06-4400-5365<br>
-          <span class="todo">拠点表記 ── 新しい構成を確認中</span>
+          <mark>本社大阪・東京・京都・福岡</mark>
         </p>
         <p class="edge">Change the organization, Change the presentation, Change the strategy, by Design thinking.</p>
-      </div>
-
-      <div style="width:420px">
-        <table>
-          <tr><th>項目</th><th>扱い</th></tr>
-          <tr><td>肩書き CEO | Business designer</td><td class="why">維持。戦略と制作を分断しない立ち位置を1語で示せている</td></tr>
-          <tr><td>本社・電話・メール</td><td class="why">変更なし。正本§18と一致</td></tr>
-          <tr><td>拠点表記</td><td class="why"><b>要更新。</b>新しい構成をご指定ください</td></tr>
-          <tr><td>QRコード</td><td class="why">飛び先を実機確認のうえ、入稿時に再生成</td></tr>
-          <tr><td>側面の英文コピー</td><td class="why">維持。正本§3の中心思想そのもので、裏面の新見出しと呼応する</td></tr>
-        </table>
       </div>
     </div>
   </section>
 
-  <!-- ============ 別案 ============ -->
+  <!-- ============ 表面 ============ -->
   <section>
-    <h2>箇条書きの別案<span>（具体を足したい場合）</span></h2>
-    <div class="alt">
-      ▸ 組織開発・MVV｜対話・浸透<br>
-      ▸ ブランド戦略・クリエイティブ｜CI/VI・Web・映像<br>
-      ▸ デジタル・業務基盤｜Notion・業務アプリ・自動化<br>
-      ▸ AI実装｜研修・業務アシスタント・定着<br>
-      ▸ 経営伴走｜戦略から実装まで
-    </div>
-    <div class="note">
-      推奨は上の確定案です。名刺は情報を詰めるほど印象が散ります。具体は会話で足せますし、1行が長くなると現行の組版に収まらない可能性があります。
+    <h2>表面｜<span>変更は拠点表記とQRのみ</span></h2>
+    <table>
+      <tr><th>項目</th><th>現行</th><th>扱い</th></tr>
+      <tr><td>ロゴ／スローガン</td><td>BALENCER ／ for loved ones.</td><td class="why">変更なし</td></tr>
+      <tr><td>社名・肩書き</td><td>株式会社バレンサー ／ CEO | Business designer</td><td class="why">変更なし</td></tr>
+      <tr><td>氏名</td><td>阿部 貴之 ／ TAKAYUKI ABE</td><td class="why">変更なし</td></tr>
+      <tr><td>連絡先</td><td>tabe@balencer.jp ／ mobile 090.9662.7610</td><td class="why">変更なし</td></tr>
+      <tr><td>本社</td><td>530-0001 大阪市北区梅田1-11-4 大阪駅前第4ビル 9F 923 1542号／TEL.06-4400-5365</td><td class="why">変更なし</td></tr>
+      <tr class="hit"><td>拠点</td><td>東京（広尾）・京都・福岡</td><td class="why"><b>本社大阪・東京・京都・福岡</b> に差し替え。広尾の括弧書きは削除し、本社の大阪を並びに入れます</td></tr>
+      <tr class="hit"><td>QRコード</td><td>公式HP</td><td class="why">飛び先を確認のうえ<b>再生成</b>。最新のコードをこちらから支給します</td></tr>
+      <tr><td>側面の英文</td><td>Change the organization, Change the presentation, Change the strategy, by Design thinking.</td><td class="why">変更なし。会社の中心思想そのもので、裏面の新しい見出しと呼応します</td></tr>
+    </table>
+  </section>
+
+  <!-- ============ 意図 ============ -->
+  <section>
+    <h2>差し替えの意図<span>（文言を調整いただく際の判断材料）</span></h2>
+    <table>
+      <tr><th>変えるもの</th><th>理由</th></tr>
+      <tr><td>デザインコンサルティング集団です</td><td class="why">バレンサーを一業種に固定してしまう表現のため、現在は使いません。デザインもコンサルも手段で、会社の定義ではありません</td></tr>
+      <tr><td>組織に魂を。ビジネスに武器を。</td><td class="why">現在の中心思想「組織を変える。魅せ方を変える。戦い方を変える。」と別系統でした。表面側面の英文がまさにこの中心思想なので、裏面の見出しをそこに呼応させます</td></tr>
+      <tr><td>WEB/EC・SNS・生成AI などの手段名</td><td class="why">手段の羅列だと、EC制作やSNS運用の会社に見えます。現在の支援領域の名前で言い切ります</td></tr>
+      <tr><td>Shopifyロゴ／I am</td><td class="why">ロゴでの主張と、現在のサービス体系に無い項目を整理します</td></tr>
+    </table>
+    <div class="banner">
+      トーンの基準：<b>知的だが難解にしない／上品だが気取らない／温かいが情緒的すぎない／自信は持つが誇張しない。</b><br>
+      級数調整などで文言を詰める必要が出た場合は、勝手に言い換えず一度ご相談ください。
     </div>
   </section>
 
@@ -235,15 +244,17 @@
   <section>
     <h2>入稿前チェック</h2>
     <ul class="check">
-      <li>拠点表記を確定して差し替える</li>
-      <li>QRコードの飛び先を実機で確認（旧URL・旧LPに飛んでいないか）</li>
-      <li>裏面から Shopifyロゴ・I am が消えていること</li>
-      <li>避けたい表現（デザインコンサルティング／町医者型など）が入っていないこと</li>
-      <li>全角ダブルクォートを使っていないこと</li>
+      <li>裏面の見出し・説明文・箇条書きが差し替わっている</li>
+      <li>箇条書きの直下に ＜Shopify公式パートナー＞ が小さく入っている</li>
+      <li>shopify partners ロゴ と パーソナルブランディング I am が消えている</li>
+      <li>ロゴを抜いた余白を、他の要素で埋めていない</li>
+      <li>表面の拠点が「本社大阪・東京・京都・福岡」になっている</li>
+      <li>QRコードが最新のものに差し替わっている</li>
+      <li>レイアウト・書体・級数・紙・加工が現行から変わっていない</li>
     </ul>
   </section>
 
-  <footer>株式会社バレンサー ─ 準拠正本：BALENCER_MASTER_CONTEXT.md（2026-07-28）</footer>
+  <footer>株式会社バレンサー ─ 名刺 記載内容 差し替え指示書（2026-08-17 確定）<br>ご不明点は 阿部（tabe@balencer.jp）まで</footer>
 </div>
 </body>
 </html>

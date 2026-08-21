@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>北麓｜課題管理ボード 構成案（大中小）</title>
+<style>
+  :root{
+    --sumi:#1c1c1c; --dou:#a6453e; --washi:#f5f3f0; --ishi:#888580;
+    --line:#e0dcd6; --card:#fffdfb; --green:#5f7d5c; --amber:#b0894e;
+    --serif:Georgia,"Hiragino Mincho ProN","Yu Mincho",serif;
+    --sans:Calibri,"Helvetica Neue","Hiragino Kaku Gothic ProN","Yu Gothic",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--sumi);background:var(--washi);line-height:1.65;padding:30px 34px 56px}
+  .wrap{max-width:1120px;margin:0 auto}
+  h1,h2,h3{font-family:var(--serif);font-weight:600}
+  header{border-bottom:2px solid var(--sumi);padding-bottom:14px;margin-bottom:16px}
+  h1{font-size:24px;letter-spacing:.02em}
+  .sub{font-size:12px;color:var(--ishi);margin-top:6px}
+  .lead{font-size:13px;color:#4a4744;margin:14px 0 22px}
+  .lead b{color:var(--sumi)}
+  .sect-label{font-family:var(--serif);font-size:13px;color:var(--dou);font-weight:600;margin:30px 0 12px;letter-spacing:.03em}
+
+  .legend{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sumi);border-radius:10px;padding:13px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:760px){.legend{grid-template-columns:1fr}}
+  .lg{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:11.5px;color:#4a4744}
+  .lg b{color:var(--sumi)}
+  .badge{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--sumi);display:flex;align-items:center;justify-content:center;font-size:12px;line-height:1}
+
+  .blk{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0;margin-bottom:16px;overflow:hidden}
+  .blk > .hd{display:flex;align-items:baseline;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);border-left:4px solid var(--ishi)}
+  .blk.pri > .hd{border-left-color:var(--dou);background:rgba(166,69,62,.045)}
+  .blk .k{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--dou)}
+  .blk .t{font-size:14px;font-weight:700}
+  .blk .flag{font-size:10.5px;font-weight:700;color:#fff;background:var(--dou);border-radius:4px;padding:2px 7px}
+  table{width:100%;border-collapse:collapse;font-size:11.5px}
+  th{text-align:left;font-weight:700;color:var(--ishi);font-size:10.5px;padding:8px 14px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.015)}
+  td{padding:9px 14px;border-bottom:1px solid var(--line);color:#4a4744;vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td.mid{font-weight:700;color:var(--sumi);white-space:nowrap}
+  td.who{white-space:nowrap;color:var(--sumi)}
+  td.ab{white-space:nowrap}
+  .m1{color:var(--green);font-weight:700}
+  .m2{color:var(--amber);font-weight:700}
+  .m3{color:var(--ishi);font-weight:700}
+  .dash{color:var(--ishi)}
+  @media(max-width:760px){
+    th:nth-child(2),td:nth-child(2){display:none}
+  }
+
+  .two{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start}
+  @media(max-width:900px){.two{grid-template-columns:1fr}}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+  .panel h3{font-size:13.5px;margin-bottom:9px}
+  .panel ol{margin:0 0 0 18px;font-size:11.5px;color:#4a4744}
+  .panel ul{margin:0 0 0 16px;font-size:11.5px;color:#4a4744;list-style:none}
+  .panel ul li{position:relative;margin:5px 0;padding-left:2px}
+  .panel ul li:before{content:"—";position:absolute;left:-16px;color:var(--ishi)}
+  .panel ol li{margin:5px 0}
+  .panel b{color:var(--sumi)}
+  .panel .note{font-size:10.5px;color:var(--ishi);margin-top:9px;border-top:1px dashed var(--line);padding-top:8px}
+  .warn{border-left:4px solid var(--dou)}
+  .warn h3{color:var(--dou)}
+  footer{font-size:10.5px;color:var(--ishi);margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>北麓｜課題管理ボード 構成案（大中小）</h1>
+    <div class="sub">2026-08-21 戦略ミーティングの決定にもとづく ／ バレンサー（阿部・月8時間）</div>
+  </header>
+
+  <p class="lead">この構成のまま Notion に1ページ作り、関係者を招待して<b>各課題にコメントで指示と進捗を積む</b>。目的は「ここを見れば全部わかる」状態を作り、<b>藤橋さんに全部の窓口が集まる構造をほどく</b>こと。個別ミーティングを何度も繰り返す代わりに、ボード上でやり取りする。</p>
+
+  <div class="legend">
+    <div class="lg"><span class="badge">●</span><span><b>阿部が自分でやる</b><br>月8時間の中で設計・言語化する</span></div>
+    <div class="lg"><span class="badge">◐</span><span><b>要件を整理して渡す</b><br>実装・運用は主に宮崎さん</span></div>
+    <div class="lg"><span class="badge">○</span><span><b>別立て</b><br>制作・開発・継続運用は現契約の外</span></div>
+  </div>
+
+  <div class="sect-label">大課題は5つ</div>
+
+  <div class="blk pri">
+    <div class="hd"><span class="k">A</span><span class="t">資金繰り・財務</span><span class="flag">最優先</span></div>
+    <table>
+      <tr><th>中課題</th><th>最初の一手</th><th>主担当</th><th>阿部</th></tr>
+      <tr><td class="mid">A1 借入の実行</td><td>銀行担当者の復帰後に交渉再開。必要資料を整える</td><td class="who">藤橋</td><td class="ab m1">● 数字の整合・資料の型</td></tr>
+      <tr><td class="mid">A2 8〜9月の支出圧縮</td><td>消費税納付・取引先支払のタイミング調整／外注費の見直し</td><td class="who">藤橋・経理</td><td class="ab m1">● 判断材料の整理</td></tr>
+      <tr><td class="mid">A3 資金繰りの可視化</td><td>3ヶ月ローリングの入出金を1枚に。毎月同じ形で更新</td><td class="who">阿部 → 鈴木</td><td class="ab m1">● 型を作って渡す</td></tr>
+      <tr><td class="mid">A4 外注比率の定義確定</td><td>45%と53.2%の差を、期間・分母・原価の定義を揃えて1本にする</td><td class="who">阿部</td><td class="ab m1">●</td></tr>
+    </table>
+  </div>
+
+  <div class="blk">
+    <div class="hd"><span class="k">B</span><span class="t">売上をつくる</span></div>
+    <table>
+      <tr><th>中課題</th><th>最初の一手</th><th>主担当</th><th>阿部</th></tr>
+      <tr><td class="mid">B1 Feel So Free 提携</td><td>12月・1月目途の段取り。藤橋さんの月額参画の条件整理</td><td class="who">藤橋・斎藤・宮田</td><td class="ab m3">○ 論点整理のみ</td></tr>
+      <tr><td class="mid">B2 安田さん経由（海外系）</td><td>現在地の共有と見込みの数字化</td><td class="who">藤橋・安田</td><td class="ab m1">● 数字への反映</td></tr>
+      <tr><td class="mid">B3 直販リード</td><td>記事の公開と問い合わせの因果を追える形にする</td><td class="who">遠藤・宮崎</td><td class="ab m2">◐ 計測の設計</td></tr>
+      <tr><td class="mid">B4 納品後フォロー</td><td>対象を絞って<b>手動で一巡</b>。結果を見てから自動化する</td><td class="who">鈴木（実行）</td><td class="ab m1">● 対象・時期・内容・担当・見る数字</td></tr>
+      <tr><td class="mid">B5 営業数字の把握</td><td>問い合わせ／商談／見積／受注／失注を分ける。見込みと確定を分離</td><td class="who">鈴木・みくるさん</td><td class="ab m1">● 定義と見方</td></tr>
+    </table>
+  </div>
+
+  <div class="blk">
+    <div class="hd"><span class="k">C</span><span class="t">体制・人</span></div>
+    <table>
+      <tr><th>中課題</th><th>最初の一手</th><th>主担当</th><th>阿部</th></tr>
+      <tr><td class="mid">C1 柳本さんの受け入れ</td><td>9/1開始。担当範囲・判断権限・リモート前提の連携方法を決める</td><td class="who">藤橋</td><td class="ab m1">● 役割の言語化</td></tr>
+      <tr><td class="mid">C2 ディレクター体制</td><td>Feel So Free のパートナー活用と自社育成の使い分け</td><td class="who">藤橋</td><td class="ab m3">○</td></tr>
+      <tr><td class="mid">C3 品質基準（北麓の70点）</td><td>宮崎さんの「第二の頭脳AI」の進捗を見る</td><td class="who">宮崎</td><td class="ab dash">— 当面担当外</td></tr>
+      <tr><td class="mid">C4 鈴木さんの業務棚卸し</td><td>担当業務の一覧／最も時間がかかる業務／往復が多い業務</td><td class="who">鈴木</td><td class="ab m1">● 棚卸しの問いを出す</td></tr>
+    </table>
+  </div>
+
+  <div class="blk pri">
+    <div class="hd"><span class="k">D</span><span class="t">情報流通・仕組み</span><span class="flag">今回の本命</span></div>
+    <table>
+      <tr><th>中課題</th><th>最初の一手</th><th>主担当</th><th>阿部</th></tr>
+      <tr><td class="mid">D1 課題ボードの運用</td><td>このページを作り、招待し、コメントで回す形を定着させる</td><td class="who">阿部</td><td class="ab m1">●</td></tr>
+      <tr><td class="mid">D2 議事録の集約</td><td>藤橋さんが各MTG後に LINE で共有 → 阿部がボードにまとめる</td><td class="who">藤橋 → 阿部</td><td class="ab m1">●</td></tr>
+      <tr><td class="mid">D3 週次の数字共有</td><td>藤橋・鈴木・阿部の3名LINE。週次の会話をシートに反映してもらう</td><td class="who">鈴木</td><td class="ab m1">● 回収ルートの設計</td></tr>
+      <tr><td class="mid">D4 月1の全体会議</td><td>阿部が数字・課題・進捗をまとめてファシリテートする</td><td class="who">阿部</td><td class="ab m1">●</td></tr>
+      <tr><td class="mid">D5 議事録の自動化</td><td>Notion ビジネスプラン（約3,000円/月）。Zoom・Meet・対面を問わず録音できる</td><td class="who">藤橋</td><td class="ab m1">● 判断材料</td></tr>
+      <tr><td class="mid">D6 窓口の分散</td><td>藤橋さん一人に集まる窓口を、ボード上のやり取りに置き換える</td><td class="who">全体</td><td class="ab m1">●</td></tr>
+    </table>
+  </div>
+
+  <div class="blk">
+    <div class="hd"><span class="k">E</span><span class="t">Web・コンテンツ</span></div>
+    <table>
+      <tr><th>中課題</th><th>最初の一手</th><th>主担当</th><th>阿部</th></tr>
+      <tr><td class="mid">E1 記事の見せ方</td><td>前回指摘した見せ方を直し、8月中に順次アップする</td><td class="who">遠藤・藤橋</td><td class="ab m1">●</td></tr>
+      <tr><td class="mid">E2 記事アップの自動化</td><td>宮崎さん提案の自動化。手入稿と画像作成をやめる</td><td class="who">宮崎</td><td class="ab m2">◐ 要件整理</td></tr>
+      <tr><td class="mid">E3 HTML掲載の機能相談</td><td>8/27の宮崎さん定例で相談する</td><td class="who">宮崎・阿部</td><td class="ab m1">●</td></tr>
+      <tr><td class="mid">E4 Note・YouTube</td><td>個人名Noteでの感情ストーリー記事を展開</td><td class="who">遠藤・藤橋</td><td class="ab m1">● 方針のみ</td></tr>
+      <tr><td class="mid">E5 WordPress技術課題</td><td>トップのCSS崩れ／管理画面のログイン情報</td><td class="who">阿部</td><td class="ab m1">●</td></tr>
+    </table>
+  </div>
+
+  <div class="sect-label">繋ぐ役割の実体＝情報の回収ルート</div>
+  <div class="two">
+    <div class="blk" style="margin:0">
+      <table>
+        <tr><th>何を</th><th>誰から</th><th>頻度</th><th>手段</th></tr>
+        <tr><td class="mid">各MTGの議事録</td><td class="who">藤橋さん</td><td>MTG後そのつど</td><td>LINE → ボードへ集約</td></tr>
+        <tr><td class="mid">週次の売上・受注・見込み</td><td class="who">鈴木さん・みくるさん</td><td>毎週</td><td>3名LINE＋Driveのシート</td></tr>
+        <tr><td class="mid">資金繰り・銀行協議</td><td class="who">藤橋さん</td><td>随時</td><td>個別（ボード非掲載）</td></tr>
+        <tr><td class="mid">AI・自動化の進捗</td><td class="who">宮崎さん</td><td>定例に合流</td><td>8/27ほか</td></tr>
+        <tr><td class="mid">組織・採用</td><td class="who">斎藤さん</td><td>1〜2ヶ月に1回</td><td>個別</td></tr>
+        <tr><td class="mid">提携（Feel So Free）</td><td class="who">藤橋さん経由</td><td>随時</td><td>議事録</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="panel" style="margin-bottom:16px">
+        <h3>招待の段階</h3>
+        <ol>
+          <li><b>第1陣</b>：鈴木さん（数字・後工程）、宮崎さん（AI・システム）</li>
+          <li><b>第2陣</b>：斎藤さん（組織・採用）、遠藤さん（記事。必要なページのみでも可）</li>
+          <li><b>入れない</b>：宮田さん（社外パートナー）</li>
+        </ol>
+        <div class="note">Aの財務は経営に近い。同じ情報を全員に浴びせても処理も責任も負えないため、見える範囲を段階的に開ける。</div>
+      </div>
+      <div class="panel warn">
+        <h3>ボードに載せないもの</h3>
+        <ul>
+          <li>資金繰りの生の数字と銀行協議の中身</li>
+          <li>バレンサーの契約タイミング（9月以降）</li>
+          <li>メンバー間の温度差の話</li>
+          <li>営業関与の座組（報酬の増額提案）</li>
+        </ul>
+        <div class="note">いずれも阿部・藤橋の1on1で扱う。座組の提案は資金状況から棚上げし、役割の中身（設計者として立つ・実行はしない）は今回の合意で足りている。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sect-label">補助手段</div>
+  <div class="panel">
+    <p style="font-size:11.5px;color:#4a4744">議事録の受け渡しが負担になる場合、阿部が各担当の個別LINEグループに<b>一時的に</b>参加して情報を直接拾う。流れができたら退出する。恒久的な常駐ではなく、立ち上げ期の手当てとして扱う。</p>
+  </div>
+
+  <footer>出どころ: 2026-08-21 戦略ミーティング（Notion「0821戦略ミーティング｜北麓」）／ この構成案は社内検討用。Notion掲載時は非掲載項目を外す。</footer>
+</div>
+</body>
+</html>

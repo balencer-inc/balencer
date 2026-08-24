@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>コーポレートサイト｜構造とAIO実装の決定</title>
+<style>
+:root{--ink:#1A1A1A;--sub:#5B6068;--line:#E4E6EA;--cobalt:#3158D4;--bg:#FFFFFF;--soft:#F6F7F9;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+ line-height:1.9;font-size:15.5px;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:860px;margin:0 auto;padding:64px 28px 120px;}
+h1{font-size:29px;line-height:1.45;letter-spacing:.01em;margin:0 0 28px;padding-bottom:22px;border-bottom:2px solid var(--ink);font-weight:700;}
+h2{font-size:21px;margin:56px 0 18px;padding-left:14px;border-left:4px solid var(--cobalt);font-weight:700;line-height:1.5;}
+h3{font-size:16.5px;margin:34px 0 12px;color:var(--cobalt);font-weight:700;}
+p{margin:0 0 16px;}
+strong{font-weight:700;}
+a{color:var(--cobalt);text-decoration:none;border-bottom:1px solid rgba(49,88,212,.3);}
+a:hover{border-bottom-color:var(--cobalt);}
+hr{border:0;border-top:1px solid var(--line);margin:48px 0;}
+table{border-collapse:collapse;width:100%;margin:20px 0 26px;font-size:14px;display:block;overflow-x:auto;}
+th,td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);font-weight:700;white-space:nowrap;}
+ul,ol{margin:0 0 18px;padding-left:24px;}
+li{margin-bottom:8px;}
+code{background:var(--soft);padding:2px 6px;border-radius:3px;font-size:13px;
+ font-family:"SF Mono",Menlo,Consolas,monospace;color:#B03A2E;}
+pre{background:#1A1D21;color:#E8EAED;padding:20px 22px;border-radius:6px;overflow-x:auto;
+ font-size:13px;line-height:1.75;margin:0 0 22px;}
+pre code{background:none;color:inherit;padding:0;font-size:13px;}
+blockquote{margin:22px 0;padding:16px 22px;background:var(--soft);border-left:3px solid var(--cobalt);
+ color:var(--ink);font-size:16px;}
+blockquote p{margin:0;}
+.meta{color:var(--sub);font-size:13px;margin-bottom:44px;}
+
+h2{font-size:22px;}
+</style></head><body><div class="wrap">
+<h1>バレンサー コーポレートサイト｜構造とAIO実装の決定</h1>
+<p>決定日：2026年8月24日
+文言の正本：<a href="./website-copy-master.md">website-copy-master.md</a>（このファイルは<strong>構造・実装・更新責任</strong>の正本）
+本番環境：WordPress + Elementor（balencer.jp）</p>
+<blockquote>
+<p><strong>決めたこと</strong>：HPはコンテンツを増やす場所ではなく、確信を与える記録にする。思想と現場はnoteに書き、HPは会社の定義を持つ。コーポレートサイトでブログは運用しない。<strong>更新されないことは欠点ではなく仕様</strong>とする。</p>
+</blockquote>
+<hr />
+<h2>1. 3層構造</h2>
+<p>13ページの設計（<a href="./website-copy-master.md">文言マスター §1</a>）は変えない。<strong>性質と更新責任を3層に分けて、どこを更新しないかを決める。</strong></p>
+<table>
+<thead>
+<tr>
+<th>層</th>
+<th>ページ</th>
+<th>性質</th>
+<th>更新の頻度と責任</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>動かない記録</strong>（11ページ）</td>
+<td><code>/</code> <code>/about/</code> <code>/about/philosophy/</code> <code>/service/</code> ＋4領域 <code>/plan/</code> <code>/recruit/</code> <code>/contact/</code></td>
+<td>会社の定義。AIと、商談前に確認する人が読む</td>
+<td>ほぼゼロ。<code>docs/company/</code> の正本を変えた時だけ</td>
+</tr>
+<tr>
+<td><strong>資産の記録</strong>（1ページ＋個別）</td>
+<td><code>/project/</code>（事例）</td>
+<td>会社が何をやったか。<strong>実体をHPに持つ</strong></td>
+<td>案件が終わったら追加（年に数回）</td>
+</tr>
+<tr>
+<td><strong>流れるもの</strong>（1ページ）</td>
+<td><code>/insight/</code>（読みもの）</td>
+<td><strong>実体を持たない。noteの索引</strong></td>
+<td>note側の更新のみ（自動取得）</td>
+</tr>
+</tbody>
+</table>
+<p>商品LP群（<code>/hojokin/</code> <code>/notion/</code> <code>/keiei/</code> 等）は別レイヤー。<strong>金額を持つのはここだけ</strong>で、コーポレート本体は非掲載を維持する。</p>
+<hr />
+<h2>2. <code>/insight/</code> を索引化する</h2>
+<h3>変更点</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>変更前</th>
+<th>変更後</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>記事の実体</td>
+<td>HP（WordPress投稿）</td>
+<td><strong>note（阿部貴之名義）</strong></td>
+</tr>
+<tr>
+<td><code>/insight/</code> の中身</td>
+<td>記事一覧＋本文</td>
+<td>note記事のタイトル・日付・冒頭1行を並べ、noteへ送る</td>
+</tr>
+<tr>
+<td>約束していること</td>
+<td>毎月、現場から得た知見を書く</td>
+<td>思想と現場はnoteに書いている</td>
+</tr>
+<tr>
+<td>更新作業</td>
+<td>記事執筆＋投稿</td>
+<td><strong>なし</strong>（RSSで自動）</td>
+</tr>
+</tbody>
+</table>
+<p>コピーは文言マスター §13 と §3.11 に反映済み。</p>
+<h3>実装</h3>
+<p>noteのRSS（<code>https://note.com/&lt;アカウント&gt;/rss</code>）をWordPress側で取り込み、カード表示してnoteへ外部リンクする。</p>
+<ul>
+<li>実装場所は <code>functions.php</code> の <code>fetch_feed()</code>、またはElementorのカスタムHTMLウィジェット。キャッシュは12時間</li>
+<li>表示するのは<strong>タイトル・公開日・冒頭1行</strong>まで。本文はHPに置かない</li>
+<li>RSSが不安定な場合のフォールバックは月1回の手貼り（10分）。それでも本文は置かない</li>
+</ul>
+<h3>ここでやらないこと</h3>
+<ul>
+<li><strong>noteの記事をHPに転載・要約しない。</strong> 正本が二重化して、どちらが最新か分からなくなる（<code>docs/</code> の運用原則と同じ）</li>
+<li>カテゴリをHP側で作り直さない。noteのハッシュタグに寄せる</li>
+<li>SNSの埋め込みタイムラインを置かない（重くなるだけで読まれない）</li>
+<li>更新頻度を上げるための記事を書かない</li>
+</ul>
+<hr />
+<h2>3. 事例 <code>/project/</code> だけは実体をHPに持つ</h2>
+<p><strong>理由</strong>：AIと、商談前の人が「この会社は何をやったか」を引く唯一の場所。noteの流れるコンテンツでは代替できない。会社の資産なので、個人名義のnoteに置くべきものでもない。</p>
+<p>書式を揃える（社名は伏せて業種表記。伏せても構造で機能する）。</p>
+<ol>
+<li>業種・規模・立場（承継2代目など）</li>
+<li>相談時の状態（何に困っていたか）</li>
+<li>横断した領域（4領域のどれをどう組んだか）</li>
+<li>やったこと（設計・ディレクション・実装の切り分け）</li>
+<li>変化（数字＋人や空気の質的変化。<strong>両方入れる</strong>）</li>
+<li>期間と関与範囲</li>
+</ol>
+<hr />
+<h2>4. AIから読める形にする（構造化データ）</h2>
+<p>今の13ページは人間向けの構成としては機能するが、AIから見ると「バレンサーとは何か」が <code>/</code> <code>/about/</code> <code>/service/</code> に分散している。<strong>ページを増やさず、JSON-LDを足すだけで効く。</strong></p>
+<table>
+<thead>
+<tr>
+<th>入れる場所</th>
+<th>型</th>
+<th>効果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全ページ共通（head）</td>
+<td><code>Organization</code></td>
+<td>会社が1つの実体として認識される</td>
+</tr>
+<tr>
+<td><code>/about/</code> 会社概要</td>
+<td><code>Organization</code> の詳細（設立・所在地・代表）</td>
+<td>会社概要の事実がそのまま取られる</td>
+</tr>
+<tr>
+<td><code>/about/</code> 代表</td>
+<td><code>Person</code>（阿部貴之）＋ <code>worksFor</code> → Organization</td>
+<td><strong>noteの阿部貴之とバレンサーが紐づく</strong></td>
+</tr>
+<tr>
+<td><code>/service/</code> 4領域</td>
+<td><code>Service</code>（<code>provider</code> → Organization）</td>
+<td>何を提供する会社かが取れる</td>
+</tr>
+<tr>
+<td><code>/project/</code> 事例</td>
+<td><code>Article</code>（<code>about</code> → Service）</td>
+<td>実績が取れる</td>
+</tr>
+<tr>
+<td><code>/contact/</code></td>
+<td><code>ContactPoint</code></td>
+<td>問い合わせ手段が取れる</td>
+</tr>
+</tbody>
+</table>
+<h3>一番効くのは <code>sameAs</code></h3>
+<p><code>Organization</code> の <code>sameAs</code> に <strong>note・YouTube・X・Facebook・LinkedIn のURLを列挙する。</strong> そして <code>Person</code>（阿部貴之）側にも <code>sameAs</code> でnoteとXを入れ、<code>worksFor</code> でバレンサーを指す。<strong>両方向で結ぶ。</strong></p>
+<p>これを入れないと、noteで積んだ信用が阿部貴之個人にしか紐づかず、会社に戻ってこない。逆に入れておけば、<strong>noteが伸びるほど会社の実体が濃くなる。</strong></p>
+<p>思想を個人名義で発信しながら会社の資産にするための技術的な要はここ1点。人生設計に書いた「20年後は統括側に回る／緩やかな生態系そのものが価値になる」構想と整合させるためにも、個人と会社を切り離さずに結んでおく。</p>
+<h3>実装</h3>
+<p>JSON-LDを1ブロック貼るだけ。Elementorでもテーマのheaderかコードスニペットのプラグインでheadに挿入できる。プラグインの自動生成（Yoast等）に任せると <code>sameAs</code> が抜けるので、<strong>手で書いて入れる。</strong></p>
+<hr />
+<h2>5. 実装の順番</h2>
+<table>
+<thead>
+<tr>
+<th>順</th>
+<th>やること</th>
+<th>目安</th>
+<th>なぜこの順か</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>Organization</code> ＋ <code>Person</code> ＋ <code>sameAs</code> のJSON-LD</td>
+<td>半日</td>
+<td><strong>一番効く。</strong> noteの本番運用が始まる前に入れる（記事が増えてから紐づけるより、最初から紐づいている方が素直）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>/insight/</code> の索引化＋コピー差し替え</td>
+<td>半日</td>
+<td>noteアカウントの方針が決まってから</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>Service</code> のJSON-LD（4ページ）</td>
+<td>半日</td>
+<td>領域ページの文言が確定済みなのですぐ入る</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>/project/</code> の書式統一＋<code>Article</code> JSON-LD</td>
+<td>事例が揃ってから</td>
+<td>中身が先。枠だけ作らない</td>
+</tr>
+</tbody>
+</table>
+<p>1は note の運用開始と独立して進められる。<strong>素材（生声）が揃うのを待たずに着手できる唯一の工程。</strong></p>
+<hr />
+<h2>6. 保留（阿部さんの判断待ち）</h2>
+<h3><code>/plan/</code> に「料金の考え方」を書くか</h3>
+<p>金額そのものではなく、<strong>構造</strong>（月額制／初回6ヶ月／以降3ヶ月更新／末日締め翌月末払い／制作・開発はPROJECTとして別見積）を書くかどうか。</p>
+<ul>
+<li>書く場合：問い合わせの質が上がる。AIに価格帯を聞かれた時にも答えが返る</li>
+<li>書かない場合：商談まで一切分からない。現行の設計はこちら（正本§9・数字を先に固定しない）</li>
+</ul>
+<h3>noteのアカウント名義</h3>
+<ul>
+<li><strong>阿部貴之個人名義のまま（推奨）</strong>：思想は人に宿る。会社名義の思想発信は薄くなる。会社への紐づけは §4 の <code>sameAs</code> と <code>worksFor</code> で担保する</li>
+<li>バレンサー公式も別に持つ：更新責任が増えるので、個人名義が回り始めてから判断する</li>
+</ul>
+<hr />
+<h2>7. この決定が前提にしていること</h2>
+<ul>
+<li>実際の受注経路は紹介・休眠掘り起こし・対面（<a href="./sales-strategy-2026.md">sales-strategy-2026.md</a>）。HPはマス集客の装置ではなく、<strong>紹介を受けた人が検索して見に来たときに信頼できると判断できること</strong>が役割（文言マスター §0）</li>
+<li>したがってHPの評価軸は流入数ではない。<strong>商談前に読んだ人が確信を持てるか</strong>、<strong>AIが会社を一意に説明できるか</strong>の2つ</li>
+</ul>
+<h3>確度の低い前提（断定していない）</h3>
+<p>どのAIモデルがどのドメインをどれだけ引用するか、AI検索経由の実際の流入量については実測データを持っていない。判断を変えるほど重要になった時点で調べる。§4の構造化データは、その結果に関係なく効く（機械可読の会社情報を持つこと自体が損にならない）ため先に入れる。</p>
+</div></body></html>

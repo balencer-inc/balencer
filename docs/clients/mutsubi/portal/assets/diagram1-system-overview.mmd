@@ -1,0 +1,20 @@
+flowchart TB
+    U["利用者<br/>一般社員・管理者・総務"]
+    U --> P["MUTSUBI PORTAL<br/>PC・スマートフォン・タブレット"]
+    P --> A["認証・社員基盤<br/>ログイン／社員マスタ／権限管理"]
+    P --> B["日常業務<br/>勤怠・在席ステータス／マイページ"]
+    P --> C["予約管理<br/>会議室・応接室"]
+    P --> D["安全管理<br/>アルコールチェック"]
+    P --> E["追加業務機能<br/>名刺／車両・備品／申請"]
+    A --> CORE["共通システム基盤"]
+    B --> CORE
+    C --> CORE
+    D --> CORE
+    E --> CORE
+    CORE --> DB["データ保存<br/>社員・予約・履歴・申請"]
+    CORE --> PERM["権限制御<br/>一般社員／管理者"]
+    CORE --> LOG["運用管理<br/>監査ログ／CSV／バックアップ"]
+    CORE --> EXT["外部サービス連携"]
+    EXT --> GOOGLE["Google Workspace<br/>認証・カレンダー"]
+    EXT --> GEMINI["Gemini API<br/>名刺解析"]
+    EXT --> TOOLS["既存社内サービス<br/>楽々精算・給与明細"]

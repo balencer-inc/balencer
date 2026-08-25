@@ -1,0 +1,14 @@
+flowchart TB
+    DEVICE["社員・管理者の端末<br/>PC／スマートフォン"]
+    DEVICE --> FRONT["フロントエンド<br/>画面表示・入力・操作"]
+    FRONT --> AUTH["認証・権限確認"]
+    FRONT --> API["業務ロジック<br/>予約・打刻・申請・重複防止"]
+    AUTH --> EMP["社員マスタ<br/>所属・役職・管理者権限"]
+    API --> DATA["業務データベース<br/>予約・履歴・測定・名刺"]
+    API --> FILE["ファイル保存<br/>名刺画像等"]
+    API --> CAL["Google Calendar API"]
+    API --> AI["Gemini API"]
+    API --> CSV["CSV出力・管理帳票"]
+    DATA --> ADMIN["管理者画面<br/>確認・修正・集計"]
+    EMP --> ADMIN
+    FILE --> ADMIN

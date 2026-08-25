@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MUTSUBI PORTAL | 睦備建設 総合社内ポータル</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mutsubi: {
+              50: '#f0f5fa',
+              100: '#ddebf5',
+              200: '#b8d3eb',
+              500: '#2563eb',
+              600: '#1e4b8a',
+              700: '#153a6d',
+              800: '#0f2d59',
+              900: '#0a1d3a'
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            tech: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background-color: #f8fafc; -webkit-tap-highlight-color: transparent; }
+    
+    /* スクロールバーカスタマイズ */
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    
+    /* コーポレートヘッダーグラデーション */
+    .mutsubi-header-bg {
+      background: linear-gradient(135deg, #0f2d59 0%, #1e4b8a 100%);
+    }
+
+    /* モーダル用アニメーション */
+    .bottom-sheet { transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .bottom-sheet.open { transform: translateY(0); }
+    .overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .overlay.open { opacity: 1; pointer-events: auto; }
+    .btn-press:active { transform: scale(0.97); }
+    
+    /* ナビゲーションアクティブ表示 */
+    .nav-btn.active {
+      color: #0f2d59;
+      font-weight: 800;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border-radius: 0.75rem;
+    }
+  </style>
+</head>
+<body class="text-slate-800 overflow-hidden h-screen w-screen flex flex-col font-sans">
+
+  <!-- ==================== ログイン画面 (部署選択・社員検索・管理者ログイン機能統合) ==================== -->
+  <div id="login-screen" class="w-full h-full bg-slate-900 flex flex-col items-center justify-center p-4 md:p-6 z-50 fixed inset-0 mutsubi-header-bg overflow-y-auto">
+    <div class="w-full max-w-xl bg-white/95 p-6 md:p-8 rounded-3xl border border-white/20 shadow-2xl backdrop-blur-md space-y-6 my-auto">
+      
+      <!-- コーポレートロゴマーク -->
+      <div class="text-center space-y-2">
+        <div class="flex justify-center items-center gap-1.5">
+          <span class="w-4 h-8 bg-gradient-to-b from-sky-400 to-blue-600 rounded-sm transform rotate-12 inline-block"></span>
+          <span class="w-4 h-8 bg-gradient-to-b from-blue-600 to-mutsubi-900 rounded-sm transform -rotate-12 -ml-2.5 inline-block"></span>
+        </div>
+        <span class="text-[10px] font-bold tracking-widest text-mutsubi-600 uppercase bg-mutsubi-50 px-3 py-1 rounded-full border border-mutsubi-200 inline-block">MUTSUBI ENTERPRISE PORTAL</span>
+        <h1 class="font-black text-2xl md:text-3xl tracking-wider text-mutsubi-900">睦備建設 株式会社</h1>
+        <p class="text-xs text-slate-500 font-bold">社内総合ポータル & 統合業務データベース</p>
+      </div>
+
+      <!-- モード切り替えタブ: 社員ログイン / 管理者ログイン -->
+      <div class="flex bg-slate-100 p-1 rounded-2xl border border-slate-200 text-xs font-black">
+        <button onclick="switchLoginTab('user')" id="login-tab-user" class="flex-1 py-2.5 rounded-xl bg-white text-mutsubi-900 shadow">
+          <i class="fa-solid fa-users mr-1 text-sky-600"></i> 社員ログイン (部署・氏名検索)
+        </button>
+        <button onclick="switchLoginTab('admin')" id="login-tab-admin" class="flex-1 py-2.5 rounded-xl text-slate-500 hover:text-slate-800">
+          <i class="fa-solid fa-user-shield mr-1 text-mutsubi-800"></i> 管理者専用ログイン
+        </button>
+      </div>
+
+      <!-- 【パネル 1: 一般社員ログイン（部署＆名前検索）】 -->
+      <div id="login-panel-user" class="space-y-4">
+        
+        <!-- 部署絞り込み ＆ 氏名インクリメンタル検索 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-black text-slate-600 mb-1"><i class="fa-solid fa-sitemap text-mutsubi-600 mr-1"></i>部署で絞り込み</label>
+            <select id="login-dept-select" onchange="filterEmployeeList()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-800 outline-none focus:border-mutsubi-600">
+              <option value="ALL">すべての部署</option>
+              <option value="営業部">営業部</option>
+              <option value="建設部">建設部</option>
+              <option value="企画部">企画部</option>
+              <option value="管理部">管理部</option>
+              <option value="総務課">総務課</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-black text-slate-600 mb-1"><i class="fa-solid fa-magnifying-glass text-mutsubi-600 mr-1"></i>社員名・フリガナ検索</label>
+            <input type="text" id="login-search-input" oninput="filterEmployeeList()" placeholder="氏名またはフリガナ..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-800 outline-none focus:border-mutsubi-600">
+          </div>
+        </div>
+
+        <!-- 選択可能な社員カードリスト -->
+        <div>
+          <label class="block text-xs font-black text-slate-500 mb-1">該当社員を選択してください (クリックでログイン)</label>
+          <div id="login-employee-list" class="max-h-48 overflow-y-auto custom-scrollbar border border-slate-200 rounded-2xl divide-y divide-slate-100 bg-white">
+            <!-- JSで動的描画 -->
+          </div>
+        </div>
+
+        <button onclick="handleLogin('guest_' + Date.now(), 'ゲスト社員', 'guest@mutsubi.co.jp', '営業部', '一般社員', false)" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-2.5 rounded-xl text-xs flex justify-center items-center gap-2 transition-all">
+          <i class="fa-solid fa-user-secret"></i> ゲストモードで手軽に体験する
+        </button>
+      </div>
+
+      <!-- 【パネル 2: 管理者専用ログイン】 -->
+      <div id="login-panel-admin" class="hidden space-y-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+        <div class="text-xs text-slate-600 space-y-1">
+          <p class="font-extrabold text-mutsubi-900"><i class="fa-solid fa-lock text-sky-600 mr-1"></i> 総務部・新入社員マスタ管理者エリア</p>
+          <p>管理者アカウントでログインすると、新入社員の登録やマスタ情報の編集が可能です。</p>
+        </div>
+
+        <div>
+          <label class="block text-xs font-black text-slate-600 mb-1">管理者用アクセスコード（デモ用: admin123）</label>
+          <input type="password" id="admin-pass-input" placeholder="パスワードを入力..." class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-800 outline-none focus:border-mutsubi-600">
+        </div>
+
+        <button onclick="loginAsAdmin()" class="w-full bg-mutsubi-800 hover:bg-mutsubi-900 text-white font-extrabold py-3 rounded-xl shadow-md text-xs flex justify-center items-center gap-2 btn-press">
+          <i class="fa-solid fa-shield-halved text-sky-400"></i> 管理者モードでログイン
+        </button>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 text-[10px] text-slate-400 font-medium text-center">
+        <i class="fa-brands fa-google text-slate-400 mr-1"></i> 社用Googleアカウント（@mutsubi.co.jp）によるシングルサインオン連携対応
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== メインアプリ構造 ==================== -->
+  <div id="app-screen" class="w-full h-full hidden flex-col md:flex-row bg-slate-100 overflow-hidden">
+    
+    <!-- ナビゲーションサイドバー (PC: 左固定 / スマホ: 下部固定) -->
+    <nav class="bg-mutsubi-900 text-white shrink-0 z-30 order-last md:order-first w-full md:w-64 h-16 md:h-full flex md:flex-col justify-between border-t md:border-t-0 md:border-r border-mutsubi-800 mutsubi-header-bg">
+      
+      <!-- PC用ヘッダーロゴ -->
+      <div class="hidden md:block p-5 border-b border-white/10">
+        <div class="flex items-center gap-2.5 mb-3">
+          <div class="flex items-center gap-1 shrink-0">
+            <span class="w-3 h-6 bg-gradient-to-b from-sky-400 to-blue-600 rounded-sm transform rotate-12 inline-block"></span>
+            <span class="w-3 h-6 bg-gradient-to-b from-blue-600 to-indigo-900 rounded-sm transform -rotate-12 -ml-2 inline-block"></span>
+          </div>
+          <div>
+            <span class="text-[9px] font-bold text-sky-300 tracking-widest uppercase">MUTSUBI PORTAL</span>
+            <h1 class="font-black text-base tracking-wider text-white leading-tight">睦備建設 ポータル</h1>
+          </div>
+        </div>
+
+        <!-- ログインユーザー表示プロファイル -->
+        <div class="bg-white/10 border border-white/15 rounded-xl p-3 flex items-center gap-3">
+          <div class="w-9 h-9 bg-mutsubi-600 text-white rounded-full flex items-center justify-center font-black text-sm shadow shrink-0">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="flex-1 overflow-hidden">
+            <div class="flex items-center gap-1">
+              <span id="user-role-badge" class="text-[9px] bg-sky-500 text-white font-black px-1.5 py-0.2 rounded">社員</span>
+              <span id="user-dept-badge" class="text-[9px] bg-white/20 text-sky-200 font-bold px-1.5 py-0.2 rounded truncate">営業部</span>
+            </div>
+            <p id="user-display-name-pc" class="text-xs font-extrabold text-white truncate mt-0.5">ユーザー名</p>
+          </div>
+          <button onclick="handleLogout()" class="text-slate-300 hover:text-white transition-colors text-xs p-1" title="ログアウト">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ナビゲーションメニュー -->
+      <div class="flex md:flex-col flex-1 overflow-x-auto md:overflow-y-auto custom-scrollbar px-2 py-2 gap-1 md:gap-1.5 justify-around md:justify-start">
+        <button onclick="switchView('dashboard')" id="nav-dashboard" class="nav-btn active flex-1 md:flex-none flex md:flex-row flex-col items-center justify-center md:justify-start gap-1 md:gap-3 text-slate-300 hover:text-white p-2 md:p-3 transition-all relative">
+          <i class="fa-solid fa-house text-base md:w-5 text-center"></i>
+          <span class="text-[10px] md:text-sm font-bold">ホーム</span>
+        </button>
+
+        <button onclick="switchView('alcohol')" id="nav-alcohol" class="nav-btn flex-1 md:flex-none flex md:flex-row flex-col items-center justify-center md:justify-start gap-1 md:gap-3 text-slate-300 hover:text-white p-2 md:p-3 transition-all relative">
+          <i class="fa-solid fa-wine-bottle text-base md:w-5 text-center"></i>
+          <span class="text-[10px] md:text-sm font-bold">アルコール✓</span>
+        </button>
+
+        <button onclick="switchView('attendance')" id="nav-attendance" class="nav-btn flex-1 md:flex-none flex md:flex-row flex-col items-center justify-center md:justify-start gap-1 md:gap-3 text-slate-300 hover:text-white p-2 md:p-3 transition-all relative">
+          <i class="fa-solid fa-user-clock text-base md:w-5 text-center"></i>
+          <span class="text-[10px] md:text-sm font-bold">勤怠・打刻</span>
+        </button>
+
+        <button onclick="switchView('reserve')" id="nav-reserve" class="nav-btn flex-1 md:flex-none flex md:flex-row flex-col items-center justify-center md:justify-start gap-1 md:gap-3 text-slate-300 hover:text-white p-2 md:p-3 transition-all relative">
+          <i class="fa-solid fa-door-open text-base md:w-5 text-center"></i>
+          <span class="text-[10px] md:text-sm font-bold">会議室・応接</span>
+        </button>
+
+        <button onclick="switchView('cards')" id="nav-cards" class="nav-btn flex-1 md:flex-none flex md:flex-row flex-col items-center justify-center md:justify-start gap-1 md:gap-3 text-slate-300 hover:text-white p-2 md:p-3 transition-all relative">
+          <i class="fa-solid fa-address-card text-base md:w-5 text-center"></i>
+          <span class="text-[10px] md:text-sm font-bold">名刺管理</span>
+        </button>
+
+        <button onclick="switchView('equip')" id="nav-equip" class="nav-btn flex-1 md:flex-none flex md:flex-row flex-col items-center justify-center md:justify-start gap-1 md:gap-3 text-slate-300 hover:text-white p-2 md:p-3 transition-all relative">
+          <i class="fa-solid fa-car text-base md:w-5 text-center"></i>
+          <span class="text-[10px] md:text-sm font-bold">社用車・備品</span>
+        </button>
+
+        <button onclick="switchView('workflow')" id="nav-workflow" class="nav-btn flex-1 md:flex-none flex md:flex-row flex-col items-center justify-center md:justify-start gap-1 md:gap-3 text-slate-300 hover:text-white p-2 md:p-3 transition-all relative">
+          <i class="fa-solid fa-file-signature text-base md:w-5 text-center"></i>
+          <span class="text-[10px] md:text-sm font-bold">各種申請</span>
+        </button>
+
+        <!-- 管理者専用：社員マスター管理タブ -->
+        <button onclick="switchView('members')" id="nav-members" class="nav-btn hidden flex-1 md:flex-none flex md:flex-row flex-col items-center justify-center md:justify-start gap-1 md:gap-3 text-sky-300 hover:text-white p-2 md:p-3 transition-all relative bg-sky-900/40 border border-sky-500/30 rounded-xl">
+          <i class="fa-solid fa-users-gear text-base md:w-5 text-center text-sky-400"></i>
+          <span class="text-[10px] md:text-sm font-black">社員マスタ管理</span>
+        </button>
+
+        <button onclick="switchView('mypage')" id="nav-mypage" class="nav-btn flex-1 md:flex-none flex md:flex-row flex-col items-center justify-center md:justify-start gap-1 md:gap-3 text-slate-300 hover:text-white p-2 md:p-3 transition-all relative">
+          <i class="fa-solid fa-id-card-clip text-base md:w-5 text-center"></i>
+          <span class="text-[10px] md:text-sm font-bold">マイページ</span>
+        </button>
+      </div>
+
+      <!-- 総務部モードインジケーター -->
+      <div id="admin-badge-area" class="hidden md:block p-3 border-t border-white/10 text-center">
+        <span class="inline-flex items-center gap-1.5 text-xs font-black text-mutsubi-900 bg-sky-300 px-3 py-1 rounded-full shadow">
+          <i class="fa-solid fa-shield-halved"></i> 総務部・管理モード
+        </span>
+      </div>
+    </nav>
+
+    <!-- メイン表示領域 -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden relative">
+      
+      <!-- ヘッダー -->
+      <header class="bg-mutsubi-900 text-white shrink-0 shadow-md z-20 mutsubi-header-bg border-b border-mutsubi-700">
+        <div class="flex justify-between items-center px-4 py-3">
+          <div class="flex items-center gap-3">
+            <div class="md:hidden flex items-center gap-1">
+              <span class="w-2.5 h-5 bg-gradient-to-b from-sky-400 to-blue-600 rounded-sm transform rotate-12 inline-block"></span>
+              <span class="w-2.5 h-5 bg-gradient-to-b from-blue-600 to-indigo-900 rounded-sm transform -rotate-12 -ml-1.5 inline-block"></span>
+            </div>
+            <h2 id="header-title" class="text-base md:text-xl font-black tracking-wider text-white">ダッシュボード</h2>
+          </div>
+          
+          <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Googleカレンダー同期連携インジケーター -->
+            <span class="text-[10px] sm:text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full border border-emerald-300 flex items-center gap-1.5 shadow-sm">
+              <i class="fa-brands fa-google text-emerald-600"></i>
+              <span class="hidden sm:inline">Google Calendar</span> 連携中
+            </span>
+            <span id="user-display-name-sp" class="md:hidden text-xs bg-white/20 text-white font-extrabold px-2.5 py-1 rounded-full">ユーザー</span>
+            <button onclick="handleLogout()" class="md:hidden text-slate-300 hover:text-white text-xs font-bold bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700">
+              ログアウト
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- ビュー切り替えスクロールエリア -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-6 lg:p-8" id="main-scroll-area">
+        <div class="max-w-6xl mx-auto w-full space-y-6">
+
+          <!-- ==================== VIEW 1: ダッシュボード ==================== -->
+          <div id="view-dashboard" class="view-section space-y-6">
+            
+            <!-- ウエルカムバナー -->
+            <div class="bg-gradient-to-r from-mutsubi-900 via-mutsubi-800 to-mutsubi-900 rounded-3xl p-6 text-white shadow-xl relative overflow-hidden border border-mutsubi-600">
+              <div class="absolute right-0 top-0 bottom-0 opacity-10 flex items-center pr-6 pointer-events-none">
+                <i class="fa-solid fa-building text-9xl text-white"></i>
+              </div>
+              <div class="relative z-10 space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="bg-sky-400 text-mutsubi-900 font-black text-xs px-3 py-1 rounded-full">MUTSUBI PORTAL HOME</span>
+                  <span id="dash-user-dept-label" class="bg-white/20 text-white font-bold text-xs px-3 py-1 rounded-full border border-white/20">営業部</span>
+                </div>
+                <h3 class="text-2xl font-black tracking-wide text-white" id="welcome-user-name">ようこそ、藤井さん！</h3>
+                <p class="text-xs md:text-sm text-slate-200 font-medium max-w-xl">
+                  本日も安全運転・アルコールチェックの実施をお願いします。勤怠打刻・会議室予約（Googleカレンダー連携）・全社名刺データベースへ即座にアクセスできます。
+                </p>
+              </div>
+            </div>
+
+            <!-- 外部システム連携ワンタップ移動カード -->
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-1.5 h-5 bg-mutsubi-600 rounded-full"></div>
+                <h3 class="font-extrabold text-base text-slate-800">社内主要ツール・外部サービス連携</h3>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <a href="https://www.rakurakuseisan.jp/" target="_blank" class="bg-white border border-slate-200 hover:border-mutsubi-500 hover:shadow-md rounded-2xl p-4 transition-all flex flex-col justify-between group">
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <i class="fa-solid fa-up-right-from-square text-xs text-slate-400 group-hover:text-mutsubi-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-black text-slate-800 text-sm">楽々精算</h4>
+                    <p class="text-[10px] text-slate-400 font-bold">交通費・経費精算システム</p>
+                  </div>
+                </a>
+
+                <a href="https://example.com/kyuyo" target="_blank" onclick="showToast('WEB給与明細サイトを開きます（外部サイト）')" class="bg-white border border-slate-200 hover:border-mutsubi-500 hover:shadow-md rounded-2xl p-4 transition-all flex flex-col justify-between group">
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-wallet"></i></div>
+                    <i class="fa-solid fa-up-right-from-square text-xs text-slate-400"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-black text-slate-800 text-sm">WEB給与明細</h4>
+                    <p class="text-[10px] text-slate-400 font-bold">給与・賞与明細の照会</p>
+                  </div>
+                </a>
+
+                <button onclick="switchView('cards')" class="bg-white border border-slate-200 hover:border-mutsubi-500 hover:shadow-md rounded-2xl p-4 transition-all text-left flex flex-col justify-between group">
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="w-10 h-10 bg-sky-100 text-sky-700 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-address-book"></i></div>
+                    <i class="fa-solid fa-arrow-right text-xs text-slate-400"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-black text-slate-800 text-sm">名刺ARCHIVE</h4>
+                    <p class="text-[10px] text-slate-400 font-bold">全社共有・AI名刺データベース</p>
+                  </div>
+                </button>
+
+                <button onclick="switchView('reserve')" class="bg-white border border-slate-200 hover:border-mutsubi-500 hover:shadow-md rounded-2xl p-4 transition-all text-left flex flex-col justify-between group">
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="w-10 h-10 bg-indigo-100 text-indigo-700 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-door-open"></i></div>
+                    <i class="fa-solid fa-arrow-right text-xs text-slate-400"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-black text-slate-800 text-sm">会議室・応接室</h4>
+                    <p class="text-[10px] text-slate-400 font-bold">Googleカレンダー同期対応</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- ステータス ＆ 社内連絡 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              
+              <!-- 今日の勤務・アルコールチェックステータス -->
+              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                  <div class="flex items-center gap-2">
+                    <div class="w-1.5 h-5 bg-mutsubi-800 rounded-full"></div>
+                    <h3 class="font-black text-slate-800">本日の勤務・チェック状況</h3>
+                  </div>
+                  <span id="dash-date-badge" class="text-xs font-mono font-bold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">2026-08-02</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
+                    <span class="text-[11px] font-bold text-slate-400 block mb-1">アルコールチェック</span>
+                    <div id="dash-alcohol-status" class="text-xs font-extrabold text-red-600 bg-red-50 py-1.5 px-2 rounded-xl border border-red-200">
+                      <i class="fa-solid fa-triangle-exclamation mr-1"></i> 未実施
+                    </div>
+                  </div>
+                  <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
+                    <span class="text-[11px] font-bold text-slate-400 block mb-1">現在の勤務打刻</span>
+                    <div id="dash-attendance-status" class="text-xs font-extrabold text-slate-700 bg-slate-200 py-1.5 px-2 rounded-xl">
+                      未出勤
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-2 flex gap-2">
+                  <button onclick="switchView('alcohol')" class="flex-1 bg-mutsubi-600 hover:bg-mutsubi-700 text-white font-extrabold py-3 rounded-xl text-xs shadow btn-press flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-wine-bottle"></i> アルコールチェック報告
+                  </button>
+                  <button onclick="switchView('attendance')" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-extrabold py-3 rounded-xl text-xs shadow btn-press flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-clock"></i> 勤怠打刻画面へ
+                  </button>
+                </div>
+              </div>
+
+              <!-- 社内お知らせ・連絡事項 -->
+              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                  <div class="flex items-center gap-2">
+                    <div class="w-1.5 h-5 bg-sky-500 rounded-full"></div>
+                    <h3 class="font-black text-slate-800">社内お知らせ・通知</h3>
+                  </div>
+                  <span class="text-xs text-mutsubi-600 font-bold">総務部より</span>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div class="p-3 bg-blue-50/60 rounded-xl border border-blue-100 flex gap-3">
+                    <i class="fa-brands fa-google text-blue-600 text-base shrink-0 mt-0.5"></i>
+                    <div>
+                      <span class="font-extrabold text-blue-900 block">【新機能】会議室予約のGoogleカレンダー連動機能を追加</span>
+                      <p class="text-blue-800 mt-0.5">予約完了画面からワンタップで社用Googleカレンダーへ会議を追加できます。</p>
+                    </div>
+                  </div>
+                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex gap-3">
+                    <i class="fa-solid fa-user-plus text-slate-500 text-base shrink-0 mt-0.5"></i>
+                    <div>
+                      <span class="font-bold text-slate-800 block">【総務部】新入社員追加・部署管理機能について</span>
+                      <p class="text-slate-600 mt-0.5">管理者は「社員マスタ管理」タブより新入社員の追加登録や部署移動の変更が可能です。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ==================== VIEW 2: アルコールチェック ==================== -->
+          <div id="view-alcohol" class="view-section hidden space-y-6">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-6 bg-mutsubi-600 rounded-full"></div>
+                  <h3 class="text-xl font-black text-slate-800">アルコールチェック管理</h3>
+                </div>
+                <p class="text-xs text-slate-500 font-bold mt-1">道路交通法に基づき、運転前後の酒気帯び確認結果を記録・報告します。</p>
+              </div>
+
+              <!-- 総務部モードの場合のみ切替表示タブ -->
+              <div id="alcohol-mode-switcher" class="hidden flex bg-slate-200 p-1 rounded-xl">
+                <button onclick="toggleAlcoholTab('submit')" id="tab-alc-submit" class="px-4 py-1.5 rounded-lg text-xs font-black bg-white text-mutsubi-900 shadow">自社報告</button>
+                <button onclick="toggleAlcoholTab('admin')" id="tab-alc-admin" class="px-4 py-1.5 rounded-lg text-xs font-black text-slate-600 hover:text-black">総務部全件一覧</button>
+              </div>
+            </div>
+
+            <!-- アルコール提出フォーム -->
+            <div id="alc-section-submit" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm max-w-2xl mx-auto space-y-5">
+              <div class="bg-mutsubi-800 text-white p-4 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <i class="fa-solid fa-square-poll-vertical text-sky-300 text-2xl"></i>
+                  <div>
+                    <h4 class="font-black text-sm">アルコール検知結果の入力</h4>
+                    <p class="text-[10px] text-slate-200">測定値を正確に入力して送信してください</p>
+                  </div>
+                </div>
+                <span class="text-xs bg-sky-400 text-mutsubi-900 font-black px-3 py-1 rounded-full">乗車前必修</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-black text-slate-600 mb-1">報告種別</label>
+                  <select id="alc-type" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 font-bold text-sm focus:border-mutsubi-600 outline-none">
+                    <option value="乗車前 (出勤)">乗車前 (出勤時)</option>
+                    <option value="乗車後 (退勤)">乗車後 (退勤時)</option>
+                    <option value="業務中移動">業務中移動時</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-black text-slate-600 mb-1">確認方式</label>
+                  <select id="alc-method" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 font-bold text-sm focus:border-mutsubi-600 outline-none">
+                    <option value="対面確認">対面確認 (社内)</option>
+                    <option value="IT・遠隔報告">IT・電話遠隔報告 (直行直帰)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center space-y-3">
+                <span class="text-xs font-extrabold text-slate-500 block">アルコール測定値 (mg/L)</span>
+                <div class="flex justify-center items-center gap-2">
+                  <input type="number" step="0.01" id="alc-value" value="0.00" class="w-36 text-center text-3xl font-black font-mono border-2 border-mutsubi-800 rounded-xl py-2 bg-white text-slate-900 shadow-inner">
+                  <span class="text-sm font-bold text-slate-600">mg/L</span>
+                </div>
+                <div class="flex justify-center gap-2">
+                  <button type="button" onclick="document.getElementById('alc-value').value='0.00'" class="text-xs bg-emerald-100 text-emerald-800 font-extrabold px-3 py-1.5 rounded-lg border border-emerald-300">
+                    <i class="fa-solid fa-check mr-1"></i> 正常 (0.00 mg/L)
+                  </button>
+                  <button type="button" onclick="document.getElementById('alc-value').value='0.15'" class="text-xs bg-red-100 text-red-800 font-bold px-3 py-1.5 rounded-lg border border-red-300">
+                    警告テスト (0.15)
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-black text-slate-600 mb-1">使用検知器ID / 備考</label>
+                <input type="text" id="alc-device-id" value="SENS-8821 (社用)" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 font-bold text-sm focus:border-mutsubi-600 outline-none">
+              </div>
+
+              <button onclick="submitAlcoholCheck()" class="w-full bg-mutsubi-800 hover:bg-mutsubi-900 text-white font-extrabold py-3.5 rounded-xl shadow-md text-sm btn-press flex justify-center items-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> 総務部へ測定結果を登録送信
+              </button>
+            </div>
+
+            <!-- 総務部 モニタリング一覧 (管理者専用) -->
+            <div id="alc-section-admin" class="hidden space-y-4">
+              <div class="bg-mutsubi-900 text-white p-5 rounded-3xl border border-mutsubi-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                  <span class="bg-sky-400 text-mutsubi-900 font-black text-[10px] px-2.5 py-0.5 rounded">総務部専用モニタリング</span>
+                  <h4 class="text-lg font-black text-white mt-1">全社員 アルコールチェック監視ダッシュボード</h4>
+                </div>
+                <button onclick="exportAlcoholCSV()" class="bg-white text-mutsubi-900 font-extrabold px-4 py-2 rounded-xl text-xs hover:bg-sky-100 shadow flex items-center gap-2">
+                  <i class="fa-solid fa-file-csv"></i> CSVデータ出力
+                </button>
+              </div>
+
+              <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs border-collapse">
+                    <thead class="bg-slate-900 text-white font-black border-b border-slate-800">
+                      <tr>
+                        <th class="p-3.5">日時</th>
+                        <th class="p-3.5">社員名 (部署)</th>
+                        <th class="p-3.5">区分</th>
+                        <th class="p-3.5">測定値</th>
+                        <th class="p-3.5">確認方式</th>
+                        <th class="p-3.5">判定</th>
+                      </tr>
+                    </thead>
+                    <tbody id="alc-admin-table-body" class="divide-y divide-slate-100 font-bold">
+                      <!-- JSで動的生成 -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ==================== VIEW 3: 勤怠・打刻 ==================== -->
+          <div id="view-attendance" class="view-section hidden space-y-6">
+            
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-6 bg-mutsubi-600 rounded-full"></div>
+              <div>
+                <h3 class="text-xl font-black text-slate-800">勤怠打刻・リアルタイムステータス</h3>
+                <p class="text-xs text-slate-500 font-bold">出社・退社・外出・休憩のワンタップ打刻と社内共有状況の更新</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+              <!-- 打刻アクションパネル -->
+              <div class="md:col-span-2 bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex justify-between items-center pb-4 border-b border-slate-100">
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-clock text-mutsubi-600 text-xl"></i>
+                    <span id="live-clock" class="text-2xl font-black font-mono text-slate-800">12:34:56</span>
+                  </div>
+                  <span id="current-attendance-badge" class="bg-slate-100 text-slate-700 text-xs font-black px-3 py-1.5 rounded-full border border-slate-300">
+                    ステータス: 未打刻
+                  </span>
+                </div>
+
+                <!-- 打刻ボタン -->
+                <div class="grid grid-cols-2 gap-4">
+                  <button onclick="recordAttendance('出勤')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-black py-6 rounded-2xl shadow-lg border border-emerald-800 text-lg btn-press flex flex-col items-center justify-center gap-1">
+                    <i class="fa-solid fa-sun text-2xl"></i> 出勤打刻
+                  </button>
+                  <button onclick="recordAttendance('退勤')" class="bg-mutsubi-900 hover:bg-black text-white font-black py-6 rounded-2xl shadow-lg border border-mutsubi-900 text-lg btn-press flex flex-col items-center justify-center gap-1">
+                    <i class="fa-solid fa-moon text-2xl"></i> 退勤打刻
+                  </button>
+                  <button onclick="recordAttendance('外出')" class="bg-amber-500 hover:bg-amber-600 text-white font-black py-4 rounded-2xl shadow text-sm btn-press flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-person-walking-luggage text-lg"></i> 外出
+                  </button>
+                  <button onclick="recordAttendance('戻り')" class="bg-sky-600 hover:bg-sky-700 text-white font-black py-4 rounded-2xl shadow text-sm btn-press flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-building-user text-lg"></i> 戻り/着席
+                  </button>
+                </div>
+
+                <!-- 社内ステータス設定 -->
+                <div class="pt-2">
+                  <label class="block text-xs font-black text-slate-500 mb-2">現在の社内表示ステータス変更</label>
+                  <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                    <button onclick="setStatusBadge('在席')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold py-2 px-1 rounded-xl text-xs border border-slate-300">在席中</button>
+                    <button onclick="setStatusBadge('会議中')" class="bg-purple-100 hover:bg-purple-200 text-purple-900 font-extrabold py-2 px-1 rounded-xl text-xs border border-purple-300">会議中</button>
+                    <button onclick="setStatusBadge('外出中')" class="bg-amber-100 hover:bg-amber-200 text-amber-900 font-extrabold py-2 px-1 rounded-xl text-xs border border-amber-300">外出中</button>
+                    <button onclick="setStatusBadge('休憩中')" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-900 font-extrabold py-2 px-1 rounded-xl text-xs border border-emerald-300">休憩中</button>
+                    <button onclick="setStatusBadge('休暇')" class="bg-red-100 hover:bg-red-200 text-red-900 font-extrabold py-2 px-1 rounded-xl text-xs border border-red-300">休暇</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 過去ログ -->
+              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col h-full">
+                <h4 class="font-black text-slate-800 text-base mb-3 pb-2 border-b border-slate-100">本日の打刻ログ</h4>
+                <div id="attendance-log-list" class="space-y-2.5 overflow-y-auto custom-scrollbar flex-1 max-h-72">
+                  <!-- JS描画 -->
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- ==================== VIEW 4: 会議室・応接室 予約 (Googleカレンダー連携対応) ==================== -->
+          <div id="view-reserve" class="view-section hidden space-y-4">
+            
+            <div class="bg-mutsubi-900 text-white p-4 rounded-3xl border border-mutsubi-700 flex flex-col sm:flex-row justify-between items-center gap-3 mutsubi-header-bg">
+              <div class="flex items-center gap-3 w-full sm:w-auto">
+                <button type="button" onclick="openDatePicker()" class="bg-white/10 hover:bg-white/20 text-white font-extrabold px-4 py-2 rounded-xl text-xs border border-white/20 flex items-center gap-2">
+                  <i class="fa-regular fa-calendar text-sky-300 text-base"></i>
+                  <span id="date-display">2026年8月2日(日)</span>
+                  <i class="fa-solid fa-caret-down text-sky-300"></i>
+                </button>
+                <input type="date" id="date-picker" class="w-0 h-0 opacity-0 absolute" onchange="changeDate(event)">
+              </div>
+
+              <div class="flex items-center gap-2 w-full sm:w-auto">
+                <button onclick="findAvailableRooms()" class="flex-1 sm:flex-none bg-sky-400 hover:bg-sky-300 text-mutsubi-900 font-extrabold px-4 py-2.5 rounded-xl text-xs shadow btn-press flex justify-center items-center gap-2">
+                  <i class="fa-solid fa-bolt"></i> 今すぐ使える部屋を探す
+                </button>
+              </div>
+            </div>
+
+            <!-- 部屋選択タブ -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-2 overflow-x-auto custom-scrollbar flex gap-2" id="room-tabs">
+              <!-- JSで動的生成 -->
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm space-y-4">
+              <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                <h3 id="current-room-title" class="font-black text-xl text-slate-800">1階 応接室1</h3>
+                <span class="text-xs text-slate-400 font-bold bg-slate-100 px-3 py-1 rounded-full"><i class="fa-brands fa-google text-blue-500 mr-1"></i>Googleカレンダー連動</span>
+              </div>
+
+              <!-- タイムスロット -->
+              <div id="time-slots" class="flex flex-col gap-2.5 max-w-4xl mx-auto"></div>
+            </div>
+
+          </div>
+
+          <!-- ==================== VIEW 5: 全社名刺管理 (MUTSUBI CARD ARCHIVE) ==================== -->
+          <div id="view-cards" class="view-section hidden space-y-6">
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-6 bg-mutsubi-600 rounded-full"></div>
+                <div>
+                  <h3 class="text-xl font-black text-slate-800">MUTSUBI CARD ARCHIVE（全社名刺管理）</h3>
+                  <p class="text-xs text-slate-500 font-bold">全社共有・AI文字起こし・受領履歴・役職変遷を統合管理</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 名刺機能ナビタブ -->
+            <nav class="grid grid-cols-3 gap-1.5 p-1.5 bg-slate-200/60 border border-slate-200 rounded-xl">
+              <button onclick="switchCardSubTab('list-aiueo')" id="tab-card-aiueo" class="card-tab-btn py-2.5 rounded-lg text-xs font-black tracking-wider transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5 text-mutsubi-800 bg-white shadow-sm">
+                <i class="fa-solid fa-list-ul"></i>
+                <span>あいうえお順</span>
+              </button>
+              <button onclick="switchCardSubTab('list-company')" id="tab-card-company" class="card-tab-btn py-2.5 rounded-lg text-xs font-black tracking-wider transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5 text-slate-500 hover:text-slate-800">
+                <i class="fa-solid fa-building"></i>
+                <span>業者・会社別</span>
+              </button>
+              <button onclick="switchCardSubTab('scan')" id="tab-card-scan" class="card-tab-btn py-2.5 rounded-lg text-xs font-black tracking-wider transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5 text-slate-500 hover:text-slate-800">
+                <i class="fa-solid fa-plus-circle"></i>
+                <span>新規登録 (AI撮影)</span>
+              </button>
+            </nav>
+
+            <!-- 【サブタブ 1: あいうえお順】 -->
+            <div id="subview-card-aiueo" class="card-subview space-y-4">
+              <div class="flex flex-col sm:flex-row gap-2">
+                <div class="relative flex-1">
+                  <input type="text" id="search-aiueo" oninput="filterCards()" placeholder="氏名、会社名、工事現場名、メモから検索..." class="w-full bg-white border border-slate-300 focus:border-mutsubi-600 focus:outline-none rounded-xl px-4 py-3 text-xs text-slate-800 shadow-sm">
+                  <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </span>
+                </div>
+
+                <button onclick="exportCardsToCSV()" class="bg-sky-50 hover:bg-sky-100 border border-sky-200 text-sky-800 font-extrabold text-xs py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm shrink-0">
+                  <i class="fa-solid fa-file-excel text-emerald-600"></i>
+                  <span>全名簿CSV出力</span>
+                </button>
+              </div>
+
+              <!-- 現場別フィルタ -->
+              <div class="p-3 bg-white border border-slate-200 rounded-2xl space-y-2 shadow-sm">
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">主要現場別絞り込み</p>
+                <div class="flex flex-wrap gap-1.5" id="project-filter-bar"></div>
+              </div>
+
+              <!-- 工種タグフィルタ -->
+              <div class="space-y-1.5">
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">工種区分タグ</p>
+                <div class="flex flex-wrap gap-1.5" id="tag-filter-bar"></div>
+              </div>
+
+              <!-- 50音インデックスバー -->
+              <div class="overflow-x-auto custom-scrollbar py-1">
+                <div class="flex gap-1 p-1 bg-white border border-slate-200 rounded-xl min-w-max shadow-sm">
+                  <button onclick="filterBySyllable('ALL')" id="syllable-btn-ALL" class="syllable-btn px-3 py-1.5 text-xs font-bold rounded-lg bg-mutsubi-800 text-white">すべて</button>
+                  <div id="syllable-nav" class="flex gap-1"></div>
+                </div>
+              </div>
+
+              <!-- 名刺グリッド -->
+              <div id="cards-grid-aiueo" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+
+              <div id="empty-state-aiueo" class="hidden text-center py-16 border border-dashed border-slate-300 rounded-2xl bg-white shadow-sm">
+                <p class="text-xs text-slate-500 font-bold">該当する名刺データが見つかりません</p>
+              </div>
+            </div>
+
+            <!-- 【サブタブ 2: 会社別グループ】 -->
+            <div id="subview-card-company" class="card-subview hidden space-y-4">
+              <div class="relative">
+                <input type="text" id="search-company" oninput="filterCards()" placeholder="会社名、住所から検索..." class="w-full bg-white border border-slate-300 focus:border-mutsubi-600 focus:outline-none rounded-xl px-4 py-3 text-xs text-slate-800 shadow-sm">
+              </div>
+              <div id="cards-grouped-company" class="space-y-3"></div>
+            </div>
+
+            <!-- 【サブタブ 3: 新規登録 / AIスキャン】 -->
+            <div id="subview-card-scan" class="card-subview hidden space-y-4">
+              <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
+                <h3 class="text-xs font-black text-mutsubi-800 uppercase tracking-wider">STEP 1: 名刺の撮影 / AI解析（デモ対応）</h3>
+                <div class="relative border-2 border-dashed border-slate-300 hover:border-mutsubi-500 rounded-xl py-8 text-center cursor-pointer bg-slate-50 overflow-hidden min-h-[140px]">
+                  <input type="file" id="file-input" accept="image/*" capture="environment" onchange="window.handleImageFile(this.files)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20">
+                  <div id="upload-prompt" class="space-y-2 relative z-10 pointer-events-none text-slate-500">
+                    <i class="fa-solid fa-camera fa-2x text-mutsubi-600"></i>
+                    <p class="text-xs font-extrabold">タップして名刺をカメラで撮影</p>
+                  </div>
+                  <div id="image-preview-container" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center p-2 z-30 pointer-events-none">
+                    <img id="image-preview" src="" class="max-h-full max-w-full object-contain rounded border border-slate-200">
+                    <button type="button" onclick="window.clearSelectedImage(event)" class="absolute top-2 right-2 bg-slate-900 text-white rounded-full p-1.5 pointer-events-auto"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
+                </div>
+                <button id="btn-scan-ai" onclick="window.analyzeCardWithAI()" disabled class="w-full bg-mutsubi-800 text-white text-xs font-black py-3 rounded-xl shadow border border-black disabled:opacity-40">
+                  <i id="ai-loading-spinner" class="fa-solid fa-circle-notch fa-spin hidden mr-2"></i>
+                  <span id="ai-btn-text">AI 名刺解析スタート</span>
+                </button>
+              </div>
+
+              <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                <h3 class="text-xs font-black text-mutsubi-800 uppercase tracking-wider mb-4">STEP 2: 名刺データの登録・確認</h3>
+                <form id="card-form" onsubmit="window.precheckAndSaveCard(event)" class="space-y-4 text-xs">
+                  <input type="hidden" id="card-id">
+                  
+                  <div class="grid grid-cols-2 gap-3 p-3 bg-mutsubi-50 border border-mutsubi-200 rounded-xl">
+                    <div>
+                      <label class="block text-mutsubi-900 font-bold mb-1">受領した社員名</label>
+                      <input type="text" id="form-creator" required class="w-full border-slate-300 rounded-lg p-2 font-bold bg-white">
+                    </div>
+                    <div>
+                      <label class="block text-mutsubi-900 font-bold mb-1">名刺受領日</label>
+                      <input type="date" id="form-received-date" required class="w-full border-slate-300 rounded-lg p-2 font-bold bg-white">
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                    <label class="block text-slate-700 font-bold mb-1">主要担当現場 (パデシオン桃山 等)</label>
+                    <input type="text" id="form-project" required class="w-full border-slate-300 rounded-lg p-2 font-bold bg-white">
+                  </div>
+
+                  <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                    <label class="block text-slate-700 font-bold mb-2">工事区分タグ</label>
+                    <div class="flex flex-wrap gap-1.5" id="form-tag-container"></div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div><label class="block text-slate-600 font-bold mb-1">会社名 / 業者名 <span class="text-red-500">*</span></label><input type="text" id="form-company" required class="w-full border-slate-300 rounded-lg p-2"></div>
+                    <div><label class="block text-slate-600 font-bold mb-1">担当者氏名 <span class="text-red-500">*</span></label><input type="text" id="form-name" required class="w-full border-slate-300 rounded-lg p-2"></div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div><label class="block text-slate-600 font-bold mb-1">ふりがな (ひらがな)</label><input type="text" id="form-kana" required class="w-full border-slate-300 rounded-lg p-2"></div>
+                    <div><label class="block text-slate-600 font-bold mb-1">役職</label><input type="text" id="form-title" class="w-full border-slate-300 rounded-lg p-2"></div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-2">
+                    <div><label class="block text-slate-600 font-bold mb-1">代表電話</label><input type="text" id="form-phone" class="w-full border-slate-300 rounded-lg p-2"></div>
+                    <div><label class="block text-slate-600 font-bold mb-1">FAX</label><input type="text" id="form-fax" class="w-full border-slate-300 rounded-lg p-2"></div>
+                    <div><label class="block text-slate-600 font-bold mb-1">携帯</label><input type="text" id="form-mobile" class="w-full border-slate-300 rounded-lg p-2"></div>
+                  </div>
+
+                  <div><label class="block text-slate-600 font-bold mb-1">メールアドレス</label><input type="email" id="form-email" class="w-full border-slate-300 rounded-lg p-2"></div>
+                  <div><label class="block text-slate-600 font-bold mb-1">本社・事業所住所</label><input type="text" id="form-address" class="w-full border-slate-300 rounded-lg p-2"></div>
+                  <div><label class="block text-slate-600 font-bold mb-1">特記事項・現場メモ</label><textarea id="form-notes" rows="3" class="w-full border-slate-300 rounded-lg p-2"></textarea></div>
+
+                  <div class="pt-4 flex flex-col sm:flex-row justify-end gap-3">
+                    <button type="button" onclick="window.resetCardForm()" class="bg-slate-200 text-slate-700 px-5 py-3 rounded-xl font-bold text-xs uppercase">クリア</button>
+                    <button type="submit" class="bg-mutsubi-800 text-white px-8 py-3 rounded-xl font-black text-xs shadow-md flex-1">名刺情報を登録保存する</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ==================== VIEW 6: 社用車・備品予約 ==================== -->
+          <div id="view-equip" class="view-section hidden space-y-6">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-6 bg-mutsubi-600 rounded-full"></div>
+              <div>
+                <h3 class="text-xl font-black text-slate-800">社用車・共有備品 予約</h3>
+                <p class="text-xs text-slate-500 font-bold">社用営業車・プロジェクター・モバイルWi-Fiの管理</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              <!-- 社用車1号 (プリウス) -->
+              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-mutsubi-800 text-white rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-car"></i></div>
+                    <div>
+                      <h4 class="font-black text-slate-800 text-base">社用車1号 (プリウス)</h4>
+                      <p class="text-[10px] font-bold text-slate-400">京都 500 な 77-88 / ガソリン車</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-black bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">予約可</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-2xl text-xs space-y-1 text-slate-600 font-bold">
+                  <p><i class="fa-solid fa-clock text-slate-400 mr-1"></i> 本日の予約: 14:00〜16:00 (営業部 藤井)</p>
+                </div>
+                <button onclick="openEquipModal('社用車1号 (プリウス)')" class="w-full bg-mutsubi-800 hover:bg-mutsubi-900 text-white font-extrabold py-3 rounded-xl text-xs shadow btn-press">
+                  この車両を予約する
+                </button>
+              </div>
+
+              <!-- 社用車2号 (アクア) -->
+              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-slate-700 text-white rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-car-side"></i></div>
+                    <div>
+                      <h4 class="font-black text-slate-800 text-base">社用車2号 (アクア)</h4>
+                      <p class="text-[10px] font-bold text-slate-400">京都 501 は 11-22 / コンパクトHV</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-black bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">予約可</span>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-2xl text-xs space-y-1 text-slate-600 font-bold">
+                  <p><i class="fa-solid fa-clock text-slate-400 mr-1"></i> 本日の予約: なし</p>
+                </div>
+                <button onclick="openEquipModal('社用車2号 (アクア)')" class="w-full bg-mutsubi-800 hover:bg-mutsubi-900 text-white font-extrabold py-3 rounded-xl text-xs shadow btn-press">
+                  この車両を予約する
+                </button>
+              </div>
+
+              <!-- モバイルWi-Fi -->
+              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-sky-100 text-sky-800 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-wifi"></i></div>
+                    <div>
+                      <h4 class="font-black text-slate-800 text-base">出張用 モバイルWi-Fi 5G</h4>
+                      <p class="text-[10px] font-bold text-slate-400">端末ID: WIFI-01 / 無制限</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-black bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">貸出可</span>
+                </div>
+                <button onclick="openEquipModal('モバイルWi-Fi 5G')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-xs border border-slate-300">
+                  備品を予約する
+                </button>
+              </div>
+
+              <!-- プロジェクター -->
+              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-indigo-100 text-indigo-800 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-video"></i></div>
+                    <div>
+                      <h4 class="font-black text-slate-800 text-base">大型プロジェクター&スクリーン</h4>
+                      <p class="text-[10px] font-bold text-slate-400">HDMI/4K対応 モバイル型</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-black bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">貸出可</span>
+                </div>
+                <button onclick="openEquipModal('大型プロジェクター')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-xs border border-slate-300">
+                  備品を予約する
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ==================== VIEW 7: 社内各種申請・ワークフロー ==================== -->
+          <div id="view-workflow" class="view-section hidden space-y-6">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-6 bg-mutsubi-600 rounded-full"></div>
+              <div>
+                <h3 class="text-xl font-black text-slate-800">社内申請・ワークフロー</h3>
+                <p class="text-xs text-slate-500 font-bold">有給休暇・直行直帰・慶弔届等の電子各種申請フォーム</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4 md:col-span-1">
+                <h4 class="font-black text-slate-800 text-sm border-b pb-2">新規申請の作成</h4>
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <label class="block font-bold text-slate-600 mb-1">申請種別</label>
+                    <select id="wf-type" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 font-bold">
+                      <option value="有給休暇届">有給休暇届</option>
+                      <option value="直行・直帰申請">直行・直帰申請</option>
+                      <option value="慶弔・特別休暇届">慶弔・特別休暇届</option>
+                      <option value="立替経費事前承認">立替経費事前承認</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block font-bold text-slate-600 mb-1">対象日</label>
+                    <input type="date" id="wf-date" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 font-bold">
+                  </div>
+                  <div>
+                    <label class="block font-bold text-slate-600 mb-1">申請理由・詳細</label>
+                    <textarea id="wf-reason" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 font-bold" placeholder="理由を入力..."></textarea>
+                  </div>
+                  <button onclick="submitWorkflowRequest()" class="w-full bg-mutsubi-800 hover:bg-mutsubi-900 text-white font-extrabold py-3 rounded-xl text-xs shadow btn-press">
+                    総務部へ申請提出
+                  </button>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm md:col-span-2 space-y-4">
+                <h4 class="font-black text-slate-800 text-sm border-b pb-2">自分の申請ステータス・承認状況</h4>
+                <div id="workflow-list-container" class="space-y-3">
+                  <!-- JS描画 -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== VIEW 8: 社員マスタ管理 (総務部・新入社員追加エリア) ==================== -->
+          <div id="view-members" class="view-section hidden space-y-6">
+            <div class="bg-mutsubi-900 text-white p-6 rounded-3xl border border-mutsubi-700 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div>
+                <span class="bg-sky-400 text-mutsubi-900 font-black text-[10px] px-3 py-1 rounded-full uppercase">ADMIN MANAGEMENT</span>
+                <h3 class="text-xl font-black text-white mt-1">新入社員追加・部署マスタ管理</h3>
+                <p class="text-xs text-slate-200 mt-1">毎年入社する新入社員の追加や部署異動、権限設定を管理します</p>
+              </div>
+
+              <button onclick="openMemberAddModal()" class="bg-sky-400 hover:bg-sky-300 text-mutsubi-900 font-extrabold px-5 py-3 rounded-xl text-xs shadow-lg flex items-center gap-2 btn-press shrink-0">
+                <i class="fa-solid fa-user-plus text-base"></i> 新しい社員を追加登録
+              </button>
+            </div>
+
+            <!-- 社員一覧テーブル -->
+            <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+              <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                <h4 class="font-black text-slate-800 text-sm"><i class="fa-solid fa-users text-mutsubi-600 mr-2"></i>登録済み社員一覧 (<span id="member-count-badge">0</span>名)</h4>
+                <div class="flex items-center gap-2">
+                  <input type="text" id="member-table-search" oninput="renderMemberTable()" placeholder="氏名・部署で検索..." class="bg-white border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-bold w-48">
+                </div>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                  <thead class="bg-slate-900 text-white font-black border-b border-slate-800">
+                    <tr>
+                      <th class="p-3.5">社員ID</th>
+                      <th class="p-3.5">氏名 (フリガナ)</th>
+                      <th class="p-3.5">所属部署</th>
+                      <th class="p-3.5">役職</th>
+                      <th class="p-3.5">メールアドレス</th>
+                      <th class="p-3.5">権限</th>
+                      <th class="p-3.5 text-center">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="member-master-table-body" class="divide-y divide-slate-100 font-bold">
+                    <!-- JSで動的生成 -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== VIEW 9: マイページ ==================== -->
+          <div id="view-mypage" class="view-section hidden space-y-6">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-200">
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-6 bg-mutsubi-800 rounded-full"></div>
+                <h3 class="text-xl font-black text-slate-800">マイページ（申請＆予約履歴）</h3>
+              </div>
+            </div>
+
+            <!-- 自分の部屋予約履歴 -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+              <h4 class="font-black text-slate-800 text-base"><i class="fa-solid fa-door-open text-mutsubi-600 mr-2"></i>自分の会議室・応接室予約</h4>
+              <div id="mypage-room-list" class="space-y-3">
+                <!-- JS描画 -->
+              </div>
+            </div>
+
+            <!-- 自分のアルコールチェック履歴 -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+              <h4 class="font-black text-slate-800 text-base"><i class="fa-solid fa-wine-bottle text-mutsubi-800 mr-2"></i>自分のアルコールチェック報告ログ</h4>
+              <div id="mypage-alc-list" class="space-y-2 text-xs">
+                <!-- JS描画 -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== モーダルダイアログ群 ==================== -->
+  
+  <!-- 1. 部屋予約入力モーダル (Googleカレンダー連携ボタン付き) -->
+  <div id="modal-overlay" class="overlay fixed inset-0 bg-black/60 z-40 backdrop-blur-sm" onclick="closeModal()"></div>
+  <div id="reserve-modal" class="bottom-sheet fixed bottom-0 left-0 right-0 z-50 flex justify-center max-h-[90vh] md:items-center md:top-0 md:transform-none md:opacity-0 md:pointer-events-none md:transition-opacity md:duration-300">
+    <div class="bg-white w-full max-w-xl md:rounded-3xl rounded-t-3xl p-6 shadow-2xl flex flex-col border-t-4 border-mutsubi-600">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-black text-mutsubi-900">会議室・応接室の予約入力</h3>
+        <button onclick="closeModal()" class="w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-500"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      
+      <div class="overflow-y-auto custom-scrollbar flex-1 space-y-4 pr-1">
+        <div class="bg-mutsubi-900 text-white rounded-2xl p-4 border border-mutsubi-700">
+          <p id="modal-room-name" class="font-black text-base text-sky-300">1階 応接室1</p>
+          <div class="flex justify-between items-center mt-2">
+            <span id="modal-start-time" class="text-xl font-black font-mono">10:00</span>
+            <span class="text-xs font-bold text-slate-300">利用時間:</span>
+            <select id="reserve-duration" onchange="calculateEndTime()" class="bg-slate-800 text-white border border-slate-600 font-black px-3 py-1.5 rounded-xl text-xs outline-none cursor-pointer">
+            </select>
+          </div>
+          <div class="text-right mt-1 text-xs text-slate-300 font-bold">
+            終了予定: <span id="modal-end-time" class="font-black text-white">10:30</span>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">予約者名</label>
+          <input type="text" id="reserve-user-name" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 font-bold text-sm">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">利用用途</label>
+          <div class="flex bg-slate-100 p-1 rounded-xl">
+            <button type="button" id="btn-purpose-internal" onclick="setPurpose('internal')" class="flex-1 py-2 text-xs font-extrabold rounded-lg bg-white shadow text-mutsubi-900">社内会議・作業</button>
+            <button type="button" id="btn-purpose-visitor" onclick="setPurpose('visitor')" class="flex-1 py-2 text-xs font-extrabold rounded-lg text-slate-500">来客対応</button>
+          </div>
+        </div>
+
+        <div id="visitor-fields" class="hidden space-y-3 bg-amber-50 p-4 rounded-2xl border border-amber-200">
+          <div>
+            <label class="block text-xs font-bold text-amber-900 mb-1">来客社名 / 氏名</label>
+            <input type="text" id="reserve-visitor-name" placeholder="例：株式会社〇〇 山田様" class="w-full bg-white border border-amber-300 rounded-xl px-3 py-2 font-bold text-xs">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-amber-900 mb-1">お茶出し依頼</label>
+            <div class="flex gap-4 text-xs font-bold">
+              <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="tea-option" value="true"> 必要 (受付へ依頼)</label>
+              <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="tea-option" value="false" checked> 不要</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="executeReserve()" class="mt-5 w-full bg-mutsubi-800 hover:bg-mutsubi-900 text-white font-extrabold py-3.5 rounded-xl shadow border border-mutsubi-900 text-sm btn-press flex justify-center items-center gap-2">
+        <i class="fa-solid fa-check"></i> 予約を確定する
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. 空き部屋検索モーダル -->
+  <div id="search-overlay" class="overlay fixed inset-0 bg-black/60 z-40 backdrop-blur-sm" onclick="closeSearchModal()"></div>
+  <div id="search-modal" class="bottom-sheet fixed bottom-0 left-0 right-0 z-50 flex justify-center max-h-[85vh] md:items-center md:top-0 md:transform-none md:opacity-0 md:pointer-events-none md:transition-opacity md:duration-300">
+    <div class="bg-white w-full max-w-lg md:rounded-3xl rounded-t-3xl p-6 shadow-2xl relative border-t-4 border-mutsubi-600">
+      <h3 class="text-lg font-black text-mutsubi-900 mb-1">今すぐ使える部屋</h3>
+      <p class="text-xs text-slate-500 mb-4 font-bold">現在時刻 (<span id="search-current-time" class="font-mono font-black text-slate-800"></span>) に空いている部屋一覧</p>
+      <div id="available-rooms-list" class="space-y-2.5 max-h-[50vh] overflow-y-auto custom-scrollbar"></div>
+      <button onclick="closeSearchModal()" class="w-full mt-4 bg-slate-100 text-slate-700 font-bold py-3 rounded-xl text-xs">閉じる</button>
+    </div>
+  </div>
+
+  <!-- 3. 名刺詳細モーダル -->
+  <div id="card-detail-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm hidden z-50 overflow-y-auto flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden relative shadow-2xl border-t-4 border-mutsubi-600">
+      <button onclick="closeDetailModal()" class="absolute top-4 right-4 bg-slate-100 text-slate-500 rounded-full p-2 z-10"><i class="fa-solid fa-xmark"></i></button>
+      <div id="modal-card-content" class="overflow-y-auto flex-1 p-5 md:p-8 space-y-5"></div>
+    </div>
+  </div>
+
+  <!-- 4. 新入社員追加・編集モーダル -->
+  <div id="member-add-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl border-t-4 border-mutsubi-800">
+      <div class="flex justify-between items-center border-b pb-2">
+        <h3 class="text-sm font-black text-mutsubi-900"><i class="fa-solid fa-user-plus text-sky-600 mr-2"></i>社員データの登録・編集</h3>
+        <button onclick="closeMemberAddModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="member-form" onsubmit="saveMemberExecute(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="mem-id">
+        <div>
+          <label class="block font-bold text-slate-600 mb-1">氏名 (漢字) <span class="text-red-500">*</span></label>
+          <input type="text" id="mem-name" required placeholder="例：新入 太郎" class="w-full bg-slate-50 border rounded-xl p-2.5 font-bold">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-600 mb-1">フリガナ (ひらがな) <span class="text-red-500">*</span></label>
+          <input type="text" id="mem-kana" required placeholder="例：しんにゅう たろう" class="w-full bg-slate-50 border rounded-xl p-2.5 font-bold">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-bold text-slate-600 mb-1">所属部署 <span class="text-red-500">*</span></label>
+            <select id="mem-dept" required class="w-full bg-slate-50 border rounded-xl p-2.5 font-bold">
+              <option value="営業部">営業部</option>
+              <option value="建設部">建設部</option>
+              <option value="企画部">企画部</option>
+              <option value="管理部">管理部</option>
+              <option value="総務課">総務課</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-600 mb-1">役職</label>
+            <input type="text" id="mem-title" placeholder="社員 / 主任..." class="w-full bg-slate-50 border rounded-xl p-2.5 font-bold">
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-600 mb-1">社用メールアドレス</label>
+          <input type="email" id="mem-email" placeholder="xxx@mutsubi.co.jp" class="w-full bg-slate-50 border rounded-xl p-2.5 font-bold">
+        </div>
+        <div>
+          <label class="block font-bold text-slate-600 mb-1">権限区分</label>
+          <select id="mem-is-admin" class="w-full bg-slate-50 border rounded-xl p-2.5 font-bold">
+            <option value="false">一般社員</option>
+            <option value="true">総務・管理者</option>
+          </select>
+        </div>
+
+        <div class="pt-3 flex justify-end gap-2">
+          <button type="button" onclick="closeMemberAddModal()" class="bg-slate-200 text-slate-700 px-4 py-2.5 rounded-xl font-bold">キャンセル</button>
+          <button type="submit" class="bg-mutsubi-800 text-white px-6 py-2.5 rounded-xl font-black shadow flex-1">登録・保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- トースト通知 popup -->
+  <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 bg-mutsubi-900 text-white border border-sky-400 px-6 py-3 rounded-full shadow-2xl font-black text-xs z-[60] transition-all duration-300 opacity-0 translate-y-[-20px] pointer-events-none flex items-center gap-3">
+    <i class="fa-solid fa-circle-check text-sky-400 text-lg"></i>
+    <span id="toast-msg">メッセージ</span>
+  </div>
+
+  <!-- ==================== JavaScript ロジック ==================== -->
+  <script>
+    // モーダル表示制御補助
+    function toggleModalClass(modalId, overlayId, isOpen) {
+      const modal = document.getElementById(modalId);
+      const overlay = document.getElementById(overlayId);
+      if(isOpen) {
+        overlay.classList.add('open');
+        if(window.innerWidth >= 768) {
+           modal.classList.add('md:opacity-100', 'md:pointer-events-auto');
+        } else {
+           modal.classList.add('open');
+        }
+      } else {
+        overlay.classList.remove('open');
+        if(window.innerWidth >= 768) {
+           modal.classList.remove('md:opacity-100', 'md:pointer-events-auto');
+        } else {
+           modal.classList.remove('open');
+        }
+      }
+    }
+
+    // 会議室マスター
+    const rooms = [
+      { id: '1f-r1', floor: '1階', name: '応接室1' }, { id: '1f-r2', floor: '1階', name: '応接室2' },
+      { id: '2f-r1', floor: '2階', name: '応接室' }, { id: '2f-c1', floor: '2階', name: '会議室' },
+      { id: '3f-c1', floor: '3階', name: '会議室' },
+      { id: '4f-c1', floor: '4階', name: '会議室1' }, { id: '4f-c2', floor: '4階', name: '会議室2' },
+    ];
+
+    const syllables = [
+      { label: "あ", range: /^[あ-おア-オ]/ }, { label: "か", range: /^[か-こカ-コ]/ },
+      { label: "さ", range: /^[さ-そサ-ソ]/ }, { label: "た", range: /^[た-とタ-ト]/ },
+      { label: "な", range: /^[な-のナ-ノ]/ }, { label: "は", range: /^[は-ほハ-ホ]/ },
+      { label: "ま", range: /^[ま-もマ-モ]/ }, { label: "や", range: /^[や-よヤ-ヨ]/ },
+      { label: "ら", range: /^[ら-ろラ-ロ]/ }, { label: "わ", range: /^[わをんワヲン]/ },
+      { label: "他", range: /^[^あ-んア-ン]/ }
+    ];
+
+    const presetTags = ['設備', '電気', 'サッシ', '左官', '大工', '解体', '元請', '資材'];
+
+    const generateTimeSlots = () => {
+      const slots = [];
+      for (let i = 9; i < 18; i++) {
+        slots.push(`${i}:00`); slots.push(`${i}:30`);
+      }
+      return slots;
+    };
+    const timeSlots = generateTimeSlots();
+
+    const timeToMins = (timeStr) => {
+      const [h, m] = timeStr.split(':').map(Number);
+      return h * 60 + m;
+    };
+    const minsToTime = (mins) => {
+      const h = Math.floor(mins / 60);
+      const m = mins % 60;
+      return `${h}:${m === 0 ? '00' : '30'}`;
+    };
+
+    // 初期社員マスタ（新入社員追加可能）
+    const initialMembers = [
+      { id: 'mem_1', name: '藤井 営業', kana: 'ふじい えいぎょう', dept: '営業部', title: '係長', email: 'fujii@mutsubi.co.jp', isAdmin: false },
+      { id: 'mem_2', name: '山田 太郎', kana: 'やまだ たろう', dept: '営業部', title: '主任', email: 'yamada@mutsubi.co.jp', isAdmin: false },
+      { id: 'mem_3', name: '佐藤 建設', kana: 'さとう けんせつ', dept: '建設部', title: '現場監督', email: 'satou@mutsubi.co.jp', isAdmin: false },
+      { id: 'mem_4', name: '鈴木 企画', kana: 'すずき きかく', dept: '企画部', title: 'プランナー', email: 'suzuki@mutsubi.co.jp', isAdmin: false },
+      { id: 'mem_5', name: '笹 愛佳', kana: 'ささ あいか', dept: '総務課', title: '課長', email: 'sasa@mutsubi.co.jp', isAdmin: true },
+      { id: 'mem_6', name: '高橋 管理', kana: 'たかはし かんり', dept: '管理部', title: 'マネージャー', email: 'takahashi@mutsubi.co.jp', isAdmin: true },
+    ];
+
+    // グローバル状態
+    let currentUser = null;
+    let selectedDate = new Date().toISOString().split('T')[0];
+    let currentRoomId = rooms[0].id;
+    let currentView = 'dashboard';
+    let currentPurpose = 'internal';
+    let pendingReserveTime = "";
+
+    // 名刺管理用状態
+    let cards = [];
+    let currentSyllableFilter = "ALL";
+    let currentTagFilter = "ALL";
+    let currentProjectFilter = "ALL";
+    let selectedFormTags = [];
+    let selectedImageBase64 = "";
+
+    // ストレージデータ
+    let members = JSON.parse(localStorage.getItem('mutsubi_corp_members_v1')) || initialMembers;
+    let reservations = JSON.parse(localStorage.getItem('mutsubi_corp_res_v2')) || [];
+    let alcoholLogs = JSON.parse(localStorage.getItem('mutsubi_corp_alc_v2')) || [];
+    let attendanceLogs = JSON.parse(localStorage.getItem('mutsubi_corp_att_v2')) || [];
+    let workflowLogs = JSON.parse(localStorage.getItem('mutsubi_corp_wf_v2')) || [];
+
+    // 初期データ保持
+    function initDemoData() {
+      localStorage.setItem('mutsubi_corp_members_v1', JSON.stringify(members));
+      const today = selectedDate;
+
+      if (alcoholLogs.length === 0) {
+        alcoholLogs.push(
+          { id: 'a1', date: today, time: '08:45', userId: 'mem_1', userName: '藤井 営業', dept: '営業部', type: '乗車前 (出勤)', method: '対面確認', val: '0.00', pass: true },
+          { id: 'a2', date: today, time: '08:30', userId: 'mem_5', userName: '笹 愛佳', dept: '総務課', type: '乗車前 (出勤)', method: '対面確認', val: '0.00', pass: true }
+        );
+        localStorage.setItem('mutsubi_corp_alc_v2', JSON.stringify(alcoholLogs));
+      }
+
+      const storedCards = localStorage.getItem('mutsubi_corp_cards_v2');
+      if (storedCards) {
+        cards = JSON.parse(storedCards);
+      } else {
+        cards = [
+          {
+            id: "card-demo-1", company: "京都設備工業株式会社", name: "山田 孝治", kana: "やまだ こうじ",
+            title: "設備部 現場代理人", phone: "075-881-2345", fax: "075-881-2346", mobile: "090-4455-8899",
+            email: "y.kouji@kyoto-setsubi.co.jp", address: "京都府京都市右京区太秦東蜂岡町10",
+            notes: "現場調整が迅速。お茶を好む。", tags: ["設備"], project: "パデシオン桃山", createdBy: "藤井 営業",
+            receivedDate: "2026-04-10", createdAt: new Date().toISOString(), 
+            history: [{receivedBy: "藤井 営業", receivedByEmail: "fujii@mutsubi.co.jp", receivedAt: "2026-04-10", project: "パデシオン桃山"}], 
+            careerTimeline: []
+          }
+        ];
+        saveLocalCards();
+      }
+    }
+
+    function saveLocalCards() {
+      localStorage.setItem('mutsubi_corp_cards_v2', JSON.stringify(cards));
+    }
+
+    // アプリ起動時初期化
+    function init() {
+      initDemoData();
+      startLiveClock();
+      setupSyllablesUI();
+      setupTagsFilterUI();
+      setupFormTagsUI();
+      filterEmployeeList();
+      checkAuthStatus();
+    }
+
+    function startLiveClock() {
+      setInterval(() => {
+        const now = new Date();
+        const clockEl = document.getElementById('live-clock');
+        if (clockEl) clockEl.innerText = now.toTimeString().split(' ')[0];
+      }, 1000);
+    }
+
+    // --- ログイン＆社員選択処理 ---
+    function switchLoginTab(tab) {
+      if(tab === 'user') {
+        document.getElementById('login-panel-user').classList.remove('hidden');
+        document.getElementById('login-panel-admin').classList.add('hidden');
+        document.getElementById('login-tab-user').className = "flex-1 py-2.5 rounded-xl bg-white text-mutsubi-900 shadow";
+        document.getElementById('login-tab-admin').className = "flex-1 py-2.5 rounded-xl text-slate-500 hover:text-slate-800";
+      } else {
+        document.getElementById('login-panel-user').classList.add('hidden');
+        document.getElementById('login-panel-admin').classList.remove('hidden');
+        document.getElementById('login-tab-admin').className = "flex-1 py-2.5 rounded-xl bg-white text-mutsubi-900 shadow";
+        document.getElementById('login-tab-user').className = "flex-1 py-2.5 rounded-xl text-slate-500 hover:text-slate-800";
+      }
+    }
+
+    function filterEmployeeList() {
+      const deptFilter = document.getElementById('login-dept-select').value;
+      const searchText = (document.getElementById('login-search-input').value || '').toLowerCase().trim();
+      const container = document.getElementById('login-employee-list');
+      container.innerHTML = "";
+
+      const filtered = members.filter(m => {
+        const matchDept = deptFilter === 'ALL' || m.dept === deptFilter;
+        const matchSearch = m.name.toLowerCase().includes(searchText) || m.kana.toLowerCase().includes(searchText);
+        return matchDept && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="p-4 text-center text-xs text-slate-400 font-bold">一致する社員が見つかりません</div>`;
+        return;
+      }
+
+      filtered.forEach(m => {
+        const div = document.createElement('div');
+        div.className = "p-3 hover:bg-sky-50 transition-colors cursor-pointer flex justify-between items-center text-xs";
+        div.onclick = () => handleLogin(m.id, m.name, m.email, m.dept, m.title, m.isAdmin);
+        div.innerHTML = `
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-slate-800">${m.name}</span>
+              <span class="text-[10px] text-slate-400 font-bold">(${m.kana})</span>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-0.5">${m.dept} / ${m.title || '社員'}</p>
+          </div>
+          <span class="text-[10px] bg-mutsubi-800 text-white font-black px-2.5 py-1 rounded-lg">ログイン <i class="fa-solid fa-arrow-right ml-1"></i></span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function loginAsAdmin() {
+      const pass = document.getElementById('admin-pass-input').value;
+      if (pass === 'admin123' || pass === 'admin') {
+        handleLogin('admin_sasa', '総務部 山田 (管理者)', 'sasa@mutsubi.co.jp', '総務課', '課長', true);
+      } else {
+        showToast("パスワードが違います (デモ用: admin123)");
+      }
+    }
+
+    function checkAuthStatus() {
+      const savedUser = localStorage.getItem('mutsubi_corp_user_v2');
+      if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        showApp();
+      } else {
+        document.getElementById('login-screen').classList.remove('hidden');
+        document.getElementById('app-screen').classList.add('hidden');
+      }
+    }
+
+    function handleLogin(uid, displayName, email, dept, title, isAdmin) {
+      currentUser = { uid, displayName, email, dept, title, isAdmin };
+      localStorage.setItem('mutsubi_corp_user_v2', JSON.stringify(currentUser));
+      showApp();
+    }
+
+    function handleLogout() {
+      if(!confirm("ポータルからログアウトしますか？")) return;
+      localStorage.removeItem('mutsubi_corp_user_v2');
+      location.reload();
+    }
+
+    function showApp() {
+      document.getElementById('login-screen').classList.add('hidden');
+      document.getElementById('app-screen').classList.remove('hidden');
+      document.getElementById('app-screen').classList.add('flex');
+
+      document.getElementById('user-display-name-sp').innerText = currentUser.displayName;
+      document.getElementById('user-display-name-pc').innerText = currentUser.displayName;
+      document.getElementById('welcome-user-name').innerText = `ようこそ、${currentUser.displayName}さん！`;
+      document.getElementById('dash-user-dept-label').innerText = currentUser.dept || '営業部';
+      document.getElementById('form-creator').value = currentUser.displayName;
+
+      const roleBadge = document.getElementById('user-role-badge');
+      const deptBadge = document.getElementById('user-dept-badge');
+      const adminBadgeArea = document.getElementById('admin-badge-area');
+      const alcSwitcher = document.getElementById('alcohol-mode-switcher');
+      const membersNav = document.getElementById('nav-members');
+
+      deptBadge.innerText = currentUser.dept || '部署名';
+
+      if (currentUser.isAdmin) {
+        roleBadge.innerText = "管理者";
+        roleBadge.className = "text-[9px] bg-red-600 text-white font-black px-1.5 py-0.2 rounded";
+        adminBadgeArea.classList.remove('hidden');
+        alcSwitcher.classList.remove('hidden');
+        membersNav.classList.remove('hidden');
+      } else {
+        roleBadge.innerText = "社員";
+        roleBadge.className = "text-[9px] bg-sky-500 text-white font-black px-1.5 py-0.2 rounded";
+        adminBadgeArea.classList.add('hidden');
+        alcSwitcher.classList.add('hidden');
+        membersNav.classList.add('hidden');
+      }
+
+      updateDateDisplay();
+      renderRoomTabs();
+      switchView('dashboard');
+    }
+
+    // ビュー切り替え
+    function switchView(viewName) {
+      currentView = viewName;
+      document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`view-${viewName}`).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if(activeNav) activeNav.classList.add('active');
+
+      const titleMap = {
+        dashboard: 'ダッシュボード HOME',
+        alcohol: 'アルコールチェック管理',
+        attendance: '勤怠打刻・ステータス',
+        reserve: '会議室・応接室 予約',
+        cards: '全社名刺管理 (CARD ARCHIVE)',
+        equip: '社用車・備品予約',
+        workflow: '社内各種申請・ワークフロー',
+        members: '社員マスタ管理 (総務・管理者)',
+        mypage: 'マイページ (全履歴)'
+      };
+      document.getElementById('header-title').innerText = titleMap[viewName] || 'MUTSUBI PORTAL';
+
+      refreshCurrentView();
+    }
+
+    function refreshCurrentView() {
+      if (currentView === 'dashboard') refreshDashboardStatus();
+      else if (currentView === 'alcohol') renderAlcoholView();
+      else if (currentView === 'attendance') renderAttendanceView();
+      else if (currentView === 'reserve') renderTimeSlots();
+      else if (currentView === 'cards') renderAllCardViews();
+      else if (currentView === 'workflow') renderWorkflowView();
+      else if (currentView === 'members') renderMemberTable();
+      else if (currentView === 'mypage') renderMyPage();
+    }
+
+    // --- ダッシュボード処理 ---
+    function refreshDashboardStatus() {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('dash-date-badge').innerText = today;
+
+      const myAlc = alcoholLogs.find(a => a.date === today && a.userId === currentUser.uid);
+      const alcEl = document.getElementById('dash-alcohol-status');
+      if (myAlc) {
+        alcEl.className = "text-xs font-extrabold text-emerald-700 bg-emerald-50 py-1.5 px-2 rounded-xl border border-emerald-200";
+        alcEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> 提出済 (${myAlc.val} mg/L)`;
+      } else {
+        alcEl.className = "text-xs font-extrabold text-red-600 bg-red-50 py-1.5 px-2 rounded-xl border border-red-200";
+        alcEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> 未実施`;
+      }
+
+      const myAtt = attendanceLogs.filter(a => a.date === today && a.userId === currentUser.uid);
+      const attEl = document.getElementById('dash-attendance-status');
+      if (myAtt.length > 0) {
+        const last = myAtt[myAtt.length - 1];
+        attEl.innerText = `${last.type} (${last.time})`;
+      } else {
+        attEl.innerText = "未出勤";
+      }
+    }
+
+    // --- アルコールチェック処理 ---
+    function submitAlcoholCheck() {
+      const val = parseFloat(document.getElementById('alc-value').value || '0.00').toFixed(2);
+      const type = document.getElementById('alc-type').value;
+      const method = document.getElementById('alc-method').value;
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0].substring(0, 5);
+      const dateStr = now.toISOString().split('T')[0];
+
+      const newEntry = {
+        id: 'alc_' + Date.now(),
+        date: dateStr,
+        time: timeStr,
+        userId: currentUser.uid,
+        userName: currentUser.displayName,
+        dept: currentUser.dept || '社内',
+        type: type,
+        method: method,
+        val: val,
+        pass: parseFloat(val) < 0.15
+      };
+
+      alcoholLogs.unshift(newEntry);
+      localStorage.setItem('mutsubi_corp_alc_v2', JSON.stringify(alcoholLogs));
+      showToast("アルコール測定結果を登録送信しました");
+      refreshCurrentView();
+    }
+
+    function toggleAlcoholTab(mode) {
+      if (mode === 'submit') {
+        document.getElementById('alc-section-submit').classList.remove('hidden');
+        document.getElementById('alc-section-admin').classList.add('hidden');
+        document.getElementById('tab-alc-submit').className = "px-4 py-1.5 rounded-lg text-xs font-black bg-white text-mutsubi-900 shadow";
+        document.getElementById('tab-alc-admin').className = "px-4 py-1.5 rounded-lg text-xs font-black text-slate-600 hover:text-black";
+      } else {
+        document.getElementById('alc-section-submit').classList.add('hidden');
+        document.getElementById('alc-section-admin').classList.remove('hidden');
+        document.getElementById('tab-alc-admin').className = "px-4 py-1.5 rounded-lg text-xs font-black bg-white text-mutsubi-900 shadow";
+        document.getElementById('tab-alc-submit').className = "px-4 py-1.5 rounded-lg text-xs font-black text-slate-600 hover:text-black";
+        renderAlcoholAdminTable();
+      }
+    }
+
+    function renderAlcoholView() {
+      if (!currentUser.isAdmin) toggleAlcoholTab('submit');
+    }
+
+    function renderAlcoholAdminTable() {
+      const tbody = document.getElementById('alc-admin-table-body');
+      tbody.innerHTML = "";
+      alcoholLogs.forEach(log => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition-colors";
+        tr.innerHTML = `
+          <td class="p-3.5 font-mono">${log.date} ${log.time}</td>
+          <td class="p-3.5 font-black text-slate-800">${log.userName} <span class="text-[10px] text-slate-400">(${log.dept || ''})</span></td>
+          <td class="p-3.5 text-slate-600">${log.type}</td>
+          <td class="p-3.5 font-mono font-black ${parseFloat(log.val) > 0 ? 'text-red-600' : 'text-emerald-700'}">${log.val} mg/L</td>
+          <td class="p-3.5 text-slate-500">${log.method}</td>
+          <td class="p-3.5">
+            ${log.pass ? '<span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-black">適正 (OK)</span>' : '<span class="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-black">酒気帯び警告</span>'}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function exportAlcoholCSV() {
+      let csv = "日時,氏名,部署,区分,測定値,確認方法,判定\n";
+      alcoholLogs.forEach(l => {
+        csv += `${l.date} ${l.time},${l.userName},${l.dept||''},${l.type},${l.val},${l.method},${l.pass?'OK':'NG'}\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `alcohol_report_${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+    }
+
+    // --- 勤怠打刻処理 ---
+    function recordAttendance(type) {
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0].substring(0, 5);
+      const dateStr = now.toISOString().split('T')[0];
+
+      attendanceLogs.unshift({
+        id: 'att_' + Date.now(),
+        date: dateStr,
+        time: timeStr,
+        userId: currentUser.uid,
+        userName: currentUser.displayName,
+        type: type
+      });
+      localStorage.setItem('mutsubi_corp_att_v2', JSON.stringify(attendanceLogs));
+
+      document.getElementById('current-attendance-badge').innerText = `ステータス: ${type} (${timeStr})`;
+      showToast(`${type}打刻完了 (${timeStr})`);
+      renderAttendanceView();
+    }
+
+    function setStatusBadge(statusText) {
+      document.getElementById('current-attendance-badge').innerText = `社内状態: ${statusText}`;
+      showToast(`ステータスを「${statusText}」に変更しました`);
+    }
+
+    function renderAttendanceView() {
+      const container = document.getElementById('attendance-log-list');
+      container.innerHTML = "";
+      const today = new Date().toISOString().split('T')[0];
+      const myLogs = attendanceLogs.filter(a => a.date === today && a.userId === currentUser.uid);
+
+      if (myLogs.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-400 font-bold text-center py-6">本日の打刻履歴はありません</p>`;
+        return;
+      }
+
+      myLogs.forEach(log => {
+        const div = document.createElement('div');
+        div.className = "bg-slate-50 p-2.5 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold";
+        div.innerHTML = `
+          <span class="text-slate-800">${log.type}</span>
+          <span class="font-mono text-slate-500">${log.time}</span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // --- 会議室予約 ＆ Googleカレンダー連携機能 ---
+    function openDatePicker() {
+      document.getElementById('date-picker').showPicker();
+    }
+
+    function updateDateDisplay() {
+      const d = new Date(selectedDate);
+      const days = ["日", "月", "火", "水", "木", "金", "土"];
+      document.getElementById('date-display').innerText = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日(${days[d.getDay()]})`;
+      document.getElementById('date-picker').value = selectedDate;
+    }
+
+    function changeDate(e) {
+      if (e.target.value) {
+        selectedDate = e.target.value;
+        updateDateDisplay();
+        refreshCurrentView();
+      }
+    }
+
+    function renderRoomTabs() {
+      const container = document.getElementById('room-tabs');
+      container.innerHTML = "";
+      rooms.forEach(room => {
+        const btn = document.createElement('button');
+        const isActive = room.id === currentRoomId;
+        btn.onclick = () => { currentRoomId = room.id; renderRoomTabs(); renderTimeSlots(); };
+        btn.className = `shrink-0 px-4 py-2 rounded-xl font-bold text-xs transition-all border ${isActive ? 'bg-mutsubi-800 text-white border-mutsubi-800 shadow' : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'}`;
+        btn.innerText = `${room.floor} ${room.name}`;
+        container.appendChild(btn);
+      });
+      const r = rooms.find(r => r.id === currentRoomId);
+      document.getElementById('current-room-title').innerText = `${r.floor} ${r.name}`;
+    }
+
+    function getReservationsForRoom(date, roomId) {
+      return reservations.filter(r => r.date === date && r.roomId === roomId);
+    }
+
+    function isSlotBooked(time, roomReservations) {
+      const tMins = timeToMins(time);
+      for (const res of roomReservations) {
+        const startMins = timeToMins(res.startTime);
+        const endMins = timeToMins(res.endTime);
+        if (tMins >= startMins && tMins < endMins) return res;
+      }
+      return null;
+    }
+
+    function createGoogleCalendarUrl(title, dateStr, startTimeStr, endTimeStr, location, details) {
+      const formatTime = (dStr, tStr) => {
+        const [y, m, d] = dStr.split('-');
+        const [hh, mm] = tStr.split(':');
+        return `${y}${m.padStart(2,'0')}${d.padStart(2,'0')}T${hh.padStart(2,'0')}${mm.padStart(2,'0')}00`;
+      };
+      const startIso = formatTime(dateStr, startTimeStr);
+      const endIso = formatTime(dateStr, endTimeStr);
+      const baseUrl = "https://calendar.google.com/calendar/render";
+      const params = new URLSearchParams({
+        action: "TEMPLATE",
+        text: title,
+        dates: `${startIso}/${endIso}`,
+        location: location,
+        details: details
+      });
+      return `${baseUrl}?${params.toString()}`;
+    }
+
+    function renderTimeSlots() {
+      const container = document.getElementById('time-slots');
+      container.innerHTML = "";
+      const roomReservations = getReservationsForRoom(selectedDate, currentRoomId);
+      let skipUntilMins = 0;
+
+      timeSlots.forEach(time => {
+        const tMins = timeToMins(time);
+        if (tMins < skipUntilMins) return;
+
+        const bookedRes = isSlotBooked(time, roomReservations);
+        const div = document.createElement('div');
+
+        if (bookedRes) {
+          skipUntilMins = timeToMins(bookedRes.endTime);
+          const room = rooms.find(r => r.id === currentRoomId);
+          const gCalUrl = createGoogleCalendarUrl(
+            `【睦備建設】${room.name} 予約: ${bookedRes.userName}`,
+            bookedRes.date, bookedRes.startTime, bookedRes.endTime,
+            `睦備建設 ${room.floor} ${room.name}`,
+            `予約者: ${bookedRes.userName}\n用途: ${bookedRes.purpose === 'visitor' ? '来客対応 (' + bookedRes.visitorName + ')' : '社内会議'}`
+          );
+
+          div.className = "w-full bg-slate-100 border border-slate-300 rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3";
+          div.innerHTML = `
+            <div>
+              <span class="text-base font-black font-mono text-slate-700">${bookedRes.startTime} - ${bookedRes.endTime}</span>
+              <span class="ml-3 text-xs font-bold text-slate-600"><i class="fa-solid fa-lock text-slate-400"></i> ${bookedRes.userName}</span>
+              ${bookedRes.purpose === 'visitor' ? `<span class="ml-2 text-xs bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded border border-amber-300">来客: ${bookedRes.visitorName}</span>` : ''}
+            </div>
+            <a href="${gCalUrl}" target="_blank" class="text-xs bg-white text-blue-600 hover:bg-blue-50 font-bold px-3 py-1.5 rounded-xl border border-blue-200 flex items-center gap-1.5 shadow-sm shrink-0">
+              <i class="fa-brands fa-google text-blue-500"></i> Googleカレンダーに追加
+            </a>
+          `;
+        } else {
+          div.onclick = () => openReserveModal(time);
+          div.className = "btn-press w-full bg-white border border-slate-300 hover:border-mutsubi-600 hover:bg-mutsubi-50 rounded-2xl p-4 flex justify-between items-center shadow-sm cursor-pointer transition-all";
+          div.innerHTML = `
+            <span class="text-base font-black font-mono text-mutsubi-900">${time}</span>
+            <span class="text-xs font-extrabold bg-mutsubi-800 text-white px-4 py-1.5 rounded-full shadow">
+              <i class="fa-regular fa-circle-check"></i> 予約する
+            </span>
+          `;
+        }
+        container.appendChild(div);
+      });
+    }
+
+    function openReserveModal(timeStr) {
+      pendingReserveTime = timeStr;
+      const room = rooms.find(r => r.id === currentRoomId);
+      document.getElementById('modal-room-name').innerText = `${room.floor} ${room.name}`;
+      document.getElementById('modal-start-time').innerText = timeStr;
+
+      const select = document.getElementById('reserve-duration');
+      select.innerHTML = "";
+      const startMins = timeToMins(timeStr);
+      let maxMinsAvailable = 0;
+      const roomReservations = getReservationsForRoom(selectedDate, currentRoomId);
+
+      for (let m = startMins; m < timeToMins("18:00"); m += 30) {
+        if (isSlotBooked(minsToTime(m), roomReservations)) break;
+        maxMinsAvailable += 30;
+      }
+
+      const maxOptions = Math.min(maxMinsAvailable, 180);
+      for (let dur = 30; dur <= maxOptions; dur += 30) {
+        const option = document.createElement('option');
+        option.value = dur;
+        option.innerText = dur === 30 ? "30分間" : `${dur/60}時間`;
+        select.appendChild(option);
+      }
+
+      document.getElementById('reserve-user-name').value = currentUser.displayName;
+      setPurpose('internal');
+      calculateEndTime();
+      toggleModalClass('reserve-modal', 'modal-overlay', true);
+    }
+
+    function calculateEndTime() {
+      const startMins = timeToMins(pendingReserveTime);
+      const dur = parseInt(document.getElementById('reserve-duration').value || '30');
+      document.getElementById('modal-end-time').innerText = minsToTime(startMins + dur);
+    }
+
+    function setPurpose(p) {
+      currentPurpose = p;
+      const btnInt = document.getElementById('btn-purpose-internal');
+      const btnVis = document.getElementById('btn-purpose-visitor');
+      const vFields = document.getElementById('visitor-fields');
+
+      if (p === 'internal') {
+        btnInt.className = "flex-1 py-2 text-xs font-extrabold rounded-lg bg-white shadow text-mutsubi-900";
+        btnVis.className = "flex-1 py-2 text-xs font-extrabold rounded-lg text-slate-500 bg-transparent";
+        vFields.classList.add('hidden');
+      } else {
+        btnVis.className = "flex-1 py-2 text-xs font-extrabold rounded-lg bg-white shadow text-mutsubi-900";
+        btnInt.className = "flex-1 py-2 text-xs font-extrabold rounded-lg text-slate-500 bg-transparent";
+        vFields.classList.remove('hidden');
+      }
+    }
+
+    function closeModal() {
+      toggleModalClass('reserve-modal', 'modal-overlay', false);
+    }
+
+    function executeReserve() {
+      const uName = document.getElementById('reserve-user-name').value.trim();
+      if (!uName) return showToast("予約者名を入力してください");
+
+      const dur = parseInt(document.getElementById('reserve-duration').value);
+      const endTime = minsToTime(timeToMins(pendingReserveTime) + dur);
+      let visitorName = "";
+      let needsTea = false;
+
+      if (currentPurpose === 'visitor') {
+        visitorName = document.getElementById('reserve-visitor-name').value.trim();
+        needsTea = document.querySelector('input[name="tea-option"]:checked').value === "true";
+      }
+
+      const newRes = {
+        id: 'res_' + Date.now(),
+        date: selectedDate,
+        roomId: currentRoomId,
+        startTime: pendingReserveTime,
+        endTime: endTime,
+        userId: currentUser.uid,
+        userName: uName,
+        purpose: currentPurpose,
+        visitorName: visitorName,
+        needsTea: needsTea
+      };
+
+      reservations.push(newRes);
+      localStorage.setItem('mutsubi_corp_res_v2', JSON.stringify(reservations));
+      closeModal();
+
+      const room = rooms.find(r => r.id === currentRoomId);
+      const gCalUrl = createGoogleCalendarUrl(
+        `【睦備建設】${room.name} 予約: ${uName}`,
+        selectedDate, pendingReserveTime, endTime,
+        `睦備建設 ${room.floor} ${room.name}`,
+        `予約者: ${uName}\n用途: ${currentPurpose}`
+      );
+
+      showToast("部屋の予約を完了しました！");
+      window.open(gCalUrl, '_blank');
+      refreshCurrentView();
+    }
+
+    function findAvailableRooms() {
+      const now = new Date();
+      const currentMins = now.getHours() * 60 + now.getMinutes();
+      const blockStartMins = Math.floor(currentMins / 30) * 30;
+      const blockStartTime = minsToTime(blockStartMins);
+
+      document.getElementById('search-current-time').innerText = blockStartTime;
+      const listContainer = document.getElementById('available-rooms-list');
+      listContainer.innerHTML = "";
+
+      let found = false;
+      const today = now.toISOString().split('T')[0];
+
+      rooms.forEach(room => {
+        const roomRes = getReservationsForRoom(today, room.id);
+        if (!isSlotBooked(blockStartTime, roomRes)) {
+          found = true;
+          const btn = document.createElement('button');
+          btn.onclick = () => {
+            closeSearchModal();
+            selectedDate = today;
+            currentRoomId = room.id;
+            updateDateDisplay();
+            switchView('reserve');
+            renderRoomTabs();
+            setTimeout(() => openReserveModal(blockStartTime), 300);
+          };
+          btn.className = "w-full text-left bg-white hover:bg-mutsubi-50 border border-slate-300 rounded-xl p-3 flex justify-between items-center transition-all shadow-sm";
+          btn.innerHTML = `
+            <span class="font-extrabold text-mutsubi-900 text-sm"><i class="fa-solid fa-door-open text-sky-600 mr-2"></i>${room.floor} ${room.name}</span>
+            <span class="text-xs bg-mutsubi-800 text-white font-black px-3 py-1.5 rounded-lg shadow">ここを予約</span>
+          `;
+          listContainer.appendChild(btn);
+        }
+      });
+
+      if (!found) {
+        listContainer.innerHTML = `<div class="text-center text-xs text-slate-500 py-6 font-bold">現在空いている部屋はありません。</div>`;
+      }
+      toggleModalClass('search-modal', 'search-overlay', true);
+    }
+
+    function closeSearchModal() {
+      toggleModalClass('search-modal', 'search-overlay', false);
+    }
+
+    // --- 名刺管理 (CARD ARCHIVE) 処理 ---
+    function switchCardSubTab(subtab) {
+      document.querySelectorAll('.card-subview').forEach(v => v.classList.add('hidden'));
+      document.querySelectorAll('.card-tab-btn').forEach(b => {
+        b.className = "card-tab-btn py-2.5 rounded-lg text-xs font-black tracking-wider transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5 text-slate-500 hover:text-slate-800";
+      });
+
+      document.getElementById(`subview-card-${subtab}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-card-${subtab}`);
+      if (activeBtn) activeBtn.className = "card-tab-btn py-2.5 rounded-lg text-xs font-black tracking-wider transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5 text-mutsubi-800 bg-white shadow-sm";
+
+      renderAllCardViews();
+    }
+
+    function setupSyllablesUI() {
+      const nav = document.getElementById('syllable-nav');
+      if (!nav) return;
+      nav.innerHTML = "";
+      syllables.forEach(s => {
+        const btn = document.createElement('button');
+        btn.id = `syllable-btn-${s.label}`; btn.textContent = s.label;
+        btn.className = "syllable-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700";
+        btn.onclick = () => filterBySyllable(s.label);
+        nav.appendChild(btn);
+      });
+    }
+
+    function setupTagsFilterUI() {
+      const bar = document.getElementById('tag-filter-bar');
+      if (!bar) return;
+      bar.innerHTML = "";
+      const allBtn = document.createElement('button');
+      allBtn.id = "tag-filter-btn-ALL"; allBtn.textContent = "すべて";
+      allBtn.className = "tag-filter-btn px-3.5 py-1.5 rounded-lg text-[10px] font-extrabold bg-mutsubi-800 text-white shadow-sm";
+      allBtn.onclick = () => filterByTag('ALL');
+      bar.appendChild(allBtn);
+
+      presetTags.forEach(t => {
+        const btn = document.createElement('button');
+        btn.id = `tag-filter-btn-${t}`; btn.textContent = t;
+        btn.className = "tag-filter-btn px-3.5 py-1.5 rounded-lg text-[10px] font-extrabold bg-white text-slate-500 border border-slate-200";
+        btn.onclick = () => filterByTag(t);
+        bar.appendChild(btn);
+      });
+    }
+
+    function setupFormTagsUI() {
+      const container = document.getElementById('form-tag-container');
+      if (!container) return;
+      container.innerHTML = "";
+      presetTags.forEach(t => {
+        const btn = document.createElement('button'); btn.type = "button"; btn.textContent = t; btn.id = `form-tag-${t}`;
+        btn.className = "px-3 py-1 rounded border border-slate-200 bg-white text-slate-500 font-bold text-xs";
+        btn.onclick = () => toggleFormTag(t);
+        container.appendChild(btn);
+      });
+    }
+
+    function toggleFormTag(tag) {
+      const idx = selectedFormTags.indexOf(tag);
+      if(idx === -1) selectedFormTags.push(tag); else selectedFormTags.splice(idx, 1);
+      setupFormTagsUI();
+      selectedFormTags.forEach(t => {
+        const b = document.getElementById(`form-tag-${t}`);
+        if(b) b.className = "px-3 py-1 rounded border border-mutsubi-600 bg-mutsubi-50 text-mutsubi-800 font-bold text-xs";
+      });
+    }
+
+    function renderAllCardViews() {
+      renderAiueoCardList();
+      renderCompanyGroupCardList();
+      renderProjectsFilterBar();
+    }
+
+    function renderProjectsFilterBar() {
+      const bar = document.getElementById('project-filter-bar');
+      if (!bar) return;
+      bar.innerHTML = "";
+      const projects = new Set(); cards.forEach(c => { if(c.project) projects.add(c.project.trim()); });
+      const allBtn = document.createElement('button');
+      allBtn.textContent = "現場すべて";
+      allBtn.className = "px-3 py-1 rounded-lg text-[10px] font-extrabold " + (currentProjectFilter === 'ALL' ? "bg-mutsubi-800 text-white" : "bg-white text-slate-500 border border-slate-200");
+      allBtn.onclick = () => { currentProjectFilter = 'ALL'; renderProjectsFilterBar(); renderAiueoCardList(); };
+      bar.appendChild(allBtn);
+
+      projects.forEach(p => {
+        const btn = document.createElement('button');
+        btn.textContent = p; btn.className = "px-3 py-1 rounded-lg text-[10px] font-extrabold " + (currentProjectFilter === p ? "bg-mutsubi-800 text-white" : "bg-white text-slate-500 border border-slate-200");
+        btn.onclick = () => { currentProjectFilter = p; renderProjectsFilterBar(); renderAiueoCardList(); };
+        bar.appendChild(btn);
+      });
+    }
+
+    function renderAiueoCardList() {
+      const grid = document.getElementById('cards-grid-aiueo');
+      if (!grid) return;
+      grid.innerHTML = "";
+      const search = (document.getElementById('search-aiueo').value || '').toLowerCase();
+
+      let filtered = cards.filter(c => {
+        const matchText = c.name.toLowerCase().includes(search) || c.company.toLowerCase().includes(search) || (c.project && c.project.toLowerCase().includes(search)) || (c.notes && c.notes.toLowerCase().includes(search));
+        let matchSyl = true;
+        if(currentSyllableFilter !== "ALL") {
+          const sObj = syllables.find(s => s.label === currentSyllableFilter);
+          const firstChar = (c.kana || c.name).trim().charAt(0);
+          matchSyl = currentSyllableFilter === "他" ? !/^[あ-んア-ン]/.test(firstChar) : (sObj ? sObj.range.test(firstChar) : true);
+        }
+        const matchTag = currentTagFilter === "ALL" || (c.tags && c.tags.includes(currentTagFilter));
+        const matchProj = currentProjectFilter === "ALL" || c.project === currentProjectFilter;
+        return matchText && matchSyl && matchTag && matchProj;
+      });
+
+      filtered.sort((a,b) => (a.kana||a.name).localeCompare((b.kana||b.name), 'ja'));
+
+      if(filtered.length === 0) {
+        document.getElementById('empty-state-aiueo').classList.remove('hidden');
+        return;
+      }
+      document.getElementById('empty-state-aiueo').classList.add('hidden');
+
+      filtered.forEach(c => {
+        const el = document.createElement('div');
+        el.className = "bg-white border border-slate-200 rounded-2xl p-4 cursor-pointer shadow-sm relative overflow-hidden active:bg-slate-50 hover:border-mutsubi-600 transition-all";
+        el.onclick = () => openCardDetailModal(c.id);
+        el.innerHTML = `
+          <div>
+            <p class="text-[10px] font-black text-mutsubi-600 uppercase truncate">${c.company}</p>
+            <h4 class="text-sm sm:text-base text-slate-900 font-extrabold mt-0.5">${c.name} <span class="text-xs font-normal text-slate-500">様</span></h4>
+            <p class="text-[10px] text-slate-500 mt-1 font-bold"><i class="fa-solid fa-location-dot text-sky-600 mr-1"></i>${c.project || '現場指定なし'}</p>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[10px] border-t border-slate-100 pt-2 text-slate-400 font-tech">
+            <span>受領日: ${c.receivedDate || ''}</span>
+            ${c.history && c.history.length > 1 ? `<span class="bg-sky-100 text-sky-800 px-1.5 py-0.5 rounded font-bold">受領${c.history.length}回</span>` : ''}
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    }
+
+    function renderCompanyGroupCardList() {
+      const container = document.getElementById('cards-grouped-company');
+      if (!container) return;
+      container.innerHTML = "";
+      const search = (document.getElementById('search-company').value || '').toLowerCase();
+      const groups = {};
+
+      cards.forEach(c => {
+        if(c.company.toLowerCase().includes(search) || (c.address && c.address.toLowerCase().includes(search))) {
+          if(!groups[c.company]) groups[c.company] = [];
+          groups[c.company].push(c);
+        }
+      });
+
+      Object.keys(groups).sort().forEach((comp, idx) => {
+        const el = document.createElement('div');
+        el.className = "border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm mb-3";
+        el.innerHTML = `
+          <button onclick="toggleCompanyGroup(${idx})" class="w-full flex justify-between items-center px-4 py-3 bg-slate-50">
+            <span class="text-xs font-black text-slate-800">${comp}</span>
+            <i id="chevron-${idx}" class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+          </button>
+          <div id="company-content-${idx}" class="hidden border-t border-slate-100 p-3 space-y-2">
+            ${groups[comp].map(c => `<div onclick="openCardDetailModal('${c.id}')" class="bg-white border border-slate-200 rounded-lg p-3 text-xs font-bold hover:border-mutsubi-600 cursor-pointer transition-colors">${c.name} <span class="text-[10px] text-slate-400 font-normal ml-2">${c.title || ''}</span></div>`).join('')}
+          </div>
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    function filterBySyllable(syl) {
+      currentSyllableFilter = syl;
+      document.querySelectorAll('.syllable-btn').forEach(b => b.className = "syllable-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700");
+      const active = document.getElementById(`syllable-btn-${syl}`); if(active) active.className = "syllable-btn px-3 py-1.5 text-xs font-bold rounded-lg bg-mutsubi-800 text-white shadow-sm";
+      renderAiueoCardList();
+    }
+
+    function filterByTag(tag) {
+      currentTagFilter = tag;
+      document.querySelectorAll('.tag-filter-btn').forEach(b => b.className = "tag-filter-btn px-3.5 py-1.5 rounded-lg text-[10px] font-extrabold bg-white text-slate-500 border border-slate-200");
+      const active = document.getElementById(`tag-filter-btn-${tag}`); if(active) active.className = "tag-filter-btn px-3.5 py-1.5 rounded-lg text-[10px] font-extrabold bg-mutsubi-800 text-white shadow-sm";
+      renderAiueoCardList();
+    }
+
+    function toggleCompanyGroup(idx) {
+      const el = document.getElementById(`company-content-${idx}`);
+      const icon = document.getElementById(`chevron-${idx}`);
+      if(el.classList.contains('hidden')) { el.classList.remove('hidden'); icon.classList.add('rotate-180'); }
+      else { el.classList.add('hidden'); icon.classList.remove('rotate-180'); }
+    }
+
+    function filterCards() {
+      renderAiueoCardList();
+      renderCompanyGroupCardList();
+    }
+
+    function handleImageFile(files) {
+      if(!files[0]) return;
+      showToast("画像を読み込み中...");
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
+          const max = 1000; let w = img.width, h = img.height;
+          if(w > max || h > max) { if(w > h) { h = Math.round(h * (max/w)); w = max; } else { w = Math.round(w * (max/h)); h = max; } }
+          canvas.width = w; canvas.height = h; ctx.drawImage(img, 0, 0, w, h);
+          selectedImageBase64 = canvas.toDataURL('image/jpeg', 0.65);
+          document.getElementById('image-preview').src = selectedImageBase64;
+          document.getElementById('image-preview-container').classList.remove('hidden');
+          document.getElementById('btn-scan-ai').disabled = false;
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(files[0]);
+    }
+
+    function analyzeCardWithAI() {
+      const spinner = document.getElementById('ai-loading-spinner'); const btnText = document.getElementById('ai-btn-text');
+      spinner.classList.remove('hidden'); btnText.textContent = "AI解析中...";
+      
+      setTimeout(() => {
+        document.getElementById('form-company').value = "大睦電気設備株式会社";
+        document.getElementById('form-name').value = "笹川 聡";
+        document.getElementById('form-kana').value = "ささがわ さとし";
+        document.getElementById('form-title').value = "京都北営業所 所長";
+        document.getElementById('form-phone').value = "075-432-8765";
+        document.getElementById('form-fax').value = "075-432-8766";
+        document.getElementById('form-mobile').value = "090-9988-7766";
+        document.getElementById('form-email').value = "s.sasagawa@daimutsu.co.jp";
+        document.getElementById('form-address').value = "京都府京都市北区衣笠御所ノ内町24";
+        document.getElementById('form-notes').value = "電気工事の調整担当者。";
+        document.getElementById('form-project').value = "パデシオン京都駅前";
+        selectedFormTags = ["電気"];
+        setupFormTagsUI();
+        document.getElementById(`form-tag-電気`).className = "px-3 py-1 rounded border border-mutsubi-600 bg-mutsubi-50 text-mutsubi-800 font-bold text-xs";
+        
+        spinner.classList.add('hidden'); btnText.textContent = "AI 名刺解析スタート";
+        showToast("AI名刺解析が完了しました (自動入力)");
+      }, 1000);
+    }
+
+    function precheckAndSaveCard(e) {
+      e.preventDefault();
+      const company = document.getElementById('form-company').value.trim();
+      const name = document.getElementById('form-name').value.trim();
+      const cardId = document.getElementById('card-id').value;
+
+      const data = {
+        company, name, kana: document.getElementById('form-kana').value.trim(),
+        title: document.getElementById('form-title').value.trim(),
+        phone: document.getElementById('form-phone').value.trim(),
+        fax: document.getElementById('form-fax').value.trim(),
+        mobile: document.getElementById('form-mobile').value.trim(),
+        email: document.getElementById('form-email').value.trim(),
+        address: document.getElementById('form-address').value.trim(),
+        notes: document.getElementById('form-notes').value.trim(),
+        project: document.getElementById('form-project').value.trim(),
+        tags: [...selectedFormTags], receivedDate: document.getElementById('form-received-date').value,
+        createdBy: document.getElementById('form-creator').value, photo: selectedImageBase64,
+        updatedAt: new Date().toISOString()
+      };
+
+      saveCardExecute(cardId, data);
+    }
+
+    function saveCardExecute(id, data) {
+      if(id) { 
+        const idx = cards.findIndex(c => c.id === id); 
+        const existing = cards[idx];
+        cards[idx] = { ...existing, ...data }; 
+      } else { 
+        data.id = 'card-' + Date.now(); 
+        data.createdAt = data.updatedAt; 
+        data.history = [{
+          receivedBy: data.createdBy, 
+          receivedByEmail: currentUser ? currentUser.email : "fujii@mutsubi.co.jp",
+          receivedAt: data.receivedDate,
+          project: data.project
+        }]; 
+        data.careerTimeline = []; 
+        cards.unshift(data); 
+      }
+      saveLocalCards();
+      renderAllCardViews();
+      resetCardForm();
+      switchCardSubTab('list-aiueo');
+      showToast("名刺情報を登録保存しました");
+    }
+
+    function openCardDetailModal(id) {
+      const c = cards.find(card => card.id === id); if(!c) return;
+      const content = document.getElementById('modal-card-content');
+      const cleanPhone = (num) => num ? num.replace(/[^0-9+]/g, '') : '';
+
+      content.innerHTML = `
+        <div class="flex flex-col md:flex-row gap-5 items-start">
+          <div class="w-full md:w-1/3 shrink-0">
+            ${c.photo ? `<img src="${c.photo}" class="w-full h-auto rounded-2xl border shadow-sm">` : `<div class="w-full h-32 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 font-bold">NO PHOTO</div>`}
+          </div>
+          <div class="flex-1 space-y-2 w-full">
+            <p class="text-[10px] font-black text-mutsubi-600 uppercase tracking-widest">${c.company}</p>
+            <h2 class="text-xl font-extrabold text-slate-900">${c.name} <span class="text-sm font-normal text-slate-500">様</span></h2>
+            ${c.title ? `<p class="text-xs text-slate-600 font-bold bg-slate-100 inline-block px-2.5 py-1 rounded">${c.title}</p>` : ''}
+          </div>
+        </div>
+
+        <div class="space-y-3 pt-4 border-t border-slate-100">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1">代表電話</span>
+              <a href="tel:${cleanPhone(c.phone || '')}" class="font-tech font-bold text-slate-800 hover:text-mutsubi-600"><i class="fa-solid fa-phone mr-1"></i>${c.phone || '未登録'}</a>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+              <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1">Email</span>
+              <a href="mailto:${c.email}" class="font-tech font-bold text-mutsubi-600 truncate hover:underline block"><i class="fa-solid fa-envelope mr-1"></i>${c.email || '未登録'}</a>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('card-detail-modal').classList.remove('hidden');
+    }
+
+    function closeDetailModal() {
+      document.getElementById('card-detail-modal').classList.add('hidden');
+    }
+
+    function resetCardForm() {
+      document.getElementById('card-form').reset();
+      document.getElementById('card-id').value = "";
+      selectedFormTags = [];
+      setupFormTagsUI();
+      selectedImageBase64 = "";
+      document.getElementById('image-preview-container').classList.add('hidden');
+      document.getElementById('btn-scan-ai').disabled = true;
+      document.getElementById('form-received-date').value = new Date().toISOString().substring(0, 10);
+      if(currentUser) document.getElementById('form-creator').value = currentUser.displayName;
+    }
+
+    function exportCardsToCSV() {
+      if(cards.length === 0) return showToast("データがありません");
+      const headers = ["会社名", "氏名", "ふりがな", "役職", "現場", "電話", "FAX", "携帯", "メール", "住所", "備考", "登録者", "受領日"];
+      const rows = cards.map(c => [c.company, c.name, c.kana, c.title, c.project, c.phone, c.fax, c.mobile, c.email, c.address, (c.notes||'').replace(/\n/g,' '), c.createdBy, c.receivedDate]);
+      const csv = "\uFEFF" + [headers, ...rows].map(r => r.map(v => `"${v}"`).join(",")).join("\r\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a"); link.href = URL.createObjectURL(blob); link.download = `mutsubi_cards_${new Date().toISOString().substring(0,10)}.csv`; link.click();
+    }
+
+    window.handleImageFile = handleImageFile;
+    window.analyzeCardWithAI = analyzeCardWithAI;
+    window.precheckAndSaveCard = precheckAndSaveCard;
+    window.toggleCompanyGroup = toggleCompanyGroup;
+    window.toggleFormTag = toggleFormTag;
+    window.resetCardForm = resetCardForm;
+    window.clearSelectedImage = (e) => { e.stopPropagation(); selectedImageBase64=""; document.getElementById('image-preview-container').classList.add('hidden'); document.getElementById('btn-scan-ai').disabled=true; };
+
+    // --- 社員マスタ管理 (新入社員追加・編集機能) ---
+    function openMemberAddModal() {
+      document.getElementById('member-form').reset();
+      document.getElementById('mem-id').value = "";
+      document.getElementById('member-add-modal').classList.remove('hidden');
+    }
+
+    function closeMemberAddModal() {
+      document.getElementById('member-add-modal').classList.add('hidden');
+    }
+
+    function saveMemberExecute(e) {
+      e.preventDefault();
+      const id = document.getElementById('mem-id').value;
+      const name = document.getElementById('mem-name').value.trim();
+      const kana = document.getElementById('mem-kana').value.trim();
+      const dept = document.getElementById('mem-dept').value;
+      const title = document.getElementById('mem-title').value.trim() || '社員';
+      const email = document.getElementById('mem-email').value.trim() || 'user@mutsubi.co.jp';
+      const isAdmin = document.getElementById('mem-is-admin').value === 'true';
+
+      if (id) {
+        const idx = members.findIndex(m => m.id === id);
+        if (idx !== -1) {
+          members[idx] = { id, name, kana, dept, title, email, isAdmin };
+        }
+      } else {
+        const newMember = {
+          id: 'mem_' + Date.now(),
+          name, kana, dept, title, email, isAdmin
+        };
+        members.push(newMember);
+      }
+
+      localStorage.setItem('mutsubi_corp_members_v1', JSON.stringify(members));
+      closeMemberAddModal();
+      filterEmployeeList();
+      renderMemberTable();
+      showToast("社員データを登録保存しました");
+    }
+
+    function editMember(id) {
+      const m = members.find(mem => mem.id === id);
+      if (!m) return;
+      document.getElementById('mem-id').value = m.id;
+      document.getElementById('mem-name').value = m.name;
+      document.getElementById('mem-kana').value = m.kana;
+      document.getElementById('mem-dept').value = m.dept;
+      document.getElementById('mem-title').value = m.title;
+      document.getElementById('mem-email').value = m.email;
+      document.getElementById('mem-is-admin').value = m.isAdmin ? 'true' : 'false';
+      document.getElementById('member-add-modal').classList.remove('hidden');
+    }
+
+    function deleteMember(id) {
+      if(!confirm("この社員データを削除しますか？")) return;
+      members = members.filter(m => m.id !== id);
+      localStorage.setItem('mutsubi_corp_members_v1', JSON.stringify(members));
+      filterEmployeeList();
+      renderMemberTable();
+      showToast("社員データを削除しました");
+    }
+
+    function renderMemberTable() {
+      const tbody = document.getElementById('member-master-table-body');
+      if (!tbody) return;
+      tbody.innerHTML = "";
+
+      const searchText = (document.getElementById('member-table-search').value || '').toLowerCase().trim();
+      const filtered = members.filter(m => m.name.toLowerCase().includes(searchText) || m.dept.toLowerCase().includes(searchText));
+
+      document.getElementById('member-count-badge').innerText = filtered.length;
+
+      filtered.forEach(m => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition-colors";
+        tr.innerHTML = `
+          <td class="p-3.5 font-mono text-slate-400 text-[10px]">${m.id}</td>
+          <td class="p-3.5 text-slate-900">${m.name} <span class="text-[10px] text-slate-400 font-normal">(${m.kana})</span></td>
+          <td class="p-3.5"><span class="bg-mutsubi-50 text-mutsubi-800 px-2 py-0.5 rounded border border-mutsubi-200 text-[10px] font-black">${m.dept}</span></td>
+          <td class="p-3.5 text-slate-600">${m.title || '社員'}</td>
+          <td class="p-3.5 font-mono text-slate-500">${m.email}</td>
+          <td class="p-3.5">
+            ${m.isAdmin ? '<span class="bg-red-100 text-red-800 text-[10px] px-2 py-0.5 rounded-full font-black">総務・管理者</span>' : '<span class="bg-slate-100 text-slate-600 text-[10px] px-2 py-0.5 rounded-full">一般社員</span>'}
+          </td>
+          <td class="p-3.5 text-center space-x-1">
+            <button onclick="editMember('${m.id}')" class="bg-sky-100 text-sky-800 hover:bg-sky-200 px-2.5 py-1 rounded text-[10px] font-bold">編集</button>
+            <button onclick="deleteMember('${m.id}')" class="bg-red-50 text-red-600 hover:bg-red-100 px-2.5 py-1 rounded text-[10px] font-bold">削除</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // --- 備品・社用車予約機能 ---
+    function openEquipModal(name) {
+      showToast(`「${name}」の利用予約を登録しました（管理者承認待ち）`);
+    }
+
+    // --- ワークフロー（申請）機能 ---
+    function submitWorkflowRequest() {
+      const type = document.getElementById('wf-type').value;
+      const date = document.getElementById('wf-date').value || selectedDate;
+      const reason = document.getElementById('wf-reason').value.trim();
+
+      if(!reason) return showToast("申請理由を入力してください");
+
+      workflowLogs.unshift({
+        id: 'wf_' + Date.now(),
+        date: date,
+        userId: currentUser.uid,
+        userName: currentUser.displayName,
+        dept: currentUser.dept || '社内',
+        type: type,
+        reason: reason,
+        status: '申請中 (承認待ち)'
+      });
+
+      localStorage.setItem('mutsubi_corp_wf_v2', JSON.stringify(workflowLogs));
+      document.getElementById('wf-reason').value = "";
+      showToast("申請を総務部へ送信しました");
+      renderWorkflowView();
+    }
+
+    function renderWorkflowView() {
+      const container = document.getElementById('workflow-list-container');
+      container.innerHTML = "";
+      const myWf = workflowLogs.filter(w => w.userId === currentUser.uid || currentUser.isAdmin);
+
+      if (myWf.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-400 font-bold text-center py-6">申請履歴はありません</p>`;
+        return;
+      }
+
+      myWf.forEach(wf => {
+        const div = document.createElement('div');
+        div.className = "bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs font-bold flex justify-between items-center";
+        div.innerHTML = `
+          <div>
+            <span class="bg-mutsubi-800 text-white px-2 py-0.5 rounded text-[10px] mr-2">${wf.type}</span>
+            <span class="text-slate-800">${wf.date}</span>
+            <p class="text-slate-600 font-normal mt-1">${wf.reason}</p>
+          </div>
+          <span class="text-[10px] bg-sky-100 text-sky-800 px-2.5 py-1 rounded-full font-black">${wf.status}</span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // --- マイページ処理 ---
+    function renderMyPage() {
+      const roomContainer = document.getElementById('mypage-room-list');
+      roomContainer.innerHTML = "";
+      const myRes = reservations.filter(r => r.userId === currentUser.uid);
+
+      if (myRes.length === 0) {
+        roomContainer.innerHTML = `<p class="text-xs text-slate-400 font-bold text-center py-4">自分の会議室予約はありません</p>`;
+      } else {
+        myRes.forEach(r => {
+          const room = rooms.find(rm => rm.id === r.roomId);
+          const gCalUrl = createGoogleCalendarUrl(
+            `【睦備建設】${room ? room.name : ''} 予約`,
+            r.date, r.startTime, r.endTime,
+            `睦備建設 ${room ? room.floor + ' ' + room.name : ''}`,
+            `予約者: ${r.userName}`
+          );
+
+          const div = document.createElement('div');
+          div.className = "bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs font-bold";
+          div.innerHTML = `
+            <div>
+              <span class="bg-mutsubi-800 text-white px-2 py-0.5 rounded text-[10px] mr-2">${r.date}</span>
+              <span class="font-mono">${r.startTime}-${r.endTime}</span>
+              <span class="ml-2 text-slate-700">${room ? room.name : ''}</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <a href="${gCalUrl}" target="_blank" class="text-[10px] bg-white text-blue-600 border border-blue-200 px-2 py-1 rounded hover:bg-blue-50"><i class="fa-brands fa-google mr-1"></i>Googleカレンダー</a>
+              <button onclick="cancelMyRes('${r.id}')" class="text-red-600 text-[10px] bg-red-50 border border-red-200 px-2 py-1 rounded hover:bg-red-500 hover:text-white">キャンセル</button>
+            </div>
+          `;
+          roomContainer.appendChild(div);
+        });
+      }
+
+      const alcContainer = document.getElementById('mypage-alc-list');
+      alcContainer.innerHTML = "";
+      const myAlc = alcoholLogs.filter(a => a.userId === currentUser.uid);
+
+      if (myAlc.length === 0) {
+        alcContainer.innerHTML = `<p class="text-xs text-slate-400 font-bold text-center py-4">アルコール測定報告ログはありません</p>`;
+      } else {
+        myAlc.forEach(a => {
+          const div = document.createElement('div');
+          div.className = "bg-slate-50 p-2.5 rounded-xl border border-slate-200 flex justify-between items-center font-bold";
+          div.innerHTML = `
+            <span>${a.date} ${a.time} (${a.type})</span>
+            <span class="font-mono text-emerald-700">${a.val} mg/L</span>
+          `;
+          alcContainer.appendChild(div);
+        });
+      }
+    }
+
+    function cancelMyRes(id) {
+      if(!confirm("予約をキャンセルしますか？")) return;
+      reservations = reservations.filter(r => r.id !== id);
+      localStorage.setItem('mutsubi_corp_res_v2', JSON.stringify(reservations));
+      showToast("予約をキャンセルしました");
+      renderMyPage();
+    }
+
+    // トースト通知
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      toast.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+      setTimeout(() => toast.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none'), 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

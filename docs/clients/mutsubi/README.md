@@ -7,7 +7,7 @@
 - **数字/機微**: 収益構造・前受金プールは機微。本文には貼らず、memory「睦備の売上構造」＋営業管理シートを参照
 
 ## 成果物
-- MUTSUBI PORTAL（統合社内ポータル・Phase 0 要件定義中）→ [`portal/`](portal/README.md) ／ Notion親ページ https://app.notion.com/p/balencer/MUTSUBI-PORTAL-144ca8f9e04f412ab84310834a50f256
+- MUTSUBI PORTAL（統合社内ポータル・Phase 0 要件定義中）→ [`portal/`](portal/README.md) ／ Notion親ページ https://app.notion.com/p/balencer/MUTSUBI-PORTAL-144ca8f9e04f412ab84310834a50f256 ／ モック公開URL https://mutsubi-portal-mock.vercel.app
 - 納涼会 音響卓（当日スマホ操作アプリ・BGM/効果音同時再生PWA）→ [`納涼会-音響アプリ/`](納涼会-音響アプリ/README.md) ／ 公開URL https://balencer-audio.vercel.app
 
 ## リンク集

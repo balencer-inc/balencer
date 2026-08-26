@@ -2,6 +2,13 @@
 
 社内業務・情報・予約・各種管理機能を一元化する統合社内ポータル。現在 Phase 0（要件定義・技術設計）。
 
+## モック公開URL
+https://mutsubi-portal-mock.vercel.app （Vercel・production）
+
+- 社名が入るため `noindex, nofollow, noarchive` メタと `robots.txt` の Disallow で検索避けをしている
+- 管理者画面はログイン画面の「管理者専用ログイン」タブ → `admin123`（モックの固定値）
+- 更新するとき: `mock-portal.html` を `index.html` としてコピーし、noindexメタを足した独立フォルダを作って `npx vercel deploy --prod --yes`。リポジトリ丸ごとはデプロイしない
+
 ## 正本はNotion
 - 親ページ（エンジニア共有の入口）: https://app.notion.com/p/balencer/MUTSUBI-PORTAL-144ca8f9e04f412ab84310834a50f256
 - 元資料「ポータルアプリ要件定義」: https://app.notion.com/p/balencer/3c753269fc5e8071affdfa7cf9f70642

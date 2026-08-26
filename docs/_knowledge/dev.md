@@ -92,3 +92,11 @@
 - **NotionへのHTML直アップロードはCloudflareに403で弾かれる**（`api.notion.com/v1/mcp/file_uploads/.../send` にscript入りHTMLをPOSTするとWAFが反応）。zipに固めればbinaryとして通る。MCPの `notion-create-attachment`（content渡し）は通るが、大きいファイルは全文を渡す必要があり非現実的
 - docx等のcurlアップロードは `-F "file=@x.docx;type=<正確なMIME>"` を明示しないと `application/octet-stream` 扱いで400になる
 - 親ページの本文を `replace_content` で丸ごと書き換えると子DB・子ページが消える。`update_content` の検索置換で部分的に直す
+
+### 2026-08-26 追記：クライアント名入りモックを公開URLで渡すとき
+zip添付よりURLのほうがエンジニアは確実に見る。ただし社名が入るので、公開前に2点入れる。
+
+1. `<meta name="robots" content="noindex, nofollow, noarchive">` をHTMLに追加
+2. `robots.txt` に `User-agent: * / Disallow: /`
+
+デプロイはリポジトリ本体ではなく、`index.html` と `robots.txt` だけの独立フォルダを作って `npx vercel deploy --prod --yes`。**払い出される `<project>-<hash>-<team>.vercel.app` はDeployment Protectionで外部から開けないことがある。共有するのは短いエイリアス `<project>.vercel.app` のほう。**渡す前に必ず `curl -s -o /dev/null -w "%{http_code}" <URL>` で200を確認する。

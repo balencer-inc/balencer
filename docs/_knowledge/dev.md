@@ -100,3 +100,15 @@ zip添付よりURLのほうがエンジニアは確実に見る。ただし社�
 2. `robots.txt` に `User-agent: * / Disallow: /`
 
 デプロイはリポジトリ本体ではなく、`index.html` と `robots.txt` だけの独立フォルダを作って `npx vercel deploy --prod --yes`。**払い出される `<project>-<hash>-<team>.vercel.app` はDeployment Protectionで外部から開けないことがある。共有するのは短いエイリアス `<project>.vercel.app` のほう。**渡す前に必ず `curl -s -o /dev/null -w "%{http_code}" <URL>` で200を確認する。
+
+## 2026-08-26 design-md 索引を472件に更新（414→472）
+
+`.claude/skills/design-md/slugs.txt` を上流の最新一覧で貼り替えた。2026-07-28 の初回取得時は414件、今回472件。
+
+- 増えた58件の傾向は **美術館・文化施設／地方の老舗・工芸／BtoB SaaS** の3方向。地域オーナー企業の案件で当てられる手札が厚くなった
+  - 美術館系: nezu-museum・nakanoshima-museum・aomori-museum・kyocera-museum・pola-museum・kadokawa-museum・teien-art-museum・topmuseum・towada-art-center・ycam・setouchi-triennale・opam・bunkitsu
+  - 老舗・地場: fukumitsuya・hakkaisan・tsuruyayoshinobu・ninben・inden-ya・suwada・gungendo・unagino-nedoko・tokichi・seikado・chateraise・maruyamacoffee
+  - BtoB SaaS: andpad・kaminashi・loglass・upsider・nulab・smartbank・preferred-networks・concent・mimiguri・rhizomatiks・whatever
+- 索引の和名対応表に、よく使いそうな老舗・建設住宅・美術館の行を追記した（とらや・開化堂・能作・積水ハウス・住友林業 等）
+- **上流は増え続けるので索引は放っておくと古びる**。ブランド名が索引で引けなかった時は、まず SKILL.md 冒頭のAPIコマンドで最新一覧を取り直す（消えたslugは今回ゼロ＝追加のみ）
+- DESIGN.md の中身は引き続きリポジトリにキャッシュしない（都度 raw 取得）。同じブランドで3回以上作るようになったらキャッシュ固定化を提案する方針は維持

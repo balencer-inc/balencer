@@ -1,4 +1,4 @@
-# awesome-design-md-jp 収録テーマ slug 索引（2026-07-28 取得・414件）
+# awesome-design-md-jp 収録テーマ slug 索引（2026-08-26 取得・472件）
 # 使い方: 阿部さんが言うブランド名 → この索引で slug を引く → raw取得。
 #   raw URL = https://raw.githubusercontent.com/kzhrknt/awesome-design-md-jp/main/design-md/<slug>/DESIGN.md
 # 索引にない/増えている可能性がある時は API で最新一覧を取り直す:
@@ -6,6 +6,9 @@
 # 代表的な和名対応: ユニクロ=uniqlo 無印=muji 味の素=ajinomoto 資生堂=shiseido 任天堂=nintendo
 #   ジブリ=ghibli ソニー=sony トヨタ=toyota 星野リゾート=hoshinoresorts ほぼ日=hobonichi 蔦屋=daikanyama-tsite
 #   イッセイミヤケ=isseymiyake ミナペルホネン=mina-perhonen/minaperhonen 三宅一生=isseymiyake
+#   とらや=toraya 一保堂=ippodo 開化堂=kaikado 能作=nousaku 中川政七商店=nakagawa 諏訪田製作所=suwada
+#   ヘラルボニー=heralbony 星野=hoshinoresorts 大和ハウス=daiwahouse 積水ハウス=sekisuihouse 住友林業=sumitomo-forestry
+#   森美術館=mori-art-museum 根津美術館=nezu-museum 金沢21世紀=kanazawa21 十和田=towada-art-center
 
 10x
 10yc
@@ -28,8 +31,10 @@ ambientec
 ambush
 ana
 and-premium
+andpad
 andwander
 anrealage
+aomori-museum
 aoyamaflowermarket
 apple
 artizon
@@ -41,6 +46,8 @@ au
 audio-technica
 auralee
 axis
+ayura
+azabudai-hills
 azmaya
 bake
 balmuda
@@ -59,6 +66,7 @@ botanist
 bridgestone
 brother
 brutus
+bunkitsu
 buttersand
 cado
 cainz
@@ -71,6 +79,7 @@ casa-brutus
 casio
 celvoke
 cfcl
+chateraise
 chatwork
 choya
 cibone
@@ -79,8 +88,10 @@ citizen
 clas
 claska
 cledepeau
+cocomeister
 coedo
 cohina
+concent
 condehouse
 connpass
 cookpad
@@ -95,6 +106,7 @@ daikanyama-tsite
 daikin
 daiso
 daiwahouse
+dancyu
 dandelionchocolate
 dassai
 dddhotel
@@ -114,12 +126,16 @@ dulton
 eneos
 epson
 fabrictokyo
+factelier
 fancl
 felissimo
+final-audio
+fontworks
 francfranc
 freee
 fujifilm
 fujitsu
+fukumitsuya
 g-mark
 ganzo
 ghibli
@@ -136,9 +152,12 @@ graphpaper
 greenspoon
 groovisions
 gu
+gungendo
 gyokusendo
-hakuhodo-brushes
+hakkaisan
 hakuhodo
+hakuhodo-brushes
+hanako
 hands
 hario
 hasami-porcelain
@@ -160,6 +179,7 @@ ichiran
 idee
 ikeuchi
 ikyu
+inden-ya
 ippodo
 ippudo
 ipsa
@@ -172,8 +192,10 @@ itoya
 jal
 jillstuart-beauty
 jins
+jra
 jreast
 k5
+kadokawa-museum
 kagome
 kai
 kaikado
@@ -181,6 +203,7 @@ kakimori
 kaldi
 kalita
 kamaasa
+kaminashi
 kanazawa21
 kaneko-optical
 kao
@@ -210,6 +233,7 @@ kurashiru
 kurkkufields
 kyash
 kyocera
+kyocera-museum
 landscape-products
 lawson
 layerx
@@ -220,6 +244,7 @@ line
 lixil
 loft
 loftwork
+loglass
 lotte
 lowya
 lumine
@@ -230,16 +255,20 @@ mamekurogouchi
 markaware
 marksandweb
 maruni
+maruyamacoffee
 mazda
 mec
 meiji
 mercari
 mikimoto
+mimiguri
 mina-perhonen
 minaperhonen
 minimal
+mishimasha
 mitsui-fudosan
 mixi
+mizkan
 mizuno
 moheim
 moneyforward
@@ -252,11 +281,14 @@ mosburger
 mosh
 mot-art-museum
 motherhouse
+mpuni
+mrcheesecake
 mt
 muji
 mybest
 nact
 nakagawa
+nakanoshima-museum
 nanamica
 nanga
 nanouniverse
@@ -264,9 +296,12 @@ ndc
 neighborhood
 nendo
 newt
+nezu-museum
 nikkei
 nikoand
 nikon
+ninben
+ninehours
 nintendo
 nissan
 nissin
@@ -274,11 +309,12 @@ nitori
 nohga-hotel
 notahotel
 note
-notion-dev
 notion
+notion-dev
 nousaku
 novasell
 ntt
+nulab
 objcts-io
 oisix
 okamura
@@ -286,13 +322,16 @@ omo
 omron
 onibuscoffee
 onitsukatiger
+opam
 orbis
 osaji
 owndays
 panasonic
 parco
 paypay
+peach
 penonline
+pentel
 pilot
 pixiv
 plaid
@@ -300,9 +339,11 @@ plst
 plusminuszero
 pocarisweat
 pola
+pola-museum
 popeye
 postalco
 postcoffee
+preferred-networks
 puebco
 qiita
 raksul
@@ -310,7 +351,9 @@ rakuten
 readyfor
 recruit
 refa
+rhizomatiks
 rmk
+rohto
 roland
 royce
 sacai
@@ -323,8 +366,10 @@ sapporo
 sarutahiko
 schoo
 sega
+seikado
 seiko
 sekisuihouse
+setouchi-triennale
 sghr
 sharp
 shimano
@@ -336,6 +381,7 @@ sigma
 sirisiri
 siwa
 sixinc
+smartbank
 smarthr
 smartnews
 snidel
@@ -347,6 +393,7 @@ sousou
 spiber
 spiral
 square-enix
+starflyer
 stores
 studio
 subaru
@@ -354,6 +401,7 @@ subsequence
 sumitomo-forestry
 suntory
 suqqu
+suwada
 suzuki
 tabelog
 tabio
@@ -364,6 +412,7 @@ taneya
 tanita
 tasaki
 teamlab
+teien-art-museum
 tendo
 tenerita
 tenga
@@ -374,6 +423,7 @@ tiger
 timeandstyle
 timee
 todaysspecial
+tokichi
 tokyo-midtown
 tokyobike
 tokyometro
@@ -381,38 +431,49 @@ tokyosaryo
 tokyu
 tombow
 tomorrowland
+topmuseum
 toppan
 toraya
 toshiba
 toto
+towada-art-center
 toyota
+transit-general-office
 travelers-company
 truck-furniture
 trunk-hotel
 tsuchiya-kaban
+tsuruyayoshinobu
 tullys
 typica
 ubie
 ucc
 uka
+unagino-nedoko
 undercover
 uniqlo
 united-arrows
+upsider
 urbanresearch
 vermicular
 visvim
 wacoal
 wacom
 wantedly
+waphyto
+whatever
 whill
 whitemountaineering
 wired
 yaeca
 yakult
 yamaha
+yamajitsu
 yamap
 yamatomichi
+ycam
 yohjiyamamoto
+yohobrewing
 yokumoku
 yonex
 yoshidakaban

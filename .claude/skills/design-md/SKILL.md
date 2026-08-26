@@ -1,12 +1,12 @@
 ---
 name: design-md
-description: "資料・LP・スライド・デッキを作る前に、awesome-design-md-jp ギャラリー（414ブランドのデザインmd）から好きなテーマを選び、その実測デザインルール（フォント・カラー・余白）を作図の基準に取り込むスキル。ユーザーが「デザインmd」「ギャラリーから選んで」「○○風で作って」「デザインmd起動」「デザインテーマ選びたい」等と言った時、または資料/LP/スライドの見た目を決める段で使用。"
+description: "資料・LP・スライド・デッキを作る前に、awesome-design-md-jp ギャラリー（472ブランドのデザインmd）から好きなテーマを選び、その実測デザインルール（フォント・カラー・余白）を作図の基準に取り込むスキル。ユーザーが「デザインmd」「ギャラリーから選んで」「○○風で作って」「デザインmd起動」「デザインテーマ選びたい」等と言った時、または資料/LP/スライドの見た目を決める段で使用。"
 ---
 
 # デザインmd — ギャラリーから選んで着手する
 
 資料・LP・スライドを作る時、いきなり作り始めず **「どのデザインで作るか」をギャラリーから1枚選んでから着手する** ためのスキル。
-選択肢は [awesome-design-md-jp](https://github.com/kzhrknt/awesome-design-md-jp)（@kzhrknt）の **414ブランド**。各ブランドのサイトを実測（Puppeteer computed style）した DESIGN.md が、フォント・カラー・余白・角丸まで具体値で入っている。これをそのままAIの作図ルールに使う。
+選択肢は [awesome-design-md-jp](https://github.com/kzhrknt/awesome-design-md-jp)（@kzhrknt）の **472ブランド**。各ブランドのサイトを実測（Puppeteer computed style）した DESIGN.md が、フォント・カラー・余白・角丸まで具体値で入っている。これをそのままAIの作図ルールに使う。
 
 正本メモ: [reference_design_md.md]（memory）。slug索引はこのフォルダの `slugs.txt`。
 

@@ -27,6 +27,19 @@ description: "顧客の月次報告レポート（A4横PDF・1枚）を、Notion
 
 ---
 
+## 0. 先にタグの抜けを埋める（`notion-tag-fill`）
+
+議事録の顧客タグが空だとレポートから漏れる。**材料抽出の前に `notion-tag-fill` スキルで空タグを埋める**。
+毎月やる必要はない。下のカウントで空が溜まっていたら実行する。
+
+```sql
+SELECT SUM(CASE WHEN "顧客" IS NULL AND "関連顧客" IS NULL THEN 1 ELSE 0 END) AS 両方空
+FROM "collection://21753269-fc5e-80ee-b22a-000bacba9a0b"
+```
+> 2026-08-27 時点で 50件（推定できない人名のみ・タイトル空・select未登録の会社）。ここは埋まらない前提。
+
+---
+
 ## 1. 材料を抽出する（SQL 1発）
 
 ```

@@ -9,6 +9,7 @@
 ## 成果物
 - MUTSUBI PORTAL（統合社内ポータル・Phase 0 要件定義中）→ [`portal/`](portal/README.md) ／ Notion親ページ https://app.notion.com/p/balencer/MUTSUBI-PORTAL-144ca8f9e04f412ab84310834a50f256 ／ モック公開URL https://mutsubi-portal-mock.vercel.app
 - 納涼会 音響卓（当日スマホ操作アプリ・BGM/効果音同時再生PWA）→ [`納涼会-音響アプリ/`](納涼会-音響アプリ/README.md) ／ 公開URL https://balencer-audio.vercel.app
+- 月次レポート（専務向けA4横1枚・毎月最終平日に作成）→ [`月次レポート/`](月次レポート/README.md) ／ 型は `monthly-report` スキル
 
 ## リンク集
 - 会社調査 → NotebookLM「睦備建設DX推進ヒアリング：2026年への成果と展望」: https://notebooklm.google.com/notebook/be8f7550-3eb2-47ed-8fa1-e21cfb0f53b7

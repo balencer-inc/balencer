@@ -152,5 +152,7 @@ curl -s "https://raw.githubusercontent.com/kzhrknt/awesome-design-md-jp/main/des
 ## メモ
 
 - 資料そのものが再利用資産になる。**3回以上同じ構成で作ったら、そのHTMLをテンプレート化**して固定する（繰り返し作業の昇格ルール）
-- 参考の実例: 加藤梨紗さん作「株式会社Miracle nurse 御中 マーケティング戦略書」（2026-08-25／10ページ／design-md `meiji`）。**他社の契約金額・交渉状況を含むため社外に出さない**
+- 参考の実例: 加藤梨紗さん作「株式会社Miracle nurse 御中 マーケティング戦略書」（2026-08-25／10ページ／design-md `meiji`）。`docs/_knowledge/samples/miraclenurse_strategy_202608.pdf`
+  - **見るのは「構成とレイアウト」だけ**。他社の契約金額・交渉状況が入っているので社外に出さない
+  - バレンサー名義の資料に流用する時も、**金額・交渉状況の類は持ち込まない**。借りるのはページの順番とカードの組み方であって、中身ではない
 - この工程の記録は `docs/_knowledge/creative.md`（2026-08-26 のエントリ）

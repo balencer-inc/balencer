@@ -53,3 +53,6 @@ docs/proposals/clavis-partners/deploy-teian/
 
 # Claude Project用バンドル(正本からの生成物・再生成可)。手元のみ
 docs/company/_project-bundle.md
+
+# 顧客フォルダ内の 99_local/ は個人情報・ログイン情報の置き場。git管理外（手元のみ）
+**/99_local/

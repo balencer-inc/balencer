@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OSAKA共創LAB 案件サマリー</title>
+<style>
+:root{
+  --ink:#1a2230; --ink2:#48566b; --ink3:#7a8699;
+  --line:#e2e6ec; --bg:#fbfcfd; --card:#fff;
+  --key:#3d5a80; --key-soft:#eef2f7;
+  --p1:#2f7a5e; --p2:#b8860b; --p3:#a3305c;
+  --warn:#b34a3a; --warn-soft:#fdf3f1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px 80px}
+header{border-top:5px solid var(--key);background:#fff;border-bottom:1px solid var(--line);
+  padding:44px 0 34px;margin-bottom:40px}
+header .wrap{padding-bottom:0}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--ink3);margin:0 0 12px}
+h1{font-size:30px;margin:0 0 14px;letter-spacing:.01em;line-height:1.4}
+.lede{font-size:15px;color:var(--ink2);margin:0;max-width:66ch}
+.meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-size:13px;color:var(--ink2)}
+.meta b{color:var(--ink);font-weight:600}
+h2{font-size:19px;margin:52px 0 6px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+h2 .num{color:var(--ink3);font-size:12px;letter-spacing:.12em;display:block;margin-bottom:6px;font-weight:400}
+h3{font-size:15px;margin:26px 0 8px}
+p{margin:10px 0}
+.grid{display:grid;gap:14px;margin-top:18px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.card.p1{border-top:3px solid var(--p1)} .card.p2{border-top:3px solid var(--p2)} .card.p3{border-top:3px solid var(--p3)}
+.card h4{margin:0 0 4px;font-size:15px}
+.card .tag{font-size:11px;letter-spacing:.1em;color:var(--ink3);display:block;margin-bottom:8px}
+.card p{margin:6px 0;font-size:13.5px;color:var(--ink2)}
+.keys{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0}
+.key{background:var(--key-soft);color:var(--key);border-radius:4px;padding:3px 10px;
+  font-size:12px;font-weight:600;letter-spacing:.06em}
+.pull{background:#fff;border-left:4px solid var(--key);padding:16px 20px;margin:22px 0;
+  font-size:15.5px;border-radius:0 6px 6px 0;border-top:1px solid var(--line);
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.scroll{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:8px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f5f7fa;font-size:12px;letter-spacing:.04em;color:var(--ink2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.t{white-space:nowrap;color:var(--ink3);font-variant-numeric:tabular-nums}
+tr.mine td{background:#f3f7fb}
+tr.mine td:first-child{font-weight:700}
+ol,ul{margin:10px 0;padding-left:22px}
+li{margin:5px 0;font-size:14px}
+.warn{background:var(--warn-soft);border:1px solid #f0d5cf;border-radius:8px;padding:18px 22px;margin-top:18px}
+.warn h3{margin-top:0;color:var(--warn)}
+.warn ol li{font-size:13.5px}
+.files{margin-top:18px}
+.files a{display:block;padding:12px 16px;border:1px solid var(--line);border-radius:7px;
+  background:#fff;margin-bottom:8px;text-decoration:none;color:var(--ink);font-size:14px;
+  transition:border-color .15s,transform .15s}
+.files a:hover{border-color:var(--key);transform:translateX(2px)}
+.files a span{display:block;font-size:12.5px;color:var(--ink3);margin-top:3px}
+.files a.star{border-left:4px solid var(--key)}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--ink3)}
+.walls{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:14px}
+.wall{background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:13px}
+.wall b{display:block;font-size:12px;color:var(--key);margin-bottom:2px}
+.lv{display:flex;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.lv:last-child{border-bottom:0}
+.lv i{font-style:normal;font-size:11px;letter-spacing:.1em;color:var(--ink3);width:58px;flex:none}
+.lv b{width:88px;flex:none}
+.lv span{color:var(--ink2);font-size:13.5px}
+</style></head><body>
+<header><div class="wrap">
+<p class="eyebrow">大阪府教育庁　府立学校産学官共創教育モデル事業</p>
+<h1>OSAKA共創LAB ／ 案件サマリー</h1>
+<p class="lede">府立高校の生徒がチームを組み、自分の関心を起点に社会の課題を見つけ、2027年2月までに「形にする」探究プログラム。阿部さんはファシリテーターとして、チーム1・チーム2に伴走する。</p>
+<div class="meta">
+<div><b>期間</b>　2026-08-20 〜 2027-03-31</div>
+<div><b>規模</b>　14チーム / 高校生66名</div>
+<div><b>担当</b>　チーム1（26_teamA・5名）／チーム2（26_teamB・5名）</div>
+<div><b>役割</b>　ファシリテーター</div>
+</div>
+</div></header>
+
+<div class="wrap">
+
+<h2><span class="num">01　GOAL</span>2月に目指す状態</h2>
+<div class="pull">すべてのチームが、「形にしたいこと」を自分たちの言葉で語り、必要な社会の相手へ、具体的な一歩を踏み出している。</div>
+<p>目指すのは、考えたことを発表して終わることではない。高校生が「使う側」から<b>「形をつくる側」</b>へ踏み出すこと。形にすることを急ぐのではなく、形にできる状態を一つずつつくる。</p>
+
+<h3>2月の到達点は3段階で見る</h3>
+<div class="scroll"><table>
+<tr><th>到達段階</th><th>2月時点の状態</th><th>位置づけ</th></tr>
+<tr><td><b>最低限の到達</b></td><td>形にしたいことを説明できる／対象者と必要な力が見えている／適切な社会の相手へ具体的な相談・協力依頼を行っている</td><td>全チームが目指す共通目標</td></tr>
+<tr><td><b>グッドシナリオ</b></td><td>相談相手からフィードバックまたは協力意向を得ている／試作品または小さな実践の計画が成立している</td><td>多くのチームが目指す挑戦目標</td></tr>
+<tr><td><b>ストレッチ</b></td><td>試作品や小さな実践を対象者に試している／結果から改善点や次の判断を得ている</td><td>条件が整ったチームが到達する発展目標</td></tr>
+</table></div>
+<p style="font-size:13.5px;color:var(--ink2)">1人に届いた。1回試せた。1つ分かった。1つ変わった。それも立派な「できた」として扱う。</p>
+
+<h2><span class="num">02　PHASES &amp; KEYS</span>3フェーズと6つの鍵</h2>
+<div class="grid g3">
+<div class="card p1"><span class="tag">PHASE 1 コミュニケーション</span><h4>チームをつくる</h4>
+<p>「個」から「チーム」へ</p>
+<div class="keys"><span class="key">TRUST</span><span class="key">WILL</span><span class="key">TEAM</span></div>
+<p style="margin-top:12px">目指す状態：安心して話せる。互いの関心と違いを知る。次の小さな行動が決まる。</p></div>
+<div class="card p2"><span class="tag">PHASE 2 構想</span><h4>やりたいことを見つける</h4>
+<p>「チーム」から「プロジェクト」へ</p>
+<div class="keys"><span class="key">WILL</span><span class="key">NEED</span><span class="key">MAKE</span></div>
+<p style="margin-top:12px">目指す状態：なぜやりたいかが見える。対象者と場面が具体化する。何を確かめるかが決まる。</p></div>
+<div class="card p3"><span class="tag">PHASE 3 実装</span><h4>社会で形にする</h4>
+<p>「プロジェクト」から「社会との実践」へ</p>
+<div class="keys"><span class="key">TEAM</span><span class="key">MAKE</span><span class="key">MOVE</span></div>
+<p style="margin-top:12px">目指す状態：試せる大きさを決める。必要な力を特定する。社会の相手へ具体的に相談し、結果から次の判断を行う。</p></div>
+</div>
+<p style="font-size:13.5px;color:var(--ink2);margin-top:14px">壁は各フェーズで一度だけ現れるものではない。必要に応じて前のフェーズへ戻ることも前進の一部。</p>
+
+<h2><span class="num">03　WALLS</span>高校生が出会う10の壁</h2>
+<p>「やりたい」と「できた」は、まっすぐにはつながっていない。<b>壁に出会ったことは、失敗した証拠ではなく、本当に形にしようとしている証拠。</b></p>
+<div class="walls">
+<div class="wall"><b>1 やりたいことが見つからない</b>特にない・選べない・言葉にできない</div>
+<div class="wall"><b>2 こんなもん</b>どうせ無理・自分にはできない</div>
+<div class="wall"><b>3 空想</b>目標が大きすぎる・誰のためか分からない</div>
+<div class="wall"><b>4 何から始めればいいか</b>方法が分からない・一歩を決められない</div>
+<div class="wall"><b>5 仲間集め</b>協力者が見つからない・頼み方が分からない</div>
+<div class="wall"><b>6 チームワーク</b>意見が違う・決まらない・熱量が偏る</div>
+<div class="wall"><b>7 現実</b>お金・時間・技術・場所・許可・安全</div>
+<div class="wall"><b>8 試して、つくり直す</b>失敗が怖い・最初の案を変えられない</div>
+<div class="wall"><b>9 届ける</b>誰に、どこで、どう伝えるか分からない</div>
+<div class="wall"><b>10 続ける</b>一度実施して終わる・次の担い手がない</div>
+</div>
+
+<h2><span class="num">04　MY ROLE</span>ファシリテーターの線引き</h2>
+<div class="grid g2">
+<div class="card"><h4>やること</h4>
+<ul><li>考えや意見を引き出す</li><li>現在地・未決事項・次の行動を整理する</li><li>止まったときに問いを投げかける</li><li>必要な社会の相手との接続を支援する</li></ul></div>
+<div class="card"><h4>やらないこと</h4>
+<ul><li><b>代わりに答えを決めない</b></li><li>無理にテーマを決めない</li><li>外形的な成果を急いで主体性を奪わない</li><li>高校生の代わりに実行しない</li></ul></div>
+</div>
+<div class="pull">グッドシナリオは全員で目指す方向であり、<b>ファシリテーター個人に課す達成保証ではない</b>。<br>考え直し・規模縮小・実施見送りも、根拠ある判断なら前進として扱う。<span style="display:block;font-size:12.5px;color:var(--ink3);margin-top:8px">― 関係者協議資料 09 AGREEMENT より</span></div>
+
+<h2><span class="num">05　WEEKLY</span>毎週の実務（伴走記録）</h2>
+<p>定例ミーティングのあと、週1回・約5分でフォームに入力する。内容はダッシュボードに反映され、事務局が支援の要否を判断する材料になる。<b>生徒の実名は入力しない。</b></p>
+<div class="pull" style="font-size:14.5px">最短手順：先に議事録（決定事項）を1行ずつ書く → 各行に鍵をつける → 6つの鍵が自動でクリアになる → 差分だけ手で直す</div>
+<div class="grid g2">
+<div class="card"><h4>状態の4記号</h4>
+<ul><li><b>○ クリア</b>　次へ進む暫定合意ができ、証がある（証の入力が必須）</li><li><b>△ 検討中</b>　材料はあるが未合意。迷ったらこれで構わない</li><li><b>− 未着手</b>　まだ話せていない</li><li><b>↻ 考え直し</b>　調べた結果を受けて再検討中（前進の証）</li></ul></div>
+<div class="card"><h4>ダッシュボードが検知する停滞のサイン</h4>
+<ul><li>記録途絶　最終記録から14日以上</li><li>GATE足踏み　ALMOST／RETRYが2回連続</li><li>鍵の膠着　同じ鍵が検討中のまま3回連続</li><li>離脱予兆　GATE1投票の「まだ分からない」が増加</li><li>全体停止　6つの鍵が直近3回まったく変化なし</li></ul>
+<p>「↻考え直し」があった回は全体停止にならない。停滞は減点ではなく、支援を届けるための検知。</p></div>
+</div>
+
+<h2><span class="num">06　TIMELINE</span>8月30日 当日の流れ</h2>
+<div class="scroll"><table>
+<tr><th>時間</th><th>プログラム</th><th>ファシリテーターの立ち回り</th></tr>
+<tr><td class="t">12:00–13:00</td><td>受付・着席・開始準備</td><td>軽く声をかけて緊張をほぐす（本格的な自己紹介はまだしない）</td></tr>
+<tr><td class="t">13:00–13:25</td><td>対話型オープニング</td><td>紹介で立つ。「壁は挑戦している証拠」の空気をつくる</td></tr>
+<tr><td class="t">13:25–13:40</td><td>基調講演（株式会社どんぶら 横野 龍賢 さま）</td><td>―</td></tr>
+<tr class="mine"><td class="t">13:40–14:05</td><td>チームづくり（自己紹介15分＋約束づくり10分）</td><td>QR読み込みで参加者確認。長い経歴紹介は避ける。約束を3つに整理してワークシートへ</td></tr>
+<tr><td class="t">14:05–14:20</td><td>チーム対抗クイズ大会（Kahoot! 10問）</td><td>一緒に参加してチーム一体で盛り上げる</td></tr>
+<tr class="mine"><td class="t">14:20–14:55</td><td>探究ワーク①　気になることを持ち寄る</td><td>一人5分で書く→一人3分で共有。発言時間の偏りを調整し、共通点を仮説として返す</td></tr>
+<tr><td class="t">14:55–15:00</td><td>休憩</td><td>発言できていないメンバーの状況を確認</td></tr>
+<tr class="mine"><td class="t">15:00–15:40</td><td>探究ワーク②　気になることを社会とつなげる</td><td>「誰の、どんな場面か」へ具体化。知っていることと想像を分ける。方向は1〜3個で可</td></tr>
+<tr><td class="t">15:40–16:00</td><td>2チーム交換対話</td><td>質問カード5枚を差し出す。11月の企業対話の予行演習として扱う</td></tr>
+<tr class="mine"><td class="t">16:00–16:20</td><td>振り返り・次の行動決定</td><td>各自15〜30分でできる行動を1つ。次回オンラインの日程を8/30から7〜10日以内で確定</td></tr>
+<tr><td class="t">16:20–16:30</td><td>今後の案内・知財説明・終了</td><td>方向性・次回行動・次回予定が記録されているか確認</td></tr>
+</table></div>
+<p style="font-size:13px;color:var(--ink3)">青い行が卓で手を動かす場面。当日資料は作成中版のため、直前にDriveで最新版を確認する。</p>
+
+<h2><span class="num">07　COMPANIES</span>企業との関わり方は5段階</h2>
+<p>すべての企業に「継続伴走」を求めるわけではない。<b>LEVEL 1・2 も、形にするための重要な支援。</b>企業名とチームを結びつけること自体を成果にしない。</p>
+<div class="card">
+<div class="lv"><i>LEVEL 1</i><b>情報提供</b><span>現場の話をする／専門知識や既存事例を伝える／質問に答える</span></div>
+<div class="lv"><i>LEVEL 2</i><b>壁打ち</b><span>アイデアに質問を返す／現実的な条件を伝える／次に確かめることを助言する</span></div>
+<div class="lv"><i>LEVEL 3</i><b>接続支援</b><span>必要な人・企業・場所・技術・情報を紹介する／高校生だけでは届かない相手につなぐ</span></div>
+<div class="lv"><i>LEVEL 4</i><b>試作支援</b><span>技術・材料・設備・場所等を限定的に提供する／小さな検証に協力する</span></div>
+<div class="lv"><i>LEVEL 5</i><b>共同実践</b><span>役割・期限・責任範囲を合意する／一緒に試す／継続の可能性を検討する</span></div>
+</div>
+<p style="font-size:13.5px;color:var(--ink2);margin-top:14px"><b>協力企業</b>　株式会社ソフトウェア・サービス／読売テレビ放送株式会社／satakeグループホールディングス／株式会社どんぶら<br>
+<b>アプローチ済みの定義</b>　連絡した事実ではなく、「誰に、何を、なぜ相談したいのか」を整理し、相手が答えたり判断したりできる具体度で働きかけている状態。</p>
+
+<h2><span class="num">08　CHECK</span>事務局に確認したいこと</h2>
+<div class="warn"><h3>6件</h3><ol>
+<li><b>6つの鍵の①〜⑥の番号対応と判定基準</b>（何が揃えば○クリアか）。鍵の名前は判明したが、対応表と基準が配布物にない</li>
+<li><b>3つのGATEの判定項目そのもの</b>が配布物に含まれていない。停滞判定の日数・回数もPDF自身が「暫定値」と明記</li>
+<li><b>進行シナリオの時間割が2箇所で食い違う</b>（全体表 vs 詳細）。クイズ・ワーク①・交換対話・知財説明の4箇所。知財説明は「今後の案内」と時間が重複している</li>
+<li><b>テーブル担当者名が資料間で不一致</b>。チーム5・7が「渡邉知」「サトル」「渡邊さん」、チーム11・13に「平野」が登場。阿部さん担当（1・2）は全資料で一致</li>
+<li><b>伴走記録フォームのURLが2種類ある</b>（事務局リンク集のもの／マニュアル記載のもの）。どちらが本番か</li>
+<li><b>大学生メンターの担当割り</b>（チーム1・2に誰が入るか）と、9月以降の日程調整・マイナビオフィス予約の運用</li>
+</ol>
+<p style="font-size:13px;margin-bottom:0">あわせて、事業名の表記が「共創LAB」と「共創LABO」で揺れている（関係者協議資料のみLABO表記）。</p></div>
+
+<h2><span class="num">09　FILES</span>フォルダの中身</h2>
+<div class="files">
+<a class="star" href="05_素材/伴走ロードマップ_関係者協議資料.md">伴走ロードマップ（関係者協議資料）<span>★ この事業の思想の中核。3フェーズ・6つの鍵・10の壁・企業5レベル・2月の3段階・関係者の合意事項6点。伴走に入る前に読む</span></a>
+<a href="00_brief.md">00_brief.md<span>壁打ち用の入口ブリーフ。事業の全体像・登場人物・阿部さんの持ち場・論点</span></a>
+<a href="05_素材/進行シナリオ_20260830.md">進行シナリオ 8月30日<span>当日の進行台本 全文（進行スクリプト・ファシリテーションのポイント込み）</span></a>
+<a href="05_素材/伴走記録の型.md">伴走記録の型<span>週次フォームの全入力項目・ダッシュボードの見方・停滞判定の条件</span></a>
+<a href="05_素材/担当チーム構成.md">担当チーム構成<span>14チーム × 高校 × ファシリテーター。実名は含めない（匿名の受講者IDのみ）</span></a>
+<a href="05_素材/ワークシート_20260830.md">ワークシート3種<span>TEAM チームの約束／WILL わたしの関心／MAKE チームで深めたい方向</span></a>
+<a href="05_素材/クイズ設問_Kahoot.md">クイズ設問 10問<span>任天堂・日清・ダイソン・エジソン等の実話と、探究へのつなぎ解説</span></a>
+<a href="05_素材/質問カード.md">質問カード 5枚<span>交換対話で高校生が質問しづらいときの助け船</span></a>
+<a href="05_素材/Day4投影資料_構成.md">Day4投影資料の構成<span>当日スクリーンに出る流れ（作成中版のため後半未収録）</span></a>
+<a href="05_素材/00_ソース一覧.md">ソース一覧<span>原本Driveリンク → md化先 → 取り込み状態の対応表と、未入手リスト</span></a>
+</div>
+<p style="font-size:13px;color:var(--ink3);margin-top:16px"><b>99_local/</b> は git 管理外。高校生66名の実名名簿と ocl.study.jp のログイン情報のみを置く。コミット・共有Drive・Notionには載せない。</p>
+
+<footer>
+docs/clients/osaka-kyoso-lab/　2026-08-28 作成　｜　原本は事務局共有Drive（株式会社ファイヤープレイス）。更新される前提のため、当日資料は直前にDriveで最新版を確認する。
+</footer>
+</div></body></html>

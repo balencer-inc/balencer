@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>東洋様 初回相談メモ 2026-08-29</title>
+<style>
+:root{--ink:#1c2024;--sub:#5b656e;--line:#e3e7ea;--accent:#4a6b85;--bg:#fbfcfd;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:64px 28px 96px}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:600;margin:0 0 10px}
+h1{font-size:27px;letter-spacing:.01em;margin:0 0 6px;font-weight:700}
+.meta{color:var(--sub);font-size:13px;margin:0 0 44px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+h2{font-size:17px;margin:52px 0 16px;padding-left:12px;border-left:3px solid var(--accent);font-weight:700}
+h3{font-size:14px;margin:30px 0 10px;color:var(--accent);font-weight:700;letter-spacing:.02em}
+p,li{font-size:14.5px}
+ul,ol{padding-left:1.35em;margin:0 0 14px}
+li{margin-bottom:7px}
+blockquote{margin:0;padding:20px 24px;background:var(--card);border:1px solid var(--line);
+border-radius:8px;color:var(--sub);font-size:14px;line-height:1.85}
+blockquote p{margin:0 0 4px;font-size:14px}
+blockquote p:last-child{margin:0}
+.judge{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
+border-radius:6px;padding:20px 24px}
+.judge p{margin:0 0 10px}
+.judge p:last-child{margin:0}
+.judge strong{color:var(--accent)}
+.flag{color:#8a5a3c;font-weight:600}
+.next{background:#f4f7f9;border-radius:8px;padding:20px 24px 20px 40px;margin:0}
+.next li{margin-bottom:9px}
+.foot{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:var(--sub);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow">CLIENT / TOYO</p>
+<h1>東洋様 初回相談メモ</h1>
+<p class="meta">2026-08-29 ／ 公的機関 機関紙のスマホビュー配信アプリ構築</p>
+
+<h2>受領した相談</h2>
+<blockquote>
+<p>案件のご相談です。</p>
+<p>ある公的機関の機関紙をスマホビューに変換してWEBサイトに配置し配信する仕組みのアプリ構築案件です。</p>
+<p>対応可能でしょうか？？</p>
+</blockquote>
+
+<h2>相談の要旨</h2>
+<ul>
+<li>発注元は「ある公的機関」。東洋様が窓口となり、当社に構築の可否を打診</li>
+<li>対象物は機関紙（広報誌・会報）。紙前提で作られた誌面をスマホで読める形に変換する</li>
+<li>変換して終わりではなく、Webサイトへの配置と配信までを含む仕組み（アプリ）の構築</li>
+</ul>
+
+<h2>現時点の判断</h2>
+<div class="judge">
+<p>対応可能な領域。支援4領域のうち<strong>デジタル・業務基盤</strong>と<strong>ブランド戦略・クリエイティブ</strong>にまたがる <strong>PROJECT（制作・開発・実装）</strong> の案件として組む。</p>
+<p>ただし見積の幅を左右する前提が未確定。下記A〜Eを確認してから可否と規模を回答する。</p>
+</div>
+
+<h2>確認事項（先方への質問）</h2>
+
+<h3>A. 元データ</h3>
+<ol>
+<li>機関紙の元データ形式（InDesign／PDF／Word／Illustrator）と、入稿してもらえるか</li>
+<li>1号あたりのページ数と発行頻度（月刊／隔月／季刊）</li>
+<li>テキストは元データから抽出できる状態か、画像化されているか（スキャンPDFだと工数が跳ねる）</li>
+</ol>
+
+<h3>B. 仕上がりの要件</h3>
+<ol start="4">
+<li>スマホビューの想定は「PDFをそのまま拡大縮小で読ませる」のか「記事単位のHTMLに組み替える」のか（体験も工数も大きく変わる）</li>
+<li>バックナンバーの扱い（過去分も変換するか、今後の号からか）</li>
+<li>記事の検索・カテゴリ分け・共有ボタンなど、紙にはない機能をどこまで求めるか</li>
+</ol>
+
+<h3>C. 配置先と運用</h3>
+<ol start="7">
+<li>配信先Webサイトの基盤（既存CMS／WordPress／公的機関の指定システム）と、当社が触れる範囲</li>
+<li>更新作業を誰が回すか（先方職員が自分で入稿するのか、当社／東洋様が代行するのか）→ 管理画面の作り込み量が決まる</li>
+<li>ホスティング・ドメイン・保守の担当区分</li>
+</ol>
+
+<h3>D. 公的機関ならではの要件</h3>
+<ol start="10">
+<li><span class="flag">ウェブアクセシビリティ（JIS X 8341-3 / AA準拠）の要求有無</span> ← 公的機関案件では必須級。要求されるなら設計段階から織り込む</li>
+<li>情報セキュリティ要件・個人情報の取り扱い・成果物の権利帰属</li>
+<li>発注形態（随意契約／入札／東洋様からの再委託）と、当社の立ち位置</li>
+</ol>
+
+<h3>E. 前提条件</h3>
+<ol start="13">
+<li>予算感と、いつまでに何号を出したいかのスケジュール</li>
+<li>東洋様と当社の役割分担（東洋様が元請で当社が構築か、当社が直接契約か）</li>
+</ol>
+
+<h2>次アクション</h2>
+<ol class="next">
+<li>上記A〜Eを東洋様に投げて回答を待つ</li>
+<li>回答が揃い次第、01_提案/ に構成案（変換方式の選択肢と概算レンジ）を起こす</li>
+<li>現物の機関紙が入手できたら 05_素材/ に置く（実物を見ないと変換方式は決められない）</li>
+</ol>
+
+<p class="foot">docs/clients/toyo/03_議事録/2026-08-29_初回相談.md より生成 ／ 社内用</p>
+</div>
+</body>
+</html>

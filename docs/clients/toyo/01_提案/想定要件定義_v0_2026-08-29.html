@@ -1,0 +1,474 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>株式会社東洋様 想定要件定義 v0</title><style>
+:root{--ink:#1c2024;--sub:#5b656e;--line:#e3e7ea;--accent:#4a6b85;--warn:#8a5a3c;--bg:#fbfcfd;--card:#fff;--zebra:#f7f9fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:56px 28px 110px}
+h1{font-size:26px;margin:0 0 24px;font-weight:700;letter-spacing:.01em}
+h2{font-size:18px;margin:58px 0 16px;padding-left:12px;border-left:3px solid var(--accent);font-weight:700}
+h3{font-size:15px;margin:34px 0 10px;color:var(--accent);font-weight:700}
+p,li,td,th{font-size:14px}
+ul,ol{padding-left:1.35em}li{margin-bottom:6px}
+blockquote{margin:18px 0 24px;padding:16px 22px;background:var(--card);border:1px solid var(--line);
+border-left:3px solid var(--warn);border-radius:6px;color:#3d454c;font-size:13.5px;line-height:1.8}
+blockquote p{margin:0 0 6px;font-size:13.5px}blockquote p:last-child{margin:0}
+blockquote strong{color:var(--warn)}
+table{border-collapse:collapse;width:100%;margin:14px 0 22px;background:var(--card);
+border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th{background:#eef2f5;text-align:left;font-weight:700;font-size:12.5px;letter-spacing:.02em;color:var(--sub)}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--zebra)}
+tbody tr:last-child td{border-bottom:none}
+td strong{color:var(--accent)}
+pre{background:#f4f7f9;border:1px solid var(--line);border-radius:6px;padding:18px 20px;
+overflow-x:auto;font-size:12px;line-height:1.65;color:#3d454c}
+code{background:#eef2f5;padding:1px 6px;border-radius:4px;font-size:12.5px}
+pre code{background:none;padding:0;font-size:12px}
+hr{border:none;border-top:1px solid var(--line);margin:52px 0}
+.tablewrap{overflow-x:auto}
+</style></head>
+<body><div class="wrap"><h1>株式会社東洋様 機関紙スマホ配信 想定要件定義 v0</h1>
+<blockquote>
+<p><strong>性格</strong>: 先方ヒアリング前の<strong>仮説ベースの要件定義</strong>。いただいた相談文4行から文脈を読み、実装に必要なものを先回りで起こしたもの。
+確定要件ではなく、<strong>これを叩き台にして「合っている／違う」を潰すための材料</strong>。
+作成 2026-08-29 ／ 社内作成物（第3章までは先方に見せられる粒度、第9章は社内向け）</p>
+</blockquote>
+<hr />
+<h2>1. 相談文から読み取った文脈</h2>
+<p>いただいた一文は4行だが、業種の型から埋められる前提がかなりある。以下は<strong>推定であり未確認</strong>。</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>読み取り</th>
+<th>根拠</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>推定1</td>
+<td>現状は組版済みPDFをサイトに1つ置いているだけ。スマホだとピンチズームが必要で読まれていない</td>
+<td>「スマホビューに<strong>変換</strong>」という言い方は、変換前の何か（＝紙面PDF）が既にあることを示す</td>
+</tr>
+<tr>
+<td>推定2</td>
+<td>機関紙は継続発行物。月刊〜季刊で、今後も出続ける</td>
+<td>機関紙という語自体が定期刊行を含む。単発なら「変換してほしい」で終わり、「仕組み」とは言わない</td>
+</tr>
+<tr>
+<td>推定3</td>
+<td><strong>本当に欲しいのは変換そのものではなく、毎号それが回る状態</strong></td>
+<td>「変換して」「配置し」「配信する」を並べたうえで「<strong>仕組みのアプリ</strong>」と締めている。3工程を毎号繰り返す前提の言い回し</td>
+</tr>
+<tr>
+<td>推定4</td>
+<td>運用するのは公的機関の職員。非エンジニアで、担当は数年で異動する</td>
+<td>公的機関の内部運用の通例。属人化した手順は引き継がれず、いずれ止まる</td>
+</tr>
+<tr>
+<td>推定5</td>
+<td>配信先Webサイトは既存のものがあり、そこに載せる</td>
+<td>「WEBサイトに配置し」＝新規サイト構築ではなく既存への組み込み</td>
+</tr>
+<tr>
+<td>推定6</td>
+<td>紙・PDFをやめるつもりはない。Web版は追加チャネル</td>
+<td>公的機関は高齢読者を切れない。紙面PDFの併存は前提と見るべき</td>
+</tr>
+</tbody>
+</table></div>
+<h3>この案件の本質（推定3から）</h3>
+<blockquote>
+<p><strong>PDFを綺麗に見せる案件ではなく、紙のワークフローに1工程足すだけで、Webの読み物が毎号ひとりでに立ち上がる状態をつくる案件。</strong></p>
+</blockquote>
+<p>ここを外すと、初号だけ立派で2号目から誰も更新しない典型的な失敗になる。要件の重心は見た目ではなく<strong>入稿から公開までの導線</strong>に置く。</p>
+<hr />
+<h2>2. 想定するシステム構成</h2>
+<pre><code> ① 入稿          ② 変換エンジン        ③ 校閲          ④ 公開          ⑤ 配信
+┌─────────┐   ┌──────────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐
+│ 職員が   │   │ PDF/IDMLを解析 │   │ 変換結果を│   │ 記事ページ│   │ サイト新着│
+│ 1号分を  │──▶│ 記事単位に分割 │──▶│ 職員が確認│──▶│ 号の目次  │──▶│ メール    │
+│ アップ   │   │ 見出し/本文/画像│   │ 直して承認│   │ バックナンバー│ │ LINE/SNS │
+└─────────┘   │ をAIで構造化   │   └─────────┘   └─────────┘   └─────────┘
+                └──────────────┘        ▲
+                                   ここを人が触れる形にできるかが成否
+</code></pre>
+<p><strong>設計の芯</strong>: ②を全自動と言わないこと。誌面の図表・写真の意味・段組の回り込みは機械では読み切れない。<strong>AIが8割やって人が2割直す</strong>を前提に、③の校閲画面を最初から要件に入れる。ここを削ると、精度が出ない号で運用が止まる。</p>
+<hr />
+<h2>3. 機能要件</h2>
+<h3>3-1. 読者側（スマホで読む人）</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>要件</th>
+<th>優先</th>
+<th>想定人日</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-01</td>
+<td>号の目次ページ（表紙画像＋記事一覧＋発行日）</td>
+<td>Must</td>
+<td>2</td>
+</tr>
+<tr>
+<td>R-02</td>
+<td>記事詳細（縦スクロール／文字サイズ変更／行間調整）</td>
+<td>Must</td>
+<td>3</td>
+</tr>
+<tr>
+<td>R-03</td>
+<td>バックナンバー一覧（年度別・号数順）</td>
+<td>Must</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>R-04</td>
+<td>カテゴリ・タグでの絞り込み</td>
+<td>Must</td>
+<td>1</td>
+</tr>
+<tr>
+<td>R-05</td>
+<td>全文検索（号をまたいで探せる）</td>
+<td>Must</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>R-06</td>
+<td><strong>元PDFのダウンロード導線</strong></td>
+<td>Must</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>R-07</td>
+<td>共有（LINE・X・Facebook・URLコピー）</td>
+<td>Must</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>R-08</td>
+<td>前後の記事送り・関連記事</td>
+<td>Must</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>R-09</td>
+<td>音声読み上げボタン</td>
+<td>Should</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>R-10</td>
+<td>新着のお知らせ購読（メール／LINE）</td>
+<td>Should</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>R-06を落とさない。紙面レイアウトで読みたい層と印刷したい層が必ず残る。既存読者を切らないための保険であり、公的機関では説明責任にもなる。</p>
+</blockquote>
+<h3>3-2. 管理側（職員が毎号回す）</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>要件</th>
+<th>優先</th>
+<th>想定人日</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-01</td>
+<td>号の作成・PDF（＋元データ）アップロード</td>
+<td>Must</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>A-02</td>
+<td>変換の実行と進捗表示</td>
+<td>Must</td>
+<td>2</td>
+</tr>
+<tr>
+<td>A-03</td>
+<td><strong>記事校閲エディタ</strong>（本文修正・見出し・画像差し替え・代替テキスト入力・カテゴリ付与・記事の分割/結合・並び替え）</td>
+<td>Must</td>
+<td>8</td>
+</tr>
+<tr>
+<td>A-04</td>
+<td>スマホ実寸プレビュー</td>
+<td>Must</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A-05</td>
+<td>予約公開（発行日に合わせて自動公開）</td>
+<td>Must</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A-06</td>
+<td>権限管理（編集者／承認者の2段階）</td>
+<td>Must</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A-07</td>
+<td>配信の実行（メール・LINE・SNS）</td>
+<td>Should</td>
+<td>3</td>
+</tr>
+<tr>
+<td>A-08</td>
+<td><strong>アクセス解析</strong>（どの記事が何回読まれたか）</td>
+<td>Should</td>
+<td>2</td>
+</tr>
+<tr>
+<td>A-09</td>
+<td>バックナンバー一括取り込み</td>
+<td>Should</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>A-08は機能というより<strong>先方の武器</strong>。公的機関は予算の効果を説明する必要があり、紙では「何部配った」しか言えない。「どの記事が何人に読まれたか」が出せると、Web版を続ける理由が内部で立つ。提案の柱に使える。</p>
+<p>A-03が単一機能で最大の8人日。ここが本体だと最初に握っておく。</p>
+</blockquote>
+<h3>3-3. 変換パイプライン（②の中身）</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>工程</th>
+<th>中身</th>
+<th>想定人日</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>抽出</td>
+<td>PDFからテキスト・画像・座標を取得。段組と回り込みを座標情報から復元</td>
+<td>3</td>
+</tr>
+<tr>
+<td>構造化</td>
+<td>Claude APIで記事の境界判定、見出し／リード／本文／キャプションの役割付与、代替テキスト案の生成</td>
+<td>4</td>
+</tr>
+<tr>
+<td>整形</td>
+<td>HTML化、画像の切り出しとリサイズ、見出し階層の正規化</td>
+<td>3</td>
+</tr>
+<tr>
+<td>精度チューニング</td>
+<td>実際の号で回して評価・調整</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>計</strong></td>
+<td></td>
+<td><strong>13</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>元データがInDesign（IDML／タグ付きテキスト）で入手できるかで精度が段違いに変わる</strong>。段落スタイル情報がそのまま使えるため、構造化の推測がほぼ不要になる。確認事項Aで最初に聞くべき理由がこれ。PDFのみ、かつスキャン画像だと工数もリスクも跳ねる。</p>
+<h3>3-4. データモデル（想定）</h3>
+<pre><code>号 (issue)          : 号数 / 発行日 / 表紙画像 / 元PDF / 公開状態 / 予約公開日時
+ └ 記事 (article)   : タイトル / リード / 本文HTML / 掲載ページ / 並び順 / 公開状態
+     ├ 画像 (asset) : ファイル / 代替テキスト / キャプション / 表示位置
+     └ 分類 (term)  : カテゴリ（特集・お知らせ・事業報告・行事案内 等）/ タグ
+購読者 (subscriber) : 連絡先 / 購読チャネル / 同意日時 / 配信停止トークン
+</code></pre>
+<hr />
+<h2>4. 画面一覧</h2>
+<p><strong>読者側</strong>: 号の目次／記事詳細／バックナンバー一覧／カテゴリ別一覧／検索結果／ウェブアクセシビリティ方針
+<strong>管理側</strong>: 号の一覧／号の作成・アップロード／変換進捗／記事校閲エディタ／プレビュー／配信設定／アクセス解析／ユーザー管理</p>
+<hr />
+<h2>5. 非機能要件</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>要件</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N-01</td>
+<td><strong>JIS X 8341-3:2016 AA準拠</strong>（コントラスト比・キーボード操作・代替テキスト・見出し構造・200%拡大時の可読性）</td>
+<td>公的機関案件では要求される前提で設計する。後から言われると作り直し</td>
+</tr>
+<tr>
+<td>N-02</td>
+<td>ウェブアクセシビリティ方針の公開＋試験結果ページ</td>
+<td>試験対象ページの選定と実施を含む</td>
+</tr>
+<tr>
+<td>N-03</td>
+<td>表示速度（モバイル回線で初回表示2秒台）</td>
+<td>画像最適化・遅延読み込み</td>
+</tr>
+<tr>
+<td>N-04</td>
+<td>対応環境: iOS Safari／Android Chrome の直近2バージョン</td>
+<td>高齢読者を考え、古い端末も可能な範囲で</td>
+</tr>
+<tr>
+<td>N-05</td>
+<td>常時SSL／管理画面はIP制限または2要素認証</td>
+<td></td>
+</tr>
+<tr>
+<td>N-06</td>
+<td>購読者の個人情報の取り扱い・配信停止導線</td>
+<td>R-10を入れる場合のみ発生</td>
+</tr>
+<tr>
+<td>N-07</td>
+<td><strong>縮退運転</strong>: 変換や記事表示に障害が出ても、元PDFは必ず読める</td>
+<td>公的機関の広報が止まる事態を避ける</td>
+</tr>
+<tr>
+<td>N-08</td>
+<td>データの持ち出し可能性（記事データをエクスポートできる）</td>
+<td>ベンダーロックしない。公的調達では効く</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>6. 想定スコープ外（明示して握る）</h2>
+<ul>
+<li>機関紙そのものの企画・執筆・組版（紙面制作は現行体制のまま）</li>
+<li>ネイティブアプリ（App Store／Google Play への申請・審査）。「アプリ」の語はあるが、<strong>Web＋PWAで要件は満たせる</strong>想定。ストア配布が必須なら別要件</li>
+<li>会員限定・ログイン必須の閲覧制限</li>
+<li>多言語対応</li>
+<li>既存Webサイト全体のリニューアル</li>
+</ul>
+<hr />
+<h2>7. 工数サマリ</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>区分</th>
+<th>Must</th>
+<th>＋Should</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>読者側</td>
+<td>10.5</td>
+<td>+4.5</td>
+</tr>
+<tr>
+<td>管理側</td>
+<td>14.5</td>
+<td>+7</td>
+</tr>
+<tr>
+<td>変換パイプライン</td>
+<td>13</td>
+<td>－</td>
+</tr>
+<tr>
+<td>UI設計・デザイン</td>
+<td>6</td>
+<td>－</td>
+</tr>
+<tr>
+<td>環境構築・公開作業</td>
+<td>3</td>
+<td>－</td>
+</tr>
+<tr>
+<td>アクセシビリティAA（設計織込・修正）</td>
+<td>6</td>
+<td>－</td>
+</tr>
+<tr>
+<td>同 試験・方針公開</td>
+<td>－</td>
+<td>+5</td>
+</tr>
+<tr>
+<td>テスト（実機・スクリーンリーダー検証）</td>
+<td>4</td>
+<td>－</td>
+</tr>
+<tr>
+<td>マニュアル・運用研修</td>
+<td>3</td>
+<td>－</td>
+</tr>
+<tr>
+<td><strong>合計</strong></td>
+<td><strong>約60人日</strong></td>
+<td><strong>約76人日</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>人日7万円（仮置き・要確認）で換算すると <strong>Must 約420万／Must＋Should 約535万</strong>。単価は <code>_内部_工数試算_2026-08-29.md</code> 第1章の仮置き値であり、確定額ではない。</p>
+<p>前回の概算（<code>_内部_工数試算_2026-08-29.md</code> パターンC＋AA＝42〜72人日）に対し、要件を割ると<strong>上寄り〜やや超過</strong>に着地する。差分の正体は <strong>校閲エディタ8人日と変換パイプライン13人日</strong>。
+逆に言えば、この21人日を削る＝「毎号バレンサー側が手作業で流し込む」であり、<strong>初期費用が運用費に移るだけで総額は減らない</strong>。この構造をそのまま先方に見せると議論が早い。</p>
+<hr />
+<h2>8. 推定が外れたときにどこが動くか</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>外れる推定</th>
+<th>影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>推定1が外れ、元データがスキャン画像PDFだけ</td>
+<td>抽出工程がOCR前提になり、変換パイプラインが13→20人日超。精度も落ちる。<strong>最悪ケース</strong></td>
+</tr>
+<tr>
+<td>推定3が外れ、実は初号だけの単発制作</td>
+<td>校閲エディタ(8)・変換パイプライン(13)・入稿まわり(A-01/02/05=4.5)が不要になり <strong>約35人日</strong> まで落ちる。ただし1号分の変換は人手で行う前提</td>
+</tr>
+<tr>
+<td>推定5が外れ、公的機関の指定CMSに載せる必要がある</td>
+<td>実装先の制約次第。触れる範囲が狭いと外部サイト＋リンク方式に変更</td>
+</tr>
+<tr>
+<td>推定6が外れ、紙をやめてWeb一本化したい</td>
+<td>R-06の重みが下がる代わりに、アクセシビリティ要求が跳ね上がる（唯一の情報チャネルになるため）</td>
+</tr>
+<tr>
+<td>バックナンバー移行が要求範囲に入る</td>
+<td>号数×0.5〜1.5人日で線形に追加。50号なら+25〜75人日</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>9. 提案時の組み立て（社内メモ）</h2>
+<ul>
+<li><strong>売り物は変換ではなく仕組み</strong>。「PDFを綺麗にします」で出すと相見積で値段勝負になる。「毎号ひとりでに立ち上がる状態」を売る</li>
+<li><strong>A-08（アクセス解析）を提案の柱に置く</strong>。紙では出せなかった数字が出ることが、先方の担当者が内部を説得する材料になる。ここが受注理由になりうる</li>
+<li><strong>AA対応を先に持ち出す</strong>。公的機関案件で後出しされる筆頭であり、こちらから設計段階で織り込んでいると示せると信頼が跳ねる。相見積の相手が触れていなければ差がつく</li>
+<li><strong>段階提案にする</strong>。第1段階=新規号から運用が回る状態（約60人日）、第2段階=バックナンバー移行（AIで圧縮）、第3段階=配信チャネル拡張。一括1,000万の見積は公的機関の予算では通らない</li>
+<li>変換のAI圧縮は<strong>実物1号でPoCを回すまで約束しない</strong></li>
+</ul>
+<hr />
+<h2>10. 次にやること</h2>
+<ol>
+<li>この v0 を先方に当てて、推定1〜6の合否を取る（要件を聞き出すより、外れているところを指摘してもらうほうが早い）</li>
+<li>機関紙を1号もらう。PDFと元データの両方 → <code>05_素材/</code></li>
+<li>元データがIDMLで来たら、変換パイプラインのPoCを1本回す</li>
+<li>合否が付いた時点で v1（確定要件）と段階見積へ</li>
+</ol></div></body></html>

@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>トライ・ワークス様 成長テーマ運用 — 関与設計と案件化の判断メモ</title>
+<title>トライ・ワークス様「成長テーマ運用」— 関与設計と案件化の判断メモ</title>
 <style>
 :root{--white:#FFFFFF;--cool:#F7F8F9;--pale:#F0F2F4;--ink:#45484D;--mid:#7A7E85;--line:#D9DCE1;--blue:#3158D4;}
 *{box-sizing:border-box;}
 body{margin:0;background:var(--pale);color:var(--ink);
 font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
 font-feature-settings:"palt";line-height:1.9;font-size:15px;-webkit-font-smoothing:antialiased;}
-.sheet{max-width:860px;margin:48px auto;background:var(--white);padding:64px 72px 80px;}
+.sheet{max-width:880px;margin:48px auto;background:var(--white);padding:64px 72px 80px;}
 h1{font-size:27px;line-height:1.5;font-weight:700;letter-spacing:.02em;margin:0 0 24px;padding-bottom:22px;border-bottom:2px solid var(--ink);}
 h2{font-size:19px;font-weight:700;margin:56px 0 18px;letter-spacing:.02em;padding-left:14px;border-left:3px solid var(--blue);}
 h3{font-size:15.5px;font-weight:700;margin:34px 0 10px;color:var(--blue);letter-spacing:.02em;}
 p{margin:0 0 14px;}
 hr{border:0;border-top:1px solid var(--line);margin:44px 0;}
-strong{font-weight:700;}
+a{color:var(--blue);}
+blockquote{margin:16px 0 20px;padding:14px 20px;background:var(--cool);border-left:3px solid var(--line);color:var(--ink);}
+blockquote p:last-child{margin-bottom:0;}
 ul,ol{margin:0 0 16px;padding-left:1.4em;}
 li{margin-bottom:7px;}
 ul.todolist{list-style:none;padding-left:0;}
 li.todo{padding-left:30px;position:relative;}
 li.todo:before{content:"";position:absolute;left:2px;top:.55em;width:13px;height:13px;border:1.5px solid var(--mid);border-radius:2px;}
-table{width:100%;border-collapse:collapse;margin:18px 0 24px;font-size:14px;}
+.tablewrap{overflow-x:auto;margin:18px 0 24px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
 th{background:var(--cool);text-align:left;font-weight:700;padding:11px 14px;border-bottom:1.5px solid var(--ink);white-space:nowrap;}
 td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
-tr:last-child td{border-bottom:1px solid var(--line);}
-.meta{color:var(--mid);font-size:13px;line-height:1.8;margin:-10px 0 0;}
-@media print{body{background:#fff;}.sheet{margin:0;padding:24mm 20mm;max-width:none;}}
+@media print{body{background:#fff;}.sheet{margin:0;padding:20mm 18mm;max-width:none;}h2{page-break-after:avoid;}table{page-break-inside:avoid;}}
 @media (max-width:720px){.sheet{margin:0;padding:32px 22px;}h1{font-size:22px;}th{white-space:normal;}}
 </style></head><body>
 <div class="sheet">
@@ -76,14 +77,14 @@ tr:last-child td{border-bottom:1px solid var(--line);}
 <hr>
 <h2>4. バレンサーの役割定義（ここを最初に文書化する）</h2>
 <p>この運用でバレンサーは、社員一人ひとりの本音を預かる立場になる。<strong>線引きを最初に紙にしないと、必ず揉める。</strong></p>
-<table><thead><tr><th>扱う</th><th>扱わない</th></tr></thead><tbody><tr><td>ありたい姿、テーマ、カウンター</td><td>人事評価、査定、利益分配金への意見</td></tr><tr><td>判断の迷い、つまずきの言語化</td><td>担当変更・アサイン・待遇の要望の取り次ぎ</td></tr><tr><td>見立てと実感のズレの検証</td><td>個人間のトラブルの裁定</td></tr><tr><td>管理者への「待ち方」の提示</td><td>退職相談の受け皿</td></tr></tbody></table>
+<div class="tablewrap"><table><thead><tr><th>扱う</th><th>扱わない</th></tr></thead><tbody><tr><td>ありたい姿、テーマ、カウンター</td><td>人事評価、査定、利益分配金への意見</td></tr><tr><td>判断の迷い、つまずきの言語化</td><td>担当変更・アサイン・待遇の要望の取り次ぎ</td></tr><tr><td>見立てと実感のズレの検証</td><td>個人間のトラブルの裁定</td></tr><tr><td>管理者への「待ち方」の提示</td><td>退職相談の受け皿</td></tr></tbody></table></div>
 <p><strong>会社に返すもの</strong>：テーマ、カウンター、一行の所見、待ち方。</p>
 <p><strong>会社に返さないもの</strong>：相談枠で聞いた本音と迷い。ただし、本人の安全に関わる内容と、制度そのものが機能していないサインは例外とし、その例外があることを本人への説明時に先に伝える。</p>
 <p>中立性については、報酬を会社から受け取っている以上「完全な中立」は名乗れない。名乗るべきは<strong>「評価しない立場」</strong>であって中立ではない。ここを言い換えずに初回説明で正直に言うほうが、結果として信用される。</p>
 <hr>
 <h2>5. 案件としての形</h2>
 <h3>段階の切り方</h3>
-<table><thead><tr><th>段階</th><th>内容</th><th>バレンサーの動き</th></tr></thead><tbody><tr><td><strong>Phase 0</strong>（9月）</td><td>設計の確定</td><td>折れる箇所の修正、制度の命名、本人配布資料、管理者の記入フォーマット、Slackワークフロー、説明会の台本</td></tr><tr><td><strong>Phase 1</strong>（半期頭・10月想定）</td><td>立ち上げ</td><td>管理者3名の読み合わせ60分ファシリ、全員ヒアリング45分×N、テーマとカウンターの決定、管理者と藤江さんへの戻し</td></tr><tr><td><strong>Phase 2</strong>（半期中・毎月）</td><td>運用伴走</td><td>ログの温度チェック、テーマの置き直し、相談枠、管理者へのフィードバック、月次差し込みの設計</td></tr><tr><td><strong>Phase 3</strong>（半期末）</td><td>振り返りと接続</td><td>振り返り設計、全体会での共有ファシリ、管理者の見立て精度レポート、次期テーマへの引き継ぎ</td></tr></tbody></table>
+<div class="tablewrap"><table><thead><tr><th>段階</th><th>内容</th><th>バレンサーの動き</th></tr></thead><tbody><tr><td><strong>Phase 0</strong>（9月）</td><td>設計の確定</td><td>折れる箇所の修正、制度の命名、本人配布資料、管理者の記入フォーマット、Slackワークフロー、説明会の台本</td></tr><tr><td><strong>Phase 1</strong>（半期頭・10月想定）</td><td>立ち上げ</td><td>管理者3名の読み合わせ60分ファシリ、全員ヒアリング45分×N、テーマとカウンターの決定、管理者と藤江さんへの戻し</td></tr><tr><td><strong>Phase 2</strong>（半期中・毎月）</td><td>運用伴走</td><td>ログの温度チェック、テーマの置き直し、相談枠、管理者へのフィードバック、月次差し込みの設計</td></tr><tr><td><strong>Phase 3</strong>（半期末）</td><td>振り返りと接続</td><td>振り返り設計、全体会での共有ファシリ、管理者の見立て精度レポート、次期テーマへの引き継ぎ</td></tr></tbody></table></div>
 <h3>値付けの考え方（金額は未確定・阿部さん判断）</h3>
 <ul><li><strong>Phase 0 と Phase 1 は PROJECT として別建て</strong>。ここに工数の山があり、月額に飲み込むと持ち出しになる</li><li><strong>Phase 2 と Phase 3 は月額</strong>（既存契約の増額、または CONSULT／PARTNER）</li><li>Phase 1 は人数で動くため、<strong>1名あたりの単価構造</strong>で組む（ヒアリング＋所見＋戻しで1.5時間相当）。人数が確定するまで総額を出さない</li></ul>
 <p><strong>注意</strong>：今期は営業利益率でDEVが10%程度、SIはマイナスと社内共有されている。総額を先に置くと止まる可能性がある。Phase 0 を小さく切って先に動かし、Phase 1 の見積は人数確定後に出すのが安全。</p>

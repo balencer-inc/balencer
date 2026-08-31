@@ -4,6 +4,7 @@
   デザインmd: Meiji（明治／awesome-design-md-jp）を適用
   出力: A4横 1枚 / Chrome headless で PDF 化
   材料: Notion 議事録DB（顧客=睦備）のうちクライアント同席の会議のみ。gini定例は材料から除外
+  作成: 2026-08-31（8/28定例を反映した確定版）
   ※ meiji の line-height 1.8 は見出し・リード部で維持。A4横1枚に収めるため本文系は 1.55〜1.6 に圧縮
 -->
 <html lang="ja">
@@ -151,18 +152,18 @@
         <tbody>
           <tr><td class="d">8/21（金）</td><td class="m">睦備様 定例</td><td class="t">アプリ・メール移行・スマートキー</td></tr>
           <tr><td class="d">8/27（木）</td><td class="m">freee会計 打合せ</td><td class="t">基幹会計のデモと導入方針</td></tr>
-          <tr><td class="d">8/28（金）</td><td class="m">睦備様 定例</td><td class="t">アプリ・メディア連携・総務DX</td></tr>
+          <tr><td class="d">8/28（金）</td><td class="m">睦備様 定例</td><td class="t">アプリ・水道検針・総務DX・社内ポータル</td></tr>
         </tbody>
       </table>
-      <p class="mtg-note">上記のほか、開発ベンダーとの実務定例を週次で実施（8/6・8/20・8/27）。本レポートは8月27日時点で作成。</p>
+      <p class="mtg-note">上記のほか、開発ベンダーとの実務定例を週次で実施（8/6・8/20・8/27）。水道検針は8/27に内田洋行社との個別打ち合わせを実施。</p>
     </div>
 
     <div class="card">
       <div class="sec-h">今月のポイント</div>
       <ol class="points">
-        <li><b>メール移行は山を越えました。</b>お盆期間にデータ移行と受信サーバーの切替が完了。共有アドレスは各自のアカウントから閲覧する新方式へ移行中です</li>
-        <li><b>スマートエントランスは実施の方向でご承認をいただきました。</b>開発費のご報告を経て、オプテックス社との仕様すり合わせに着手しています</li>
-        <li><b>基幹会計はfreeeのトライアル実施で合意。</b>フルパッケージの見積を依頼済みで、9月第1週の受領後に開始時期と検証範囲を確定します</li>
+        <li><b>メール移行は山を越えました。</b>お盆期間にデータ移行と受信サーバーの切替が完了。共有アドレスの利用者リストも営業部・管理部で整い、権限付与の段階に入っています</li>
+        <li><b>水道検針で台帳の一本化に目処が立ちました。</b>内田洋行社とのお打ち合わせでsmawの顧客マスタの拡張性を確認。複数に分かれていた台帳をまとめられる見通しです</li>
+        <li><b>基幹会計はfreeeを9月からトライアル開始で検討中。</b>決済まわりはfreeeとの連携では利点が薄いと分かり、柔軟性の高い独自の仕組みをfreeeとつなぐ方向で整理しました</li>
       </ol>
     </div>
   </section>
@@ -175,9 +176,9 @@
         <span class="badge b-blue">アプリ</span>
         <h3>パデシオンアプリ</h3>
         <ul>
-          <li><b>問い合わせ窓口</b><span class="sub">　3か所をGoogleフォームへ暫定統合済み。専用ページは<b>9月3日</b>までにテスト環境へ</span></li>
-          <li><b>売買機能</b><span class="sub">　名前入力の簡便化と所要時間の表示を反映し動作確認済み。掲載文を作成中</span></li>
-          <li><b>メディア連携</b><span class="sub">　近所の役立ち情報を3か所に出すデモを作成。まいぷれ様・Leaf kyoto様へ確認中</span></li>
+          <li><b>問い合わせ窓口の一本化</b><span class="sub">　専用ページをテスト環境で調整中。<b>9月3日</b>までに共有し、問題なければ本番へ</span></li>
+          <li><b>売買機能</b><span class="sub">　動作確認済み。掲載文を営業部でご確認後、リリース申請へ</span></li>
+          <li><b>メディア連携</b><span class="sub">　<span class="done">まいぷれ様は掲載許可を取得</span>。Leaf kyoto様は社内でご検討中。あわせて管理画面からトップのおすすめ表示を調整できる仕組みを開発中</span></li>
         </ul>
       </div>
 
@@ -186,9 +187,8 @@
         <h3>メール移行（Google Workspace）</h3>
         <ul>
           <li><span class="done">移行完了</span><span class="sub">　お盆期間にデータ移行と受信サーバーの切替が完了</span></li>
-          <li><b>共有アドレスの新方式</b><span class="sub">　個別ログインは不要に。他の方が既読にしても自分が読むまで未読を保持</span></li>
-          <li><b>権限の整理</b><span class="sub">　中海@は営業部全員へ招待。管理部@ほかは利用者リストを整理中</span></li>
-          <li><b>迷惑メール</b><span class="sub">　一部が振り分けられる事象を確認。1〜2週間様子を見て調整</span></li>
+          <li><b>利用者リストの整備</b><span class="sub">　営業部・管理部は完了。建設部（岡田さん・山崎さん）のご提出が揃い次第、対象の方へ閲覧権限を付与します</span></li>
+          <li><b>二段階認証のご案内</b><span class="sub">　共有アカウントの認証の通し方を再来週の定例でご説明します</span></li>
         </ul>
       </div>
 
@@ -197,8 +197,8 @@
         <h3>スマートエントランス</h3>
         <ul>
           <li><b>実施の方向でご承認</b><span class="sub">　開発費を専務へご報告のうえ進行が決定</span></li>
+          <li><b>キックオフを準備中</b><span class="sub">　前提事項のご質問を確認中。完了次第キックオフし、全体スケジュールを共有します</span></li>
           <li><b>保守費の扱い</b><span class="sub">　理事会でのご負担の有無に関わらず進める方針</span></li>
-          <li><b>仕様の確定</b><span class="sub">　橋本さんを中心にすり合わせ。オプテックス社と次回日程を調整中</span></li>
         </ul>
       </div>
 
@@ -206,10 +206,9 @@
         <span class="badge b-green">自動化</span>
         <h3>水道検針</h3>
         <ul>
-          <li><b>8月分の精度向上</b><span class="sub">　偶数月にあたる8月の通知書PDFの振り分けと読み取りを改善</span></li>
-          <li><b>実運用に合わせた最適化</b><span class="sub">　橋本さん・松尾さんが使いやすい形へ調整（8/21）</span></li>
-          <li><b>マスタ統合の準備</b><span class="sub">　マンション21 Smawへの統合を準備中</span></li>
-          <li><b>10月リリースを目標</b><span class="sub">　シートを作成済み。PDFからの転記可否を検証中</span></li>
+          <li><b>内田洋行社と打ち合わせ（8/27）</b><span class="sub">　smawの顧客マスタ機能の拡張性を確認</span></li>
+          <li><span class="done">台帳の一本化に目処</span><span class="sub">　複数に分かれていた台帳をマスタ1本にまとめられる見通しです。判定ロジックをsmawの顧客マスタへ移し、アプリ連携と検針通知の自動化へつなげます</span></li>
+          <li><b>10月末のリリースを目標</b><span class="sub">　PDFからの転記検証を実施中。次回打ち合わせは9月4日</span></li>
         </ul>
       </div>
 
@@ -217,9 +216,9 @@
         <span class="badge b-orange">総務DX</span>
         <h3>基幹システム（freee）</h3>
         <ul>
-          <li><b>freeeをマスターデータの基盤に</b><span class="sub">　8/25のデモと8/27の方針協議を経て合意。追加サービスの積み上げは避け、細かな機能は当社のカスタム開発で対応</span></li>
-          <li><b>確認できた機能</b><span class="sub">　既存口座（京都中央信用金庫）連携、自動仕訳、自動消し込み、支払・入金管理、資金繰り、OCR取り込み</span></li>
-          <li><b>見積を依頼済み</b><span class="sub">　コンサル6か月込み。概算は約200万円＋アカウント3件50〜60万円。正式見積は9月第1週</span></li>
+          <li><b>9月からトライアル開始を検討</b><span class="sub">　8/25のデモと8/27の協議を経て、マスターデータの基盤に据える方針で合意</span></li>
+          <li><b>確認できた機能</b><span class="sub">　既存口座（京都中央信用金庫）連携、自動仕訳、自動消し込み、支払・入金管理、資金繰り、OCR</span></li>
+          <li><b>決済まわりの方針が定まりました</b><span class="sub">　電子サインとカード・QR決済はfreee連携では利点が薄いと判明。柔軟性の高い独自の仕組みを当社で開発しfreeeとつなぎます</span></li>
         </ul>
       </div>
 
@@ -227,9 +226,9 @@
         <span class="badge b-green">お客様の声</span>
         <h3>今月いただいたご意見</h3>
         <ul>
-          <li><b>防音強化オプションのご要望</b><span class="sub">　ご入居者様より、下階へ配慮しながら生活しているとして、今後のマンション開発での防音強化の検討をご希望</span></li>
-          <li><span class="sub">管理部にて確認済み。トラブルではなく純粋な改善のご提案として、営業部より丁寧にご返信します</span></li>
-          <li><b>アプリ経由の割引</b><span class="sub">　メンテナンスのお問い合わせをアプリ経由にすると1割引きとする案を検討中（厚生部より）</span></li>
+          <li><b>防音強化オプションのご要望</b><span class="sub">　ご入居者様より、下階へ配慮しながら生活しているとして、今後の開発での防音強化の検討をご希望</span></li>
+          <li><span class="sub">管理部にて確認済み。純粋な改善のご提案として営業部より丁寧にご返信します</span></li>
+          <li><b>アプリ経由の割引</b><span class="sub">　メンテナンスのお問い合わせをアプリ経由にすると1割引きとする案を検討中</span></li>
         </ul>
       </div>
 
@@ -240,25 +239,25 @@
     <div class="card">
       <div class="sec-h">来月の重点 <span class="n">4件</span></div>
       <ul class="next">
-        <li><span class="when">9月3日</span>　問い合わせ専用ページをテスト環境へ実装・共有</li>
-        <li><span class="when">9月第1週</span>　freee見積の受領後、トライアル開始時期と検証範囲を確定</li>
-        <li><span class="when">9月中</span>　水道検針のPDF転記検証を終え、10月リリースへ</li>
-        <li><span class="when">9月下旬</span>　freeeとの打ち合わせ（石浦さん中心）</li>
+        <li><span class="when">9月3日</span>　問い合わせ専用ページをテスト環境で共有し、本番移行へ</li>
+        <li><span class="when">9月4日</span>　水道検針 内田洋行社との打ち合わせ（判定ロジックのマスタ移行）</li>
+        <li><span class="when">9月中</span>　freee会計のトライアル開始と、スマートエントランスのキックオフ</li>
+        <li><span class="when">9月中</span>　社内ポータルの試作品開発に着手（AI会議でのご要望を受けて）</li>
       </ul>
     </div>
     <div class="card">
       <div class="sec-h">ご判断をお願いしたいこと <span class="n">4件</span></div>
       <ul class="ask">
-        <li><b>freeeトライアルの開始時期と検証範囲</b><span class="sub">　まず売掛金と買掛金を集約し、銀行連携とタグ・部門設定を1か月試す形を推奨</span></li>
+        <li><b>freeeトライアルの開始時期</b><span class="sub">　9月開始を想定。まず売掛金と買掛金を集約し、銀行連携とタグ・部門設定を1か月試す形を推奨</span></li>
+        <li><b>決済の仕組みを独自開発で進めるか</b><span class="sub">　freee標準では対応できないため当社で開発します。着手のご判断をお願いします</span></li>
         <li><b>IT導入補助金を申請するか</b><span class="sub">　採択まで1か月以上。補助金ありきで日程を遅らせない前提が現実的</span></li>
-        <li><b>カード・QR決済の方針</b><span class="sub">　freee標準にはなく、外部サービスとの連携開発が必要（当社で対応可能）</span></li>
         <li><b>Bill Oneの用途整理</b><span class="sub">　freeeとインターネットバンキング連携へ切り替えるかのご判断</span></li>
       </ul>
     </div>
   </section>
 
   <footer class="foot">
-    <span>出典: Notion議事録（睦備建設）2026年8月分　／　作成: 2026年8月27日　株式会社バレンサー</span>
+    <span>出典: Notion議事録（睦備建設）2026年8月分　／　作成: 2026年8月31日　株式会社バレンサー</span>
     <span>1 / 1</span>
   </footer>
 

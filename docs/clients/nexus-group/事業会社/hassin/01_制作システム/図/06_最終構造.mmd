@@ -11,33 +11,36 @@ flowchart TB
 
   subgraph data["データの持ち場所"]
     N[("① Neon PostgreSQL<br/>店舗・案件・単価・在庫<br/>組織図・承認履歴<br/>【数千円/月】")]
-    C["② Cloudinary<br/>配信用サムネイル専用<br/>【0円・無料枠内】"]
-    D["③ Google Drive 店舗フォルダ<br/>AI / PSD / 入稿PDF / アーカイブ<br/>【追加0円・既払いプール】"]
+    R2[("② Cloudflare R2<br/>アプリが表示する画像の実体<br/>【$0.015/GB月・エグレス無料<br/>無料枠10GB】")]
+    IMG["③ Cloudflare Images<br/>Transformations<br/>リサイズ・WebP/AVIF変換<br/>【月5,000変換まで無料<br/>超過 $0.50/1,000】"]
+    D["④ Google Drive 店舗フォルダ<br/>制作原本 AI / PSD / 入稿PDF<br/>【追加0円・既払いプール】"]
   end
 
   subgraph ext["連携"]
-    W["Google Workspace<br/>ユーザーマスタ・認証<br/>【追加0円】"]
+    W["Google Workspace<br/>ユーザーマスタ・認証"]
     P[("社内ポータル Neon<br/>店舗マスタ = 正")]
-    NT["Notion<br/>ナレッジ・マニュアル<br/>【追加0円】"]
+    NT["Notion<br/>ナレッジ・マニュアル"]
   end
 
   RT["リアルタイム<br/>必要な画面だけ<br/>ポーリング → SSE → Broadcast<br/>【0円 〜 $25/月】"]
 
   APP -->|"参照キーのみ"| N
-  APP -->|"一覧サムネ"| C
+  APP -->|"変換URLで表示"| IMG
+  IMG -->|"オリジンとして読む"| R2
   APP -->|"クリックで原本"| D
   APP -->|"email で突き合わせ"| W
   APP -->|"ビュー埋め込み"| NT
   APP --- RT
   P ==>|"日次バッチ・一方通行<br/>externalId で upsert"| N
-  C -.->|"サムネを生成"| D
 
-  R2["Cloudflare R2<br/>溢れたときの逃げ先<br/>3TB=月6,750円・エグレス無料"]
-  C -.-> R2
+  NG["✕ Cloudinary は廃止<br/>無料枠25クレジットがすぐ埋まる<br/>有料は 1クレジット $0.42〜0.44"]
+  NG2["✕ Drive を画像配信に使わない<br/>thumbnailLink は数時間で失効<br/>CORS制限・認証必須"]
 
   style N fill:#dbe7f3,stroke:#5b7fa6
-  style C fill:#fdf0dc,stroke:#c9a86b
+  style R2 fill:#fdf0dc,stroke:#c9a86b
+  style IMG fill:#fdf0dc,stroke:#c9a86b
   style D fill:#e8efe4,stroke:#8fa885
   style P fill:#dbe7f3,stroke:#5b7fa6
   style RT fill:#f0e9f5,stroke:#a08fb5
-  style R2 fill:#f6f7f9,stroke:#b9c3ce,stroke-dasharray: 4 3
+  style NG fill:#f7e2e2,stroke:#c98b8b
+  style NG2 fill:#f7e2e2,stroke:#c98b8b

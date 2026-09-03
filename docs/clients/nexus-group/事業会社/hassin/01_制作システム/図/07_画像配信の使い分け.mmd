@@ -1,0 +1,29 @@
+flowchart LR
+  Q{"この画像は<br/>誰が・どう使うか"}
+
+  Q -->|"制作部が編集する<br/>（Illustrator/PSDを開く）"| D
+  Q -->|"アプリの画面に出す<br/>（一覧サムネ・プレビュー）"| R
+
+  subgraph L1["制作原本・アーカイブ"]
+    D["Google Drive 店舗フォルダ<br/>デスクトップ同期でFinderから直接編集"]
+    D1["追加費用 0円<br/>プール2TB × ユーザー数<br/>※Web配信には使わない"]
+  end
+
+  subgraph L2["Web配信"]
+    R[("Cloudflare R2<br/>画像の実体を置く")]
+    I["Cloudflare Images<br/>Transformations<br/>変換URL経由で呼ぶ"]
+    R --> I
+    R1["$0.015/GB月・エグレス無料<br/>無料枠10GB"]
+    I1["月5,000ユニーク変換まで無料<br/>超過 $0.50/1,000<br/>同一パラメータの再取得は<br/>キャッシュ配信でカウントされない"]
+  end
+
+  KEY["要点: R2をオリジンにして Images の変換だけ使うと<br/>Images の保存料($5/10万枚)・配信料($1/10万枚)がかからない"]
+  I --- KEY
+
+  style D fill:#e8efe4,stroke:#8fa885
+  style R fill:#fdf0dc,stroke:#c9a86b
+  style I fill:#fdf0dc,stroke:#c9a86b
+  style KEY fill:#ffffff,stroke:#5b7fa6,stroke-width:2px
+  style D1 fill:#ffffff,stroke:#dde3ea
+  style R1 fill:#ffffff,stroke:#dde3ea
+  style I1 fill:#ffffff,stroke:#dde3ea

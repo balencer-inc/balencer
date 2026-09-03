@@ -20,7 +20,9 @@ description: "バレンサーの請求書を型どおりに発行する（HTML�
 | 請求先マスタ | `docs/company/invoice-clients.json`（正式宛名・PDF略称・取引先コード・支払条件・送付方法） |
 | 月次バッチ | `.claude/skills/invoice/scripts/invoice_build.py` |
 | 単発の検算 | `.claude/skills/invoice/scripts/invoice_calc.py` |
-| 採番台帳 | `docs/invoices/ledger.tsv`（`no` 省略時の自動採番の元。発行後に自動追記） |
+| **採番の正本** | 経理の **請求書ナンバー管理表.xlsx**（Googleドライブのデスクトップ同期でローカルに見える）<br>`~/Library/CloudStorage/GoogleDrive-tabe@balencer.jp/マイドライブ/バレンサー経理用/請求書/請求書ナンバー管理表.xlsx` |
+| 採番の控え | `docs/invoices/ledger.tsv`（管理表が読めないときのフォールバック） |
+| **②PDFの投入先** | 同期フォルダ `.../バレンサー経理用/請求書/請求書PDF/第７期/売上分/<YYYY.MM>請求書/`<br>ここに `cp` すればDriveに上がる（APIアップロードは不要） |
 | 完成見本 | `docs/clients/osaka-kyoso-lab/02_契約・見積/請求書_ファイアープレイス_2026-09.html`（社印・税抜換算・別紙まで入った完成形） |
 | 顧客スラッグ | `docs/clients/README.md` の対応表 |
 | 発行物の置き場 | `docs/invoices/<YYYY-MM>/`（Driveの月次フォルダと同じ単位で1か所に集約） |
@@ -119,7 +121,9 @@ python3 .claude/skills/invoice/scripts/invoice_build.py docs/invoices/<YYYY-MM>/
 
 ### バッチが止まる／気をつける場所
 
-- **請求書番号** — 入力JSONで `no` を省くと**採番台帳 [`docs/invoices/ledger.tsv`](../../../docs/invoices/ledger.tsv) の最大値+1で自動採番**する（2026年9月分から運用）。期は12月始まりで自動判定（第7期＝2025/12〜2026/11）。
+- **請求書番号** — **正本は経理の請求書ナンバー管理表**。バッチは起動時にこれを読み、指定した番号の宛先が管理表と食い違えば警告して止まる。
+  やむを得ず食い違いを残す場合は、その請求に `"no_conflict_ok": "理由"` を書く（2026-08のファイアープレイス様が実例）。
+  入力JSONで `no` を省くと**採番台帳 [`docs/invoices/ledger.tsv`](../../../docs/invoices/ledger.tsv) の最大値+1で自動採番**する（2026年9月分から運用）。期は12月始まりで自動判定（第7期＝2025/12〜2026/11）。
   台帳は「最大値がここにある」ことだけを保証する。**①に阿部さんが手で振った番号があるときは①が正**なので、台帳に1行足してから回す。
   2026-08に 07-079 の重複が起きた（トライ・ワークス様に発行済みだった）のは、この台帳が無かったため
 - **入金予定日** — ①の値が唯一の正。空だと契約条件から推定して「（推定）」と警告を出すので、①に書き戻す

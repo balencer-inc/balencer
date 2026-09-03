@@ -17,10 +17,12 @@ description: "バレンサーの請求書を型どおりに発行する（HTML�
 | 会社の定数 | `docs/company/invoice-constants.md`（登録番号・住所・振込先・採番・書式・社印） |
 | 口座番号・社印の実体 | `docs/invoices/99_local/`（**git管理外**。振込先.md／seal-balencer.png） |
 | 雛形 | `.claude/skills/invoice/assets/invoice-template.html`（`{{ }}` を埋める） |
-| 検算 | `.claude/skills/invoice/scripts/invoice_calc.py` |
+| 請求先マスタ | `docs/company/invoice-clients.json`（正式宛名・PDF略称・取引先コード・支払条件・送付方法） |
+| 月次バッチ | `.claude/skills/invoice/scripts/invoice_build.py` |
+| 単発の検算 | `.claude/skills/invoice/scripts/invoice_calc.py` |
 | 完成見本 | `docs/clients/osaka-kyoso-lab/02_契約・見積/請求書_ファイアープレイス_2026-09.html`（社印・税抜換算・別紙まで入った完成形） |
 | 顧客スラッグ | `docs/clients/README.md` の対応表 |
-| 作業場 | `docs/invoices/`（自社側の材料・台帳）／発行物は `docs/clients/<スラッグ>/02_契約・見積/` |
+| 発行物の置き場 | `docs/invoices/<YYYY-MM>/`（Driveの月次フォルダと同じ単位で1か所に集約） |
 
 ## 1. 最初に確認すること（聞かずに進めない）
 
@@ -56,7 +58,7 @@ python3 .claude/skills/invoice/scripts/invoice_calc.py <明細JSON> --csv <出�
 
 ## 4. HTML → PDF
 
-1. `assets/invoice-template.html` を `docs/clients/<スラッグ>/02_契約・見積/請求書_<顧客>_<YYYY-MM>.html` にコピーし `{{ }}` を埋める
+1. 単発なら `assets/invoice-template.html` を `docs/invoices/<YYYY-MM>/` にコピーして `{{ }}` を埋める（複数件は月次バッチを使う）
 2. **社印** — `{{SEAL_PATH}}` は発行先フォルダからの相対パスで `docs/invoices/99_local/seal-balencer.png` を指す（顧客フォルダ直下からなら `../../../invoices/99_local/seal-balencer.png`）。`mix-blend-mode:multiply` で紙に押した見え方になる（CSS済み）
 3. **別紙**が不要ならテンプレ内の2枚目 `<div class="page">` ごと削除する
 4. PDF化:
@@ -79,20 +81,52 @@ python3 .claude/skills/invoice/scripts/invoice_calc.py <明細JSON> --csv <出�
 - [ ] 備考に「振込手数料は貴社にてご負担」の一文
 - [ ] 請求書番号がスプレッドシートの最新の続きになっている
 
-## 6. 作成から送付までの流れ
+## 6. 作成から送付までの流れ（阿部さんの実運用・2026-09-03 確認）
 
-<!-- ▼ 2026-09-03: 阿部さんの実運用ヒアリング待ち。埋めたらこのコメントを消す -->
-**（この節は阿部さんの実際の流れで上書きする。以下は暫定）**
+請求は Drive の4か所を順に通る。**①が入力の正本**、②がPDF置き場、③が会計集約、④が計画反映。
+それぞれのURL・列構成は [invoice-constants.md](../../../docs/company/invoice-constants.md#請求のまわり方4つの箱とその関係) にある。
 
-1. 上記1〜5で請求書PDFを確定
-2. 阿部さんに金額・宛名・番号の最終確認を取る
-3. **送付は阿部さんが行う**（Claudeは勝手に送らない）
-4. 送付後、`invoice-constants.md` の採番表に1行追記（No／宛先／作成日／金額）
-5. 入金確認は #14「請求チェックの半自動化」側の仕事（台帳を共通化する）
+| 手 | 何をする | スキルの担当範囲 |
+|---|---|---|
+| ① | 阿部さんが**売掛金一覧**に月ごとの予定を入力（顧客別タブ・新規取引はタブを増やす） | 読むだけ |
+| ② | ①を見て請求書を作り、Drive の `YYYY.MM請求書` に **`YYYYMMDD【略称様】.pdf`** で格納 | **ここを自動化**（→ 下の月次バッチ） |
+| ③ | 内容が問題なければ**売掛金管理表**「売上入力」に1請求1行（税込） | **貼り付け行を吐く** |
+| ④ | **営業管理数字マスター**「売上_案件別」に反映（税抜・確度A） | **貼り付け行を吐く** |
+| ⑤ | 各社にメールまたはLINEで送付。**睦備建設様は billone** | **やらない**（阿部さんが送る） |
+
+③④への書き込みはスプレッドシートAPIが無いため**TSVを出すところまで**。貼り付けは手作業1回。
+
+### 月次バッチ（2回目以降はこれだけ）
+
+```bash
+# 1. ①を読んで、請求書NOが空の行＝未発行を拾い、下書きJSONを作る
+#    → docs/invoices/<YYYY-MM>/invoices.json
+# 2. 一括生成（HTML→PDF＋③④の貼り付け行＋検算）
+python3 .claude/skills/invoice/scripts/invoice_build.py docs/invoices/<YYYY-MM>/invoices.json
+```
+
+出力される `docs/invoices/<YYYY-MM>/`:
+
+| | |
+|---|---|
+| `YYYYMMDD【略称様】.pdf` | ②のDriveフォルダにそのまま入れられる名前 |
+| `<No>_<略称>.html` | 元データ。直したらバッチを再実行 |
+| `売掛管理表_貼り付け.tsv` | ③「売上入力」へ |
+| `数字マスター_売上案件別.tsv` | ④「売上_案件別」へ |
+
+バッチは**①の「本体税込」と生成額を全件突合**する。1円でも合わなければ NG を出して終わる。
+
+### バッチが止まる／気をつける場所
+
+- **請求書番号** — ①で最新を確認してから振る。2026-08に 07-079 の重複が起きた（トライ・ワークス様に発行済みだった）
+- **入金予定日** — ①の値が唯一の正。空だと契約条件から推定して「（推定）」と警告を出すので、①に書き戻す
+- **取引先コード** — ③のマスタに無い顧客は `要採番` と出る。88番以降を振ってから③に貼る
+- **①の案件名は明細に分解する** — 「デジマ60万 楽楽5万 保守20万…」の1セルを請求書では6行にする
+- **①の備考は2用途が混在** — 請求書に載せる文言だけ `remarks` に入れる。自分用メモは①に残す
 
 ## 7. 完了時
 
-- 発行物を `docs/clients/<スラッグ>/02_契約・見積/` に保存（HTML＋PDF）
+- 発行物は `docs/invoices/<YYYY-MM>/` に保存（HTML＋PDF＋TSV＋invoices.json）
 - **採番表に1行追記**（`docs/company/invoice-constants.md`）
 - 顧客フォルダの `README.md` に一行追記
 - 判断・学びを `docs/_knowledge/finance.md` に追記

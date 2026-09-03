@@ -1,5 +1,5 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8">
-<title>請求書 {{TO_NAME}}御中</title>
+<title>請求書 睦備建設株式会社御中</title>
 <style>
 @page{size:A4 portrait;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -83,14 +83,14 @@ table{width:100%;border-collapse:collapse;font-size:9.2pt}
 
 <div class="top">
   <div class="to">
-    <div class="nm">{{TO_NAME}}</div>
+    <div class="nm">睦備建設株式会社</div>
     <div class="go">御中</div>
-    <div class="ad">{{TO_ADDRESS}}</div>
+    <div class="ad"></div>
   </div>
   <div class="right">
     <div class="meta">
-      <div class="row"><b>作成日：</b><span>{{ISSUE_DATE}}</span></div>
-      <div class="row"><b>No：</b><span>{{INVOICE_NO}}</span></div>
+      <div class="row"><b>作成日：</b><span>2026年8月31日</span></div>
+      <div class="row"><b>No：</b><span>07-080</span></div>
     </div>
     <div class="from">
       <div class="co">株式会社バレンサー</div>
@@ -100,7 +100,7 @@ table{width:100%;border-collapse:collapse;font-size:9.2pt}
       <div>大阪駅前第4ビル9階 923 1542号</div>
       <div>連絡先：06-4400-5365</div>
     </div>
-    <div class="seal"><img src="{{SEAL_PATH}}" alt=""></div>
+    <div class="seal"><img src="../99_local/seal-balencer.png" alt=""></div>
   </div>
 </div>
 
@@ -108,73 +108,48 @@ table{width:100%;border-collapse:collapse;font-size:9.2pt}
 
 <div class="gt">
   <div class="lb">合計金額</div>
-  <div class="vl">{{TOTAL_INCL}}<small>円（税込）</small></div>
+  <div class="vl">1,094,500<small>円（税込）</small></div>
 </div>
 
 <table class="mx">
   <tr><th style="width:56%">商品</th><th style="width:24%">詳細</th><th class="r" style="width:20%">金額</th></tr>
-  <!-- 明細行 1行 = <tr><td>商品名<span class="d">　補足</span></td><td>詳細</td><td class="r">¥税抜金額</td></tr> -->
-  <tr><td>{{ITEM_NAME}}<span class="d">　{{ITEM_NOTE}}</span></td><td>{{ITEM_DETAIL}}</td><td class="r">¥{{ITEM_AMOUNT_EXCL}}</td></tr>
+  <tr><td>デジタルマーケティング業務委託費</td><td>8月分</td><td class="r">¥600,000</td></tr>
+  <tr><td>バックオフィスDX</td><td>8月分</td><td class="r">¥100,000</td></tr>
+  <tr><td>楽楽精算月額費用</td><td>8月分</td><td class="r">¥50,000</td></tr>
+  <tr><td>アプリ保守費</td><td>8月分</td><td class="r">¥200,000</td></tr>
+  <tr><td>AIチャットシステム保守費用</td><td>8月分</td><td class="r">¥30,000</td></tr>
+  <tr><td>ドメイン費<span class="d">　padescyon.com／mutsubi-recruit.com／mutsubi.co.jp　年1回</span></td><td>8月分</td><td class="r">¥15,000</td></tr>
   <tr class="pad"><td colspan="3"></td></tr>
 </table>
 
 <div class="sums"><table>
-  <tr><td class="lb">小計（10%対象）</td><td class="r">¥{{SUB10}}</td></tr>
-  <tr><td class="lb">　　（8%対象）</td><td class="r">¥{{SUB8}}</td></tr>
-  <tr><td class="lb">消費税（10%対象）</td><td class="r">¥{{TAX10}}</td></tr>
-  <tr><td class="lb">　　　　（8%対象）</td><td class="r">¥{{TAX8}}</td></tr>
-  <tr class="fin"><td>合計金額</td><td class="r">¥{{TOTAL_INCL}}</td></tr>
+  <tr><td class="lb">小計（10%対象）</td><td class="r">¥995,000</td></tr>
+  <tr><td class="lb">　　（8%対象）</td><td class="r">¥0</td></tr>
+  <tr><td class="lb">消費税（10%対象）</td><td class="r">¥99,500</td></tr>
+  <tr><td class="lb">　　　　（8%対象）</td><td class="r">¥0</td></tr>
+  <tr class="fin"><td>合計金額</td><td class="r">¥1,094,500</td></tr>
 </table></div>
 
 <div class="mid">
   <div class="bank">
     <h3>【振込先】</h3>
     <div class="row"><b>金融機関</b><span>みずほ銀行　大津支店</span></div>
-    <div class="row"><b>口座</b><span>{{BANK_ACCOUNT}}</span></div>
+    <div class="row"><b>口座</b><span>普通　3016229</span></div>
     <div class="row"><b>口座名義</b><span>株式会社バレンサー</span></div>
   </div>
   <div class="pay">
     <h3>お支払い期日</h3>
-    <div class="dt">{{DUE_DATE}}</div>
+    <div class="dt">2026年10月10日</div>
   </div>
 </div>
 
 <div class="bik">
   <h3>備考</h3>
   <ul>
-    <li>{{REMARK_CONTRACT}}<!-- 例: 本請求は業務委託契約書（YYYY年M月D日締結）別紙Nに基づくものです。 --></li>
-    <li>{{REMARK_UNIT}}<!-- 例: 日当は1名1日あたり10,000円（税込）、交通費は往復実費です。 --></li>
-    <li>{{REMARK_TAX}}<!-- 税込契約を税抜換算した場合のみ: 上記の日当・交通費は税込金額で表示しており、明細欄には税抜換算額を記載しています。 --></li>
+    <li>恐れ入りますが振込手数料は貴社にてご負担をお願いいたします。</li>
   </ul>
 </div>
 
 </div>
 
-<!-- ▼ 別紙ページ：日当・交通費など内訳がある時だけ残す。不要ならこの page ごと削除 -->
-<div class="page">
-<h2 class="bt">別紙　明細内訳</h2>
-<div class="sheetmeta">
-  <span>{{TO_NAME}} 御中</span>
-  <span>請求書 No：<b>{{INVOICE_NO}}</b>　／　作成日：{{ISSUE_DATE}}</span>
-</div>
-<div class="uch">
-  <h3>日当・交通費の明細</h3>
-  <table>
-    <tr><th>実施日</th><th>会場</th><th>参加者</th><th class="c">日当</th><th>経路</th><th class="r">交通費（往復）</th></tr>
-    <!-- 別紙行 実施日／会場／参加者／日当／経路／交通費（すべて税込表示） -->
-    <tr><td>M/D</td><td class="nm">会場</td><td class="nm">氏名</td><td class="c">¥10,000</td><td class="nm">A ⇄ B</td><td class="r">¥000</td></tr>
-    <tr class="st"><td colspan="3">◯月分 小計</td><td class="c">¥0</td><td></td><td class="r">¥0</td></tr>
-    <tr class="gr"><td colspan="3">合計（税込）</td><td class="c">¥0</td><td></td><td class="r">¥0</td></tr>
-  </table>
-</div>
-
-
-<div class="bik" style="margin-top:6mm">
-  <h3>補足</h3>
-  <ul>
-    <li>{{BESSHI_NOTE_1}}</li>
-    <li>{{BESSHI_NOTE_2}}</li>
-  </ul>
-</div>
-<div class="ftn">株式会社バレンサー　登録番号 T8160001022136　／　大阪府大阪市北区梅田1-11-4 大阪駅前第4ビル9階 923 1542号　／　06-4400-5365</div>
-</div></body></html>
+</body></html>

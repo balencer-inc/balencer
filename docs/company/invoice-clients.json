@@ -20,11 +20,12 @@
       "ar_code": 10,
       "ar_name": "HILLTOP㈱",
       "plan_name": "HILLTOP",
-      "terms": "当月請求当月末払い",
+      "terms": "当月請求・当月末払い（月初1日に当月分を発行）",
       "due_rule": "same_month_end",
       "send": "未記録",
       "slug": null,
-      "verified": true
+      "verified": true,
+      "note": "**1社だけサイクルが違う**。他社は末締め翌末で月末にまとめて発行するが、HILLTOP様は月初1日に当月分を発行して当月末入金。月末の一括バッチには乗せず、月初に単独で回す。Driveの格納先もその月のフォルダ（9/1発行なら 2026.09請求書）"
     },
     "mutsubi": {
       "name": "睦備建設株式会社",

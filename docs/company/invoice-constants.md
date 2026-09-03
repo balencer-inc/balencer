@@ -75,7 +75,8 @@
 | 07-079 | 株式会社トライ・ワークス（4,063,950円・2026/8/17）— 管理表に記載、DriveにPDFあり |
 | 07-079 | 株式会社ファイアープレイス（374,200円・2026/9/3）— **先方に送付済み**。管理表では 07-088 |
 
-先方に届いているのは 07-079 なので**動かせない**。管理表側（07-088 ファイヤープレイス）をどう整理するかは経理判断。
+**送付した請求書（07-079）を正とする**と阿部さんが確定（2026-09-03）。先方に届いた番号は動かせない。
+管理表側の 07-088「ファイヤープレイス」行は、実在しない請求のため**欠番として整理する必要がある**（未実施）。
 バッチはこの不一致を検出して止まるので、`invoices.json` に `"no_conflict_ok"` を付けて了承済みとして通している。
 
 ## 書式（既存請求書の型・踏襲する）
@@ -120,8 +121,8 @@
 | | 何 | 役割 | 誰が書く |
 |---|---|---|---|
 | ① | [売掛金一覧](https://docs.google.com/spreadsheets/d/1SJOuBPtvPha1fX1GDeggZI4HHZ09ChNaWXybPA1I0ss/edit)（Googleスプレッドシート・**顧客別タブ**） | **請求の予定表かつ入力の正本**。取引が生まれたらタブを増やす。未来月の予定行が先に入っている | 阿部さん |
-| ② | [請求書PDF格納](https://drive.google.com/drive/folders/1_UYsDJn3XbtNhmqLl0FNN7JzaOGAtomw)（Drive） | 月次フォルダ `YYYY.MM請求書` にPDFを置く。**ファイル名は `YYYYMMDD【<略称>様】.pdf`**（日付＝請求日） | 阿部さん |
-| ③ | [第7期 売掛金管理表.xlsx](https://docs.google.com/spreadsheets/d/1dCM5hYzHfhMgbN9MVp_GoR7ONDUZvOc5/edit) | 会計テンプレ。「売上入力」に**税込**で1請求1行 → 売掛集計表・入金予定表に自動集計 | 阿部さん |
+| ② | [請求書PDF格納](https://drive.google.com/drive/folders/1_UYsDJn3XbtNhmqLl0FNN7JzaOGAtomw)（Drive） | 月次フォルダ `YYYY.MM請求書` にPDFを置く。**ファイル名は `YYYYMMDD【<略称>様】.pdf`**（日付＝請求日）。<br>**Googleドライブのデスクトップ同期でローカルに見えるので、cpするだけでDriveに上がる**：<br>`~/Library/CloudStorage/GoogleDrive-tabe@balencer.jp/マイドライブ/バレンサー経理用/請求書/請求書PDF/第７期/売上分/<YYYY.MM>請求書/`<br>※HILLTOP様の当月分は**前月フォルダ**に入れる | Claude（`--to-drive`） |
+| ③ | [第7期 売掛金管理表.xlsx](https://docs.google.com/spreadsheets/d/1dCM5hYzHfhMgbN9MVp_GoR7ONDUZvOc5/edit) | 会計テンプレ。「売上入力」に**税込**で1請求1行 → 売掛集計表・入金予定表に自動集計。**2026-09-03 時点は手動運用**（別アカウント所有で同期に乗らず、Claudeからは書けない） | 阿部さん |
 | ④ | [営業管理数字マスター.xlsx](https://docs.google.com/spreadsheets/d/1hf30XoVtUlxHyjNJSuCtUPN6mmDXvhVp/edit) | 月次P&L。「売上_案件別」に**税抜**で顧客×案件×月。請求済＝確度A | 阿部さん |
 
 ### ①の列（全タブ共通・9〜10列）

@@ -47,6 +47,10 @@ NO_MASTER = os.path.expanduser(
     "~/Library/CloudStorage/GoogleDrive-tabe@balencer.jp/マイドライブ/"
     "バレンサー経理用/請求書/請求書ナンバー管理表.xlsx")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+# ②PDFの格納先（Googleドライブのデスクトップ同期。ここに置けばDriveに上がる）
+DRIVE_PDF = os.path.expanduser(
+    "~/Library/CloudStorage/GoogleDrive-tabe@balencer.jp/マイドライブ/バレンサー経理用/"
+    "請求書/請求書PDF/第{term}期/売上分/{ym}請求書")
 FEE_NOTE = "恐れ入りますが振込手数料は貴社にてご負担をお願いいたします。"
 
 
@@ -322,7 +326,9 @@ def main() -> int:
         html_path = os.path.join(outdir, base + ".html")
         pdf_name = f'{issue:%Y%m%d}【{cl["short"]}様】.pdf'
         render(inv, cl, sub, tax, total, issue, due, html_path)
-        pdfs.append((html_path, os.path.join(outdir, pdf_name)))
+        dy, dm = add_months(py, pm, cl.get("drive_month_offset", 0))
+        drive_dir = DRIVE_PDF.format(term=fiscal_term(date(dy, dm, 1)), ym=f"{dy}.{dm:02d}")
+        pdfs.append((html_path, os.path.join(outdir, pdf_name), drive_dir, pdf_name))
 
         print(f'{mark} {inv["no"]}  {cl["name"]:<22} 税抜{sum(sub.values()):>10,} '
               f'税{sum(tax.values()):>8,}  税込{total:>10,}  期日 {due:%Y/%m/%d}{guessed}')
@@ -346,12 +352,19 @@ def main() -> int:
 
     # PDF化
     print("-" * 74)
-    for html_path, pdf_path in pdfs:
+    for html_path, pdf_path, drive_dir, pdf_name in pdfs:
         subprocess.run([CHROME, "--headless", f"--print-to-pdf={pdf_path}",
                         "--no-pdf-header-footer", html_path],
                        capture_output=True, check=False)
         ok = os.path.exists(pdf_path)
-        print(("PDF " if ok else "失敗 ") + os.path.basename(pdf_path))
+        mark = "PDF " if ok else "失敗 "
+        if ok and "--to-drive" in sys.argv:
+            os.makedirs(drive_dir, exist_ok=True)
+            import shutil
+            shutil.copy2(pdf_path, os.path.join(drive_dir, pdf_name))
+            mark = "Drive"
+        print(f"{mark} {os.path.basename(pdf_path):<44} → "
+              f"{os.path.basename(drive_dir)}")
 
     ar_head = ["年(和暦)", "月", "日", "取引先コード", "取引先名", "締日", "品名", "数量",
                "単価(税込)", "売上金額(税込)", "請求月(L列)", "受入金額",

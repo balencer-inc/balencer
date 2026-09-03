@@ -93,7 +93,7 @@ python3 .claude/skills/invoice/scripts/invoice_calc.py <明細JSON> --csv <出�
 |---|---|---|
 | ① | 阿部さんが**売掛金一覧**に月ごとの予定を入力（顧客別タブ・新規取引はタブを増やす） | 読むだけ |
 | ② | ①を見て請求書を作り、Drive の `YYYY.MM請求書` に **`YYYYMMDD【略称様】.pdf`** で格納 | **ここを自動化**（→ 下の月次バッチ） |
-| ③ | 内容が問題なければ**売掛金管理表**「売上入力」に1請求1行（税込） | **貼り付け行を吐く** |
+| ③ | **売掛金管理表**「売上入力」に1請求1行（税込）。**2026-09-03 時点は手動運用**（別アカウント所有で同期に乗っていない） | **貼り付け行を吐く** |
 | ④ | **営業管理数字マスター**「売上_案件別」に反映（税抜・確度A） | **貼り付け行を吐く** |
 | ⑤ | 各社にメールまたはLINEで送付。**睦備建設様は billone** | **やらない**（阿部さんが送る） |
 
@@ -104,9 +104,11 @@ python3 .claude/skills/invoice/scripts/invoice_calc.py <明細JSON> --csv <出�
 | いつ | 対象 | 入力 |
 |---|---|---|
 | **月初（1日）** | **HILLTOP様のみ**。当月請求・当月末払いで、1社だけサイクルが違う | `docs/invoices/<当月>/invoices.json` |
+| | ↑ **DriveのPDFは前月フォルダに入れる**（9月分 → `2026.08請求書`）。①③の請求月は9月のまま | |
 | **月末** | それ以外の全社（末締め翌末ほか） | `docs/invoices/<締め月>/invoices.json` |
 
-月初分は「その月のフォルダ」に入る（9/1発行の9月分 → `2026.09請求書`）。月末の一括に混ぜない。
+ずれるのは**Driveのフォルダだけ**で、①③の請求月は実際の月のまま。この差は請求先マスタの
+`drive_month_offset`（HILLTOP様のみ -1）に持たせてあるので、バッチが投入先を自動で出す。
 
 ### 月次バッチ（2回目以降はこれだけ）
 
@@ -115,7 +117,12 @@ python3 .claude/skills/invoice/scripts/invoice_calc.py <明細JSON> --csv <出�
 #    → docs/invoices/<YYYY-MM>/invoices.json
 # 2. 一括生成（HTML→PDF＋③④の貼り付け行＋検算）
 python3 .claude/skills/invoice/scripts/invoice_build.py docs/invoices/<YYYY-MM>/invoices.json
+
+# 3. 番号・金額を確認したら Drive へ投入（同期フォルダにコピーされる）
+python3 .claude/skills/invoice/scripts/invoice_build.py docs/invoices/<YYYY-MM>/invoices.json --to-drive
 ```
+
+`--to-drive` を付けない実行では投入先を表示するだけ。**確認してから付ける**。
 
 出力される `docs/invoices/<YYYY-MM>/`:
 

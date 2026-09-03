@@ -23,9 +23,11 @@
 
 ## 新セッションでやること（順番）
 
-1. `docs/company/invoice-constants.md` を作る ← **これが本体**。登録番号・振込先・採番ルール・締め支払サイト・発行台帳
-2. `.claude/skills/invoice` を作る（`estimate` スキルの構成を踏襲。HTML＋CSV＋PDF＋検算）
-3. 1本目の実戦投入 = OSAKA共創LAB（ファイアープレイス様）の請求書を確定させる
+1. ~~`docs/company/invoice-constants.md` を作る~~ **済**（2026-09-03）← 定数の正本
+2. ~~`.claude/skills/invoice` を作る~~ **済**（2026-09-03）。`SKILL.md` ＋ `assets/invoice-template.html` ＋ `scripts/invoice_calc.py`
+3. ~~1本目の実戦投入 = OSAKA共創LAB（ファイアープレイス様）~~ **済**（374,200円・No 07-079）
+
+**以降は「請求書作って」の一言で `invoice` スキルが発火する。**残タスクは SKILL.md §6「作成から送付までの流れ」を阿部さんの実運用で埋めること。
 
 ## いま止まっている案件
 

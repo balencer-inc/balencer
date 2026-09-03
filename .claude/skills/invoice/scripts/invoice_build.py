@@ -282,6 +282,7 @@ def main() -> int:
         used |= set(no_master)
     new_ledger = []
     ar_rows, plan_rows, pdfs, ng, warn_due, auto, conflict = [], [], [], [], [], [], []
+    accepted = []
     print("=" * 74)
     print(f"請求書 一括生成　{month}　{len(data['invoices'])}件")
     print("=" * 74)
@@ -299,7 +300,8 @@ def main() -> int:
             mname = no_master[inv["no"]][0]
             names = [cl["name"], cl["short"], cl.get("ledger_alias") or ""]
             if not any(n and (mname in n or n in mname) for n in names):
-                conflict.append((inv["no"], cl["name"], mname))
+                (accepted if inv.get("no_conflict_ok") else conflict).append(
+                    (inv["no"], cl["name"], mname, inv.get("no_conflict_ok", "")))
         if inv.get("due"):
             due, guessed = ymd(inv["due"]), ""
         else:
@@ -379,9 +381,11 @@ def main() -> int:
         print("\n⚠ 入金予定日が入力に無く、契約条件から推定しました（①で要確認）:")
         for no, nm, d in warn_due:
             print(f"   {no} {nm}: {d:%Y/%m/%d}")
+    for no, mine, theirs, why in accepted:
+        print(f"\n（了承済みの不一致）{no}  請求書『{mine}』／管理表『{theirs}』… {why}")
     if conflict:
         print("\n■ 請求書ナンバー管理表と宛先が食い違っています（正本が優先）:")
-        for no, mine, theirs in conflict:
+        for no, mine, theirs, _ in conflict:
             print(f"   {no}  この請求書『{mine}』 ／ 管理表『{theirs}』")
     if ng:
         print("\n⚠ 売掛金一覧(①)の税込と合わない請求があります:")

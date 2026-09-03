@@ -10,7 +10,8 @@
     "due_rule": "支払期日の計算規則（①の入金予定日が空のときのフォールバック）。same_month_end / next_month_end / next_month_10 / next2_month_10 / issue_plus_30 / issue_plus_60 / manual。同月系は締め月起点、issue_plus 系は請求日起点",
     "send": "送付方法。mail / line / billone / 未記録",
     "slug": "docs/clients/ 配下のフォルダ名。null は未作成",
-    "verified": "宛名を過去PDFまたは契約書で確認済みか"
+    "verified": "宛名を過去PDFまたは契約書で確認済みか",
+    "ledger_alias": "請求書ナンバー管理表での表記（違う場合のみ。誤字も含めてそのまま書く）"
   },
   "clients": {
     "hilltop": {
@@ -35,7 +36,8 @@
       "due_rule": "next2_month_10",
       "send": "billone",
       "slug": "mutsubi",
-      "verified": true
+      "verified": true,
+      "ledger_alias": "睦美建設"
     },
     "tomoni": {
       "name": "株式会社TOMONI",
@@ -108,7 +110,8 @@
       "due_rule": "next_month_end",
       "send": "未記録",
       "slug": "tri-works",
-      "verified": false
+      "verified": false,
+      "ledger_alias": "トライワークス"
     },
     "firepace": {
       "name": "株式会社ファイアープレイス",
@@ -120,7 +123,8 @@
       "due_rule": "next_month_end",
       "send": "未記録",
       "slug": "osaka-kyoso-lab",
-      "verified": true
+      "verified": true,
+      "ledger_alias": "ファイヤープレイス"
     },
     "clavis": {
       "name": "株式会社Clavis Partners",

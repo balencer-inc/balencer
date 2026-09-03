@@ -41,6 +41,11 @@ CLIENTS = os.path.join(ROOT, "docs/company/invoice-clients.json")
 SEAL = os.path.join(ROOT, "docs/invoices/99_local/seal-balencer.png")
 BANK_FILE = os.path.join(ROOT, "docs/invoices/99_local/振込先.md")
 LEDGER = os.path.join(ROOT, "docs/invoices/ledger.tsv")
+# 採番の正本＝経理の「請求書ナンバー管理表」。Googleドライブのデスクトップ同期で
+# ローカルに見えているので openpyxl で直接読める。無ければ ledger.tsv にフォールバック。
+NO_MASTER = os.path.expanduser(
+    "~/Library/CloudStorage/GoogleDrive-tabe@balencer.jp/マイドライブ/"
+    "バレンサー経理用/請求書/請求書ナンバー管理表.xlsx")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 FEE_NOTE = "恐れ入りますが振込手数料は貴社にてご負担をお願いいたします。"
 
@@ -95,6 +100,33 @@ def to_excl(amount: int, basis: str, rate: int) -> int:
 def fiscal_term(d: date) -> int:
     """期。12月始まり（第7期＝2025/12〜2026/11）。"""
     return d.year - 2018 if d.month == 12 else d.year - 2019
+
+
+def read_no_master(term: int):
+    """請求書ナンバー管理表から、その期の使用済み番号を読む。
+
+    戻り値: {No: (社名, 作成日, 請求金額)}。読めなければ None。
+    """
+    if not os.path.exists(NO_MASTER):
+        return None
+    try:
+        import openpyxl
+    except ImportError:
+        return None
+    try:
+        wb = openpyxl.load_workbook(NO_MASTER, read_only=True, data_only=True)
+    except Exception:
+        return None
+    z = str.maketrans("０１２３４５６７８９", "0123456789")
+    sheet = next((n for n in wb.sheetnames
+                  if n.translate(z).strip().startswith(f"{term}期")), None)
+    if sheet is None:
+        return None
+    out = {}
+    for no, name, made, amount in wb[sheet].iter_rows(min_row=2, max_col=4, values_only=True):
+        if no and name:
+            out[str(no).strip()] = (str(name).strip(), made, amount)
+    return out
 
 
 def read_ledger():
@@ -241,8 +273,15 @@ def main() -> int:
 
     ledger = read_ledger()
     used = {r[0] for r in ledger}
+    no_master = read_no_master(fiscal_term(date(py, pm, 1)))
+    if no_master is None:
+        print("⚠ 請求書ナンバー管理表が読めません。ledger.tsv だけで採番します")
+    else:
+        print(f"採番の正本: 請求書ナンバー管理表（{len(master)}件 使用済み・"
+              f"最終 {max(no_master)}）")
+        used |= set(no_master)
     new_ledger = []
-    ar_rows, plan_rows, pdfs, ng, warn_due, auto = [], [], [], [], [], []
+    ar_rows, plan_rows, pdfs, ng, warn_due, auto, conflict = [], [], [], [], [], [], []
     print("=" * 74)
     print(f"請求書 一括生成　{month}　{len(data['invoices'])}件")
     print("=" * 74)
@@ -256,6 +295,11 @@ def main() -> int:
             inv["no"] = next_no(used, issue)
             auto.append((inv["no"], cl["name"]))
         used.add(inv["no"])
+        if no_master and inv["no"] in no_master:
+            mname = no_master[inv["no"]][0]
+            names = [cl["name"], cl["short"], cl.get("ledger_alias") or ""]
+            if not any(n and (mname in n or n in mname) for n in names):
+                conflict.append((inv["no"], cl["name"], mname))
         if inv.get("due"):
             due, guessed = ymd(inv["due"]), ""
         else:
@@ -335,13 +379,17 @@ def main() -> int:
         print("\n⚠ 入金予定日が入力に無く、契約条件から推定しました（①で要確認）:")
         for no, nm, d in warn_due:
             print(f"   {no} {nm}: {d:%Y/%m/%d}")
+    if conflict:
+        print("\n■ 請求書ナンバー管理表と宛先が食い違っています（正本が優先）:")
+        for no, mine, theirs in conflict:
+            print(f"   {no}  この請求書『{mine}』 ／ 管理表『{theirs}』")
     if ng:
         print("\n⚠ 売掛金一覧(①)の税込と合わない請求があります:")
         for no, nm, got, exp in ng:
             print(f"   {no} {nm}: 生成 {got:,} / ①は {exp:,}（差 {got-exp:+,}）")
         return 1
     print("\n① 売掛金一覧の『本体税込』と全件一致")
-    return 0
+    return 1 if conflict else 0
 
 
 if __name__ == "__main__":

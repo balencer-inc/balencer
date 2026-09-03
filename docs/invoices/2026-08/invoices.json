@@ -1,10 +1,10 @@
 {
-  "_status": "下書き。請求書番号・金額を阿部さんが確定してから送付する。明細は売掛金一覧(①)の案件名を分解したもの。",
+  "_status": "07-081〜085は①の採番に一致。07-086〜088（Clavis／ファイアープレイス／エイチ・ツー・オー）は仮番号 — 阿部さんが採番したら差し替えて再実行する。",
   "issue_month": "2026-08",
   "invoices": [
     {
       "client": "mutsubi",
-      "no": "07-080",
+      "no": "07-081",
       "date": "2026-08-31",
       "expected_total_incl": 1094500,
       "items": [
@@ -57,11 +57,12 @@
           "case": "月額継続(デジマ+楽楽+保守)",
           "excl": 995000
         }
-      ]
+      ],
+      "due": "2026-10-10"
     },
     {
       "client": "tomoni",
-      "no": "07-081",
+      "no": "07-082",
       "date": "2026-08-31",
       "expected_total_incl": 4950,
       "items": [
@@ -78,18 +79,26 @@
           "case": "サーバー保守 月額4500",
           "excl": 4500
         }
-      ]
+      ],
+      "due": "2026-09-30"
     },
     {
       "client": "saiene",
-      "no": "07-082",
+      "no": "07-083",
       "date": "2026-08-31",
-      "expected_total_incl": 190300,
+      "expected_total_incl": 198574,
       "items": [
         {
           "name": "システム保守費（CIS,託送データ）",
           "detail": "8月分",
           "amount": 173000,
+          "basis": "excl",
+          "rate": 10
+        },
+        {
+          "name": "vercel,supabase開発実費",
+          "detail": "8月分",
+          "amount": 7522,
           "basis": "excl",
           "rate": 10
         }
@@ -98,12 +107,17 @@
         {
           "case": "システム保守 月額",
           "excl": 173000
+        },
+        {
+          "case": "vercel/supabase 実費",
+          "excl": 7522
         }
-      ]
+      ],
+      "due": "2026-09-30"
     },
     {
       "client": "adachi-onken",
-      "no": "07-083",
+      "no": "07-084",
       "date": "2026-08-31",
       "expected_total_incl": 220000,
       "items": [
@@ -120,11 +134,12 @@
           "case": "戦略パートナー 月額",
           "excl": 200000
         }
-      ]
+      ],
+      "due": "2026-09-30"
     },
     {
       "client": "hokuroku",
-      "no": "07-084",
+      "no": "07-085",
       "date": "2026-08-31",
       "expected_total_incl": 220000,
       "items": [
@@ -141,11 +156,35 @@
           "case": "戦略パートナー 月額",
           "excl": 200000
         }
+      ],
+      "due": "2026-09-30"
+    },
+    {
+      "client": "clavis",
+      "no": "07-086",
+      "date": "2026-08-31",
+      "due": "2026-09-30",
+      "expected_total_incl": 220000,
+      "items": [
+        {
+          "name": "コンサルティング業務委託費",
+          "note": "ENTRYプラン／経営の壁打ち",
+          "detail": "8月分",
+          "amount": 200000,
+          "basis": "excl",
+          "rate": 10
+        }
+      ],
+      "plan_items": [
+        {
+          "case": "経営コンサル/月",
+          "excl": 200000
+        }
       ]
     },
     {
       "client": "firepace",
-      "no": "07-085",
+      "no": "07-087",
       "date": "2026-09-03",
       "to_address": "〒212-0012　川崎市幸区中幸町3-8-1<br>7階ロックヒルズガーデン",
       "expected_total_incl": 374200,
@@ -267,6 +306,35 @@
         ]
       },
       "due": "2026-09-30"
+    },
+    {
+      "client": "h2o",
+      "no": "07-088",
+      "date": "2026-08-31",
+      "due": "2026-09-30",
+      "expected_total_incl": 33000,
+      "items": [
+        {
+          "name": "ECサイト　新店舗用 専用URL発行",
+          "detail": "8月分",
+          "amount": 20000,
+          "basis": "excl",
+          "rate": 10
+        },
+        {
+          "name": "ディレクション費用",
+          "detail": "8月分",
+          "amount": 10000,
+          "basis": "excl",
+          "rate": 10
+        }
+      ],
+      "plan_items": [
+        {
+          "case": "ECサイト 新店舗用URL発行・ディレクション",
+          "excl": 30000
+        }
+      ]
     }
   ]
 }

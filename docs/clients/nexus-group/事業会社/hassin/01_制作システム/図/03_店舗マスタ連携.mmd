@@ -1,0 +1,35 @@
+flowchart LR
+  subgraph sot["正（Source of Truth）"]
+    P[("社内ポータル Neon<br/>store テーブル")]
+  end
+
+  SYNC["同期<br/>日次バッチ（Vercel Cron）<br/>externalId で突き合わせ upsert<br/>閉店は status = CLOSED"]
+
+  subgraph seisaku["制作管理システム Neon"]
+    S[("Company / Division / Store / Brand<br/>+ externalId を新規追加")]
+    F1["Project"]
+    F2["Invoice"]
+    F3["Request"]
+    F4["AssetStore"]
+    F5["NewStoreSchedule"]
+    F6["MenuSchedule"]
+    F7["AllowedUser"]
+    S --> F1
+    S --> F2
+    S --> F3
+    S --> F4
+    S --> F5
+    S --> F6
+    S --> F7
+  end
+
+  P ==>|"一方通行"| SYNC
+  SYNC ==> S
+  S -.->|"編集不可<br/>（読み取り専用UI）"| P
+
+  NG["❌ 案a: 直接接続 / ビュー参照は不可<br/>Store.id を7テーブルが外部キー参照しており<br/>ビューは外部キーの参照先になれない"]
+
+  style P fill:#dbe7f3,stroke:#5b7fa6
+  style S fill:#dbe7f3,stroke:#5b7fa6
+  style SYNC fill:#fdf0dc,stroke:#c9a86b
+  style NG fill:#f7e2e2,stroke:#c98b8b

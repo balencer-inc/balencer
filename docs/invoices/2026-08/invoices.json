@@ -1,0 +1,272 @@
+{
+  "_status": "下書き。請求書番号・金額を阿部さんが確定してから送付する。明細は売掛金一覧(①)の案件名を分解したもの。",
+  "issue_month": "2026-08",
+  "invoices": [
+    {
+      "client": "mutsubi",
+      "no": "07-080",
+      "date": "2026-08-31",
+      "expected_total_incl": 1094500,
+      "items": [
+        {
+          "name": "デジタルマーケティング業務委託費",
+          "detail": "8月分",
+          "amount": 600000,
+          "basis": "excl",
+          "rate": 10
+        },
+        {
+          "name": "バックオフィスDX",
+          "detail": "8月分",
+          "amount": 100000,
+          "basis": "excl",
+          "rate": 10
+        },
+        {
+          "name": "楽楽精算月額費用",
+          "detail": "8月分",
+          "amount": 50000,
+          "basis": "excl",
+          "rate": 10
+        },
+        {
+          "name": "アプリ保守費",
+          "detail": "8月分",
+          "amount": 200000,
+          "basis": "excl",
+          "rate": 10
+        },
+        {
+          "name": "AIチャットシステム保守費用",
+          "detail": "8月分",
+          "amount": 30000,
+          "basis": "excl",
+          "rate": 10
+        },
+        {
+          "name": "ドメイン費",
+          "note": "padescyon.com／mutsubi-recruit.com／mutsubi.co.jp　年1回",
+          "detail": "8月分",
+          "amount": 15000,
+          "basis": "excl",
+          "rate": 10
+        }
+      ],
+      "plan_items": [
+        {
+          "case": "月額継続(デジマ+楽楽+保守)",
+          "excl": 995000
+        }
+      ]
+    },
+    {
+      "client": "tomoni",
+      "no": "07-081",
+      "date": "2026-08-31",
+      "expected_total_incl": 4950,
+      "items": [
+        {
+          "name": "ホームページサーバー保守管理費",
+          "detail": "8月分",
+          "amount": 4500,
+          "basis": "excl",
+          "rate": 10
+        }
+      ],
+      "plan_items": [
+        {
+          "case": "サーバー保守 月額4500",
+          "excl": 4500
+        }
+      ]
+    },
+    {
+      "client": "saiene",
+      "no": "07-082",
+      "date": "2026-08-31",
+      "expected_total_incl": 190300,
+      "items": [
+        {
+          "name": "システム保守費（CIS,託送データ）",
+          "detail": "8月分",
+          "amount": 173000,
+          "basis": "excl",
+          "rate": 10
+        }
+      ],
+      "plan_items": [
+        {
+          "case": "システム保守 月額",
+          "excl": 173000
+        }
+      ]
+    },
+    {
+      "client": "adachi-onken",
+      "no": "07-083",
+      "date": "2026-08-31",
+      "expected_total_incl": 220000,
+      "items": [
+        {
+          "name": "戦略パートナー月額費",
+          "detail": "8月分",
+          "amount": 200000,
+          "basis": "excl",
+          "rate": 10
+        }
+      ],
+      "plan_items": [
+        {
+          "case": "戦略パートナー 月額",
+          "excl": 200000
+        }
+      ]
+    },
+    {
+      "client": "hokuroku",
+      "no": "07-084",
+      "date": "2026-08-31",
+      "expected_total_incl": 220000,
+      "items": [
+        {
+          "name": "戦略パートナー費",
+          "detail": "8月分",
+          "amount": 200000,
+          "basis": "excl",
+          "rate": 10
+        }
+      ],
+      "plan_items": [
+        {
+          "case": "戦略パートナー 月額",
+          "excl": 200000
+        }
+      ]
+    },
+    {
+      "client": "firepace",
+      "no": "07-085",
+      "date": "2026-09-03",
+      "to_address": "〒212-0012　川崎市幸区中幸町3-8-1<br>7階ロックヒルズガーデン",
+      "expected_total_incl": 374200,
+      "items": [
+        {
+          "name": "OSAKA共創LAB　ファシリテーター業務委託費",
+          "detail": "8月分",
+          "amount": 300000,
+          "basis": "incl",
+          "rate": 10
+        },
+        {
+          "name": "イベント参加日当",
+          "note": "8/4・8/18・8/30　計5名日",
+          "detail": "8月分",
+          "amount": 50000,
+          "basis": "incl",
+          "rate": 10
+        },
+        {
+          "name": "交通費",
+          "note": "往復実費",
+          "detail": "8月分",
+          "amount": 2860,
+          "basis": "incl",
+          "rate": 10
+        },
+        {
+          "name": "イベント参加日当",
+          "note": "7/25　計2名日",
+          "detail": "7月分",
+          "amount": 20000,
+          "basis": "incl",
+          "rate": 10
+        },
+        {
+          "name": "交通費",
+          "note": "往復実費",
+          "detail": "7月分",
+          "amount": 1340,
+          "basis": "incl",
+          "rate": 10
+        }
+      ],
+      "remarks": [
+        "本請求は業務委託契約書（2026年7月30日締結）別紙2に基づくものです。月額報酬は同別紙に定める定額（月額300,000円・税込）です。",
+        "イベント参加日当は1名1日あたり10,000円（税込）、交通費は同別紙の交通費規定（往復上限3,000円・在来線／バス等）に基づく往復実費です。",
+        "上記の日当・交通費は税込金額で表示しており、明細欄には税抜換算額を記載しています。"
+      ],
+      "plan_items": [
+        {
+          "case": "ファシリテーター稼働費用2名",
+          "excl": 340182
+        }
+      ],
+      "besshi": {
+        "rows": [
+          {
+            "date": "7/25",
+            "place": "大阪公立大学 森ノ宮キャンパス",
+            "person": "阿部",
+            "allowance": 10000,
+            "route": "千里中央 ⇄ 森ノ宮",
+            "fare": 860
+          },
+          {
+            "date": "7/25",
+            "place": "同上",
+            "person": "加藤",
+            "allowance": 10000,
+            "route": "なんば ⇄ 森ノ宮",
+            "fare": 480
+          },
+          {
+            "date": "8/4",
+            "place": "大阪公立大学 I-siteなんば",
+            "person": "阿部",
+            "allowance": 10000,
+            "route": "千里中央 ⇄ なんば",
+            "fare": 760
+          },
+          {
+            "date": "8/4",
+            "place": "同上",
+            "person": "加藤",
+            "allowance": 10000,
+            "route": "なんば（徒歩圏）",
+            "fare": 0
+          },
+          {
+            "date": "8/18",
+            "place": "YOLOBASE（大国町）",
+            "person": "阿部",
+            "allowance": 10000,
+            "route": "千里中央 ⇄ 大国町",
+            "fare": 860
+          },
+          {
+            "date": "8/18",
+            "place": "同上",
+            "person": "加藤",
+            "allowance": 10000,
+            "route": "なんば ⇄ 大国町",
+            "fare": 380
+          },
+          {
+            "date": "8/30",
+            "place": "大阪公立大学 森ノ宮キャンパス",
+            "person": "阿部",
+            "allowance": 10000,
+            "route": "千里中央 ⇄ 森ノ宮",
+            "fare": 860
+          }
+        ],
+        "notes": [
+          "イベント参加日当は、業務委託契約書別紙2に定める1名1日あたり10,000円（税込）です。",
+          "交通費は同別紙の交通費規定に基づく往復実費です。対象は在来線・バス等の公共交通機関で、往復支給上限3,000円（税込）以内に収まっています。",
+          "阿部の最寄駅は千里中央、加藤の最寄駅はなんばです。8/4のI-siteなんばは加藤の最寄駅から徒歩圏のため交通費は発生していません。"
+        ]
+      },
+      "due": "2026-09-30"
+    }
+  ]
+}

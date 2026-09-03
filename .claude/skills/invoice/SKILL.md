@@ -19,6 +19,7 @@ description: "バレンサーの請求書を型どおりに発行する（HTML�
 | 雛形 | `.claude/skills/invoice/assets/invoice-template.html`（`{{ }}` を埋める） |
 | 請求先マスタ | `docs/company/invoice-clients.json`（正式宛名・PDF略称・取引先コード・支払条件・送付方法） |
 | 月次バッチ | `.claude/skills/invoice/scripts/invoice_build.py` |
+| **Excel版** | `.claude/skills/invoice/scripts/invoice_xlsx.py`（経理がExcelで触ってPDFにする用） |
 | 単発の検算 | `.claude/skills/invoice/scripts/invoice_calc.py` |
 | **採番の正本** | 経理の **請求書ナンバー管理表.xlsx**（Googleドライブのデスクトップ同期でローカルに見える）<br>`~/Library/CloudStorage/GoogleDrive-tabe@balencer.jp/マイドライブ/バレンサー経理用/請求書/請求書ナンバー管理表.xlsx` |
 | 採番の控え | `docs/invoices/ledger.tsv`（管理表が読めないときのフォールバック） |
@@ -123,6 +124,17 @@ python3 .claude/skills/invoice/scripts/invoice_build.py docs/invoices/<YYYY-MM>/
 ```
 
 `--to-drive` を付けない実行では投入先を表示するだけ。**確認してから付ける**。
+
+### Excel版も出す（経理がこの手順を使えないとき用）
+
+```bash
+python3 .claude/skills/invoice/scripts/invoice_xlsx.py docs/invoices/<YYYY-MM>/invoices.json
+```
+
+同じ入力JSONから `<No>_<略称>.xlsx` を1請求1ファイル出す。HTML版と同じ書式・社印つき・A4縦の印刷範囲設定済みで、
+**Excelで開いて明細を書き換えれば小計・消費税・合計が数式で追随する**（消費税は税率ごとに `ROUNDDOWN` 1回）。
+経理はそのまま「PDFとして書き出し」すればよい。**正はHTML版**で、Excel版は触れるようにするための複製。
+両方から出したPDFを混在させない（同じ請求で2種類のPDFができないよう、どちらで出したか決めてから配る）。
 
 出力される `docs/invoices/<YYYY-MM>/`:
 

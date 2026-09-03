@@ -1,0 +1,43 @@
+flowchart TB
+  subgraph client["利用者"]
+    U1["制作チーム（PC）"]
+    U2["店舗・現場（スマホ）"]
+  end
+
+  APP["制作管理システム<br/>Next.js 16 / Vercel<br/>（現行のまま）"]
+
+  U1 --> APP
+  U2 --> APP
+
+  subgraph data["データの持ち場所"]
+    N[("① Neon PostgreSQL<br/>店舗・案件・単価・在庫<br/>組織図・承認履歴<br/>【数千円/月】")]
+    C["② Cloudinary<br/>配信用サムネイル専用<br/>【0円・無料枠内】"]
+    D["③ Google Drive 店舗フォルダ<br/>AI / PSD / 入稿PDF / アーカイブ<br/>【追加0円・既払いプール】"]
+  end
+
+  subgraph ext["連携"]
+    W["Google Workspace<br/>ユーザーマスタ・認証<br/>【追加0円】"]
+    P[("社内ポータル Neon<br/>店舗マスタ = 正")]
+    NT["Notion<br/>ナレッジ・マニュアル<br/>【追加0円】"]
+  end
+
+  RT["リアルタイム<br/>必要な画面だけ<br/>ポーリング → SSE → Broadcast<br/>【0円 〜 $25/月】"]
+
+  APP -->|"参照キーのみ"| N
+  APP -->|"一覧サムネ"| C
+  APP -->|"クリックで原本"| D
+  APP -->|"email で突き合わせ"| W
+  APP -->|"ビュー埋め込み"| NT
+  APP --- RT
+  P ==>|"日次バッチ・一方通行<br/>externalId で upsert"| N
+  C -.->|"サムネを生成"| D
+
+  R2["Cloudflare R2<br/>溢れたときの逃げ先<br/>3TB=月6,750円・エグレス無料"]
+  C -.-> R2
+
+  style N fill:#dbe7f3,stroke:#5b7fa6
+  style C fill:#fdf0dc,stroke:#c9a86b
+  style D fill:#e8efe4,stroke:#8fa885
+  style P fill:#dbe7f3,stroke:#5b7fa6
+  style RT fill:#f0e9f5,stroke:#a08fb5
+  style R2 fill:#f6f7f9,stroke:#b9c3ce,stroke-dasharray: 4 3

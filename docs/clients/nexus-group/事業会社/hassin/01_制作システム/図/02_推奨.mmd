@@ -1,0 +1,35 @@
+flowchart TB
+  subgraph app["制作管理システム（Vercel / Next.js）"]
+    A1["画面・API"]
+  end
+
+  subgraph L1["① 構造化データ"]
+    N[("Neon PostgreSQL<br/>店舗・案件・単価・在庫<br/>組織図・承認履歴")]
+    NC["費用: 数千円/月<br/>画像は入れない"]
+  end
+
+  subgraph L2["② 配信用サムネイル"]
+    C["Cloudinary（用途を絞る）<br/>長辺2000px・数百KB"]
+    CC["費用: 0円<br/>無料枠25GB内<br/>溢れたら R2 へ"]
+  end
+
+  subgraph L3["③ 制作原本・アーカイブ"]
+    D["Google Drive 店舗フォルダ<br/>AI / PSD / 入稿PDF / 撮影素材"]
+    DC["費用: 追加0円<br/>プール2TB×ユーザー数<br/>Finderから直接編集できる"]
+  end
+
+  A1 -->|"参照キーのみ"| N
+  A1 -->|"一覧サムネを表示"| C
+  A1 -->|"クリックで原本を開く"| D
+  C -.->|"サムネを生成"| D
+
+  R2["Cloudflare R2<br/>3TBで月6,750円・エグレス無料"]
+  C -.->|"将来の逃げ先"| R2
+
+  style N fill:#dbe7f3,stroke:#5b7fa6
+  style C fill:#fdf0dc,stroke:#c9a86b
+  style D fill:#e8efe4,stroke:#8fa885
+  style R2 fill:#f6f7f9,stroke:#b9c3ce,stroke-dasharray: 4 3
+  style NC fill:#ffffff,stroke:#dde3ea
+  style CC fill:#ffffff,stroke:#dde3ea
+  style DC fill:#ffffff,stroke:#dde3ea

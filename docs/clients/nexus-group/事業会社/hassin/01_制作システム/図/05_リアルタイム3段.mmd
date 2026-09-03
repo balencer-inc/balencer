@@ -1,0 +1,36 @@
+flowchart TB
+  Q{"この画面は<br/>リアルタイムが本当に必要か？"}
+  Q -->|"数十秒遅れて<br/>反映で足りる"| S1
+  Q -->|"即時に押し出したい<br/>（片方向）"| S2
+  Q -->|"同時編集・誰が見ているか<br/>（双方向）"| S3
+
+  subgraph L1["① ポーリング"]
+    S1["SWR / React Query<br/>10〜30秒ごとに再検証"]
+    C1["追加費用 0円<br/>Neon・Vercel そのまま"]
+  end
+
+  subgraph L2["② Neon LISTEN/NOTIFY + SSE"]
+    S2["Postgres NOTIFY を<br/>サーバーで購読 → SSEで押し出す"]
+    C2["追加費用 0円<br/>制約: 1リスナー=1接続<br/>ペイロード8,000バイト上限<br/>片方向・小〜中規模向き"]
+  end
+
+  subgraph L3["③ 専用リアルタイム基盤"]
+    S3["Supabase Realtime<br/>Broadcast / Presence"]
+    C3["$25/月<br/>500同時接続・500万msg込み"]
+    NG["Postgres Changes は<br/>DB移行が必須 → 採らない"]
+  end
+
+  S1 -.->|"足りなければ"| S2
+  S2 -.->|"双方向が必要になれば"| S3
+
+  KEY["結論: DBは Neon のまま。<br/>Broadcast / Presence は DB非依存で使える"]
+  S3 --- KEY
+
+  style S1 fill:#e8efe4,stroke:#8fa885
+  style S2 fill:#fdf0dc,stroke:#c9a86b
+  style S3 fill:#dbe7f3,stroke:#5b7fa6
+  style NG fill:#f7e2e2,stroke:#c98b8b
+  style KEY fill:#ffffff,stroke:#5b7fa6,stroke-width:2px
+  style C1 fill:#ffffff,stroke:#dde3ea
+  style C2 fill:#ffffff,stroke:#dde3ea
+  style C3 fill:#ffffff,stroke:#dde3ea

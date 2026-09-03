@@ -1,0 +1,29 @@
+flowchart LR
+  subgraph portal["社内ポータル（店舗情報管理）"]
+    P1["Vercel<br/>プロジェクトA"]
+    P2[("Neon<br/>店舗マスタ = 正")]
+    P1 --- P2
+  end
+
+  subgraph seisaku["制作管理システム（梶原さん開発）"]
+    S1["Vercel プロジェクトB<br/>Next.js 16 / React 19"]
+    S2[("Neon<br/>50モデル・46マイグレーション")]
+    S1 --- S2
+  end
+
+  subgraph store["画像・ファイル"]
+    C1["Cloudinary 無料枠<br/>月25クレジット ≒ 25GB"]
+  end
+
+  D1["Google Drive<br/>Workspace 移行中"]
+  N1["Notion<br/>ナレッジ"]
+
+  S1 -->|"publicId + url を保存"| C1
+  S2 -.->|"店舗を自前で二重保持<br/>Company / Division / Store / Brand"| P2
+  S1 -.-> N1
+  D1 -.->|"未連携"| S1
+
+  style P2 fill:#dbe7f3,stroke:#5b7fa6
+  style S2 fill:#dbe7f3,stroke:#5b7fa6
+  style C1 fill:#f7e2e2,stroke:#c98b8b
+  style D1 fill:#e8efe4,stroke:#8fa885

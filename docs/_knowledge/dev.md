@@ -132,3 +132,35 @@ zip添付よりURLのほうがエンジニアは確実に見る。ただし社�
 - **持株会社グループは担当者が同じならHDフォルダ1つに束ねる**。旧 `docs/clients/hare/` を `nexus-group/事業会社/hare/` に移設し、`clients/README.md` の命名規則に明文化した
 - 人名の混線に注意。「加藤」がバレンサー側の加藤 梨紗さんとHASSINの加藤社長の両方に居る。旧READMEの「加藤梨紗さんがHD代表就任予定」は要確認扱いに落とした（→ [[feedback_no_imaginary_team_members]] と同じ筋）
 - 音声入力の議事録は固有名詞が崩れる（バーセル/バーゼル＝Vercel、ネオン＝Neon、ディクショナリー＝Cloudinary、スパベース＝Supabase）。git に落とすときに正式表記へ直す
+
+## 2026-09-03 追記：HASSIN 制作システムのデータアーキテクチャを実スキーマから決めた
+
+クライアント自作システムに途中参加するとき、**先にリポジトリのスキーマを読むと結論が変わる**という実例。成果物は `docs/clients/nexus-group/事業会社/hassin/01_制作システム/アーキテクチャ検討_2026-09-03.md`（Notion版 https://app.notion.com/p/3d053269fc5e81749831d0a2ad0237a8 ）。
+
+### 読まずに答えると外す：先行整理の「案a: 直接接続」は不可だった
+Prisma を読むと `Store.id` を7テーブルが外部キー参照していた（Project/Invoice/AssetStore/NewStoreSchedule/MenuSchedule/Request/AllowedUser＋多対多）。**ビューは外部キーの参照先になれない**ので、外部DBを参照先にする案は成立しない。正解は「ポータルを正として日次バッチで一方通行 upsert」＋ `Store.externalId` の追加。
+→ 教訓: **リレーションの本数を数えるまで連携方式を断定しない。** GitHub権限があるなら `gh repo view` で確認 → clone して `grep -n "^model" prisma/schema.prisma` が最短。
+
+### 金額は「単価×実データ量」で桁を出すと議論が決まる
+「Cloudinary 3TB」という申告が**無料枠25クレジット（≒25GB）の120倍**で成立しないと分かった。1クレジット＝保存1GB＝配信1GB＝変換1,000回。3TBを各所で持つ年額は Neon 189万 / Cloudinary 205万 / Vercel Blob 12万 / R2 8.1万 / Drive 0円（既払いプール）。
+→ 教訓: **ストレージの単価差は20倍以上開く。**「どこに置くか」は好みでなく桁の問題。まず実使用量を1つ確認しに行く（5分で桁が決まる）。
+
+### 「安いから全部そこ」にしない判断軸
+R2 は3TBで月6,750円・エグレス無料で最安。それでも原本の置き場に選ばなかったのは**制作部がIllustrator/PSDをFinderから直接開いて編集する**から。アプリ経由でしか触れない置き場は現場の作業を壊す。
+→ 用途で3分割: 構造化=DB／配信サムネ=画像CDN／制作原本=Drive。DBは参照キーだけ持つ。
+
+### リアルタイム同期は「Supabase必須」ではない（誤解しやすい）
+- **Postgres Changes**（DB変更の自動購読）は Supabase の Postgres が必要 → DB移行が必須
+- **Broadcast / Presence** は **DB非依存** → **Neonのまま Supabase Realtime だけ薄く足せる**
+- その手前に無料の2段がある: ①ポーリング10〜30秒 ②Neon の LISTEN/NOTIFY＋SSE（制約: 1リスナー=1接続・直結接続文字列が必要・ペイロード8,000バイト上限・片方向）
+- Vercel Pro の関数は Fluid compute で最大800秒（beta 1800秒）→ SSEはそこで切れるが `EventSource` が自動再接続する
+→ 教訓: **「リアルタイムが欲しい」を即「DB乗り換え」に変換しない。**必要な画面を1〜2枚に絞ってから①→②→③と段を上げる。
+
+### 実装の指摘は「消せないデータ」から入ると効く
+`AssetFile` は `fileUrl` のみで `publicId` を持たず、**DBから消してもCloudinary側の実体が残る**（容量が戻らない）。`GroupPlanPost.imageUrl` も同型。置き場の抽象化（`storageProvider`/`storageKey`/`thumbnailUrl`/`originalRef`）を入れると、乗り換え可能化とこのバグが同時に直る。**共通テーブルへの統合はしない**（6テーブルのリレーション先が違う＋46本のマイグレーション履歴）。
+
+### 作業メモ
+- Notion に図を入れるときは `![キャプション](file-upload://<id>)` の**画像markdown形式にする**。`file-upload://<id>` を裸で置くと**テキストのまま入る**（1度失敗した）
+- **callout に複数行を入れると壊れる**（`\<callout\>` がエスケープされて本文化する）。1行に収める
+- `xychart-beta` は日本語ラベルが長いと軸で重なる。**単位を万円にして5文字程度に切る**
+- **`nlm login` は Chrome 起動中だと失敗する**。CDPポートを9223→9224と変えて自前Chromeを立てようとして、既存インスタンスに奪われ即終了する。別プロファイルのChromeを9223でリッスンさせても、nlm側が毎回次のポートを取るので回避できない。**Chromeを終了してから実行するのが唯一の手**

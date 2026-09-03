@@ -1,0 +1,15 @@
+{
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Hiragino Sans, Hiragino Kaku Gothic ProN, sans-serif",
+    "fontSize": "15px",
+    "primaryColor": "#eef2f7",
+    "primaryTextColor": "#1a2433",
+    "primaryBorderColor": "#8fa3ba",
+    "lineColor": "#7b8ea3",
+    "secondaryColor": "#f6f7f9",
+    "tertiaryColor": "#ffffff",
+    "clusterBkg": "#fafbfc",
+    "clusterBorder": "#c9d4e0"
+  }
+}

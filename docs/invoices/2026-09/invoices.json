@@ -1,0 +1,28 @@
+{
+  "_status": "①で07-080として採番済み。Driveの2026.09請求書フォルダが未作成のため未発行と判断。",
+  "issue_month": "2026-09",
+  "invoices": [
+    {
+      "client": "hilltop",
+      "no": "07-080",
+      "date": "2026-09-01",
+      "due": "2026-09-30",
+      "expected_total_incl": 33000,
+      "items": [
+        {
+          "name": "サーバー維持管理費",
+          "detail": "9月分",
+          "amount": 30000,
+          "basis": "excl",
+          "rate": 10
+        }
+      ],
+      "plan_items": [
+        {
+          "case": "サーバー保守 月額",
+          "excl": 30000
+        }
+      ]
+    }
+  ]
+}

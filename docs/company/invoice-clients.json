@@ -79,11 +79,12 @@
       "ar_code": 80,
       "ar_name": "（有）北麓",
       "plan_name": "北麓",
-      "terms": "請求日から60日後（①タブ『入金60日後？』・07-078の実績と一致）",
-      "due_rule": "issue_plus_60",
+      "terms": "末締め翌末（①タブ見出しは「入金60日後？」だが、8月分の入金予定日は2026/09/30。①が正）",
+      "due_rule": "next_month_end",
       "send": "未記録",
       "slug": "hokuroku",
-      "verified": true
+      "verified": true,
+      "note": "2026年9月・10月分は業績不振でストップ、11月分から再開予定（①備考）"
     },
     "gobi": {
       "name": "株式会社ゴビ",
@@ -131,7 +132,8 @@
       "due_rule": "issue_plus_30",
       "send": "未記録",
       "slug": "clavis-partners",
-      "verified": false
+      "verified": false,
+      "note": "①の宛先表記は「株式会社 Clavis Partners」（スペースあり）。契約書での正式表記を要確認"
     },
     "hare": {
       "name": "株式会社HARE",

@@ -40,6 +40,7 @@ TEMPLATE = os.path.join(ROOT, ".claude/skills/invoice/assets/invoice-template.ht
 CLIENTS = os.path.join(ROOT, "docs/company/invoice-clients.json")
 SEAL = os.path.join(ROOT, "docs/invoices/99_local/seal-balencer.png")
 BANK_FILE = os.path.join(ROOT, "docs/invoices/99_local/振込先.md")
+LEDGER = os.path.join(ROOT, "docs/invoices/ledger.tsv")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 FEE_NOTE = "恐れ入りますが振込手数料は貴社にてご負担をお願いいたします。"
 
@@ -89,6 +90,38 @@ def to_excl(amount: int, basis: str, rate: int) -> int:
     if basis == "excl":
         return int(amount)
     return int(round(amount / (1 + rate / 100)))
+
+
+def fiscal_term(d: date) -> int:
+    """期。12月始まり（第7期＝2025/12〜2026/11）。"""
+    return d.year - 2018 if d.month == 12 else d.year - 2019
+
+
+def read_ledger():
+    rows = []
+    if not os.path.exists(LEDGER):
+        return rows
+    for line in open(LEDGER, encoding="utf-8"):
+        line = line.rstrip("\n")
+        if not line or line.startswith("#") or line.startswith("No\t"):
+            continue
+        rows.append(line.split("\t"))
+    return rows
+
+
+def next_no(used: set, d: date) -> str:
+    """その期で未使用の最小番号を返す（自動採番）。"""
+    term = f"{fiscal_term(d):02d}"
+    n = max((int(x.split("-")[1]) for x in used if x.startswith(term + "-")), default=0)
+    while f"{term}-{n + 1:03d}" in used:
+        n += 1
+    return f"{term}-{n + 1:03d}"
+
+
+def append_ledger(rows):
+    with open(LEDGER, "a", encoding="utf-8") as f:
+        for r in rows:
+            f.write("\t".join(str(x) for x in r) + "\n")
 
 
 def bank_account() -> str:
@@ -206,7 +239,10 @@ def main() -> int:
     outdir = os.path.join(ROOT, "docs/invoices", month)
     os.makedirs(outdir, exist_ok=True)
 
-    ar_rows, plan_rows, pdfs, ng, warn_due = [], [], [], [], []
+    ledger = read_ledger()
+    used = {r[0] for r in ledger}
+    new_ledger = []
+    ar_rows, plan_rows, pdfs, ng, warn_due, auto = [], [], [], [], [], []
     print("=" * 74)
     print(f"請求書 一括生成　{month}　{len(data['invoices'])}件")
     print("=" * 74)
@@ -216,6 +252,10 @@ def main() -> int:
         if not cl:
             raise SystemExit(f"請求先マスタに無いキー: {inv['client']}")
         issue = ymd(inv["date"])
+        if not inv.get("no"):
+            inv["no"] = next_no(used, issue)
+            auto.append((inv["no"], cl["name"]))
+        used.add(inv["no"])
         if inv.get("due"):
             due, guessed = ymd(inv["due"]), ""
         else:
@@ -230,6 +270,8 @@ def main() -> int:
         if mark == "NG":
             ng.append((inv["no"], cl["name"], total, int(exp)))
 
+        new_ledger.append([inv["no"], cl["name"], month, f"{issue:%Y-%m-%d}", total,
+                           "invoice_build"])
         base = f'{inv["no"]}_{cl["short"]}'
         html_path = os.path.join(outdir, base + ".html")
         pdf_name = f'{issue:%Y%m%d}【{cl["short"]}様】.pdf'
@@ -279,7 +321,14 @@ def main() -> int:
         for r in plan_rows:
             f.write("\t".join(str(x) for x in r) + "\n")
 
+    fresh = [r for r in new_ledger if r[0] not in {x[0] for x in ledger}]
+    if fresh:
+        append_ledger(fresh)
     print("-" * 74)
+    if auto:
+        print("自動採番:")
+        for no, nm in auto:
+            print(f"   {no}  {nm}")
     print(f"出力先 {os.path.relpath(outdir, ROOT)}")
     print(f"  ③貼り付け {os.path.basename(p1)}　④確認 {os.path.basename(p2)}")
     if warn_due:

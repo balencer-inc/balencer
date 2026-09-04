@@ -1,0 +1,489 @@
+<!doctype html>
+<!-- デザインmd: nendo（awesome-design-md-jp）を適用。無彩色・Helvetica Neue + 游ゴシック・line-height 1.5・角丸なし・影なし -->
+<html lang="ja"><head><meta charset="utf-8">
+<title>会社の記憶 — 検討資料</title>
+<style>
+:root{--ink:#5a5757;--text:#5a5a5a;--line:rgba(0,0,0,.16);--hair:rgba(0,0,0,.09);--surface:#f2f2f7;--bg:#fff;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:#e9e9ec;}
+body{color:var(--text);
+font-family:-apple-system,YuGothic,"Yu Gothic Medium","Yu Gothic","Hiragino Sans","Noto Sans CJK JP",sans-serif;
+font-size:10.5pt;line-height:1.75;-webkit-font-smoothing:antialiased;
+word-break:normal;overflow-wrap:break-word;line-break:strict;}
+.en{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:1px;}
+
+.page{width:210mm;min-height:297mm;background:var(--bg);margin:8mm auto;padding:22mm 20mm 20mm;position:relative;}
+.pnum{position:absolute;bottom:12mm;right:20mm;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+letter-spacing:1px;font-size:8pt;color:var(--text);}
+.pfoot{position:absolute;bottom:12mm;left:20mm;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+letter-spacing:1px;font-size:8pt;color:var(--text);}
+
+/* cover */
+.cover{display:flex;flex-direction:column;justify-content:center;}
+.cover .brand{font-size:8.5pt;margin:0 0 40mm;}
+.cover h1{font-size:22pt;font-weight:700;line-height:1.5;color:var(--ink);margin:0 0 6mm;letter-spacing:.02em;}
+.cover .sub{font-size:12pt;line-height:1.7;color:var(--ink);margin:0 0 24mm;}
+.cover .box{border-top:1px solid var(--line);padding-top:6mm;}
+.cover dl{margin:0;display:grid;grid-template-columns:32mm 1fr;row-gap:2.5mm;font-size:9.5pt;}
+.cover dt{color:var(--text);}
+.cover dd{margin:0;color:var(--ink);}
+
+h2{font-size:14pt;font-weight:700;color:var(--ink);margin:0 0 6mm;line-height:1.5;letter-spacing:.02em;
+padding-bottom:3mm;border-bottom:1px solid var(--line);}
+h2 .n{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:1px;font-size:9pt;
+display:block;font-weight:400;color:var(--text);margin-bottom:2mm;}
+h3{font-size:11pt;font-weight:700;color:var(--ink);margin:8mm 0 3mm;line-height:1.6;}
+h3:first-of-type{margin-top:0;}
+p{margin:0 0 3.5mm;}
+ul,ol{margin:0 0 4mm;padding-left:6mm;}
+li{margin-bottom:1.5mm;}
+strong{font-weight:700;color:var(--ink);}
+.lead{font-size:11pt;line-height:1.75;color:var(--ink);margin:0 0 6mm;}
+.small{font-size:9pt;line-height:1.7;}
+.note{font-size:9pt;line-height:1.7;color:var(--text);margin:0 0 4mm;}
+
+table{border-collapse:collapse;width:100%;font-size:9pt;margin:0 0 5mm;}
+th,td{border-bottom:1px solid var(--hair);padding:2.5mm 2mm;text-align:left;vertical-align:top;line-height:1.65;}
+th{font-weight:700;color:var(--ink);border-bottom:1px solid var(--line);font-size:8.5pt;}
+td.k{color:var(--ink);font-weight:700;}
+tr.hl td{background:var(--surface);}
+
+.callout{background:var(--surface);padding:5mm 6mm;margin:0 0 5mm;}
+.callout p:last-child{margin:0;}
+.callout .t{font-size:11pt;font-weight:700;color:var(--ink);margin:0 0 2mm;}
+.quote{border-left:2px solid var(--ink);padding:1mm 0 1mm 5mm;margin:0 0 5mm;color:var(--ink);font-size:11pt;line-height:1.7;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin:0 0 5mm;}
+.cell{border:1px solid var(--line);padding:4mm;}
+.cell .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:1px;font-size:8pt;margin:0 0 2mm;}
+.cell .t{font-size:10.5pt;font-weight:700;color:var(--ink);margin:0 0 2mm;}
+.cell p:last-child{margin:0;font-size:9pt;}
+.q{border-top:1px solid var(--hair);padding-top:3mm;margin-bottom:4mm;}
+.q .num{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:1px;font-size:8pt;margin:0 0 1.5mm;}
+.q .t{font-size:10.5pt;font-weight:700;color:var(--ink);margin:0 0 1.5mm;}
+.q p:last-child{margin:0;font-size:9pt;}
+
+@media print{
+  html,body{background:#fff;}
+  body{font-size:9.8pt;line-height:1.68;}
+  @page{size:A4 portrait;margin:16mm 17mm 18mm;}
+  /* 読み物として連続で流す。セクションごとに改ページしない */
+  .page{margin:0;box-shadow:none;min-height:0;height:auto;width:auto;padding:0;}
+  .page + .page{margin-top:9mm;}
+  .cover{min-height:210mm;justify-content:flex-start;padding-top:38mm;page-break-after:always;}
+  table,.callout,.q,.quote,.cell{break-inside:avoid;}
+  tr{break-inside:avoid;}
+  h2,h3{break-after:avoid;}
+  h2{page-break-before:auto;}
+  table{font-size:8.4pt;}
+  th,td{padding:2mm 1.8mm;line-height:1.6;}
+  .small,.note{font-size:8.4pt;line-height:1.62;}
+}
+</style></head><body>
+
+<!-- ============ P1 表紙 ============ -->
+<section class="page cover">
+  <p class="brand en">BALENCER &nbsp;/&nbsp; INTERNAL REVIEW DOCUMENT</p>
+  <h1>会社の記憶</h1>
+  <p class="sub">経営の意思を、人にもAIにも読める形にして<br>会社の中に残す。その仕事を商品にする検討。</p>
+  <div class="box">
+    <dl>
+      <dt class="en">DATE</dt><dd>2026年9月4日</dd>
+      <dt class="en">VERSION</dt><dd>v0.3（設計・料金・入口とも案）</dd>
+      <dt class="en">READERS</dt><dd>バレンサーのメンバー、および確認を依頼するAI</dd>
+      <dt class="en">PURPOSE</dt><dd>この商品を進めるかどうかを判断するための材料</dd>
+      <dt class="en">STATUS</dt><dd>社内限定。顧客に見せない。金額はすべて確定前</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ P2 この文書について ============ -->
+<section class="page">
+  <h2><span class="n en">00 &nbsp;ABOUT THIS DOCUMENT</span>この文書は何で、何を見てほしいか</h2>
+
+  <p class="lead">バレンサーが新しく組もうとしているサービスの検討資料です。まだ売っていません。作るかどうか、どう作るかを決めるために書いています。</p>
+
+  <h3>読む順</h3>
+  <p>背景（なぜこの検討が始まったか）→ 解決する課題 → サービスの中身 → どう売るか → 何をしないか → 今の状態 → 確認してほしいこと、の順に並んでいます。途中から読んでも意味が通るように、繰り返しを許して書いています。</p>
+
+  <h3>すでに1度、別のAI4人に採点させています</h3>
+  <p>書き手（Claude）とは別に、一流編集者・案件を回すディレクター・読者代表の経営者・編集長という4つの立場のAIに、社内資料そのものを読ませて100点満点で採点させました。2周やっています。</p>
+  <table>
+    <thead><tr><th style="width:34%">審査の立場</th><th style="width:16%">1周目</th><th style="width:16%">2周目</th><th>2周目に残った主な指摘</th></tr></thead>
+    <tbody>
+      <tr><td class="k">一流編集者</td><td>64</td><td>76</td><td>金額の層だけ検算されていない</td></tr>
+      <tr><td class="k">ディレクター（実務）</td><td>46</td><td>69</td><td>積算はまだ楽観。社員アンケートに匿名性がない</td></tr>
+      <tr><td class="k">経営者（読者代表）</td><td>62</td><td>73</td><td>後半のフェーズは払わない。片務的だから</td></tr>
+      <tr><td class="k">編集長</td><td>65</td><td>73</td><td>ブランディング会社の商品にブランドが入っていない</td></tr>
+      <tr class="hl"><td class="k">平均</td><td class="k">59</td><td class="k">73</td><td>社内の合格ラインは80点。届いていない</td></tr>
+    </tbody>
+  </table>
+  <p>2周目の指摘はほぼ全部が金額の検算ミスだったので、そこを潰してv0.3にしました。<strong>ただし80点に届いていないという事実は残っています。</strong>この文書は、その状態のまま人に見せて意見をもらうために作っています。</p>
+
+  <div class="callout">
+    <p class="t">見てほしいのは3つ</p>
+    <p>① 課題の立て方が、実際の顧客と合っているか<br>
+       ② この値段と工程で、本当に回せるか<br>
+       ③ この商品を持つことが、バレンサーにとって正しいか</p>
+  </div>
+  <p class="note">具体的な確認事項は最後のページ（§08）に、メンバー向けとAI向けを分けて書いています。</p>
+
+</section>
+
+<!-- ============ P3 背景 ============ -->
+<section class="page">
+  <h2><span class="n en">01 &nbsp;BACKGROUND</span>なぜこの検討が始まったか</h2>
+
+  <h3>きっかけは体感だった</h3>
+  <p>代表の阿部から、こういう話が出ました。誰でも気軽にアプリを作れるようになってきて、自分たちの価値が下がってきているのが体感で分かる。カフェで高齢の方の会話にもAIが出てくる。相当なところまで来ている。</p>
+  <p>そのうえで、FDE（Forward Deployed Engineer）という職種が、自分たちがやっていることに近くて価値があるので気になっている、と。</p>
+
+  <h3>調べて分かったのは、供給だけが飽和したということ</h3>
+  <p>安くなったのは3つだけでした。<strong>制作の作業量、ツールの紹介、時間の切り売り。</strong>一方で、需要側はまったく詰まったままです。</p>
+  <table>
+    <thead><tr><th style="width:58%">分かったこと</th><th style="width:20%">数字</th><th>出どころ</th></tr></thead>
+    <tbody>
+      <tr><td>日本企業の、コア業務でのAI導入率</td><td class="k">1.9%</td><td>OECD 2025-12<br><span class="small">中小企業対象</span></td></tr>
+      <tr><td>生成AIの試験導入が、測定可能な成果に至っていない割合</td><td class="k">95%</td><td>MIT NANDA 2025<br><span class="small">大企業のパイロット対象</span></td></tr>
+      <tr><td>AI施策を本番展開前に断念した企業（1年で）</td><td class="k">17%→42%</td><td>S&amp;P Global</td></tr>
+      <tr><td>中小企業が挙げる最大の障壁</td><td class="k">スキル・知識不足 50%</td><td>OECD 2025-12</td></tr>
+    </tbody>
+  </table>
+  <p class="note"><strong>この数字の扱いには注意が必要です。</strong>OECDは中小企業対象、MITは大企業のパイロット対象で、調査の対象が違います。日本の中小企業にそのまま当てはめることはしません。順番の話とこれらの数字は、同じ方向を指しているというところまでで止めています。</p>
+
+  <h3>FDEは参照点にはなるが、そのまま真似はできない</h3>
+  <p>FDEは、顧客の現場に入り込んで自社のプラットフォームを実装し、定着まで責任を負う職種です。2003年設立のパランティアが確立し、2025年から2026年で求人が前年比8〜11倍に増えました。値付けの対象はコードを書けることではなく、問題の分解、業務プロセスの再設計、そして<strong>顧客組織の中での合意形成</strong>です。</p>
+  <p>ただし、この職種の高い報酬には原資があります。<strong>FDE1人が動くことで、背後にある自社プロダクトのライセンス契約が成立・更新するからです。</strong>人月の対価ではありません。</p>
+  <div class="callout">
+    <p>したがって、自社プロダクトを持たない支援会社がFDEを名乗るだけでは、単価だけ吊り上げた常駐と同じ棚に並びます。日本では既に、数年前まで月60万円で動いていた人材が肩書きだけをFDEに書き換える動きが起きています。</p>
+    <p><strong>真似すべきはFDEではなく、パランティアがFDEの発見を製品側の構造（オントロジー）に固めた仕組みのほうです。</strong></p>
+  </div>
+</section>
+
+<!-- ============ P4 課題 ============ -->
+<section class="page">
+  <h2><span class="n en">02 &nbsp;THE PROBLEM</span>解決する課題は2つある</h2>
+
+  <p class="lead">顧客側の課題と、バレンサー側の課題です。この2つが同じ形をしているのが、この検討の出発点になっています。</p>
+
+  <h3>顧客側 — 会社のことが、会社の外に書かれていない</h3>
+  <p>AIが動かない会社に共通しているのは、技術の問題ではありません。次の3つです。</p>
+  <ul>
+    <li><strong>決裁が社長1人に集まっていて、現場が動けない。</strong>承認が通らない仕事は、AIを入れても通りません</li>
+    <li><strong>やり方が人の頭の中にあり、その人が辞めると消える。</strong>手順が取り出せないので、AIに渡すものがありません</li>
+    <li><strong>同じ情報が3箇所にあって、どれが正しいか分からない。</strong>探す時間が最大のコストになっています</li>
+  </ul>
+  <p>社長の頭の中にあるものは、AIにも社員にも渡りません。ここが埋まらないまま道具だけ入れるのが、成果の出ないAI導入の典型です。</p>
+
+  <h3>バレンサー側 — 案件ごとに形が違い、型が個人に残る</h3>
+  <table>
+    <thead><tr><th style="width:26%">見る場所</th><th style="width:37%">今</th><th>これから</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="k">入口の相談</td><td>Wi-Fi、ロゴ、AI。バラバラに来る</td><td>変わらない。バラバラに来ていい</td></tr>
+      <tr class="hl"><td class="k">やる仕事</td><td>対話、ブランド、業務基盤、AI実装</td><td>変わらない。4領域そのまま</td></tr>
+      <tr class="hl"><td class="k">体制</td><td>少数精鋭。経営の近くに立つ</td><td>変わらない</td></tr>
+      <tr><td class="k">出口（納品物）</td><td>案件ごとに形が違う</td><td>いつも同じ形。8つのブロックが埋まった1つの器</td></tr>
+      <tr><td class="k">終わりの定義</td><td>ない。月額でそばに居続ける</td><td>顧客が自分で更新できている状態。契約に書く</td></tr>
+      <tr><td class="k">案件のあと</td><td>型は経験として個人の頭に残る</td><td>型がファイルに残り、次は共通部分から組める</td></tr>
+      <tr><td class="k">2社目の速さ</td><td>1社目とほぼ同じ時間がかかる</td><td>骨格の上で組むので短くなる</td></tr>
+      <tr><td class="k">説明の仕方</td><td>4領域を横断で、と毎回説明し直す</td><td>会社の記憶をつくる、と1つで言える</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p class="t">新しいことは1つもない</p>
+    <p>やる仕事は変わりません。変えるのは<strong>出口の形</strong>と、<strong>案件が終わったあとに何が残るか</strong>の2つだけです。ここを曖昧にすると、この検討は「今と同じことを言い換えただけ」に見えます。</p>
+  </div>
+
+  <p class="note">代表事例として、ある建設・不動産管理業の会社では、Wi-Fiを入れたいという1件の相談から始まって7年目になり、いまは部署を超えたプロジェクトが自発的に生まれる状態になっています。やっていることはすでにこの形です。足りないのは実力ではなく構造です。</p>
+
+</section>
+
+<!-- ============ P5 サービスの中身 ============ -->
+<section class="page">
+  <h2><span class="n en">03 &nbsp;WHAT IT IS</span>サービスの中身</h2>
+
+  <div class="quote">会社の記憶とは、その会社が何者で、何を大切にし、どう決め、どう動くかを、人にもAIにも同じ形で読める状態にして持つこと。</div>
+  <p>成果物は資料ではありません。<strong>会社が更新し続ける器</strong>です。だから納品して終わらず、運用が始まります。</p>
+
+  <h3>8つのブロックで構造化する</h3>
+  <p>バレンサー自身が社内でやっていることを一般化したものです。発明ではありません。</p>
+  <table>
+    <thead><tr><th style="width:5%"></th><th style="width:22%">ブロック</th><th style="width:38%">何が書いてあるか</th><th>欠けると何が起きるか</th></tr></thead>
+    <tbody>
+      <tr><td class="k en">A</td><td class="k">会社の定義</td><td>何者か。何を大切にするか。どこへ行くか</td><td>判断がその場で揺れる</td></tr>
+      <tr><td class="k en">B</td><td class="k">事業と商品</td><td>何を売るか。いくらか。何は売らないか</td><td>安請け合いが止まらない</td></tr>
+      <tr><td class="k en">C</td><td class="k">顧客</td><td>誰に届けるか。個別に誰で、何があったか</td><td>担当交代で関係が消える</td></tr>
+      <tr class="hl"><td class="k en">D</td><td class="k">決め方</td><td>誰が何を決めるか。どの会議体で。何を基準に</td><td>全部が社長決裁で詰まる</td></tr>
+      <tr><td class="k en">E</td><td class="k">業務の型</td><td>繰り返す仕事の、再現できる手順</td><td>属人化する</td></tr>
+      <tr><td class="k en">F</td><td class="k">言葉とデザインの基準</td><td>対外に出るものの正誤判定基準</td><td>AIに書かせた瞬間に崩れる</td></tr>
+      <tr><td class="k en">G</td><td class="k">記録の置き場ルール</td><td>どこに何を置くか。次に読む人とAIのために</td><td>探す時間が最大コストになる</td></tr>
+      <tr class="hl"><td class="k en">H</td><td class="k">AIへの渡し方</td><td>人が読む形とAIが読む形を一致させる</td><td>毎回ゼロから説明する</td></tr>
+    </tbody>
+  </table>
+  <p class="note">A〜Dが経営の層、E〜Hが実装の層です。<strong>順番に意味があります。</strong>AとDが埋まっていない会社にEとHだけ入れても、成果の出ないAI導入を再現するだけになります。</p>
+
+  <h3>既存の4領域が、そのまま製造ラインになる</h3>
+  <table>
+    <thead><tr><th style="width:42%">支援領域</th><th style="width:30%">作るブロック</th><th>作れる条件</th></tr></thead>
+    <tbody>
+      <tr><td class="k">組織開発・MVV</td><td class="k">A 会社の定義</td><td>経営者と社員の対話</td></tr>
+      <tr><td class="k">ブランド戦略・クリエイティブ</td><td class="k">F 言葉と基準 ／ B の言語化</td><td>会社の意味を判定基準に落とす</td></tr>
+      <tr><td class="k">デジタル・業務基盤</td><td class="k">E 業務の型 ／ G 置き場</td><td>現場の実務に入る</td></tr>
+      <tr><td class="k">AI実装</td><td class="k">H AIへの渡し方</td><td>現場で使われるところまで</td></tr>
+      <tr class="hl"><td class="k">経営伴走</td><td class="k">C 顧客 ／ D 決め方</td><td><strong>経営の会議に同席していること</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <p class="t">この設計の肝はここ</p>
+    <p><strong>CとDは、経営の会議に同席していないと書けません。</strong>資料として外から作れる部分ではないので、ここが外注に落ちない核であり、経営の隣に立っていることが初めて実利になる場所です。</p>
+  </div>
+
+</section>
+
+<!-- ============ P6 どう売るか ============ -->
+<section class="page">
+  <h2><span class="n en">04 &nbsp;HOW WE SELL IT</span>どう売ろうと思っているか</h2>
+
+  <p class="lead">8つを一度に作りません。<strong>最小の1周を回し、45日で一度切って、そこで止められるようにします。</strong>残りは継続契約の中で埋めます。</p>
+  <p>8つ全部を1本にすると投下が倍以上になって、価格が対象企業の決裁が下りない帯に出ます。かといって8つをバラバラのメニューにすると、今と同じ（案件ごとに形が違う）に戻ります。</p>
+
+  <h3>3段の構成</h3>
+  <table>
+    <thead><tr><th style="width:20%">段</th><th style="width:14%">期間</th><th style="width:16%">金額（案・税抜）</th><th>中身</th></tr></thead>
+    <tbody>
+      <tr><td class="k">充足度診断</td><td>2週間</td><td class="k">48万円</td><td>8ブロックを4段階で暫定採点。経営者と社員に同じ24問を配り、答えのズレを見る。対象候補業務3つの年間作業時間を算定する</td></tr>
+      <tr class="hl"><td class="k">フェーズ1<br>現在地と決め方</td><td>Day 1〜45</td><td class="k">148万円</td><td>経営者の判断基準の言語化。決裁の詰まりの特定と、権限移譲を1件実行する。対象業務の確定</td></tr>
+      <tr><td class="k">フェーズ2<br>型化と実装</td><td>Day 46〜120</td><td class="k">198万円</td><td>業務1本の手順化。AIの稼働。記録の整備。対外物の現在地1枚。社内研修1回。引き渡し</td></tr>
+      <tr><td class="k">通し</td><td>約4ヶ月半</td><td class="k">394万円</td><td>継続はCONSULT（月20万円）／PARTNER（月30〜50万円）へ</td></tr>
+    </tbody>
+  </table>
+  <p class="note"><strong>90日と呼びません。</strong>業務の型化3〜4週とAIの実装3〜4週は直列なので、45日には入りません。入らない工程を90日と呼ばないことにしました。</p>
+
+  <div class="callout">
+    <p class="t">フェーズ1で終わってよい。これを商談でこちらから先に言う</p>
+    <p>前提が崩れている会社を無理に後半へ進めません。45日で切る理由は2つ。①顧客が148万円から入れて、価値を見てから残りを決められる ②同席が取れない、現場が動かないといった前提崩れを、実装に入る前に検出できる。</p>
+  </div>
+
+  <h3>単独で売れないブロックが3つある。そして一番求められるのがそこ</h3>
+  <table>
+    <thead><tr><th style="width:26%"></th><th style="width:20%">ブロック</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td class="k">単独で売れる</td><td>A・C・E・F・G</td><td>単品での受注実績がある（C・Gは要確認）</td></tr>
+      <tr class="hl"><td class="k">単独で売れない</td><td>B・D・H</td><td>Bは基準（A）が要る。Dは同席が要る。HはA・D・Eが要る</td></tr>
+    </tbody>
+  </table>
+  <p>顧客が一番求めるのはH（AI）です。だから商談では、断らずに順番を示します。</p>
+  <div class="quote">AIを載せること自体は3〜4週間でできます。ただし今の状態で載せると、動かない側に入る確率が高い。先に決め方と、対象業務の手順を見せてください。そこが埋まっていれば、AIは最後の1ヶ月で載ります。</div>
+  <p>相手の会社の順番を、相手より先に整理して見せることになるので、<strong>提案ではなく診断として効きます。</strong></p>
+
+</section>
+
+<!-- ============ P7 やらないこと ============ -->
+<section class="page">
+  <h2><span class="n en">05 &nbsp;WHAT WE DO NOT DO</span>やらないこと、受けないこと</h2>
+
+  <p class="lead">この商品でいちばん品質を左右するのが、範囲を広げないことです。</p>
+
+  <h3>この範囲で触らないもの</h3>
+  <p>事業と商品（B）、顧客（C）、言葉の基準化（Fの本体）、会社の定義の全社浸透、業務の型の2本目以降。これらは継続契約の中で埋めます。</p>
+
+  <h3>受けない条件（4つ）</h3>
+  <table>
+    <thead><tr><th style="width:6%">#</th><th style="width:48%">条件</th><th>満たせない場合</th></tr></thead>
+    <tbody>
+      <tr><td class="k en">1</td><td>更新担当者を正副2名、社内から出せること</td><td>診断で終える</td></tr>
+      <tr><td class="k en">2</td><td>経営会議に同席させてもらえること</td><td>フェーズ1のみで終える</td></tr>
+      <tr><td class="k en">3</td><td>対象業務が年間1,000時間以上あること</td><td>診断で終える。フェーズ1も売らない</td></tr>
+      <tr><td class="k en">4</td><td>フェーズ2の着手までに、AIを載せる環境（管理者権限とデータの取り出し）を顧客側で用意できること</td><td>フェーズ2に進まない</td></tr>
+    </tbody>
+  </table>
+
+  <h3>成果物が縮んだら、必ず金額も下げる</h3>
+  <table>
+    <thead><tr><th style="width:40%">事由</th><th style="width:22%">減額</th><th>根拠</th></tr></thead>
+    <tbody>
+      <tr><td class="k">経営会議の同席が1回以下</td><td class="k">フェーズ1から20万円</td><td>権限移譲1件の実行 2.5人日ぶん</td></tr>
+      <tr><td class="k">Day100の判定でAIが稼働していない</td><td class="k">フェーズ2から40万円</td><td>実装と現場テスト 5.0人日ぶん</td></tr>
+    </tbody>
+  </table>
+  <p class="note">重なった場合は加算します。減額の幅は積算の行から導いていて、丸めた数字ではありません。Day100の判定は、顧客の更新担当者と同席して直近2週間の使用回数を確認します。週3回を下回っていれば、手順書とAIへの指示文一式の引き渡しに切り替え、40万円を減額して完了します。無償延長はしません。</p>
+
+  <h3>回収を、業務削減だけで説明しない</h3>
+  <div class="callout">
+    <p>業務1本の削減だけで394万円は戻りません。戻るのは、決裁が1つ現場に降りること、その業務が担当者不在でも回ること、2本目以降を自社で展開できる型が残ることの合計です。</p>
+    <p><strong>業務削減の金額だけで判断されるなら、この商品はお勧めしません。</strong>これを商談で先に言います。</p>
+  </div>
+  <p class="note">削減率も約束しません。実績がない段階で「半減します」と言うと、4ヶ月後に必ず揉めます。診断では「御社のこの業務は年間◯時間。そのうち転記・確認・探す時間が◯時間。ここが減る対象です」という形で、<strong>減らす対象の時間を名指しする</strong>ところまでにします。</p>
+
+</section>
+
+<!-- ============ P8 採算 ============ -->
+<section class="page">
+  <h2><span class="n en">06 &nbsp;THE NUMBERS</span>採算と、稼働の制約</h2>
+
+  <p class="lead">ここは社内限定です。顧客には出しません。<strong>正直に言うと、1件目は割に合いません。</strong>それを承知で1件目を回すという判断をしています。</p>
+
+  <h3>積算と実効単価</h3>
+  <table>
+    <thead><tr><th style="width:30%"></th><th style="width:18%">金額（案）</th><th style="width:16%">投下人日</th><th>実効単価</th></tr></thead>
+    <tbody>
+      <tr><td class="k">充足度診断</td><td>48万円</td><td>5.5</td><td>8.7万円／日</td></tr>
+      <tr><td class="k">フェーズ1</td><td>148万円</td><td>21.0</td><td>7.1万円／日</td></tr>
+      <tr><td class="k">フェーズ2</td><td>198万円</td><td>32.0</td><td>6.2万円／日</td></tr>
+      <tr class="hl"><td class="k">通し</td><td class="k">394万円</td><td class="k">58.5</td><td class="k">6.7万円／日</td></tr>
+    </tbody>
+  </table>
+  <p>比較の目安として、PARTNER（月40万円÷月4日稼働）は10万円／日です。<strong>それを大きく下回ります。</strong>理由は、この商品の共通資産10項目のうち5つが未完成で、1件目はそれを作りながら回すからです。</p>
+
+  <h3>だから撤退の閾値を先に決めておく</h3>
+  <table>
+    <thead><tr><th style="width:20%">件数</th><th style="width:36%">目標</th><th>下回った時</th></tr></thead>
+    <tbody>
+      <tr><td class="k">1件目</td><td>6.7万円／日（実測を取ることが目的）</td><td>実測を記録し、共通資産を作り切る</td></tr>
+      <tr class="hl"><td class="k">2件目</td><td>8.2万円／日（資産が効いて48人日に落ちる想定）</td><td><strong>7.5万円／日を下回ったら、この商品をやめて設計に戻る</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="note">受注下限は通し360万円（6.2万円／日）です。これを下回るなら受けません。</p>
+
+  <h3>同時に受けられるのは1件だけ</h3>
+  <table>
+    <thead><tr><th style="width:34%">体制</th><th style="width:20%">稼働の占有率</th><th>判断</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="k">1名（共通資産が未完成の間）</td><td class="k">73%</td><td>同時1件のみ。2件目に着手しない</td></tr>
+      <tr><td class="k">2名</td><td>37%</td><td>1件目のフェーズ2着手以降なら2件目に着手できる</td></tr>
+    </tbody>
+  </table>
+  <p>共通資産が揃うまでは代表以外が回せません。ここを守らないと、売れた瞬間に営業と既存の継続案件が止まります。</p>
+
+  <h3>補助金は前提にしない</h3>
+  <p>AI導入補助金2026は、この構成のままでは通らない可能性が高いです。公式規定で<strong>役務費がソフトウェア費を上回る構成が対象外</strong>になりやすく、この商品は役務が主体です。時間単価の上限（1万円）については実効8,419円／時なので上限内で、そこは障害になりません。<strong>障害は構成の一点です。</strong>使うなら、対象になる製品部分を別に立てて、この工程を導入役務として組む必要があります。</p>
+
+</section>
+
+<!-- ============ P9 今の状態 ============ -->
+<section class="page">
+  <h2><span class="n en">07 &nbsp;WHERE WE ARE</span>今どこまで来ていて、何が空いているか</h2>
+
+  <h3>できているもの、いないもの</h3>
+  <table>
+    <thead><tr><th style="width:56%">共通で使うもの（作れば毎回そのまま使える）</th><th>状態</th></tr></thead>
+    <tbody>
+      <tr><td>充足度診断の質問集（24問）と採点表</td><td class="k">あり</td></tr>
+      <tr><td>ブロックごとの終わりの判定基準</td><td class="k">あり</td></tr>
+      <tr><td>工程と各期の出口</td><td class="k">あり</td></tr>
+      <tr><td>断り文句への返し（5つ）</td><td class="k">あり</td></tr>
+      <tr><td>撤退線と減額の表</td><td class="k">あり</td></tr>
+      <tr class="hl"><td>会議同席時の観察の観点（決め方の作り方）</td><td class="k">未</td></tr>
+      <tr class="hl"><td>業務観察から手順化までのフォーマット</td><td class="k">未</td></tr>
+      <tr class="hl"><td>AIへの読ませ方の型</td><td class="k">未</td></tr>
+      <tr class="hl"><td>研修カリキュラムと教材</td><td class="k">未</td></tr>
+      <tr class="hl"><td>引き渡し手順と更新ルールの雛形</td><td class="k">未</td></tr>
+    </tbody>
+  </table>
+  <p><strong>8割共通は目標であって、現状は5割です。</strong>未が5つある間は、代表以外がこの商品を回せません。1件目を回しながら5つを作る。それが1件目の本当の目的になります。</p>
+
+  <h3>まだ決まっていないこと</h3>
+  <table>
+    <thead><tr><th style="width:34%">決めること</th><th>案</th></tr></thead>
+    <tbody>
+      <tr><td class="k">対外での名称</td><td>「会社の記憶」をそのまま使うか、別の言い方にするか</td></tr>
+      <tr><td class="k">金額</td><td>診断48万円／フェーズ1 148万円／フェーズ2 198万円／通し394万円</td></tr>
+      <tr><td class="k">最初の1社</td><td>自社で完成形を作る／既存顧客で作り直して事例化する／新規商談で試す</td></tr>
+      <tr><td class="k">A〜Hの記号</td><td>社内でも日本語名に置き換えるか（読者代表の経営者から2度指摘あり）</td></tr>
+      <tr><td class="k">位置づけ</td><td>この商品を会社の顔にしない、と決め切れるか</td></tr>
+    </tbody>
+  </table>
+
+  <h3>解けていない論点が2つ</h3>
+  <div class="callout">
+    <p class="t">1. ブランディング会社の商品に、ブランドの成果物が残らない</p>
+    <p>編集長からの指摘です。この範囲で触るのはA・D・E・G・Hで、F（言葉とデザインの基準）は基準化まで行きません。最小の対応として引き渡し物に「対外物の現在地1枚」を入れましたが、根本の解決ではありません。値札と工程と契約条項が揃っているのはこの商品だけなので、放っておくと重力でこれが会社の顔になります。</p>
+  </div>
+  <div class="callout">
+    <p class="t">2. 受けない条件を4つとも満たす会社が、何社あるか数えていない</p>
+    <p>更新担当を正副2名／経営会議に外部を入れる／年間1,000時間の業務がある／AI環境を用意できる。この4つが同時に揃う会社は相当絞られます。<strong>実名で1〜3社挙がるかどうかで、この設計が回るかが決まります。</strong>ここはまだやっていません。</p>
+  </div>
+
+</section>
+
+<!-- ============ P10 確認してほしいこと ============ -->
+<section class="page">
+  <h2><span class="n en">08 &nbsp;REVIEW REQUEST</span>確認してほしいこと</h2>
+
+  <p class="lead">この文書を読んで、次の問いに答えてもらえると助かります。<strong>合っているかどうかより、どこが間違っているかを教えてほしいです。</strong></p>
+
+  <h3>メンバーへ</h3>
+  <div class="q"><p class="num en">Q1</p><p class="t">§02の顧客側の課題3つは、実際に見てきた会社と合っていますか</p>
+    <p>決裁が社長に集まる／やり方が頭の中にある／同じ情報が3箇所にある。この3つ以外に、もっと共通して詰まっているところがあれば教えてください。</p></div>
+  <div class="q"><p class="num en">Q2</p><p class="t">受けない条件4つを満たす会社が、思い浮かびますか</p>
+    <p>実名で1〜3社。思い浮かばないなら、どの条件が一番厳しいかを教えてください。</p></div>
+  <div class="q"><p class="num en">Q3</p><p class="t">この工程を、自分が回せると思いますか</p>
+    <p>回せないなら、どの作業が無理か。とくに、経営会議に同席して決裁の詰まりを特定する部分と、AIを現場で動かす部分について。</p></div>
+  <div class="q"><p class="num en">Q4</p><p class="t">金額を見てどう感じますか</p>
+    <p>診断48万円／フェーズ1 148万円／フェーズ2 198万円。高い・安い・順番がおかしい、のどれでも。とくにフェーズ2の198万円が、今の書き方で売れるかどうか。</p></div>
+  <div class="q"><p class="num en">Q5</p><p class="t">A〜Hの記号は、社内でも日本語にすべきですか</p>
+    <p>読者代表の経営者からは2度「覚える気にならない」と言われました。実務で使う側の感覚を聞きたいです。</p></div>
+
+  <h3>確認を依頼するAIへ</h3>
+  <div class="q"><p class="num en">Q6</p><p class="t">論理の穴と、数字の矛盾を探してください</p>
+    <p>前提と結論が繋がっていない箇所、数字の辻褄が合わない箇所、同じ数字が2つの意味で使われている箇所。これまでに、補助金の時間単価の計算違い・回収年数が自社ルールを破っている・支払スケジュールがフェーズ分割の思想と矛盾する、の3つが見つかっています。同種のものが残っているかを見てほしいです。</p></div>
+  <div class="q"><p class="num en">Q7</p><p class="t">58.5人日は楽観ですか</p>
+    <p>移動・記録整理・進行管理・AI環境の調整・差し戻しは計上済みです。それでも足りない行があれば、何が何人日足りないかを名指しで。</p></div>
+  <div class="q"><p class="num en">Q8</p><p class="t">この商品を持つことは、この会社にとって正しいですか</p>
+    <p>経営と並走するブランディングカンパニーという定義に対して、この商品はブランドの成果物をほとんど残しません。位置づけ（会社の顔にしない）で足りるか、それとも設計を変えるべきか。</p></div>
+  <div class="q"><p class="num en">Q9</p><p class="t">代表以外が回せるようになると思いますか</p>
+    <p>共通資産10項目のうち5つが未完成です。その5つを作れば属人性は解けるか、それとも経営会議への同席という部分が本質的に代表に紐づいているか。</p></div>
+
+  <p class="note">意見をもらったら、この文書のバージョンを上げて反映します。反映しなかった意見は、なぜ反映しなかったかを記録に残します。</p>
+
+</section>
+
+<!-- ============ P11 用語と出典 ============ -->
+<section class="page">
+  <h2><span class="n en">09 &nbsp;GLOSSARY &amp; SOURCES</span>用語と出典</h2>
+
+  <h3>この文書で使っている社内の言い方</h3>
+  <table>
+    <thead><tr><th style="width:32%">社内の言い方</th><th>意味／顧客に出す言い方</th></tr></thead>
+    <tbody>
+      <tr><td class="k">A〜H</td><td>会社の記憶を構成する8つのブロック。顧客には日本語の名前で通す</td></tr>
+      <tr><td class="k">A簡易</td><td>経営者の判断基準の言語化まで（全社浸透は含まない）</td></tr>
+      <tr><td class="k">G最小</td><td>対象業務まわりの記録の整理だけ（全社の情報整備は含まない）</td></tr>
+      <tr><td class="k">型化</td><td>手順にすること</td></tr>
+      <tr><td class="k">自走化条項</td><td>引き継ぎについての契約上の取り決め</td></tr>
+      <tr><td class="k">人日</td><td>1人が1日（8時間）動く量。工数の単位</td></tr>
+      <tr><td class="k">実効単価</td><td>受注額 ÷ 投下人日。1日いくらで働いているか</td></tr>
+      <tr><td class="k">FDE</td><td>Forward Deployed Engineer。顧客の現場に入り込んで実装と定着まで担う職種。<strong>対外では使わない</strong>（社内の構造の参照点としてのみ）</td></tr>
+      <tr><td class="k">SPOT／CONSULT<br>PARTNER／EXECUTIVE<br>PROJECT</td><td>バレンサーの既存サービス5区分。順に、経営整理（30万円／回）、経営相談（月20万円）、経営伴走（月30〜50万円）、経営参画（月60〜100万円）、制作・開発・実装（個別見積）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>数字の出どころ</h3>
+  <ul class="small">
+    <li>OECD『AI Adoption by Small and Medium-Sized Enterprises』2025年12月 — 日本のコア業務でのAI導入率1.9%（米国6.1%）、中小企業の50%が社員のスキル不足を障壁に挙げる</li>
+    <li>MIT NANDA 2025 — エンタープライズの生成AIパイロットの95%が測定可能なビジネスインパクトに至っていない</li>
+    <li>S&amp;P Global — AI施策を本番展開前に断念した企業が1年で17%から42%へ</li>
+    <li>Gartner — 2027年末までにエージェントAIプロジェクトの40%以上がキャンセルされる見込み</li>
+    <li>Perspective AI『2026 FDE Hiring Trends』（1,000求人分析）／『2026 FDE Compensation Report』（1,200人分析）</li>
+    <li>The Crossing Report 2026 — AIで標準的な成果物の制作時間が30〜70%圧縮される。固定価格への移行</li>
+    <li>McKinsey — 2025年に全世界フィーの25%が成果連動。ワークフロー再設計が生成AIのEBIT効果の最大要因</li>
+    <li>San Francisco Fed 2026年2月 — マクロ生産性へのAI効果の証拠は限定的</li>
+  </ul>
+  <p class="note"><strong>数字を対外に出す時の規律を2つ決めています。</strong>①外部データは調査対象と出典を必ず併記する（対象が違うものを当てはめない）②自前の推定値（削減率・回収年数）は実績がないので、幅と前提を明記し、約束の形で出さない。</p>
+
+  <h3>元になっている社内文書</h3>
+  <table>
+    <tbody>
+      <tr><td class="k" style="width:38%">ポジショニング戦略メモ 2026</td><td>この検討が生まれた背景。FDEを参照点にした会社と個人の置き所</td></tr>
+      <tr><td class="k">会社の記憶 商品定義</td><td>8ブロックの定義と、4領域との対応</td></tr>
+      <tr><td class="k">サービス設計 v0.3</td><td>ブロック別の渡すもの・終わりの判定・断り文句・撤退線</td></tr>
+      <tr><td class="k">充足度診断 質問集と採点表 v0.3</td><td>入口。24問・採点表・匿名ルール・対象業務の測り方</td></tr>
+      <tr><td class="k">料金と契約条件 v0.3</td><td>積算・支払・減額表・契約条項・正本改訂リスト（社内限定）</td></tr>
+      <tr><td class="k">構造図</td><td>今とこれからの対比</td></tr>
+    </tbody>
+  </table>
+  <p class="note">いずれもリポジトリの docs/products/kaisha-no-kioku/ 配下にあります。決めたことと保留は _決定ログ.md に1行ずつ積んでいます。</p>
+
+</section>
+
+</body></html>

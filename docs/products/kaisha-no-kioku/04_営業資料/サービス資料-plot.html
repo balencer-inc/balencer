@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>サービス資料 プロット v0.1 — 会社の記憶</title>
+<style>
+:root{--white:#FFFFFF;--cool:#F7F8F9;--pale:#F0F2F4;--ink:#45484D;--mid:#7A7E85;--line:#D9DCE1;--blue:#3158D4;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--pale);color:var(--ink);
+font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+font-feature-settings:"palt";line-height:1.9;font-size:15px;-webkit-font-smoothing:antialiased;}
+.sheet{max-width:880px;margin:48px auto;background:var(--white);padding:64px 72px 80px;}
+h1{font-size:27px;line-height:1.5;font-weight:700;letter-spacing:.02em;margin:0 0 24px;padding-bottom:22px;border-bottom:2px solid var(--ink);}
+h2{font-size:19px;font-weight:700;margin:56px 0 18px;letter-spacing:.02em;padding-left:14px;border-left:3px solid var(--blue);}
+h3{font-size:15.5px;font-weight:700;margin:34px 0 10px;color:var(--blue);letter-spacing:.02em;}
+p{margin:0 0 14px;}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0;}
+a{color:var(--blue);}
+blockquote{margin:16px 0 20px;padding:14px 20px;background:var(--cool);border-left:3px solid var(--line);color:var(--ink);}
+blockquote p:last-child{margin-bottom:0;}
+ul,ol{margin:0 0 16px;padding-left:1.4em;}
+li{margin-bottom:7px;}
+ul.todolist{list-style:none;padding-left:0;}
+li.todo{padding-left:30px;position:relative;}
+li.todo:before{content:"";position:absolute;left:2px;top:.55em;width:13px;height:13px;border:1.5px solid var(--mid);border-radius:2px;}
+.tablewrap{overflow-x:auto;margin:18px 0 24px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{background:var(--cool);text-align:left;font-weight:700;padding:11px 14px;border-bottom:1.5px solid var(--ink);white-space:nowrap;}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+@media print{body{background:#fff;}.sheet{margin:0;padding:20mm 18mm;max-width:none;}h2{page-break-after:avoid;}table{page-break-inside:avoid;}}
+@media (max-width:720px){.sheet{margin:0;padding:32px 22px;}h1{font-size:22px;}th{white-space:normal;}}
+</style></head><body>
+<div class="sheet">
+<h1>サービス資料 プロット v0.1 — 会社の記憶</h1>
+<p>用途: 商談で経営者に見せるA4横10ページ</p>
+<p>読み手: 売上1〜30億・創業10年以上の地域オーナー企業（承継2代目・3代目を含む）</p>
+<p>デザインmd: nendo（無彩色・写真主役・letter-spacing 1px）</p>
+<p>状態: <strong>プロット段階。ここを確定してからHTML化する（client-deck STEP 2）</strong></p>
+<p>トーンの決め: 挨拶で始めない。要件整理を主役にする。提案ではなく<strong>診断</strong>として読ませる。</p>
+<p>言葉の規律: 会社の記憶という言葉を先行させない。<strong>04で具体を見せてから05で名前を付ける</strong>。</p>
+<hr>
+<h2>01 — 表紙</h2>
+<ul><li>英語ラベル: `A COMPANY THAT REMEMBERS`</li><li>日本語見出し: 会社が、自分のことを覚えている状態をつくる</li><li>言い切る1文: <strong>AIを入れる前に、決まっていないことを決める。</strong></li><li>右側に骨子3行（1枚目で結論が見える）:</li><li>詰まっているのは技術ではなく、決め方と記録</li><li>会社の意思を、人にもAIにも読める形にして持つ</li><li>90日で1業務を動かし、更新は貴社に渡す</li><li>`[写真: 余白の多いモノクロ。事務所か会議の手元]`</li></ul>
+<hr>
+<h2>02 — 現在地</h2>
+<ul><li>英語ラベル: `WHERE WE ARE`</li><li>日本語見出し: 作れる人は増えた。動いている会社は増えていない</li><li>言い切る1文: <strong>安くなったのは作る作業であって、成果ではない。</strong></li><li>4カード（数字は出典つきで載せる）:</li></ul>
+<div class="tablewrap"><table><thead><tr><th>カード</th><th>数字</th><th>出典</th></tr></thead><tbody><tr><td>日本企業のコア業務でのAI導入率</td><td>1.9%（米国6.1%）</td><td>OECD 2025-12</td></tr><tr><td>生成AIの試験導入が成果を出せていない割合</td><td>95%</td><td>MIT NANDA 2025</td></tr><tr><td>本番展開前に断念した企業</td><td>17% → 42%（1年で）</td><td>S&amp;P Global</td></tr><tr><td>中小企業が挙げる最大の障壁</td><td>社員のスキル・知識不足 50%</td><td>OECD 2025-12</td></tr></tbody></table></div>
+<ul><li>補足1行: ツールは足りている。足りていないのは、それを回す前提のほう。</li></ul>
+<hr>
+<h2>03 — 詰まりの正体</h2>
+<ul><li>英語ラベル: `THE REAL BOTTLENECK`</li><li>日本語見出し: 止まっているのは技術ではなく、決め方</li><li>言い切る1文: <strong>承認が通らない仕事は、AIを入れても通らない。</strong></li><li>3つの詰まり（診断の型で書く。相手の会社で必ず思い当たるもの）:</li></ul>
+<ol><li>決裁が社長1人に集まっていて、現場が動けない</li><li>やり方が人の頭の中にあり、辞めると消える</li><li>同じ情報が3箇所にあって、どれが正しいか分からない</li></ol>
+<ul><li>右下に一言タグ: 共通認識の整理</li></ul>
+<hr>
+<h2>04 — 何が足りないのか（名前を出す前に具体で見せる）</h2>
+<ul><li>英語ラベル: `WHAT IS MISSING`</li><li>日本語見出し: 会社のことが、会社の外に書かれていない</li><li>言い切る1文: <strong>社長の頭の中にあるものは、AIにも社員にも渡らない。</strong></li><li>図: 散らばり方を1枚で（社長の頭／個人のドライブ／紙とファイル／チャットの履歴／古い会社案内）→ どれも参照できない</li><li>対比: 参照できる状態とは、誰が読んでも同じ答えになる状態</li><li>`[図: HTML/CSSで組む。散在→集約の対比]`</li></ul>
+<hr>
+<h2>05 — 提案するもの</h2>
+<ul><li>英語ラベル: `EIGHT BLOCKS`</li><li>日本語見出し: 会社の記憶を、8つのブロックで持つ</li><li>言い切る1文: <strong>資料ではなく、貴社が更新し続ける器をつくる。</strong></li><li>8カード（2段4列。architecture.html の A〜H をそのまま使う）</li><li>上段 A会社の定義／B事業と商品／C顧客／D決め方 — 経営の層</li><li>下段 E業務の型／F言葉とデザインの基準／G記録の置き場ルール／HAIへの渡し方 — 実装の層</li><li>各カードに「欠けると何が起きるか」を1行（診断として読ませるため）</li></ul>
+<hr>
+<h2>06 — 順番</h2>
+<ul><li>英語ラベル: `ORDER MATTERS`</li><li>日本語見出し: A と D を飛ばすと、AI導入は成果に届かない</li><li>言い切る1文: <strong>決め方が決まっていない会社に道具だけ入れても、95%の側に入る。</strong></li><li>図: 正しい順（A・D → E・H）と、よくある順（E・Hだけ）の2本を並べて結果を対比</li><li>補足: これは自社で先にやっている。バレンサーは自社の意思決定と業務を同じ形で持っている</li></ul>
+<hr>
+<h2>07 — 進め方</h2>
+<ul><li>英語ラベル: `90 DAYS`</li><li>日本語見出し: 90日で、記憶をv1にして1業務を動かす</li><li>言い切る1文: <strong>3ヶ月後に、現場が毎日使っている業務が1つある状態にする。</strong></li><li>3カード:</li><li>Day 1〜30 棚卸しと診断 → 出口: 現在地の1枚と、触る1業務の決定</li><li>Day 31〜60 1業務のパイロット → 出口: 現場が毎日使っている業務が1つ</li><li>Day 61〜90 定着と引き渡し → 出口: 貴社が自分で更新できている状態</li><li>下に帯: 大きなシステムから始めない。週単位で体験できる改善から始める</li></ul>
+<hr>
+<h2>08 — 終わり方</h2>
+<ul><li>英語ラベル: `HANDOVER`</li><li>日本語見出し: 抜けても回る状態を、完了と呼ぶ</li><li>言い切る1文: <strong>バレンサーがいないと動かない状態は、失敗と考えている。</strong></li><li>3点:</li><li>更新担当を貴社に置く（誰がいつ何を更新するかまで決める）</li><li>研修を工程に含める（訓練を受けた社員は受けていない社員の2倍の生産性）</li><li>引き渡し条件を契約書に書く</li><li>右上タグ: なぜ抱え込まないか</li></ul>
+<hr>
+<h2>09 — なぜバレンサーか</h2>
+<ul><li>英語ラベル: `WHY US`</li><li>日本語見出し: 対話から実装まで、同じ会社が続けて担う</li><li>言い切る1文: <strong>決め方は、会議に同席していないと書けない。</strong></li><li>左: 4領域が製造ラインになる図（組織開発→A／ブランド→F・B／業務基盤→E・G／AI実装→H／経営伴走→C・D）</li><li>右: 実例（<strong>社名は伏せて業種表記</strong>）</li><li>建設・不動産管理業 約○名 — Wi-Fiを入れたいという1件から始まり、7年目。現在は部署を超えたDXが自発的に生まれる状態</li><li>学習塾 約700名 — 社員参加型でMVVを再策定し、社名・ロゴ・Web・動画まで</li><li>老舗食品 創業330年 — 受け継がれた意味を、現在の顧客体験へ翻訳</li><li>注記: <strong>数字を前面に出さない。支援の深さと変化で示す</strong></li></ul>
+<hr>
+<h2>10 — 進め方とご判断事項</h2>
+<ul><li>英語ラベル: `NEXT`</li><li>日本語見出し: まず、どこが欠けているかを見るところから</li><li>言い切る1文: <strong>90日を始める前に、1回の整理で現在地を出す。</strong></li><li>2列:</li><li>貴社にお願いすること — 現状の資料の場所を開示、キーマン3〜5名への同席依頼、1業務の選定への合意</li><li>弊社が行うこと — 棚卸し、診断、記憶v1の作成、1業務の実装、研修、引き渡し</li><li>料金欄: <strong>要決定</strong>（SPOT 30万円／回 → 90日パッケージ ○○万円 → 継続 CONSULT 月20万円〜）</li><li>最後に1行: 決めていないことを決めるところから始めます</li></ul>
+<hr>
+<h2>HTML化の前に決めること</h2>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>決めること</th><th>現状</th></tr></thead><tbody><tr><td>1</td><td>対外での名称（会社の記憶をそのまま使うか）</td><td>未決</td></tr><tr><td>2</td><td>90日パッケージの金額</td><td>未決。10ページ目の料金欄が埋まらない</td></tr><tr><td>3</td><td>09の実例を社名伏せのままにするか、睦備建設様の許諾を取って実名にするか</td><td>未決</td></tr><tr><td>4</td><td>ページ数10でよいか（削るなら06か08）</td><td>未決</td></tr><tr><td>5</td><td>表紙と04に入れる写真素材</td><td>未手配</td></tr></tbody></table></div>
+</div></body></html>

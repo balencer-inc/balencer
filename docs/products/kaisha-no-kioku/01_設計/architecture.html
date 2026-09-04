@@ -1,0 +1,299 @@
+<!doctype html>
+<!-- デザインmd: nendo（awesome-design-md-jp）を適用。無彩色・Helvetica Neue + 游ゴシック・line-height 1.5・角丸なし -->
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>会社の記憶 — アーキテクチャ</title>
+<style>
+:root{
+  --ink:#5a5757; --text:#5a5a5a; --deep:#212529;
+  --line:rgba(0,0,0,.10); --hair:rgba(0,0,0,.06); --surface:#f2f2f7; --bg:#ffffff;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);}
+body{
+  color:var(--text);
+  font-family:-apple-system,YuGothic,"Yu Gothic Medium","Yu Gothic","Hiragino Sans","Noto Sans CJK JP",sans-serif;
+  font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  word-break:normal; overflow-wrap:break-word; line-break:strict;
+}
+.en{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:1px;}
+
+.wrap{max-width:1280px;margin:0 auto;padding:96px 48px 128px;}
+
+/* header */
+.head{border-bottom:1px solid var(--line);padding-bottom:48px;margin-bottom:96px;}
+.head .kicker{font-size:14px;font-weight:400;color:var(--text);margin:0 0 24px;}
+.head h1{font-size:24px;font-weight:700;line-height:1.5;color:var(--ink);margin:0 0 16px;}
+.head .lead{font-size:17.6px;font-weight:400;line-height:1.5;color:var(--ink);margin:0;max-width:56em;}
+.head .meta{font-size:12px;color:var(--text);margin:24px 0 0;}
+
+/* layer */
+.layer{display:grid;grid-template-columns:180px 1fr;gap:48px;padding:48px 0;border-top:1px solid var(--hair);}
+.layer:first-of-type{border-top:none;}
+.layer > .side{padding-top:2px;}
+.side .no{font-size:14px;color:var(--text);margin:0 0 8px;}
+.side .q{font-size:16px;font-weight:700;color:var(--ink);margin:0 0 8px;line-height:1.5;}
+.side .note{font-size:12px;color:var(--text);margin:0;line-height:1.5;}
+
+h2{font-size:17.6px;font-weight:700;color:var(--ink);margin:0 0 24px;line-height:1.5;}
+p{margin:0 0 16px;}
+.small{font-size:12px;}
+
+/* grids */
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+
+.cell{border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;min-height:150px;background:var(--bg);}
+.cell .tag{font-size:14px;color:var(--text);margin:0 0 8px;}
+.cell .t{font-size:16px;font-weight:700;color:var(--ink);margin:0 0 8px;line-height:1.5;}
+.cell .d{font-size:12px;margin:0;line-height:1.5;}
+.cell .foot{font-size:12px;margin:16px 0 0;padding-top:8px;border-top:1px solid var(--hair);color:var(--text);}
+.cell.fill{background:var(--surface);border-color:transparent;}
+
+.band{border:1px solid var(--line);padding:8px 16px;font-size:12px;color:var(--text);margin:0 0 16px;}
+.band.solid{background:var(--surface);border-color:transparent;}
+
+/* line table */
+table{border-collapse:collapse;width:100%;font-size:12px;}
+th,td{border-bottom:1px solid var(--hair);padding:12px 8px;text-align:left;vertical-align:top;line-height:1.5;}
+th{font-weight:700;color:var(--ink);border-bottom:1px solid var(--line);white-space:nowrap;}
+td.k{color:var(--ink);font-weight:700;white-space:nowrap;}
+
+/* flow */
+.flow{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;align-items:stretch;gap:0;}
+.arrow{display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text);}
+.pill{display:inline-block;background:var(--surface);color:var(--text);border-radius:12px;padding:0 18px;font-size:14px;line-height:28px;}
+
+.cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:c;}
+.cycle .cell .tag::before{counter-increment:c;content:counter(c) " / 4";}
+
+.foot-note{margin-top:96px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--text);}
+
+@media print{
+  @page{size:A4 landscape;margin:12mm;}
+  .wrap{padding:0;max-width:none;}
+  .layer{break-inside:avoid;}
+}
+@media (max-width:900px){
+  .wrap{padding:48px 16px 64px;}
+  .layer{grid-template-columns:1fr;gap:16px;}
+  .g4,.g3,.g2,.cycle{grid-template-columns:1fr;}
+  .flow{grid-template-columns:1fr;}
+  .arrow{padding:8px 0;}
+}
+</style></head><body>
+<div class="wrap">
+
+<header class="head">
+  <p class="kicker en">KAISHA NO KIOKU / ARCHITECTURE</p>
+  <h1>会社の記憶 — 何をどう積むかの構造</h1>
+  <p class="lead">バレンサーが既にやっていることを、繰り返し売れる形にするための構造図。下から上ではなく、<strong>資産・製造・工程・収益・複利</strong>の5層で読む。</p>
+  <p class="meta en">2026-09-04 &nbsp;/&nbsp; v0.1 &nbsp;/&nbsp; design-md: nendo</p>
+</header>
+
+<!-- L0 -->
+<section class="layer">
+  <div class="side">
+    <p class="no en">LAYER 0</p>
+    <p class="q">なぜ積むのか</p>
+    <p class="note">前提。ここが揺れると全部が揺れる</p>
+  </div>
+  <div>
+    <h2>コモディティ化したのは作る力であって、定着させる責任ではない</h2>
+    <div class="g3">
+      <div class="cell">
+        <p class="tag en">SUPPLY</p>
+        <p class="t">供給は飽和した</p>
+        <p class="d">制作の作業量・ツールの紹介・時間の切り売り。この3つだけが安くなった。AIで作業時間は30〜70%圧縮される。</p>
+        <p class="foot">守れない領域</p>
+      </div>
+      <div class="cell">
+        <p class="tag en">DEMAND</p>
+        <p class="t">需要は詰まったまま</p>
+        <p class="d">日本企業のコア業務AI導入率1.9%（米6.1%）。生成AIパイロットの95%が測定可能な成果なし。断念は17%から42%へ。</p>
+        <p class="foot">詰まりの原因は組織</p>
+      </div>
+      <div class="cell fill">
+        <p class="tag en">POSITION</p>
+        <p class="t">立つ場所</p>
+        <p class="d">作る力ではなく、会社の意思を構造化して、組織・ブランド・業務・AIに通しきる責任。ここに値札を付ける。</p>
+        <p class="foot">この構造の出発点</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- L1 -->
+<section class="layer">
+  <div class="side">
+    <p class="no en">LAYER 1</p>
+    <p class="q">何を持つか</p>
+    <p class="note">資産。顧客の中に積み上がるもの</p>
+  </div>
+  <div>
+    <h2>会社の記憶を8つのブロックで構造化して持つ</h2>
+    <p class="band solid">上段 A〜D ＝ 経営の層。<strong>会議に同席していないと書けない</strong>ので、外注に落ちない核になる</p>
+    <div class="g4">
+      <div class="cell"><p class="tag en">A</p><p class="t">会社の定義</p><p class="d">何者か。何を大切にするか。どこへ行くか。</p><p class="foot">欠けると判断が揺れる</p></div>
+      <div class="cell"><p class="tag en">B</p><p class="t">事業と商品</p><p class="d">何を売るか。いくらか。何は売らないか。</p><p class="foot">欠けると安請け合いが止まらない</p></div>
+      <div class="cell"><p class="tag en">C</p><p class="t">顧客</p><p class="d">誰に届けるか。個別に誰で、何があったか。</p><p class="foot">欠けると担当交代で関係が消える</p></div>
+      <div class="cell"><p class="tag en">D</p><p class="t">決め方</p><p class="d">誰が何を決めるか。どの会議体で。何を基準に。</p><p class="foot">欠けると全部が社長決裁で詰まる</p></div>
+    </div>
+    <p class="band" style="margin-top:16px;">下段 E〜H ＝ 実装の層。A・Dが埋まらないままここだけ入れると、成果の出ないAI導入になる</p>
+    <div class="g4">
+      <div class="cell"><p class="tag en">E</p><p class="t">業務の型</p><p class="d">繰り返す仕事を、再現できる手順にしたもの。</p><p class="foot">欠けると属人化する</p></div>
+      <div class="cell"><p class="tag en">F</p><p class="t">言葉とデザインの基準</p><p class="d">対外に出るものの正誤判定基準。</p><p class="foot">欠けるとAIに書かせた瞬間に崩れる</p></div>
+      <div class="cell"><p class="tag en">G</p><p class="t">記録の置き場ルール</p><p class="d">どこに何を置くか。次に読む人とAIのために。</p><p class="foot">欠けると探す時間が最大コストになる</p></div>
+      <div class="cell"><p class="tag en">H</p><p class="t">AIへの渡し方</p><p class="d">人が読む形とAIが読む形を一致させる。</p><p class="foot">欠けると毎回ゼロから説明する</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- L2 -->
+<section class="layer">
+  <div class="side">
+    <p class="no en">LAYER 2</p>
+    <p class="q">誰がどう作るか</p>
+    <p class="note">製造ライン。4領域が工程になる</p>
+  </div>
+  <div>
+    <h2>既存の4領域が、そのままブロックの製造ラインになる</h2>
+    <table>
+      <thead><tr><th>支援領域</th><th>作るブロック</th><th>作れる条件</th></tr></thead>
+      <tbody>
+        <tr><td class="k">組織開発・MVV</td><td class="k">A 会社の定義</td><td>経営者と社員の対話。社員が自分の言葉で語れる状態まで</td></tr>
+        <tr><td class="k">ブランド戦略・クリエイティブ</td><td class="k">F 言葉とデザインの基準 ／ B の言語化</td><td>会社の意味を、出るものの判定基準に落とす</td></tr>
+        <tr><td class="k">デジタル・業務基盤</td><td class="k">E 業務の型 ／ G 置き場ルール</td><td>現場の実務に入る。ヒトツがこの器に載る</td></tr>
+        <tr><td class="k">AI実装</td><td class="k">H AIへの渡し方 ／ E の自動化</td><td>現場で使われ、業務が実際に変わるところまで</td></tr>
+        <tr><td class="k">経営伴走（CONSULT／PARTNER／EXECUTIVE）</td><td class="k">C 顧客 ／ D 決め方</td><td><strong>経営の会議に同席していること</strong>。資料として外から作れない</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- L3 -->
+<section class="layer">
+  <div class="side">
+    <p class="no en">LAYER 3</p>
+    <p class="q">どう納めるか</p>
+    <p class="note">工程。90日で1周させる</p>
+  </div>
+  <div>
+    <h2>90日で、記憶をv1にして1業務を動かし、手を離す</h2>
+    <div class="g3">
+      <div class="cell">
+        <p class="tag en">DAY 1—30</p>
+        <p class="t">棚卸しと診断</p>
+        <p class="d">記憶が今どこに散っているか。決め方の実態はどうか。A・B・C・Dの一次ドラフトを起こす。</p>
+        <p class="foot">出口 — 現在地の1枚と、触る1業務の決定</p>
+      </div>
+      <div class="cell">
+        <p class="tag en">DAY 31—60</p>
+        <p class="t">1業務のパイロット</p>
+        <p class="d">最も回数の多い1業務をEとして書き出し、Hを最小実装して現場で動かす。</p>
+        <p class="foot">出口 — 現場が毎日使っている業務が1つ</p>
+      </div>
+      <div class="cell">
+        <p class="tag en">DAY 61—90</p>
+        <p class="t">定着と引き渡し</p>
+        <p class="d">更新担当を決め、置き場ルールと更新手順を渡す。研修を1回。次の3業務の順番を決める。</p>
+        <p class="foot">出口 — 顧客が自分で更新できている状態</p>
+      </div>
+    </div>
+    <p class="band solid" style="margin-top:16px;">完了地点の定義 — <strong>バレンサーが抜けても回り、顧客が自分で記憶を更新できている状態</strong>。これを契約書に書く</p>
+  </div>
+</section>
+
+<!-- L4 -->
+<section class="layer">
+  <div class="side">
+    <p class="no en">LAYER 4</p>
+    <p class="q">どう積むか</p>
+    <p class="note">収益。新しい商品名は増やさない</p>
+  </div>
+  <div>
+    <h2>入口を90日型に組み替え、成果物の名前を1つに束ねる</h2>
+    <div class="flow">
+      <div class="cell">
+        <p class="tag en">ENTRY</p>
+        <p class="t">SPOT 経営整理</p>
+        <p class="d">どのブロックが欠けているかを見る。30万円／回。</p>
+        <p class="foot">既存のまま</p>
+      </div>
+      <div class="arrow en">&rarr;</div>
+      <div class="cell fill">
+        <p class="tag en">CORE</p>
+        <p class="t">90日パッケージ</p>
+        <p class="d">記憶v1を作り、1業務を動かし、引き渡す。固定価格＋25%バッファ。</p>
+        <p class="foot">新設。金額は未決</p>
+      </div>
+      <div class="arrow en">&rarr;</div>
+      <div class="cell">
+        <p class="tag en">CONTINUE</p>
+        <p class="t">CONSULT／PARTNER／EXECUTIVE</p>
+        <p class="d">記憶を前提に相談し、施策を進め、決める側に入る。</p>
+        <p class="foot">既存のまま</p>
+      </div>
+    </div>
+    <div class="g2" style="margin-top:16px;">
+      <div class="cell">
+        <p class="tag en">BUILD</p>
+        <p class="t">PROJECT 制作・開発・実装</p>
+        <p class="d">記憶に沿って実物を作る。<strong>人月に寄せない</strong>。作業量ではなく、稼働し続ける状態への固定価格にする。</p>
+        <p class="foot">見積の型を改める</p>
+      </div>
+      <div class="cell">
+        <p class="tag en">CONTAINER</p>
+        <p class="t">ヒトツ（Notion業務基盤）</p>
+        <p class="d">E・Gの器としてそのまま載る。既存商品の再定義で足りる。</p>
+        <p class="foot">新規開発は不要</p>
+      </div>
+    </div>
+    <p class="band" style="margin-top:16px;">課金の原則 — 時間ではなく成果パッケージの固定価格。AIで作業時間が縮むほど、人月換算は自社の減収に直結する</p>
+  </div>
+</section>
+
+<!-- L5 -->
+<section class="layer">
+  <div class="side">
+    <p class="no en">LAYER 5</p>
+    <p class="q">どう強くなるか</p>
+    <p class="note">複利。ここが回ると案件が資産になる</p>
+  </div>
+  <div>
+    <h2>案件で得た型を共通側に還す。次は8割共通から組む</h2>
+    <div class="cycle">
+      <div class="cell"><p class="tag en"></p><p class="t">個別で作る</p><p class="d">その会社にしかない中身（言葉・数字・決め方・業務）を作る。</p><p class="foot">2割</p></div>
+      <div class="cell"><p class="tag en"></p><p class="t">共通化できる型を抜く</p><p class="d">工程・観点リスト・質問集・研修教材・引き渡し手順。</p><p class="foot">案件の最後に必ずやる</p></div>
+      <div class="cell"><p class="tag en"></p><p class="t">共通側に還す</p><p class="d">スキルとテンプレに戻す。会話で終わらせずファイルにする。</p><p class="foot">評価指標はここ</p></div>
+      <div class="cell fill"><p class="tag en"></p><p class="t">次は8割共通から</p><p class="d">ゼロから作らない。共通の骨格の上でだけ動く。</p><p class="foot">8割</p></div>
+    </div>
+    <p class="band" style="margin-top:16px;">測るのは納品量ではない。<strong>次の案件を共通側から何割で組めたか</strong>を記録する</p>
+  </div>
+</section>
+
+<!-- 失敗 -->
+<section class="layer">
+  <div class="side">
+    <p class="no en">GUARDRAIL</p>
+    <p class="q">壊れ方</p>
+    <p class="note">この4つで潰れる</p>
+  </div>
+  <div>
+    <h2>先に壊れ方を決めておく</h2>
+    <div class="g4">
+      <div class="cell"><p class="tag en">01</p><p class="t">個別カスタマイズの泥沼</p><p class="d">共通基盤がないまま毎回ゼロから作る。名前を変えただけの高稼働受託になる。</p><p class="foot">対策 — 8割共通の原則</p></div>
+      <div class="cell"><p class="tag en">02</p><p class="t">燃え尽き</p><p class="d">代表とディレクターへの一極集中。稼働の天井が売上の天井になる。</p><p class="foot">対策 — 3ヶ月区切りのポッド型</p></div>
+      <div class="cell"><p class="tag en">03</p><p class="t">顧客の自走化失敗</p><p class="d">抱え込んでブラックボックス化する。中小企業ほど耐性が低く、即解約になる。</p><p class="foot">対策 — 引き渡しを契約に書く</p></div>
+      <div class="cell"><p class="tag en">04</p><p class="t">型が戻らない</p><p class="d">発見が個人の頭とフォルダに残り、会社の資産が増えない。</p><p class="foot">対策 — 還元量で評価する</p></div>
+    </div>
+  </div>
+</section>
+
+<p class="foot-note">
+  正本 — <span class="en">docs/products/kaisha-no-kioku/00_定義.md</span> ／ 上位文書 — <span class="en">docs/company/positioning-strategy-2026-fde.md</span><br>
+  決め待ち3点（名称／90日パッケージの金額／最初の1社）は <span class="en">_決定ログ.md</span> を参照。
+</p>
+
+</div></body></html>

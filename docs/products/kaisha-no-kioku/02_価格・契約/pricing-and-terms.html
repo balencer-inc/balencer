@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>料金と契約条件 v0.3（案）— 会社の記憶</title>
+<style>
+:root{--white:#FFFFFF;--cool:#F7F8F9;--pale:#F0F2F4;--ink:#45484D;--mid:#7A7E85;--line:#D9DCE1;--blue:#3158D4;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--pale);color:var(--ink);
+font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+font-feature-settings:"palt";line-height:1.9;font-size:15px;-webkit-font-smoothing:antialiased;}
+.sheet{max-width:880px;margin:48px auto;background:var(--white);padding:64px 72px 80px;}
+h1{font-size:27px;line-height:1.5;font-weight:700;letter-spacing:.02em;margin:0 0 24px;padding-bottom:22px;border-bottom:2px solid var(--ink);}
+h2{font-size:19px;font-weight:700;margin:56px 0 18px;letter-spacing:.02em;padding-left:14px;border-left:3px solid var(--blue);}
+h3{font-size:15.5px;font-weight:700;margin:34px 0 10px;color:var(--blue);letter-spacing:.02em;}
+p{margin:0 0 14px;}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0;}
+a{color:var(--blue);}
+blockquote{margin:16px 0 20px;padding:14px 20px;background:var(--cool);border-left:3px solid var(--line);color:var(--ink);}
+blockquote p:last-child{margin-bottom:0;}
+ul,ol{margin:0 0 16px;padding-left:1.4em;}
+li{margin-bottom:7px;}
+ul.todolist{list-style:none;padding-left:0;}
+li.todo{padding-left:30px;position:relative;}
+li.todo:before{content:"";position:absolute;left:2px;top:.55em;width:13px;height:13px;border:1.5px solid var(--mid);border-radius:2px;}
+.tablewrap{overflow-x:auto;margin:18px 0 24px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{background:var(--cool);text-align:left;font-weight:700;padding:11px 14px;border-bottom:1.5px solid var(--ink);white-space:nowrap;}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+@media print{body{background:#fff;}.sheet{margin:0;padding:20mm 18mm;max-width:none;}h2{page-break-after:avoid;}table{page-break-inside:avoid;}}
+@media (max-width:720px){.sheet{margin:0;padding:32px 22px;}h1{font-size:22px;}th{white-space:normal;}}
+</style></head><body>
+<div class="sheet">
+<h1>料金と契約条件 v0.3（案）— 会社の記憶</h1>
+<p>作成: 2026-09-04 ／ 改訂: 2026-09-04</p>
+<p>前提: <a href="../01_設計/service-design.md">service-design.md</a>（設計）・<a href="../01_設計/diagnosis-sheet.md">diagnosis-sheet.md</a>（入口）</p>
+<p>読む順: 診断シート → 設計 → この文書</p>
+<p>状態: <strong>金額はすべて案。阿部さんの決めで確定する。人日は積算であって実測ではない</strong></p>
+<blockquote><p><strong>この文書は社内限定。顧客に見せない。</strong></p><p>積算・実効単価・受注下限・稼働の制約は、顧客に読ませない部分。</p><p>顧客に出すのは §3 の内訳と §6〜§8 だけ。書き換えルールは §11。</p></blockquote>
+<hr>
+<h2>1. 料金</h2>
+<div class="tablewrap"><table><thead><tr><th>段</th><th>商品</th><th>金額（税抜）</th><th>期間</th></tr></thead><tbody><tr><td>入口</td><td>充足度診断</td><td><strong>48万円／回</strong></td><td>2週間</td></tr><tr><td>前半</td><td>フェーズ1｜現在地と決め方</td><td><strong>148万円</strong></td><td>Day 1〜45</td></tr><tr><td>後半</td><td>フェーズ2｜型化と実装</td><td><strong>198万円</strong></td><td>Day 46〜120</td></tr><tr><td>通し</td><td>診断＋フェーズ1＋フェーズ2</td><td><strong>394万円</strong></td><td>約4ヶ月半</td></tr><tr><td>継続</td><td>CONSULT</td><td>月20万円</td><td>6ヶ月〜</td></tr><tr><td>継続</td><td>PARTNER</td><td>月30〜50万円</td><td>6ヶ月〜</td></tr><tr><td>継続</td><td>EXECUTIVE</td><td>月60〜100万円</td><td>6ヶ月〜</td></tr><tr><td>追加</td><td>業務の型化（E）2本目以降</td><td>48万円／1業務</td><td>3〜4週間</td></tr><tr><td>追加</td><td>PROJECT（制作・開発）</td><td>個別見積</td><td>—</td></tr></tbody></table></div>
+<ul><li><strong>フェーズ1で終わってよい。</strong> 商談でこちらから先に言う</li><li><strong>診断を90日へ充当しない。</strong> 診断は単体で採算が合う値付けにする。診断を受けた顧客はフェーズ1の対象業務の確定が済んでいるため、その分はフェーズ1の148万円に織り込み済み（診断を受けずにフェーズ1から入る場合は+8万円）</li><li><strong>90日ではなく約4ヶ月。</strong> Eの型化3〜4週とHの実装3〜4週は直列で、45日には入らない。フェーズ2を75日にした</li></ul>
+<h3>商品の期間の呼び方</h3>
+<p>対外では「90日」と言わない。フェーズ1が45日、フェーズ2が75日、診断を含めて約4ヶ月半。<strong>入らない工程を90日と呼ばない。</strong></p>
+<hr>
+<h2>2. 内部の積算（顧客には出さない）</h2>
+<h3>診断 48万円</h3>
+<div class="tablewrap"><table><thead><tr><th>作業</th><th>人日</th></tr></thead><tbody><tr><td>事前アンケートの設計と回収</td><td>0.5</td></tr><tr><td>経営者インタビュー120分＋準備</td><td>1.0</td></tr><tr><td>資料確認</td><td>0.5</td></tr><tr><td>採点・食い違いの抽出・作図・候補業務3つの年間作業時間の算定</td><td>2.0</td></tr><tr><td>報告60分＋準備</td><td>0.5</td></tr><tr><td>移動</td><td>1.0</td></tr><tr><td><strong>合計</strong></td><td><strong>5.5</strong></td></tr></tbody></table></div>
+<p>→ 8.7万円／日</p>
+<h3>フェーズ1 148万円</h3>
+<div class="tablewrap"><table><thead><tr><th>作業</th><th>人日</th></tr></thead><tbody><tr><td>社員ヒアリング3名</td><td>1.5</td></tr><tr><td>経営会議同席2回</td><td>2.0</td></tr><tr><td>経営者インタビュー2回</td><td>2.0</td></tr><tr><td>記録の散らばりの棚卸し</td><td>1.5</td></tr><tr><td>判断基準の言語化（差し戻し含む）</td><td>3.5</td></tr><tr><td>決裁の詰まりの特定と権限移譲1件</td><td>2.0</td></tr><tr><td>対象業務の確定（診断済みのため。未診断なら+1.0）</td><td>0.5</td></tr><tr><td>記録整理・進行管理</td><td>3.5</td></tr><tr><td>移動</td><td>3.0</td></tr><tr><td>月2回の定例＋チャット</td><td>1.5</td></tr><tr><td><strong>合計</strong></td><td><strong>21.0</strong></td></tr></tbody></table></div>
+<p>→ 7.1万円／日</p>
+<h3>フェーズ2 198万円</h3>
+<div class="tablewrap"><table><thead><tr><th>作業</th><th>人日</th></tr></thead><tbody><tr><td>業務観察</td><td>2.0</td></tr><tr><td>手順化・例外の整理</td><td>2.5</td></tr><tr><td>AI環境の調整（顧客側の準備を支援する分）</td><td>2.5</td></tr><tr><td>AI実装</td><td>5.0</td></tr><tr><td>現場テストと調整</td><td>2.5</td></tr><tr><td>記録の置き場の整備（対象業務まわり）</td><td>1.5</td></tr><tr><td>対外物の現在地1枚</td><td>0.5</td></tr><tr><td>研修の準備と実施</td><td>2.0</td></tr><tr><td>引き渡し資料の清書</td><td>4.0</td></tr><tr><td>最終報告</td><td>1.0</td></tr><tr><td>記録整理・進行管理</td><td>3.0</td></tr><tr><td>移動</td><td>3.0</td></tr><tr><td>月2回の定例＋チャット</td><td>2.5</td></tr><tr><td><strong>合計</strong></td><td><strong>32.0</strong></td></tr></tbody></table></div>
+<p>→ 6.2万円／日</p>
+<h3>採算（検算済み）</h3>
+<div class="tablewrap"><table><thead><tr><th>項目</th><th>値</th></tr></thead><tbody><tr><td>通しの投下人日</td><td>5.5＋21.0＋32.0 ＝ <strong>58.5人日</strong></td></tr><tr><td>通しの受注額</td><td><strong>394万円</strong></td></tr><tr><td>実効単価</td><td><strong>6.7万円／日</strong>（8,419円／時）</td></tr><tr><td>受注下限</td><td>通し <strong>360万円</strong>（6.2万円／日）</td></tr></tbody></table></div>
+<p><strong>PARTNER（月40万円÷月4日稼働＝10万円／日）を大きく下回る。</strong> これは1件目を投資として扱う値付けで、根拠は共通資産5つが未完成であること（<a href="../01_設計/service-design.md">service-design §8</a>）。</p>
+<p><strong>撤退の閾値を先に決めておく。</strong></p>
+<div class="tablewrap"><table><thead><tr><th>件数</th><th>目標</th><th>下回った時</th></tr></thead><tbody><tr><td>1件目</td><td>6.7万円／日（実測を取ることが目的）</td><td>実測を記録し、共通資産を作り切る</td></tr><tr><td>2件目</td><td><strong>8.2万円／日</strong>（共通資産が効いて48人日に落ちる想定）</td><td><strong>7.5万円／日を下回ったら、この商品をやめて設計に戻る</strong></td></tr></tbody></table></div>
+<h3>稼働の制約</h3>
+<div class="tablewrap"><table><thead><tr><th>体制</th><th>占有率</th><th>判断</th></tr></thead><tbody><tr><td>1名（共通資産が未完成の間）</td><td>58.5人日 ÷ 約80営業日 ＝ <strong>73%</strong></td><td><strong>同時1件のみ。2件目に着手しない</strong></td></tr><tr><td>2名</td><td><strong>37%</strong></td><td>1件目のフェーズ2着手（Day46）以降なら2件目に着手できる</td></tr></tbody></table></div>
+<p>共通資産5つが揃うまでは代表以外が回せない。<strong>その間は同時1件を厳守する。</strong></p>
+<hr>
+<h2>3. 内訳（顧客に見せる形）</h2>
+<h3>診断 48万円</h3>
+<div class="tablewrap"><table><thead><tr><th>内容</th><th>金額</th></tr></thead><tbody><tr><td>事前アンケート（経営者1名＋社員3名）の設計・回収・突き合わせ</td><td>18万円</td></tr><tr><td>経営者インタビュー120分・資料確認・採点</td><td>18万円</td></tr><tr><td>対象候補業務3つの年間作業時間の算定と報告</td><td>12万円</td></tr><tr><td><strong>合計</strong></td><td><strong>48万円</strong></td></tr></tbody></table></div>
+<h3>フェーズ1｜現在地と決め方 148万円</h3>
+<div class="tablewrap"><table><thead><tr><th>内容</th><th>金額</th></tr></thead><tbody><tr><td>経営者インタビュー2回・社員ヒアリング3名・経営会議同席2回</td><td>68万円</td></tr><tr><td>判断基準の言語化と、決裁の詰まりの特定・権限移譲1件の実行</td><td>60万円</td></tr><tr><td>対象業務の確定と記録の散らばりの棚卸し</td><td>20万円</td></tr><tr><td><strong>合計</strong></td><td><strong>148万円</strong></td></tr></tbody></table></div>
+<h3>フェーズ2｜型化と実装 198万円</h3>
+<div class="tablewrap"><table><thead><tr><th>内容</th><th>金額</th></tr></thead><tbody><tr><td>業務観察と手順書・例外の整理</td><td>58万円</td></tr><tr><td>AIの実装（環境調整の支援・稼働・現場での調整）</td><td>90万円</td></tr><tr><td>記録の置き場の整備・対外物の現在地1枚・社内研修1回・引き渡し</td><td>50万円</td></tr><tr><td><strong>合計</strong></td><td><strong>198万円</strong></td></tr></tbody></table></div>
+<hr>
+<h2>4. 支払条件</h2>
+<p><strong>フェーズの区切りに合わせる。フェーズ1で止めた顧客に過払いを起こさない。</strong></p>
+<div class="tablewrap"><table><thead><tr><th>時点</th><th>金額</th><th>累計</th></tr></thead><tbody><tr><td>診断完了時</td><td>48万円</td><td>48万円</td></tr><tr><td>フェーズ1 着手時</td><td>74万円</td><td>122万円</td></tr><tr><td>Day45（フェーズ1完了時）</td><td>74万円</td><td><strong>196万円</strong>（＝診断48＋フェーズ1 148。ここで止めても過不足なし）</td></tr><tr><td>フェーズ2 着手時（Day46）</td><td>99万円</td><td>295万円</td></tr><tr><td>Day120（完了時）</td><td>99万円</td><td><strong>394万円</strong></td></tr></tbody></table></div>
+<ul><li>各回とも末日締め翌月末払い</li><li>継続契約へ移行する場合、完了時分と初月分を同月に請求しない</li></ul>
+<p><strong>検収</strong>: 引き渡し資料一式の交付と、最終報告の実施をもって完了とする。終わりの判定基準（社員3人に聞く等）は成果の目安であり、検収条件にしない。ただし<strong>達成しなかった場合の扱いは §7 の減額表で定める</strong>。片側だけに線を引かない。</p>
+<hr>
+<h2>5. 顧客の回収をどう説明するか</h2>
+<p><strong>業務1本の削減だけで394万円は戻らない。そう言い切る。</strong></p>
+<p>戻るのは3つの合計になる。</p>
+<ol><li>対象業務の作業時間の削減（定量。ただし削減率は約束しない）</li><li>決裁が1つ現場に降りることによる判断の速さ</li><li>その業務が担当者不在でも回ること、と、2本目以降を自社で展開できる型が残ること</li></ol>
+<blockquote><p><strong>業務削減の金額だけで判断されるなら、この商品はお勧めしません。</strong></p><p>これを商談で先に言う。</p></blockquote>
+<h3>削減の説明の仕方（削減率を約束しない）</h3>
+<p>診断では次の形で出す。</p>
+<blockquote><p>御社の◯◯業務は年間◯時間。そのうち<strong>転記・確認・探す時間が◯時間</strong>（アンケートと観察から特定）。ここが手順とAIで減る対象です。</p></blockquote>
+<div class="tablewrap"><table><thead><tr><th>状態</th><th>書き方</th></tr></thead><tbody><tr><td>実績なし（現在）</td><td>減らす対象の時間を名指しし、削減率は約束しない</td></tr><tr><td>実績1〜2件</td><td>「同じ形の業務で◯%減った例があります」と事例として出す</td></tr><tr><td>実績5件以上</td><td>削減率のレンジを提示する</td></tr></tbody></table></div>
+<p><strong>対象業務は年間1,000時間以上から選ぶ。</strong> これは回収を保証する数字ではなく、<strong>削減を体感できる最低量</strong>として置く。人件費単価（3,000円／時など）は顧客の実額を使う。自社で仮定した単価を見積に載せない。</p>
+<hr>
+<h2>6. 含むもの・含まないもの</h2>
+<h3>含む</h3>
+<ul><li>フェーズ1: 判断基準の言語化・決裁の詰まりの特定と権限移譲1件・対象業務の確定</li><li>フェーズ2: 業務1本の手順化・AIの稼働・対象業務まわりの記録の整備・対外物の現在地1枚・社内研修1回・引き渡し</li><li>各フェーズ期間中: <strong>月2回の定例（各60分）＋チャットでの質問（月10件まで）</strong></li></ul>
+<h3>含まない</h3>
+<ul><li>Webサイト・ロゴ・動画・撮影などの制作物（PROJECTで別途見積）</li><li>業務の型化の2本目以降</li><li>AI・SaaSのライセンス費用（顧客名義で契約してもらう）</li><li>遠方の交通費・宿泊費（実費請求）</li><li>継続的な実務代行</li></ul>
+<hr>
+<h2>7. 受ける条件と、減額の表</h2>
+<h3>失格条件（満たせないなら、その先へ進まない）</h3>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>条件</th><th>満たせない場合</th></tr></thead><tbody><tr><td>1</td><td>更新担当者を<strong>正副2名</strong>、社内から出せること</td><td>診断で終える</td></tr><tr><td>2</td><td>経営会議に同席させてもらえること</td><td><strong>フェーズ1のみで終える</strong></td></tr><tr><td>3</td><td>対象業務が年間1,000時間以上あること</td><td>診断で終える。<strong>フェーズ1も売らない</strong></td></tr><tr><td>4</td><td>フェーズ2の着手までに、AIを載せる環境（管理者権限とデータの取り出し）を顧客側で用意できること</td><td>フェーズ2に進まない</td></tr></tbody></table></div>
+<h3>減額の表（事由が重なったら加算する）</h3>
+<div class="tablewrap"><table><thead><tr><th>事由</th><th>減額</th><th>根拠（積算のどの行が落ちるか）</th></tr></thead><tbody><tr><td>経営会議の同席が1回</td><td>フェーズ1から <strong>20万円</strong> → 128万円</td><td>権限移譲1件の実行2.0＋記録0.5＝2.5人日</td></tr><tr><td>経営会議の同席が0回</td><td>フェーズ1から <strong>20万円</strong> → 128万円。フェーズ2に進まない</td><td>同上</td></tr><tr><td>Day100の判定でAIが稼働していない</td><td>フェーズ2から <strong>40万円</strong> → 158万円</td><td>AI実装2.5＋現場テスト2.5＝5.0人日</td></tr></tbody></table></div>
+<p><strong>重なった場合</strong>: 同席1回かつAI未稼働なら、128万円＋158万円＝286万円（診断48万円は別）。</p>
+<p><strong>成果物が縮むなら、金額も下げる。</strong> 例外を作らない。</p>
+<h3>Day100の判定手続き</h3>
+<ul><li>顧客の更新担当者と同席して、<strong>直近2週間の使用回数</strong>を確認する</li><li>週3回以上使われていれば通常完了。下回っていれば、Hは手順書とAIへの指示文一式の引き渡しに切り替え、40万円を減額して完了する</li><li><strong>無償延長はしない。</strong> 判定日と判定方法を契約時に別紙で確定させる</li></ul>
+<hr>
+<h2>8. 既存の継続契約中の顧客に乗せる場合</h2>
+<p>主対象は既に伴走している顧客なので、月額との線引きを先に決める。</p>
+<div class="tablewrap"><table><thead><tr><th>論点</th><th>決め</th></tr></thead><tbody><tr><td>月額の中でやれないか、と言われたら</td><td>やらない。月額は経営の相談と施策の推進、この商品は工程と成果物が固定された制作物。<strong>同じ人が動くが、売っているものが違う</strong>と説明する</td></tr><tr><td>期間中の月額</td><td>継続する。この商品の定例（月2回）は月額の定例とは別に持つ</td></tr><tr><td>期間中に月額の稼働が落ちないか</td><td>落ちる。<strong>事前に伝える。</strong>期間中は月額側の稼働を抑える旨を合意してから受ける</td></tr><tr><td>月額顧客への値引き</td><td>しない。継続顧客だからという理由の値引きは、値付けの根拠を壊す</td></tr></tbody></table></div>
+<hr>
+<h2>9. 契約に足す条項（案）</h2>
+<h3>自走化条項</h3>
+<blockquote><p>乙は、本業務の完了時点において、甲が本件成果物を自ら更新および運用できる状態とすることを目的とする。乙は完了時に、更新手順書の交付および甲の指定する更新担当者への引き継ぎを行う。甲は本業務期間中、更新担当者を正副2名指定するものとする。</p></blockquote>
+<h3>範囲の固定</h3>
+<blockquote><p>本業務の対象は、契約時に別紙で特定した業務1件と、別紙に定める範囲に限る。会社の定義に関する成果物は経営者の判断基準の言語化まで、記録の整備は当該対象業務に関連する範囲に限るものとし、全社的な浸透および全社的な情報整備は含まない。対象業務の確定は着手後30日までとし、それ以降の変更または対象の追加は、別途見積のうえ合意する。</p></blockquote>
+<h3>前提条件と減額</h3>
+<blockquote><p>甲は本業務期間中、乙が経営会議へ同席することを認めるものとする。同席機会が2回に満たない場合、または別紙に定める判定日において対象業務でのAIの利用が別紙の基準に達しない場合、成果物の範囲および料金は別紙の減額表のとおり調整する。</p></blockquote>
+<h3>検収</h3>
+<blockquote><p>本業務の完了は、乙による引き渡し資料一式の交付および最終報告の実施をもって確認する。</p></blockquote>
+<hr>
+<h2>10. 補助金の扱い</h2>
+<p><strong>AI導入補助金2026は、この構成のままでは通らない可能性が高い。</strong></p>
+<ul><li>公式規定で<strong>役務費がソフトウェア費を上回る構成はNG</strong>。このパッケージは役務が主体</li><li>時間単価の上限（1万円）については、実効8,419円／時で<strong>上限内に収まる</strong>。ここは障害にならない</li></ul>
+<p>したがって障害は<strong>役務主体という構成の一点</strong>にある。補助金を前提にした提案はしない。使うなら、対象になる製品部分を別建てで立て、この工程を導入役務として組む必要がある。その設計は別途検討する。</p>
+<p>（前版で「時間単価の上限を超える」と書いていたのは誤り。単価を下げた改訂で成立しなくなった論拠をそのまま残していた。）</p>
+<hr>
+<h2>11. 対外化する時の書き換えルール</h2>
+<div class="tablewrap"><table><thead><tr><th>社内の言い方</th><th>顧客に出す言い方</th></tr></thead><tbody><tr><td>A〜Hのブロック記号</td><td>日本語の名前で通す（会社の定義／決め方／業務の型 …）</td></tr><tr><td>A簡易</td><td>経営者の判断基準の言語化</td></tr><tr><td>G最小</td><td>対象業務まわりの記録の整理</td></tr><tr><td>型化</td><td>手順にする</td></tr><tr><td>自走化条項</td><td>引き継ぎについての取り決め</td></tr><tr><td>90日パッケージ</td><td>フェーズ1（45日）とフェーズ2（75日）</td></tr><tr><td>人日・実効単価・受注下限・稼働占有</td><td><strong>出さない</strong></td></tr><tr><td>継続契約への接続に関する記述</td><td><strong>出さない</strong></td></tr><tr><td>内部の積算表</td><td><strong>出さない</strong></td></tr></tbody></table></div>
+<p><strong>数字を対外に出す時の2つの規律</strong></p>
+<ol><li><strong>外部データは、調査対象と出典を必ず併記する。</strong> OECD（2025-12・中小企業対象）、MIT NANDA（2025・大企業のパイロット対象）。対象が違うものを日本の中小企業に当てはめない</li><li><strong>自前の推定値は、幅と前提を明記する。</strong> 削減率・回収年数は実績n=0。約束の形で出さない</li></ol>
+<hr>
+<h2>12. 正本の改訂が必要な項目（このリストが唯一の正）</h2>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>対象</th><th>内容</th></tr></thead><tbody><tr><td>1</td><td>料金正本 §3・§15-12</td><td>商談の主な着地点をCONSULT／PARTNERとしている記述。フェーズ1を着地点に加えるか、この商品を着地点にしないかを決める</td></tr><tr><td>2</td><td>料金正本 §4</td><td>SPOT（30万円・120分）はそのまま残す。<strong>充足度診断48万円は別商品として追加</strong>する</td></tr><tr><td>3</td><td>料金正本 §3</td><td>サービス5区分に属さない売り物が2つある（充足度診断、業務の型化2本目以降48万円／1業務）。区分に足すか、PROJECTに寄せるかを決める</td></tr><tr><td>4</td><td>料金正本 §15-10</td><td>参考価格を確定料金として約束しない、という規律。48／148／198／394万円を確定表記で持つなら、対外時の但し書きルールを決める</td></tr><tr><td>5</td><td>会社正本 §19</td><td>提供サービスの一覧に追加する</td></tr><tr><td>6</td><td>契約テンプレート</td><td>§9の4条項（自走化・範囲の固定・前提条件と減額・検収）を反映する</td></tr><tr><td>7</td><td>estimateスキル</td><td>内訳3区分・人日非開示・失格条件の前提記載・減額表の別紙化を反映する</td></tr></tbody></table></div>
+<hr>
+<h2>13. 決め待ち</h2>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>決めること</th><th>案</th><th>状態</th></tr></thead><tbody><tr><td>1</td><td>診断の金額</td><td>48万円（SPOT 30万円とは別商品）</td><td>未決</td></tr><tr><td>2</td><td>フェーズ1の金額</td><td>148万円（同席1回なら128万円）</td><td>未決</td></tr><tr><td>3</td><td>フェーズ2の金額</td><td>198万円（AI未稼働なら158万円）</td><td>未決</td></tr><tr><td>4</td><td>受注下限</td><td>通し360万円</td><td>未決</td></tr><tr><td>5</td><td>2件目の撤退閾値</td><td>7.5万円／日</td><td>未決</td></tr><tr><td>6</td><td>期間を約4ヶ月半とすること</td><td>する（90日と呼ばない）</td><td>未決</td></tr><tr><td>7</td><td>共通資産が揃うまで同時1件を守れるか</td><td>守る</td><td>未決</td></tr><tr><td>8</td><td>既存の月額顧客に値引きしない</td><td>しない</td><td>未決</td></tr></tbody></table></div>
+</div></body></html>

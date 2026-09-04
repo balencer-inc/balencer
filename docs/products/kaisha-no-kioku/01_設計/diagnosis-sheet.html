@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>充足度診断 — 質問集と採点表 v0.3</title>
+<style>
+:root{--white:#FFFFFF;--cool:#F7F8F9;--pale:#F0F2F4;--ink:#45484D;--mid:#7A7E85;--line:#D9DCE1;--blue:#3158D4;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--pale);color:var(--ink);
+font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+font-feature-settings:"palt";line-height:1.9;font-size:15px;-webkit-font-smoothing:antialiased;}
+.sheet{max-width:880px;margin:48px auto;background:var(--white);padding:64px 72px 80px;}
+h1{font-size:27px;line-height:1.5;font-weight:700;letter-spacing:.02em;margin:0 0 24px;padding-bottom:22px;border-bottom:2px solid var(--ink);}
+h2{font-size:19px;font-weight:700;margin:56px 0 18px;letter-spacing:.02em;padding-left:14px;border-left:3px solid var(--blue);}
+h3{font-size:15.5px;font-weight:700;margin:34px 0 10px;color:var(--blue);letter-spacing:.02em;}
+p{margin:0 0 14px;}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0;}
+a{color:var(--blue);}
+blockquote{margin:16px 0 20px;padding:14px 20px;background:var(--cool);border-left:3px solid var(--line);color:var(--ink);}
+blockquote p:last-child{margin-bottom:0;}
+ul,ol{margin:0 0 16px;padding-left:1.4em;}
+li{margin-bottom:7px;}
+ul.todolist{list-style:none;padding-left:0;}
+li.todo{padding-left:30px;position:relative;}
+li.todo:before{content:"";position:absolute;left:2px;top:.55em;width:13px;height:13px;border:1.5px solid var(--mid);border-radius:2px;}
+.tablewrap{overflow-x:auto;margin:18px 0 24px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{background:var(--cool);text-align:left;font-weight:700;padding:11px 14px;border-bottom:1.5px solid var(--ink);white-space:nowrap;}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+@media print{body{background:#fff;}.sheet{margin:0;padding:20mm 18mm;max-width:none;}h2{page-break-after:avoid;}table{page-break-inside:avoid;}}
+@media (max-width:720px){.sheet{margin:0;padding:32px 22px;}h1{font-size:22px;}th{white-space:normal;}}
+</style></head><body>
+<div class="sheet">
+<h1>充足度診断 — 質問集と採点表 v0.3</h1>
+<p>作成: 2026-09-04 ／ 改訂: 2026-09-04</p>
+<p>商品: 充足度診断 <strong>48万円／回・2週間</strong>（SPOT 30万円とは別商品）</p>
+<p>用途: 商談と初回訪問でそのまま使う。<strong>この質問集と採点表が、共通側で唯一いま完成している資産</strong></p>
+<blockquote><p><strong>Lv0〜3の定義は、この文書が正本。</strong> 他の文書からは参照だけにする。</p></blockquote>
+<hr>
+<h2>1. 進め方（2週間・投下3人日）</h2>
+<div class="tablewrap"><table><thead><tr><th>順</th><th>やること</th><th>誰が</th><th>時間</th></tr></thead><tbody><tr><td>1</td><td>事前アンケート（§2の24問）を渡す。<strong>経営者1名＋社員3名以上に別々に書いてもらう</strong></td><td>顧客側</td><td>各30分</td></tr><tr><td>2</td><td>経営者インタビュー</td><td>代表</td><td>120分</td></tr><tr><td>3</td><td>資料確認（会社案内・組織図・既存の手順書・共有ドライブの構成）</td><td>—</td><td>—</td></tr><tr><td>4</td><td>暫定採点・食い違いの抽出・作図、対象候補業務3つの年間作業時間の算定</td><td>—</td><td>—</td></tr><tr><td>5</td><td>報告</td><td>代表</td><td>60分</td></tr></tbody></table></div>
+<ul><li><strong>社員ヒアリング（対面）は診断に含めない。</strong> 社員の声は事前アンケートで取る。対面は フェーズ1 で行う</li><li>したがって<strong>この採点は暫定</strong>。確定はフェーズ1で行う。報告時にそう伝える</li><li>投下5.5人日で48万円 ＝ 8.7万円／日（内訳は <a href="../02_価格・契約/pricing-and-terms.md">pricing §2</a>）</li></ul>
+<h3>社員アンケートの匿名ルール（これを外すと診断が成立しない）</h3>
+<p>社長に読まれる前提だと、社員は「社長が決めていることのうち現場で決められるもの」に本音を書かない。<strong>書かれなければ、この診断の目玉である食い違いは出ない。</strong></p>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>ルール</th></tr></thead><tbody><tr><td>1</td><td>社員の回答は<strong>3名以上必須</strong>。3名未満なら診断を受けない（個人が特定される）</td></tr><tr><td>2</td><td><strong>個別回答は経営者に開示しない。</strong> 回収先はバレンサー</td></tr><tr><td>3</td><td>報告に書くのは<strong>ブロック単位でズレがあったかどうか</strong>まで。誰が何と書いたかは書かない</td></tr><tr><td>4</td><td>社員への依頼文にこの3つを明記して配る。<strong>書く前に伝わっていないと意味がない</strong></td></tr></tbody></table></div>
+<hr>
+<h2>2. 質問（8ブロック×3問）</h2>
+<p>聞き方の原則: 意見を聞かない。<strong>事実と、直近に起きたことを聞く。</strong></p>
+<p>アンケートは経営者と社員に同じ設問を配る。<strong>答えのズレそのものが診断結果になる。</strong></p>
+<h3>A｜会社の定義</h3>
+<ol><li>この会社は何のためにあるのか、社員に説明するとしたら何と言いますか</li><li>直近で判断に迷ったのはどの場面ですか。何を基準に決めましたか</li><li>同じ質問を社員3人にしたら、同じ答えが返ってくると思いますか</li></ol>
+<h3>B｜事業と商品</h3>
+<ol><li>いま一番利益が出ている仕事はどれですか。数字で分かりますか</li><li>直近1年で断った仕事はありますか。何を基準に断りましたか</li><li>値引きしてよいかどうかを、現場が自分で判断できますか</li></ol>
+<h3>C｜顧客</h3>
+<ol><li>主要な顧客との、これまでの経緯が書かれている場所はありますか</li><li>担当者が急に辞めたら、その顧客の話を引き継げますか</li><li>前回その顧客と何を話したかを、他の人が見られますか</li></ol>
+<h3>D｜決め方</h3>
+<ol><li>社長が決めていることのうち、本当は現場で決められるものはどれですか</li><li>何を決める会議が、いつ開かれていますか</li><li>決まったことは、どこに記録されていますか</li></ol>
+<h3>E｜業務の型</h3>
+<ol><li>社内で一番回数が多い仕事は何ですか</li><li>その仕事の手順は書かれていますか。最後に更新したのはいつですか</li><li>その仕事を、明日から別の人ができますか</li></ol>
+<h3>F｜言葉とデザインの基準</h3>
+<ol><li>会社案内・サイト・SNSで、言っていることは揃っていますか</li><li>誰かが作った資料を、何を基準に良し悪し判断していますか</li><li>外注先に渡している基準はありますか</li></ol>
+<h3>G｜記録の置き場ルール</h3>
+<ol><li>探しものに、1日どのくらい時間を使っていますか</li><li>同じ資料が複数の場所にあることはありますか</li><li>新しく入った人は、作った資料をどこに置きますか</li></ol>
+<h3>H｜AIへの渡し方</h3>
+<ol><li>AIを使っている社員は何人いますか。何に使っていますか</li><li>AIに会社のことを説明する時、毎回ゼロから説明していますか</li><li>導入したが定着しなかったツールはありますか。なぜ止まりましたか</li></ol>
+<hr>
+<h2>3. 対象候補業務の測り方（診断の必須アウトプット）</h2>
+<p><strong>ここが90日に進むかどうかを決める。</strong> 感覚ではなく数字で出す。</p>
+<h3>選ぶ基準</h3>
+<ol><li>回数が多く、複数人が日常的にやっている</li><li>担当が固定されている（＝手順が取り出せる）</li><li>失敗しても事業が止まらない</li></ol>
+<h3>測る式</h3>
+<p>```</p>
+<p>年間作業時間 ＝ 関わる人数 × 1人あたりの週の作業時間 × 50週</p>
+<p>年間の人件費換算 ＝ 年間作業時間 × 3,000円／時（※顧客の実態に合わせて調整）</p>
+<p>```</p>
+<h3>判定</h3>
+<div class="tablewrap"><table><thead><tr><th>年間作業時間</th><th>判定</th></tr></thead><tbody><tr><td>1,000時間以上</td><td>フェーズ1・フェーズ2の対象になる</td></tr><tr><td>1,000時間未満</td><td><strong>フェーズ1も含めて受けない。</strong> 診断で終える（<a href="../02_価格・契約/pricing-and-terms.md">pricing §7 失格条件3</a>）</td></tr></tbody></table></div>
+<h3>削減の伝え方（削減率を約束しない）</h3>
+<p>実績n=0の段階で「半減します」と言わない。次の形で出す。</p>
+<blockquote><p>御社の◯◯業務は年間◯時間。そのうち<strong>転記・確認・探す時間が◯時間</strong>。ここが手順とAIで減る対象です。</p></blockquote>
+<p><strong>人件費単価は顧客の実額を使う。</strong>自社で仮定した単価（3,000円／時など）を見積に載せない。</p>
+<p>そして、これを必ず添える。</p>
+<blockquote><p>業務1本の削減だけでこの金額は戻りません。戻るのは、決裁が1つ現場に降りること、その業務が担当者不在でも回ること、2本目以降を自社で展開できる型が残ることの合計です。<strong>業務削減の金額だけで判断されるなら、お勧めしません。</strong></p></blockquote>
+<hr>
+<h2>4. 採点</h2>
+<div class="tablewrap"><table><thead><tr><th>Lv</th><th>状態</th><th>判定の目安</th></tr></thead><tbody><tr><td>0</td><td>ない</td><td>どこにも書かれていない</td></tr><tr><td>1</td><td>個人の中</td><td>一人の頭の中にある。その人が抜けると消える</td></tr><tr><td>2</td><td>書いてある</td><td>文書はあるが、直近3ヶ月に更新されていない。または参照されていない</td></tr><tr><td>3</td><td>使われている</td><td>参照され、直近3ヶ月に更新されている</td></tr></tbody></table></div>
+<h3>採点のルール</h3>
+<ol><li><strong>1ブロックにつき3問を採点し、一番低い問の値をそのブロックの値にする。</strong> 迷ったら低いほうを付ける</li><li><strong>Lv2とLv3の分かれ目は「直近3ヶ月に更新されたか」の一点</strong>で判定する</li><li><strong>経営者の回答と社員の回答が食い違うブロックは、社員側の値を採る。</strong> 食い違いがあったこと自体を報告に書く（ここが一番効く指摘になる）</li><li>診断時点の採点は<strong>暫定</strong>。フェーズ1の社員ヒアリングで確定する</li><li><strong>総合点を出さない。</strong> 合計すると、どのブロックが空いているかという肝心の情報が消える</li></ol>
+<hr>
+<h2>5. 返すもの（報告の1枚）</h2>
+<ol><li><strong>8ブロックの暫定採点</strong>（横棒。段階が読める形。レーダーチャートにしない）</li><li><strong>経営者と社員の回答が食い違ったブロック</strong> — ここが一番の発見になる</li><li><strong>Lv0とLv1のブロック一覧</strong> — 投資の候補</li><li><strong>対象候補業務3つと、それぞれの年間作業時間・減らす対象の時間</strong>（§3）</li><li><strong>次の一手</strong> — フェーズ1に進む／社内でやる／いま何もしない、の3択で示す</li></ol>
+<p><strong>やらないこと</strong>: 総合スコアを出す。次の提案に繋げるための誘導を書く。<strong>空いているブロックの提示は事実の報告であって、売り込みの導線ではない。</strong></p>
+<hr>
+<h2>6. よく出る形（仮説・実績n=0。1件ごとに書き換える）</h2>
+<p>現時点ではすべて仮説。<strong>実測で埋まるまで、顧客にはこの表を見せない。</strong></p>
+<div class="tablewrap"><table><thead><tr><th>採点の形</th><th>読み方</th><th>次の一手</th></tr></thead><tbody><tr><td>A=1、D=0、H=1</td><td>判断基準は社長の中にあり、決め方が定まっていない。AIは個人が勝手に使っている</td><td>フェーズ1・2が最も当たる形</td></tr><tr><td>A=2、F=2、E=0</td><td>理念とブランドは作ったが、現場の手順がない</td><td>Eを増やす提案</td></tr><tr><td>E=2、G=1、H=0</td><td>手順はあるが散らばっていて、AIに渡せない</td><td>GとHに寄せた短縮版</td></tr><tr><td>全体が0〜1で、対象業務が年間1,000時間未満</td><td>口頭で回っている規模。仕組みを入れるには早い</td><td><strong>診断のみで終える。</strong>採点の低さではなく、対象業務の量で判断する</td></tr></tbody></table></div>
+<p>（最終行の判断根拠は採点ではなく§3の業務量。採点が低いことは、それ自体では受けない理由にならない。）</p>
+</div></body></html>

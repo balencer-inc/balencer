@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ポジショニング戦略メモ 2026 — FDEという参照点とバレンサー／阿部個人の置き所</title>
+<style>
+:root{--white:#FFFFFF;--cool:#F7F8F9;--pale:#F0F2F4;--ink:#45484D;--mid:#7A7E85;--line:#D9DCE1;--blue:#3158D4;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--pale);color:var(--ink);
+font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+font-feature-settings:"palt";line-height:1.9;font-size:15px;-webkit-font-smoothing:antialiased;}
+.sheet{max-width:880px;margin:48px auto;background:var(--white);padding:64px 72px 80px;}
+h1{font-size:27px;line-height:1.5;font-weight:700;letter-spacing:.02em;margin:0 0 24px;padding-bottom:22px;border-bottom:2px solid var(--ink);}
+h2{font-size:19px;font-weight:700;margin:56px 0 18px;letter-spacing:.02em;padding-left:14px;border-left:3px solid var(--blue);}
+h3{font-size:15.5px;font-weight:700;margin:34px 0 10px;color:var(--blue);letter-spacing:.02em;}
+p{margin:0 0 14px;}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0;}
+a{color:var(--blue);}
+blockquote{margin:16px 0 20px;padding:14px 20px;background:var(--cool);border-left:3px solid var(--line);color:var(--ink);}
+blockquote p:last-child{margin-bottom:0;}
+ul,ol{margin:0 0 16px;padding-left:1.4em;}
+li{margin-bottom:7px;}
+ul.todolist{list-style:none;padding-left:0;}
+li.todo{padding-left:30px;position:relative;}
+li.todo:before{content:"";position:absolute;left:2px;top:.55em;width:13px;height:13px;border:1.5px solid var(--mid);border-radius:2px;}
+.tablewrap{overflow-x:auto;margin:18px 0 24px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{background:var(--cool);text-align:left;font-weight:700;padding:11px 14px;border-bottom:1.5px solid var(--ink);white-space:nowrap;}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+@media print{body{background:#fff;}.sheet{margin:0;padding:20mm 18mm;max-width:none;}h2{page-break-after:avoid;}table{page-break-inside:avoid;}}
+@media (max-width:720px){.sheet{margin:0;padding:32px 22px;}h1{font-size:22px;}th{white-space:normal;}}
+</style></head><body>
+<div class="sheet">
+<h1>ポジショニング戦略メモ 2026 — FDEという参照点とバレンサー／阿部個人の置き所</h1>
+<p>作成: 2026-09-04 ／ 用途: 会社と個人の中期ポジショニング判断の土台</p>
+<p>調査: Gemini NotebookLM ディープリサーチ2本（FDE職種／AI時代の未来予測、web出典各67件）＋ 会社正本</p>
+<hr>
+<h2>0. 結論</h2>
+<ol><li>コモディティ化したのは<strong>作る力の供給量</strong>であって、<strong>組織に定着させる責任</strong>はむしろ希少になった。体感は正しいが、価値が消えたのではなく値付けの場所が1段上に動いた。</li><li>FDE（Forward Deployed Engineer）は「その1段上」に値札を付けた職種であり、バレンサーが睦備建設で7年やってきたことと構造が同じ。ただし<strong>FDEの高報酬は背後にある自社プロダクトのライセンス収入が原資</strong>なので、商品を持たないまま名前だけ借りると単価だけ吊り上げた常駐と同じ棚に並ぶ。</li><li>だから取るべきは名乗りではなく構造の移植。<strong>（a）顧客ごとの「会社の記憶」をアセットとして持つ／（b）時間売りをやめて成果パッケージ＋定額に寄せる／（c）自走化を契約に書く</strong>。この3つで、AIが強くなるほど有利になる側に立てる。</li></ol>
+<hr>
+<h2>1. 体感の正体 — 何がコモディティ化したのか</h2>
+<p>阿部さんの体感（誰でもアプリを作れる／カフェの高齢者もAIの話をする）は、供給側の事実としてデータと一致する。一方で需要側はまったく詰まったままである。</p>
+<div class="tablewrap"><table><thead><tr><th>指標</th><th>数字</th><th>出典</th></tr></thead><tbody><tr><td>企業のコア業務でのAI導入率（日本）</td><td><strong>1.9%</strong>（米国6.1%）</td><td>OECD『AI Adoption by SMEs』2025-12</td></tr><tr><td>生成AIを使う中小企業のうち、コア業務に統合できている割合</td><td>29%</td><td>同上</td></tr><tr><td>中小企業が導入障壁に挙げる「社員のスキル・知識不足」</td><td>50%</td><td>同上</td></tr><tr><td>エンタープライズの生成AIパイロットが測定可能な成果を出せていない割合</td><td><strong>95%</strong></td><td>MIT NANDA 2025</td></tr><tr><td>AI施策を本番展開前に断念した企業の割合</td><td>17% → <strong>42%</strong>（1年で）</td><td>S&amp;P Global</td></tr><tr><td>エージェントAIプロジェクトのキャンセル予測（2027年末まで）</td><td>40%以上</td><td>Gartner</td></tr></tbody></table></div>
+<p>つまり<strong>作れる人は増えたが、動かし続けられている会社は増えていない</strong>。詰まりの原因は技術ではなく組織であり、そこはバレンサーの4領域（組織開発・ブランド・業務基盤・AI実装）がもともと立っている場所である。</p>
+<p>コモディティ化しているのは、正確にはこの3つだけである。</p>
+<ul><li>制作・実装の<strong>作業量</strong>（コード、スライド、リサーチ、要約、モデリング。AIで30〜70%圧縮）</li><li><strong>ツールの紹介</strong>と汎用的なAIアドバイス（顧客自身が同じAIに聞ける）</li><li><strong>時間の切り売り</strong>という課金形式（生産性向上が自社の売上減に直結する構造的な破綻）</li></ul>
+<hr>
+<h2>2. FDEは何に値札を付けているのか</h2>
+<p>FDEは2003年設立のパランティアが確立した職種で、顧客の現場に入り込み、自社プラットフォームを顧客環境に本番実装して定着まで責任を負う。2025年から2026年で<strong>求人掲載数が前年比8.3〜11.6倍</strong>に急増した。</p>
+<p>値付けの対象はコードを書けることではない。</p>
+<ol><li><strong>ディスカバリー（問題分解）</strong> — 仕様が決まっていない段階から現場と5〜15回の対話を重ね、「請求書を自動化したい」の裏にある承認フローや帳票の標準化不全を特定する。2026年のFDE求人票の70%以上で必須要件。</li><li><strong>業務プロセスの再設計</strong> — レガシー、データスキーマ、セキュリティ制約、現場の暗黙のルールを解いてAIが機能する業務に組み替える。エアバスA350の製造現場では機体納入速度が33%向上。</li><li><strong>顧客組織内の合意形成</strong> — AIの出力は確率的なので、その結果を誰の権限で・どの会議体で・どの粒度で意思決定に入れるかという人間側の責任プロセスを設計する。</li></ol>
+<p>報酬水準（2026年）:</p>
+<ul><li>フロンティアラボ（OpenAI／Anthropic）: ミドル総報酬 35万〜45万ドル、<strong>スタッフ／プリンシパル級 60万〜120万ドル超</strong>（総報酬の60〜70%が株式）</li><li>米エンタープライズ（Fortune 500のAIチーム）: シニア24万〜31万ドル、スタッフ31万〜42万ドル</li><li>日本のAI／SaaSスタートアップ: <strong>年収1,000万〜2,500万円</strong>（LayerX 1,200万〜、ログラス 1,000万〜2,500万、SB OAI Japan 800万〜2,000万）</li><li>日本のフリーランスFDE案件: 月単価120万〜200万円超</li></ul>
+<p><strong>ただしこの値付けの原資は明確である。</strong> FDE 1人が動くことで200万〜5,000万ドル規模の継続ライセンス契約が成立・更新するため、その契約総額への貢献として報酬が付いている。人月の対価ではない。</p>
+<hr>
+<h2>3. FDEをそのまま真似ると失敗する — 商品を持たない支援会社の落とし穴</h2>
+<p>日本のフリーランスFDE市場では、数年前まで月単価60万円で動いていたRPAエンジニアやノーコード組み立て要員が、肩書きだけをFDEに書き換えて単価を吊り上げる「FDEバブル」が既に起きている。発注側の解像度が上がれば早期にコモディティ化して単価は戻る。</p>
+<p>調査が挙げるFDEモデルの失敗パターンは、少数精鋭のバレンサーにそのまま当てはまるものが多い。</p>
+<div class="tablewrap"><table><thead><tr><th>失敗</th><th>内容</th><th>バレンサーでの現れ方</th></tr></thead><tbody><tr><td>個別カスタマイズの泥沼</td><td>共通基盤がないまま顧客ごとにゼロから作る。維持もバージョンアップも不可能</td><td>案件ごとに一から作る。名前を変えただけの高稼働受託</td></tr><tr><td>燃え尽き</td><td>仕様不定・レガシー・組織政治に常時向き合う負荷</td><td>代表とディレクターへの一極集中。稼働の天井が売上の天井</td></tr><tr><td>顧客の自走化失敗</td><td>ブラックボックス化して抱え込み、離脱した瞬間に止まる</td><td>中小企業ほど脆弱で、即解約につながる</td></tr><tr><td>ノウハウがプロダクトに戻らない</td><td>発見が資産化されず、会社の資産が増えない</td><td>案件が終わると知見が個人の頭とフォルダに残るだけ</td></tr></tbody></table></div>
+<p>回避策として調査が挙げるのは4つである。</p>
+<ol><li><strong>8割共通・2割カスタマイズの原則</strong> — 完成済みの共通基盤の上でのみ動く。ゼロからの開発を禁じる</li><li><strong>評価指標を「プロダクトの進化」に置く</strong> — 個別最適の納品ではなく、共通機能への還元量で測る</li><li><strong>撤退（自走化）前提の契約設計</strong> — 顧客が自分で運用改善できる状態をゴールに書く</li><li><strong>ポッド型デプロイ</strong> — 顧客の政治とユースケースを整理する役1名＋実装役2名、3ヶ月区切り。個人依存を避ける</li></ol>
+<p>パランティアが実際にやったのは、FDEを「発見エンジン」として使い、その発見を<strong>Foundry Ontology（企業内のデータを顧客・部品・フライトといったビジネス概念レベルで標準化する構造モデル）</strong>として製品側に固めたことである。だからFDEは行くたびにDBを書かず、オントロジーを定義するだけでよくなった。2023年のAIPはそのオントロジーをLLMのツール呼び出しに直結させたもので、<strong>3日で現場で機能するAIアプリを実装できる</strong>状態にした。1年以上かかっていたPoCサイクルが数日に圧縮され、2025年度売上45億ドル（前年比70%増）に至っている。</p>
+<p><strong>要点は、FDEが偉いのではなく、FDEの発見を製品に固める仕組みが偉いということ。</strong> ここが移植すべき構造である。</p>
+<hr>
+<h2>4. マスクらの未来予測をどう割り引いて使うか</h2>
+<h3>各人が言っていること</h3>
+<ul><li><strong>イーロン・マスク</strong>（2026-08、X）: 2027年末までに、原子の操作を伴わない<strong>あらゆるデジタル領域でAIが超人的になる</strong>。10年以内に10億台のロボットが人類全体の生産性を超える。Optimusは2万〜3万ドルで2027年末に一般発売。労働は選択制になり、インフレなき Universal High Income が実現する</li><li><strong>サム・アルトマン</strong>: 今世紀中に経済的価値のある大半の仕事で人間を超えるAGI。計算資源を配る Universal Basic Compute を提唱</li><li><strong>ダリオ・アモデイ</strong>: 強力なAIの到来後5〜10年で数十年分の進歩が圧縮される。恒久的失業には企業増税によるUBIを想定</li><li><strong>ジェンスン・フアン</strong>（2026）: AGIは既に達成された（ただし定義を「一時的なバイラルアプリを作れる能力」まで大きく下げている）。仕事は消えず職能拡張が進むと楽観</li></ul>
+<p>マスクだけが2027年での完全なデジタル代替を言い、他の3人は10年単位の段階的移行と分配政策を論じている。</p>
+<h3>割り引くべき理由</h3>
+<ul><li>マスクの予測不成立の履歴（完全自動運転、火星移住）。2023年時点では超知能まで5〜6年としていた予測を毎年前倒ししている</li><li>物理制約: チップ、変圧器、電力供給、レアアース輸出規制。Optimusは現時点で実質的な工場稼働に至っていない</li><li>自己矛盾: 労働は選択制と言いながら、テスラ工場で3万人の新規雇用を約束している</li><li>発言者は常に販売と資金調達のインセンティブを持つ。デモと実用は別物</li></ul>
+<h3>実測データ（2025〜2026）</h3>
+<ul><li>米失業率は4.3%で安定。大量失業は起きていない</li><li>ただし<strong>若年層（22〜25歳）のAI露出職種の採用は基準比19%減</strong>。給与抑制と「ジュニア職にシニア技能を求める」シニア化が進行</li><li>AIによる時間節約の<strong>40%が修正・検証作業で相殺</strong>されている</li><li>SF連銀（2026-02）: マクロ生産性へのAI効果の証拠は限定的。有用だと答える企業でも変革的な利得の証拠はほとんどない</li><li>電化やPC普及と同じソロー・パラドックス（生産性に効くまでのタイムラグ）の再現</li></ul>
+<h3>経営判断への翻訳（ここが実務的な結論）</h3>
+<blockquote><p><strong>「能力がいつ来るか」の予測は大きく割り引く。「供給が飽和する」ほうは割り引かない。</strong></p></blockquote>
+<p>実際に来ているのは能力の飛躍ではなく<strong>供給の飽和</strong>である。バレンサーにとっての本当の脅威は「AIが仕事を奪う」ことではなく、次の2つである。</p>
+<ol><li><strong>クライアントが自分で作れるようになる</strong>（作業の外注価値が消える）</li><li><strong>同業が同じ品質を安く出す</strong>（制作単体の単価が下がる）</li></ol>
+<p>どちらも「作る力」で守れない。守れるのは関係と責任の側だけである。</p>
+<hr>
+<h2>5. 何が希少になるか（5つ）</h2>
+<p>調査が一貫して挙げる、コモディティ化しない資産。</p>
+<ol><li><strong>信頼資本・関係資本</strong> — 経営層への直接の接続、顧客の個別心理の理解、対面での対話。機械が真似しにくく、外注にも出せない</li><li><strong>責任の引き受けと目標設定</strong> — AIの出力は「いびつな技術的フロンティア」（構造化タスクは得意、曖昧で多段の判断は苦手）。それを検証し、法的・事業的責任を背負って最終判断を下し、システムが最適化すべき目標そのものを定義する役割</li><li><strong>チェンジマネジメント</strong> — AI導入の最大のボトルネックは技術ではなく組織の変革と受容。社員の不安を扱い、新しい業務習慣を定着させる人対人の機能</li><li><strong>独自データと現場アクセス</strong> — 自動化できない現実のつながり、物理世界、その会社にしかない業務の実態</li><li><strong>感性（Taste）と「人がやった」という物語</strong> — 無数のAI候補から何を世に出すかを選ぶ判断。有機食品と同じ構造で、将来の最高級ブランドのラベルになる</li></ol>
+<p>補助的に有効な視点として、VaynerXの<strong>Relevance Barbell</strong>（アルゴリズム的関連性＝AIによるスケール × アナログ的関連性＝対面・体験の深さ。中間が最も危ない）がある。これは営業戦略2026で決めた対面比率60%の方針と整合する。</p>
+<hr>
+<h2>6. バレンサーの結論 — 4つの打ち手</h2>
+<p>前提として、<strong>バレンサーは既にFDE的な仕事をしている</strong>。睦備建設は「Wi-Fiを入れたい」の1件から、Google Workspace 5名導入、権限設計、現地レクチャー、コーポレートサイト、アプリ、スマートキー、新規事業、社内AI勉強会まで7年続き、部署を超えたDXプロジェクトが自発的に生まれる組織に変わった。これはFDEの教科書事例そのものである。足りないのは実力ではなく<strong>構造</strong>である。</p>
+<h3>打ち手1: 商品の中心を「会社の記憶」に据える</h3>
+<p>4領域（組織開発・ブランド・業務基盤・AI実装）はいま横断で組んでいるが、<strong>出口が1つに束ねられていない</strong>。束ねる先を、パランティアのオントロジーに相当する成果物として定義する。</p>
+<blockquote><p>その会社が何者で、何を大切にし、どう決め、どう動くかを、人にもAIにも読める形式で構造化して持つこと。</p></blockquote>
+<p>これはバレンサーが社内で既に実装済みの形式である（CLAUDE.mdと正本ファイル群でAIが会社の前提を持って動く状態）。同じものを顧客の会社に作って納めるなら、</p>
+<ul><li>MVV・組織の言語 → ブランドの定義 → 業務の型 → AIが読める形式、という4領域の順番がそのまま製造工程になる</li><li>顧客固有の独自データになるので、乗り換えコストが構造的に高い（希少資産の4番目）</li><li>ヒトツ（Notion業務基盤パッケージ）と地続きで、既存商品の再定義で足りる</li></ul>
+<h3>打ち手2: 8割共通・2割個別の骨格を持つ</h3>
+<p>ゼロから作るのを禁じる。共通化するのは制作物ではなく<strong>作り方の型</strong>である（社内の工程スキル群がその原型）。案件ごとに、共通の型から何割で組めたかを記録して、次に還す。</p>
+<p>評価の置き方も変える。<strong>個別最適の納品ではなく、共通の型に何を還元したかで測る。</strong></p>
+<h3>打ち手3: 課金を成果パッケージ＋定額へ寄せ切る</h3>
+<p>CONSULT（月20万）／PARTNER（月30〜50万）／EXECUTIVE（月60〜100万）は既に定額なので方向は合っている。危ないのは<strong>PROJECT（制作・開発・実装）が実質の人月に寄りやすい</strong>ことである。AIで制作時間が30〜70%短縮されるほど、人月換算は自社の売上減に直結する。</p>
+<ul><li>入口はSPOT（30万／回）を90日型の診断＋1業務パイロット＋定着に組み替える（調査の推奨も同じ90日スプリント型）</li><li>PROJECTは「作業量」ではなく「稼働し続ける状態」への固定価格に寄せる。見積には25%の見積誤差バッファを持つ</li><li>参考: マッキンゼーは2025年に全世界フィーの25%を成果連動に移した。成果連動化は景気循環ではなく構造的な圧力である</li></ul>
+<h3>打ち手4: 自走化と負荷分散を契約に書く</h3>
+<ul><li>完了地点を「顧客が自分で運用改善できている状態」と定義して契約に明記する。中小企業は属人化・ブラックボックス化への耐性が最も低く、即チャーンにつながる</li><li>ポッド型（顧客の政治とユースケースを整理する役＋実装役）を3ヶ月区切りで組む。少数精鋭の最大リスクは代表の燃え尽きなので、これは経営上の防御でもある</li></ul>
+<hr>
+<h2>7. 阿部個人の結論</h2>
+<p>FDEの定義に照らすと、阿部さんが同時に持っている3つは、市場でほとんど重なって存在しない。</p>
+<ol><li><strong>経営者の隣に座れる信頼</strong>（対面、現場アクセス、意思決定への同席）</li><li><strong>自分で作れる手</strong>（Claude Codeで実装まで自分で届く）</li><li><strong>旗</strong>（著書『社長のためのコンサル3.0』と継続的な発信）</li></ol>
+<p>1だけならコンサル、2だけならエンジニア、3だけならインフルエンサーである。3つ揃っている状態がFDEの希少性そのものであり、これは意識して守る対象になる。</p>
+<h3>守るもの</h3>
+<ul><li><strong>顧客の意思決定の場に同席し続けること</strong>。ここから離れると、どれだけ作れても外注に落ちる</li><li><strong>手を動かし続けること</strong>。作れないコンサルは「提案書だけ」に落ち、AI時代の中小企業が最も払わない側になる</li><li><strong>旗を降ろさないこと</strong>。関係資本の入口であり、供給過剰の市場での第一想起になる</li></ul>
+<h3>捨てるもの</h3>
+<ul><li>制作作業量で価値を語ること</li><li>ツールの紹介と一般的なAIアドバイス（顧客が同じAIに聞ける）</li><li>綺麗な提案書を出して実行は現場に任せる動き</li><li>時間単価という単位そのもの</li></ul>
+<h3>測る指標（売上以外に3つ）</h3>
+<ul><li>顧客の意思決定会議に同席している数</li><li>顧客が自走している業務の数（自分が抜けても止まらない業務）</li><li>案件を共通の型から何割で組めたか</li></ul>
+<hr>
+<h2>8. 直近90日の具体アクション（案）</h2>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>やること</th><th>出口</th></tr></thead><tbody><tr><td>1</td><td>「会社の記憶」を成果物として定義する（何を納めるのか、目次レベルで）</td><td>`docs/products/` に1枚</td></tr><tr><td>2</td><td>睦備建設の7年をFDE型の事例として構造化し直す（相談1件→全社変革の工程表）</td><td>営業で使える1枚。匿名版も作る</td></tr><tr><td>3</td><td>SPOTを90日パッケージに組み替える（1〜30日診断／31〜60日1業務パイロット／61〜90日定着・研修）</td><td>サービス正本の改訂案</td></tr><tr><td>4</td><td>PROJECTの見積を固定価格＋25%バッファの型に改める</td><td>estimateスキルに反映</td></tr><tr><td>5</td><td>共通の型の棚卸し（社内スキル群のうち顧客案件に転用できるものを一覧化）</td><td>`docs/_knowledge/ai-automation-roadmap.md` に追記</td></tr><tr><td>6</td><td>契約書に自走化・引継ぎ条項を1本足す</td><td>契約テンプレの改訂</td></tr></tbody></table></div>
+<hr>
+<h2>9. 言葉の扱い（重要）</h2>
+<p><strong>FDEは対外向けに単独で先行させない。</strong> AXやブランディングAXと同じ扱いにする。社外に対しては、意味が通る具体で言う。</p>
+<blockquote><p>経営の隣に立って、決めるところから、現場で動き続ける状態まで一緒にやる。</p></blockquote>
+<p>社内では構造の参照点としてFDEを使い、社外では会社の言葉で言う。これはCLAUDE.md §15（言葉遣いの基準）と会社正本 §6 の方針に沿う。</p>
+<p>避けるべき語り: AIが人を置き換える／人を増やさない／作業を全部AIに任せている／FDEという肩書きの前借り。</p>
+<hr>
+<h2>10. 出典（主要）</h2>
+<ul><li>OECD, *AI Adoption by Small and Medium-Sized Enterprises*, 2025-12（日本のコア業務導入率1.9%、SMEのスキル不足50%）</li><li>MIT NANDA, 2025（生成AIパイロットの95%が測定可能な成果なし）</li><li>S&amp;P Global（本番前断念 17%→42%）／Gartner（2027年末までにエージェントAI案件40%以上キャンセル）</li><li>Perspective AI, *2026 FDE Hiring Trends（1,000求人分析）* および *2026 FDE Compensation Report（1,200人分析）*</li><li>Illinois Institute of Technology, *What Is a Forward Deployed Engineer?*（2026年時点の役割定義）</li><li>JAPAN AI, FDE解説（日本語での定義・年収・キャリアパス）</li><li>Stack Overflow 2026 調査（AIエンジニアの41%が業務時間の30%以上を顧客対応に）</li><li>Elon Musk, X, 2026-08-31（2027年末までにデジタル領域で超人的AI）／Guardian 2024-04（超人AI予測）</li><li>San Francisco Fed, 2026-02（マクロ生産性へのAI効果は限定的）</li><li>The Crossing Report, *Consulting Firm Transition to Outcome-Based Pricing*, 2026（AIで30〜70%圧縮、固定価格への移行、25%バッファ）</li><li>McKinsey（2025年に全世界フィーの25%が成果連動、ワークフロー再設計がEBIT効果の最大要因）</li><li>VaynerX, Relevance Barbell（アルゴリズム的関連性×アナログ的関連性）</li></ul>
+<p>NotebookLM ノートブック:</p>
+<ul><li>FDE職種とAI時代のポジショニング（`b7d9523f-b0ef-4c3f-859f-5fe82f11c30e`、出典67件）</li><li>AI時代の未来予測と人間の希少価値（`f934d004-ccac-4ce3-ba8f-f7fba2e0a962`、出典67件）</li></ul>
+</div></body></html>

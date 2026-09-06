@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ローカルのファイル構造マップ（2026-09-06 現在）</title>
+<style>
+:root{--white:#FFFFFF;--cool:#F7F8F9;--pale:#F0F2F4;--ink:#45484D;--mid:#7A7E85;--line:#D9DCE1;--blue:#3158D4;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--pale);color:var(--ink);
+font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+font-feature-settings:"palt";line-height:1.9;font-size:15px;-webkit-font-smoothing:antialiased;}
+.sheet{max-width:880px;margin:48px auto;background:var(--white);padding:64px 72px 80px;}
+h1{font-size:27px;line-height:1.5;font-weight:700;letter-spacing:.02em;margin:0 0 24px;padding-bottom:22px;border-bottom:2px solid var(--ink);}
+h2{font-size:19px;font-weight:700;margin:56px 0 18px;letter-spacing:.02em;padding-left:14px;border-left:3px solid var(--blue);}
+h3{font-size:15.5px;font-weight:700;margin:34px 0 10px;color:var(--blue);letter-spacing:.02em;}
+p{margin:0 0 14px;}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0;}
+a{color:var(--blue);}
+blockquote{margin:16px 0 20px;padding:14px 20px;background:var(--cool);border-left:3px solid var(--line);color:var(--ink);}
+blockquote p:last-child{margin-bottom:0;}
+ul,ol{margin:0 0 16px;padding-left:1.4em;}
+li{margin-bottom:7px;}
+ul.todolist{list-style:none;padding-left:0;}
+li.todo{padding-left:30px;position:relative;}
+li.todo:before{content:"";position:absolute;left:2px;top:.55em;width:13px;height:13px;border:1.5px solid var(--mid);border-radius:2px;}
+pre{margin:18px 0 24px;padding:20px 22px;background:var(--cool);border:1px solid var(--line);overflow-x:auto;}
+pre code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.75;color:var(--ink);white-space:pre;}
+code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.9em;background:var(--cool);padding:1px 5px;border-radius:2px;}
+.tablewrap{overflow-x:auto;margin:18px 0 24px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
+th{background:var(--cool);text-align:left;font-weight:700;padding:11px 14px;border-bottom:1.5px solid var(--ink);white-space:nowrap;}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+@media print{body{background:#fff;}.sheet{margin:0;padding:20mm 18mm;max-width:none;}h2{page-break-after:avoid;}table{page-break-inside:avoid;}}
+@media (max-width:720px){.sheet{margin:0;padding:32px 22px;}h1{font-size:22px;}th{white-space:normal;}}
+</style></head><body>
+<div class="sheet">
+<h1>ローカルのファイル構造マップ（2026-09-06 現在）</h1>
+<blockquote><p>阿部さんのMacの「どこに何があるか」を1枚で掴むための地図。</p><p><strong>迷ったら1問</strong>: 「次のAIセッションに読ませたいか？」→ Yes なら <code>Projects/balencer/docs/</code>、No（見せるだけ）なら Drive。</p><p>使い方・呼び出し方は <a href="usage-guide.md">usage-guide.md</a>、保存ルールの正本は <a href="../../CLAUDE.md">CLAUDE.md</a> 3章。</p></blockquote>
+<hr>
+<h2>0. 全体像 — 入口は2つだけ</h2>
+<pre><code>Mac
+├── ~/Projects/balencer/        ★ 入口A（会社）— Claude Code で開くのはここだけ
+└── ~/Documents/my-notes/       ★ 入口B（個人）— Obsidian で開く。非共有</code></pre>
+<p>この2つ以外（Desktop・Drive）は<strong>置き場であって入口ではない</strong>。Claude Code は入口Aから起動する。</p>
+<hr>
+<h2>1. ~/Projects/ — コードとリポジトリ</h2>
+<pre><code>~/Projects/
+├── balencer/            ★ 会社の唯一の正本。ほぼ全部の仕事がここ
+├── tsugiandpartners/      TSUGI＆PARTNERS のコード
+├── ai-staff/              AI社員まわりの実験
+└── machigai-note/         間違いノートアプリ（中学受験算数・個人プロダクト）</code></pre>
+<hr>
+<h2>2. ~/Projects/balencer/ — 会社の正本（ここが本丸）</h2>
+<pre><code>balencer/
+├── CLAUDE.md            ★ 会社の記憶。全セッションで自動ロードされる
+├── AGENTS.md            → CLAUDE.md へのシンボリックリンク（Codex 用。中身は同一）
+│
+├── .claude/skills/      ★ AI社員の実体（19スキル）
+│   ├── secretary / dev / marketing / finance / creative / consulting   ← 担当6人
+│   ├── brand-lint / ai-judges / estimate / invoice / weekly-review     ← 工程
+│   ├── client-deck / monthly-report / notion-tag-fill / positioning-map
+│   └── design-md / dads / full-telop / marketing-shuhei
+│
+├── docs/                ★ 成果物とナレッジ。テキストの仕事はすべてここ
+│   ├── company/           ◎ 会社定義の正本（後述）
+│   ├── clients/           ◎ 顧客案件（1顧客1フォルダ・19社）
+│   ├── _knowledge/        ◎ 社内ナレッジ・決定事項（このファイルもここ）
+│   ├── tsugi/             TSUGI の仕事
+│   ├── inbox/             未分類の思いつき（通過点。月次で仕分け）
+│   │
+│   ├── products/          サービスページ（HP中核）
+│   ├── proposals/         提案書（旧置き場。新規は clients/ 配下へ）
+│   ├── estimates/         見積（旧置き場。新規は clients/ 配下へ）
+│   ├── invoices/          請求書
+│   ├── accounting/        経理
+│   ├── handoff/           共有用ミラー（company/ の写し）
+│   ├── references/        参考資料
+│   ├── _corpus/           文章コーパス
+│   ├── blog/              ブログ原稿
+│   │
+│   ├── hitotsu-lp/        LP各種（1プロダクト1フォルダ）
+│   ├── hojokin-hub-lp/
+│   ├── keiei-board-lp/
+│   ├── soeru-lp/
+│   ├── intro-site/        イベント用2社紹介ページ
+│   └── online-shodan-2026-06/
+│
+├── src/                 バレンサー本体サイト（※本番はWordPress+Elementor）
+├── apps/outreach/       営業メール自動化アプリ
+├── scripts/             社内用の業務スクリプト（brand_lint.py 等）
+├── server-scripts/      サーバーPHP（LPリード処理。実値configはgitignore）
+└── outreach-lists/      営業リストCSV</code></pre>
+<h3>docs/company/ — 会社定義の正本（対外文書はここから引用する）</h3>
+<div class="tablewrap"><table><thead><tr><th>ファイル</th><th>役割</th></tr></thead><tbody><tr><td><code>BALENCER_MASTER_CONTEXT.md</code></td><td>◎ <strong>最上位正本</strong>。会社定義。矛盾したらこれが勝つ</td></tr><tr><td><code>BALENCER_DESIGN_SYSTEM.md</code></td><td>◎ <strong>デザインの最上位正本</strong></td></tr><tr><td><code>BALENCER_SERVICE_PRICING_MASTER.md</code></td><td>◎ サービス・料金・契約の正本</td></tr><tr><td><code>website-copy-master.md</code></td><td>コーポレートサイト全13ページの文言正本</td></tr><tr><td><code>invoice-constants.md</code> / <code>invoice-clients.json</code></td><td>請求書の定数（登録番号・振込先・採番）</td></tr><tr><td><code>sales-strategy-2026.md</code> / <code>sales-pipeline-overview.md</code></td><td>営業戦略・パイプライン</td></tr><tr><td><code>_project-bundle.md</code></td><td>claude.ai の Project ナレッジ用に焼いたまとめ（生成物）</td></tr><tr><td><code>identity.md</code> / <code>services.md</code> / <code>results.md</code></td><td>上記2マスターの補足（矛盾時はマスター優先）</td></tr></tbody></table></div>
+<h3>docs/clients/ — 顧客案件（1顧客1フォルダ）</h3>
+<p>スラッグの<strong>唯一の正</strong>は <a href="../clients/README.md">clients/README.md</a> の対応表。新規顧客はまず表に1行足してからフォルダを作る。</p>
+<pre><code>1stplace  adachi-onken  clavis-partners  golfeed  h2o  harima  hokuroku
+imamura   mutsubi       nailit           nexus-group  oishies
+osaka-kyoso-lab  seibikai  sunpark  tas  toyo  tri-works  tsugi-ma</code></pre>
+<p>各顧客フォルダの中の型:</p>
+<pre><code>docs/clients/&lt;顧客&gt;/
+├── README.md          5行サマリ＋リンク集（最初の1読で全体像）
+├── 00_brief.md        claude.ai 相談用の貼り付けパック（2,000字上限）
+├── 01_提案/
+├── 02_契約・見積/
+├── 03_議事録/
+└── 04_成果物/</code></pre>
+<hr>
+<h2>3. ~/Documents/my-notes/ — 個人Vault（Obsidian・非共有）</h2>
+<pre><code>my-notes/
+├── CLAUDE.md          個人Vault側の運用ルール
+├── Inbox/             毎日インプットを投げる場所。週1で処理
+├── ノート/
+└── 人生設計_*.md      人生設計・ビジョン（私的な数字を含む）</code></pre>
+<p><strong>会社リポジトリと混ぜない。</strong> 個人の思考・見せたくない数字はここだけに置く。逆に会社の仕事はここに置かない。</p>
+<hr>
+<h2>4. ~/Desktop/ — 一時作業と現物置き場（正本ではない）</h2>
+<p>Desktop は<strong>通過点</strong>。ここにあるものは「Driveの現物のコピー」か「作業中の一時物」で、正本ではない。</p>
+<div class="tablewrap"><table><thead><tr><th>フォルダ</th><th>中身</th></tr></thead><tbody><tr><td><code>バレンサー資料庫/</code></td><td>資料の現物</td></tr><tr><td><code>abe-takayuki/</code> / <code>阿部パーソナル/</code></td><td>個人まわり</td></tr><tr><td><code>睦備 月次レポート/</code></td><td>月次レポートの出力先</td></tr><tr><td><code>8月請求/</code></td><td>請求書の出力</td></tr><tr><td><code>一時保管/</code></td><td>一時物</td></tr><tr><td><code>distribution/</code> / <code>drive-download-*/</code></td><td>Driveからの落とし物</td></tr></tbody></table></div>
+<blockquote><p>Desktop に溜まったものは、<strong>正本にすべきなら <code>docs/</code> へ、共有現物なら Drive へ</strong>移す。放置すると迷子になる。</p></blockquote>
+<hr>
+<h2>5. ~/.claude/ — Claude Code の設定（触るのは settings.json くらい）</h2>
+<pre><code>~/.claude/
+├── settings.json        グローバル設定
+├── skills/              グローバルスキル（design-system-builder / ui-ux-pro-max）
+├── projects/            プロジェクトごとのメモリと会話ログ（jsonl）
+└── sessions/            セッション記録</code></pre>
+<ul><li><strong>AI社員スキルの正は <code>Projects/balencer/.claude/skills/</code></strong>（グローバルではない）。修正はリポジトリ側を編集する</li><li>消えたセッションの復元は <code>~/.claude/projects/</code> の jsonl を grep</li></ul>
+<hr>
+<h2>6. ローカルの外（正本がここにあるもの）</h2>
+<div class="tablewrap"><table><thead><tr><th>場所</th><th>何が正本か</th></tr></thead><tbody><tr><td><strong>GitHub <code>balencer-inc/balencer</code></strong></td><td>◎ 会社の正本。ローカルの <code>Projects/balencer</code> と同期</td></tr><tr><td><strong>Google Drive</strong></td><td>△ 数字の原本（営業管理シート・売掛金管理表）、メンバー共有の現物</td></tr><tr><td><strong>Notion</strong></td><td>△ 運用データ（議事録DB・リードDB・SNSネタ帳・企業ドック）</td></tr></tbody></table></div>
+<blockquote><p>Drive の実体はローカルに落とさない。git 側には<strong>リンク＋1行説明のポインタmd</strong>を置く。</p></blockquote>
+<hr>
+<h2>7. 迷った時の判定フロー</h2>
+<pre><code>その成果物は…
+│
+├─ 次のAIセッションに読ませたい？ ─── Yes ──→ Projects/balencer/docs/
+│                                              │
+│                                              ├─ 会社の定義・戦略 → docs/company/
+│                                              ├─ 顧客の仕事     → docs/clients/&lt;スラッグ&gt;/
+│                                              ├─ TSUGI          → docs/tsugi/
+│                                              ├─ 決定・知見     → docs/_knowledge/
+│                                              └─ まだ決まらない → docs/inbox/
+│
+├─ 見せるだけ（Excel・PDF最終納品・メンバー手編集）？ → Google Drive（git側にポインタmd）
+│
+├─ 溜め続ける運用データ・追客・ネタ？ → Notion
+│
+└─ 阿部さん個人の思考・私的な数字？ → Obsidian（~/Documents/my-notes）</code></pre>
+<hr>
+<h2>更新履歴</h2>
+<ul><li>2026-09-06 初版。デスクトップ版メイン化＋Codex併用の整備にあわせて作成</li></ul>
+</div></body></html>

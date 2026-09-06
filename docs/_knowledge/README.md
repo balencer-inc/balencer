@@ -14,6 +14,8 @@
 - `consulting.md` — 提案・戦略・クライアント分析の知見
 - `team-operations.md` — 3人チーム × Claude Code の運用の型・決定記録（正本は1箱・3層モデル・3回ルール・金曜棚卸し）
 - `team-onboarding-send-text.md` — メンバーへ送る文面＆初回セットアップ手順（コピペ用）
+- `usage-guide.md` — AI社員の呼び出し方・環境別の開き方（デスクトップ版がメイン／Codex併用）
+- `folder-map.md` — ローカルのファイル構造マップ（どこに何があるか。`folder-map.html` で閲覧）
 
 ## 運用ルール
 1. **その場で書く** — 重要な決定や好みが出たら、該当ファイルにすぐ追記。

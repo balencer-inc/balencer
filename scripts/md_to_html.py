@@ -28,6 +28,9 @@ li{margin-bottom:7px;}
 ul.todolist{list-style:none;padding-left:0;}
 li.todo{padding-left:30px;position:relative;}
 li.todo:before{content:"";position:absolute;left:2px;top:.55em;width:13px;height:13px;border:1.5px solid var(--mid);border-radius:2px;}
+pre{margin:18px 0 24px;padding:20px 22px;background:var(--cool);border:1px solid var(--line);overflow-x:auto;}
+pre code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.75;color:var(--ink);white-space:pre;}
+code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.9em;background:var(--cool);padding:1px 5px;border-radius:2px;}
 .tablewrap{overflow-x:auto;margin:18px 0 24px;}
 table{width:100%;border-collapse:collapse;font-size:14px;}
 th{background:var(--cool);text-align:left;font-weight:700;padding:11px 14px;border-bottom:1.5px solid var(--ink);white-space:nowrap;}
@@ -40,6 +43,7 @@ def inline(t):
     t = html.escape(t)
     t = re.sub(r'\[(.+?)\]\((.+?)\)', r'<a href="\2">\1</a>', t)
     t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
+    t = re.sub(r'`(.+?)`', r'<code>\1</code>', t)
     return t
 
 def convert(md):
@@ -48,6 +52,12 @@ def convert(md):
         s = lines[i].strip()
         if not s:
             i += 1; continue
+        if s.startswith("```"):
+            i += 1; buf = []
+            while i < len(lines) and not lines[i].strip().startswith("```"):
+                buf.append(lines[i]); i += 1
+            i += 1
+            body.append("<pre><code>" + html.escape("\n".join(buf)) + "</code></pre>"); continue
         if s == "---":
             body.append("<hr>"); i += 1; continue
         if s.startswith("|"):

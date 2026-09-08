@@ -10,29 +10,6 @@
       "expected_total_incl": 419200,
       "items": [
         {
-          "name": "OSAKA共創LAB　ファシリテーター業務委託費",
-          "detail": "8月分",
-          "amount": 300000,
-          "basis": "incl",
-          "rate": 10
-        },
-        {
-          "name": "イベント参加日当",
-          "note": "8/4・8/18・8/30　計5名日",
-          "detail": "8月分",
-          "amount": 50000,
-          "basis": "incl",
-          "rate": 10
-        },
-        {
-          "name": "交通費",
-          "note": "往復実費",
-          "detail": "8月分",
-          "amount": 2860,
-          "basis": "incl",
-          "rate": 10
-        },
-        {
           "name": "ファシリテーター稼働費",
           "note": "7/25　12:00〜16:30　4.5時間 × 2名 ＝ 9時間　時給5,000円",
           "detail": "7月分",
@@ -53,6 +30,29 @@
           "note": "往復実費",
           "detail": "7月分",
           "amount": 1340,
+          "basis": "incl",
+          "rate": 10
+        },
+        {
+          "name": "OSAKA共創LAB　ファシリテーター業務委託費",
+          "detail": "8月分",
+          "amount": 300000,
+          "basis": "incl",
+          "rate": 10
+        },
+        {
+          "name": "イベント参加日当",
+          "note": "8/4・8/18・8/30　計5名日",
+          "detail": "8月分",
+          "amount": 50000,
+          "basis": "incl",
+          "rate": 10
+        },
+        {
+          "name": "交通費",
+          "note": "往復実費",
+          "detail": "8月分",
+          "amount": 2860,
           "basis": "incl",
           "rate": 10
         }

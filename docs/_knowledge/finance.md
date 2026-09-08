@@ -156,4 +156,7 @@ Notion **「極秘人員計画と報酬 / 人件費・業績計画 2024-2028」*
 
 6期の調整後粗利59,139,799に対し前期賞与2,700,000 → **4.565%** が据え置き率。7期はこの率で、睦備の開発原価0なら342万・1,500万なら274万。
 
+**→ 経営の絵として1枚にまとめた: [docs/company/7ki-landing-8ki-design.md](../company/7ki-landing-8ki-design.md)**
+（7期の着地／原価構造／睦備依存の耐性−33%／睦備型＝帯＋前受の定義と移植候補／増員の損益分岐／8期は睦備様5,270万・制作58%が勝負所）
+
 関連: [[project-balencer-kessan-analysis]] [[reference-balencer-finance-sheets]]

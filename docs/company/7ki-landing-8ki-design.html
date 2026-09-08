@@ -1,0 +1,164 @@
+<meta charset="utf-8"><title>バレンサー 7期の着地と8期の設計</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#1a2230;
+  background:#f7f8fa;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:56px 28px 96px;background:#fff;
+  box-shadow:0 1px 3px rgba(26,34,48,.06)}
+h1{font-size:26px;font-weight:600;letter-spacing:.02em;padding-bottom:16px;
+  border-bottom:2px solid #22364f;margin-bottom:8px}
+h2{font-size:18px;font-weight:600;margin:44px 0 14px;padding-left:12px;
+  border-left:4px solid #3d5a80}
+h3{font-size:14.5px;font-weight:600;color:#3d5a80;margin:26px 0 10px}
+p{margin:12px 0;font-size:14.5px}
+blockquote{margin:16px 0 28px;padding:14px 18px;background:#f5f8fa;
+  border-left:3px solid #b9c4d0;font-size:13px;color:#48566b;line-height:1.7}
+blockquote p{margin:4px 0;font-size:13px}
+table{width:100%;border-collapse:collapse;margin:16px 0 22px;font-size:13.5px}
+th{background:#22364f;color:#fff;font-weight:500;text-align:left;padding:8px 12px;
+  font-size:12.5px;letter-spacing:.03em}
+td{padding:8px 12px;border-bottom:1px solid #e6eaef}
+tr:nth-child(even) td{background:#fafbfc}
+td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+th:not(:first-child){text-align:right}
+ul{margin:12px 0 12px 22px}
+li{font-size:14.5px;margin:6px 0}
+strong{font-weight:600;color:#12233d}
+code{background:#eef1f5;padding:1px 5px;border-radius:3px;font-size:12.5px}
+a{color:#3d5a80}
+hr{border:0;border-top:1px solid #e6eaef;margin:34px 0}
+.meta{font-size:12px;color:#9aa5b2;margin-bottom:28px}
+</style><div class="wrap"><h1>バレンサー 7期の着地と8期の設計</h1>
+<blockquote><p>作成 2026-09-08。7期＝2025/12〜2026/11、8期＝2026/12〜2027/11。</p><p>金額はすべて<strong>税抜</strong>。賞与の個別額は本文に含めない（Notion「極秘人員計画と報酬」で別管理）。</p><p>元データ: 6期決算書／売掛金一覧（①）／営業管理数字マスター（④）／支払請求書／Notion「【専務用】MUTSUBI CITY PJT予算・請求 台帳」</p></blockquote>
+<h2>1. 7期の着地</h2>
+<p>8月まで9ヶ月の実績が <strong>55,055,211</strong>。9〜11月に睦備様のポータル650〜800万、ハリマ様50万（HPは8期送り）を置いて——</p>
+<table><tr><th></th><th>着地</th><th>6期比</th></tr>
+<tr><td>低め</td><td>80,933,172</td><td>−4.1%</td></tr>
+<tr><td>高め</td><td>82,433,172</td><td>−2.3%</td></tr>
+</table>
+<p><strong>6期実績は84,400,075</strong>（決算書）。ほぼ横ばいで着地する。</p>
+<h2>2. 売上は微減でも利益は倍増する</h2>
+<table><tr><th></th><th>6期（確定）</th><th>7期（見込み）</th></tr>
+<tr><td>売上</td><td>84,400,075</td><td>81,000,000</td></tr>
+<tr><td>外注費</td><td>30,964,780</td><td>18,550,000</td></tr>
+<tr><td><strong>粗利率</strong></td><td><strong>62.0%</strong></td><td><strong>75.7%</strong></td></tr>
+<tr><td><strong>営業利益</strong></td><td><strong>4,521,674</strong></td><td><strong>約10,400,000</strong></td></tr>
+</table>
+<p>6期の当期純利益4,908,267は車両の固定資産売却益1,978,909を含む。本業の実力は営業利益452万。</p>
+<p><strong>外注費が1,241万減ったことが利益改善の全て。</strong>売上規模は変わっていない。</p>
+<h2>3. なぜ外注費が減ったか</h2>
+<p>睦備様の前受金3,200万（07-015）の原価内訳。</p>
+<table><tr><th>項目</th><th>売上</th><th>原価</th><th>原価率</th><th>支払先</th></tr>
+<tr><td>MUTSUBI CITY構想 企画設計</td><td>5,000,000</td><td>0</td><td>0%</td><td>自社</td></tr>
+<tr><td>ブランディング</td><td>3,600,000</td><td>0</td><td>0%</td><td>自社</td></tr>
+<tr><td>広報関連</td><td>3,500,000</td><td>0</td><td>0%</td><td>自社</td></tr>
+<tr><td>サイバーセキュリティ対策</td><td>3,000,000</td><td>0</td><td>0%</td><td>自社</td></tr>
+<tr><td>社内DX支援（n8n）</td><td>3,000,000</td><td>600,000</td><td>20%</td><td>佐々木さん</td></tr>
+<tr><td><strong>DXシステム開発（DB・チェックシート）</strong></td><td>4,000,000</td><td>2,800,000</td><td><strong>70%</strong></td><td>gini</td></tr>
+<tr><td>アプリ関連4件</td><td>9,900,000</td><td>4,950,000</td><td>50%</td><td>gini</td></tr>
+<tr><td><strong>計</strong></td><td><strong>32,000,000</strong></td><td><strong>8,350,000</strong></td><td><strong>26%</strong></td><td></td></tr>
+</table>
+<p><strong>原価ゼロの仕事が1,510万（47%）。</strong>6期は同じ睦備様の売上4,639万が「都度のアプリ追加開発」で、原価が外注に出ていた。7期はそれが企画・ブランディング・広報に置き換わった。</p>
+<p>これが「コンサル寄りになっている」という実感の正体で、そのまま利益率の改善として出ている。</p>
+<h3>外注費の社内／外部</h3>
+<p>線引き: <strong>高木・加藤・松本は社内</strong>（上がってもよい）／<strong>giniは外部</strong>（不要なコストは下げる）。</p>
+<table><tr><th></th><th>年計（仮置き）</th></tr>
+<tr><td>社内 加藤さん（合同会社ホコロビ・法人） 月44万</td><td>5,280,000</td></tr>
+<tr><td>社内 松本さん（個人） 月13万</td><td>1,560,000</td></tr>
+<tr><td>社内 高木さん（個人） 5,000円×月8h</td><td>480,000</td></tr>
+<tr><td>外部 gini（2025/12は615千、2026/1以降は115千/月）</td><td>1,880,000</td></tr>
+<tr><td>外部 睦備様の前受金ぶん</td><td>8,350,000</td></tr>
+</table>
+<ul><li>睦備様へはアプリ保守20万＋AIチャット3万で請求、giniへは11.5万 → <strong>保守だけで月11.5万の粗利</strong></li><li>支払請求書は2025/12〜2026/3の27件しかDriveに無い。4月以降は経理が印刷したまま未格納</li></ul>
+<h2>4. 睦備依存の耐性</h2>
+<p>睦備様は各部署に入り込み経営も握っているため消えない。<strong>上下はする。</strong>問いは「代替」ではなく「どこまで下がって耐えるか」。</p>
+<table><tr><th></th><th></th></tr>
+<tr><td>損益分岐売上（粗利率75.7%・現体制）</td><td>67,254,427</td></tr>
+<tr><td>睦備様以外</td><td>38,950,000</td></tr>
+<tr><td>→ 睦備様に必要な最低額</td><td>28,304,427</td></tr>
+<tr><td>現在の睦備様</td><td>42,050,000</td></tr>
+<tr><td><strong>許容下振れ</strong></td><td><strong>−33%（−1,374万）</strong></td></tr>
+</table>
+<p><strong>増員すると耐性が消える。</strong></p>
+<table><tr><th></th><th>損益分岐</th><th>睦備様の許容下振れ</th></tr>
+<tr><td>現体制</td><td>67,254,427</td><td>−33%</td></tr>
+<tr><td>＋1人（年780万）</td><td>77,558,258</td><td>−8%</td></tr>
+<tr><td>＋2人</td><td>87,862,089</td><td>+16%必要</td></tr>
+</table>
+<p><strong>増員の前に非睦備を積む順番は動かせない。</strong>逆にすると、睦備様が少し下がっただけで苦しくなる。</p>
+<h2>5. 睦備型 ＝ 帯（月額）＋ 前受でプロジェクトをまぶす</h2>
+<p>これがバレンサーの商品設計。<strong>積み上げ方式だと個別のプロジェクト費が毎回説明を要する</strong>が、前受で1本にまとめれば中身の組み替えが自由になる。7期の3,200万がまさにその形で、しかも47%が原価ゼロ。</p>
+<p><strong>両方揃っているのは睦備様だけ。</strong></p>
+<table><tr><th></th><th>帯（月額）</th><th>年次前受</th></tr>
+<tr><td>睦備様</td><td>約92万×12</td><td>3,200万</td></tr>
+<tr><td>トライ・ワークス様</td><td>なし</td><td>369万</td></tr>
+<tr><td>アダチ音研様</td><td>20万×12</td><td>なし</td></tr>
+<tr><td>北麓様</td><td>20万×12</td><td>なし</td></tr>
+</table>
+<ul><li><strong>トライ・ワークス様</strong> … 前受の型はできている（8月決算前に年次一括）。帯を足せば睦備型</li><li><strong>ハリマ紙器印刷様</strong> … 60周年CI/VI → ブランディング → HP → MVV浸透 → 新規事業/DX横断、と段階が進む。睦備様の初期に似ている。HP250万・MVV150万・新規事業400万をバラで積まず<strong>前受800万で1本</strong>にするのが型</li></ul>
+<p><strong>目指すのは「同等」ではなく「縮小版を2社」</strong>（月額50万＋年次前受1,000万＝年1,600万）。</p>
+<table><tr><th></th><th>睦備様以外</th><th>損益分岐67,254,427に対して</th></tr>
+<tr><td>1社</td><td>54,950,000</td><td>不足1,230万</td></tr>
+<tr><td><strong>2社</strong></td><td><strong>70,950,000</strong></td><td><strong>到達（睦備様ゼロでも黒字）</strong></td></tr>
+</table>
+<p>商習慣の育成には時間がかかるが、<strong>時間がかかること自体が参入障壁</strong>。年間ロードマップを先に合意し、四半期で中身を組み替える前提にすれば、先に預かるのが相手にも合理的になる。</p>
+<h2>6. 8期の絵</h2>
+<p>Notion「【専務用】MUTSUBI CITY PJT予算・請求 台帳」の下部より。</p>
+<h3>今期に取れた追加予算 1,990万</h3>
+<table><tr><th></th><th></th></tr>
+<tr><td>社内ポータルシステム開発</td><td>6,500,000</td></tr>
+<tr><td>社内DX（追加）</td><td>5,000,000</td></tr>
+<tr><td>業務アプリ</td><td>4,000,000</td></tr>
+<tr><td>スマートエントランス保守年間</td><td>3,600,000</td></tr>
+<tr><td>AIリフォーム ver 3.0（追加）</td><td>800,000</td></tr>
+</table>
+<h3>来期の見立て 4,170万</h3>
+<table><tr><th></th><th>区分</th><th></th></tr>
+<tr><td>ハイパーリアルCG制作</td><td>制作</td><td>10,000,000</td></tr>
+<tr><td>webサイト制作</td><td>制作</td><td>10,000,000</td></tr>
+<tr><td>広報関連制作物</td><td>制作</td><td>4,000,000</td></tr>
+<tr><td>一般向けブラウザアプリ</td><td>開発</td><td>9,000,000</td></tr>
+<tr><td>リノベーションブランド LIFE SHIFT</td><td>その他</td><td>5,200,000</td></tr>
+<tr><td>プレスリリース</td><td>その他</td><td>2,000,000</td></tr>
+<tr><td>リノベーションコンペ R-1開催</td><td>その他</td><td>1,500,000</td></tr>
+</table>
+<p><strong>制作が2,400万で58%。</strong>外向きの新規制作は減っているが、睦備様の内側では制作が8期の主役になる。</p>
+<h3>売上見込みと増員の上限</h3>
+<table><tr><th></th><th></th></tr>
+<tr><td>睦備様 帯 約92万×12</td><td>11,000,000</td></tr>
+<tr><td>睦備様 前受プロジェクト（見立て）</td><td>41,700,000</td></tr>
+<tr><td>睦備様 計</td><td><strong>52,700,000</strong>（7期42,050,000 → +1,065万）</td></tr>
+<tr><td>非睦備（7期並み）</td><td>38,950,000</td></tr>
+<tr><td><strong>8期 売上見込み</strong></td><td><strong>91,650,000</strong></td></tr>
+</table>
+<table><tr><th></th><th>損益分岐</th><th>9,165万に対して</th></tr>
+<tr><td>現体制</td><td>67,254,427</td><td>○ 余裕 +2,440万</td></tr>
+<tr><td><strong>＋1人</strong></td><td>77,558,258</td><td>○ 余裕 +1,409万</td></tr>
+<tr><td>＋2人</td><td>87,862,089</td><td>○ 余裕 +379万</td></tr>
+<tr><td>＋3人</td><td>98,165,919</td><td>× 赤字 −652万</td></tr>
+</table>
+<p><strong>+2人だと余裕379万しかなく、睦備様の見立てが1割落ちれば消える。堅く見て+1人。</strong></p>
+<p>また8期は睦備依存が51.9%→57.5%に<strong>上がる</strong>ので、増員と並行して非睦備を積む必要がある。</p>
+<h2>7. 8期の勝負所は制作2,400万の原価率</h2>
+<p>7期の粗利率75.7%は「原価ゼロの企画・ブランディング・広報」が作った数字で、<strong>阿部さんの時間そのもの</strong>。人月を買って再現できる型ではない。</p>
+<p>8期は制作が58%を占めるため、<strong>同じ粗利率は維持できない</strong>。CG1,000万・web1,000万の原価率をどこに収めるかが利益を決める。</p>
+<h3>内製化の優先順位</h3>
+<table><tr><th></th><th>原価率</th><th>支払先</th></tr>
+<tr><td><strong>DXシステム開発（DB・チェックシート）</strong></td><td><strong>70%</strong></td><td>gini</td></tr>
+<tr><td>アプリ関連4件</td><td>50%</td><td>gini</td></tr>
+<tr><td>社内DX支援（n8n）</td><td>20%</td><td>佐々木さん</td></tr>
+<tr><td>企画設計・ブランディング・広報・セキュリティ</td><td>0%</td><td>自社</td></tr>
+</table>
+<p><strong>DXシステム開発の70%が突出。</strong>400万でginiに280万。6,500円換算で431時間。DB・チェックシートまわりはアプリ本体より剥がしやすい。</p>
+<p>giniの年間（保守＋DXシステム＋アプリ4件）963万を6,500円換算すると1,482時間＝<strong>月123時間</strong>（フルタイム160hの77%）。高木さんの稼働をここまで上げられるかが鍵。いまは<strong>月8時間</strong>。</p>
+<h3>増やし方の規律</h3>
+<ul><li><strong>開発・制作で増やす</strong> … 人月を積めばスケールするが粗利率50〜70%。1.2億を粗利率60%で作ると粗利7,200万＝固定費7,200万で<strong>営業利益ゼロ</strong>。単価か原価率の改善が前提</li><li><strong>コンサル・伴走で増やす</strong> … 粗利率は維持できるが属人的。阿部さんの分身が要る</li></ul>
+<p>現実には混ぜる。<strong>「粗利率70%を割らない範囲でしか人を増やさない」</strong>を規律にすると判断がぶれない。案件は制限せず受けるが、受けた案件の粗利率を毎回見る。</p>
+<h2>8. 1.2億の形</h2>
+<p>売上1.2億・粗利率75%・営業利益率15%と置くと、使える固定費は7,200万。現在5,091万なので<strong>増員余地2,109万＝加藤さんクラス2.7人分</strong>。</p>
+<p><strong>1.2億は「いまの体制＋3人」で届く。</strong>ただし粗利率75%の維持が条件。</p>
+<h2>9. 決めたこと・次の論点</h2>
+<p><strong>決めたこと</strong></p>
+<ul><li>賞与は売上連動から<strong>粗利連動</strong>へ（社内3人の報酬を戻し入れた「調整後粗利」を基準にする）。詳細はNotion「極秘人員計画と報酬」</li><li>増員は8期に<strong>+1人まで</strong></li><li>内製化の一手目は<strong>DXシステム開発（原価率70%）をginiから高木さんへ</strong></li></ul>
+<p><strong>次の論点</strong></p>
+<ul><li>8期の睦備様4,170万を<strong>1本の前受にまとめる器</strong>（LIFE SHIFTが候補）。7項目を並べると単価の議論になる</li><li>睦備型の<strong>2社目</strong>（トライ・ワークス様に帯を足す／ハリマ紙器印刷様を前受800万で1本に）</li><li>制作2,400万の原価率をどこに収めるか。高木さんの稼働を月8時間からどこまで上げられるか</li><li>4月以降の支払請求書が未格納。決算の実額が出せない（→ ai-automation-roadmap #19）</li></ul>
+<p>関連: <a href="invoice-constants.md">invoice-constants.md</a>／<a href="../_knowledge/finance.md">docs/_knowledge/finance.md</a>／Notion「極秘人員計画と報酬」／Notion「【専務用】MUTSUBI CITY PJT予算・請求 台帳」</p><hr><p class="meta">社内限定。金額はすべて税抜。賞与の個別額はNotion「極秘人員計画と報酬」で別管理。</p></div>

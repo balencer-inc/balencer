@@ -158,6 +158,12 @@ python3 .claude/skills/invoice/scripts/invoice_xlsx.py docs/invoices/<YYYY-MM>/i
   Claudeは管理表・売掛金管理表・売掛金一覧のいずれにも書き込まない。発行後は阿部さんが記入する
 - **入金予定日** — ①の値が唯一の正。空だと契約条件から推定して「（推定）」と警告を出すので、①に書き戻す
 - **取引先コード** — ③のマスタに無い顧客は `要採番` と出る。88番以降を振ってから③に貼る
+- **明細や備考が増えたら1枚目の収まりを目視する** — A4固定高なので、あふれると2枚目の見出しに重なる。
+  ```bash
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
+    --screenshot=/tmp/p1.png --window-size=794,1123 --hide-scrollbars <HTMLパス>
+  ```
+  で1枚目を画像化して確認する（2026-09-03にファイアープレイス様で発生。明細6行＋備考5行がぎりぎり）
 - **①の案件名は明細に分解する** — 「デジマ60万 楽楽5万 保守20万…」の1セルを請求書では6行にする
 - **①の備考は2用途が混在** — 請求書に載せる文言だけ `remarks` に入れる。自分用メモは①に残す
 
